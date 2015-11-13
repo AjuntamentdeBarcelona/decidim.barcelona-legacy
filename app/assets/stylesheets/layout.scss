@@ -1931,12 +1931,26 @@ table {
     }
 
     .comment-children {
-      border-left: 1px dashed $border;
       margin-left: rem-calc(42);
       padding-left: rem-calc(6);
 
       @media only screen and (max-width: 40em) {
         margin-left: rem-calc(16);
+      }
+
+      .comment {
+        border-left: 1px dashed $border;
+        margin: 0;
+        margin-left: rem-calc(9);
+
+        &:first-child {
+          padding-top: rem-calc(12);
+        }
+
+        @media only screen and (max-width: 40em) {
+          margin: 0;
+          margin-left: rem-calc(9);
+        }
       }
     }
 

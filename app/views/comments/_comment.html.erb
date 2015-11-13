@@ -1,6 +1,6 @@
 <% cache [locale_and_user_status(comment), comment, commentable_cache_key(@commentable), comment.author, (@comment_flags[comment.id] if @comment_flags)] do %>
   <div class="row">
-  	<div id="<%= dom_id(comment) %>" class="comment small-12 column">
+    <div id="<%= dom_id(comment) %>" class="comment small-12 column">
 
       <% if comment.hidden? || comment.user.hidden? %>
         <% if child_comments_of(comment).size > 0 %>
@@ -86,11 +86,15 @@
           </div>
         </div>
       <% end %>
-      <div class="comment-children">
-        <% child_comments_of(comment).each do |child| %>
-          <%= render 'comments/comment', comment: child %>
+      <% if comment.hidden? || comment.user.hidden? %>
+        <% if child_comments_of(comment).size > 0 %>
+          <div class="comment-children">
+            <% child_comments_of(comment).each do |child| %>
+              <%= render 'comments/comment', comment: child %>
+            <% end %>
+          </div>
         <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
 <% end %>
