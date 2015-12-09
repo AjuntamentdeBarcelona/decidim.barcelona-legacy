@@ -47,6 +47,5 @@ class PagesController < ApplicationController
   end
 
   def blog
-    redirect_to "http://diario.madrid.es/participa/"
   end
 end
