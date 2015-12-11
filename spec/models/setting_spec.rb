@@ -1,11 +1,13 @@
 require 'rails_helper'
 
 describe Setting do
-  before do
-    Setting["official_level_1_name"] = 'Stormtrooper'
+  context "when it exists" do
+    it "should should return the value" do
+      expect(Setting['brand_name']).not_to be_blank
+    end
   end
 
-  context "when overriden in the database" do
+  context "when overriden" do
     before do
       Setting["official_level_1_name"] = 'Stormtrooper'
     end
@@ -15,14 +17,7 @@ describe Setting do
     end
   end
 
-  context "when there's a fallback" do
-    it "should return the fallback setting" do
-      Setting::StaticSetting["crazy_setting"] = "Crazy setting"
-      expect(Setting["crazy_setting"]).to eq("Crazy setting")
-    end
-  end
-
-  context "when there isn't a fallback" do
+  context "when it doesn't exist" do
     it "should should return nil" do
       expect(Setting['undefined_key']).to eq(nil)
     end
