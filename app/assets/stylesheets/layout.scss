@@ -991,10 +991,6 @@ form {
     }
   }
 
-  .ckeditor {
-    min-height: rem-calc(312);
-  }
-
   .checkbox {
     display: inline-block;
     font-weight: normal;
@@ -1013,6 +1009,10 @@ form {
 
   .button.margin-top {
     margin-top: rem-calc(24);
+  }
+
+  .fr-box{
+    margin-bottom: rem-calc(12);
   }
 }
 
