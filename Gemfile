@@ -40,7 +40,6 @@ gem 'ckeditor', '~> 4.1.5'
 gem 'cancancan'
 gem 'social-share-button', git: 'https://github.com/huacnlee/social-share-button.git', ref: 'e46a6a3e82b86023bc'
 gem 'initialjs-rails', '0.2.0.1'
-gem 'unicorn', '~> 5.0.1'
 gem 'paranoia'
 gem 'rinku', require: 'rails_rinku'
 gem 'savon'
@@ -97,6 +96,6 @@ group :test do
 end
 
 group :production do
-  gem 'puma'
+  gem 'unicorn'
   gem 'rails_12factor'
 end
