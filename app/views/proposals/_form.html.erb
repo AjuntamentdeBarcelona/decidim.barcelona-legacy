@@ -22,9 +22,9 @@
                       placeholder: t('proposals.form.proposal_summary') %>
     </div>
 
-    <div class="ckeditor small-12 column">
+    <div class="small-12 column">
       <%= f.label :description, t("proposals.form.proposal_text") %>
-      <%= f.cktext_area :description, maxlength: Proposal.description_max_length, ckeditor: { language: I18n.locale }, label: false %>
+      <%= f.text_area :description, maxlength: Proposal.description_max_length, label: false, class: 'editor' %>
     </div>
 
 

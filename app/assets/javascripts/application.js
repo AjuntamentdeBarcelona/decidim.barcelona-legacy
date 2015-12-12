@@ -14,8 +14,7 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
-//= require ckeditor/init
-//= require_directory ./ckeditor
+//= require editor
 //= require social-share-button
 //= require initial
 //= require ahoy

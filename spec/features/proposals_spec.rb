@@ -288,7 +288,7 @@ feature 'Proposals' do
       fill_in 'proposal_title', with: 'A test with enough characters'
       fill_in 'proposal_question', with: '¿Would you like to give assistance to war refugees?'
       fill_in 'proposal_summary', with: 'In summary, what we want is...'
-      fill_in_ckeditor 'proposal_description', with: 'A description with enough characters'
+      fill_in_editor 'proposal_description', with: 'A description with enough characters'
       fill_in 'proposal_external_url', with: 'http://rescue.org/refugees'
       fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
       fill_in 'proposal_captcha', with: correct_captcha_text
