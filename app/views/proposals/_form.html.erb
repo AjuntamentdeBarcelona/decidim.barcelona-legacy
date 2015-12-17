@@ -27,6 +27,10 @@
       <%= f.cktext_area :description, maxlength: Proposal.description_max_length, ckeditor: { language: I18n.locale }, label: false %>
     </div>
 
+    <div class="small-12 column">
+      <%= f.label :axis, t("proposals.form.axis") %>
+      <%= react_component('AxisPicker', axis: ['foo', 'bar']) %>
+    </div>
 
     <div class="small-12 column">
       <%= f.label :video_url, t("proposals.form.proposal_video_url") %>

@@ -14,6 +14,9 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require react
+//= require react_ujs
+//= require components
 //= require ckeditor/init
 //= require_directory ./ckeditor
 //= require social-share-button
@@ -34,6 +37,10 @@
 //= require users
 //= require votes
 //= require annotatable
+
+//= require react
+//= require react_ujs
+//= require components
 
 
 var initialize_modules = function() {
