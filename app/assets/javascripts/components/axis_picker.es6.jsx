@@ -30,12 +30,11 @@ var AxisPicker = React.createClass({
   },
 
   render () {
-    var selected = this.state.axis.find(a => a.selected);
-    var selectedName = (selected ? selected.name : null);
+    var selected = this.state.axis ? this.state.axis.find(a => a.selected) : null;
+    var selectedName = (selected ? selected.name : null)
 
     var axis = this.state.axis.map(element =>
       <div>
-        <AxisRow axis={element} onClick={this.selectAxis} key={element.name} />
         <input type="hidden" name="whatever" value={selectedName} />
       </div>
     );
