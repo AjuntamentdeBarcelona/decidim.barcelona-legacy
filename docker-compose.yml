@@ -36,7 +36,7 @@ bundle:
   image: ubuntu:15.04
   command: echo 'Nothing to do here'
   volumes:
-    - /bundle
+    - vendor/bundle:/bundle
 
 db:
   image: postgres

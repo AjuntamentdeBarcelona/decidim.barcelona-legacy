@@ -5,6 +5,8 @@ machine:
 dependencies:
   override:
     - sudo pip install --upgrade docker-compose==1.5.2
+  cache_directories:
+    - "vendor/bundle"
 
 database:
   pre:
