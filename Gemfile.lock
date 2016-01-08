@@ -149,6 +149,7 @@ GEM
       mail (~> 2.2)
     errbase (0.0.3)
     erubis (2.7.0)
+    espeak-ruby (1.0.2)
     execjs (2.6.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
@@ -384,6 +385,9 @@ GEM
       nori (~> 2.4)
       wasabi (~> 3.4)
     settingslogic (2.0.9)
+    simple_audio_captcha (1.0.0)
+      espeak-ruby (~> 1.0.2)
+      simple_captcha2 (~> 0.3.4)
     simple_captcha2 (0.3.4)
       rails (>= 4.1)
     simplecov (0.11.1)
@@ -507,6 +511,7 @@ DEPENDENCIES
   sassc-rails
   savon
   settingslogic
+  simple_audio_captcha
   simple_captcha2
   social-share-button!
   spring
