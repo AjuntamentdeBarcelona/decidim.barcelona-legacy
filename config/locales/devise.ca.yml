@@ -3,11 +3,8 @@ ca:
   devise:
     confirmations:
       confirmed: S'ha confirmat el teu compte.
-      send_instructions: Rebràs un correu electrònic en uns minuts amb instruccions
-        sobre com restablir la contrasenya.
-      send_paranoid_instructions: Si el teu correu electrònic existeix a la nostra
-        base de dades, rebràs un correu electrònic en uns minuts amb instruccions
-        sobre com restablir la contrasenya.
+      send_instructions: Rebràs un correu electrònic en uns minuts amb instruccions sobre com restablir la contrasenya.
+      send_paranoid_instructions: Si el teu correu electrònic existeix a la nostra base de dades, rebràs un correu electrònic en uns minuts amb instruccions sobre com restablir la contrasenya.
     failure:
       already_authenticated: Ja has entrat.
       inactive: El teu compte encara no s'ha activat.
