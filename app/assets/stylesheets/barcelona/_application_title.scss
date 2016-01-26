@@ -21,6 +21,7 @@
     @include arrow-box($text, left, 0.8);
     text-decoration: none;
     font-weight: 200;
+    line-height: normal;
     display: inline-block;
   }
 }
