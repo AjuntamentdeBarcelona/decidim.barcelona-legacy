@@ -11,17 +11,8 @@ class MeetingsFilter extends React.Component {
   render() {
     return (
       <form>
-        <div className="row collapse prefix-radius">
-          <div className="small-2 large-1 columns">
-            <span className="prefix"><i className="icon-search"></i></span>
-          </div>
-          <div className="small-10 large-11 columns">
-            <input 
-              placeholder="Cercar" 
-              onChange={(event) => this.filterByText(event.target.value)} 
-              onKeyDown={(event) => this.onKeyDown(event)} />
-          </div>
-        </div>
+        <SearchFilter 
+          onSetFilterText={ (searchText) => this.setFilterText(searchText) } />
         <ScopeFilterOptionGroup 
           filterGroupValue={this.state.filters.get('scope')} 
           onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.changeFilterGroup(filterGroupName, filterGroupValue) } />
@@ -47,29 +38,6 @@ class MeetingsFilter extends React.Component {
     )
   }
 
-  onKeyDown(event) {
-    let key = event.keyCode;
-
-    if (key === 13) { // Prevent form submission
-      event.preventDefault();
-    }
-  }
-
-  filterByText(searchText) {
-    if (this.searchTimeoutId) {
-      clearTimeout(this.searchTimeoutId);
-    }
-
-    this.searchTimeoutId = setTimeout(() => {
-      this.applyFilters(
-        this.state.filters.toObject(), 
-        this.state.tags.toArray(),
-        searchText
-      );
-      this.setState({ searchText });
-    }, 300);
-  }
-
   changeFilterGroup(filterGroupName, filterGroupValue) {
     let filters = this.state.filters.set(filterGroupName, filterGroupValue);
     if (filterGroupName === 'category_id') {
@@ -84,6 +52,15 @@ class MeetingsFilter extends React.Component {
       this.state.searchText
     );
     this.setState({ filters });
+  }
+
+  setFilterText(searchText) {
+    this.applyFilters(
+      this.state.filters.toObject(), 
+      this.state.tags.toArray(),
+      searchText
+    );
+    this.setState({ searchText });
   }
 
   setFilterTags(tags) {

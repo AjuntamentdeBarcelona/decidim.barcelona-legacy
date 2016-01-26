@@ -25,3 +25,5 @@ ca:
       actions: Accions
       remove: Eliminar
       title: Títol
+    search_filter:
+      search_input_placeholder: Cercar

@@ -25,3 +25,5 @@ en:
       actions: Actions
       remove: Delete
       title: Title
+    search_filter:
+      search_input_placeholder: Search
