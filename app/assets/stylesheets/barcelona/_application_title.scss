@@ -23,5 +23,8 @@
     font-weight: 200;
     line-height: normal;
     display: inline-block;
+    span{
+      color: $text-inverse;
+    }
   }
 }
