@@ -4,4 +4,10 @@ class MailerPreview < ActionMailer::Preview
     email.message.send(:inline_styles)
     email
   end
+
+  def confirmation
+    email = DeviseMailer.confirmation_instructions(User.first, "BLAH")
+    email.message.send(:inline_styles)
+    email
+  end
 end

@@ -10,6 +10,6 @@
   <%= t("devise_views.mailer.confirmation_instructions.text") %>
 </p>
 
-<p>
-  <%= link_to t("devise_views.mailer.confirmation_instructions.confirm_link"), confirmation_url(@resource, confirmation_token: @token) %>
+<p class="call-to-action">
+  <%= link_to t("devise_views.mailer.confirmation_instructions.confirm_link"), confirmation_url(@resource, confirmation_token: @token), class: 'button' %>
 </p>
