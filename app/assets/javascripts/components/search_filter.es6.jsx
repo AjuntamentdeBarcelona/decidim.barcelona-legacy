@@ -7,6 +7,7 @@ class SearchFilter extends React.Component {
         </div>
         <div className="small-10 large-11 columns">
           <input 
+            value={this.props.searchText}
             placeholder={I18n.t("components.search_filter.search_input_placeholder")}
             onChange={(event) => this.filterByText(event.target.value)} 
             onKeyDown={(event) => this.onKeyDown(event)} />
@@ -16,13 +17,7 @@ class SearchFilter extends React.Component {
   }
 
   filterByText(searchText) {
-    if (this.searchTimeoutId) {
-      clearTimeout(this.searchTimeoutId);
-    }
-
-    this.searchTimeoutId = setTimeout(() => {
-      this.props.onSetFilterText(searchText);
-    }, 300);
+    this.props.onSetFilterText(searchText);
   }
 
   onKeyDown(event) {

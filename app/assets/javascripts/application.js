@@ -20,6 +20,7 @@
 //= require parallax
 //= require react
 //= require react_ujs
+//= require services
 //= require components
 //= require ckeditor/init
 //= require_directory ./ckeditor
