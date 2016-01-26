@@ -91,8 +91,7 @@ ca:
           level_two:
             success: Codi correcte
     step_1: Residència
-    step_2: SMS de confirmació
-    step_3: Verificació final
+    step_2: Verificació final
     user_permission_debates: Participar en debats
     user_permission_info: En verificar les teves dades podràs ...
     user_permission_proposal: Crear noves propostes
