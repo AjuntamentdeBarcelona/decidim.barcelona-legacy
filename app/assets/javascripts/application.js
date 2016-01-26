@@ -68,8 +68,6 @@ var initialize_modules = function() {
   App.RegistrationForm.initialize();
 };
 
-Turbolinks.pagesCached(0);
-
 $(function(){
   Turbolinks.enableProgressBar();
 
