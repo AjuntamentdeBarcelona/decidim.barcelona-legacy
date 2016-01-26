@@ -53,4 +53,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       end
     end
 
+    def save_user(user)
+      @user.save ||
+      @user.save_requiring_finish_signup ||
+      @user.save_requiring_finish_signup_without_email
+    end
 end
