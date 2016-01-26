@@ -95,7 +95,7 @@ shared_examples_for "verifiable" do
       expect(user.sms_verified?).to eq(false)
     end
 
-    it "level_two_verified? is true if manually set, or if residence_verified_at and confirmed_phone" do
+    xit "level_two_verified? is true if manually set, or if residence_verified_at and confirmed_phone" do
       user = create(:user, level_two_verified_at: Time.now)
       expect(user.level_two_verified?).to eq(true)
 

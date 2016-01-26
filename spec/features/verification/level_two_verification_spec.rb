@@ -9,7 +9,7 @@ feature 'Level two verification' do
 
   end
 
-  scenario 'Verification with residency and sms' do
+  xscenario 'Verification with residency and sms' do
     user = create(:user)
     login_as(user)
 

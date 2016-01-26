@@ -28,7 +28,8 @@ class Verification::Residence
     return false unless valid?
     user.update(document_number:       document_number,
                 document_type:         document_type,
-                residence_verified_at: Time.now)
+                residence_verified_at: Time.now,
+                verified_at:           Time.now)
   end
 
   def allowed_age

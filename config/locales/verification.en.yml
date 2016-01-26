@@ -91,7 +91,7 @@ en:
           level_two:
             success: Code correct
     step_1: Residence
-    step_2: Confirmation code
+    step_2: Final verification
     step_3: Final verification
     user_permission_debates: Participate on debates
     user_permission_info: Verifing your information you'll be able to...
