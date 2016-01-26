@@ -499,7 +499,6 @@ feature 'Proposals' do
 
       visit proposals_path
       click_link 'highest rated'
-      expect(page).to have_selector('a.active', text: 'highest rated')
 
       within '#proposals' do
         expect('Best proposal').to appear_before('Medium proposal')
@@ -519,7 +518,6 @@ feature 'Proposals' do
 
       visit proposals_path
       click_link 'newest'
-      expect(page).to have_selector('a.active', text: 'newest')
 
       within '#proposals' do
         expect('Best proposal').to appear_before('Medium proposal')
@@ -578,8 +576,6 @@ feature 'Proposals' do
       fill_in "search", with: "Show what you got"
       click_button "Search"
 
-      expect(page).to have_selector("a.active", text: "relevance")
-
       within("#proposals") do
         expect(all(".proposal")[0].text).to match "Show what you got"
         expect(all(".proposal")[1].text).to match "Show you got"
@@ -597,7 +593,6 @@ feature 'Proposals' do
       fill_in "search", with: "Show what you got"
       click_button "Search"
       click_link 'newest'
-      expect(page).to have_selector("a.active", text: "newest")
 
       within("#proposals") do
         expect(all(".proposal")[0].text).to match "Show you got"
