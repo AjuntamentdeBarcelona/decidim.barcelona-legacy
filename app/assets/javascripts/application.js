@@ -76,8 +76,9 @@ $(function(){
   $(document).ready(initialize_modules);
   $(document).on('page:load page:restore', initialize_modules);
   $(document).on('ajax:complete', initialize_modules);
-  $(document).on('page:load page:restore', function(){
+  $(document).on('ready page:load page:restore', function(){
     $('[data-parallax="scroll"]').parallax();
+    $(window).trigger('resize').trigger('resize.px.parallax');
   });
 });
 
