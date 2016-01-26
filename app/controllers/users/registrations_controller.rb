@@ -24,18 +24,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def finish_signup
+    current_user.registering_with_oauth = false
+    current_user.email = current_user.oauth_email if current_user.email.blank?
+    current_user.validate
   end
 
   def do_finish_signup
     current_user.registering_with_oauth = false
     if current_user.update(sign_up_params)
 
-      if current_user.confirmed_oauth_email != current_user.email
+      if current_user.oauth_email != current_user.email
         current_user.update(confirmed_at: nil)
         current_user.send_confirmation_instructions
       end
-      if current_user.confirmed_oauth_email.present?
-        current_user.update(confirmed_oauth_email: nil)
+      if current_user.oauth_email.present?
+        current_user.update(oauth_email: nil)
       end
 
       sign_in_and_redirect current_user, event: :authentication
