@@ -92,6 +92,7 @@ es:
             success: Código correcto
     step_1: Residencia
     step_2: Verificación final
+    step_3: Verificación final
     user_permission_debates: Participar en debates
     user_permission_info: Al verificar tus datos podrás...
     user_permission_proposal: Crear nuevas propuestas
