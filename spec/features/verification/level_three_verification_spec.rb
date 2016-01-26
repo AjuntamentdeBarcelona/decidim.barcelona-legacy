@@ -9,7 +9,7 @@ feature 'Level three verification' do
 
   end
 
-  scenario 'Verification with residency and verified sms' do
+  xscenario 'Verification with residency and verified sms' do
     user = create(:user)
 
     verified_user = create(:verified_user,
@@ -40,7 +40,7 @@ feature 'Level three verification' do
     expect(page).to have_content "Account verified"
   end
 
-  scenario 'Verification with residency and verified email' do
+  xscenario 'Verification with residency and verified email' do
     user = create(:user)
 
     verified_user = create(:verified_user,
@@ -70,7 +70,7 @@ feature 'Level three verification' do
     expect(page).to have_content "Account verified"
   end
 
-  scenario 'Verification with residency and sms and letter' do
+  xscenario 'Verification with residency and sms and letter' do
 
     user = create(:user)
     login_as(user)
