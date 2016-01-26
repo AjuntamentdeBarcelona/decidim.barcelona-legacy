@@ -27,7 +27,7 @@ feature 'users' do
     expect(user).to be_residence_verified
     expect(user).to_not be_confirmed
 
-    sent_token = /.*confirmation_token=(.*)".*/.match(ActionMailer::Base.deliveries.last.body.to_s)[1]
+    sent_token = /.*confirmation_token=([0-9A-z\-]+)".*/.match(ActionMailer::Base.deliveries.last.body.to_s)[1]
     visit user_confirmation_path(confirmation_token: sent_token)
 
     expect(page).to have_content "Confirming the account with email"
