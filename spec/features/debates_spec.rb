@@ -425,8 +425,6 @@ feature 'Debates' do
       visit debates_path
       click_link 'highest rated'
 
-      expect(page).to have_selector('a.active', text: 'highest rated')
-
       within '#debates' do
         expect('Best').to appear_before('Medium')
         expect('Medium').to appear_before('Worst')
@@ -443,8 +441,6 @@ feature 'Debates' do
 
       visit debates_path
       click_link 'newest'
-
-      expect(page).to have_selector('a.active', text: 'newest')
 
       within '#debates' do
         expect('Best').to appear_before('Medium')

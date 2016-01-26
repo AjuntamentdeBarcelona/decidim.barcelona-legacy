@@ -212,7 +212,7 @@ feature 'Votes' do
 
       scenario 'Show no votes' do
         visit proposal_path(@proposal)
-        expect(page).to have_content "No supports"
+        expect(page).to have_content "0 supports"
       end
 
       scenario 'Trying to vote multiple times', :js do
