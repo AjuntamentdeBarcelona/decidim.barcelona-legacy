@@ -92,7 +92,9 @@ class FilterComponentService {
 
       url = `${location.href.replace(/\?.*/, "")}?${queryParams.join('&')}`;
 
-      history.replaceState(data, '', url);
+      data.turbolinks = true;
+
+      history.pushState(data, '', url);
     }
   }
 }
