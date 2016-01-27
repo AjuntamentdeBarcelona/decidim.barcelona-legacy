@@ -1,0 +1,11 @@
+.categories-page{
+  .see-proposals{
+    text-align: center;
+    margin-bottom: $line-height * 2;
+    margin-top: $line-height;
+
+    a{
+      @include arrow-box;
+    }
+  }
+}
