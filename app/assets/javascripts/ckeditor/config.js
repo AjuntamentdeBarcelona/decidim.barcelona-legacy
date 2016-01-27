@@ -109,7 +109,10 @@ CKEDITOR.editorConfig = function( config )
 
   config.toolbar_mini = [
     { name: 'paragraph', groups: [ 'list' ], items: [ 'NumberedList', 'BulletedList' ] },
-    { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike' ] }
+    { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike' ] },
+    { name: 'insert', items: [ 'Table' ] }
   ];
   config.toolbar = "mini";
+
+  config.forcePasteAsPlainText = true;
 };
