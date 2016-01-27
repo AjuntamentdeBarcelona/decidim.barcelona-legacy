@@ -1,17 +1,11 @@
 <header id="header">
   <div class="top-menu">
     <div class="row">
-      <div class="small-12 medium-3 columns show-for-medium-up barcelona-link">
-        <%= link_to 'www.barcelona.cat', "https://www.barcelona.cat" %>
-      </div>
-
-      <div class="small-12 medium-6 columns locale-switcher">
+      <div class="small-12 medium-12 columns locale-switcher">
         <%= render "shared/locale_switcher" %>
       </div>
 
-      <div class="medium-3 columns show-for-medium-up barcelona-link barcelona-switcher">
-        <%= link_to 'ajuntament.barcelona.cat', "https://ajuntament.barcelona.cat" %>
-      </div>
+      <%= link_to 'ajuntament.barcelona.cat', "https://ajuntament.barcelona.cat", class: 'badge-ajuntament' %>
     </div>
   </div>
 
