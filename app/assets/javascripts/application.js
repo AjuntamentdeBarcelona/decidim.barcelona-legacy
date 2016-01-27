@@ -80,6 +80,8 @@ $(function(){
   });
 });
 
+GoogleMapsAPI = $.Deferred();
+
 function gmapsLoaded () {
-  $(document).trigger('gmaps:loaded');
+  GoogleMapsAPI.resolve(google);
 }

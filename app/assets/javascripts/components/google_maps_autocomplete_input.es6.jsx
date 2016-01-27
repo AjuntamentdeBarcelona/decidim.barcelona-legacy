@@ -16,86 +16,74 @@ class GoogleMapsAutocompleteInput extends React.Component {
   }
 
   componentDidMount() {
-    $(document).on('gmaps:loaded', (event) => this.forceUpdate());
     this.createGmapsIntegration();
   }
 
-  componentWillUnmount() {
-    $(document).off('gmaps:loaded');
-  }
-
-  componentDidUpdate() {
-    this.createGmapsIntegration();
-  }
-
-  createGmapsIntegration () {
-    if (window.google) {
-      this.createMap();
-      this.createAutocomplete();
-    }
-  }
-  
-  createMap() {
-    this.map = new google.maps.Map(
-      $('.gmaps_autocomplete_input .map')[0], 
-      {
-        zoom: this.defaultZoom,
-        center: this.defaultLocation,
-        draggable: false,
-        scrollwheel: false,
-        mapTypeControl: false,
-        panControl: false,
-        zoomControl: false,
-        streetViewControl: false
+  createGmapsIntegration() {
+    GoogleMapsAPI.then((google) => {
+      if(!this.map) {
+        this.map = new google.maps.Map(
+          this.refs.map, 
+          {
+            zoom: this.defaultZoom,
+            center: this.defaultLocation,
+            draggable: false,
+            scrollwheel: false,
+            mapTypeControl: false,
+            panControl: false,
+            zoomControl: false,
+            streetViewControl: false
+          }
+        );
       }
-    );
 
-    this.service = new google.maps.places.PlacesService(this.map);
+      this.service = new google.maps.places.PlacesService(this.map);
 
-    this.marker = new google.maps.Marker({
-      position: this.defaultLocation,
-      animation: google.maps.Animation.DROP,
-      map: this.map
-    });
-  }
+      this.marker = new google.maps.Marker({
+        position: this.defaultLocation,
+        animation: google.maps.Animation.DROP,
+        map: this.map
+      });
 
-  createAutocomplete() {
-    this.$addressInput.on('keydown', (event) => {
-      let key = event.keyCode;
+      this.$addressInput.on('keydown', (event) => {
+        let key = event.keyCode;
 
-      if (key === 13) { // Prevent form submission
-        event.preventDefault();
-      }
-    });
-
-    this.$addressInput.on('change', (event) => { this.onInputChanged(event.currentTarget.value) });
-
-    this.autocomplete = new google.maps.places.Autocomplete(
-      this.$addressInput[0],
-      { 
-        componentRestrictions: { 
-          country: 'es' 
+        if (key === 13) { // Prevent form submission
+          event.preventDefault();
         }
-      }
-    );
+      });
 
-    this.autocomplete.addListener('place_changed', () => { this.onPlaceChanged() });
+      this.$addressInput.on('change', (event) => { this.onInputChanged(event.currentTarget.value) });
+
+      this.autocomplete = new google.maps.places.Autocomplete(
+        this.$addressInput[0],
+        { 
+          componentRestrictions: { 
+            country: 'es' 
+          }
+        }
+      );
+
+      this.autocomplete.addListener('place_changed', () => { this.onPlaceChanged() });
+    });
   }
 
   onInputChanged(value) {
-    this.searchTimeoutId = setTimeout(() => {
-    this.service.textSearch({ 
-      query: value,
-      componentRestrictions: { 
-        country: 'es' 
-      }
-    }, (results, status) => {
-        if (status == google.maps.places.PlacesServiceStatus.OK && results.length > 0) {
-          this.$addressInput.val(results[0].formatted_address);
-          this.setPlace(results[0]);
+    GoogleMapsAPI.then((google) => {
+      this.searchTimeoutId = setTimeout(() => {
+      this.service.textSearch({ 
+        query: value,
+        componentRestrictions: { 
+          country: 'es' 
         }
-      });
-    }, 200);
+      }, (results, status) => {
+          if (status == google.maps.places.PlacesServiceStatus.OK && results.length > 0) {
+            this.$addressInput.val(results[0].formatted_address);
+            this.setPlace(results[0]);
+          }
+        });
+      }, 200);
+    });
   }
 
   onPlaceChanged() {
@@ -116,7 +104,7 @@ class GoogleMapsAutocompleteInput extends React.Component {
   render() {
     return (
       <div className="gmaps_autocomplete_input">
-        <div className="map"></div>
+        <div ref="map" className="map"></div>
       </div>
     )
   }
