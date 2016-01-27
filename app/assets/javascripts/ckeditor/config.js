@@ -112,4 +112,6 @@ CKEDITOR.editorConfig = function( config )
     { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike' ] }
   ];
   config.toolbar = "mini";
+
+  config.forcePasteAsPlainText = true;
 };
