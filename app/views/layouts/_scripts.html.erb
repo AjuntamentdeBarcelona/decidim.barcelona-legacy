@@ -1,0 +1,10 @@
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,200,400italic,600italic,200italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
+
+<% if request.ssl? %>
+  <link type="text/css" rel="stylesheet" href="https://w9.barcelona.cat/assets/core/stylesheets/core.css" media="all" />
+  <script type="text/javascript" src="https://w9.barcelona.cat/assets/core/javascripts/core.js"></script>
+<% else %>
+  <link type="text/css" rel="stylesheet" href="http://www.barcelona.cat/assets/core/stylesheets/core.css" media="all" />
+  <script type="text/javascript" src="http://www.barcelona.cat/assets/core/javascripts/core.js"></script>
+<% end %>

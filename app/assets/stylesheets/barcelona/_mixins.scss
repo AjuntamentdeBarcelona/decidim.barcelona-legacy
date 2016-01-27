@@ -5,6 +5,34 @@
   padding: rem-calc(15) * $scale rem-calc(15) * $scale;
   border: none;
 
+  @if is-superselector('a', &){
+    transition: background-color 300ms ease-out;
+
+    text-decoration: none;
+    &:after{
+      transition: border-color 300ms ease-out;
+    }
+
+    &:hover{
+      $background-color: scale-color($color, $lightness: $button-function-factor);
+      background-color: $background-color;
+      &:after{
+        @if $position == left{
+          border-right-color: $background-color;
+        }
+        @if $position == right{
+          border-left-color: $background-color;
+        }
+        @if $position == bottom{
+          border-top-color: $background-color;
+        }
+        @if $position == top{
+          border-bottom-color: $background-color;
+        }
+      }
+    }
+  }
+
   @if (lightness($color) > 50) {
     color: $text;
   } @else {
@@ -20,41 +48,33 @@
 	  pointer-events: none;
 	  border-color: transparent;
 	  border-width: rem-calc(10) * $scale;
-  }
 
-  @if $position == left{
-    &:after {
-	    right: 100%;
-	    top: 50%;
-	    margin-top: rem-calc(-10) * $scale;
-	    border-right-color: $color;
+    @if $position == left{
+      right: 100%;
+      top: 50%;
+      margin-top: rem-calc(-10) * $scale;
+      border-right-color: $color;
     }
-  }
 
-  @if $position == right{
-    &:after {
-	    left: 100%;
-	    top: 50%;
-	    margin-top: rem-calc(-10) * $scale;
-	    border-left-color: $color;
+    @if $position == right{
+      left: 100%;
+      top: 50%;
+      margin-top: rem-calc(-10) * $scale;
+      border-left-color: $color;
     }
-  }
 
-  @if $position == top{
-    &:after {
-	    bottom: 100%;
-	    left: 50%;
-	    margin-left: rem-calc(-10) * $scale;
-	    border-bottom-color: $color;
+    @if $position == top{
+      bottom: 100%;
+      left: 50%;
+      margin-left: rem-calc(-10) * $scale;
+      border-bottom-color: $color;
     }
-  }
 
-  @if $position == bottom{
-    &:after {
-	    top: 100%;
-	    left: 50%;
-	    margin-left: rem-calc(-10) * $scale;
-	    border-top-color: $color;
+    @if $position == bottom{
+      top: 100%;
+      left: 50%;
+      margin-left: rem-calc(-10) * $scale;
+      border-top-color: $color;
     }
   }
 }
