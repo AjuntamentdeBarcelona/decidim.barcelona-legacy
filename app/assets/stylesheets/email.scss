@@ -4,9 +4,8 @@
 
 @import "bourbon";
 @import "foundation_and_overrides";
-@import 'foundation/functions';
 @import "variables";
-@import "barcelona";
+@import "barcelona/application_title";
 @import "foundation/components/buttons";
 
 #email-layout{
@@ -18,19 +17,23 @@
     font-size: rem-calc(20);
   }
 
+  a{
+    color: $brand !important;
+  }
+
   table{
     border: 0;
   }
 
   table.main{
     max-width: 600px;
-    background-color: $background;
 
     td{
       padding: 0 1rem;
 
-      &.content{
+      &.email-content{
         padding: 1rem;
+        background-color: $highlight;
       }
 
       h2{
@@ -42,14 +45,12 @@
     margin: 0 auto;
 
     .header{
-      border-bottom: 1px solid $highlight;
       background-color: $background;
     }
 
     .footer{
       text-align: center;
       color: $text-medium;
-      border-top: 1px solid $highlight;
     }
   }
 
@@ -57,13 +58,21 @@
     color: $brand;
   }
 
+  blockquote{
+    background-color: $background;
+    margin: 0;
+    padding: ($line-height / 2) $line-height;
+    color: lighten($text, 30%);
+    font-size: $base-font-size * 1.2;
+  }
+
   .call-to-action{
     text-align: center;
     padding-top: $line-height;
-    padding-bottom: $line-height;
     a{
       @include button();
       border-radius: 5px;
+      color: $text-inverse !important;
     }
   }
 }

@@ -14,7 +14,7 @@
     }
 
     &:hover{
-      $background-color: scale-color($color, $lightness: $button-function-factor);
+      $background-color: darken($brand, 5%);
       background-color: $background-color;
       &:after{
         @if $position == left{
