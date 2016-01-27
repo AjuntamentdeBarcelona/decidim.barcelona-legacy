@@ -397,6 +397,7 @@ form.locale-form {
 
   select {
     background-image: image-url("language_select.png");
+    background-size: 9px;
 
     option {
       background: white;
@@ -412,7 +413,9 @@ form.locale-form {
       margin-bottom: 0;
       outline: none;
       padding-left: rem-calc(3);
-      padding-right: $line-height;
+      padding-right: rem-calc(14);
+      font-family: $font-sans;
+      font-size: $base-font-size;
     }
   }
 }
