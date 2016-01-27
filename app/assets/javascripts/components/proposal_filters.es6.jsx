@@ -27,6 +27,7 @@ class ProposalFilters extends React.Component {
           onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.filterService.changeFilterGroup(filterGroupName, filterGroupValue) }>
           <FilterOption filterName="official" />
           <FilterOption filterName="citizenship" />
+          <FilterOption filterName="meetings" />
         </FilterOptionGroup>
         <ScopeFilterOptionGroup 
           filterGroupValue={this.state.filters.get('scope')} 

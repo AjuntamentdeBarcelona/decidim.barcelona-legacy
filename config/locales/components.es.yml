@@ -11,6 +11,7 @@ es:
       city: Toda la ciudad
       district: Un distrito
       official: Programa (Ayuntamiento)
+      meetings: Encuentros presenciales
     filter_option_group:
       category_id: Eje
       district: Distrito

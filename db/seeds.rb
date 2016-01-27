@@ -121,6 +121,7 @@ if ENV["SEED"]
   puts "Creating Meetings"
 
   places = YAML.load_file("#{Rails.root}/db/seeds/places.yml")[:places]
+  proposals = Proposal.all
 
   (1..1000).each do |i|
     place = places.sample
@@ -150,7 +151,8 @@ if ENV["SEED"]
       subcategory: subcategory,
       category: subcategory.category,
       scope: scope,
-      district: district
+      district: district,
+      proposal_ids: proposals.sample(3).collect(&:id)
     )
     puts "    #{meeting.title}"
   end
