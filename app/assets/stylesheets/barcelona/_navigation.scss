@@ -49,8 +49,8 @@
     text-transform: uppercase;
     color: $text;
     text-decoration: none;
-    margin: 0 rem-calc(1px);
-    border-right: 1px solid #fff;
+    margin: 0;
+    border-right: rem-calc(1px) solid #fff;
 
     &.active, &:hover.active{
       background-color: $brand;
