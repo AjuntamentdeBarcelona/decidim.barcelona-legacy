@@ -39,7 +39,7 @@ feature 'Stats' do
       expect(page).to have_content "Debate votes 1"
       expect(page).to have_content "Proposal votes 2"
       expect(page).to have_content "Comment votes 3"
-      expect(page).to have_content "Total votes 6"
+      expect(page).to have_content "Votes 6"
     end
 
     scenario 'Users' do
