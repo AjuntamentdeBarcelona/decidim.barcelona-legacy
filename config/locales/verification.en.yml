@@ -21,11 +21,8 @@ en:
       create:
         flash:
           offices: Citizen Help and Information Offices
-          offices_url: 
-          success_html: Thank you for requesting your <b>maximum security code (only
-            required for the final votes)</b>. In a few days we will send it to the
-            address featuring in the data we have on file. Please remember that, if
-            you prefer, you can collect your code from any of the %{offices}.
+          offices_url: Offices url
+          success_html: Thank you for requesting your <b>maximum security code (only required for the final votes)</b>. In a few days we will send it to the address featuring in the data we have on file. Please remember that, if you prefer, you can collect your code from any of the %{offices}.
       edit:
         see_all: See proposals
         title: Letter requested
@@ -36,7 +33,7 @@ en:
         go_to_index: See proposals
         office: Verify your data in person at any %{office}
         offices: Citizen Help and Information Office
-        offices_url: 
+        offices_url: Offices url
         send_letter: Request a letter by post
         title: Congratulations!
         user_permission_info: Your account lets you...
@@ -45,8 +42,7 @@ en:
           success: Code correct. Your account is now verified
     redirect_notices:
       already_verified: Your account is now verified
-      email_already_sent: We have already sent an email with a confirmation link.
-        If you cannot find it you can request a reissue here
+      email_already_sent: We have already sent an email with a confirmation link. If you cannot find it you can request a reissue here
     residence:
       alert:
         unconfirmed_residency: You have not yet confirmed your residence
@@ -63,15 +59,12 @@ en:
           spanish_id: National ID
         document_type_label: Document type
         error_not_allowed_age: You must be at least 16 years old
-        error_not_allowed_postal_code: You must be registered with Barcelona City
-          Council's Census before you can verify your data.
-        error_verifying_census: The Census was unable to verify your information.
-          Please confirm that your census details are correct by visiting any of %{offices}.
+        error_not_allowed_postal_code: You must be registered with Barcelona City Council's Census before you can verify your data.
+        error_verifying_census: The Census was unable to verify your information. Please confirm that your census details are correct by visiting any of %{offices}.
         error_verifying_census_offices: 26 Citizen Help and Information Offices
         form_errors: prevented the verification of your residence
         postal_code: Postcode
-        postal_code_note: To verify your account you must be registered with Barcelona
-          City Council's Census
+        postal_code_note: To verify your account you must be registered with Barcelona City Council's Census
         terms: the terms and conditions of access
         title: Verify residence
         verify_residence: Verify residence
@@ -87,8 +80,7 @@ en:
         title: Confirmation text message
       new:
         phone: Enter your mobile number to receive the code
-        phone_note: We will only use your phone number for sending you the code; we
-          will never contact you.
+        phone_note: We will only use your phone number for sending you the code; we will never contact you.
         submit_button: Send
         title: Confirmation text message
       update:
@@ -111,8 +103,7 @@ en:
         submit_button: Send code
       show:
         email_title: Emails
-        explanation: We currently hold the following details on the Census; please
-          choose where you want us to send your confirmation code.
+        explanation: We currently hold the following details on the Census; please choose where you want us to send your confirmation code.
         phone_title: Phone numbers
         title: Available information
         use_another_phone: Use another phone number
