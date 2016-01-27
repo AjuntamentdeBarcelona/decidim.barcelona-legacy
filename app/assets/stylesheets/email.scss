@@ -3,11 +3,20 @@
  */
 
 @import "bourbon";
+@import "foundation_and_overrides";
 @import 'foundation/functions';
 @import "variables";
+@import "barcelona";
+@import "foundation/components/buttons";
 
 #email-layout{
   font-size: $base-font-size;
+  line-height: normal;
+
+  h1{
+    line-height: normal;
+    font-size: rem-calc(20);
+  }
 
   table{
     border: 0;
@@ -46,5 +55,15 @@
 
   a{
     color: $brand;
+  }
+
+  .call-to-action{
+    text-align: center;
+    padding-top: $line-height;
+    padding-bottom: $line-height;
+    a{
+      @include button();
+      border-radius: 5px;
+    }
   }
 }
