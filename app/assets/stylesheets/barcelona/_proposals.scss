@@ -47,6 +47,35 @@ a.button.new-proposal{
         text-align: left;
       }
     }
+
+    .label-proposal{
+      font-size: rem-calc(18);
+      color: $brand;
+      font-weight: bold;
+    }
+
+    h3{
+      &, a{
+        font-weight: 200;
+        color: $text;
+        font-size: rem-calc(22);
+      }
+    }
+
+    .proposal-description a{
+      color: $text;
+    }
+
+    .official-badge{
+      $size: rem-calc(36);
+      @include bcn-icon(ajuntament, $size);
+      background-size: 70%;
+      background-color: #fff;
+      border-radius: $size/2;
+      position: absolute;
+      top: rem-calc(10);
+      right: 0;
+    }
   }
 }
 

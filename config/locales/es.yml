@@ -333,7 +333,7 @@ es:
         one: 1 Comentario
         other: "%{count} Comentarios"
         zero: Sin comentarios
-      proposal: Propuesta
+      proposal: Propuesta de actuación
       reason_for_supports_necessary: 2% del Censo
       support: Apoyar
       support_title: Apoyar esta propuesta

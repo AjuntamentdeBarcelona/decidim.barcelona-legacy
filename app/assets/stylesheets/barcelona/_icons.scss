@@ -1,0 +1,24 @@
+@mixin bcn-icon-background($name){
+  background-image: image-url("icons/#{$name}.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@mixin bcn-icon($name, $size: rem-calc(32px)){
+  width: $size;
+  height: $size;
+  vertical-align: middle;
+  margin-top: rem-calc(-5);
+
+  @include bcn-icon-background($name);
+  display: inline-block;
+}
+
+$icons: activitat ajuntament arbre campana cor correu dit_assenyala doc doc_llapis espiral facebook fletxa google_plus imac info localitzacio lupa ma ma_no_ok ma_ok ma_perfecte megafon nuvol planol safata sol twiter usuari xat_blanc xat_gris;
+
+@each $icon in $icons{
+  .bcn-icon-#{$icon}{
+    @include bcn-icon($icon);
+  }
+}

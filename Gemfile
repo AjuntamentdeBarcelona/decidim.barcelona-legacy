@@ -65,6 +65,7 @@ gem 'groupdate'   # group temporary data
 gem 'tolk' # Web interface for translations
 gem 'roadie-rails'
 gem 'normalize-rails'
+gem 'html_truncator'
 
 gem "settingslogic"
 

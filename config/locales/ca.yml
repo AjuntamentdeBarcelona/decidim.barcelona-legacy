@@ -333,7 +333,7 @@ ca:
         one: 1 Comentari
         other: "%{count} Comentaris"
         zero: Sense comentaris
-      proposal: Proposta
+      proposal: Proposta d'actuació
       reason_for_supports_necessary: 2% del Cens
       support: Donar suport
       support_title: Donar suport a aquesta proposta
