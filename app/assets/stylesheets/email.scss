@@ -4,9 +4,10 @@
 
 @import "bourbon";
 @import "foundation_and_overrides";
+@import "foundation/components/buttons";
 @import "variables";
 @import "barcelona/application_title";
-@import "foundation/components/buttons";
+@import "barcelona/mixins";
 
 #email-layout{
   font-size: $base-font-size;
