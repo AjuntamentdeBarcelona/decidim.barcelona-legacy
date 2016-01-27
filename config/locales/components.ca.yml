@@ -10,6 +10,7 @@ ca:
       citizenship: Ciutadania
       city: Tota la ciutat
       district: Un districte
+      meetings: Trobades presencials
       official: Programa (Ajuntament)
     filter_option_group:
       category_id: Eix
@@ -25,3 +26,5 @@ ca:
       actions: Accions
       remove: Eliminar
       title: Títol
+    search_filter:
+      search_input_placeholder: Cercar

@@ -10,6 +10,7 @@ en:
       citizenship: Citizenship
       city: Whole city
       district: A district
+      meetings: Meetings
       official: Program (Town Hall)
     filter_option_group:
       category_id: Axis
@@ -25,3 +26,5 @@ en:
       actions: Actions
       remove: Delete
       title: Title
+    search_filter:
+      search_input_placeholder: Search

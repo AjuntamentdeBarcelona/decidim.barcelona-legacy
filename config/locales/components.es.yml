@@ -10,6 +10,7 @@ es:
       citizenship: Ciudadania
       city: Toda la ciudad
       district: Un distrito
+      meetings: Encuentros presenciales
       official: Programa (Ayuntamiento)
     filter_option_group:
       category_id: Eje
@@ -25,3 +26,5 @@ es:
       actions: Acciones
       remove: Delete
       title: Título
+    search_filter:
+      search_input_placeholder: Buscar

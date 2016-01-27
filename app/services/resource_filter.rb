@@ -61,6 +61,11 @@ class ResourceFilter
           @collection = @collection.where(attr => value)
         end
       end
+
+      if @params["source"] && @params["source"].include?("meetings")
+        proposal_in_meetings_ids = MeetingProposal.pluck(:proposal_id).uniq
+        @collection = @collection.where(id: proposal_in_meetings_ids)
+      end
     end
   end
 end
