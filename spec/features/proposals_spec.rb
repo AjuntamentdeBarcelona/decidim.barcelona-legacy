@@ -561,10 +561,10 @@ feature 'Proposals' do
 
       find('.proposal-filters .search-filter').set("Show what you got")
 
-      within("#proposals") do
-        expect(all(".proposal")[0].text).to match "Show what you got"
-        expect(all(".proposal")[1].text).to match "Show you got"
-        expect(all(".proposal")[2].text).to match "Show you got"
+      within("#featured-proposals") do
+        expect(all(".featured-proposal")[0].text).to match "Show you got"
+        expect(all(".featured-proposal")[1].text).to match "Show you got"
+        expect(all(".featured-proposal")[2].text).to match "Show what you got"
       end
     end
 
