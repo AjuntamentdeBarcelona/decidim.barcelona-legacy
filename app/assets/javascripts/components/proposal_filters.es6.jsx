@@ -16,7 +16,7 @@ class ProposalFilters extends React.Component {
 
   render() {
     return (
-      <form>
+      <form className="proposal-filters">
         <SearchFilter 
           value={this.props.filter.search_filter}
           onSetFilterText={ (searchText) => this.filterService.setFilterText(searchText) } />

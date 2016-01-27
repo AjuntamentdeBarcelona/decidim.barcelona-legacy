@@ -7,6 +7,7 @@ class SearchFilter extends React.Component {
         </div>
         <div className="small-10 large-11 columns">
           <input 
+            className="search-filter"
             value={this.props.searchText}
             placeholder={I18n.t("components.search_filter.search_input_placeholder")}
             onChange={(event) => this.filterByText(event.target.value)} 

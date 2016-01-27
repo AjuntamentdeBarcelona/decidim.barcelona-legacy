@@ -10,8 +10,8 @@ en:
       citizenship: Citizenship
       city: Whole city
       district: A district
-      official: Program (Town Hall)
       meetings: Meetings
+      official: Program (Town Hall)
     filter_option_group:
       category_id: Axis
       district: District

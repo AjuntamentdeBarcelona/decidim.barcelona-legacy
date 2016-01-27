@@ -10,8 +10,8 @@ es:
       citizenship: Ciudadania
       city: Toda la ciudad
       district: Un distrito
-      official: Programa (Ayuntamiento)
       meetings: Encuentros presenciales
+      official: Programa (Ayuntamiento)
     filter_option_group:
       category_id: Eje
       district: Distrito

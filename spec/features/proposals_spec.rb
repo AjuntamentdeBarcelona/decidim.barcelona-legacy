@@ -533,17 +533,14 @@ feature 'Proposals' do
 
     context "Basic search" do
 
-      scenario 'Search by text' do
+      scenario 'Search by text', :js do
         proposal1 = create(:proposal, title: "Get Schwifty")
         proposal2 = create(:proposal, title: "Schwifty Hello")
         proposal3 = create(:proposal, title: "Do not show me")
 
         visit proposals_path
 
-        within "#search_form" do
-          fill_in "search", with: "Schwifty"
-          click_button "Search"
-        end
+        find('.proposal-filters .search-filter').set("Schwifty")
 
         within("#proposals") do
           expect(page).to have_css('.proposal', count: 2)
@@ -553,18 +550,6 @@ feature 'Proposals' do
           expect(page).to_not have_content(proposal3.title)
         end
       end
-
-      scenario "Maintain search criteria" do
-        visit proposals_path
-
-        within "#search_form" do
-          fill_in "search", with: "Schwifty"
-          click_button "Search"
-        end
-
-        expect(page).to have_selector("input[name='search'][value='Schwifty']")
-      end
-
     end
 
     scenario "Order by relevance by default", :js do
@@ -573,8 +558,8 @@ feature 'Proposals' do
       proposal3 = create(:proposal, title: "Show you got",      cached_votes_up: 100)
 
       visit proposals_path
-      fill_in "search", with: "Show what you got"
-      click_button "Search"
+
+      find('.proposal-filters .search-filter').set("Show what you got")
 
       within("#proposals") do
         expect(all(".proposal")[0].text).to match "Show what you got"
@@ -590,27 +575,27 @@ feature 'Proposals' do
       proposal4 = create(:proposal, title: "Do not display",    cached_votes_up: 1,   created_at: 1.week.ago)
 
       visit proposals_path
-      fill_in "search", with: "Show what you got"
-      click_button "Search"
+
+      find('.proposal-filters .search-filter').set("Show what you got")
+
+      expect(page).to_not have_content "Do not display"
+
       click_link 'newest'
 
       within("#proposals") do
         expect(all(".proposal")[0].text).to match "Show you got"
         expect(all(".proposal")[1].text).to match "Show you got"
         expect(all(".proposal")[2].text).to match "Show what you got"
-        expect(page).to_not have_content "Do not display"
       end
     end
 
-    scenario 'After a search do not show featured proposals' do
+    scenario 'After a search do not show featured proposals', :js do
       featured_proposals = create_featured_proposals
       proposal = create(:proposal, title: "Abcdefghi")
 
       visit proposals_path
-      within "#search_form" do
-        fill_in "search", with: proposal.title
-        click_button "Search"
-      end
+
+      find('.proposal-filters .search-filter').set(proposal.title)
 
       expect(page).to_not have_selector('#proposals .proposal-featured')
       expect(page).to_not have_selector('#featured-proposals')

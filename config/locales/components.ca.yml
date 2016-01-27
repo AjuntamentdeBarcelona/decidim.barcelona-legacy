@@ -10,8 +10,8 @@ ca:
       citizenship: Ciutadania
       city: Tota la ciutat
       district: Un districte
-      official: Programa (Ajuntament)
       meetings: Trobades presencials
+      official: Programa (Ajuntament)
     filter_option_group:
       category_id: Eix
       district: Districte
