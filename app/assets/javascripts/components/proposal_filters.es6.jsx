@@ -18,7 +18,7 @@ class ProposalFilters extends React.Component {
     return (
       <form className="proposal-filters">
         <SearchFilter 
-          value={this.props.filter.search_filter}
+          searchText={this.state.searchText}
           onSetFilterText={ (searchText) => this.filterService.setFilterText(searchText) } />
         <FilterOptionGroup 
           filterGroupName="source" 
