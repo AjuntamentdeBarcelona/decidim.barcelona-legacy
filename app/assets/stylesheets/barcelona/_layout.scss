@@ -3,3 +3,23 @@
   font-size: rem-calc(26);
   text-transform: none;
 }
+
+#header{
+  .top-menu{
+    position: relative;
+  }
+  .badge-ajuntament{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: rem-calc(136px);
+    background-image: image-url("badge_ajuntament.png");
+    background-size: contain;
+    overflow: hidden;
+    text-indent: -999em;
+    background-position: right center;
+    background-repeat: no-repeat;
+    display: block;
+  }
+}

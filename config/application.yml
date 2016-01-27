@@ -1,6 +1,6 @@
 defaults: &defaults
   # Org name of the website.
-  org_name: "Decidim Barcelona"
+  org_name: "decidim.barcelona"
 
   # City or organization.
   place_name: "Barcelona"

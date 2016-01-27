@@ -206,6 +206,8 @@ GEM
     heroku-deflater (0.6.2)
       rack (>= 1.4.5)
     highline (1.7.8)
+    html_truncator (0.4.1)
+      nokogiri (~> 1.5)
     htmlentities (4.3.4)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -552,6 +554,7 @@ DEPENDENCIES
   fuubar
   groupdate
   heroku-deflater
+  html_truncator
   i18n-js!
   i18n-tasks
   i18n_yaml_csv!

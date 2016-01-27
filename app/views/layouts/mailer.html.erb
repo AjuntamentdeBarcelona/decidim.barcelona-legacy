@@ -1,30 +1,22 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html lang="es">
-  <head>
-    <title><%= Setting['org_name'] %></title>
-    <%= stylesheet_link_tag :email %>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=10.0"/>
-  </head>
-  <body id="email-layout">
-    <table class="main">
-      <tbody>
-        <tr>
-          <td class="header">
-            <%= render 'layouts/title' %>
-          </td>
-        </tr>
-        <tr>
-          <td class="content">
-            <%= yield %>
-          </td>
-        </tr>
-        <tr>
-          <td class="footer">
-            <p><%= Setting['org_name'] %></p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </body>
-</html>
+<%= stylesheet_link_tag :email %>
+<div id="email-layout">
+  <table class="main">
+    <tbody>
+      <tr>
+        <td class="header">
+          <%= render 'layouts/title' %>
+        </td>
+      </tr>
+      <tr>
+        <td class="email-content">
+          <%= yield %>
+        </td>
+      </tr>
+      <tr>
+        <td class="footer">
+          <p><%= Setting['org_name'] %></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

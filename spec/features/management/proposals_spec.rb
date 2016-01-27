@@ -78,7 +78,6 @@ feature 'Proposals' do
       expect(page).to have_content(proposal1.title)
       expect(page).to_not have_content(proposal2.title)
       expect(page).to have_css("a[href='#{management_proposal_path(proposal1)}']", text: proposal1.title)
-      expect(page).to have_css("a[href='#{management_proposal_path(proposal1)}']", text: proposal1.summary)
     end
   end
 
@@ -103,9 +102,7 @@ feature 'Proposals' do
     within("#proposals") do
       expect(page).to have_css('.proposal', count: 2)
       expect(page).to have_css("a[href='#{management_proposal_path(proposal1)}']", text: proposal1.title)
-      expect(page).to have_css("a[href='#{management_proposal_path(proposal1)}']", text: proposal1.summary)
       expect(page).to have_css("a[href='#{management_proposal_path(proposal2)}']", text: proposal2.title)
-      expect(page).to have_css("a[href='#{management_proposal_path(proposal2)}']", text: proposal2.summary)
     end
   end
 
