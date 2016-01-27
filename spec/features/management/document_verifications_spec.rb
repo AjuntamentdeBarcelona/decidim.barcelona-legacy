@@ -50,7 +50,7 @@ feature 'DocumentVerifications' do
     fill_in 'document_verification_document_number', with: '1234'
     click_button 'Check'
 
-    expect(page).to have_content "Please introduce the email used on the account"
+    expect(page).to have_content "Enter the email"
   end
 
   scenario 'Document number is format-standarized' do

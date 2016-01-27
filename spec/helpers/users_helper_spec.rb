@@ -4,7 +4,7 @@ describe UsersHelper do
 
   describe '#humanize_document_type' do
     it "should return a humanized document type" do
-      expect(humanize_document_type("dni")).to eq "DNI"
+      expect(humanize_document_type("dni")).to eq "National ID"
       expect(humanize_document_type("passport")).to eq "Passport"
       expect(humanize_document_type("nie")).to eq "Residence card"
     end

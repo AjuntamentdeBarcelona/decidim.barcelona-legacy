@@ -10,9 +10,7 @@ feature 'users' do
     fill_in 'document_verification_document_number', with: '1234'
     click_button 'Check'
 
-    expect(page).to have_content "Please introduce the email used on the account"
-
-    click_link 'Create a new account'
+    click_link 'Create a new user account'
 
     fill_in 'user_username', with: 'pepe'
     fill_in 'user_email', with: 'pepe@gmail.com'

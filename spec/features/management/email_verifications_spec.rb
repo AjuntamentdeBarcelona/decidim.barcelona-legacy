@@ -11,12 +11,10 @@ feature 'EmailVerifications' do
     fill_in 'document_verification_document_number', with: '1234'
     click_button 'Check'
 
-    expect(page).to have_content "Please introduce the email used on the account"
-
     fill_in 'email_verification_email', with: user.email
-    click_button 'Send verification email'
+    find('*[type=submit]').click
 
-    expect(page).to have_content("In order to completely verify this user, it is necessary that the user clicks on a link")
+    expect(page).to have_content("must click")
 
     user.reload
 

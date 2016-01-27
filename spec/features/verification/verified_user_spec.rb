@@ -121,7 +121,7 @@ feature 'Verified users' do
     login_as(user)
     visit verified_user_path
 
-    click_link "Use other phone"
+    find("a", text: "another phone").click
 
     expect(current_path).to eq(new_sms_path)
   end

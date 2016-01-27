@@ -97,7 +97,7 @@ feature 'Admin' do
 
       expect(page).to have_content 'Mi barrio'
 
-      click_link 'Destroy Topic'
+      click_link 'Delete Topic'
 
       expect(page).not_to have_content 'Mi barrio'
     end

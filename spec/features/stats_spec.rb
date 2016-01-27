@@ -49,11 +49,11 @@ feature 'Stats' do
 
       visit admin_stats_path
 
-      expect(page).to have_content "Level three users 1"
-      expect(page).to have_content "Level two users 2"
+      expect(page).to have_content "Level-three users 1"
+      expect(page).to have_content "Level-two users 2"
       expect(page).to have_content "Verified users 3"
       expect(page).to have_content "Unverified users 4"
-      expect(page).to have_content "Total users 7"
+      expect(page).to have_content "Users 7"
     end
 
   end

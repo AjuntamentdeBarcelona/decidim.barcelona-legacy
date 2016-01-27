@@ -41,7 +41,7 @@ en:
         flash:
           success: Code correct. Your account is now verified
     redirect_notices:
-      already_verified: Your account is now verified
+      already_verified: Your account is already verified
       email_already_sent: We have already sent an email with a confirmation link. If you cannot find it you can request a reissue here
     residence:
       alert:

@@ -89,9 +89,9 @@ feature 'Account' do
 
     fill_in 'user_erase_reason', with: 'a test'
 
-    click_button 'Erase my account'
+    click_button 'Close my account'
 
-    expect(page).to have_content "Goodbye! Your account has been cancelled. We hope to see you again soon."
+    expect(page).to have_content "has been cancelled"
 
     login_through_form_as(@user)
 
