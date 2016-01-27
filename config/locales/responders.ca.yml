@@ -4,14 +4,14 @@ ca:
     actions:
       create:
         debate: Debat creat correctament.
-        notice: "%{resource_name} creat correctament."
+        notice: S'ha creat correctament %{resource_name}.
         proposal: Proposta creada correctament.
         spending_proposal: Proposta de despesa creat correctament.
       destroy:
         notice: "%{resource_name} s'ha esborrat correctament."
       save_changes:
-        notice: Canvis guardats
+        notice: S'han desat els canvis
       update:
         debate: Debat actualitzat correctament.
-        notice: "%{resource_name} actualitzat correctament."
+        notice: S'ha actualitzat correctament %{resource_name}.
         proposal: Proposta actualitzada correctament.

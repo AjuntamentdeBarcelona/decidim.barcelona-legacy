@@ -1,14 +1,18 @@
+---
 es:
   settings:
-    official_level_1_name: "Cargos públicos de nivel 1"
-    official_level_2_name: "Cargos públicos de nivel 2"
-    official_level_3_name: "Cargos públicos de nivel 3"
-    official_level_4_name: "Cargos públicos de nivel 4"
-    official_level_5_name: "Cargos públicos de nivel 5"
-    max_ratio_anon_votes_on_debates: "Porcentaje máximo de votos anónimos por Debate"
-    max_votes_for_proposal_edit: "Número de votos en que una Propuesta deja de poderse editar"
-    max_votes_for_debate_edit: "Número de votos en que un Debate deja de poderse editar"
-    proposal_code_prefix: "Prefijo para los códigos de Propuestas"
-    votes_for_proposal_success: "Número de votos necesarios para aprobar una Propuesta"
-    email_domain_for_officials: "Dominio de email para cargos públicos"
-    per_page_code: "Código a incluir en cada página"
+    official_level_1_name: Cargos públicos de nivel 1
+    official_level_2_name: Cargos públicos de nivel 2
+    official_level_3_name: Cargos públicos de nivel 3
+    official_level_4_name: Cargos públicos de nivel 4
+    official_level_5_name: Cargos públicos de nivel 5
+    max_ratio_anon_votes_on_debates: Porcentaje máximo de votos anónimos por debate
+    max_votes_for_proposal_edit: Número de votos para que una propuesta deje de poderse
+      editar
+    max_votes_for_debate_edit: Número de votos para que un debate deje de poderse
+      editar
+    proposal_code_prefix: Prefijo para los códigos de propuestas
+    votes_for_proposal_success: Número de votos necesarios para aprobar una propuesta
+    email_domain_for_officials: Dominio de correo electrónico para cargos públicos
+    per_page_code: Código a incluir en cada página
+    per_page_javascript: 

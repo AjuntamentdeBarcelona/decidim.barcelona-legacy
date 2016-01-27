@@ -1,77 +1,72 @@
+---
 en:
   activerecord:
-    errors:
-      models:
-        user:
-          attributes:
-            email:
-              password_already_set: "This user already has a password"
-    models:
-      activity:
-        one: "activity"
-        other: "activities"
-      comment:
-        one: "Comment"
-        other: "Comments"
-      debate:
-        one: "Debate"
-        other: "Debates"
-      tag:
-        one: "Tag"
-        other: "Tags"
-      user:
-        one: "User"
-        other: "Users"
-      moderator:
-        one: "Moderator"
-        other: "Moderators"
-      administrator:
-        one: "Administrator"
-        other: "Administrators"
-      vote:
-        one: "Vote"
-        other: "Votes"
-      organization:
-        one: "Organisation"
-        other: "Organisations"
-      proposal:
-        one: "Citizen proposal"
-        other: "Citizen proposals"
-      spending_proposal:
-        one: "Spending proposal"
-        other: "Spending proposals"
-    attributes:
-      comment:
-        body: "Comment"
-        user: "User"
-      debate:
-        author: "Author"
-        description: "Opinion"
-        terms_of_service: "Terms of service"
-        title: "Title"
-      proposal:
-        author: "Author"
-        title: "Title"
-        question: "Question"
-        description: "Description"
-        terms_of_service: "Terms of service"
-      user:
-        email: "Email"
-        username: "Username"
-        password: "Password"
-        phone_number: "Phone number"
-        official_position: "Official position"
-        official_level: "Official level"
-      organization:
-        name: "Name of organisation"
-        responsible_name: "Person responsible for the group"
     errors:
       models:
         debate:
           attributes:
             tag_list:
-              less_than_or_equal_to: "tags must be less than or equal to %{count}"
+              less_than_or_equal_to: tags must be less than or equal to %{count}
         proposal:
           attributes:
             tag_list:
-              less_than_or_equal_to: "tags must be less than or equal to %{count}"
+              less_than_or_equal_to: tags must be less than or equal to %{count}
+    models:
+      activity:
+        one: activity
+        other: activities
+      comment:
+        one: Comment
+        other: Comments
+      debate:
+        one: Debate
+        other: Debates
+      tag:
+        one: Tag
+        other: Tags
+      user:
+        one: User
+        other: Users
+      moderator:
+        one: Moderator
+        other: Moderators
+      administrator:
+        one: Administrator
+        other: Administrators
+      vote:
+        one: Vote
+        other: Votes
+      organization:
+        one: Organisation
+        other: Organisations
+      proposal:
+        one: Citizen proposal
+        other: Citizen proposals
+      spending_proposal:
+        one: Spending proposal
+        other: Spending proposals
+    attributes:
+      comment:
+        body: Comment
+        user: User
+      debate:
+        author: Author
+        description: Opinion
+        terms_of_service: Terms and conditions of service
+        title: Title
+      proposal:
+        author: Author
+        title: Title
+        question: Question
+        description: Description
+        terms_of_service: Terms and conditions of service
+      user:
+        email: Email
+        username: Username
+        password: Password
+        phone_number: Phone number
+        official_position: Official position
+        official_level: Official level
+      organization:
+        name: Name of organisation
+        responsible_name: Person responsible for the group

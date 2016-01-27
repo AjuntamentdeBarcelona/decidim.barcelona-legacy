@@ -5,10 +5,10 @@ ca:
       accessibility: Accessibilitat
       more_information: Més informació
     verify:
-      code: Codi que has rebut a la teva carta
-      email: Email
-      info: 'Per verificar el teu compte introdueix les dades amb què et vas registrar:'
-      info_code: 'Ara introdueix el codi que has rebut a la teva carta:'
-      password: Clau
-      submit: Verificar el meu compte
-      title: Verifica teu compte
+      code: Codi que has rebut a la carta
+      email: Adreça electrònica
+      info: 'Per verificar el teu compte, introdueix les dades amb què et vas registrar:'
+      info_code: 'A continuació, introdueix el codi que has rebut a la carta:'
+      password: Contrasenya
+      submit: Verifica el meu compte
+      title: Verifica el teu compte
