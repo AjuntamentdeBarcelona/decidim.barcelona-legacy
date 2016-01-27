@@ -24,7 +24,7 @@
           <% end %>
         <% end %>
         <%  if Setting['blog_url'] %>
-          <%= link_to Setting['blog_url'], target: "_blank", title: t("social.blog") do %>
+          <%= link_to Setting['blog_url'][I18n.locale.to_s], target: "_blank", title: t("social.blog") do %>
             <span class="sr-only"><%= t("social.blog") %></span>
             <i class="icon-blog"></i>
           <% end %>
