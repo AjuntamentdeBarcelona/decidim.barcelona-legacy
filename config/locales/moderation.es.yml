@@ -72,7 +72,7 @@ es:
         headers:
           moderate: Moderar
           proposal: Propuesta
-        hide_proposals: Ocultar Propuestas
+        hide_proposals: Ocultar propuestas
         ignore_flags: Marcar como revisadas
         order: Ordenar por
         orders:
@@ -84,6 +84,6 @@ es:
         hidden: Bloqueado
         hide: Bloquear
         search: Buscar
-        search_placeholder: email o nombre de usuario
+        search_placeholder: correo electrónico o nombre de usuario
         title: Bloquear usuarios
       notice_hide: Usuario bloqueado. Se han ocultado todos sus debates y comentarios.

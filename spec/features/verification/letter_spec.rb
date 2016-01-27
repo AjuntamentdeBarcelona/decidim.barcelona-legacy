@@ -9,9 +9,7 @@ feature 'Verify Letter' do
     login_as(user)
     visit new_letter_path
 
-    click_link "Send me a letter with the code"
-
-    expect(page).to have_content "Thank you for requesting your maximum security code (only required for the final votes). In a few days we will send it to the address featuring in the data we have on file."
+    page.find('a', text: /request/i).click
 
     user.reload
 
@@ -25,7 +23,7 @@ feature 'Verify Letter' do
     login_as(user)
     visit new_letter_path
 
-    expect(page).to have_content 'You have not yet confirmed your residency'
+    expect(page).to have_content 'not yet confirmed'
     expect(current_path).to eq(new_residence_path)
   end
 

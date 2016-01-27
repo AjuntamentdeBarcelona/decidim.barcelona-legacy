@@ -16,7 +16,7 @@ feature 'Residence' do
     click_link 'Verify my account'
 
     fill_in 'residence_document_number', with: "12345678Z"
-    select 'DNI', from: 'residence_document_type'
+    select 'National ID', from: 'residence_document_type'
     select_date '31-December-1980', from: 'residence_date_of_birth'
     fill_in 'residence_postal_code', with: '08011'
     check 'residence_terms_of_service'
@@ -46,7 +46,7 @@ feature 'Residence' do
     click_link 'Verify my account'
 
     fill_in 'residence_document_number', with: "12345678Z"
-    select 'DNI', from: 'residence_document_type'
+    select 'National ID', from: 'residence_document_type'
     select '1997', from: 'residence_date_of_birth_1i'
     select 'January', from: 'residence_date_of_birth_2i'
     select '1', from: 'residence_date_of_birth_3i'
@@ -55,7 +55,7 @@ feature 'Residence' do
 
     click_button 'Verify residence'
 
-    expect(page).to have_content 'In order to be verified, you must be registered in the municipality'
+    expect(page).to have_content 'must be registered'
   end
 
   scenario 'Error on census' do
@@ -72,7 +72,7 @@ feature 'Residence' do
     click_link 'Verify my account'
 
     fill_in 'residence_document_number', with: "12345678Z"
-    select 'DNI', from: 'residence_document_type'
+    select 'National ID', from: 'residence_document_type'
     select '1997', from: 'residence_date_of_birth_1i'
     select 'January', from: 'residence_date_of_birth_2i'
     select '1', from: 'residence_date_of_birth_3i'
@@ -100,7 +100,7 @@ feature 'Residence' do
 
     5.times do
       fill_in 'residence_document_number', with: "12345678Z"
-      select 'DNI', from: 'residence_document_type'
+      select 'National ID', from: 'residence_document_type'
       select '1997', from: 'residence_date_of_birth_1i'
       select 'January', from: 'residence_date_of_birth_2i'
       select '1', from: 'residence_date_of_birth_3i'

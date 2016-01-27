@@ -60,6 +60,8 @@ feature 'Verify email' do
     verified_user.destroy
     click_button "Send code"
 
-    expect(page).to have_content "There was a problem with sending an email to your account"
+    within ".alert-box" do
+      expect(page).to have_content "problem"
+    end
   end
 end

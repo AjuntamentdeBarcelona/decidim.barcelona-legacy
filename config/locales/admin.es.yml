@@ -22,7 +22,7 @@ es:
           on_debates: Debates
           on_proposals: Propuestas
           on_users: Usuarios
-        title: Actividad de los Moderadores
+        title: Actividad de los moderadores
         type: Tipo
     categories:
       index:
@@ -74,20 +74,20 @@ es:
         add: Añadir
         delete: Borrar
       search:
-        email_placeholder: Buscar usuario por email
+        email_placeholder: Buscar usuario por correo electrónico
         search: Buscar
         user_not_found: Usuario no encontrado
     officials:
       edit:
         back: Volver
-        destroy: Eliminar condición de 'Cargo Público'
-        title: 'Cargos Públicos: Editar usuario'
+        destroy: Eliminar condición de "cargo público"
+        title: 'Cargos públicos: Editar usuario'
       flash:
         official_destroyed: 'Datos guardados: el usuario ya no es cargo público'
         official_updated: Datos del cargo público guardados
       index:
-        title: Cargos Públicos
-      level_0: No es cargo público
+        title: Cargos públicos
+      level_0: No es un cargo público
       level_1: Nivel 1
       level_2: Nivel 2
       level_3: Nivel 3
@@ -96,7 +96,7 @@ es:
       search:
         edit_official: Editar cargo público
         make_official: Convertir en cargo público
-        title: 'Cargos Públicos: Búsqueda de usuarios'
+        title: 'Cargos públicos: Búsqueda de usuarios'
     organizations:
       index:
         filter: Filtro
@@ -106,17 +106,17 @@ es:
           rejected: Rechazadas
           verified: Verificadas
         hidden_count:
-          one: Hay además una organización sin usuario o con el usuario bloqueado
+          one: Hay, además, una organización sin usuario o con el usuario bloqueado
           other: Hay %{count} organizaciones sin usuario o con el usuario bloqueado
         reject: Rechazar
         rejected: Rechazada
         search: Buscar
-        search_placeholder: Nombre, email o teléfono
+        search_placeholder: Nombre, correo electrónico o teléfono
         title: Organizaciones
         verified: Verificada
         verify: Verificar
       search:
-        title: Buscar Organizaciones
+        title: Buscar organizaciones
     proposals:
       index:
         filter: Filtro
@@ -124,7 +124,7 @@ es:
           all: Todas
           with_confirmed_hide: Confirmadas
           without_confirmed_hide: Pendientes
-        title: Propuestas ocultos
+        title: Propuestas ocultas
     settings:
       flash:
         updated: Valor actualizado
@@ -137,7 +137,7 @@ es:
         placeholder: Buscar propuestas por título, descripción o pregunta
       user_search:
         button: Buscar
-        placeholder: Buscar usuario por nombre o email
+        placeholder: Buscar usuario por nombre o correo electrónico
     spending_proposals:
       actions:
         accept: Aceptar
@@ -178,15 +178,15 @@ es:
         new: Crear línea de acción
         title: Líneas de acción
     tags:
-      create: Crear Tema
-      destroy: Eliminar Tema
+      create: Crear tema
+      destroy: Eliminar tema
       index:
-        add_tag: Añade un nuevo tema de debate
+        add_tag: Añadir un nuevo tema de debate
         title: Temas de debate
       mark_as_featured: Proponer tema al crear debate
       name:
         placeholder: Escribe el nombre del tema
-      update: Actualizar Tema
+      update: Actualizar tema
     users:
       index:
         filter: Filtro
@@ -197,12 +197,12 @@ es:
         title: Usuarios bloqueados
       show:
         back: Volver
-        email: 'Email:'
+        email: 'Correo electrónico:'
         hidden_at: 'Bloqueado:'
         registered_at: 'Fecha de alta:'
         title: Actividad del usuario %{user}
     verifications:
       index:
-        phone_not_given: No ha dado su teléfono
+        phone_not_given: No ha facilitado su teléfono
         sms_code_not_confirmed: No ha introducido su código de seguridad
         title: Verificaciones incompletas

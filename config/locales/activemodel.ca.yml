@@ -4,11 +4,11 @@ ca:
     attributes:
       verification:
         email:
-          recipient: Email
+          recipient: Adreça electrònica
         residence:
           date_of_birth: Data de naixement
-          document_number: Número document (inclosa lletra)
-          document_type: Tipus document
+          document_number: Número de document (lletra inclosa)
+          document_type: Tipus de document
           postal_code: Codi postal
         sms:
           confirmation_code: Codi de confirmació

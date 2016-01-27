@@ -69,12 +69,10 @@ feature 'Managed User' do
         expect(page).to have_content "1234"
       end
 
-      expect(page).to have_content "Please introduce the email used on the account"
-
       fill_in 'email_verification_email', with: user.email
-      click_button 'Send verification email'
+      find('*[type=submit]').click
 
-      expect(page).to have_content("In order to completely verify this user, it is necessary that the user clicks on a link")
+      expect(page).to have_content("must click")
 
       within(".account-info") do
         expect(page).to have_content "Identified as"
@@ -91,9 +89,7 @@ feature 'Managed User' do
       fill_in 'document_verification_document_number', with: '1234'
       click_button 'Check'
 
-      expect(page).to have_content "Please introduce the email used on the account"
-
-      click_link 'Create a new account'
+      find('a', text: /create .* account/i).click
 
       fill_in 'user_username', with: 'pepe'
       fill_in 'user_email', with: 'pepe@gmail.com'
@@ -128,7 +124,7 @@ feature 'Managed User' do
       click_link "Change user"
     end
 
-    expect(page).to have_content "User session signed out successfully."
+    expect(page).to have_content "successfully"
     expect(page).to_not have_content "Identified as"
     expect(page).to_not have_content "#{user.username}"
     expect(current_path).to eq(management_root_path)

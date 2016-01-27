@@ -25,7 +25,7 @@ feature 'Moderate users' do
     visit debate_path(debate1)
 
     within("#debate_#{debate1.id}") do
-      click_link 'Hide author'
+      click_link 'Block author'
     end
 
     expect(current_path).to eq(debates_path)

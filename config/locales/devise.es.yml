@@ -1,62 +1,82 @@
+---
 es:
   devise:
     confirmations:
-      confirmed: "Tu cuenta ha sido confirmada."
-      send_instructions: "Recibirás un correo electrónico en unos minutos con instrucciones sobre cómo restablecer tu contraseña."
-      send_paranoid_instructions: "Si tu correo electrónico existe en nuestra base de datos recibirás un correo electrónico en unos minutos con instrucciones sobre cómo restablecer tu contraseña."
+      confirmed: Tu cuenta ha sido confirmada.
+      send_instructions: Recibirás un correo electrónico en unos minutos con instrucciones
+        sobre cómo restablecer tu contraseña.
+      send_paranoid_instructions: Si tu correo electrónico existe en nuestra base
+        de datos, recibirás un correo electrónico en unos minutos con instrucciones
+        sobre cómo restablecer tu contraseña.
     failure:
-      already_authenticated: "Ya has iniciado sesión."
-      inactive: "Tu cuenta aún no ha sido activada."
+      already_authenticated: Ya has iniciado sesión.
+      inactive: Tu cuenta aún no ha sido activada.
       invalid: "%{authentication_keys} o contraseña inválidos."
-      locked: "Tu cuenta ha sido bloqueada."
-      last_attempt: "Tienes un último intento antes de que tu cuenta sea bloqueada."
+      locked: Tu cuenta ha sido bloqueada.
+      last_attempt: Tienes un último intento antes de que tu cuenta sea bloqueada.
       not_found_in_database: "%{authentication_keys} o contraseña inválidos."
-      timeout: "Tu sesión ha expirado, por favor inicia sesión nuevamente para continuar."
-      unauthenticated: "Necesitas iniciar sesión o registrarte para continuar."
-      unconfirmed: "Debes confirmar tu cuenta para continuar."
+      timeout: Tu sesión ha expirado. Por favor, inicia sesión nuevamente para continuar.
+      unauthenticated: Necesitas iniciar sesión o registrarte para continuar.
+      unconfirmed: Debes confirmar tu cuenta para continuar.
     mailer:
       confirmation_instructions:
-        subject: "Instrucciones de confirmación"
+        subject: Instrucciones de confirmación
       reset_password_instructions:
-        subject: "Instrucciones para restablecer tu contraseña"
+        subject: Instrucciones para restablecer tu contraseña
       unlock_instructions:
-        subject: "Instrucciones de desbloqueo"
+        subject: Instrucciones de desbloqueo
     omniauth_callbacks:
-      failure: "No se te ha podido autorizar de %{kind} debido a \"%{reason}\"."
-      success: "Identificado correctamente de %{kind}."
+      failure: No se te ha podido autorizar como %{kind} debido a "%{reason}".
+      success: Identificado correctamente como %{kind}.
     passwords:
-      no_token: "No puedes acceder a esta página si no es a través de un enlace para restablecer la contraseña. Si has accedido desde el enlace para restablecer la contraseña, asegúrate de que la URL esté completa."
-      send_instructions: "Recibirás un correo electrónico con instrucciones sobre cómo restablecer tu contraseña en unos minutos."
-      send_paranoid_instructions: "Si tu correo electrónico existe en nuestra base de datos, recibirás un enlace para restablecer la contraseña en unos minutos."
-      updated: "Tu contraseña ha cambiado correctamente. Has sido identificado correctamente."
-      updated_not_active: "Tu contraseña se ha cambiado correctamente."
+      no_token: No puedes acceder a esta página si no es a través de un enlace para
+        restablecer la contraseña. Si has accedido desde el enlace para restablecer
+        la contraseña, asegúrate de que la URL esté completa.
+      send_instructions: Recibirás un correo electrónico con instrucciones sobre cómo
+        restablecer tu contraseña en unos minutos.
+      send_paranoid_instructions: Si tu correo electrónico existe en nuestra base
+        de datos, recibirás un enlace para restablecer la contraseña en unos minutos.
+      updated: Tu contraseña se ha cambiado correctamente. Has sido identificado correctamente.
+      updated_not_active: Tu contraseña se ha cambiado correctamente.
     registrations:
-      destroyed:
-        "¡Adiós! Tu cuenta ha sido cancelada. Esperamos volver a verte pronto. Le informamos que de conformidad con su petición,
-        sus datos personales registrados como usuario y que forman parte del fichero 'Gestión de procesos participativos'
-        cuyo responsable es la Dirección General de Participación Ciudadana, han sido cancelados en los términos de lo previsto en el artículo 16 de la
-        Ley Orgánica 15/1999 de Protección de Datos de Carácter Personal y del artículo 31 de su Reglamento de desarrollo (RD 1720/2007)."
+      destroyed: ¡Adiós! Tu cuenta ha sido cancelada. Esperamos volver a verte pronto.
+        Te informamos de que, de conformidad con tu petición, tus datos personales
+        registrados como usuario y que forman parte del fichero "Gestión de procesos
+        participativos", cuyo responsable es la Dirección General de Participación
+        Ciudadana, han sido cancelados en los términos de lo previsto en el artículo
+        16 de la Ley Orgánica 15/1999 de Protección de Datos de Carácter Personal
+        y del artículo 31 de su Reglamento de desarrollo (RD 1720/2007).
       signed_up: "¡Bienvenido! Has sido identificado."
-      signed_up_but_inactive: "Te has registrado correctamente, pero no has podido iniciar sesión porque tu cuenta no ha sido activada."
-      signed_up_but_locked: "Te has registrado correctamente, pero no has podido iniciar sesión porque tu cuenta está bloqueada."
-      signed_up_but_unconfirmed: "Se te ha enviado un mensaje con un enlace de confirmación. Por favor visita el enlace para activar tu cuenta."
-      update_needs_confirmation: "Has actualizado tu cuenta correctamente, sin embargo necesitamos verificar tu nueva cuenta de correo. Por favor revisa tu correo electrónico y visita el enlace para finalizar la confirmación de tu nueva dirección de correo electrónico."
-      updated: "Has actualizado tu cuenta correctamente."
+      signed_up_but_inactive: Te has registrado correctamente, pero no has podido
+        iniciar sesión porque tu cuenta no ha sido activada.
+      signed_up_but_locked: Te has registrado correctamente, pero no has podido iniciar
+        sesión porque tu cuenta está bloqueada.
+      signed_up_but_unconfirmed: Se te ha enviado un mensaje con un enlace de confirmación.
+        Por favor, visita el enlace para activar tu cuenta.
+      update_needs_confirmation: La cuenta se ha actualizado correctamente; sin embargo,
+        necesitamos verificar tu nueva cuenta de correo. Por favor, revisa tu correo
+        electrónico y visita el enlace para finalizar la confirmación de tu nueva
+        dirección de correo electrónico.
+      updated: Has actualizado tu cuenta correctamente.
     sessions:
-      signed_in: "Has iniciado sesión correctamente."
-      signed_out: "Has cerrado la sesión correctamente."
-      already_signed_out: "Has cerrado la sesión correctamente."
+      signed_in: Has iniciado sesión correctamente.
+      signed_out: Has cerrado la sesión correctamente.
+      already_signed_out: Has cerrado la sesión correctamente.
     unlocks:
-      send_instructions: "Recibirás un correo electrónico en unos minutos con instrucciones sobre cómo desbloquear tu cuenta."
-      send_paranoid_instructions: "Si tu cuenta existe, recibirás un correo electrónico en unos minutos con instrucciones sobre cómo desbloquear tu cuenta."
-      unlocked: "Tu cuenta ha sido desbloqueada. Por favor inicia sesión para continuar."
+      send_instructions: Recibirás un correo electrónico en unos minutos con instrucciones
+        sobre cómo desbloquear tu cuenta.
+      send_paranoid_instructions: Si tu cuenta existe, recibirás un correo electrónico
+        en unos minutos con instrucciones sobre cómo desbloquear tu cuenta.
+      unlocked: Tu cuenta ha sido desbloqueada. Por favor, inicia sesión para continuar.
   errors:
     messages:
-      already_confirmed: "ya has sido confirmado, por favor intenta iniciar sesión."
-      confirmation_period_expired: "necesitas ser confirmado en %{period}, por favor vuelve a solicitarla."
-      expired: "ha expirado, por favor vuelve a solicitarla."
-      not_found: "no se ha encontrado."
-      not_locked: "no estaba bloqueado."
+      already_confirmed: ya has sido confirmado. Por favor, intenta iniciar sesión.
+      confirmation_period_expired: se te debe confirmar en %{period}; por favor, vuelve
+        a solicitarlo.
+      expired: ha expirado; por favor, vuelve a solicitarla.
+      not_found: no se ha encontrado.
+      not_locked: no estaba bloqueado.
       not_saved:
-        one: "1 error impidió que este %{resource} fuera guardado:"
-        other: "%{count} errores impidieron que este %{resource} fuera guardado:"
+        one: 'Este recurso %{resource} no se ha podido guardar debido a 1 error:'
+        other: 'Este recurso %{resource} no se ha podido guarda debido a %{count}
+          errores:'

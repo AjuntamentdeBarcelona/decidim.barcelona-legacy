@@ -201,7 +201,7 @@ feature 'Admin activity' do
       visit proposal_path(proposal)
 
       within("#proposal_#{proposal.id}") do
-        click_link 'Hide author'
+        click_link 'Block author'
       end
 
       visit admin_activity_path

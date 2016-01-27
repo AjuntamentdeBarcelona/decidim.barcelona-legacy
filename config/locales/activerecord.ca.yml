@@ -20,10 +20,10 @@ ca:
         terms_of_service: Termes de servei
         title: Títol
       user:
-        email: Correu electrònic
+        email: Adreça electrònica
         official_level: Nivell del càrrec
         official_position: Càrrec públic
-        password: Clau
+        password: Contrasenya
         phone_number: Telèfon
         username: Nom d'usuari
     errors:
@@ -31,11 +31,13 @@ ca:
         debate:
           attributes:
             tag_list:
-              less_than_or_equal_to: els temes han de ser menor o igual que %{count}
+              less_than_or_equal_to: el nombre de temes ha de ser menor o igual que
+                %{count}
         proposal:
           attributes:
             tag_list:
-              less_than_or_equal_to: els temes han de ser menor o igual que %{count}
+              less_than_or_equal_to: el nombre de temes ha de ser menor o igual que
+                %{count}
     models:
       activity:
         one: activitat

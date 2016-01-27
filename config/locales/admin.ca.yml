@@ -2,11 +2,11 @@
 ca:
   admin:
     actions:
-      confirm: Estàs segur?
-      confirm_hide: Confirmar
+      confirm: N'estàs segur?
+      confirm_hide: Confirma
       hide: Amaga
-      hide_author: Bloquejar l'autor
-      restore: Tornar a mostrar
+      hide_author: Bloqueja l'autor
+      restore: Torna a mostrar
     activity:
       show:
         action: Acció
@@ -22,7 +22,7 @@ ca:
           on_debates: Debats
           on_proposals: Propostes
           on_users: Usuaris
-        title: Activitat dels Moderadors
+        title: Activitat dels moderadors
         type: Tipus
     categories:
       index:
@@ -35,7 +35,7 @@ ca:
       index:
         filter: Filtre
         filters:
-          all: Tots
+          all: Tots els públics
           with_confirmed_hide: Confirmats
           without_confirmed_hide: Pendents
         hidden_debate: Debat ocult
@@ -48,7 +48,7 @@ ca:
       index:
         filter: Filtre
         filters:
-          all: Tots
+          all: Tots els públics
           with_confirmed_hide: Confirmats
           without_confirmed_hide: Pendents
         title: Debats ocults
@@ -71,23 +71,23 @@ ca:
       index:
         title: Moderadors
       moderator:
-        add: Afegir
-        delete: Esborrar
+        add: Afegeix
+        delete: Esborra
       search:
-        email_placeholder: Cercar usuari per email
-        search: Cercar
+        email_placeholder: Cerca usuari per correu electrònic
+        search: Cerca
         user_not_found: Usuari no trobat
     officials:
       edit:
-        back: Tornar
-        destroy: Eliminar condició de 'Càrrec Público'
-        title: 'Càrrecs Públics: Edita usuari'
+        back: Torna
+        destroy: Elimina condició de càrrec públic
+        title: 'Càrrecs públics: edita usuari'
       flash:
-        official_destroyed: 'Dades guardats: l''usuari ja no és càrrec públic'
-        official_updated: Dades del càrrec públic guardats
+        official_destroyed: 'Dades desades: l''usuari ja no és càrrec públic'
+        official_updated: Dades del càrrec públic desades
       index:
-        title: Càrrecs Públics
-      level_0: No és càrrec públic
+        title: Càrrecs públics
+      level_0: No és un càrrec públic
       level_1: Nivell 1
       level_2: Nivell 2
       level_3: Nivell 3
@@ -95,8 +95,8 @@ ca:
       level_5: Nivell 5
       search:
         edit_official: Edita càrrec públic
-        make_official: Convertir a càrrec públic
-        title: 'Càrrecs Públics: Cerca d''usuaris'
+        make_official: Converteix a càrrec públic
+        title: 'Càrrecs públics: cerca d''usuaris'
     organizations:
       index:
         filter: Filtre
@@ -106,17 +106,17 @@ ca:
           rejected: Rebutjades
           verified: Verificades
         hidden_count:
-          one: Hi ha a més una organització sense usuari o amb l'usuari bloquejat
+          one: Hi ha, a més, una organització sense usuari o amb l'usuari bloquejat
           other: Hi ha %{count} organitzacions sense usuari o amb l'usuari bloquejat
-        reject: Rebutjar
+        reject: Rebutja
         rejected: Rebutjada
-        search: Cercar
-        search_placeholder: Nom, email o telèfon
+        search: Cerca
+        search_placeholder: Nom, correu electrònic o telèfon
         title: Organitzacions
         verified: Verificada
-        verify: Verificar
+        verify: Verifica
       search:
-        title: Cercar Organitzacions
+        title: Cerca organitzacions
     proposals:
       index:
         filter: Filtre
@@ -124,20 +124,20 @@ ca:
           all: Totes
           with_confirmed_hide: Confirmades
           without_confirmed_hide: Pendents
-        title: Propostes ocults
+        title: Propostes ocultes
     settings:
       flash:
         updated: Valor actualitzat
       index:
         title: Configuració global
-        update_setting: Actualitzar
+        update_setting: Actualitza
     shared:
       proposal_search:
-        button: Cercar
-        placeholder: Cercar propostes per títol, descripció o pregunta
+        button: Cerca
+        placeholder: Cerca propostes per títol, descripció o pregunta
       user_search:
-        button: Cercar
-        placeholder: Cercar usuari per nom o e-mail
+        button: Cerca
+        placeholder: Cerca usuari per nom o correu electrònic
     spending_proposals:
       actions:
         accept: Acceptar
@@ -164,8 +164,8 @@ ca:
           proposal_votes: Vots en propostes
           proposals: Propostes
           unverified_users: Usuaris sense verificar
-          user_level_three: Usuaris de nivell tres
-          user_level_two: Usuaris de nivell dos
+          user_level_three: Usuaris de nivell 3
+          user_level_two: Usuaris de nivell 2
           users: Usuaris
           verified_users: Usuaris verificats
           visits: Visites
@@ -179,30 +179,30 @@ ca:
         title: Línies d'acció
     tags:
       create: Crea un tema
-      destroy: Eliminar Tema
+      destroy: Elimina tema
       index:
-        add_tag: Afegeix un nou tema de debat
+        add_tag: Afegeix un tema de debat nou
         title: Temes de debat
-      mark_as_featured: Proposar tema en crear debat
+      mark_as_featured: Proposa tema en crear debat
       name:
         placeholder: Escriu el nom del tema
-      update: Actualitzar Tema
+      update: Actualitza tema
     users:
       index:
         filter: Filtre
         filters:
-          all: Tots
+          all: Tots els públics
           with_confirmed_hide: Confirmats
           without_confirmed_hide: Pendents
         title: Usuaris bloquejats
       show:
-        back: Tornar
-        email: 'E-mail:'
+        back: Torna
+        email: 'Adreça electrònica:'
         hidden_at: 'Bloquejat:'
         registered_at: 'Data d''alta:'
         title: Activitat de l'usuari %{user}
     verifications:
       index:
         phone_not_given: No ha donat el seu telèfon
-        sms_code_not_confirmed: No ha introduït el seu codi de seguretat
+        sms_code_not_confirmed: No ha introduït el codi de seguretat
         title: Verificacions incompletes

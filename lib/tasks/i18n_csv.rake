@@ -28,13 +28,18 @@ namespace :i18n_csv do
       next unless matchdata
       name = matchdata[1]
 
-      data = I18nYamlCsv.from_csv(File.read(filename)).deep_stringify_keys
+      data = I18nYamlCsv.from_csv(File.read(filename))
 
       locales = data.keys
 
       locales.each do |locale| 
-        yaml = YAML.dump({locale => data[locale]})
-        File.write(Rails.root.join('config', 'locales', "#{name}.#{locale}.yml"), yaml)
+        file_name = Rails.root.join('config', 'locales', "#{name}.#{locale}.yml")
+
+        new_locale_data = {locale => data[locale]}
+        locale_data = YAML.load(File.read(file_name))
+
+        yaml = YAML.dump(locale_data.deep_merge(new_locale_data))
+        File.write(file_name, yaml)
       end
     end
   end

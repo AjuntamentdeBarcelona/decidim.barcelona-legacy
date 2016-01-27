@@ -39,7 +39,7 @@ feature 'Stats' do
       expect(page).to have_content "Debate votes 1"
       expect(page).to have_content "Proposal votes 2"
       expect(page).to have_content "Comment votes 3"
-      expect(page).to have_content "Total votes 6"
+      expect(page).to have_content "Votes 6"
     end
 
     scenario 'Users' do
@@ -49,11 +49,11 @@ feature 'Stats' do
 
       visit admin_stats_path
 
-      expect(page).to have_content "Level three users 1"
-      expect(page).to have_content "Level two users 2"
+      expect(page).to have_content "Level-three users 1"
+      expect(page).to have_content "Level-two users 2"
       expect(page).to have_content "Verified users 3"
       expect(page).to have_content "Unverified users 4"
-      expect(page).to have_content "Total users 7"
+      expect(page).to have_content "Users 7"
     end
 
   end

@@ -6,8 +6,8 @@ es:
       more_information: Más información
     verify:
       code: Código que has recibido en tu carta
-      email: Email
-      info: 'Para verificar tu cuenta introduce los datos con los que te registraste:'
+      email: Correo electrónico
+      info: 'Para verificar tu cuenta, introduce los datos con los que te registraste:'
       info_code: 'Ahora introduce el código que has recibido en tu carta:'
       password: Contraseña
       submit: Verificar mi cuenta

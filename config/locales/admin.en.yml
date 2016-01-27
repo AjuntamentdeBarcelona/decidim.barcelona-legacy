@@ -5,7 +5,7 @@ en:
       confirm: Are you sure?
       confirm_hide: Confirm
       hide: Hide
-      hide_author: Hide author
+      hide_author: Block author
       restore: Restore
     activity:
       show:
@@ -59,10 +59,10 @@ en:
       hidden_comments: Hidden comments
       hidden_debates: Hidden debates
       hidden_proposals: Hidden proposals
-      hidden_users: Hidden users
+      hidden_users: Blocked users
       incomplete_verifications: Incomplete verifications
       moderators: Moderators
-      officials: Officials
+      officials: Public Officials
       organizations: Organisations
       settings: General settings
       spending_proposals: Spending proposals
@@ -80,22 +80,22 @@ en:
     officials:
       edit:
         back: Back
-        destroy: Remove 'Official' status
-        title: 'Officials: Edit user'
+        destroy: Delete 'Public Official' status
+        title: 'Public Officials: Edit user'
       flash:
-        official_destroyed: 'Details saved: the user is no longer an official'
-        official_updated: Details of official saved
+        official_destroyed: 'Details saved: the user is no longer a public official'
+        official_updated: Public Official's saved details
       index:
-        title: Officials
-      level_0: Not official
+        title: Public Officials
+      level_0: You are not a public official
       level_1: Level 1
       level_2: Level 2
       level_3: Level 3
       level_4: Level 4
       level_5: Level 5
       search:
-        edit_official: Edit official
-        make_official: Make official
+        edit_official: Edit public official
+        make_official: Convert to public official
         title: 'Official positions: User search'
     organizations:
       index:
@@ -106,7 +106,7 @@ en:
           rejected: Rejected
           verified: Verified
         hidden_count:
-          one: There is also one organisation with no users or with a hidden user
+          one: There is also one organisation with no users or with a blocked user
           other: There are %{count} organisations with no users or with a hidden user
         reject: Reject
         rejected: Rejected
@@ -155,7 +155,7 @@ en:
     stats:
       show:
         combined_title: Combined
-        stats_title: Stats
+        stats_title: Statistics
         summary:
           comment_votes: Comment votes
           comments: Comments
@@ -164,12 +164,12 @@ en:
           proposal_votes: Proposal votes
           proposals: Proposals
           unverified_users: Unverified users
-          user_level_three: Level three users
-          user_level_two: Level two users
-          users: Total users
+          user_level_three: Level-three users
+          user_level_two: Level-two users
+          users: Users
           verified_users: Verified users
           visits: Visits
-          votes: Total votes
+          votes: Votes
         visits_title: Visits
     subcategories:
       index:
@@ -179,13 +179,13 @@ en:
         title: Action lines
     tags:
       create: Create Topic
-      destroy: Destroy Topic
+      destroy: Delete Topic
       index:
         add_tag: Add a new debate topic
         title: Debate topics
-      mark_as_featured: Propose topic upon creating debate
+      mark_as_featured: Propose topic on creating debate
       name:
-        placeholder: Type the name of the topic
+        placeholder: Enter the name of the topic
       update: Update Topic
     users:
       index:
@@ -194,15 +194,15 @@ en:
           all: All
           with_confirmed_hide: Confirmed
           without_confirmed_hide: Pending
-        title: Hidden users
+        title: Blocked users
       show:
         back: Back
         email: 'Email:'
-        hidden_at: 'Hidden at:'
-        registered_at: 'Registered at:'
+        hidden_at: 'Blocked:'
+        registered_at: 'Date of registration:'
         title: Activity of user %{user}
     verifications:
       index:
-        phone_not_given: Phone not given
-        sms_code_not_confirmed: Has not confirmed the sms code
+        phone_not_given: You have not given your phone number
+        sms_code_not_confirmed: You have not entered your security code
         title: Incomplete verifications
