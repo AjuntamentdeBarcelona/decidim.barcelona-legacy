@@ -11,6 +11,6 @@ App.Votes =
       $(this).find("div.not-logged").hide()
 
   initialize: ->
-    App.Votes.hoverize $("#debates"), "div.votes"
-    App.Votes.hoverize $("#proposals, #featured-proposals"), "div.supports"
+    App.Votes.hoverize $("#debates, .debate-show"), "div.votes"
+    App.Votes.hoverize $("#proposals, #featured-proposals, .proposal-show"), "div.supports"
     false
