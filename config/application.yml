@@ -35,7 +35,11 @@ defaults: &defaults
   twitter_handle: "decidimbcn"
   facebook_handle: ~
   youtube_handle: "decidimbcn"
-  blog_url: "http://eldigital.barcelona.cat/"
+
+  blog_url: 
+    ca: "http://eldigital.barcelona.cat/pambcn"
+    es: "http://eldigital.barcelona.cat/es/pambcn_es"
+    en: "http://eldigital.barcelona.cat/en/pambcn_en"
 
   url: "https://decidimbcn.herokuapp.com"
 
