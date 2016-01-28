@@ -40,7 +40,7 @@ class Meeting < ActiveRecord::Base
     ranked_by: '(:tsearch)'
   }
 
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: [:slugged, :finders]
 
   def searchable_values
     values = {

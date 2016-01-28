@@ -69,7 +69,7 @@ class Proposal < ActiveRecord::Base
     order_within_rank: "proposals.cached_votes_up DESC"
   }
 
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: [:slugged, :finders]
 
   def searchable_values
     values = {

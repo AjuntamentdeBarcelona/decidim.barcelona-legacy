@@ -22,6 +22,7 @@ module MeetingsDirectoryHelper
     meetings.map do |meeting|
       {
         id: meeting.id,
+        slug: meeting.slug,
         title: meeting.title,
         description: meeting.description,
         address: meeting.address,
