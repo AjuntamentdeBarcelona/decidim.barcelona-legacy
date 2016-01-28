@@ -3,6 +3,10 @@ class StaticMap extends React.Component {
     this.createGmapsIntegration();
   }
 
+  componentDidUpdate() {
+    this.createGmapsIntegration();
+  }
+
   createGmapsIntegration() {
     GoogleMapsAPI.then((google) => {
       let centerLocation = {
@@ -14,8 +18,6 @@ class StaticMap extends React.Component {
         this.map = new google.maps.Map(
           this.refs.map, 
           {
-            zoom: this.props.zoom,
-            center: centerLocation,
             draggable: false,
             scrollwheel: false,
             mapTypeControl: false,
@@ -24,13 +26,21 @@ class StaticMap extends React.Component {
             streetViewControl: false
           }
         );
+
+        this.props.onMapInit(this.map);
       }
 
-      this.marker = new google.maps.Marker({
-        position: centerLocation,
-        animation: google.maps.Animation.DROP,
-        map: this.map
-      });
+      this.map.panTo(centerLocation);
+      this.map.setZoom(this.props.zoom);
+
+      if (!this.marker) {
+        this.marker = new google.maps.Marker({
+          animation: google.maps.Animation.DROP,
+          map: this.map
+        });
+      }
+
+      this.marker.setPosition(centerLocation);
     });
   }
 

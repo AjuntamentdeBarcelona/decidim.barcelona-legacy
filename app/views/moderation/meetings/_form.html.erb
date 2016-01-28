@@ -9,20 +9,13 @@
 
     <div class="small-12 column">
       <%= f.label :description, t("meetings.form.meeting_description") %>
-      <p class="note"><%= t("meetings.form.meeting_description") %></p>
       <%= f.text_area :description, rows: 4, maxlength: 350, label: false,
                       placeholder: t('meetings.form.meeting_description') %>
     </div>
 
     <div class="small-12 column">
       <%= f.label :address, t("meetings.form.meeting_address") %>
-      <%= f.text_field :address, placeholder: t("meetings.form.meeting_address"), label: false %>
-      <%= f.hidden_field :address_latitude %>
-      <%= f.hidden_field :address_longitude %>
-    </div>
-
-    <div class="small-12 column">
-      <%= google_maps_autocomplete_input address_input_id: "meeting_address", latitude_input_id: "meeting_address_latitude", longitude_input_id: "meeting_address_longitude", default_location: { lat: @meeting.address_latitude, lng: @meeting.address_longitude } %>
+      <%= autocomplete_input_address resource: @meeting %>
     </div>
 
     <div class="small-12 column">

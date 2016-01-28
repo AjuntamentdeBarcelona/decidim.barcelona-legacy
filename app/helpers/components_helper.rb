@@ -8,6 +8,21 @@ module ComponentsHelper
     )
   end
 
+  def autocomplete_input_address(options = {})
+    resource = options[:resource]
+    table_name = resource.class.table_name
+
+    react_component(
+      'AutocompleteInputAddress',
+      addressInputName: "#{table_name}[address]",
+      address: resource.address,
+      latitudeInputName: "#{table_name}[address_latitude]",
+      latitude: resource.address_latitude,
+      longitudeInputName: "#{table_name}[address_longitude]",
+      longitude: resource.address_longitude
+    ) 
+  end
+
   def serialized_categories
     CategoryDecorator.decorate_collection(Category.all).map do |category|
       {
@@ -27,15 +42,5 @@ module ComponentsHelper
         categoryId: subcategory.category_id.to_s
       }
     end
-  end
-
-  def google_maps_autocomplete_input(options = {})
-    react_component(
-      'GoogleMapsAutocompleteInput',
-      defaultLocation: options[:default_location],
-      addressInputId: options[:address_input_id],
-      latitudeInputId: options[:latitude_input_id],
-      longitudeInputId: options[:longitude_input_id]
-    ) 
   end
 end
