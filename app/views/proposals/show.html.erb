@@ -39,9 +39,6 @@
           <span class="js-flag-actions">
             <%= render 'proposals/flag_actions', proposal: @proposal %>
           </span>
-          <br>
-            <%= t("proposals.show.code") %>
-            <%= @proposal.code %>
         </div>
 
         <blockquote><%= text_with_links @proposal.summary %></blockquote>
