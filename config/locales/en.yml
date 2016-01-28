@@ -244,6 +244,10 @@ en:
     new:
       form:
         submit_button: Create meeting
+    show:
+      back_link: Back
+      proposals_title: Discussed proposals
+      share: Share
   notifications:
     index:
       comments_on:
@@ -345,7 +349,6 @@ en:
     show:
       author_deleted: User deleted
       back_link: Go back
-      code: 'Proposal code:'
       comments:
         one: 1 comment
         other: "%{count} comments"
