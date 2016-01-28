@@ -244,6 +244,10 @@ es:
     new:
       form:
         submit_button: Crear encuentro
+    show:
+      back_link: Volver
+      proposals_title: Propuestas tratadas
+      share: Comparte
   notifications:
     index:
       comments_on:
@@ -345,7 +349,6 @@ es:
     show:
       author_deleted: Usuario eliminado
       back_link: Volver
-      code: 'Código de la propuesta:'
       comments:
         one: 1 Comentario
         other: "%{count} Comentarios"

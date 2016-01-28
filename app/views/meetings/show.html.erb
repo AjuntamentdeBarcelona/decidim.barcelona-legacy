@@ -9,17 +9,35 @@
   <div id="<%= dom_id(@meeting) %>" class="row">
     <div class="small-12 medium-9 column">
       <i class="icon-angle-left left"></i>&nbsp;
+      <%= link_to t("meetings.show.back_link"), :back, class: 'left back' %>
 
-      <h1><%= @meeting.title %></h1>
+      <h2><%= @meeting.title %></h2>
 
-      <div class="meeting-info">
-        <%= render '/shared/author_info', resource: @meeting %>
-
-        <span class="bullet">&nbsp;&bull;&nbsp;</span>
-        <%= l @meeting.created_at.to_date %>
+      <div class="date">
+        <%= l @meeting.held_at %>
+        <%= @meeting.held_at.strftime("%A") %>
       </div>
 
-      <blockquote><%= text_with_links @meeting.description %></blockquote>
+      <div class="description">
+        <%= text_with_links @meeting.description %>
+      </div>
+
+      <%= static_map latitude: @meeting.address_latitude, longitude: @meeting.address_longitude, zoom: 16 %>
+
+      <%= render 'shared/tags', taggable: @meeting %>
     </div>
+
+    <aside class="small-12 medium-3 column">
+      <div class="sidebar-divider"></div>
+      <h3><%= t("meetings.show.proposals_title") %></h3>
+      <ul>
+        <% @meeting.proposals.sample(3).each do |proposal| %>
+          <li><%= link_to proposal.title, proposal %></li>
+        <% end %>
+      </ul>
+      <div class="sidebar-divider"></div>
+      <h3><%= t("meetings.show.share") %></h3>
+      <%= social_share_button_tag(@meeting.title) %>
+    </aside>
   </div>
 </section>
