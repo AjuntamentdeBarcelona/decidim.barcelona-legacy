@@ -345,7 +345,6 @@ ca:
     show:
       author_deleted: Usuari eliminat
       back_link: Tornar
-      code: 'Codi de la proposta:'
       comments:
         one: 1 Comentari
         other: "%{count} Comentaris"

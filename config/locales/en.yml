@@ -345,7 +345,6 @@ en:
     show:
       author_deleted: User deleted
       back_link: Go back
-      code: 'Proposal code:'
       comments:
         one: 1 comment
         other: "%{count} comments"

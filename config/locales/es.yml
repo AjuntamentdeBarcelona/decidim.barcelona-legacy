@@ -345,7 +345,6 @@ es:
     show:
       author_deleted: Usuario eliminado
       back_link: Volver
-      code: 'Código de la propuesta:'
       comments:
         one: 1 Comentario
         other: "%{count} Comentarios"
