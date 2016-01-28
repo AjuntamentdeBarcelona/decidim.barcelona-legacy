@@ -1,41 +1,40 @@
 <footer>
 	<div class="row-full">
     <div class="row">
-      <div class="small-12 medium-9 column">
-        <p>
-          <%= link_to t("layouts.footer.more_info"), page_path('more_information') %>&nbsp;|&nbsp;
-          <%= link_to t("layouts.footer.privacy"), page_path('privacy') %>&nbsp;|&nbsp;
-          <%= link_to t("layouts.footer.conditions"), page_path('conditions') %>&nbsp;|&nbsp;
-          <%= link_to t("layouts.footer.accessibility"), page_path('accessibility') %>
-        </p>
-      </div>
+      <div class="small-12 column">
+        <%= link_to t("layouts.footer.more_info"), page_path('more_information') %>&nbsp;|&nbsp;
+        <%= link_to t("layouts.footer.privacy"), page_path('privacy') %>&nbsp;|&nbsp;
+        <%= link_to t("layouts.footer.conditions"), page_path('conditions') %>&nbsp;|&nbsp;
+        <%= link_to t("layouts.footer.accessibility"), page_path('accessibility') %>
 
-      <div class="small-12 medium-3 column social">
-        <% if Setting['twitter_handle'] %>
-          <%= link_to "https://twitter.com/#{Setting['twitter_handle']}", target: "_blank", title: t("social.twitter") do %>
-            <span class="sr-only"><%= t("social.twitter") %></span>
-            <i class="icon-twitter"></i>
+        <span class="footer-social">
+          <% if Setting['twitter_handle'] %>
+            <%= link_to "https://twitter.com/#{Setting['twitter_handle']}", target: "_blank", title: t("social.twitter") do %>
+              <span class="sr-only"><%= t("social.twitter") %></span>
+              <i class="icon-twitter"></i>
+            <% end %>
           <% end %>
-        <% end %>
-        <% if Setting['facebook_handle'] %>
-          <%= link_to "https://www.facebook.com/#{Setting['facebook_handle']}/", target: "_blank", title: t("social.facebook") do %>
-            <span class="sr-only"><%= t("social.facebook") %></span>
-            <i class="icon-facebook"></i>
+          <% if Setting['facebook_handle'] %>
+            <%= link_to "https://www.facebook.com/#{Setting['facebook_handle']}/", target: "_blank", title: t("social.facebook") do %>
+              <span class="sr-only"><%= t("social.facebook") %></span>
+              <i class="icon-facebook"></i>
+            <% end %>
           <% end %>
-        <% end %>
-        <%  if Setting['blog_url'] %>
-          <%= link_to Setting['blog_url'][I18n.locale.to_s], target: "_blank", title: t("social.blog") do %>
-            <span class="sr-only"><%= t("social.blog") %></span>
-            <i class="icon-blog"></i>
+          <%  if Setting['blog_url'] %>
+            <%= link_to Setting['blog_url'][I18n.locale.to_s], target: "_blank", title: t("social.blog") do %>
+              <span class="sr-only"><%= t("social.blog") %></span>
+              <i class="icon-blog"></i>
+            <% end %>
           <% end %>
-        <% end %>
-        <% if Setting['youtube_handle'] %>
-          <%= link_to "https://www.youtube.com/#{Setting['youtube_handle']}", target: "_blank", title: t("social.youtube") do %>
-            <span class="sr-only"><%= t("social.youtube") %></span>
-            <i class="icon-youtube"></i>
+          <% if Setting['youtube_handle'] %>
+            <%= link_to "https://www.youtube.com/#{Setting['youtube_handle']}", target: "_blank", title: t("social.youtube") do %>
+              <span class="sr-only"><%= t("social.youtube") %></span>
+              <i class="icon-youtube"></i>
+            <% end %>
           <% end %>
-        <% end %>
+        </span>
       </div>
     </div>
   </div>
+  <%= link_to 'ajuntament.barcelona.cat', "https://ajuntament.barcelona.cat", class: 'badge-ajuntament' %>
 </footer>

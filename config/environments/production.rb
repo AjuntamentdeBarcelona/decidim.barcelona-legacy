@@ -25,6 +25,10 @@ Rails.application.configure do
   config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
   config.static_cache_control = "public, max-age=2592000"
 
+  if !Rails.application.secrets.server_name.empty?
+    config.middleware.use Rack::CanonicalHost, Rails.application.secrets.server_name
+  end
+
   config.middleware.use Rack::Attack
 
   # Compress JavaScripts and CSS.

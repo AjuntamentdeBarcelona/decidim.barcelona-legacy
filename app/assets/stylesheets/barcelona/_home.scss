@@ -56,9 +56,287 @@
       font-size: rem-calc(22);
       line-height: 1.1em;
     }
+
+    .header-link{
+      .bcn-icon{
+        transition: all 0.3s;
+      }
+
+      &:hover{
+        .bcn-icon{
+          transition: all 0.3s;
+          @include transform(translateX(rem-calc(5px)));
+        }
+      }
+    }
   }
 }
 
-.home-content{
-  min-height: 100vh;
+.home-section{
+  .home-title{
+    text-align: center;
+    max-width: rem-calc(800);
+    margin: 0 auto;
+
+    h3{
+      font-size: rem-calc(33);
+      color: $brand;
+      font-weight: 200;
+    }
+
+    h4{
+      font-style: italic;
+      font-weight: normal;
+    }
+  }
+
+  .home-section{
+    padding-top: rem-calc(50);
+    padding-bottom: rem-calc(50);
+  }
+
+  .home-tutorial{
+    .home-title{
+      margin-bottom: rem-calc(40);
+    }
+
+    margin-top: $line-height * 3;
+    margin-bottom: $line-height * 3;
+
+    .tutorial-step{
+      $step-padding: rem-calc(176);
+      $number-separation: rem-calc(70);
+      $number-size: rem-calc(50);
+      $description-height: rem-calc(72);
+
+      position: relative;
+      margin-top: rem-calc(25);
+
+      .number{
+
+        width: $number-size;
+        height: $number-size;
+        text-align: center;
+        display: inline-block;
+        border: rem-calc(2px) solid $brand;
+        line-height: $number-size * 0.9;
+        font-size: rem-calc(25);
+        color: $brand;
+        border-radius: $number-size / 2;
+        vertical-align: middle;
+        font-weight: bold;
+        background-color: $background;
+        position: absolute;
+        bottom: $description-height / 2 - $number-size / 2;
+      }
+
+      .line-overlay{
+        width: rem-calc(1000/2);
+        height: rem-calc(342/2);
+        background: image-url('home/tutorial-line.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 50%;
+        z-index: -1;
+      }
+
+      .step-content{
+        position: relative;
+      }
+
+      .description{
+        max-width: rem-calc(336);
+        display: block;
+        height: $description-height;
+      }
+
+      .icons{
+        margin-bottom: rem-calc(15);
+      }
+
+      &.tutorial-step-left{
+        .icons{
+          @include arrow-box(#e1e1e1, left);
+          display: table;
+        }
+
+        .description{
+          @include arrow-box($brand, left);
+        }
+
+        .number{
+          left: -$number-separation - $number-size / 2;
+        }
+
+        .line-overlay{
+          right: 0;
+        }
+
+        padding-left: $step-padding;
+      }
+
+      &.tutorial-step-right{
+        text-align: right;
+
+        .icons, .description{
+          margin-left: auto;
+        }
+
+        .icons{
+          @include arrow-box(#e1e1e1, right);
+          display: table;
+        }
+
+        .description{
+          @include arrow-box(#ececec, right);
+        }
+
+        .number{
+          right: -$number-separation - $number-size / 2;
+        }
+
+        .line-overlay{
+          left: 0;
+          background-image: image-url('home/tutorial-line-inverted.png');
+        }
+
+        padding-right: $step-padding;
+      }
+
+      &:last-child{
+        .line-overlay{
+          display: none;
+        }
+      }
+    }
+  }
+
+  .section-download{
+    background-color: #f2f2f2;
+
+    .download-buttons{
+      text-align: center;
+      margin-top: rem-calc(50);
+
+      a{
+        &.download-pam{
+          @include arrow-box($brand, left);
+          padding: 0;
+          text-decoration: underline;
+          background-image: image-url("home/download-pam.jpg");
+        }
+
+        &.download-epub{
+          @include arrow-box(#3c3c3b, right);
+          padding: 0;
+          text-decoration: underline;
+          background-image: image-url("home/download-epub.jpg");
+        }
+
+        background-size: cover;
+        font-size: rem-calc(18);
+
+        display: inline-block;
+        line-height: rem-calc(190);
+        width: rem-calc(330);
+        margin: 0 rem-calc(10);
+      }
+    }
+  }
+
+  .section-meetings{
+    .meetings-map{
+      position: relative;
+
+      .map-overlay-shadow{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        z-index: 100;
+        pointer-events: none;
+      }
+    }
+
+    .map{
+      margin-top: rem-calc(15);
+      height: rem-calc(360);
+      width: 100%;
+    }
+
+    padding-bottom: 0;
+  }
+
+  .section-categories{
+    ul.categories{
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      margin-top: rem-calc(45);
+
+      li{
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        display: inline-block;
+        margin: 0 rem-calc(10);
+        vertical-align: middle;
+      }
+
+      li a{
+        @include arrow-box(#ebeced, bottom);
+        display: inline-block;
+        font-size: rem-calc(24);
+        font-weight: 200;
+
+        width: rem-calc(155);
+        height: rem-calc(195);
+
+        &:hover{
+          @include arrow-box($brand, bottom);
+        }
+
+        .name{
+          display: block;
+          font-size: 24px;
+          font-weight: 200;
+          margin-top: rem-calc(25);
+          height: rem-calc(57);
+        }
+
+        $icon-size: rem-calc(55);
+
+        &.category_1 .category-icon{
+          @include bcn-icon("espiral", $icon-size);
+        }
+
+        &.category_2 .category-icon{
+          @include bcn-icon("fletxa", $icon-size);
+        }
+
+        &.category_3 .category-icon{
+          @include bcn-icon("arbre", $icon-size);
+        }
+
+        &.category_4 .category-icon{
+          @include bcn-icon("correu", $icon-size);
+        }
+
+        &.category_5 .category-icon{
+          @include bcn-icon("ma", $icon-size);
+        }
+
+        &.category-item .category-icon{
+          background-color: $background;
+          border-radius: rem-calc(32);
+          background-size: 60%;
+          margin-right: 0;
+        }
+      }
+    }
+  }
 }

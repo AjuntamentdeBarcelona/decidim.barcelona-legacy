@@ -52,6 +52,7 @@
 //= require immutable
 //= require components
 //= require registration_form
+//= require home_animations
 
 var initialize_modules = function() {
   App.Comments.initialize();
@@ -67,6 +68,7 @@ var initialize_modules = function() {
   App.Districts.initialize();
   App.AdvancedSearch.initialize();
   App.RegistrationForm.initialize();
+  App.HomeAnimations.initialize();
 };
 
 $(function(){

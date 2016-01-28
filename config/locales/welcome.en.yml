@@ -1,6 +1,25 @@
 ---
 en:
   welcome:
+    categories:
+      subtitle: Since the City Council have elaborated a first draft program for the city and the district that includes several proposals for action in different lines of action and EICO
+      title: PAM and PAD
+    download:
+      subtitle: Since the City Council have elaborated a first draft program for the city and the district that includes several proposals for action in different lines of action and EICO
+      title: The action program and the Municipal Districts
     header-motto:
       link: Join and participate
       text: Take part in the collective building of our <strong>Pla d'Acció Municipal</strong> for the next 4 years and let's build the city we love together.
+    meetings:
+      title: dating face
+    tutorial:
+      step-1:
+        description: Browse, comment and supports the proposals of the City of Barcelona
+      step-2:
+        description: Read, comment and supports the proposed citizens'
+      step-3:
+        description: Make your proposals for action
+      step-4:
+        description: Discover discussions classroom near you
+      subtitle: Discover, debate, propose actions to Barcelona for the next four years
+      title: How can I participate?

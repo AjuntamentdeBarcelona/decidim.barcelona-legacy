@@ -1,0 +1,23 @@
+<div class="section-categories home-section">
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="home-title">
+        <h3><%= t 'welcome.categories.title' %></h3>
+        <h4><%= t 'welcome.categories.subtitle' %></h4>
+      </div>
+
+      <ul class="categories">
+        <% @categories.each do |category| %>
+          <li>
+            <%= link_to categories_path(anchor: dom_id(category)), class: "#{dom_id(category)} category-item" do %>
+              <span class="name">
+                <%= category.name %>
+              </span>
+              <i class="category-icon"></i>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

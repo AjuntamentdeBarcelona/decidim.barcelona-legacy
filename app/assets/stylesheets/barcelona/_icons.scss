@@ -13,9 +13,13 @@
 
   @include bcn-icon-background($name);
   display: inline-block;
+  margin-right: 0.5em;
 }
 
-$icons: activitat ajuntament arbre campana cor correu dit_assenyala doc doc_llapis espiral facebook fletxa google_plus imac info localitzacio lupa ma ma_no_ok ma_ok ma_perfecte megafon nuvol planol safata sol twiter usuari xat_blanc xat_gris;
+$icons: activitat ajuntament arbre campana cor correu dit_assenyala doc
+                  doc_llapis espiral facebook fletxa google_plus imac info
+                  localitzacio lupa ma ma_no_ok ma_ok ma_perfecte megafon nuvol
+                  planol safata sol twiter usuari xat_blanc xat_gris dit_assenyala_vermell;
 
 @each $icon in $icons{
   .bcn-icon-#{$icon}{

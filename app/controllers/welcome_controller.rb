@@ -4,6 +4,8 @@ class WelcomeController < ApplicationController
   layout "devise", only: :welcome
 
   def index
+    @categories = Category.order(:position).decorate
+    @meetings = Meeting.upcoming
   end
 
   def welcome

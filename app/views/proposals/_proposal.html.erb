@@ -41,7 +41,9 @@
             <% end %>
           </p>
           <div class="proposal-description">
-            <%= link_to HTML_Truncator.truncate(proposal.summary, 25).html_safe, namespaced_proposal_path(proposal) %>
+            <p>
+              <%= link_to HTML_Truncator.truncate(proposal.summary, 25).html_safe, namespaced_proposal_path(proposal) %>
+            </p>
             <div class="truncate"></div>
           </div>
           <%= render "shared/tags", taggable: proposal, limit: 5 %>

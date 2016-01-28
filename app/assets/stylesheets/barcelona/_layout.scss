@@ -23,3 +23,35 @@
     display: block;
   }
 }
+
+footer{
+  vertical-align: middle;
+  line-height: $footer-height;
+  text-align: right;
+
+  .footer-social{
+    font-size: 1.5em;
+    vertical-align: middle;
+    a{
+      margin: 0 0.2em;
+    }
+    margin-left: 0.2em;
+  }
+
+  position: relative;
+
+  .badge-ajuntament{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: rem-calc(136px);
+    background-image: image-url("badge_ajuntament_footer.png");
+    background-size: contain;
+    overflow: hidden;
+    text-indent: 999em;
+    background-position: right center;
+    background-repeat: no-repeat;
+    display: block;
+  }
+}

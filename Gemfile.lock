@@ -321,6 +321,9 @@ GEM
       rack
     rack-cache (1.5.1)
       rack (>= 0.4)
+    rack-canonical-host (0.1.0)
+      addressable
+      rack (~> 1.0)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
@@ -582,6 +585,7 @@ DEPENDENCIES
   quiet_assets
   rack-attack
   rack-cache
+  rack-canonical-host
   rails (= 4.2.5)
   rails-i18n
   rails_12factor
