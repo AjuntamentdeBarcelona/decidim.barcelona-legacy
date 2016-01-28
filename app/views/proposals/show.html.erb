@@ -5,6 +5,7 @@
             social_title: @proposal.title,
             social_description: text_with_links(@proposal.summary) %>
 <% end %>
+
 <% cache [locale_and_user_status(@proposal), @proposal, @proposal.author, Flag.flagged?(current_user, @proposal), @proposal_votes] do %>
 
   <section class="proposal-show">
@@ -43,12 +44,9 @@
           <span class="js-flag-actions">
             <%= render 'proposals/flag_actions', proposal: @proposal %>
           </span>
-          <br>
-            <%= t("proposals.show.code") %>
-            <%= @proposal.code %>
         </div>
 
-        <blockquote><%= text_with_links @proposal.summary %></blockquote>
+        <%= text_with_links @proposal.summary %>
 
         <% if @proposal.external_url.present? %>
           <div class="document-link">
@@ -82,6 +80,21 @@
         <h3><%= t("proposals.show.share") %></h3>
         <%= social_share_button_tag(@proposal.title) %>
       </aside>
+    </div>
+
+    <div class="row">
+      <div class="small-12 medium-9 column">
+        <h2><%= t("proposals.show.meetings_title") %></h2>
+        <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+          <% @proposal.meetings.sample(8).each do |meeting| %>
+            <li class="meeting">
+              <div class="date"><%= l meeting.held_at %></div>
+              <div class="title"><%= link_to meeting.title, meeting %></div>
+              <div class="description"><%= meeting.description.truncate(50) %></div>
+            </li>
+          <% end %>
+        </ul>
+      </ul>
     </div>
   </section>
 <% end %>
