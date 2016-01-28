@@ -8,7 +8,7 @@ App.HomeTutorial = {
     var options = {
       delay: 100,
       duration: 600,
-      reset: true
+      reset: false
     };
 
     sr.reveal(".home-tutorial .icons", options);
