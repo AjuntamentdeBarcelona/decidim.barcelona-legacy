@@ -1,3 +1,7 @@
+//= require c3
+//= require annotator.min
+//= require font-awesome;
+
 @import "bourbon";
 @import "social-share-button";
 @import "foundation_and_overrides";
@@ -8,10 +12,9 @@
 @import "admin";
 @import "layout";
 @import "participation";
-@import "c3";
-@import "annotator.min";
 @import "annotator_overrides";
 @import "font-awesome";
+@import "components";
 @import "barcelona";
 @import "components";
 @import "jquery-ui/datepicker";

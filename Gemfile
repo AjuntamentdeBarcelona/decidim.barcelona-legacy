@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.2.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', '~> 4.2.5'
 # Use PostgreSQL
 gem 'pg'
 gem 'redis'
@@ -65,7 +65,6 @@ gem 'ahoy_matey', '~> 1.2.1'
 gem 'groupdate'   # group temporary data
 gem 'tolk' # Web interface for translations
 gem 'roadie-rails'
-gem 'normalize-rails'
 gem 'html_truncator'
 
 gem "settingslogic"
