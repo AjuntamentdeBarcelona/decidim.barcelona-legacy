@@ -1,9 +1,16 @@
 ---
 ca:
   welcome:
+    categories:
+      subtitle: Des de l’Ajuntament de Barcelona hem el·laborat una primera proposta de Programa per a la ciutat i pels districtes que inclou diferents propostes d’actuació en diferents eicos i líneas d’actuació
+      title: El PAM i el PAD
+    download:
+      subtitle: Des de l’Ajuntament de Barcelona hem el·laborat una primera proposta de Programa per a la ciutat i pels districtes que inclou diferents propostes d’actuació en diferents eicos i líneas d’actuació
+      title: El programa d'actuació Municipal i de Districtes
     header-motto:
       link: Entra i participa
-      text: Participa en la construcció col·lectiva del nostre <strong>Pla d'Acció Municipal</strong> dels propers 4 anys i construïm junts la ciutat que volem.
+    meetings:
+      title: Cites presencials
     tutorial:
       step-1:
         description: Navega, comenta i dona suport a les propostes de l'Ajuntament de Barcelona
@@ -15,12 +22,3 @@ ca:
         description: Descobreix els debats presencials que tens a prop
       subtitle: Descobreix, debat, proposa les actuacions per a la ciutat de Barcelona pels propers 4 anys
       title: Com puc participar?
-    download:
-      title: El programa d'actuació Municipal i de Districtes
-      subtitle: Des de l’Ajuntament de Barcelona hem el·laborat una primera proposta de Programa per a la ciutat i pels districtes que inclou diferents propostes d’actuació en diferents eicos i líneas d’actuació
-    meetings:
-      title: Cites presencials
-
-    categories:
-      title: El PAM i el PAD
-      subtitle: Des de l’Ajuntament de Barcelona hem el·laborat una primera proposta de Programa per a la ciutat i pels districtes que inclou diferents propostes d’actuació en diferents eicos i líneas d’actuació

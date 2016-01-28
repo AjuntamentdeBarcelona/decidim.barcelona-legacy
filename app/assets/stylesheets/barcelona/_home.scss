@@ -1,5 +1,5 @@
 .header.wide{
-  min-height: 435px;
+  min-height: 300px;
 
   .title-expanded{
     font-size: $base-font-size;
@@ -9,7 +9,7 @@
       display: inline-block;
     }
 
-    .pam, .pla-barcelona, .decidim-barcelona{
+    .pla-barcelona, .decidim-barcelona{
       display: block;
       float: left;
       clear: both;
@@ -25,22 +25,15 @@
     }
 
     .decidim-barcelona{
-      @include arrow-box($text, left, 0.8);
-      font-size: 0;
-      span{
-        font-size: rem-calc(15);
-        line-height: 1em;
-      }
-
-      padding-top: rem-calc(8);
-      padding-bottom: rem-calc(8);
+      font-size: rem-calc(22px);
+      @include arrow-box($text, left);
     }
   }
 
   .header-motto{
     position: absolute;
     right: rem-calc(50);
-    top: rem-calc(145);
+    top: rem-calc(165);
 
     .header-text{
       margin-bottom: rem-calc(15);
