@@ -59,14 +59,11 @@
   }
 }
 
-.home-content{
-  min-height: 100vh;
-}
-
-
-.home-tutorial{
-  .tutorial-title{
+.home{
+  .home-title{
     text-align: center;
+    max-width: rem-calc(800);
+    margin: 0 auto;
 
     h3{
       font-size: rem-calc(33);
@@ -78,118 +75,186 @@
       font-style: italic;
       font-weight: normal;
     }
-
-    margin-bottom: rem-calc(40);
   }
 
-  margin-top: $line-height * 3;
-  margin-bottom: $line-height * 3;
+  .home-section{
+    padding-top: rem-calc(50);
+    padding-bottom: rem-calc(50);
+  }
 
-  .tutorial-step{
-    $step-padding: rem-calc(176);
-    $number-separation: rem-calc(70);
-    $number-size: rem-calc(50);
-    $description-height: rem-calc(72);
-
-    position: relative;
-    margin-top: rem-calc(25);
-
-    .number{
-
-      width: $number-size;
-      height: $number-size;
-      text-align: center;
-      display: inline-block;
-      border: rem-calc(2px) solid $brand;
-      line-height: $number-size * 0.9;
-      font-size: rem-calc(25);
-      color: $brand;
-      border-radius: $number-size / 2;
-      vertical-align: middle;
-      font-weight: bold;
-      background-color: $background;
-      position: absolute;
-      bottom: $description-height / 2 - $number-size / 2;
+  .home-tutorial{
+    .home-title{
+      margin-bottom: rem-calc(40);
     }
 
-    .line-overlay{
-      width: rem-calc(1000/2);
-      height: rem-calc(342/2);
-      background: image-url('home/tutorial-line.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      position: absolute;
-      top: 50%;
-      z-index: -1;
-    }
+    margin-top: $line-height * 3;
+    margin-bottom: $line-height * 3;
 
-    .step-content{
+    .tutorial-step{
+      $step-padding: rem-calc(176);
+      $number-separation: rem-calc(70);
+      $number-size: rem-calc(50);
+      $description-height: rem-calc(72);
+
       position: relative;
-    }
-
-    .description{
-      max-width: rem-calc(336);
-      display: block;
-      height: $description-height;
-    }
-
-    .icons{
-      margin-bottom: rem-calc(15);
-    }
-
-    &.tutorial-step-left{
-      .icons{
-        @include arrow-box(#e1e1e1, left);
-        display: table;
-      }
-
-      .description{
-        @include arrow-box($brand, left);
-      }
+      margin-top: rem-calc(25);
 
       .number{
-        left: -$number-separation - $number-size / 2;
+
+        width: $number-size;
+        height: $number-size;
+        text-align: center;
+        display: inline-block;
+        border: rem-calc(2px) solid $brand;
+        line-height: $number-size * 0.9;
+        font-size: rem-calc(25);
+        color: $brand;
+        border-radius: $number-size / 2;
+        vertical-align: middle;
+        font-weight: bold;
+        background-color: $background;
+        position: absolute;
+        bottom: $description-height / 2 - $number-size / 2;
       }
 
       .line-overlay{
-        right: 0;
+        width: rem-calc(1000/2);
+        height: rem-calc(342/2);
+        background: image-url('home/tutorial-line.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 50%;
+        z-index: -1;
       }
 
-      padding-left: $step-padding;
-    }
-
-    &.tutorial-step-right{
-      text-align: right;
-
-      .icons, .description{
-        margin-left: auto;
-      }
-
-      .icons{
-        @include arrow-box(#e1e1e1, right);
-        display: table;
+      .step-content{
+        position: relative;
       }
 
       .description{
-        @include arrow-box(#ececec, right);
+        max-width: rem-calc(336);
+        display: block;
+        height: $description-height;
       }
 
-      .number{
-        right: -$number-separation - $number-size / 2;
+      .icons{
+        margin-bottom: rem-calc(15);
       }
 
-      .line-overlay{
+      &.tutorial-step-left{
+        .icons{
+          @include arrow-box(#e1e1e1, left);
+          display: table;
+        }
+
+        .description{
+          @include arrow-box($brand, left);
+        }
+
+        .number{
+          left: -$number-separation - $number-size / 2;
+        }
+
+        .line-overlay{
+          right: 0;
+        }
+
+        padding-left: $step-padding;
+      }
+
+      &.tutorial-step-right{
+        text-align: right;
+
+        .icons, .description{
+          margin-left: auto;
+        }
+
+        .icons{
+          @include arrow-box(#e1e1e1, right);
+          display: table;
+        }
+
+        .description{
+          @include arrow-box(#ececec, right);
+        }
+
+        .number{
+          right: -$number-separation - $number-size / 2;
+        }
+
+        .line-overlay{
+          left: 0;
+          background-image: image-url('home/tutorial-line-inverted.png');
+        }
+
+        padding-right: $step-padding;
+      }
+
+      &:last-child{
+        .line-overlay{
+          display: none;
+        }
+      }
+    }
+  }
+
+  .section-download{
+    background-color: #f2f2f2;
+
+    .download-buttons{
+      text-align: center;
+      margin-top: rem-calc(50);
+
+      a{
+        &.download-pam{
+          @include arrow-box($brand, left);
+          padding: 0;
+          text-decoration: underline;
+          background-image: image-url("home/download-pam.jpg");
+        }
+
+        &.download-epub{
+          @include arrow-box(#3c3c3b, right);
+          padding: 0;
+          text-decoration: underline;
+          background-image: image-url("home/download-epub.jpg");
+        }
+
+        background-size: cover;
+        font-size: rem-calc(18);
+
+        display: inline-block;
+        line-height: rem-calc(190);
+        width: rem-calc(330);
+        margin: 0 rem-calc(10);
+      }
+    }
+  }
+
+  .section-meetings{
+    .meetings-map{
+      position: relative;
+
+      .map-overlay-shadow{
+        position: absolute;
+        top: 0;
         left: 0;
-        background-image: image-url('home/tutorial-line-inverted.png');
-      }
+        right: 0;
+        bottom: 0;
 
-      padding-right: $step-padding;
-    }
-
-    &:last-child{
-      .line-overlay{
-        display: none;
+        box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        z-index: 100;
+        pointer-events: none;
       }
     }
+
+    .map{
+      margin-top: rem-calc(15);
+      height: rem-calc(360);
+      width: 100%;
+    }
+
+    padding-bottom: 0;
   }
 }

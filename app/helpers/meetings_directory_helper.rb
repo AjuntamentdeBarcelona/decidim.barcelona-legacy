@@ -11,6 +11,13 @@ module MeetingsDirectoryHelper
     )
   end
 
+  def meetings_map(meetings)
+    react_component(
+      'MeetingsMap', 
+      meetings: serialized_meetings(meetings)
+    )
+  end
+
   def serialized_meetings(meetings)
     meetings.map do |meeting|
       {

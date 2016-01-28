@@ -1,6 +1,6 @@
 @mixin arrow-box($color: $brand, $position: left, $scale: 1){
   position: relative;
-  background: $color;
+  background-color: $color;
   border-radius: rem-calc(5) * $scale;
   padding: rem-calc(15) * $scale rem-calc(15) * $scale;
   border: none;

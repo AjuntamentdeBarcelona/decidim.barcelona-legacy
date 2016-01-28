@@ -7,38 +7,49 @@ App.HomeTutorial = {
     var sr = ScrollReveal();
 
     sr.reveal(".home-tutorial .tutorial-step-left .number", {
-      delay: 0,
+      delay: 200,
       origin: 'left'
     });
 
     sr.reveal(".home-tutorial .tutorial-step-right .number", {
-      delay: 0,
+      delay: 200,
       origin: 'right'
     });
 
     sr.reveal(".home-tutorial .tutorial-step-left .icons", {
-      delay: 300,
-      origin: 'right'
+      delay: 400,
+      origin: 'top'
     });
 
     sr.reveal(".home-tutorial .tutorial-step-right .icons", {
-      delay: 300,
-      origin: 'left'
+      delay: 400,
+      origin: 'top'
     });
 
     sr.reveal(".home-tutorial .tutorial-step-left .description", {
-      delay: 500,
+      delay: 300,
       origin: 'right'
     });
 
     sr.reveal(".home-tutorial .tutorial-step-right .description", {
-      delay: 500,
+      delay: 300,
       origin: 'left'
     });
 
     sr.reveal(".home-tutorial .line-overlay", {
       delay: 500,
       origin: 'top'
+    });
+
+
+    sr.reveal(".download-buttons a:first-child", {
+      delay: 100,
+      origin: 'left'
+    });
+
+    sr.reveal(".download-buttons a:last-child", {
+      delay: 300,
+      origin: 'right'
     });
   }
 };
