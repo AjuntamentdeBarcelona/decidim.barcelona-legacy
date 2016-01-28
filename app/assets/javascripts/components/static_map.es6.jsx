@@ -27,7 +27,9 @@ class StaticMap extends React.Component {
           }
         );
 
-        this.props.onMapInit(this.map);
+        if(this.props.onMapInit) {
+          this.props.onMapInit(this.map);
+        }
       }
 
       this.map.panTo(centerLocation);
