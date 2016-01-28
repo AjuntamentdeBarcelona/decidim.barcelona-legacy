@@ -436,10 +436,10 @@ en:
   subcategories:
     edit:
       form:
-        submit_button: Update action line
+        submit_button: Update strategic line
     new:
       form:
-        submit_button: Create action line
+        submit_button: Create strategic line
   unauthorized:
     default: You do not have permission to access this page.
     manage:

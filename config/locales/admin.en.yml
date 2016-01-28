@@ -30,7 +30,7 @@ en:
         edit: Edit
         new: Create axis
         title: Axis
-        view_subcategories: View action lines
+        view_subcategories: View strategic lines
     comments:
       index:
         filter: Filter
@@ -175,8 +175,8 @@ en:
       index:
         delete: Delete
         edit: Edit
-        new: Create action line
-        title: Action lines
+        new: Create strategic line
+        title: Strategic lines
     tags:
       create: Create Topic
       destroy: Delete Topic

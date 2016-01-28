@@ -57,9 +57,9 @@ feature 'Admin categories' do
 
     visit admin_categories_path
 
-    click_link "View action lines"
+    click_link "View strategic lines"
 
-    click_link "Create action line"
+    click_link "Create strategic line"
 
     fill_in "subcategory_position", with: 1
     fill_in "name_ca", with: "Línea de acció 1"
@@ -69,7 +69,7 @@ feature 'Admin categories' do
     fill_in_ckeditor 'description_es', with: 'Esta es una subcategoría'
     fill_in_ckeditor 'description_en', with: 'This is a subcategory'
 
-    click_button "Create action line"
+    click_button "Create strategic line"
 
     expect(page).to have_content "Subcategory created successfully."
     expect(page).to have_content("1.1. Action line 1")
@@ -81,12 +81,12 @@ feature 'Admin categories' do
 
     visit admin_categories_path
 
-    click_link "View action lines"
+    click_link "View strategic lines"
     click_link "Edit"
 
     fill_in "name_en", with: "My edited action line"
 
-    click_button "Update action line"
+    click_button "Update strategic line"
 
     expect(page).to have_content "Subcategory updated successfully."
     expect(page).to have_content("My edited action line")
@@ -98,7 +98,7 @@ feature 'Admin categories' do
 
     visit admin_categories_path
 
-    click_link "View action lines"
+    click_link "View strategic lines"
     click_link "Delete"
 
     expect(page).to have_content "Subcategory deleted successfully."

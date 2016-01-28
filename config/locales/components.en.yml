@@ -5,7 +5,7 @@ en:
       category:
         label: Axis
       subcategory:
-        label: Action Line
+        label: Strategic Line
     filter_option:
       citizenship: Citizenship
       city: Whole city
@@ -17,7 +17,7 @@ en:
       district: District
       scope: Scope
       source: Source
-      subcategory_id: Action Line
+      subcategory_id: Strategic Line
     meeting_proposals_autocomplete_input:
       loading: Loading...
       no_results: No results.

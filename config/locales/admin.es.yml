@@ -30,7 +30,7 @@ es:
         edit: Editar
         new: Crear eje
         title: Ejes
-        view_subcategories: Ver líneas de acción
+        view_subcategories: Ver líneas estratégicas
     comments:
       index:
         filter: Filtro
@@ -175,8 +175,8 @@ es:
       index:
         delete: Borrar
         edit: Editar
-        new: Crear línea de acción
-        title: Líneas de acción
+        new: Crear línea estratégica
+        title: Líneas estratégicas
     tags:
       create: Crear tema
       destroy: Eliminar tema

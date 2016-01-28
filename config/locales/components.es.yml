@@ -5,7 +5,7 @@ es:
       category:
         label: Eje
       subcategory:
-        label: Línea de actuación
+        label: Línea estratégica
     filter_option:
       citizenship: Ciudadania
       city: Toda la ciudad
@@ -17,7 +17,7 @@ es:
       district: Distrito
       scope: "Ámbito"
       source: Origen
-      subcategory_id: Línea de actuación
+      subcategory_id: Línea estratégica
     meeting_proposals_autocomplete_input:
       loading: Cargando...
       no_results: No se han encontrado resultados.

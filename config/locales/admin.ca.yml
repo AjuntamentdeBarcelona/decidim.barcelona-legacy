@@ -30,7 +30,7 @@ ca:
         edit: Editar
         new: Crear eix
         title: Eixos
-        view_subcategories: Veure línies d'acció
+        view_subcategories: Veure línies estratègiques
     comments:
       index:
         filter: Filtre
@@ -175,8 +175,8 @@ ca:
       index:
         delete: Esborrar
         edit: Editar
-        new: Crear línea d'acció
-        title: Línies d'acció
+        new: Crear línia estratègica
+        title: Línies estratègiques
     tags:
       create: Crea un tema
       destroy: Elimina tema
