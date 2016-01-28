@@ -62,3 +62,141 @@
 .home-content{
   min-height: 100vh;
 }
+
+
+.home-tutorial{
+  .tutorial-title{
+    text-align: center;
+
+    h3{
+      font-size: rem-calc(33);
+      color: $brand;
+      font-weight: 200;
+    }
+
+    h4{
+      font-style: italic;
+      font-weight: normal;
+    }
+
+    margin-bottom: rem-calc(40);
+  }
+
+  margin-top: $line-height * 3;
+  margin-bottom: $line-height * 3;
+
+  .tutorial-step{
+    $step-padding: rem-calc(176);
+    $number-separation: rem-calc(70);
+    position: relative;
+    margin-top: rem-calc(25);
+
+    .number{
+      $size: rem-calc(50);
+      width: $size;
+      height: $size;
+      text-align: center;
+      display: inline-block;
+      border: rem-calc(2px) solid $brand;
+      line-height: $size * 0.9;
+      font-size: rem-calc(25);
+      color: $brand;
+      border-radius: $size / 2;
+      vertical-align: middle;
+      font-weight: bold;
+      background-color: $background;
+
+      position: absolute;
+      top: 50%;
+    }
+
+    .line-overlay{
+      width: rem-calc(1000/2);
+      height: rem-calc(342/2);
+      background: image-url('home/tutorial-line.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 50%;
+      z-index: -1;
+    }
+
+    .step-content{
+      position: relative;
+    }
+
+    .description{
+      max-width: rem-calc(336);
+      display: block;
+      height: rem-calc(72);
+    }
+
+    .icons{
+      margin-bottom: rem-calc(15);
+    }
+
+    &.tutorial-step-left{
+      .icons{
+        @include arrow-box(#e1e1e1, left);
+        display: table;
+      }
+
+      .description{
+        @include arrow-box($brand, left);
+      }
+
+      .number{
+        left: -$number-separation;
+        @include transform(
+          translateY(-50%)
+          translateX(-50%)
+        );
+      }
+
+      .line-overlay{
+        right: 0;
+      }
+
+      padding-left: $step-padding;
+    }
+
+    &.tutorial-step-right{
+      text-align: right;
+
+      .icons, .description{
+        margin-left: auto;
+      }
+
+      .icons{
+        @include arrow-box(#e1e1e1, right);
+        display: table;
+      }
+
+      .description{
+        @include arrow-box(#ececec, right);
+      }
+
+      .number{
+        right: -$number-separation;
+
+        @include transform(
+          translateY(-50%)
+          translateX(50%)
+        );
+      }
+
+      .line-overlay{
+        left: 0;
+        @include transform(scaleX(-1));
+      }
+
+      padding-right: $step-padding;
+    }
+
+    &:last-child{
+      .line-overlay{
+        display: none;
+      }
+    }
+  }
+}
