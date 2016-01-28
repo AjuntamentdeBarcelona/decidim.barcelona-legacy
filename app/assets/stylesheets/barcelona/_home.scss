@@ -88,26 +88,28 @@
   .tutorial-step{
     $step-padding: rem-calc(176);
     $number-separation: rem-calc(70);
+    $number-size: rem-calc(50);
+    $description-height: rem-calc(72);
+
     position: relative;
     margin-top: rem-calc(25);
 
     .number{
-      $size: rem-calc(50);
-      width: $size;
-      height: $size;
+
+      width: $number-size;
+      height: $number-size;
       text-align: center;
       display: inline-block;
       border: rem-calc(2px) solid $brand;
-      line-height: $size * 0.9;
+      line-height: $number-size * 0.9;
       font-size: rem-calc(25);
       color: $brand;
-      border-radius: $size / 2;
+      border-radius: $number-size / 2;
       vertical-align: middle;
       font-weight: bold;
       background-color: $background;
-
       position: absolute;
-      top: 50%;
+      bottom: $description-height / 2 - $number-size / 2;
     }
 
     .line-overlay{
@@ -128,7 +130,7 @@
     .description{
       max-width: rem-calc(336);
       display: block;
-      height: rem-calc(72);
+      height: $description-height;
     }
 
     .icons{
@@ -146,11 +148,7 @@
       }
 
       .number{
-        left: -$number-separation;
-        @include transform(
-          translateY(-50%)
-          translateX(-50%)
-        );
+        left: -$number-separation - $number-size / 2;
       }
 
       .line-overlay{
@@ -177,12 +175,7 @@
       }
 
       .number{
-        right: -$number-separation;
-
-        @include transform(
-          translateY(-50%)
-          translateX(50%)
-        );
+        right: -$number-separation - $number-size / 2;
       }
 
       .line-overlay{
