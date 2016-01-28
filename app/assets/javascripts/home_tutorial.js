@@ -2,6 +2,8 @@
 
 App.HomeTutorial = {
   initialize: function(){
+    if(!$(".home-tutorial")[0]){ return; }
+
     var sr = ScrollReveal();
     var options = {
       delay: 100,
