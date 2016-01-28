@@ -10,15 +10,15 @@ module ComponentsHelper
 
   def autocomplete_input_address(options = {})
     resource = options[:resource]
-    table_name = resource.class.table_name
+    resource_name = resource.class.name.downcase
 
     react_component(
       'AutocompleteInputAddress',
-      addressInputName: "#{table_name}[address]",
+      addressInputName: "#{resource_name}[address]",
       address: resource.address,
-      latitudeInputName: "#{table_name}[address_latitude]",
+      latitudeInputName: "#{resource_name}[address_latitude]",
       latitude: resource.address_latitude,
-      longitudeInputName: "#{table_name}[address_longitude]",
+      longitudeInputName: "#{resource_name}[address_longitude]",
       longitude: resource.address_longitude
     ) 
   end
