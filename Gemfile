@@ -91,6 +91,7 @@ gem 'roo' # implements read access for all common spreadsheet types
 gem 'bourbon'
 
 gem 'nokogiri'
+gem 'rack-canonical-host'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
