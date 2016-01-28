@@ -52,4 +52,8 @@ class Meeting < ActiveRecord::Base
   def self.search(terms)
     self.pg_search(terms)
   end
+
+  def supports
+    proposals.sum(:votes)
+  end
 end

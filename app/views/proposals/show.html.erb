@@ -90,7 +90,7 @@
             <li class="meeting">
               <div class="date"><%= l meeting.held_at %></div>
               <div class="title"><%= link_to meeting.title, meeting %></div>
-              <div class="description"><%= meeting.description.truncate(50) %></div>
+              <div class="support"><%= t("proposals.show.meeting_supports", counter: meeting.supports) %></div>
             </li>
           <% end %>
         </ul>

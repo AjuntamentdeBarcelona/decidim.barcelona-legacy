@@ -351,10 +351,11 @@ es:
         other: "%{count} Comentarios"
         zero: Sin comentarios
       comments_title: Comentarios
-      meetings_title: Encuentros presenciales relacionados
       edit_proposal_link: Editar propuesta
       flag: Esta propuesta ha sido marcada como inapropiada por varios usuarios.
       login_to_comment: Necesitas %{signin} o %{signup} para comentar.
+      meeting_supports: "%{counter} apoyos presenciales"
+      meetings_title: Encuentros presenciales relacionados
       share: Compartir
     update:
       form:
