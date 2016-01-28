@@ -45,17 +45,19 @@ class AutocompleteInputAddress extends React.Component {
 
   onInputBlur(search) {
     this.inputEventTimeoutId = setTimeout(() => {
-      this.service.textSearch({ 
-        query: search,
-        componentRestrictions: { 
-          country: 'es' 
-        }
-      }, (results, status) => {
-        if (status == google.maps.places.PlacesServiceStatus.OK && results.length > 0) {
-          this.refs.addressInput.value = results[0].formatted_address;
-          this.onPlaceChanged(results[0].geometry.location);
-        }
-      });
+      if (search.length > 0) {
+        this.service.textSearch({ 
+          query: search,
+          componentRestrictions: { 
+            country: 'es' 
+          }
+        }, (results, status) => {
+          if (status == google.maps.places.PlacesServiceStatus.OK && results.length > 0) {
+            this.refs.addressInput.value = results[0].formatted_address;
+            this.onPlaceChanged(results[0].geometry.location);
+          }
+        });
+      }
     }, 200);
   }
 
