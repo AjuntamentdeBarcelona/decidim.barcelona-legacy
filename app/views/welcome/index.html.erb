@@ -4,20 +4,13 @@
       <div class="small-12 large-12 columns">
         <h1 class="title-expanded">
           <%= link_to root_path do %>
-            <span class="pam">PAM</span>
-            <span class="pla-barcelona">PlaBarcelona</span>
+            <span class="pla-barcelona">Pla Municipal</span>
             <span class="decidim-barcelona">
-              <span>decidim</span>
-              <span>.</span>
-              <span>barcelona</span>
+              <%= Setting["org_name"] %>
             </span>
           <% end %>
         </h1>
         <div class="header-motto">
-          <span class="header-text">
-            <%= t('welcome.header-motto.text').html_safe %>
-          </span>
-
           <%= link_to proposals_path, class: 'header-link' do %>
             <%= t 'welcome.header-motto.link' %>
             <%= bcn_icon('dit_assenyala_vermell') %>

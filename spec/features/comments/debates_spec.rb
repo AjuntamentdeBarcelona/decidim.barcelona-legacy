@@ -317,7 +317,6 @@ feature 'Commenting debates' do
       within "#comments" do
         expect(page).to have_content "I am moderating!"
         expect(page).to have_content "Moderator ##{moderator.id}"
-        expect(page).to have_css "div.is-moderator"
         expect(page).to have_css "img.moderator-avatar"
       end
     end
@@ -342,7 +341,6 @@ feature 'Commenting debates' do
       within "#comment_#{comment.id}" do
         expect(page).to have_content "I am moderating!"
         expect(page).to have_content "Moderator ##{moderator.id}"
-        expect(page).to have_css "div.is-moderator"
         expect(page).to have_css "img.moderator-avatar"
       end
 
@@ -373,7 +371,6 @@ feature 'Commenting debates' do
       within "#comments" do
         expect(page).to have_content "I am your Admin!"
         expect(page).to have_content "Administrator ##{admin.id}"
-        expect(page).to have_css "div.is-admin"
         expect(page).to have_css "img.admin-avatar"
       end
     end
@@ -398,7 +395,6 @@ feature 'Commenting debates' do
       within "#comment_#{comment.id}" do
         expect(page).to have_content "Top of the world!"
         expect(page).to have_content "Administrator ##{admin.id}"
-        expect(page).to have_css "div.is-admin"
         expect(page).to have_css "img.admin-avatar"
       end
 

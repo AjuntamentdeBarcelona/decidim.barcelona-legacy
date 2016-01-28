@@ -1,7 +1,5 @@
 <div class="application-title-wrapper">
   <h1 id="application-title">
-    <%= link_to root_url do %>
-      <span>decidim</span><span>.</span><span>barcelona</span>
-    <% end %>
+    <%= link_to root_url do %><%= Setting["org_name"] %><% end %>
   </h1>
 </div>

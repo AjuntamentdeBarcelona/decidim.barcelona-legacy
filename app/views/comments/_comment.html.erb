@@ -79,9 +79,7 @@
             &nbsp;&bull;&nbsp;<time><%= l comment.created_at.to_datetime, format: :datetime %></time>
           </div>
 
-          <div class="comment-user
-                    <%= user_level_class comment %>
-                    <%= comment_author_class comment, comment.commentable.author_id %>">
+          <div class="comment-user">
             <%= simple_format text_with_links comment.body %>
           </div>
 
