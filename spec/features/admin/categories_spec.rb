@@ -57,7 +57,7 @@ feature 'Admin categories' do
 
     visit admin_categories_path
 
-    click_link "View action lines"
+    click_link "View strategic lines"
 
     click_link "Create action line"
 
@@ -81,7 +81,7 @@ feature 'Admin categories' do
 
     visit admin_categories_path
 
-    click_link "View action lines"
+    click_link "View strategic lines"
     click_link "Edit"
 
     fill_in "name_en", with: "My edited action line"
@@ -98,7 +98,7 @@ feature 'Admin categories' do
 
     visit admin_categories_path
 
-    click_link "View action lines"
+    click_link "View strategic lines"
     click_link "Delete"
 
     expect(page).to have_content "Subcategory deleted successfully."

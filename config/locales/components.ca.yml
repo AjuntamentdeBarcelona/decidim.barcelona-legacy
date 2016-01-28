@@ -5,7 +5,7 @@ ca:
       category:
         label: Eix
       subcategory:
-        label: Línia d'acció
+        label: Línia estratègica
     filter_option:
       citizenship: Ciutadania
       city: Tota la ciutat
@@ -17,7 +17,7 @@ ca:
       district: Districte
       scope: "Àmbit"
       source: Origen
-      subcategory_id: Línia d'acció
+      subcategory_id: Línia estratègica
     meeting_proposals_autocomplete_input:
       loading: Carregant...
       no_results: No s'han trobat resultats.
