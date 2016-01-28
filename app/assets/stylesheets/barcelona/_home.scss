@@ -56,6 +56,19 @@
       font-size: rem-calc(22);
       line-height: 1.1em;
     }
+
+    .header-link{
+      .bcn-icon{
+        transition: all 0.3s;
+      }
+
+      &:hover{
+        .bcn-icon{
+          transition: all 0.3s;
+          @include transform(translateX(rem-calc(5px)));
+        }
+      }
+    }
   }
 }
 
