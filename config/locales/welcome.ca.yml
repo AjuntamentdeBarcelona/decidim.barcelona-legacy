@@ -4,3 +4,15 @@ ca:
     header-motto:
       link: Entra i participa
       text: Participa en la construcció col·lectiva del nostre <strong>Pla d'Acció Municipal</strong> dels propers 4 anys i construïm junts la ciutat que volem.
+
+    tutorial:
+      title: Com puc participar?
+      subtitle: Descobreix, debat, proposa les actuacions per a la ciutat de Barcelona pels propers 4 any
+      step-1:
+        description: Navega, comenta i dona suport a les propostes de l'Ajuntament de Barcelona
+      step-2:
+        description: Llegeix, comenta i dona suport a les propostes ciutadanes
+      step-3:
+        description: Fes les teves propostes d'actuació
+      step-4:
+        description: Descobreix els debats presencials que tens a prop
