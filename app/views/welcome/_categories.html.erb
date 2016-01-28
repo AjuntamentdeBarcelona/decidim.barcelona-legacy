@@ -1,0 +1,15 @@
+<div class="section-categories home-section">
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="home-title">
+        <h3><%= t 'welcome.categories.title' %></h3>
+        <h4><%= t 'welcome.categories.subtitle' %></h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="meetings-map">
+    <div class="map-overlay-shadow"></div>
+    <%= meetings_map(Meeting.upcoming) %>
+  </div>
+</div>
