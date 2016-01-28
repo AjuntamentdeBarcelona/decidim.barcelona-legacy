@@ -2,7 +2,7 @@
 
 App.HomeAnimations = {
   initialize: function(){
-    if(!$(".home")[0]){ return; }
+    if(!$(".home-section")[0]){ return; }
 
     this.sr = ScrollReveal();
     this.animateTutorial();
@@ -52,17 +52,17 @@ App.HomeAnimations = {
   animateDownload: function(){
     var sr = this.sr;
 
-    sr.reveal(".home .download-buttons a:first-child", {
+    sr.reveal(".home-section .download-buttons a:first-child", {
       delay: 100,
       origin: 'left'
     });
 
-    sr.reveal(".home .download-buttons a:last-child", {
+    sr.reveal(".home-section .download-buttons a:last-child", {
       delay: 300,
       origin: 'right'
     });
 
-    sr.reveal(".home .download-buttons a:last-child", {
+    sr.reveal(".home-section .download-buttons a:last-child", {
       delay: 300,
       origin: 'right'
     });
@@ -71,9 +71,13 @@ App.HomeAnimations = {
   animateCategories: function(){
     var sr = this.sr;
 
-    for(var i=0; i <=5 ; i++){
-      var selector = ".home .categories .category_" + i;
-      sr.reveal(selector, {delay: 100 * i, origin: 'top'});
+    var categories = $(".home-section .categories > *");
+
+    if(categories.length > 0){
+      for(var i=1; i <=categories.length ; i++){
+        var selector = ".home-section .categories .category_" + i;
+        sr.reveal(selector, {delay: 100 * i, origin: 'top'});
+      }
     }
   }
 };
