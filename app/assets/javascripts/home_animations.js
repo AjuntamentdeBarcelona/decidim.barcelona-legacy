@@ -1,10 +1,17 @@
 //= require scrollreveal
 
-App.HomeTutorial = {
+App.HomeAnimations = {
   initialize: function(){
-    if(!$(".home-tutorial")[0]){ return; }
+    if(!$(".home")[0]){ return; }
 
-    var sr = ScrollReveal();
+    this.sr = ScrollReveal();
+    this.animateTutorial();
+    this.animateDownload();
+    this.animateCategories();
+  },
+
+  animateTutorial: function(){
+    var sr = this.sr;
 
     sr.reveal(".home-tutorial .tutorial-step-left .number", {
       delay: 200,
@@ -40,16 +47,33 @@ App.HomeTutorial = {
       delay: 500,
       origin: 'top'
     });
+  },
 
+  animateDownload: function(){
+    var sr = this.sr;
 
-    sr.reveal(".download-buttons a:first-child", {
+    sr.reveal(".home .download-buttons a:first-child", {
       delay: 100,
       origin: 'left'
     });
 
-    sr.reveal(".download-buttons a:last-child", {
+    sr.reveal(".home .download-buttons a:last-child", {
       delay: 300,
       origin: 'right'
     });
+
+    sr.reveal(".home .download-buttons a:last-child", {
+      delay: 300,
+      origin: 'right'
+    });
+  },
+
+  animateCategories: function(){
+    var sr = this.sr;
+
+    for(var i=0; i <=5 ; i++){
+      var selector = ".home .categories .category_" + i;
+      sr.reveal(selector, {delay: 100 * i, origin: 'top'});
+    }
   }
 };
