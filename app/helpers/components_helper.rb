@@ -1,4 +1,13 @@
 module ComponentsHelper
+  def static_map(options={})
+    react_component(
+      'StaticMap',
+      latitude: options[:latitude],
+      longitude: options[:longitude],
+      zoom: options[:zoom]
+    )
+  end
+
   def serialized_categories
     CategoryDecorator.decorate_collection(Category.all).map do |category|
       {

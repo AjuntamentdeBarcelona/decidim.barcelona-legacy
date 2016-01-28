@@ -18,11 +18,11 @@
         <%= @meeting.held_at.strftime("%A") %>
       </div>
 
-      <div>Map</div>
-
       <div class="description">
         <%= text_with_links @meeting.description %>
       </div>
+
+      <%= static_map latitude: @meeting.address_latitude, longitude: @meeting.address_longitude, zoom: 16 %>
 
       <%= render 'shared/tags', taggable: @meeting %>
     </div>
