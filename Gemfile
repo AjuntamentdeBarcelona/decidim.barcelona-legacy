@@ -76,6 +76,7 @@ gem "faker"
 
 gem 'rails-i18n'
 gem 'active_model_serializers'
+gem 'friendly_id', '~> 5.1.0'
 
 # React gems
 gem 'react-rails'

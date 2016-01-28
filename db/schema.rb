@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160125092947) do
+ActiveRecord::Schema.define(version: 20160128150007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -164,6 +164,19 @@ ActiveRecord::Schema.define(version: 20160125092947) do
   add_index "flags", ["user_id", "flaggable_type", "flaggable_id"], name: "access_inappropiate_flags", using: :btree
   add_index "flags", ["user_id"], name: "index_flags_on_user_id", using: :btree
 
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
   create_table "geozones", force: :cascade do |t|
     t.string   "name"
     t.string   "html_map_coordinates"
@@ -219,8 +232,10 @@ ActiveRecord::Schema.define(version: 20160125092947) do
     t.integer  "subcategory_id"
     t.string   "scope",             default: "district"
     t.integer  "district"
+    t.string   "slug"
   end
 
+  add_index "meetings", ["slug"], name: "index_meetings_on_slug", unique: true, using: :btree
   add_index "meetings", ["tsv"], name: "index_meetings_on_tsv", using: :gin
 
   create_table "meetings_proposals", force: :cascade do |t|
@@ -281,6 +296,7 @@ ActiveRecord::Schema.define(version: 20160125092947) do
     t.string   "scope",                        default: "district"
     t.integer  "district"
     t.boolean  "official",                     default: false
+    t.string   "slug"
   end
 
   add_index "proposals", ["author_id", "hidden_at"], name: "index_proposals_on_author_id_and_hidden_at", using: :btree
@@ -290,6 +306,7 @@ ActiveRecord::Schema.define(version: 20160125092947) do
   add_index "proposals", ["hidden_at"], name: "index_proposals_on_hidden_at", using: :btree
   add_index "proposals", ["hot_score"], name: "index_proposals_on_hot_score", using: :btree
   add_index "proposals", ["question"], name: "index_proposals_on_question", using: :btree
+  add_index "proposals", ["slug"], name: "index_proposals_on_slug", unique: true, using: :btree
   add_index "proposals", ["summary"], name: "index_proposals_on_summary", using: :btree
   add_index "proposals", ["title"], name: "index_proposals_on_title", using: :btree
   add_index "proposals", ["tsv"], name: "index_proposals_on_tsv", using: :gin

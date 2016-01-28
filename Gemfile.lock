@@ -191,6 +191,8 @@ GEM
       activesupport (~> 4.1)
       railties (~> 4.1)
       tzinfo (~> 1.2, >= 1.2.2)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     fuubar (2.0.0)
       rspec (~> 3.0)
       ruby-progressbar (~> 1.4)
@@ -554,6 +556,7 @@ DEPENDENCIES
   foreman
   foundation-rails
   foundation_rails_helper
+  friendly_id (~> 5.1.0)
   fuubar
   groupdate
   heroku-deflater
