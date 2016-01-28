@@ -116,4 +116,9 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def default_url_options(options={})
+      if !Rails.application.secrets.server_name.blank?
+        { host: Rails.application.secrets.server_name }
+      end
+    end
 end
