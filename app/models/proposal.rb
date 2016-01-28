@@ -2,6 +2,7 @@ class Proposal < ActiveRecord::Base
 
   DISTRICTS = YAML::load_file("#{Rails.root}/config/districts.yml")["districts"].to_a.map(&:reverse).map {|a,b| [a.to_s, b.to_s]}.sort
 
+  extend FriendlyId
   include Flaggable
   include Taggable
   include Conflictable
@@ -67,6 +68,8 @@ class Proposal < ActiveRecord::Base
     ranked_by: '(:tsearch)',
     order_within_rank: "proposals.cached_votes_up DESC"
   }
+
+  friendly_id :title, use: :slugged
 
   def searchable_values
     values = {
