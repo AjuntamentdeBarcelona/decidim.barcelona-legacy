@@ -330,6 +330,7 @@ GEM
       rack (~> 1.0)
     rack-protection (1.5.3)
       rack
+    rack-robots (0.1.2)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.5)
@@ -592,6 +593,7 @@ DEPENDENCIES
   rack-attack
   rack-cache
   rack-canonical-host
+  rack-robots
   rails (= 4.2.5)
   rails-i18n
   rails_12factor
