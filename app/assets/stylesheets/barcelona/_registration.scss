@@ -1,0 +1,10 @@
+.auth-page{
+  background: image-url("auth_bg.jpg");
+  background-size: cover;
+  background-color: none;
+  background-position: center;
+  background-attachment: fixed;
+  & > .wrapper{
+    background-color: transparentize(black, 0.8);
+  }
+}
