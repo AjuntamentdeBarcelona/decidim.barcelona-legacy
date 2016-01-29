@@ -20,6 +20,7 @@
 //= require parallax
 //= require react
 //= require react_ujs
+//= require moment
 //= require services
 //= require components
 //= require ckeditor/init

@@ -19,7 +19,11 @@ class Verification::Residence
   validate :residency
 
   def initialize(attrs={})
-    self.date_of_birth = parse_date('date_of_birth', attrs)
+    begin
+      self.date_of_birth = parse_date('date_of_birth', attrs)
+    rescue
+      errors.add(:date_of_birth, "mal format")
+    end
     attrs = remove_date('date_of_birth', attrs)
     super
     clean_document_number
@@ -67,7 +71,7 @@ class Verification::Residence
   end
 
   def adult?
-    18.years.ago > date_of_birth
+    18.years.ago > date_of_birth if date_of_birth
   end
 
   private
