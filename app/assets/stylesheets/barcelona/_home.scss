@@ -339,10 +339,10 @@
     padding: rem-calc(30) rem-calc(50);
     text-align: center;
     p{
-      font-size: rem-calc(18);
-      font-weight: normal;
+      font-size: rem-calc(20);
+      font-weight: 200;
       &:last-child{
-        margin-bottom: none;
+        margin-bottom: 0;
       }
     }
     margin: 0 auto;
