@@ -67,7 +67,7 @@ class Verification::Residence
   end
 
   def adult?
-    (Date.today.year - self.date_of_birth.year) > 18
+    18.years.ago > date_of_birth
   end
 
   private
