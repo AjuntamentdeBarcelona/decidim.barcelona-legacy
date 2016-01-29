@@ -2,13 +2,14 @@ class Verification::Residence
   include ActiveModel::Model
   include ActiveModel::Dates
 
-  attr_accessor :user, :document_number, :document_type, :date_of_birth, :postal_code, :terms_of_service
+  attr_accessor :user, :document_number, :document_type, :date_of_birth, :postal_code, :terms_of_service, :adult_verification
 
   validates_presence_of :document_number
   validates_presence_of :document_type
   validates_presence_of :date_of_birth
   validates_presence_of :postal_code
   validates :terms_of_service, acceptance: { allow_nil: false }
+  validates :adult_verification, acceptance: { allow_nil: false }, unless: :adult?
 
   validates :postal_code, length: { is: 5 }
 
@@ -63,6 +64,10 @@ class Verification::Residence
       date_of_birth:   date_of_birth,
       postal_code:     postal_code
     })
+  end
+
+  def adult?
+    (Date.today.year - self.date_of_birth.year) > 18
   end
 
   private

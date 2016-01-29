@@ -48,6 +48,15 @@
         <%= f.text_field :postal_code, label: false %>
       </div>
 
+      <div class="small-12 adult-verification">
+        <%= f.label :adult_verification do %>
+          <%= f.check_box :adult_verification, label: false %>
+          <span class="checkbox">
+            <%= t("verification.residence.new.adult_verification_text") %>
+          </span>
+        <% end %>
+      </div>
+
       <div class="small-12">
         <%= f.label :terms_of_service do %>
           <%= f.check_box :terms_of_service, label: false %>
