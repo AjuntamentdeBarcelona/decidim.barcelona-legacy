@@ -51,6 +51,7 @@ en:
           success: Residence verified
       new:
         accept_terms_text: I accept %{terms_url} of the Census
+        adult_verification_text: The adults in charge of children under 18, are the full responsibility of the uses they make of the platform Decidim Barcelona
         date_of_birth: Date of birth
         document_number: Document number
         document_type:

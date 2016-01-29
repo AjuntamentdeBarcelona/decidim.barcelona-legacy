@@ -31,6 +31,10 @@
 
       <%= f.simple_captcha input_html: {required: false} %>
 
+      <%= f.label :email_newsletter_subscribed do %>
+        <%= f.check_box :newsletter, checked: true, label: false %>
+        <span class="checkbox"><%= t("account.show.subscription_to_website_newsletter_label") %></span>
+      <% end %>
 
       <%= f.label :terms_of_service do %>
         <%= f.check_box :terms_of_service, label: false %>

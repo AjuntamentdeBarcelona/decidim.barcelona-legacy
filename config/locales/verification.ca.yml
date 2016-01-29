@@ -51,6 +51,7 @@ ca:
           success: Residència verificada
       new:
         accept_terms_text: Estic d'acord amb %{terms_url} al Padró
+        adult_verification_text: Els majors d'edat a càrrec dels menors de 18 anys, són els plens responsables dels usos que aquests facin de la plataforma Decidim Barcelona
         date_of_birth: Data de naixement
         document_number: Número de document
         document_type:

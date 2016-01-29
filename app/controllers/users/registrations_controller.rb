@@ -48,7 +48,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     def sign_up_params
       params.require(:user).permit(:username, :email, :password,
-                                   :password_confirmation, :captcha,
+                                   :password_confirmation, :captcha, :newsletter,
                                    :captcha_key, :terms_of_service, :locale)
     end
 
