@@ -18,8 +18,7 @@ ca:
       confirmation_instructions:
         confirm_link: Confirma el meu compte
         text: 'Pots confirmar el teu compte de correu electrònic a l''enllaç següent:'
-        title: Et donem la benvinguda al Portal de Govern Obert de l'Ajuntament de
-          Barcelona
+        title: Et donem la benvinguda a decidim.barcelona
         welcome: Benvingut/uda
       reset_password_instructions:
         change_link: Canvia la contrasenya
