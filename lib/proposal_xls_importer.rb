@@ -52,6 +52,7 @@ class ProposalXLSImporter
 
     def to_attributes
       {
+        scope: @data[:scope],
         district: @data[:district_id],
         title: @data[:title],
         summary: @data[:summary],
@@ -64,8 +65,13 @@ class ProposalXLSImporter
     private
 
     def parse_district_name
-      district = Proposal::DISTRICTS.detect { |district| district[0] == @data[:district_name] }
-      @data[:district_id] = district[1]
+      if @data[:district_name] == "Barcelona"
+        @data[:scope] = "city"
+      else
+        district = Proposal::DISTRICTS.detect { |district| district[0] == @data[:district_name] }
+        @data[:scope] = "district"
+        @data[:district_id] = district[1]
+      end
     end
 
     def parse_category_name
