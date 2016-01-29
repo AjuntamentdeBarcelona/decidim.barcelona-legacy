@@ -4,7 +4,13 @@
     <tbody>
       <tr>
         <td class="header">
-          <%= render 'layouts/title' %>
+          <div class="application-title-wrapper">
+            <h1 class="application-title">
+              <%= link_to root_url do %>
+                <%= image_tag 'decidim-logo.png' %>
+              <% end %>
+            </h1>
+          </div>
         </td>
       </tr>
       <tr>

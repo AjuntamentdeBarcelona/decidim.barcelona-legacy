@@ -4,10 +4,7 @@
 
 @import "bourbon";
 @import "foundation_and_overrides";
-@import "foundation/components/buttons";
 @import "variables";
-@import "barcelona/application_title";
-@import "barcelona/mixins";
 
 #email-layout{
   font-size: $base-font-size;
@@ -71,9 +68,19 @@
     text-align: center;
     padding-top: $line-height;
     a{
-      @include button();
       border-radius: 5px;
       color: $text-inverse !important;
+      background-color: $brand;
+      text-decoration: none;
+      padding: rem-calc(10) rem-calc(30);
+    }
+  }
+
+  .application-title{
+    text-align: center;
+    a img{
+      width: 225px;
+      height: 37px;
     }
   }
 }

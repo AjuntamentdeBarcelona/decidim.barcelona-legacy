@@ -111,8 +111,8 @@
   }
 
   .not-logged {
-    background: rgba(22,99,135,.9);
-    color: white;
+    background: transparentize($brand, 0.1);
+    color: $text-inverse;
     font-size: $small-font-size;
     height: 100%;
     left: 0;
@@ -129,8 +129,8 @@
   }
 
   .anonymous-votes, .organizations-votes {
-    background: $warning-bg;
-    color: $warning-color;
+    background: transparentize($brand, 0.1);
+    color: $text-inverse;
     height: 100%;
     left: 0;
     line-height: $line-height;
@@ -216,8 +216,9 @@
   }
 
   .anonymous-votes, .organizations-votes {
-    background: $warning-bg;
-    color: $warning-color;
+    background: transparentize($brand, 0.1);
+    color: $text-inverse;
+
     height: 100%;
     left: 0;
     line-height: $line-height;
@@ -228,13 +229,12 @@
     width: 100%;
 
     p {
-      color: $warning-color;
       margin: 0 rem-calc(12);
       text-align: left;
     }
 
     a {
-      color: $warning-color;
+      color: $text-inverse;
       font-weight: bold;
       text-decoration: underline;
     }
@@ -832,10 +832,11 @@
     }
 
     .anonymous-votes {
-      background: $featured;
+      background: transparentize($brand, 0.1);
+      color: $text-inverse;
 
       p {
-        color: $text;
+
         font-size: $small-font-size;
         line-height: $line-height;
       }
