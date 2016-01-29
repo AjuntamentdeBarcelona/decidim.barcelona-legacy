@@ -4,6 +4,6 @@ class PagesController < ApplicationController
   def show
     render action: params[:id]
   rescue ActionView::MissingTemplate
-    head 404
+    raise ActionController::RoutingError.new('Not Found')
   end
 end

@@ -33,8 +33,9 @@ describe PagesController do
 
   describe 'Not found pages' do
     it 'should return a 404 message' do
-      get :show, id: "nonExistentPage"
-      expect(response).to be_missing
+      expect{
+        get :show, id: "nonExistentPage"
+      }.to raise_error(ActionController::RoutingError)
     end
   end
 

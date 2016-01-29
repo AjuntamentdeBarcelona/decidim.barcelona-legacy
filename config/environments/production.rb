@@ -29,6 +29,7 @@ Rails.application.configure do
   #  config.middleware.use Rack::CanonicalHost, Rails.application.secrets.server_name
   # end
 
+  config.middleware.use Rack::Robots
   config.middleware.use Rack::Attack
 
   # Compress JavaScripts and CSS.

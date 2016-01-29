@@ -196,6 +196,8 @@ GEM
     fuubar (2.0.0)
       rspec (~> 3.0)
       ruby-progressbar (~> 1.4)
+    gaffe (1.0.2)
+      rails (>= 3.2.0)
     geocoder (1.2.14)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -330,6 +332,7 @@ GEM
       rack (~> 1.0)
     rack-protection (1.5.3)
       rack
+    rack-robots (0.1.2)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.5)
@@ -560,6 +563,7 @@ DEPENDENCIES
   foundation_rails_helper
   friendly_id (~> 5.1.0)
   fuubar
+  gaffe
   groupdate
   heroku-deflater
   html_truncator
@@ -592,6 +596,7 @@ DEPENDENCIES
   rack-attack
   rack-cache
   rack-canonical-host
+  rack-robots
   rails (= 4.2.5)
   rails-i18n
   rails_12factor

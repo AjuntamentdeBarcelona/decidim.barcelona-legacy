@@ -33,6 +33,11 @@
       "description": "Force SSL?",
       "required": false,
       "value": "true"
+    },
+    "DISABLE_ROBOTS": {
+      "description": "Disable robots",
+      "required": false,
+      "value": "true"
     }
   },
   "addons": [

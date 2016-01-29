@@ -1,0 +1,11 @@
+---
+es:
+  errors:
+    internal_server_error:
+      description: Nuestros técnicos ya han sido informados. Por favor, reintenta hacerlo pasado unos minutos.
+      title: Parece que ha habido un pequeño problema!
+    links:
+      proposals: Entra y participa
+    not_found:
+      description: Esta dirección es incorrecta o ha sido eliminada.
+      title: No se ha encontrado la página que buscas!
