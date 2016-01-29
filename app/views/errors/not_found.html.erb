@@ -1,0 +1,15 @@
+<div class="page row-full error">
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="error-message <%= @rescue_response %>">
+        <h2><%= t 'errors.not_found.title' %></h2>
+        <p class="error-description">
+          <%= t 'errors.not_found.description' %>
+        </p>
+      </div>
+
+      <%= render 'error_links' %>
+    </div>
+  </div>
+</div>
+

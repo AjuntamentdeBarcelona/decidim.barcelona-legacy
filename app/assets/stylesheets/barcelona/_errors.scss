@@ -1,0 +1,26 @@
+.page.error{
+  padding-top: rem-calc(50);
+
+  .error-message{
+    text-align: center;
+    max-width: rem-calc(800);
+    margin: 0 auto;
+    background-color: $highlight;
+    padding: rem-calc(50);
+    p{
+      font-size: rem-calc(26);
+      line-height: rem-calc(26) * 1.2;
+      color: #999;
+    }
+  }
+
+  .error-links{
+    margin-top: rem-calc(30);
+    text-align: center;
+
+    a{
+      @include arrow-box($brand);
+      display: inline-block;
+    }
+  }
+}

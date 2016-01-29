@@ -1,0 +1,11 @@
+---
+en:
+  errors:
+    internal_server_error:
+      description: Our technicians have already been informed. Please retry after a few minutes.
+      title: It seems that there has been a small problem!
+    links:
+      proposals: Log in and take part
+    not_found:
+      description: This address is incorrect or is eliminated.
+      title: Could not find the page you are looking for!
