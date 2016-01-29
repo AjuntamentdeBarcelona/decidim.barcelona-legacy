@@ -29,7 +29,9 @@
         <% end %>
 
         <div class="proposal-info">
-          <%= render '/shared/author_info', resource: @proposal %>
+          <% unless proposal.official? %>
+            <%= render '/shared/author_info', resource: @proposal %>
+          <% end %>
 
           <span class="bullet">&nbsp;&bull;&nbsp;</span>
           <%= l @proposal.created_at.to_date %>
