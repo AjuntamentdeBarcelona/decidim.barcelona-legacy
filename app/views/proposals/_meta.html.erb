@@ -1,0 +1,11 @@
+<div class="meta">
+  <% if proposal.scope == "city" %>
+    <%= I18n.t("components.filter_option.city") %>
+  <% else %>
+    <%= proposal.decorate.district_name %>
+  <% end %>
+  <span class="bullet">&nbsp;&bull;&nbsp;</span>
+  <%= proposal.category.decorate.name %>
+  <span class="bullet">&nbsp;&bull;&nbsp;</span>
+  <%= proposal.subcategory.decorate.name %>
+</div>
