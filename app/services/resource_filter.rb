@@ -1,5 +1,5 @@
 class ResourceFilter
-  IGNORE_FILTER_PARAMS = ["source"]
+  IGNORE_FILTER_PARAMS = ["source", "other"]
   attr_reader :collection, :tag_cloud, :search_filter, :tag_filter, :params
 
   def initialize(resources, params={})
@@ -62,7 +62,7 @@ class ResourceFilter
         end
       end
 
-      if @params["source"] && @params["source"].include?("meetings")
+      if @params["other"] && @params["other"].include?("meetings")
         proposal_in_meetings_ids = MeetingProposal.pluck(:proposal_id).uniq
         @collection = @collection.where(id: proposal_in_meetings_ids)
       end

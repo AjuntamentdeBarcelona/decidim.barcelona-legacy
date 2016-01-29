@@ -15,6 +15,7 @@ en:
     filter_option_group:
       category_id: Axis
       district: District
+      other: Other
       scope: Scope
       source: Source
       subcategory_id: Strategic Line
