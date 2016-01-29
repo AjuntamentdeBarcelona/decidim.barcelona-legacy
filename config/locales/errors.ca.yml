@@ -1,10 +1,11 @@
+---
 ca:
   errors:
     internal_server_error:
+      description: Els nostres tècnics ja han estat informats. Si us plau, reintenta-ho passat uns minuts.
       title: Sembla que hi ha hagut un petit problema!
-      description: "Els nostres tècnics ja han estat informats. Si us plau, reintenta-ho passat uns minuts."
-    not_found:
-      title: No s'ha trobat la pàgina que busques!
-      description: "Aquesta adreça és incorrecta o ha esta eliminada."
     links:
-      proposals: "Entra i participa"
+      proposals: Entra i participa
+    not_found:
+      description: Aquesta adreça és incorrecta o ha esta eliminada.
+      title: No s'ha trobat la pàgina que busques!

@@ -15,6 +15,7 @@ es:
     filter_option_group:
       category_id: Eje
       district: Distrito
+      other: Otros
       scope: "Ámbito"
       source: Origen
       subcategory_id: Línea estratégica

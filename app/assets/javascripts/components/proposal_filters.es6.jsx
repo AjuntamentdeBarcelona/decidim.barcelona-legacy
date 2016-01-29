@@ -27,7 +27,6 @@ class ProposalFilters extends React.Component {
           onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.filterService.changeFilterGroup(filterGroupName, filterGroupValue) }>
           <FilterOption filterName="official" />
           <FilterOption filterName="citizenship" />
-          <FilterOption filterName="meetings" />
         </FilterOptionGroup>
         <ScopeFilterOptionGroup 
           filterGroupValue={this.state.filters.get('scope')} 
@@ -46,6 +45,13 @@ class ProposalFilters extends React.Component {
           subcategories={this.props.subcategories}
           filterGroupValue={this.state.filters.get('subcategory_id')}
           onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.filterService.changeFilterGroup(filterGroupName, filterGroupValue) } />
+        <FilterOptionGroup 
+          filterGroupName="other" 
+          filterGroupValue={this.state.filters.get('other')}
+          isExclusive={true}
+          onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.filterService.changeFilterGroup(filterGroupName, filterGroupValue) }>
+          <FilterOption filterName="meetings" />
+        </FilterOptionGroup>
         <TagCloudFilter 
           currentTags={this.state.tags} 
           tagCloud={this.props.filter.tag_cloud} 

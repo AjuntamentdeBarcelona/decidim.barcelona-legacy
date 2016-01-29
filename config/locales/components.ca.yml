@@ -15,6 +15,7 @@ ca:
     filter_option_group:
       category_id: Eix
       district: Districte
+      other: Altres
       scope: "Àmbit"
       source: Origen
       subcategory_id: Línia estratègica
