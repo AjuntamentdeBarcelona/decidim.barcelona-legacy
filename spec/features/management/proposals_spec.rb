@@ -46,7 +46,7 @@ feature 'Proposals' do
       expect(page).to have_content user.name
       expect(page).to have_content I18n.l(Proposal.last.created_at.to_date)
 
-      expect(current_path).to eq(management_proposal_path(Proposal.last))
+      expect(current_path).to eq(management_proposal_path(Proposal.last.id))
     end
 
     scenario "Should not allow unverified users to create proposals" do

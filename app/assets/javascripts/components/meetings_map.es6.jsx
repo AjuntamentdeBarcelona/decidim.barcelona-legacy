@@ -66,7 +66,7 @@ class MeetingsMap extends React.Component {
         marker.addListener('click', () => {
           let infoWindow = new google.maps.InfoWindow({
               content: `<div class="meeting-infowindow">
-                          <a href="/meetings/${meeting.id}" class="meeting-title">${meeting.title}</a>
+                          <a href="/meetings/${meeting.slug}" class="meeting-title">${meeting.title}</a>
                           <p class="tags"><span class="radius secondary label">${meeting.held_at}</span></p>
                           <div>${ meeting.description }</div>
                         </div>`

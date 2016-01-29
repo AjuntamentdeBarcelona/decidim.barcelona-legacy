@@ -18,8 +18,8 @@ class MeetingsList extends React.Component {
           {
             meetings.map((meeting) => {
               return (
-                <li className="meeting" key={ `meeting_${meeting.id}` } >
-                  <a href={`/meetings/${meeting.id}`} className="meeting-title" >
+                <li className="meeting" key={ `meeting_${meeting.slug}` } >
+                  <a href={`/meetings/${meeting.slug}`} className="meeting-title" >
                     { meeting.title }
                   </a>
                   <div className="tags">

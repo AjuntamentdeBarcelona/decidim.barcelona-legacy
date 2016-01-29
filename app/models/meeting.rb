@@ -1,4 +1,5 @@
 class Meeting < ActiveRecord::Base
+  extend FriendlyId
   include PgSearch
   include SearchCache
   include Categorizable
@@ -38,6 +39,8 @@ class Meeting < ActiveRecord::Base
     ignoring: :accents,
     ranked_by: '(:tsearch)'
   }
+
+  friendly_id :title, use: [:slugged, :finders]
 
   def searchable_values
     values = {
