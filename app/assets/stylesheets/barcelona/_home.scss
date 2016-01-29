@@ -93,7 +93,6 @@
       margin-bottom: rem-calc(40);
     }
 
-    margin-top: $line-height * 3;
     margin-bottom: $line-height * 3;
 
     .tutorial-step{
@@ -332,5 +331,20 @@
         }
       }
     }
+  }
+
+  .home-description{
+    max-width: rem-calc(1000);
+    background-color: $highlight;
+    padding: rem-calc(30) rem-calc(50);
+    text-align: center;
+    p{
+      font-size: rem-calc(18);
+      font-weight: normal;
+      &:last-child{
+        margin-bottom: none;
+      }
+    }
+    margin: 0 auto;
   }
 }
