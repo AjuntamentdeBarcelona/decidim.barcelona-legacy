@@ -69,10 +69,10 @@ class ProposalXLSImporter
     end
 
     def parse_category_name
-      match_data = @data[:category_name].match(/(?:(\d).?)+ (.*)/)
+      match_data = @data[:category_name].match(/(?:(\d+)\.){1} ?(.*)/)
       position =  match_data[1]
       name =  match_data[2]
-      category = Category.where('name like ?', "%#{name}%").first
+      category = Category.where(position: position).first
       if category.nil?
         category = Category.create(name: { ca: name, es: name, en: name }, description: { ca: "", es: "", en: "" }, position: position)
       end
@@ -80,13 +80,13 @@ class ProposalXLSImporter
     end
 
     def parse_subcategory_name
-      match_data = @data[:subcategory_name].match(/(?:(\d).(\d)?)+ (.*)/)
+      match_data = @data[:subcategory_name].match(/(?:(\d+).(\d+).){1} ?(.*)/)
       category_position = match_data[1]
       position =  match_data[2]
       name =  match_data[3]
-      subcategory = Subcategory.where('name like ?', "%#{name}%").first
+      category = Category.where(position: category_position).first
+      subcategory = Subcategory.where(position: position, category_id: category.id).first
       if subcategory.nil?
-        category = Category.where(position: category_position).first
         subcategory = Subcategory.create(name: { ca: name, es: name, en: name }, description: { ca: "", es: "", en: "" }, position: position, category_id: category.id)
       end
       @data[:subcategory_id] = subcategory.id
