@@ -349,10 +349,6 @@ footer {
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
 .auth-page {
-  background: $brand image-url("auth_bg.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-
   h1:not(.logo) {
     @include logo;
 
