@@ -5,7 +5,7 @@ feature 'Proposals' do
   let!(:subcategory) { create(:subcategory) }
   let(:category) { subcategory.category }
 
-  before(:all) do
+  before(:each) do
     Setting['feature.proposal_tags'] = true
   end
 
