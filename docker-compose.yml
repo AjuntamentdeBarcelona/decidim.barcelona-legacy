@@ -9,6 +9,8 @@ app:
     - REDIS_URL=redis://redis:6379
     - GEM_HOME=/bundle
     - GOOGLE_MAPS_API_KEY=${GOOGLE_MAPS_API_KEY}
+    - FACEBOOK_KEY=${FACEBOOK_KEY}
+    - FACEBOOK_SECRET=${FACEBOOK_SECRET}
   volumes:
     - .:/decidimbcn
   volumes_from:
