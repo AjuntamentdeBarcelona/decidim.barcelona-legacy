@@ -32,16 +32,30 @@ class Pagination extends React.Component {
   }
 
   renderPaginationLinks() {
-    let result = [];
+    let result = [],
+        initialPage,
+        lastPage;
+
+    initialPage = this.props.currentPage - (this.props.maxPages / 2);
+    initialPage = initialPage < 1 ? 1 : initialPage;
+
+    lastPage = this.props.currentPage + (this.props.maxPages / 2);
+    lastPage = lastPage > this.props.totalPages ? this.props.totalPages : lastPage;
 
     if (this.props.totalPages > 1) {
-      for (let i = 1; i <= this.props.totalPages; i += 1) {
+      for (let i = initialPage; i <= lastPage; i += 1) {
         result.push(
           <li className={this.props.currentPage === i ? 'current': ''} key={`page_${i}`}>
             <a onClick={(event) => this.props.onSetCurrentPage(i)}>{i}</a>
           </li>
         )
       }
+    }
+
+    if (this.props.totalPages > lastPage) {
+      result.push(
+        <li key="truncate" dangerouslySetInnerHTML={{__html: I18n.t("views.pagination.truncate")}}></li>
+      )
     }
     
     return result;
@@ -65,3 +79,7 @@ class Pagination extends React.Component {
     }
   }
 }
+
+Pagination.defaultProps = { 
+  maxPages: 10
+};

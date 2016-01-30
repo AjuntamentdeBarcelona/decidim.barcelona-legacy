@@ -16,8 +16,8 @@ ca:
           zero: No s'ha trobat %{entry_name}
   views:
     pagination:
-      first: "& laquo; Primera"
-      last: Darrera & raquo;
-      next: Següent & rsaquo;
-      previous: "& lsaquo; Anterior"
-      truncate: "& hellip;"
+      first: "&laquo; Primera"
+      last: Darrera &raquo;
+      next: Següent &rsaquo;
+      previous: "&lsaquo; Anterior"
+      truncate: "&hellip;"
