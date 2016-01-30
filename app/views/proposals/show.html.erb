@@ -63,7 +63,9 @@
         <% end %>
 
         <%= render "proposals/meta", proposal: @proposal %>
-        <%= render 'shared/tags', taggable: @proposal %>
+        <% if feature?(:proposal_tags) %>
+          <%= render 'shared/tags', taggable: @proposal %>
+        <% end %>
 
         <div class="js-moderator-proposal-actions margin">
           <%= render 'proposals/actions', proposal: @proposal %>
