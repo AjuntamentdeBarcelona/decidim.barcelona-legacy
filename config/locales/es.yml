@@ -263,7 +263,7 @@ es:
       sign_in: Entra con Facebook
       sign_up: Regístrate con Facebook
     finish_signup:
-      title: Añade tu email
+      title: Detalles adicionales de tu cuenta
     google_oauth2:
       sign_in: Entra con Google
       sign_up: Regístrate con Google

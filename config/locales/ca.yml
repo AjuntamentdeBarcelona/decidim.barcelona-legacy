@@ -199,10 +199,10 @@ ca:
       spending_proposals: Pressupostos ciutadans
   legislation:
     help:
-      alt: Selecciona el text que vols comentar i prem el botó amb el llapis.
-      text: Per comentar aquest document has de %{sign_in} o %{sign_up}. Després selecciona el text que vols comentar i prem el botó amb el llapis.
+      alt: Selecciona el text que vols comentar i fes click al botó del llapis.
+      text: Per comentar aquest document has d'anar a %{sign_in} o %{sign_up}. Després selecciona el text que vols comentar i fes click al botó del llapis.
       text_sign_in: iniciar sessió
-      text_sign_up: registrar-
+      text_sign_up: registra't
       title: Com puc comentar aquest document?
   locale: Català
   meetings:
@@ -244,7 +244,7 @@ ca:
       form:
         submit_button: Crear trobada
     show:
-      back_link: "Tornar"
+      back_link: Tornar
       proposals_title: Propostes tractades
       share: Comparteix
   notifications:
@@ -263,7 +263,7 @@ ca:
       sign_in: Entra amb Facebook
       sign_up: Registra't amb Facebook
     finish_signup:
-      title: Afegeix el teu email
+      title: Detalls adicionals del compte
     google_oauth2:
       sign_in: Entra amb Google
       sign_up: Registra't amb Google

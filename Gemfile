@@ -115,7 +115,6 @@ group :development, :test do
   gem 'i18n-tasks'
   gem "bullet"
   gem "vcr"
-  gem "webmock"
 end
 
 group :test do
@@ -123,6 +122,7 @@ group :test do
   gem 'poltergeist'
   gem 'coveralls', require: false
   gem 'email_spec'
+  gem "webmock"
 end
 
 group :development do
