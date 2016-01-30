@@ -40,4 +40,8 @@ module ApplicationHelper
   def javascript_include_google_maps_api_tag
     javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.secrets.google_maps_api_key}&libraries=places&callback=gmapsLoaded", async: 'async', defer: 'async'
   end
+
+  def sanitize_content(content)
+    sanitize(content, tags: %w(strong b em ul li p ol))
+  end
 end

@@ -44,7 +44,7 @@
           </p>
           <div class="proposal-description">
             <p>
-              <%= link_to HTML_Truncator.truncate(proposal.summary, 25).html_safe, namespaced_proposal_path(proposal) %>
+              <%= link_to strip_tags(proposal.summary), namespaced_proposal_path(proposal) %>
             </p>
             <div class="truncate"></div>
           </div>
