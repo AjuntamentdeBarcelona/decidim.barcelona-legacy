@@ -23,7 +23,6 @@ ca:
       user_permission_title: Participació
       user_permission_verify: Per poder realitzar totes les accions verifica el teu compte.
       user_permission_verify_info: "* Només usuaris empadronats al municipi de Barcelona."
-      user_permission_votes: Participar en les votacions finals *
       username_label: Nom d'usuari
       verified_account: Compte verificat
       verify_my_account: Verificar el meu compte
@@ -483,4 +482,3 @@ ca:
       user_permission_verify: Per poder realitzar totes les accions %{verify}.
       user_permission_verify_info: "* Només usuaris empadronats al municipi de Barcelona."
       user_permission_verify_url: verifica el teu compte
-      user_permission_votes: Participar en les votacions finals *
