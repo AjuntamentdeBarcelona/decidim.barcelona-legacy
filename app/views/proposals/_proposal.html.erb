@@ -49,7 +49,9 @@
             <div class="truncate"></div>
           </div>
           <%= render "proposals/meta", proposal: proposal %>
-          <%= render "shared/tags", taggable: proposal, limit: 5 %>
+          <% if feature?(:proposal_tags) %>
+            <%= render "shared/tags", taggable: proposal, limit: 5 %>
+          <% end %>
         </div>
       </div>
 

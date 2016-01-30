@@ -5,6 +5,10 @@ feature 'Proposals' do
   let!(:subcategory) { create(:subcategory) }
   let(:category) { subcategory.category }
 
+  before(:each) do
+    Setting['feature.proposal_tags'] = true
+  end
+
   scenario 'Index' do
     featured_proposals = create_featured_proposals
     proposals = [create(:proposal), create(:proposal), create(:proposal)]

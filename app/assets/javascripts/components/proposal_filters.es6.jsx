@@ -52,11 +52,20 @@ class ProposalFilters extends React.Component {
           onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.filterService.changeFilterGroup(filterGroupName, filterGroupValue) }>
           <FilterOption filterName="meetings" />
         </FilterOptionGroup>
+        {this.renderTagCloudFilter()}
+      </form>
+    )
+  }
+
+  renderTagCloudFilter() {
+    if (this.props.tagsEnabled) {
+      return (
         <TagCloudFilter 
           currentTags={this.state.tags} 
           tagCloud={this.props.filter.tag_cloud} 
           onSetFilterTags={(tags) => this.filterService.setFilterTags(tags)} />
-      </form>
-    )
+      )
+    }
+    return null;
   }
 }

@@ -6,7 +6,8 @@ module ProposalFiltersHelper
       filterUrl: proposals_url,
       districts: Proposal::DISTRICTS,
       categories: serialized_categories,
-      subcategories: serialized_subcategories
+      subcategories: serialized_subcategories,
+      tagsEnabled: feature?(:proposal_tags)
     ) 
   end
 end
