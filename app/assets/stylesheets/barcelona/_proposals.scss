@@ -115,5 +115,28 @@ a.button.new-proposal{
     padding-bottom: rem-calc(20px);
     border-bottom: 1px dashed $text-light;
     margin-bottom: rem-calc(20px);
+
+    .field{
+      position: relative;
+      padding-left: rem-calc(24);
+      margin-bottom: 0.5em;
+      label{
+        display: inline;
+        margin: 0;
+        padding: 0;
+      }
+      input{
+        position: absolute;
+        top: $base-line-height / 2 + rem-calc(2);
+        margin: 0;
+        padding: 0;
+        @include transform(translateY(-50%));
+        left: 0.2em;
+      }
+
+      a{
+        margin-left: 0.2em;
+      }
+    }
   }
 }
