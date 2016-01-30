@@ -11,6 +11,8 @@ app:
     - GOOGLE_MAPS_API_KEY=${GOOGLE_MAPS_API_KEY}
     - FACEBOOK_KEY=${FACEBOOK_KEY}
     - FACEBOOK_SECRET=${FACEBOOK_SECRET}
+    - TWITTER_KEY=${TWITTER_KEY}
+    - TWITTER_SECRET=${TWITTER_SECRET}
   volumes:
     - .:/decidimbcn
   volumes_from:
