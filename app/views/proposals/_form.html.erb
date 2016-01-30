@@ -20,11 +20,13 @@
       <%= category_picker(@proposal) %>
     </div>
 
-    <div class="small-12 column">
-      <%= f.label :video_url, t("proposals.form.proposal_video_url") %>
-      <p class="note"><%= t("proposals.form.proposal_video_url_note") %></p>
-      <%= f.text_field :video_url, placeholder: t("proposals.form.proposal_video_url"), label: false %>
-    </div>
+    <% if feature?(:proposal_video_url) %>
+      <div class="small-12 column">
+        <%= f.label :video_url, t("proposals.form.proposal_video_url") %>
+        <p class="note"><%= t("proposals.form.proposal_video_url_note") %></p>
+        <%= f.text_field :video_url, placeholder: t("proposals.form.proposal_video_url"), label: false %>
+      </div>
+    <% end %>
 
     <div class="small-12 column">
       <%= f.label :external_url, t("proposals.form.proposal_external_url") %>

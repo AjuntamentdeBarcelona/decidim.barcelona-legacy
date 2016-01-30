@@ -56,7 +56,7 @@
           </div>
         <% end %>
 
-        <% if @proposal.video_url.present? %>
+        <% if feature?(:proposal_video_url) && @proposal.video_url.present? %>
           <div class="video-link">
             <%= text_with_links @proposal.video_url %>
           </div>

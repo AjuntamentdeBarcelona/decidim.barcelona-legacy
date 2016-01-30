@@ -53,6 +53,7 @@ defaults: &defaults
   feature.debates: false
   feature.spending_proposals: false
   feature.proposal_tags: false
+  feature.proposal_video_url: false
 
 development:
   <<: *defaults
