@@ -1,8 +1,3 @@
 <h2 id="<%= dom_id(category) %>"><%= category.name_with_code %></h2>
 <p><%= category.description.html_safe %></p>
-
-<p class="clearfix see-proposals">
-  <%= link_to t('categories.filter'), category.proposals_path %>
-</p>
-
 <%= render partial: 'subcategory', collection: category.subcategories %>
