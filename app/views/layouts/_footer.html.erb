@@ -1,11 +1,11 @@
 <footer>
-	<div class="row-full">
+  <div class="row-full">
     <div class="row">
       <div class="small-12 column">
         <%= link_to t("layouts.footer.more_info"), page_path('more_information') %>&nbsp;|&nbsp;
         <%= link_to t("layouts.footer.privacy"), page_path('privacy') %>&nbsp;|&nbsp;
         <%= link_to t("layouts.footer.conditions"), page_path('conditions') %>&nbsp;|&nbsp;
-        <%= link_to t("layouts.footer.accessibility"), page_path('accessibility') %>
+	<%= link_to t("layouts.footer.accessibility"), "http://accessibilitat.bcn.cat/#{I18n.locale.to_s}", target: "_blank" %>
 
         <span class="footer-social">
           <% if Setting['twitter_handle'] %>
