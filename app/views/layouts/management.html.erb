@@ -28,10 +28,7 @@
         <nav class="top-bar" data-topbar role="navigation">
           <ul class="title-area">
             <li class="name">
-              <%= link_to management_root_path do %>
-                <%= image_tag('header_logo_madrid.png', class: 'left', size: '96x96') %>
-                <%= Setting['org_name'] %> <span>|</span> <span class="logo-site"><%= t("management.dashboard.index.title") %></span>
-              <% end %>
+              <%= link_to management_root_path do %><%= Setting["org_name"] %><% end %>
             </li>
             <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
           </ul>
