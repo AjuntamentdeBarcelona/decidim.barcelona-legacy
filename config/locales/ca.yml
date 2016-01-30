@@ -33,7 +33,7 @@ ca:
     edit:
       form:
         submit_button: Actualitzar eix
-    filter: Veure propostes
+    filter: Veure propostes d'actuació
     form:
       category_description: Descripció
       category_name: Nom
@@ -41,7 +41,7 @@ ca:
     new:
       form:
         submit_button: Crear eix
-    title: Documents
+    title: Pla Municipal
   comments:
     comment:
       admin: Administrador
@@ -130,7 +130,7 @@ ca:
         submit_button: Comença un debat
       info: Si el que vols és fer una proposta, aquesta és la secció incorrecta, entra en %{info_link}.
       info_link: crear nova proposta
-      more_info: Més informació
+      more_info: Informa't
       recommendation_four: Gaudeix d'aquest espai, de les veus que l'omplen, també és teu.
       recommendation_one: No escriguis el títol del debat o frases senceres en majúscules. A internet això es considera cridar. I a ningú li agrada que li cridin.
       recommendation_three: Les crítiques despietades són molt benvingudes. Aquest és un espai de pensament. Però et recomanem conservar l'elegància i la intel·ligència. El món és millor amb elles presents.
@@ -180,16 +180,16 @@ ca:
     footer:
       accessibility: Accessibilitat
       conditions: Condicions d'ús
-      more_info: Més informació
+      more_info: Informa't
       privacy: Política de privacitat
     header:
       administration: Administrar
       debates: Debats
       external_link_blog: Notícies
       locale: 'Idioma:'
-      meetings: Cites
+      meetings: Cites presencials
       moderation: Moderar
-      more_information: Més informació
+      more_information: Informa't
       my_account_link: El meu compte
       my_activity_link: La meva activitat
       new_notifications:

@@ -11,7 +11,7 @@ en:
       city: Whole city
       district: A district
       meetings: Meetings
-      official: Program (Town Hall)
+      official: Town Hall
     filter_option_group:
       category_id: Axis
       district: District
