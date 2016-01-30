@@ -29,7 +29,7 @@
         <% end %>
 
         <div class="proposal-info">
-          <% unless proposal.official? %>
+          <% unless @proposal.official? %>
             <%= render '/shared/author_info', resource: @proposal %>
           <% end %>
 
