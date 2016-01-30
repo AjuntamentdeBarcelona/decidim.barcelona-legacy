@@ -7,6 +7,7 @@ feature 'Proposals' do
 
   before(:each) do
     Setting['feature.proposal_tags'] = true
+    Setting['feature.proposal_video_url'] = true
   end
 
   scenario 'Index' do

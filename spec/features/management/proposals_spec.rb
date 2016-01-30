@@ -7,6 +7,10 @@ feature 'Proposals' do
     login_as_manager
   end
 
+  before :each do
+    Setting['feature.proposal_video_url'] = true
+  end
+
   let!(:subcategory) { create(:subcategory) }
   let(:category) { subcategory.category }
 

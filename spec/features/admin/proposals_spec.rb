@@ -7,6 +7,10 @@ feature 'Admin proposals' do
     login_as(admin.user)
   end
 
+  before :each do
+    Setting['feature.proposal_video_url'] = true
+  end
+
   scenario 'List shows all relevant info' do
     proposal = create(:proposal, :hidden)
     visit admin_proposals_path
