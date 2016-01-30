@@ -6,6 +6,9 @@ ca:
       title: El PAM i el PAD
     description: "<p>El <strong>Pla Municipal</strong> s’elabora a l’inici de cada mandat i estableix les línies prioritàries, els objectius i les actuacions de l’acció del govern. És, per tant, el full de ruta municipal que orienta quin model volem per la nostra ciutat.</p><p>L’Ajuntament de Barcelona obre <strong>un procés de participació ciutadana</strong> per construir, pensar i debatre entre tots i totes les actuacions i prioritats dels propers 3 anys. Un pas endavant en la construcció col·lectiva d’una ciutat més justa i democràtica.</p>"
     download:
+      links:
+        epub: Descarrega't l'ePub
+        pam: Descobreix el PAM i el PAD
       subtitle: Des de l’Ajuntament de Barcelona hem el·laborat una primera proposta de Programa per a la ciutat i pels districtes que inclou diferents propostes d’actuació en diferents eicos i líneas d’actuació
       title: El programa d'actuació Municipal i de Districtes
     header-motto:
