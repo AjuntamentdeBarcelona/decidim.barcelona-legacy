@@ -1,12 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
-<g>
-	<path fill-rule="evenodd" clip-rule="evenodd" fill="#83A5C4" d="M99,79.686C99,90.352,90.353,99,79.686,99H20.313
-		C9.648,99,0.999,90.352,0.999,79.686V20.314C0.999,9.647,9.648,1,20.313,1h59.372C90.353,1,99,9.647,99,20.314V79.686z"/>
-	<polygon fill="#FFFFFF" points="76.498,23.274 32.965,23.274 46.818,36.906 19.869,63.949 36.276,80.359 63.227,53.314 
-		76.443,66.533 	"/>
-</g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill-rule="evenodd" clip-rule="evenodd" fill="#83A5C4" d="M99 79.686C99 90.352 90.353 99 79.686 99H20.313C9.648 99 1 90.352 1 79.686V20.314C1 9.647 9.647 1 20.312 1h59.372C90.353 1 99 9.647 99 20.314v59.372z"/><path fill="#FFF" d="M76.498 23.274H32.965l13.853 13.632-26.95 27.043 16.408 16.41 26.95-27.046 13.217 13.22z"/></svg>
