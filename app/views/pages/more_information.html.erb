@@ -1,0 +1,22 @@
+<% provide :title do %><%= t('.title') %><% end %>
+
+<div class="page row-full">
+  <div class="row">
+    <div class="menu small-12 medium-3 column">
+      <ul class="clear">
+        <% (1..9).to_a.each do |i| %>
+          <li><%= link_to t(".section_#{i}.title"), anchor: "section_#{i}" %></li>
+        <% end %>
+        <li><%= link_to t(".faq.title"), anchor: "faq" %></li>
+      </ul>
+    </div>
+
+    <div class="text small-12 medium-9 column">
+      <h2><%= t('.title') %></h2>
+      <% (1..9).to_a.each do |i| %>
+        <div id="section_<%= i %>"><%= render "pages/more_information/section_#{i}" %></div>
+      <% end %>
+      <div id="faq"><%= render 'pages/more_information/faq' %></div>
+    </div>
+  </div>
+</div>
