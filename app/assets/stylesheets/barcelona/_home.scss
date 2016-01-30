@@ -78,7 +78,6 @@
     }
 
     h4{
-      font-style: italic;
       font-weight: normal;
     }
   }
@@ -335,12 +334,11 @@
 
   .home-description{
     max-width: rem-calc(1000);
-    background-color: $highlight;
-    padding: rem-calc(30) rem-calc(50);
     text-align: center;
+    padding: rem-calc(30) rem-calc(50);
     p{
-      font-size: rem-calc(20);
-      font-weight: 200;
+      font-size: $h4-font-size;
+      font-weight: normal;
       &:last-child{
         margin-bottom: 0;
       }
