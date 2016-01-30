@@ -155,8 +155,6 @@ feature 'Users' do
 
         expect_to_be_signed_in
       end
-<<<<<<< HEAD
-=======
 
       scenario 'Try to register with the username of an already existing user' do
         create(:user, username: 'manuela', email: 'manuela@madrid.es', password: 'judgementday')
@@ -214,7 +212,6 @@ feature 'Users' do
         visit edit_user_registration_path
         expect(page).to have_field('user_email', with: 'somethingelse@example.com')
       end
->>>>>>> 248bff7... fixes failing i18n specs
     end
   end
 
