@@ -20,7 +20,6 @@ class ProposalFilters extends React.Component {
   render() {
     return (
       <form className="proposal-filters">
-        <a onClick={() => this.cleanFilters()}>{I18n.t('components.proposal_filters.clean_filters')}</a>
         <SearchFilter 
           searchText={this.state.searchText}
           onSetFilterText={ (searchText) => this.onSetFilterText(searchText) } />
@@ -56,6 +55,7 @@ class ProposalFilters extends React.Component {
           <FilterOption filterName="meetings" />
         </FilterOptionGroup>
         {this.renderTagCloudFilter()}
+        {this.renderCleanFilterLink()}
       </form>
     )
   }
@@ -101,5 +101,14 @@ class ProposalFilters extends React.Component {
     );
 
     this.setState({ filters, tags, searchText });
+  }
+
+  renderCleanFilterLink() {
+    if ((this.state.searchText && this.state.searchText.length > 0) || this.state.filters.size > 0 || this.state.tags.size > 0) {
+      return (
+        <a onClick={() => this.cleanFilters()}>{I18n.t('components.proposal_filters.clean_filters')}</a>
+      )
+    }
+    return null;
   }
 }
