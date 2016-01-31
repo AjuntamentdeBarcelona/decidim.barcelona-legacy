@@ -2,13 +2,13 @@ require 'rails_helper'
 
 describe DebatesController do
 
-  before(:all) do
+  before(:each) do
     @original_captcha_pass_value = SimpleCaptcha.always_pass
     SimpleCaptcha.always_pass = true
     Setting['feature.debates'] = true
   end
 
-  after(:all) do
+  after(:each) do
     SimpleCaptcha.always_pass = @original_captcha_pass_value
   end
 

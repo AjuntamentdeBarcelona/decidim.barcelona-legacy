@@ -64,7 +64,6 @@ en:
       moderators: Moderators
       officials: Public Officials
       organizations: Organisations
-      settings: General settings
       spending_proposals: Spending proposals
       stats: Statistics
     moderators:
@@ -125,12 +124,6 @@ en:
           with_confirmed_hide: Confirmed
           without_confirmed_hide: Pending
         title: Hidden proposals
-    settings:
-      flash:
-        updated: Value updated
-      index:
-        title: General settings
-        update_setting: Update
     shared:
       proposal_search:
         button: Search

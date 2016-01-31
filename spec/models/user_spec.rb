@@ -241,9 +241,6 @@ describe User do
       expect(user2.has_official_email?).to eq(true)
       expect(user3.has_official_email?).to eq(false)
       expect(user4.has_official_email?).to eq(false)
-      
-      # We reset the officials' domain setting
-      Setting.find_by(key: 'email_domain_for_officials').update(value: '')
     end
   end
 

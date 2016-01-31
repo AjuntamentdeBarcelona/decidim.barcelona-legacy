@@ -64,7 +64,6 @@ ca:
       moderators: Moderadors
       officials: Càrrecs públics
       organizations: Organitzacions
-      settings: Configuració global
       spending_proposals: Propostes de despesa
       stats: Estadístiques
     moderators:
@@ -125,12 +124,6 @@ ca:
           with_confirmed_hide: Confirmades
           without_confirmed_hide: Pendents
         title: Propostes ocultes
-    settings:
-      flash:
-        updated: Valor actualitzat
-      index:
-        title: Configuració global
-        update_setting: Actualitza
     shared:
       proposal_search:
         button: Cerca

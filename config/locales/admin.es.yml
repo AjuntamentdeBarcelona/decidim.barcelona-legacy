@@ -64,7 +64,6 @@ es:
       moderators: Moderadores
       officials: Cargos públicos
       organizations: Organizaciones
-      settings: Configuración global
       spending_proposals: Propuestas de gasto
       stats: Estadísticas
     moderators:
@@ -125,12 +124,6 @@ es:
           with_confirmed_hide: Confirmadas
           without_confirmed_hide: Pendientes
         title: Propuestas ocultas
-    settings:
-      flash:
-        updated: Valor actualizado
-      index:
-        title: Configuración global
-        update_setting: Actualizar
     shared:
       proposal_search:
         button: Buscar
