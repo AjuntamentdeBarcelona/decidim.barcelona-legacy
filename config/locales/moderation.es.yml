@@ -49,15 +49,15 @@ es:
           closed: Cerrados
           pending: Pendientes
         headers:
-          meeting: Encuentro presencial
+          meeting: Cita presencial
         search_form:
           button: Buscar
           placeholder: Buscar
-        title: Encuentros presenciales
+        title: Citas presenciales
     menu:
       flagged_comments: Comentarios
       flagged_debates: Debates
-      meetings: Encuentros presenciales
+      meetings: Citas presenciales
       proposals: Propuestas
       users: Bloquear usuarios
     proposals:

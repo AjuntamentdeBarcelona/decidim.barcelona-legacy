@@ -160,7 +160,7 @@ ca:
     debate: el debat
     error: error
     errors: errors
-    meeting: la trobada presencial
+    meeting: la cita presencial
     not_saved: 'impedir guardar %{resource}:'
     policy: Política de privacitat
     proposal: la proposta
@@ -217,10 +217,10 @@ ca:
           votes: Suports
       new:
         form:
-          submit_button: Tancar trobada
+          submit_button: Tancar cita
     edit:
       form:
-        submit_button: Actualitzar trobada
+        submit_button: Actualitzar cita
     form:
       meeting_address: On es realitzará?
       meeting_address_details: Detalls adicionals del lloc
@@ -240,11 +240,11 @@ ca:
     index:
       close: Tancar
       edit: Editar
-      new: Crear trobada
-      title: Trobades presencials
+      new: Crear cita
+      title: Cites presencials
     new:
       form:
-        submit_button: Crear trobada
+        submit_button: Crear cita
     show:
       back_link: Tornar
       proposals_title: Propostes tractades

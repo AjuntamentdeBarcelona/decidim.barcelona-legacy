@@ -160,7 +160,7 @@ es:
     debate: el debate
     error: error
     errors: errores
-    meeting: el encuentro presencial
+    meeting: la cita presencial
     not_saved: 'impidieron guardar %{resource}:'
     policy: Política de privacidad
     proposal: la propuesta
@@ -217,10 +217,10 @@ es:
           votes: Apoyos
       new:
         form:
-          submit_button: Cerrar encuentro
+          submit_button: Cerrar cita
     edit:
       form:
-        submit_button: Actualizar encuentro
+        submit_button: Actualizar cita
     form:
       meeting_address: "¿Dónde se va a realizar?"
       meeting_address_details: Detalles adicionales del lugar
@@ -240,11 +240,11 @@ es:
     index:
       close: Cerrar
       edit: Editar
-      new: Crear encuentro
-      title: Encuentros presenciales
+      new: Crear cita
+      title: Citas presenciales
     new:
       form:
-        submit_button: Crear encuentro
+        submit_button: Crear cita
     show:
       back_link: Volver
       proposals_title: Propuestas tratadas
@@ -359,7 +359,7 @@ es:
       flag: Esta propuesta ha sido marcada como inapropiada por varios usuarios.
       login_to_comment: Necesitas %{signin} o %{signup} para comentar.
       meeting_supports: "%{counter} apoyos presenciales"
-      meetings_title: Encuentros presenciales relacionados
+      meetings_title: Citas presenciales relacionadas
       share: Compartir
     update:
       form:
