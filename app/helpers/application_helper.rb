@@ -46,7 +46,7 @@ module ApplicationHelper
   end
 
   def cookies_accepted?
-    cookies['decidim-barcelona-cc'].present?
+    cookies['decidim-barcelona-cc'].present? if Rails.env.test?
   end
 
   def cookies_warning
