@@ -265,12 +265,6 @@ en:
       sign_up: Sign up with Facebook
     finish_signup:
       title: Additional details
-    google_oauth2:
-      sign_in: Sign in with Google
-      sign_up: Sign up with Google
-    twitter:
-      sign_in: Sign in with Twitter
-      sign_up: Sign up with Twitter
   proposals:
     create:
       form:
