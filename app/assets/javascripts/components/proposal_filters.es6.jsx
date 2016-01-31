@@ -51,7 +51,6 @@ class ProposalFilters extends React.Component {
         <FilterOptionGroup 
           filterGroupName="other" 
           filterGroupValue={this.state.filters.get('other')}
-          isExclusive={true}
           onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) }>
           <FilterOption filterName="meetings" />
         </FilterOptionGroup>
