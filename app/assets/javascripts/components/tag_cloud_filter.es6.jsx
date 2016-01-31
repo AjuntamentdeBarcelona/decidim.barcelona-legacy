@@ -16,7 +16,7 @@ class TagCloudFilter extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ tagCloud: nextProps.tagCloud });
+    this.setState({ tagCloud: nextProps.tagCloud, tags: nextProps.currentTags });
   }
 
   reloadTagCloud(event, tagCloud) {

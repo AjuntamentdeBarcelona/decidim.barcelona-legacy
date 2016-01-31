@@ -11,6 +11,7 @@ ca:
       more_info: Més informació
       text: Aquest lloc web fa servir cookies pròpies i de tercers per millorar l’experiència de navegació, i oferir continguts i serveis d’interès. En continuar la navegació entenem que s’accepta la nostra política de cookies.
     filter_option:
+      all: Tots
       citizenship: Ciutadania
       city: Tota la ciutat
       district: Un districte
@@ -31,5 +32,9 @@ ca:
       actions: Accions
       remove: Eliminar
       title: Títol
+    meetings_filters:
+      clean_filters: Netejar filtre
+    proposal_filters:
+      clean_filters: Netejar filtre
     search_filter:
       search_input_placeholder: Cercar

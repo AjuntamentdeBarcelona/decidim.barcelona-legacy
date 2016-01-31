@@ -44,6 +44,8 @@ class MeetingsFilter extends React.Component {
           currentTags={this.state.tags} 
           tagCloud={this.props.filter.tag_cloud} 
           onSetFilterTags={(tags) => this.onSetFilterTags(tags)} />
+
+        {this.renderCleanFilterLink()}
       </form>
     )
   }
@@ -61,5 +63,30 @@ class MeetingsFilter extends React.Component {
   onSetFilterTags(tags) {
     this.props.onLoading();
     this.filterService.setFilterTags(tags);
+  }
+
+  cleanFilters() {
+    let filters = this.state.filters.clear(),
+        tags = this.state.tags.clear(),
+        searchText = '';
+
+    this.props.onLoading();
+
+    this.filterService.applyFilters(
+      filters.toObject(), 
+      tags.toArray(),
+      searchText
+    );
+
+    this.setState({ filters, tags, searchText });
+  }
+
+  renderCleanFilterLink() {
+    if ((this.state.searchText && this.state.searchText.length > 0) || this.state.filters.size > 0 || this.state.tags.size > 0) {
+      return (
+        <a onClick={() => this.cleanFilters()}>{I18n.t('components.meetings_filters.clean_filters')}</a>
+      )
+    }
+    return null;
   }
 }

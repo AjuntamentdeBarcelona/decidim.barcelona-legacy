@@ -11,6 +11,7 @@ es:
       more_info: Más información
       text: Utilizamos cookies propias y de terceros para mejorar la experiencia de navegación y ofrecer contenidos y servicios de interés. Al continuar con la navegación, entendemos que se acepta nuestra política de cookies.
     filter_option:
+      all: Todos
       citizenship: Ciudadania
       city: Toda la ciudad
       district: Un distrito
@@ -31,5 +32,9 @@ es:
       actions: Acciones
       remove: Delete
       title: Título
+    meetings_filters:
+      clean_filters: Limpiar filtro
+    proposal_filters:
+      clean_filters: Limpiar filtro
     search_filter:
       search_input_placeholder: Buscar

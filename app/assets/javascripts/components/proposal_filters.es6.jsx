@@ -51,11 +51,11 @@ class ProposalFilters extends React.Component {
         <FilterOptionGroup 
           filterGroupName="other" 
           filterGroupValue={this.state.filters.get('other')}
-          isExclusive={true}
           onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) }>
           <FilterOption filterName="meetings" />
         </FilterOptionGroup>
         {this.renderTagCloudFilter()}
+        {this.renderCleanFilterLink()}
       </form>
     )
   }
@@ -85,5 +85,30 @@ class ProposalFilters extends React.Component {
   onSetFilterTags(tags) {
     $(document).trigger('loading:show');
     this.filterService.setFilterTags(tags);
+  }
+
+  cleanFilters() {
+    let filters = this.state.filters.clear(),
+        tags = this.state.tags.clear(),
+        searchText = '';
+
+    $(document).trigger('loading:show');
+
+    this.filterService.applyFilters(
+      filters.toObject(), 
+      tags.toArray(),
+      searchText
+    );
+
+    this.setState({ filters, tags, searchText });
+  }
+
+  renderCleanFilterLink() {
+    if ((this.state.searchText && this.state.searchText.length > 0) || this.state.filters.size > 0 || this.state.tags.size > 0) {
+      return (
+        <a onClick={() => this.cleanFilters()}>{I18n.t('components.proposal_filters.clean_filters')}</a>
+      )
+    }
+    return null;
   }
 }
