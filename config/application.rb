@@ -18,9 +18,11 @@ module Consul
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    config.i18n.default_locale = :ca
+    config.i18n.default_locale = Rails.application.secrets.default_locale.to_sym
 
-    config.i18n.available_locales = [:en, :es, :ca]
+    config.i18n.available_locales = Rails.application.secrets.available_locales.split(",").map(&:to_sym)
+
+    config.i18n.fallbacks = true
 
     # Add the new directories to the locales load path
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
