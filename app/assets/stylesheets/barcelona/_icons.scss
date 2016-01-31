@@ -1,11 +1,15 @@
+@function bcn-icon-image-url($name){
+  @return image-url("icons/#{$name}.svg");
+}
+
 @mixin bcn-icon-background($name){
-  background-image: image-url("icons/#{$name}.svg");
+  background-image: bcn-icon-image-url($name);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-@mixin bcn-icon($name, $size: rem-calc(32px)){
+@mixin bcn-icon($name, $size: 1.5em){
   width: $size;
   height: $size;
   vertical-align: middle;
@@ -13,7 +17,6 @@
 
   @include bcn-icon-background($name);
   display: inline-block;
-  margin-right: 0.5em;
 }
 
 $icons: activitat ajuntament arbre campana cor correu dit_assenyala doc

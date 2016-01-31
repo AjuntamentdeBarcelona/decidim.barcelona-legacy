@@ -145,6 +145,12 @@
 
       .icons{
         margin-bottom: rem-calc(15);
+
+        .bcn-icon{
+          width: 2em;
+          height: 2em;
+          margin-right: 0.5em;
+        }
       }
 
       &.tutorial-step-left{

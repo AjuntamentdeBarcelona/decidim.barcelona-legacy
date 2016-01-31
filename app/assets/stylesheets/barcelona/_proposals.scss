@@ -8,62 +8,38 @@ a.button.new-proposal{
     background-color: $highlight;
     .proposal-content, .supports{
       padding: rem-calc(12) rem-calc(20);
-      min-height: rem-calc(250);
+      min-height: rem-calc(300);
+      position: relative;
+    }
+
+    .bottom-bar{
+      position: absolute;
+      bottom: rem-calc(12);
+      left: rem-calc(12);
     }
 
     position: relative;
     margin-bottom: rem-calc(20);
 
-    .supports{
-      text-align: left;
-
-      .progress{
-        position: relative;
-        background-color: $highlight;
-        .meter{
-          background-color: $brand;
-        }
-      }
-
-      .supports-count{
-        font-size: rem-calc(20);
-      }
-
-      .support-progress{
-        padding-bottom: rem-calc(15);
-        border-bottom: 1px dotted $highlight;
-        margin-bottom: rem-calc(15);
-      }
-
-      border: 5px solid $highlight;
-      background-color: $background;
-
-      .percentage{
-        font-size: rem-calc(30);
-        color: $brand;
-      }
-
-      .total-supports{
-        text-align: left;
-      }
-    }
 
     .label-proposal{
       font-size: rem-calc(18);
-      color: $brand;
-      font-weight: bold;
+      color: $text-medium;
+      font-weight: normal;
     }
 
     h3{
       &, a{
         font-weight: normal;
-        color: $text;
         font-size: rem-calc(22);
       }
     }
 
-    .proposal-description a{
-      color: $text;
+    .proposal-description{
+      p{
+        font-size: rem-calc(18);
+        font-weight: 300;
+      }
     }
 
     .official-badge{
@@ -139,4 +115,68 @@ a.button.new-proposal{
       }
     }
   }
+}
+
+.proposal-meta{
+  margin-top: $line-height / 2;
+  span {
+    @include label(
+      $padding: rem-calc(10px),
+      $bg: darken($highlight, 5%),
+      $text-size: rem-calc(12),
+      $radius: rem-calc(4)
+    );
+  }
+}
+
+.proposal-show{
+  h2{
+    font-weight: 300;
+    a{
+      color: $text;
+    }
+  }
+  .proposal-description{
+    margin-top: rem-calc(10);
+    font-size: rem-calc(22);
+    font-weight: 300;
+  }
+}
+
+
+.proposals-list, .proposal-show{
+  .vote-box{
+    text-align: left;
+
+    .progress{
+      position: relative;
+      background-color: $highlight;
+      .meter{
+        background-color: $brand;
+      }
+    }
+
+    .supports-count{
+      font-size: rem-calc(20);
+    }
+
+    .support-progress{
+      padding-bottom: rem-calc(15);
+      border-bottom: 1px dotted $highlight;
+      margin-bottom: rem-calc(15);
+    }
+
+    border: 5px solid $highlight;
+    background-color: $background;
+
+    .percentage{
+      font-size: rem-calc(30);
+      color: $brand;
+    }
+
+    .total-supports{
+      text-align: left;
+    }
+  }
+  
 }
