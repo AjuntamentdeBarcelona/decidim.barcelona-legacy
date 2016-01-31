@@ -20,8 +20,6 @@ class Meeting < ActiveRecord::Base
   validates :description, presence: true
   validates :address, presence: true
   validates :held_at, presence: true
-  validates :start_at, presence: true
-  validates :end_at, presence: true
   validates :scope, inclusion: { in: %w(city district) }
   validates :district, inclusion: { in: Proposal::DISTRICTS.map(&:last).map(&:to_i), allow_nil: true }
 
