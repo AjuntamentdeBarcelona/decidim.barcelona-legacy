@@ -15,7 +15,7 @@ feature 'Moderate meetings' do
         title: 'First meeting',
         description: 'We are going to discuss a few things',
         address: 'Passeig de Sant Joan, 11',
-        held_at: '2016-01-12',
+        held_at: '01/12/2016',
         start_at: '10:00',
         end_at: '10:00'
       }
@@ -41,7 +41,7 @@ feature 'Moderate meetings' do
 
       expect(page).to have_content @meeting_data[:title]
       expect(page).to have_content @meeting_data[:description]
-      expect(page).to have_content @meeting_data[:held_at]
+      expect(page).to have_content I18n.l @meeting_data[:held_at].to_date
       expect(page).to have_content @meeting_data[:start_at]
       expect(page).to have_content @meeting_data[:end_at]
     end
