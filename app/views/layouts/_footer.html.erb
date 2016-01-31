@@ -1,9 +1,18 @@
 <footer>
   <div class="row-full">
     <div class="row">
-      <div class="small-12 column">
+      <div class="small-1 column">
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">decidim.barcelona</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://decidim.barcelona.cat/" property="cc:attributionName" rel="cc:attributionURL" target="_blank">Ajuntament de Barcelona</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+      </div>
+      <div class="small-4 column footer-message">
+        <%= t('layouts.footer.code_links',
+          github_consul_url: link_to('consul', "https://github.com/consul/consul", target: "_blank"),
+          github_decidim_url: link_to(t('layouts.footer.free_software'), "https://github.com/AjuntamentdeBarcelona/decidimbcn", target: "_blank")).html_safe
+            %>
+      </div>
+
+      <div class="small-6 column">
         <%= link_to t("layouts.footer.more_info"), page_path('more_information') %>&nbsp;|&nbsp;
-        <%= link_to t("layouts.footer.privacy"), page_path('privacy') %>&nbsp;|&nbsp;
         <%= link_to t("layouts.footer.conditions"), page_path('conditions') %>&nbsp;|&nbsp;
 	<%= link_to t("layouts.footer.accessibility"), "http://accessibilitat.bcn.cat/#{I18n.locale.to_s}", target: "_blank" %>
 
@@ -11,25 +20,31 @@
           <% if Setting['twitter_handle'] %>
             <%= link_to "https://twitter.com/#{Setting['twitter_handle']}", target: "_blank", title: t("social.twitter") do %>
               <span class="sr-only"><%= t("social.twitter") %></span>
-              <i class="icon-twitter"></i>
+              <i class="fa fa-twitter"></i>
             <% end %>
           <% end %>
           <% if Setting['facebook_handle'] %>
             <%= link_to "https://www.facebook.com/#{Setting['facebook_handle']}/", target: "_blank", title: t("social.facebook") do %>
               <span class="sr-only"><%= t("social.facebook") %></span>
-              <i class="icon-facebook"></i>
+              <i class="fa fa-facebook"></i>
             <% end %>
           <% end %>
           <%  if Setting['blog_url'] %>
             <%= link_to Setting['blog_url'][I18n.locale.to_s], target: "_blank", title: t("social.blog") do %>
               <span class="sr-only"><%= t("social.blog") %></span>
-              <i class="icon-blog"></i>
+              <i class="fa fa-wordpress"></i>
             <% end %>
           <% end %>
           <% if Setting['youtube_handle'] %>
             <%= link_to "https://www.youtube.com/#{Setting['youtube_handle']}", target: "_blank", title: t("social.youtube") do %>
               <span class="sr-only"><%= t("social.youtube") %></span>
-              <i class="icon-youtube"></i>
+              <i class="fa fa-youtube"></i>
+            <% end %>
+          <% end %>
+          <% if Setting['github_handle'] %>
+            <%= link_to "https://www.github.com/#{Setting['github_handle']}", target: "_blank", title: t("social.github") do %>
+              <span class="sr-only"><%= t("social.github") %></span>
+              <i class="fa fa-github"></i>
             <% end %>
           <% end %>
         </span>
