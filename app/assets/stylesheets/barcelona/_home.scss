@@ -334,8 +334,10 @@
     max-width: rem-calc(1000);
     text-align: center;
     padding: rem-calc(30) rem-calc(50);
+    background-color: $highlight;
     p{
       font-size: $h4-font-size;
+      font-weight: normal;
       &:last-child{
         margin-bottom: 0;
       }
