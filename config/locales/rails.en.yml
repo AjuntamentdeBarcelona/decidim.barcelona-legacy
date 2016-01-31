@@ -8,4 +8,5 @@ en:
       default: "%m-%d-%Y"
   time:
     formats:
+      datetime: "%Y-%m-%d %H:%M:%S"
       default: "%H:%M"

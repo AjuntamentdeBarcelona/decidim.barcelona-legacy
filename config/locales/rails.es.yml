@@ -8,4 +8,5 @@ es:
       default: "%d/%m/%Y"
   time:
     formats:
+      datetime: "%d/%m/%Y %H:%M:%S"
       default: "%H:%M"
