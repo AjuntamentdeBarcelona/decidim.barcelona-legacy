@@ -333,8 +333,6 @@ GEM
     rack-canonical-host (0.1.0)
       addressable
       rack (~> 1.0)
-    rack-policy (0.4.1)
-      rack (~> 1.1)
     rack-protection (1.5.3)
       rack
     rack-robots (0.1.2)
@@ -607,7 +605,6 @@ DEPENDENCIES
   rack-attack
   rack-cache
   rack-canonical-host
-  rack-policy
   rack-robots
   rails (= 4.2.5)
   rails-i18n

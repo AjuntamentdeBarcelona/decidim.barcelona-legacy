@@ -2,7 +2,7 @@ class CookiePolicyController < ApplicationController
   skip_authorization_check
 
   def allow
-    response.set_cookie 'rack.policy', {
+    response.set_cookie 'bcn-cc', {
       value: 'true',
       path: '/',
       expires: 1.year.from_now.utc
@@ -11,7 +11,7 @@ class CookiePolicyController < ApplicationController
   end
 
   def deny
-    response.delete_cookie 'rack.policy'
+    response.delete_cookie 'bcn-cc'
     render nothing: true
   end
 end

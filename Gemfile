@@ -96,7 +96,6 @@ gem 'bourbon'
 gem 'nokogiri'
 gem 'rack-canonical-host'
 gem 'rack-robots'
-gem 'rack-policy'
 gem 'gaffe'
 
 group :development, :test do

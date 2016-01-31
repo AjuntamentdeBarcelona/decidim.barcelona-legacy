@@ -45,6 +45,10 @@ module ApplicationHelper
     sanitize(content, tags: %w(strong b em ul li p ol))
   end
 
+  def cookies_accepted?
+    cookies['bcn-cc'].present?
+  end
+
   def cookies_warning
     unless cookies_accepted?
       react_component 'CookiesWarning', allowCookiesUrl: allow_cookies_url
