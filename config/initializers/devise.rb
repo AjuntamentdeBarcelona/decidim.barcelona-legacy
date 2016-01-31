@@ -241,9 +241,14 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :twitter, Rails.application.secrets.twitter_key, Rails.application.secrets.twitter_secret
-  config.omniauth :facebook, Rails.application.secrets.facebook_key, Rails.application.secrets.facebook_secret, scope: 'email', info_fields: 'email,name,verified'
-  config.omniauth :google_oauth2, Rails.application.secrets.google_oauth2_key, Rails.application.secrets.google_oauth2_secret
+  http_prefix = !ENV["FORCE_SSL"].blank? ? 'https://' : 'http://'
+  config.omniauth :twitter, Rails.application.secrets.twitter_key, Rails.application.secrets.twitter_secret,
+    callback_url: "#{http_prefix}#{Rails.application.secrets.server_name}/users/auth/twitter/callback"
+  config.omniauth :facebook, Rails.application.secrets.facebook_key, Rails.application.secrets.facebook_secret, 
+    scope: 'email', info_fields: 'email,name,verified',
+    callback_url: "#{http_prefix}#{Rails.application.secrets.server_name}/users/auth/facebook/callback"
+  config.omniauth :google_oauth2, Rails.application.secrets.google_oauth2_key, Rails.application.secrets.google_oauth2_secret,
+    callback_url: "#{http_prefix}#{Rails.application.secrets.server_name}/users/auth/google_oauth2/callback"
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
