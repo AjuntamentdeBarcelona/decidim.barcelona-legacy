@@ -12,14 +12,6 @@
       <%= link_to t("proposals.proposal.comments", count: proposal.comments_count), namespaced_proposal_path(proposal, anchor: "comments") %>
 
     </div>
-    <div class="proposal-positive">
-      <i class="icon-like"></i>&nbsp;
-      <span class="js-comments-count positive"><%= proposal.comments.positive.count %></span> <%= t('comments.form.alignment.positive') %>
-    </div>
-    <div class="proposal-negative">
-      <i class="icon-unlike"></i>&nbsp;
-      <span class="js-comments-count negative"><%= proposal.comments.negative.count %></span> <%= t('comments.form.alignment.negative') %>
-    </div>
   </div>
 
   <div class="in-favor">
