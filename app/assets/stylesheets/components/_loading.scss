@@ -1,4 +1,19 @@
 .loading-component {
-  height: 25px;
-  background: #f00;
+  position: absolute;
+  z-index: 100;
+  background: transparentize($background, 0.3);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  min-height: rem-calc(500);
+  font-size: rem-calc(80);
+
+  span{
+    position: absolute;
+    left: 50%;
+    @include transform(translateX(-50%));
+    top: rem-calc(200);
+    color: $brand;
+  }
 }

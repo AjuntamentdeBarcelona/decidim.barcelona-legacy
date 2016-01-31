@@ -19,7 +19,9 @@ class Loading extends React.Component {
   render() {
     if (this.state.show) {
       return (
-        <div className="loading-component"></div>
+        <div className="loading-component">
+          <span className="fa fa-spinner fa-spin"></span>
+        </div>
       )
     }
     return null;
