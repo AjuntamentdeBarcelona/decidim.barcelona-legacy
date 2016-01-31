@@ -92,7 +92,7 @@ class ProposalFilters extends React.Component {
         tags = this.state.tags.clear(),
         searchText = '';
 
-    this.props.onLoading();
+    $(document).trigger('loading:show');
 
     this.filterService.applyFilters(
       filters.toObject(), 
