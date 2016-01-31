@@ -180,9 +180,8 @@ ca:
       accessibility: Accessibilitat
       code_links: Aquesta web es %{github_decidim_url}, basat en %{github_consul_url}.
       conditions: Condicions d'ús
-      free_software: software lliure 
+      free_software: software lliure
       more_info: Informa't
-      privacy: Política de privacitat
     header:
       administration: Administrar
       debates: Debats

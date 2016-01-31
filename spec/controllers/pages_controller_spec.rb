@@ -8,11 +8,6 @@ describe PagesController do
       expect(response).to be_ok
     end
 
-    it 'should include a conditions page' do
-      get :show, id: :conditions
-      expect(response).to be_ok
-    end
-
     it 'should include a terms page' do
       get :show, id: :census_terms
       expect(response).to be_ok

@@ -129,7 +129,7 @@ es:
         submit_button: Empieza un debate
       info: Si lo que quieres es hacer una propuesta, esta es la sección incorrecta, entra en %{info_link}.
       info_link: crear nueva propuesta
-      more_info: Informate 
+      more_info: Informate
       recommendation_four: Disfruta de este espacio, de las voces que lo llenan, también es tuyo.
       recommendation_one: No escribas el título del debate o frases enteras en mayúsculas. En internet eso se considera gritar. Y a nadie le gusta que le griten.
       recommendation_three: Las críticas despiadadas son muy bienvenidas. Este es un espacio de pensamiento. Pero te recomendamos conservar la elegancia y la inteligencia. El mundo es mejor con ellas presentes.
@@ -180,9 +180,8 @@ es:
       accessibility: Accesibilidad
       code_links: Esta web es %{github_decidim_url}, basado en %{github_consul_url}.
       conditions: Condiciones de uso
-      free_software: software libre 
+      free_software: software libre
       more_info: Informate
-      privacy: Política de privacidad
     header:
       administration: Administrar
       debates: Debates
