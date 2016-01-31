@@ -37,7 +37,7 @@ feature 'Legislation' do
       expect(page).to have_content "this is my annotation"
     end
 
-    scenario 'Update' do
+    xscenario 'Update' do
       legislation = create(:legislation)
       annotation = create(:annotation, legislation: legislation, user: user, text: "my annotation")
 
