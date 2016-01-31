@@ -44,4 +44,14 @@ module ApplicationHelper
   def sanitize_content(content)
     sanitize(content, tags: %w(strong b em ul li p ol))
   end
+
+  def cookies_accepted?
+    cookies['decidim-barcelona-cc'].present?
+  end
+
+  def cookies_warning
+    unless cookies_accepted?
+      react_component 'CookiesWarning', allowCookiesUrl: allow_cookies_url
+    end
+  end
 end
