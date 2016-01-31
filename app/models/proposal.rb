@@ -140,10 +140,6 @@ class Proposal < ActiveRecord::Base
     self.tags.each{ |t| t.increment_custom_counter_for('Proposal') }
   end
 
-  def self.votes_needed_for_success
-    Setting['votes_for_proposal_success'].to_i
-  end
-
   protected
 
     def set_responsible_name
