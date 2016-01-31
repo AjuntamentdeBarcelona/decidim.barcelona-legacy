@@ -135,6 +135,7 @@ group :production do
   gem 'rack-attack'
   gem 'newrelic_rpm'
   gem 'puma'
+  gem 'puma_worker_killer'
   gem 'heroku-deflater'
   gem 'rails_12factor'
   gem 'rollbar', '~> 1.2.13'
