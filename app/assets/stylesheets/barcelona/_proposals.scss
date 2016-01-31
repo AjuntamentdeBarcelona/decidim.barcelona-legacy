@@ -8,7 +8,7 @@ a.button.new-proposal{
     background-color: $highlight;
     .proposal-content, .supports{
       padding: rem-calc(12) rem-calc(20);
-      min-height: rem-calc(300);
+      min-height: rem-calc(250);
       position: relative;
     }
 
@@ -20,7 +20,6 @@ a.button.new-proposal{
 
     position: relative;
     margin-bottom: rem-calc(20);
-
 
     .label-proposal{
       font-size: rem-calc(18);
@@ -148,19 +147,7 @@ a.button.new-proposal{
   .vote-box{
     text-align: left;
 
-    .progress{
-      position: relative;
-      background-color: $highlight;
-      .meter{
-        background-color: $brand;
-      }
-    }
-
-    .supports-count{
-      font-size: rem-calc(20);
-    }
-
-    .support-progress{
+    .total-supports{
       padding-bottom: rem-calc(15);
       border-bottom: 1px dotted $highlight;
       margin-bottom: rem-calc(15);
@@ -169,13 +156,20 @@ a.button.new-proposal{
     border: 5px solid $highlight;
     background-color: $background;
 
-    .percentage{
-      font-size: rem-calc(30);
+    .total-supports{
+      padding: rem-calc(30) 0;
+      text-align: center;
+      color: $text-medium;
+    }
+
+    .supports-count{
+      font-size: rem-calc(45);
+      margin-bottom: rem-calc(10);
       color: $brand;
     }
 
-    .total-supports{
-      text-align: left;
+    .button-support{
+      margin-bottom: 0;
     }
   }
   

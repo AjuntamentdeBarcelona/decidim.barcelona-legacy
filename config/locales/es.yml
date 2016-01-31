@@ -332,14 +332,12 @@ es:
         other: "%{count} Comentarios"
         zero: Sin comentarios
       proposal: Propuesta de actuación
-      reason_for_supports_necessary: 2% del Censo
       support: Apoyar
       support_title: Apoyar esta propuesta
       supports:
         one: 1 apoyo
         other: "%{count} apoyos"
         zero: Sin apoyos
-      supports_necessary: "%{number} apoyos necesarios"
     show:
       author_deleted: Usuario eliminado
       back_link: Volver

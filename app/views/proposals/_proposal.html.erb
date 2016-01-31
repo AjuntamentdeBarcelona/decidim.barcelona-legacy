@@ -9,9 +9,6 @@
           <span class="label-proposal"><%= t("proposals.proposal.proposal") %></span>
           <h3><%= link_to proposal.title, namespaced_proposal_path(proposal) %></h3>
           <p class="proposal-info">
-            <i class="icon-comments"></i>&nbsp;
-            <%= link_to t("proposals.proposal.comments", count: proposal.comments_count), namespaced_proposal_path(proposal, anchor: "comments") %>
-            <span class="bullet">&nbsp;&bull;&nbsp;</span>
             <%= l proposal.created_at.to_date %>
 
             <% unless proposal.official? %>

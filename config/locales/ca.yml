@@ -332,14 +332,12 @@ ca:
         other: "%{count} Comentaris"
         zero: Sense comentaris
       proposal: Proposta d'actuació
-      reason_for_supports_necessary: 2% del Cens
       support: Donar suport
       support_title: Donar suport a aquesta proposta
       supports:
         one: 1 suport
         other: "%{count} suports"
         zero: Sense suports
-      supports_necessary: "%{number} suports necessaris"
     show:
       author_deleted: Usuari eliminat
       back_link: Tornar
