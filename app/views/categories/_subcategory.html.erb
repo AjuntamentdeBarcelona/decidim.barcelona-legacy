@@ -1,6 +1,8 @@
-<h4 id="<%= dom_id(subcategory) %>"><%= subcategory.name_with_code %></h4>
-<%= subcategory.description.html_safe %>
+<div id="<%= dom_id(subcategory) %>">
+  <h4><%= subcategory.name_with_code %></h4>
+  <%= subcategory.description.html_safe %>
 
-<p class="clearfix see-proposals">
-  <%= link_to t('categories.filter'), subcategory.proposals_path %>
-</p>
+  <p class="clearfix see-proposals">
+    <%= link_to t('categories.filter'), subcategory.proposals_path %>
+  </p>
+</div>
