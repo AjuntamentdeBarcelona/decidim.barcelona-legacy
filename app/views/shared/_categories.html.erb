@@ -1,0 +1,12 @@
+<ul class="category-list">
+  <% categories.each do |category| %>
+    <li>
+      <%= link_to categories_path(anchor: dom_id(category)), class: "#{dom_id(category)} category-item" do %>
+        <span class="name">
+          <%= category.name %>
+        </span>
+        <i class="category-icon"></i>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
