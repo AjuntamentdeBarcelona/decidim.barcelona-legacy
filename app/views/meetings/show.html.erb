@@ -16,6 +16,12 @@
       <div class="date">
         <%= l @meeting.held_at %>
         <%= @meeting.held_at.strftime("%A") %>
+        <% if @meeting.start_at.present? && @meeting.end_at.present? %>
+          // 
+          <%= l @meeting.start_at %>
+          - 
+          <%= l @meeting.end_at %>
+        <% end %>
       </div>
 
       <div class="description">
