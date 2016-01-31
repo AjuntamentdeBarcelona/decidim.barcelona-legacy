@@ -1,4 +1,8 @@
 module CommonActions
+  def last_email_content
+    mail = ActionMailer::Base.deliveries.last
+    mail.body.parts.find {|p| p.content_type.match(/html/)}.body.raw_source
+  end
 
   def sign_up(email='manuela@madrid.es', password='judgementday')
     visit '/'
