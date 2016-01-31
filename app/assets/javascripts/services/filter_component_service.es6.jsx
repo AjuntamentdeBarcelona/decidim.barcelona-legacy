@@ -74,7 +74,7 @@ class FilterComponentService {
   }
 
   replaceUrl(data) {
-    if (Modernizr.history) {
+    if (window.history) {
       let queryParams = [],
           url;
 

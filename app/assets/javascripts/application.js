@@ -17,7 +17,6 @@
 //= require foundation
 //= require turbolinks
 //= require jquery.turbolinks
-//= require modernizr
 //= require parallax
 //= require react
 //= require react_ujs
