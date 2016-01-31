@@ -3,7 +3,8 @@ class MeetingsDirectory extends React.Component {
     super(props);
     this.state = {
       meetings: this.props.meetings,
-      filter: this.props.filter
+      filter: this.props.filter,
+      loading: false
     };
   }
 
@@ -19,11 +20,13 @@ class MeetingsDirectory extends React.Component {
               meetings={this.state.meetings} 
               categories={this.props.categories}
               subcategories={this.props.subcategories} 
-              onFilterResult={({ meetings, filter }) => this.setState({ meetings, filter })} />
+              onLoading={() => this.setState({ loading: true })}
+              onFilterResult={({ meetings, filter }) => this.setState({ meetings, filter, loading: false })} />
           </aside>
         </div>
 
         <div id="proposals" className="small-12 medium-9 column">
+          <Loading show={this.state.loading} />
           <div className="row">
             <MeetingsMap meetings={this.state.meetings} />
           </div>
