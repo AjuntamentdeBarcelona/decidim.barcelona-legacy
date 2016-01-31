@@ -28,6 +28,7 @@ RSpec.configure do |config|
 
   config.after(:each) do
     DatabaseCleaner.clean
+    Setting.reload!
   end
 
   config.before(:each, type: :feature) do
