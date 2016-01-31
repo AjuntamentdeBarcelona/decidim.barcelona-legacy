@@ -2,13 +2,15 @@
 
 <div class="page row-full">
   <div class="row">
-    <div class="menu small-12 medium-3 column">
-      <ul class="clear">
-        <% (1..9).to_a.each do |i| %>
-          <li><%= link_to t(".section_#{i}.title"), anchor: "section_#{i}" %></li>
-        <% end %>
-        <li><%= link_to t(".faq.title"), anchor: "faq" %></li>
-      </ul>
+    <div class="menu-outer small-12 medium-3 column">
+      <div class="menu">
+        <ul class="clear">
+          <% (1..9).to_a.each do |i| %>
+            <li><%= link_to t(".section_#{i}.title"), "#section_#{i}" %></li>
+          <% end %>
+          <li><%= link_to t(".faq.title"), "#faq" %></li>
+        </ul>
+      </div>
     </div>
 
     <div class="text small-12 medium-9 column">

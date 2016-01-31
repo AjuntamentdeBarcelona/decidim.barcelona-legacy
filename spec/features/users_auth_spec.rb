@@ -18,7 +18,7 @@ feature 'Users' do
 
       expect(page).to have_content "You have been sent a message containing a verification link. Please click on this link to activate your account."
 
-      sent_token = /.*confirmation_token=([0-9A-z\-]+)".*/.match(ActionMailer::Base.deliveries.last.body.to_s)[1]
+      sent_token = /.*confirmation_token=([0-9A-z\-]+)".*/.match(last_email_content)[1]
       visit user_confirmation_path(confirmation_token: sent_token)
 
       expect(page).to have_content "Your account has been confirmed."
@@ -237,7 +237,7 @@ feature 'Users' do
 
     expect(page).to have_content "will receive an email"
 
-    sent_token = /.*reset_password_token=([0-9A-z\-]+)".*/.match(ActionMailer::Base.deliveries.last.body.to_s)[1]
+    sent_token = /.*reset_password_token=([0-9A-z\-]+)".*/.match(last_email_content)[1]
     visit edit_user_password_path(reset_password_token: sent_token)
 
     fill_in 'user_password', with: 'new password'

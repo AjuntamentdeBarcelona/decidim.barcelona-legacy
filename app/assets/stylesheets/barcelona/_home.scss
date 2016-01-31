@@ -68,18 +68,18 @@
 .home-section{
   .home-title{
     text-align: center;
-    max-width: rem-calc(800);
+    max-width: rem-calc(1000);
     margin: 0 auto;
 
     h3{
       font-size: rem-calc(33);
       color: $brand;
-      font-weight: 200;
+      font-weight: normal;
     }
 
     h4{
-      font-style: italic;
       font-weight: normal;
+      font-style: italic;
     }
   }
 
@@ -283,7 +283,6 @@
         @include arrow-box(#ebeced, bottom);
         display: inline-block;
         font-size: rem-calc(24);
-        font-weight: 200;
 
         width: rem-calc(155);
         height: rem-calc(195);
@@ -295,7 +294,6 @@
         .name{
           display: block;
           font-size: 24px;
-          font-weight: 200;
           margin-top: rem-calc(25);
           height: rem-calc(62);
           line-height: 1em;
@@ -335,12 +333,12 @@
 
   .home-description{
     max-width: rem-calc(1000);
-    background-color: $highlight;
-    padding: rem-calc(30) rem-calc(50);
     text-align: center;
+    padding: rem-calc(30) rem-calc(50);
+    background-color: $highlight;
     p{
-      font-size: rem-calc(20);
-      font-weight: 200;
+      font-size: $h4-font-size;
+      font-weight: normal;
       &:last-child{
         margin-bottom: 0;
       }
