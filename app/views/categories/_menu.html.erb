@@ -1,14 +1,16 @@
-<ul class="clear">
-  <% categories.each do |category| %>
-    <li>
-      <%= link_to category.name_with_code, anchor: dom_id(category) %>
-      <ul>
-        <% category.subcategories.each do |subcategory| %>
-          <li>
-            <%= link_to subcategory.name_with_code, anchor: dom_id(subcategory) %>
-          </li>
-        <% end %>
-      </ul>
-    </li>
-  <% end %>
-</ul>
+<div class="menu">
+  <ul class="clear">
+    <% categories.each do |category| %>
+      <li>
+        <%= link_to category.name_with_code, "##{dom_id(category)}" %>
+        <ul class="folded">
+          <% category.subcategories.each do |subcategory| %>
+            <li>
+              <%= link_to subcategory.name_with_code, "##{dom_id(subcategory)}" %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+</div>
