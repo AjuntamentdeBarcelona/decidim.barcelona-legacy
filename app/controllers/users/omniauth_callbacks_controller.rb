@@ -43,7 +43,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       end
 
       if @user.persisted?
+        @user.update_tracked_fields(request)
         identity.update(user: @user)
+        if @user.show_welcome_screen?
+          store_location_for(:user, welcome_path)
+        end
         sign_in_and_redirect @user, event: :authentication
         set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
       else
