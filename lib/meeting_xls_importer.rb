@@ -9,9 +9,11 @@ class MeetingXLSImporter
     ActiveRecord::Base.transaction do
       @xlsx.each_row_streaming(offset: 2) do |row|
         data = get_row_data(row)
-        meeting_data = MeetingData.new(data)
-        meeting_data.parse!
-        create_meeting(meeting_data.to_attributes)
+        if data[:category_name].present?
+          meeting_data = MeetingData.new(data)
+          meeting_data.parse!
+          create_meeting(meeting_data.to_attributes)
+        end
       end
     end
   end
@@ -125,9 +127,14 @@ class MeetingXLSImporter
 
     def parse_geolocation
       WebMock.allow_net_connect!
-      coords = Geocoder.search("#{@data[:address]}, Barcelona")
-      @data[:address_latitude] = coords[0].latitude
-      @data[:address_longitude] =  coords[0].longitude
+      begin
+        coords = Geocoder.search("#{@data[:address]}, Barcelona")
+        @data[:address_latitude] = coords[0].latitude
+        @data[:address_longitude] =  coords[0].longitude
+      rescue
+        sleep 1
+        parse_geolocation
+      end
       WebMock.disable_net_connect!
     end
 
