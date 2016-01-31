@@ -32,5 +32,9 @@ es:
       actions: Acciones
       remove: Delete
       title: Título
+    meetings_filters:
+      clean_filters: Limpiar filtro
+    proposal_filters:
+      clean_filters: Limpiar filtro
     search_filter:
       search_input_placeholder: Buscar

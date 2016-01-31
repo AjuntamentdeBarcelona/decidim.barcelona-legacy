@@ -20,6 +20,7 @@ class MeetingsFilter extends React.Component {
   render() {
     return (
       <form>
+        <a onClick={() => this.cleanFilters()}>{I18n.t('components.meetings_filters.clean_filters')}</a>
         <SearchFilter 
           searchText={this.state.searchText}
           onSetFilterText={ (searchText) => this.onSetFilterText(searchText) } />
@@ -61,5 +62,21 @@ class MeetingsFilter extends React.Component {
   onSetFilterTags(tags) {
     this.props.onLoading();
     this.filterService.setFilterTags(tags);
+  }
+
+  cleanFilters() {
+    let filters = this.state.filters.clear(),
+        tags = this.state.tags.clear(),
+        searchText = '';
+
+    this.props.onLoading();
+
+    this.filterService.applyFilters(
+      filters.toObject(), 
+      tags.toArray(),
+      searchText
+    );
+
+    this.setState({ filters, tags, searchText });
   }
 }

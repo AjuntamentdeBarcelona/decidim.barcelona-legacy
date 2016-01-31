@@ -6,6 +6,10 @@ class FilterOptionGroup extends React.Component {
     };
   }
 
+  componentWillReceiveProps({ filterGroupValue }) {
+    this.setState({ filterGroupValue: Immutable.Set(this.props.filterGroupValue) });
+  }
+
   renderIncludeAll() {
     if (this.props.isExclusive) {
       return (
