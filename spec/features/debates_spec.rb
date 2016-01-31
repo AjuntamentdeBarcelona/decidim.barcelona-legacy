@@ -425,6 +425,8 @@ feature 'Debates' do
       visit debates_path
       click_link 'highest rated'
 
+      expect(page.find('.debate', match: :first)).to have_content('Best')
+
       within '#debates' do
         expect('Best').to appear_before('Medium')
         expect('Medium').to appear_before('Worst')
@@ -435,12 +437,14 @@ feature 'Debates' do
     end
 
     scenario 'Debates are ordered by newest', :js do
-      create(:debate, title: 'Best',   created_at: Time.now)
-      create(:debate, title: 'Medium', created_at: Time.now - 1.hour)
-      create(:debate, title: 'Worst',  created_at: Time.now - 1.day)
+      create(:debate, title: 'Best',   created_at: Time.now).update_column(:confidence_score, 1)
+      create(:debate, title: 'Medium', created_at: Time.now - 1.hour).update_column(:confidence_score, 2)
+      create(:debate, title: 'Worst',  created_at: Time.now - 1.day).update_column(:confidence_score, 3)
 
-      visit debates_path
+      visit debates_path(order: "confidence_score")
       click_link 'newest'
+
+      expect(page.find('.debate', match: :first)).to have_content('Best')
 
       within '#debates' do
         expect('Best').to appear_before('Medium')

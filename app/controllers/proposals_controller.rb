@@ -1,4 +1,5 @@
 class ProposalsController < ApplicationController
+  FEATURED_PROPOSALS_LIMIT = 3
   include CommentableActions
   include FlagActions
 
@@ -12,14 +13,16 @@ class ProposalsController < ApplicationController
   respond_to :html, :js
 
   def index
-    @filter = ResourceFilter.new(Proposal.all, params)
+    @filter = ResourceFilter.new(Proposal.includes(:category, :subcategory), params)
     @proposals = @filter.collection
 
-    @featured_proposals = @proposals.sort_by_confidence_score.limit(3) if (@filter.search_filter.blank? && @filter.tag_filter.blank?)
-    if @featured_proposals.present?
-      set_featured_proposal_votes(@featured_proposals)
-      @featured_proposals = @featured_proposals.send("sort_by_#{@current_order}")
-      @proposals = @proposals.where('proposals.id NOT IN (?)', @featured_proposals.map(&:id))
+    if @proposals.length > FEATURED_PROPOSALS_LIMIT
+      @featured_proposals = @proposals.sort_by_confidence_score.limit(FEATURED_PROPOSALS_LIMIT) if (@filter.search_filter.blank? && @filter.tag_filter.blank?)
+      if @featured_proposals.present?
+        set_featured_proposal_votes(@featured_proposals)
+        @featured_proposals = @featured_proposals.send("sort_by_#{@current_order}")
+        @proposals = @proposals.where('proposals.id NOT IN (?)', @featured_proposals.map(&:id))
+      end
     end
 
     @proposals = @proposals.page(params[:page]).for_render.send("sort_by_#{@current_order}")
