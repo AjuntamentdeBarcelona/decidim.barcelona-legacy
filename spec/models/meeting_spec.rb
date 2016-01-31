@@ -37,16 +37,6 @@ describe Meeting do
       meeting.held_at = nil
       expect(meeting).to_not be_valid
     end
-
-    it "should not be valid without a start_at time" do
-      meeting.start_at = nil
-      expect(meeting).to_not be_valid
-    end
-
-    it "should not be valid without a end_at time" do
-      meeting.end_at = nil
-      expect(meeting).to_not be_valid
-    end
   end
 
   describe ".upcoming" do
