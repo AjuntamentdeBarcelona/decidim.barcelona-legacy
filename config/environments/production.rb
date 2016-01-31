@@ -74,26 +74,26 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: Rails.application.secrets.server_name }
   # config.action_mailer.asset_host = "https://#{Rails.application.secrets.server_name}"
 
-  if ENV["SENDGRID_USERNAME"]
-    config.action_mailer.smtp_settings = {
-      :address        => 'smtp.sendgrid.net',
-      :port           => '587',
-      :authentication => :plain,
-      :user_name      => ENV['SENDGRID_USERNAME'],
-      :password       => ENV['SENDGRID_PASSWORD'],
-      :domain         => 'heroku.com',
-      :enable_starttls_auto => true
+  config.action_mailer.smtp_settings = {
+    :address        => Rails.application.secrets.smtp_address,
+    :port           => Rails.application.secrets.smtp_port,
+    :authentication => Rails.application.secrets.smtp_authentication,
+    :user_name      => Rails.application.secrets.smtp_username,
+    :password       => Rails.application.secrets.smtp_password,
+    :domain         => Rails.application.secrets.smtp_domain,
+    :enable_starttls_auto => Rails.application.secrets.smtp_starttls_auto
+  }
+
+  if Rails.application.secrets.sendgrid
+    config.action_mailer.default_options = {
+      "X-SMTPAPI" => {
+        filters:  {
+          clicktrack: { settings: { enable: 0 } },
+          opentrack:  { settings: { enable: 0 } }
+        }
+      }.to_json
     }
   end
-
-  config.action_mailer.default_options = {
-    "X-SMTPAPI" => {
-      filters:  {
-        clicktrack: { settings: { enable: 0 } },
-        opentrack:  { settings: { enable: 0 } }
-      }
-    }.to_json
-  }
 
 
   if ENV["MEMCACHEDCLOUD_SERVERS"]
