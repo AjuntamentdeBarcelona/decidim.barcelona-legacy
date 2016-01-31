@@ -20,6 +20,7 @@
 //= require parallax
 //= require react
 //= require react_ujs
+//= require modernizr
 //= require moment
 //= require services
 //= require components
