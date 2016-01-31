@@ -178,7 +178,7 @@ es:
       ie_title: Esta web no está optimizada para tu navegador
     footer:
       accessibility: Accesibilidad
-      code_links: Esta web es %{github_decidim_url}, basado en %{github_consul_url}.
+      code_links: Esta web está hecha con %{github_decidim_url}, basado en %{github_consul_url}.
       conditions: Condiciones de uso
       free_software: software libre
       more_info: Informate
@@ -405,6 +405,7 @@ es:
     blog: Blog
     facebook: Facebook
     github: GitHub
+    instagram: Instagram
     twitter: Twitter
     youtube: YouTube
   spending_proposals:
