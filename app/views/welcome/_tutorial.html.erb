@@ -9,7 +9,7 @@
       <span class="icons"><%= bcn_icon "imac" %><%= bcn_icon "xat_blanc" %><%= bcn_icon "cor" %></span>
       <div class="step-content">
         <span class="number">1</span>
-        <span class="description"><%= t 'welcome.tutorial.step-1.description' %></span>
+        <%= link_to proposals_path, class: 'description' do %><%= t 'welcome.tutorial.step-1.description' %><% end %>
         <span class="line-overlay"></span>
       </div>
     </div>
@@ -27,7 +27,7 @@
       <span class="icons"><%= bcn_icon "nuvol" %><%= bcn_icon "doc_llapis" %><%= bcn_icon "safata" %></span>
       <div class="step-content">
         <span class="number">3</span>
-        <span class="description"><%= t 'welcome.tutorial.step-3.description' %></span>
+        <%= link_to proposals_path, class: 'description' do %><%= t 'welcome.tutorial.step-3.description' %><% end %>
         <span class="line-overlay"></span>
       </div>
     </div>

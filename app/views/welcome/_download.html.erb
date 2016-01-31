@@ -6,8 +6,8 @@
         <h4><%= t 'welcome.download.subtitle' %></h4>
       </div>
       <div class="download-buttons">
-        <%= link_to t('welcome.download.links.pam'), '#', class: 'download-pam' %>
-        <%= link_to t('welcome.download.links.epub'), '#', class: 'download-epub' %>
+        <%= link_to '#', class: 'download-pam' do %><span><%= t('welcome.download.links.pam') %></span><% end %>
+        <%= link_to '#', class: 'download-epub' do %><span><%= t('welcome.download.links.epub') %></span><% end %>
       </div>
     </div>
   </div>
