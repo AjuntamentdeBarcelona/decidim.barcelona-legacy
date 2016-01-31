@@ -1,6 +1,5 @@
 <div id="<%= dom_id(proposal) %>" class="proposal clear <%= proposal_class_names proposal %>">
     <div class="row">
-
       <div class="small-12 medium-9 column">
         <div class="proposal-content">
           <% if proposal.official? %>
@@ -44,14 +43,16 @@
           </p>
           <div class="proposal-description">
             <p>
-              <%= link_to strip_tags(proposal.summary), namespaced_proposal_path(proposal) %>
+              <%= strip_tags(proposal.summary) %>
             </p>
             <div class="truncate"></div>
           </div>
-          <%= render "proposals/meta", proposal: proposal %>
-          <% if feature?(:proposal_tags) %>
-            <%= render "shared/tags", taggable: proposal, limit: 5 %>
-          <% end %>
+          <div class="bottom-bar">
+            <%= render "proposals/meta", proposal: proposal %>
+            <% if feature?(:proposal_tags) %>
+              <%= render "shared/tags", taggable: proposal, limit: 5 %>
+            <% end %>
+          </div>
         </div>
       </div>
 

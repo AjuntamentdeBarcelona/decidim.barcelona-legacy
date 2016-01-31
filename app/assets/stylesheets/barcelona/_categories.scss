@@ -1,3 +1,15 @@
+$category-icons: (
+  1: "espiral",
+  2: "fletxa",
+  3: "arbre",
+  4: "correu",
+  5: "ma"
+);
+
+@function category-id-name($id){
+  @return map-get($category-icons, $id);
+}
+
 .categories-page{
   .see-proposals{
     text-align: center;
@@ -54,31 +66,19 @@
 
     $icon-size: rem-calc(55);
 
-    &.category_1 .category-icon{
-      @include bcn-icon("espiral", $icon-size);
-    }
-
-    &.category_2 .category-icon{
-      @include bcn-icon("fletxa", $icon-size);
-    }
-
-    &.category_3 .category-icon{
-      @include bcn-icon("arbre", $icon-size);
-    }
-
-    &.category_4 .category-icon{
-      @include bcn-icon("correu", $icon-size);
-    }
-
-    &.category_5 .category-icon{
-      @include bcn-icon("ma", $icon-size);
-    }
-
     &.category-item .category-icon{
+      width: $icon-size;
+      height: $icon-size;
       background-color: $background;
       border-radius: rem-calc(32);
       background-size: 60%;
       margin-right: 0;
     }
+  }
+}
+
+@for $i from 1 through 5 {
+  .category-icon-#{$i}{
+    @include bcn-icon(category-id-name($i));
   }
 }

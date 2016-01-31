@@ -21,7 +21,11 @@
           <% end %>
         <% end %>
 
-        <h1><%= @proposal.title %></h1>
+        <h2>
+          <%= link_to proposal_path(@proposal) do %>
+            <%= @proposal.title %>
+          <% end %>
+        </h2>
         <% if @proposal.conflictive? %>
           <div class="alert-box alert radius margin-top">
             <strong><%= t("proposals.show.flag") %></strong>
@@ -48,7 +52,9 @@
           </span>
         </div>
 
-        <%= text_with_links @proposal.summary %>
+        <div class="proposal-description">
+          <%= text_with_links @proposal.summary %>
+        </div>
 
         <% if @proposal.external_url.present? %>
           <div class="document-link">
@@ -89,7 +95,7 @@
 
     <div class="row">
       <div class="small-12 medium-9 column">
-        <h2><%= t("proposals.show.meetings_title") %></h2>
+        <h3><%= t("proposals.show.meetings_title") %></h3>
         <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
           <% @proposal.meetings.sample(8).each do |meeting| %>
             <li class="meeting">
