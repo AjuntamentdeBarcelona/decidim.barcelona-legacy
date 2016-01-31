@@ -332,14 +332,12 @@ en:
         other: "%{count} comments"
         zero: No comments
       proposal: Proposal
-      reason_for_supports_necessary: 2% of Census
       support: Support
       support_title: Support this proposal
       supports:
         one: 1 support
         other: "%{count} supports"
         zero: No supports
-      supports_necessary: "%{number} supports needed"
     show:
       author_deleted: User deleted
       back_link: Go back
