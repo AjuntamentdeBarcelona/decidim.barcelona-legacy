@@ -31,7 +31,6 @@ a.button.new-proposal{
     h3{
       &, a{
         font-weight: normal;
-        color: $text;
         font-size: rem-calc(22);
       }
     }
@@ -146,7 +145,7 @@ a.button.new-proposal{
 
 
 .proposals-list, .proposal-show{
-  .supports{
+  .vote-box{
     text-align: left;
 
     .progress{
