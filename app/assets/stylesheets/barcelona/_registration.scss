@@ -2,9 +2,10 @@
   background: image-url("auth_bg.jpg");
   background-size: cover;
   background-color: none;
-  background-position: center;
+  background-position: left top;
   background-attachment: fixed;
-  & > .wrapper{
-    background-color: transparentize(black, 0.8);
+
+  .panel{
+    box-shadow: rem-calc(0) rem-calc(0) rem-calc(50) rgba(0,0,0,0.4);
   }
 }
