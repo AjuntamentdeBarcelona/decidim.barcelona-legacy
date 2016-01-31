@@ -14,8 +14,11 @@
       </aside>
     </div>
 
-    <div id="proposals" class="proposals-list small-12 medium-9 column">
-      <%= render "proposals" %>
+    <div class="small-12 medium-9 column">
+      <%= react_component('Loading') %>
+      <div id="proposals" class="proposals-list">
+        <%= render "proposals" %>
+      </div>
     </div>
   </div>
 </section>
