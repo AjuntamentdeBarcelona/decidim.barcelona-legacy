@@ -1,6 +1,10 @@
 ---
 es:
   pages:
+    download:
+      download-district: Descarga el PAD de %{district}
+      download-pam: Descarga el PAM
+      title: Descarga el Plan Municipal
     more_information:
       faq:
         question-1:

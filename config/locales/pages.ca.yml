@@ -169,3 +169,7 @@ ca:
       password: Contrasenya
       submit: Verifica el meu compte
       title: Verifica el teu compte
+    download:
+      title: "Descarrega't el Pla Municipal"
+      download-pam: "Descarrega't el PAM"
+      download-district: "Descarrega't el PAD de %{district}"
