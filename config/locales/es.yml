@@ -180,6 +180,7 @@ es:
       accessibility: Accesibilidad
       code_links: Esta web es %{github_decidim_url}, basado en %{github_consul_url}.
       conditions: Condiciones de uso
+      free_software: software libre 
       more_info: Informate
       privacy: Política de privacidad
     header:
@@ -410,6 +411,7 @@ es:
   social:
     blog: Blog
     facebook: Facebook
+    github: GitHub
     twitter: Twitter
     youtube: YouTube
   spending_proposals:
