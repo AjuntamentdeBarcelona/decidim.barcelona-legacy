@@ -46,7 +46,7 @@ module ApplicationHelper
   end
 
   def cookies_accepted?
-    cookies['bcn-cc'].present?
+    cookies['decidim-barcelona-cc'].present?
   end
 
   def cookies_warning
