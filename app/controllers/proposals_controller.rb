@@ -13,7 +13,7 @@ class ProposalsController < ApplicationController
   respond_to :html, :js
 
   def index
-    @filter = ResourceFilter.new(Proposal.all, params)
+    @filter = ResourceFilter.new(Proposal.includes(:category, :subcategory), params)
     @proposals = @filter.collection
 
     if @proposals.length > FEATURED_PROPOSALS_LIMIT

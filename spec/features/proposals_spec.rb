@@ -289,7 +289,7 @@ feature 'Proposals' do
 
     click_link 'Edit'
 
-    expect(current_path).to eq edit_proposal_path(Proposal.last)
+    expect(page).to have_content("Edit Testing auto link")
     expect(page).not_to have_link('click me')
     expect(page.html).to_not include "<script>alert('hey')</script>"
   end
@@ -503,6 +503,8 @@ feature 'Proposals' do
       visit proposals_path
       click_link 'highest rated'
 
+      expect(page.find('.proposal', match: :first)).to have_content('Best proposal')
+
       within '#proposals' do
         expect('Best proposal').to appear_before('Medium proposal')
         expect('Medium proposal').to appear_before('Worst proposal')
@@ -513,14 +515,14 @@ feature 'Proposals' do
     end
 
     scenario 'Proposals are ordered by newest', :js do
-      create_featured_proposals
+      create(:proposal, title: 'Best proposal',   created_at: Time.now).update_column(:confidence_score, 1)
+      create(:proposal, title: 'Medium proposal', created_at: Time.now - 1.hour).update_column(:confidence_score, 2)
+      create(:proposal, title: 'Worst proposal',  created_at: Time.now - 1.day).update_column(:confidence_score, 3)
 
-      create(:proposal, title: 'Best proposal',   created_at: Time.now)
-      create(:proposal, title: 'Medium proposal', created_at: Time.now - 1.hour)
-      create(:proposal, title: 'Worst proposal',  created_at: Time.now - 1.day)
-
-      visit proposals_path
+      visit proposals_path(order: "confidence_score")
       click_link 'newest'
+
+      expect(page.find('.proposal', match: :first)).to have_content('Best proposal')
 
       within '#proposals' do
         expect('Best proposal').to appear_before('Medium proposal')
@@ -564,10 +566,10 @@ feature 'Proposals' do
 
       find('.proposal-filters .search-filter').set("Show what you got")
 
-      within("#featured-proposals") do
-        expect(all(".featured-proposal")[0].text).to match "Show you got"
-        expect(all(".featured-proposal")[1].text).to match "Show you got"
-        expect(all(".featured-proposal")[2].text).to match "Show what you got"
+      within("#proposals") do
+        expect(all(".proposal")[0].text).to match "Show you got"
+        expect(all(".proposal")[1].text).to match "Show you got"
+        expect(all(".proposal")[2].text).to match "Show what you got"
       end
     end
 
@@ -584,6 +586,7 @@ feature 'Proposals' do
       expect(page).to_not have_content "Do not display"
 
       click_link 'newest'
+      expect(page.find('.proposal', match: :first)).to have_content('Show you got')
 
       within("#proposals") do
         expect(all(".proposal")[0].text).to match "Show you got"
