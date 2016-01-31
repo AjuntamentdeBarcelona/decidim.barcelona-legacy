@@ -18,8 +18,9 @@
   </head>
   <body>
     <div class="wrapper">
+      <%= cookies_warning %>
       <%= render 'layouts/header' %>
-
+      
       <!--[if lt IE 9]>
       <% if browser.ie? && cookies['ie_alert_closed'] != 'true' %>
         <div data-alert class="alert-box info ie-alert-box">

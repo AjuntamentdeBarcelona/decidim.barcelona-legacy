@@ -1,5 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 
+require 'rack/policy'
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
@@ -34,5 +35,7 @@ module Consul
     config.autoload_paths << Rails.root.join('lib')
     config.time_zone = 'Madrid'
     config.active_job.queue_adapter = :sidekiq
+
+    config.middleware.insert_before ActionDispatch::Cookies, Rack::Policy::CookieLimiter, consent_token: 'rack.policy'
   end
 end

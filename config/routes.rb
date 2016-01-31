@@ -35,6 +35,9 @@ Rails.application.routes.draw do
   get '/welcome', to: 'welcome#welcome'
   get '/highlights', to: 'welcome#highlights', as: :highlights
 
+  get '/cookies/allow', to: 'cookie_policy#allow', as: :allow_cookies
+  get '/cookies/deny', to: 'cookie_policy#deny', as: :deny_cookies
+
 
   resources :debates do
     member do

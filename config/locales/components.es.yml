@@ -6,6 +6,10 @@ es:
         label: Eje
       subcategory:
         label: Línea estratégica
+    cookies_warning:
+      close: Acepto
+      more_info: Más información
+      text: Utilizamos cookies propias y de terceros para mejorar la experiencia de navegación y ofrecer contenidos y servicios de interés. Al continuar con la navegación, entendemos que se acepta nuestra política de cookies.
     filter_option:
       citizenship: Ciudadania
       city: Toda la ciudad
