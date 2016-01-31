@@ -49,15 +49,15 @@ ca:
           closed: Tancats
           pending: Pendents
         headers:
-          meeting: Trobada presencial
+          meeting: Cita presencial
         search_form:
           button: Cercar
           placeholder: Cercar
-        title: Trobades presencials
+        title: Cites presencials
     menu:
       flagged_comments: Comentaris
       flagged_debates: Debats
-      meetings: Trobades presencials
+      meetings: Cites presencials
       proposals: Propostes
       users: Bloqueja usuaris
     proposals:

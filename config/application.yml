@@ -35,6 +35,7 @@ defaults: &defaults
   twitter_handle: "decidimbcn"
   facebook_handle: ~
   youtube_handle: "decidimbcn"
+  github_handle: "AjuntamentdeBarcelona/decidimbcn"
 
   blog_url: 
     ca: "http://eldigital.barcelona.cat/pambcn"

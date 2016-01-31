@@ -178,7 +178,9 @@ en:
       ie_title: This website is not optimised for your browser
     footer:
       accessibility: Accessibility
+      code_links: This web is %{github_decidim_url}, based on %{github_consul_url}.
       conditions: Terms and conditions of use
+      free_software: free software
       more_info: Information
       privacy: Privacy Policy
     header:
@@ -409,6 +411,7 @@ en:
   social:
     blog: Blog
     facebook: Facebook
+    github: GitHub
     twitter: Twitter
     youtube: YouTube
   spending_proposals:
