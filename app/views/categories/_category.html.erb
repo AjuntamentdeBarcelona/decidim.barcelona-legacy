@@ -1,3 +1,3 @@
-<h2 id="<%= dom_id(category) %>"><%= category.name_with_code %></h2>
+<h3 id="<%= dom_id(category) %>"><%= category.name_with_code %></h3>
 <p><%= category.description.html_safe %></p>
 <%= render partial: 'subcategory', collection: category.subcategories %>

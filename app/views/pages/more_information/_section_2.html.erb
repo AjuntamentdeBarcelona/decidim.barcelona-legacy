@@ -5,7 +5,9 @@
 <p><%= t '.paragraph-4' %></p>
 <p><%= t '.paragraph-5' %></p>
 
-<p class="links">
-  <%= link_to t('.links-1.link-1'), "#" %>
-  <%= link_to t('.links-1.link-2'), "#" %>
-</p>
+<%= render partial: 'shared/categories', locals: { categories: categories } %>
+
+<ul class="links">
+  <li><%= link_to t('.links-1.link-1'), proposals_path(filter: "source=official") %></li>
+  <li><%= link_to t('.links-1.link-2'), "#" %></li>
+</ul>
