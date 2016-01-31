@@ -17,7 +17,6 @@ class Meeting < ActiveRecord::Base
 
   validates :author, presence: true
   validates :title, presence: true
-  validates :description, presence: true
   validates :address, presence: true
   validates :held_at, presence: true
   validates :scope, inclusion: { in: %w(city district) }
