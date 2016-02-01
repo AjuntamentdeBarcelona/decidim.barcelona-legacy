@@ -1,8 +1,8 @@
 module MeetingsDirectoryHelper
   def meetings_directory(options = {})
     react_component(
-      'MeetingsDirectory', 
-      filter: options[:filter],
+      'MeetingsDirectory',
+      filter: serialized_filters(options[:filter]),
       filterUrl: meetings_url,
       meetings: serialized_meetings(options[:meetings]),
       districts: Proposal::DISTRICTS,
