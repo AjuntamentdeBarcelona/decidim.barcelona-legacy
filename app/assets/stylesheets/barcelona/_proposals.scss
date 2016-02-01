@@ -61,7 +61,7 @@ a.button.new-proposal{
       margin-bottom: rem-calc(15);
     }
 
-    @media #{$medium-up} {
+    @media #{$large-up} {
       li{
         margin-bottom: 0;
       }
