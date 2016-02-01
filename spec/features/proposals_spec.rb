@@ -34,7 +34,7 @@ feature 'Proposals' do
   end
 
   scenario 'Paginated Index' do
-    per_page = Kaminari.config.default_per_page
+    per_page = 15
     (per_page + 5).times { create(:proposal) }
 
     visit proposals_path
