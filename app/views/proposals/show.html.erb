@@ -3,6 +3,7 @@
 <%= render "shared/social_media_meta_tags",
             social_url: proposal_url(@proposal),
             social_title: @proposal.title,
+            social_media_image: asset_url('social-media-icon.png'),
             social_description: text_with_links(@proposal.summary) %>
 <% end %>
 

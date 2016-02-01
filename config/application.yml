@@ -37,6 +37,7 @@ defaults: &defaults
   youtube_handle: "bcnajuntament"
   instagram_handle: "barcelona_cat"
   github_handle: "AjuntamentdeBarcelona/decidimbcn"
+  facebook_app_id: "929041747208547"
 
   blog_url: 
     ca: "http://eldigital.barcelona.cat/pambcn"
