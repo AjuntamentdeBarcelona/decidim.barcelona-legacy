@@ -301,7 +301,7 @@ ca:
       filter:
         title: Filtrar per
       orders:
-        confidence_score: més recolzades
+        confidence_score: amb més suport
         created_at: més noves
         hot_score: més actives avui
         most_commented: més comentades
