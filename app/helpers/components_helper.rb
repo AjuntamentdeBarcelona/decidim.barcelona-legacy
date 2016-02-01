@@ -27,8 +27,7 @@ module ComponentsHelper
     CategoryDecorator.decorate_collection(Category.all).map do |category|
       {
         id: category.id.to_s,
-        name: category.name,
-        description: category.description
+        name: category.name
       }
     end
   end
@@ -38,7 +37,6 @@ module ComponentsHelper
       {
         id: subcategory.id.to_s,
         name: subcategory.name,
-        description: subcategory.description,
         categoryId: subcategory.category_id.to_s
       }
     end
