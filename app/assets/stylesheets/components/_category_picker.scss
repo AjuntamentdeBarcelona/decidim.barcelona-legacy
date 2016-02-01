@@ -1,13 +1,24 @@
 .subcategory-picker{
+  ul{
+    margin-left: 0;
 
-  li{
+    @media #{$medium-up}{
+      @include block-grid(
+        $per-row: 3
+      )
+    }
+  }
+
+  ul li{
     list-style-type: none;
     cursor: pointer;
     position: relative;
-    padding-left: rem-calc(3);
+    position: relative;
+    padding-bottom: rem-calc(5);
 
-    span{
-      font-weight: bold;
+    span.name{
+      padding-left: rem-calc(25);
+      display: inline-block;
     }
 
     &:before{
@@ -15,7 +26,7 @@
       content: "\f096";
       position: absolute;
       top: 0;
-      left: -1rem;
+      left: 0.6rem;
     }
 
     &.selected{
@@ -24,6 +35,8 @@
       }
     }
   }
+
+  margin-bottom: $line-height;
 }
 
 .category-picker{
@@ -40,29 +53,34 @@
 
   }
 
-  span{
+  span.category{
     cursor: pointer;
     display: block;
-    padding: rem-calc(6);
+    padding: rem-calc(15) rem-calc(6);
+    padding-top: rem-calc(20);
     text-align: center;
-    background-color: $background;
+    background-color: $highlight;
     position: relative;
     @include transition(all, 0.15s);
 
-    &:before{
-      font-family: "FontAwesome";
-      content: "\f017";
-      position: absolute;
-      top: rem-calc(6);
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 2rem;
+    span.name{
+      display: block;
+      text-align: center;
     }
 
-    padding-top: rem-calc(48);
+    $icon-size: rem-calc(40);
+
+    .icon{
+      width: $icon-size;
+      height: $icon-size;
+      background-color: $background;
+      border-radius: rem-calc(32);
+      background-size: 60%;
+      margin-right: 0;
+    }
   }
 
-  li.selected span{
+  li.selected span.category{
     background-color: $brand;
     color: #fff;
   }
