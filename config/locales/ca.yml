@@ -248,6 +248,8 @@ ca:
       back_link: Tornar
       proposals_title: Propostes tractades
       share: Comparteix
+  menu:
+    mobile-menu: Menu
   notifications:
     index:
       comments_on:

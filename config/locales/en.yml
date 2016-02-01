@@ -248,6 +248,8 @@ en:
       back_link: Back
       proposals_title: Discussed proposals
       share: Share
+  menu:
+    mobile-menu: Menu
   notifications:
     index:
       comments_on:

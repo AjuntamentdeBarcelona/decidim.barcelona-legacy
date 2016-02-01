@@ -57,6 +57,7 @@
 //= require verification_form
 //= require home_animations
 //= require page_navigation
+//= require menu
 
 var initialize_modules = function() {
   App.Comments.initialize();
@@ -75,6 +76,7 @@ var initialize_modules = function() {
   App.HomeAnimations.initialize();
   App.PageNavigation.initialize();
   App.VerificationForm.initialize();
+  App.Menu.initialize();
 };
 
 $(function(){
