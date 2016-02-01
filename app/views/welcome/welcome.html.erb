@@ -14,12 +14,14 @@
     <span><%= t("welcome.welcome.user_permission_verify_info") %></span>
   </p>
 
-  <p>
-    <%= t("welcome.welcome.user_permission_verify",
-    verify: link_to(t("welcome.welcome.user_permission_verify_url"), verification_path)).html_safe %>
+  <p class="text-center">
+    <%= link_to t("welcome.welcome.user_permission_verify_url"), verification_path , class: "button success radius" %>
   </p>
 
   <p class="text-center">
-    <%= link_to t("welcome.welcome.go_to_index"), proposals_path , class: "button success radius" %>
+    <%= t("welcome.welcome.skip_verification") %>
+  </p>
+  <p class="text-center">
+    <%= link_to t("welcome.welcome.see_proposals"), proposals_path , class: "button secondary radius" %>
   </p>
 </div>

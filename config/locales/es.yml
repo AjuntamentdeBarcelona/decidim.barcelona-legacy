@@ -471,12 +471,12 @@ es:
     highlights: 'Portada: '
     signed_in_home_title: Actividad reciente
     welcome:
-      go_to_index: Ver propuestas
+      see_proposals: Ver las propuestas
+      skip_verification: Si no estás empadronado en Barcelona o no quieres verificarte,
       title: Empieza a participar
       user_permission_debates: Participar en debates
       user_permission_info: Con tu cuenta ya puedes...
       user_permission_proposal: Crear nuevas propuestas
       user_permission_support_proposal: Apoyar propuestas*
-      user_permission_verify: Para poder realizar todas las acciones %{verify}.
       user_permission_verify_info: "* Sólo usuarios empadronados en el municipio de Barcelona."
-      user_permission_verify_url: verifica tu cuenta
+      user_permission_verify_url: Verifica tu cuenta

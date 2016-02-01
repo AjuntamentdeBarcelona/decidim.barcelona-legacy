@@ -1,6 +1,10 @@
 ---
 ca:
   pages:
+    download:
+      download-district: Descarrega't el PAD de %{district}
+      download-pam: Descarrega't el PAM
+      title: Descarrega't el Pla Municipal
     more_information:
       faq:
         question-1:
@@ -45,8 +49,8 @@ ca:
           answer: El suport i la votació de propostes es limiten a la gent empadronada a Barcelona, ​​ja que es tracta de prendre decisions que afectaran el municipi i les persones que hi viuen, i per tant ens sembla que són ells els qui han de prendre la decisió final. És cert que hi ha persones que no estan empadronades a Barcelona i que, tot i així, aquestes decisions les poden afectar, però el Padró és el cens més ampli de què disposem que ens permet que el procés de participació sigui segur i arribem al màxim nombre possible de persones. Així i tot, sí que és possible participar encara que no s'estigui empadronat. Pots participar presencialment als debats per al procés del Pla municipal, i també és possible llançar una proposta, o comentar les propostes existents, sense necessitat d'estar empadronat. Només els suports a les propostes es limiten a la gent empadronada.
           title: No estic empadronat a Barcelona, per què no puc participar?
         question-8:
-          answer: "Per utilitzar el web necessites un compte d'usuari. Segons el grau de verificació podràs fer més o menys coses:"
-          answer-1: "Si et registres al web amb l'adreça electrònica i no dónes cap dada més (no fem el procés de verificació de residència) podràs:"
+          answer: 'Per utilitzar el web necessites un compte d''usuari. Segons el grau de verificació podràs fer més o menys coses:'
+          answer-1: 'Si et registres al web amb l''adreça electrònica i no dónes cap dada més (no fem el procés de verificació de residència) podràs:'
           answer-1-1: Donar suport a propostes.
           answer-1-2: Comentar i argumentar propostes.
           answer-2: 'Si després de registrar-te has fet la verificació bàsica, és a dir, has verificat la residència a través del web (+ info a "Com creo i verifico el meu compte?") podràs:'
@@ -76,9 +80,9 @@ ca:
         title: 'Per què un procés participatiu pel Pla municipal? '
       section_4:
         list-1:
-          item-1: '<strong>Cites presencials</strong>: són jornades, debats, trobades a l’espai públic i altres cites presencials per debatre propostes relacionades tant amb la ciutat, com amb els barris i districtes.'
+          item-1: "<strong>Cites presencials</strong>: són jornades, debats, trobades a l’espai públic i altres cites presencials per debatre propostes relacionades tant amb la ciutat, com amb els barris i districtes."
           item-1-link: Aquí pots veure les cites presencials
-          item-2: '<strong>decidim.barcelona</strong>: la plataforma per fer noves aportacions, veure’n altres fetes per la ciutadania o sorgides de les cites presencials, donar suport i comentar i debatre entorn d''aquelles iniciatives que et semblin de més interès per a la ciutat.'
+          item-2: "<strong>decidim.barcelona</strong>: la plataforma per fer noves aportacions, veure’n altres fetes per la ciutadania o sorgides de les cites presencials, donar suport i comentar i debatre entorn d'aquelles iniciatives que et semblin de més interès per a la ciutat."
           item-2-link: Propostes a decidim.barcelona
         paragraph-1: El procés de participació per al Pla municipal és un mètode híbrid entre les cites presencials i els espais digitals. Aquesta singularitat ha impulsat el naixement de la plataforma <strong>decidim.barcelona</strong>.
         paragraph-2: 'Gràcies a la plataforma decidim.barcelona es crea un espai de participació obert a tota la ciutadania, es fa visible tot el procés de manera transparent i traçable i hi ha un retorn de les propostes introduïdes. '
@@ -169,7 +173,3 @@ ca:
       password: Contrasenya
       submit: Verifica el meu compte
       title: Verifica el teu compte
-    download:
-      title: "Descarrega't el Pla Municipal"
-      download-pam: "Descarrega't el PAM"
-      download-district: "Descarrega't el PAD de %{district}"
