@@ -155,7 +155,7 @@ en:
     messages:
       user_not_found: User not found
   form:
-    accept_terms: I agree to the %{policy} and the %{conditions}
+    accept_terms: I agree to the %{conditions}
     conditions: Terms and conditions of use
     debate: Debate
     error: error

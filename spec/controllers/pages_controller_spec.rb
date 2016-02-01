@@ -3,8 +3,8 @@ require 'rails_helper'
 describe PagesController do
 
   describe 'Static pages' do
-    it 'should include a privacy page' do
-      get :show, id: :privacy
+    it 'should include a conditions page' do
+      get :show, id: :conditions
       expect(response).to be_ok
     end
 
