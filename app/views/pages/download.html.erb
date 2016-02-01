@@ -1,0 +1,26 @@
+<% provide :title do %><%= t('.title') %><% end %>
+
+<div class="page row-full">
+  <div class="row">
+    <div class="more-information text small-12 medium-8 medium-centered column">
+      <h2><%=t '.title' %></h2>
+      <ul>
+        <li>
+          <span>
+          <%= link_to "#" do %>
+            <%=t '.download-pam'%>
+          <% end %>
+          </span>
+        </li>
+
+        <% Proposal::DISTRICTS.each do |name, key| %>
+          <li>
+            <span>
+              <%= link_to t('.download-district', district: name), download_for(key) %>
+            </span>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
