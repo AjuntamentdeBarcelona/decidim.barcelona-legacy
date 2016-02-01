@@ -10,7 +10,7 @@ class MeetingsController < ApplicationController
       format.html
       format.json do 
         render json: {
-          meetings: @meetings,
+          meetings: ActiveModel::ArraySerializer.new(@meetings, each_serializer: MeetingSerializer).as_json,
           filter: @filter
         }
       end
