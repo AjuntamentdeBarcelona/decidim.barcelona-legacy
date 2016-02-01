@@ -89,20 +89,22 @@
       </aside>
     </div>
 
-    <div class="row">
-      <div class="small-12 medium-9 column">
-        <h3><%= t("proposals.show.meetings_title") %></h3>
-        <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
-          <% @proposal.meetings.sample(8).each do |meeting| %>
-            <li class="meeting">
-              <div class="date"><%= l meeting.held_at %></div>
-              <div class="title"><%= link_to meeting.title, meeting %></div>
-              <div class="support"><%= t("proposals.show.meeting_supports", counter: meeting.supports) %></div>
-            </li>
-          <% end %>
+    <% unless @proposal.meetings.empty? %>
+      <div class="row">
+        <div class="small-12 medium-9 column">
+          <h2><%= t("proposals.show.meetings_title") %></h2>
+          <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+            <% @proposal.meetings.sample(8).each do |meeting| %>
+              <li class="meeting">
+                <div class="date"><%= l meeting.held_at %></div>
+                <div class="title"><%= link_to meeting.title, meeting %></div>
+                <div class="support"><%= t("proposals.show.meeting_supports", counter: meeting.supports) %></div>
+              </li>
+            <% end %>
+          </ul>
         </ul>
-      </ul>
-    </div>
+      </div>
+    <% end %>
   </section>
 <% end %>
 <%= render "proposals/comments" %>

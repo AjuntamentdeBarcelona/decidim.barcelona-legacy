@@ -1,5 +1,12 @@
 ---
 es:
+  datetime:
+    formats:
+      default: "%d/%m/%Y %H:%M:%S"
+  date:
+    formats:
+      default: "%d/%m/%Y"
   time:
     formats:
       datetime: "%d/%m/%Y %H:%M:%S"
+      default: "%H:%M"

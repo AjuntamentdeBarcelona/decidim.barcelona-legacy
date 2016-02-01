@@ -16,6 +16,12 @@
       <div class="date">
         <%= l @meeting.held_at %>
         <%= @meeting.held_at.strftime("%A") %>
+        <% if @meeting.start_at.present? && @meeting.end_at.present? %>
+          // 
+          <%= l @meeting.start_at %>
+          - 
+          <%= l @meeting.end_at %>
+        <% end %>
       </div>
 
       <div class="description">
@@ -28,13 +34,15 @@
     </div>
 
     <aside class="small-12 medium-3 column">
-      <div class="sidebar-divider"></div>
-      <h3><%= t("meetings.show.proposals_title") %></h3>
-      <ul>
-        <% @meeting.proposals.sample(3).each do |proposal| %>
-          <li><%= link_to proposal.title, proposal %></li>
-        <% end %>
-      </ul>
+      <% unless @meeting.proposals.empty? %>
+        <div class="sidebar-divider"></div>
+        <h3><%= t("meetings.show.proposals_title") %></h3>
+        <ul>
+          <% @meeting.proposals.sample(3).each do |proposal| %>
+            <li><%= link_to proposal.title, proposal %></li>
+          <% end %>
+        </ul>
+      <% end %>
       <div class="sidebar-divider"></div>
       <h3><%= t("meetings.show.share") %></h3>
       <%= social_share_button_tag(@meeting.title) %>

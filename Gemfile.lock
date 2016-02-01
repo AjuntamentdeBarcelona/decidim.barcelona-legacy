@@ -573,6 +573,7 @@ DEPENDENCIES
   friendly_id (~> 5.1.0)
   fuubar
   gaffe
+  geocoder
   groupdate
   heroku-deflater
   html_truncator

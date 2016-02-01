@@ -29,8 +29,8 @@ module MeetingsDirectoryHelper
         address_latitude: meeting.address_latitude,
         address_longitude: meeting.address_longitude,
         held_at: l(meeting.held_at),
-        start_at: l(meeting.start_at),
-        end_at: l(meeting.end_at)
+        start_at: meeting.start_at.present? ? l(meeting.start_at) : nil,
+        end_at: meeting.end_at.present? ? l(meeting.end_at) : nil
       }
     end
   end

@@ -23,7 +23,7 @@ class MeetingsList extends React.Component {
                     { meeting.title }
                   </a>
                   <div className="tags">
-                    <span className="radius secondary label">{ meeting.held_at }</span>
+                    {this.renderMeetingHeldAt(meeting)}
                   </div>
                   <p>{ meeting.description }</p>
                   <p><i className="fa fa-map-o"></i> { meeting.address }</p>
@@ -44,6 +44,14 @@ class MeetingsList extends React.Component {
 
   setCurrentPage(page) {
     this.setState({ currentPage: page });
+  }
+
+  renderMeetingHeldAt(meeting) {
+    let meetingHeldAt = (meeting.start_at && meeting.end_at) ? `${meeting.held_at} // ${meeting.start_at} - ${meeting.end_at}` : meeting.held_at;
+
+    return (
+      <span className="radius secondary label">{ meetingHeldAt }</span>
+    )
   }
 }
 

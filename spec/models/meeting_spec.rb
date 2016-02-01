@@ -18,11 +18,6 @@ describe Meeting do
       expect(meeting).to_not be_valid
     end
 
-    it "should not be valid without a summary" do
-      meeting.description = nil
-      expect(meeting).to_not be_valid
-    end
-
     it "should not be valid without an address" do
       meeting.address = nil
       expect(meeting).to_not be_valid
