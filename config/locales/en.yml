@@ -402,9 +402,9 @@ en:
     placeholder: Enter the text from the image
     refresh_button_text: Refresh
   social:
-    blog: Blog
     facebook: Facebook
     github: GitHub
+    instagram: Instagram
     twitter: Twitter
     youtube: YouTube
   spending_proposals:

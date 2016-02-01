@@ -32,9 +32,10 @@ defaults: &defaults
   # Emails under the domain's subdomains will also be included
   email_domain_for_officials: ''
 
-  twitter_handle: "decidimbcn"
-  facebook_handle: ~
-  youtube_handle: "decidimbcn"
+  twitter_handle: "bcn_ajuntament"
+  facebook_handle: "bcn.cat"
+  youtube_handle: "bcnajuntament"
+  instagram_handle: "barcelona_cat"
   github_handle: "AjuntamentdeBarcelona/decidimbcn"
 
   blog_url: 

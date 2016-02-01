@@ -178,7 +178,7 @@ ca:
       ie_title: Aquest web no està optimitzada per al teu navegador
     footer:
       accessibility: Accessibilitat
-      code_links: Aquesta web es %{github_decidim_url}, basat en %{github_consul_url}.
+      code_links: Aquesta web està feta amb %{github_decidim_url}, basat en %{github_consul_url}.
       conditions: Condicions d'ús
       free_software: software lliure
       more_info: Informa't
@@ -402,9 +402,9 @@ ca:
     placeholder: Introdueix el text de la imatge
     refresh_button_text: Refrescar
   social:
-    blog: Bloc
     facebook: Facebook
     github: GitHub
+    instagram: Instagram
     twitter: Twitter
     youtube: YouTube
   spending_proposals:
