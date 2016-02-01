@@ -5,7 +5,7 @@ ca:
       faq:
         question-1:
           answer: El document inicial recull les propostes que l’equip de govern posa sobre la taula per consensuar amb la ciutadania i amb la resta de grups polítics presents a l’Ajuntament. Inclou les propostes que ja s’han començat a treballar en sessions presencials amb entitats i associacions dels deu districtes.
-          title: Quines propostes inclou el PAM?
+          title: Quines propostes inclou el Pla Municipal?
         question-10:
           answer: El primer és crear un compte bàsic. Per això fem clic a l'enllaç Crea i emplenem les dades que ens demanen. És un requisit marcar la casella d'acceptació de les condicions d'ús, i emplenar correctament el CAPTCHA (a la part inferior del formulari se'ns presenta una imatge amb unes lletres deformades que haurem d'introduir a la casella inferior com a mesura de seguretat; tingues en compte la diferència entre majúscules i minúscules). Creant un nou compte ens arribarà un correu electrònic a l'adreça que hàgim especificat, i haurem de fer clic a l'enllaç que conté (l'enllaç que posa "Confirmar el meu compte") per acabar de crear el compte.
           answer-2: Un cop creat el compte bàsic, i després d'entrar amb el nostre correu i contrasenya, el sistema ens donarà l'opció de fer-ne una verificació bàsica. Per fer-ho, fem clic a l'enllaç "El meu compte" de la part superior dreta, i després al botó "Verificar el meu compte". El primer que se'ns demanarà és que introduïm les nostres dades de residència, per verificar que estem empadronats al municipi de Barcelona (és important introduir el número de document amb la lletra, i marcar la casella d'acceptació d'accés al Padró). Si les dades són correctes el nostre compte ens permetrà donar suport a les propostes.
@@ -14,17 +14,17 @@ ca:
           answer: Sobre la possibilitat d'unificar propostes, el que poden semblar petites diferències entre dues propostes similars, poden marcar grans diferències a l'hora de fer-les realitat. Per això hi ha persones que poden voler donar suport a una d'aquestes i no a altres. És per això que hem de respectar els suports particulars que hagi donat la gent, i no unificar les propostes. Això és independent del fet que els autors de les propostes vulguin unir-les. Un cop les propostes estan rebent suports passen a ser tant de la gent que els dóna suport com dels seus autors.
           title: Hi ha moltes propostes semblants, no es podrien unificar?
         question-12:
-          answer: Pots sol·licitar un nova contrasenya perquè se t'enviï al teu correu electrònic. Si la solució anterior no funciona, pots enviar un correu electrònic a l'adreça XXXX@bcn.cat, on et resoldran el problema associat al teu compte. També pots dirigir-te i participar als debats presencials que es faran per tot Barcelona.
+          answer: Pots sol·licitar un nova contrasenya perquè se t'enviï al teu correu electrònic. Si la solució anterior no funciona, pots enviar un correu electrònic a l'adreça suport@decidim.barcelona, on et resoldran el problema associat al teu compte. També pots dirigir-te i participar als debats presencials que es faran per tot Barcelona.
           title: M'he oblidat de la contrasenya o no em funciona, què puc fer?
         question-13:
-          answer: Revisa la secció "No em funciona la verificació de residència", per si el problema estigués en aquest pas, que sol ser el problema més freqüent. Si no s'ha solucionat, revisa la secció "Com creo i verifico el meu compte?", per assegurar-te que estàs seguint els passos adequadament. Si encara es manté el problema, pots enviar un correu electrònic a l'adreça XXXX@bcn.cat, i te'l resoldran.
+          answer: Revisa la secció "No em funciona la verificació de residència", per si el problema estigués en aquest pas, que sol ser el problema més freqüent. Si no s'ha solucionat, revisa la secció "Com creo i verifico el meu compte?", per assegurar-te que estàs seguint els passos adequadament. Si encara es manté el problema, pots enviar un correu electrònic a l'adreça suport@decidim.barcelona, i te'l resoldran.
           title: No aconsegueixo crear el meu compte correctament
         question-14:
           answer: Fes clic a l'enllaç "Entra", introdueix la teva adreça electrònica i la contrasenya, i prem el botó "Entra". Un cop fet això, fes clic a l'enllaç "El meu compte", on trobaràs totes les opcions que et permetran canviar la teva adreça electrònica, nom d'usuari, contrasenya, donar-te de baixa o activar o desactivar les notificacions. Un cop fet el canvi adequat assegura't de fer clic al botó "Desa els canvis".
           title: Com puc canviar la meva adreça electrònica, el meu nom d'usuari, la contrasenya, donar-me de baixa o activar o desactivar les notificacions que m'arriben al correu electrònic?
         question-2:
           answer: Qualsevol persona major de 16 anys pot fer aportacions i propostes, i donar suport i matisar les altres actuacions proposades, de manera que el debat serveixi per enriquir el document final que haurà d’aprovar el Ple de l’Ajuntament.
-          title: Qui pot fer aportacions al PAM?
+          title: Qui pot fer aportacions al Pla Municipal?
         question-3:
           answer: L’ajuntament organitza un seguit de jornades, tallers i debats on, de manera presencial, es poden fer i debatre propostes relacionades tant amb la ciutat, com amb els barris i districtes. N’hi ha de sectorials i n’hi ha de territorials. Aquí hi ha el calendari previst. També es pot participar i debatre digitalment per mitjà d’aquesta plataforma digital.
           title: Com es poden fer propostes?
@@ -38,8 +38,8 @@ ca:
           answer: 'Comprova les possibilitats següents:'
           answer-list-1: Has posat el DNI o document amb tots els caràcters junts, incloent-hi la lletra al final?
           answer-list-2: Estàs segur que estàs empadronat al municipi de Barcelona? (El municipi és geogràficament més petit que la província de Barcelona.)
-          answer-list-3: Potser hi ha algun problema amb les teves dades en el registre d'empadronament. Truca al XXX (o la seva versió gratuïta XXXXXXXX) i confirma que la teva informació del Padró és correcta.
-          answer-list-4: Si tots els passos anteriors no solucionen el problema, pots enviar-nos un correu electrònic a info@decidim.barcelona o venir als debats presencials que s'estan fent per tota la ciutat de Barcelona.
+          answer-list-3: Potser hi ha algun problema amb les teves dades en el registre d'empadronament. Conusulta la teva <a href="http://ajuntament.barcelona.cat/ca/canals-comunicacio-ciutadana/presencials/oac"> oficina d'atenció al ciutadà </a> més propera i confirma que la teva informació del Padró és correcta.
+          answer-list-4: Si tots els passos anteriors no solucionen el problema, pots enviar-nos un correu electrònic a suport@decidim.barcelona o venir als debats presencials que s'estan fent per tota la ciutat de Barcelona.
           title: No em funciona la verificació de residència
         question-7:
           answer: El suport i la votació de propostes es limiten a la gent empadronada a Barcelona, ​​ja que es tracta de prendre decisions que afectaran el municipi i les persones que hi viuen, i per tant ens sembla que són ells els qui han de prendre la decisió final. És cert que hi ha persones que no estan empadronades a Barcelona i que, tot i així, aquestes decisions les poden afectar, però el Padró és el cens més ampli de què disposem que ens permet que el procés de participació sigui segur i arribem al màxim nombre possible de persones. Així i tot, sí que és possible participar encara que no s'estigui empadronat. Pots participar presencialment als debats per al procés del Pla municipal, i també és possible llançar una proposta, o comentar les propostes existents, sense necessitat d'estar empadronat. Només els suports a les propostes es limiten a la gent empadronada.
@@ -115,6 +115,7 @@ ca:
           item-2: La seva viabilitat temporal, pressupostària i tècnica.
           item-3: Que es corresponguin amb les competències municipals.
           item-4: Que no siguin contràries al bé comú.
+          item-5: Els suports rebuts, els comentaris i la relació amb les cites presencials de cada proposta.
         paragraph-1: Aquest procés no és vinculant perquè el document final ha de ser aprovat pel Ple municipal i requereix un consens polític suficient que obtingui majoria.
         paragraph-2: "És, però, la primera vegada que el procés participatiu s’obre abans dels tràmits administratius per aprovar el pla. Això que es presenta aquí és, per tant, un primer esborrany que s'haurà de modificar amb les aportacions que surtin del procés participatiu. Només aleshores començarà el tràmit per a l’aprovació en el Ple i el període d’al·legacions."
         paragraph-3: El Govern es compromet a valorar la viabilitat de les propostes amb més suports i a explicar perquè cada una de les propostes s’ha incorporat al document final o s’ha desestimat.
