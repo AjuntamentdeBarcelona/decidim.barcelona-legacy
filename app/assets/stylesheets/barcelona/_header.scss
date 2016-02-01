@@ -20,8 +20,12 @@
   }
 
   .locale-switcher{
-    text-align: center;
+    text-align: left;
     color: $text-medium;
+
+    @media #{$medium-up}{
+      text-align: center;
+    }
 
     .locale-switcher-label{
       font-weight: bold;

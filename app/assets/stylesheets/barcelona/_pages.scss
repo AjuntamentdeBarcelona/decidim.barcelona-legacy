@@ -2,28 +2,35 @@
   .menu-outer{
     padding-top: $line-height;
     padding-right: rem-calc(15);
+
+    display: none;
+    @media #{$medium-up} {
+      display: block;
+    }
   }
   .menu{
-    margin-top: 0;
-    background-color: $highlight;
-    text-transform: uppercase;
-    padding: rem-calc(30);
+    @media #{$medium-up} {
+      margin-top: 0;
+      background-color: $highlight;
+      text-transform: uppercase;
+      padding: rem-calc(30);
 
-    li a{
-      color: $text;
-    }
+      li a{
+        color: $text;
+      }
 
-    li.selected > a{
-      color: $brand;
-    }
+      li.selected > a{
+        color: $brand;
+      }
 
-    ul.folded{
-      display: none;
-    }
+      ul.folded{
+        display: none;
+      }
 
-    &.interactive-navigation{
-      li.inView > ul{
-        display: block;
+      &.interactive-navigation{
+        li.inView > ul{
+          display: block;
+        }
       }
     }
   }

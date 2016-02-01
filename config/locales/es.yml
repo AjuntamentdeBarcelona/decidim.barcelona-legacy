@@ -248,6 +248,8 @@ es:
       back_link: Volver
       proposals_title: Propuestas tratadas
       share: Comparte
+  menu:
+    mobile-menu: Menú
   notifications:
     index:
       comments_on:

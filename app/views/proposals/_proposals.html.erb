@@ -1,14 +1,16 @@
 <% if @featured_proposals.present? %>
   <div id="featured-proposals" class="row featured-proposals">
-    <h2 class="section-title">
-      <%= t("proposals.index.featured_proposals") %>
-    </h2>
+    <div class="small-12 column">
+      <h2 class="section-title">
+        <%= t("proposals.index.featured_proposals") %>
+      </h2>
 
-    <ul class="small-block-grid-3">
-      <% @featured_proposals.each do |featured_proposal| %>
-        <%= render "featured_proposal", proposal: featured_proposal %>
-      <% end %>
-    </ul>
+      <ul>
+        <% @featured_proposals.each do |featured_proposal| %>
+          <%= render "featured_proposal", proposal: featured_proposal %>
+        <% end %>
+      </ul>
+    </div>
   </div>
 <% end %>
 

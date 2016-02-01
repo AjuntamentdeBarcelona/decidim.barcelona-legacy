@@ -52,6 +52,23 @@ a.button.new-proposal{
     text-align: center;
   }
 
+  ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li{
+      margin-bottom: rem-calc(15);
+    }
+
+    @media #{$large-up} {
+      li{
+        margin-bottom: 0;
+      }
+      @include block-grid(3);
+    }
+  }
+
   .featured-proposal-inner{
     @include arrow-box(darken($highlight, 5%), bottom);
   }
@@ -59,9 +76,44 @@ a.button.new-proposal{
   .featured-proposal-content{
     min-height: rem-calc(120px);
   }
+
 }
 
 .sidebar{
+  .proposal-filter-menu{
+    h2{
+      position: relative;
+    }
+
+    .toggle-menu{
+      position: absolute;
+      top: 50%;
+      right: rem-calc(15);
+      @include transform(translateY(-50%));
+
+      @media #{$medium-up} {
+        display: none;
+      }
+
+      @extend .fa;
+      @extend .fa-arrow-up;
+    }
+
+    &.collapsed{
+      .sidebar-section-content{
+        display: none;
+
+        @media #{$medium-up}{
+          display: block;
+        }
+      }
+
+      .toggle-menu{
+        @extend .fa-arrow-down;
+      }
+    }
+  }
+
   .sidebar-section .title{
     @include arrow-box($highlight, left);
     font-size: rem-calc(18);

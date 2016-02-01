@@ -1,5 +1,10 @@
 .session-menu{
-  text-align: right;
+  text-align: center;
+
+  @media #{$medium-up}{
+    text-align: right;
+  }
+
   position: absolute;
   top: 0;
   left: 0;
@@ -39,10 +44,18 @@
 }
 
 .main-menu{
-  @include display(flex);
+  .toggle-menu{
+    display: block;
+    text-align: center;
+    line-height: rem-calc(40);
+    cursor: pointer;
+  }
+
+  &.collapsed .menu-items{
+    display: none;
+  }
 
   a{
-    @include flex(1);
     display: block;
     line-height: rem-calc(40);
     text-align: center;
@@ -50,7 +63,6 @@
     color: $text;
     text-decoration: none;
     margin: 0;
-    border-right: rem-calc(1px) solid #fff;
 
     &.active, &:hover.active{
       background-color: $brand;
@@ -63,6 +75,30 @@
 
     &.home{
       @include flex(0 0 rem-calc(50));
+    }
+  }
+
+  @media #{$large-up}{
+    &.collapsed .menu-items, .menu-items{
+      @include display(flex);
+    }
+
+    a{
+      @include flex(1);
+      display: block;
+    }
+
+    border-right: 0;
+    .toggle-menu{
+      display: none;
+    }
+
+    &.collapsed{
+      display: block;
+    }
+
+    .toggle-menu{
+      display: none;
     }
   }
 }
