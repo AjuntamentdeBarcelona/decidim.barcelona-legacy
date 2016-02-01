@@ -28,6 +28,11 @@ a.button.new-proposal{
     }
 
     h3{
+      color: $brand;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+
       &, a{
         font-weight: normal;
         font-size: rem-calc(22);
