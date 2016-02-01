@@ -10,8 +10,7 @@ ca:
         instructions_html: S'està confirmant el compte amb el correu electrònic <b>%{email}</b>
         new_password_confirmation_label: Repeteix la contrasenya
         new_password_label: Contrasenya nova
-        please_set_password: Introdueix una contrasenya nova per al teu compte (et
-          permetrà entrar com a usuari amb el correu electrònic de més amunt)
+        please_set_password: Introdueix una contrasenya nova per al teu compte (et permetrà entrar com a usuari amb el correu electrònic de més amunt)
         submit: Confirma
         title: Confirma el meu compte
     mailer:
@@ -24,14 +23,12 @@ ca:
         change_link: Canvia la contrasenya
         hello: Hola
         ignore_text: Si tu no ho has sol·licitat, ignora aquest correu electrònic.
-        info_text: La contrasenya no canviarà fins que no accedeixis a l'enllaç i
-          la modifiquis.
+        info_text: La contrasenya no canviarà fins que no accedeixis a l'enllaç i la modifiquis.
         text: 'S''ha demanat de canviar la contrasenya. Pots fer-ho a l''enllaç següent:'
         title: Canvia la contrasenya
       unlock_instructions:
         hello: Hola
-        info_text: El teu compte ha estat bloquejat a causa d'un nombre excessiu d'intents
-          d'inici de sessió fallits.
+        info_text: El teu compte ha estat bloquejat a causa d'un nombre excessiu d'intents d'inici de sessió fallits.
         instructions_text: 'Segueix l''enllaç següent per desbloquejar el teu compte:'
         title: El teu compte ha estat bloquejat
         unlock_link: Desbloqueja el meu compte
@@ -49,20 +46,15 @@ ca:
           password_label: Contrasenya
           phone_number_label: Telèfon
           responsible_name_label: Nom i cognoms de la persona responsable del col·lectiu
-          responsible_name_note: Nom de la persona que representa l'associació o col·lectiu,
-            en nom de la qual es presentaran les propostes
+          responsible_name_note: Nom de la persona que representa l'associació o col·lectiu, en nom de la qual es presentaran les propostes
           submit: Registra'm
           title: Registra'm com organització/col·lectiu
         success:
           back_to_index: Ho he entès; torna a la pàgina principal
-          instructions_1_html: En breu <b>ens posarem en contacte amb tu</b> per verificar
-            que realment representes aquest col·lectiu.
-          instructions_2_html: Mentrestant, <b>revisa el teu correu electrònic</b>;
-            t'hem enviat un <b>enllaç per confirmar el compte.</b>
-          instructions_3_html: Un cop confirmat, podràs començar a participar com
-            a col·lectiu no verificat.
-          thank_you_html: Gràcies per registrar el teu col·lectiu a la web. Ara està
-            <b>pendent de verificació</b>.
+          instructions_1_html: En breu <b>ens posarem en contacte amb tu</b> per verificar que realment representes aquest col·lectiu.
+          instructions_2_html: Mentrestant, <b>revisa el teu correu electrònic</b>; t'hem enviat un <b>enllaç per confirmar el compte.</b>
+          instructions_3_html: Un cop confirmat, podràs començar a participar com a col·lectiu no verificat.
+          thank_you_html: Gràcies per registrar el teu col·lectiu a la web. Ara està <b>pendent de verificació</b>.
           title: Registre d'organització/col·lectiu
     passwords:
       edit:
@@ -99,8 +91,7 @@ ca:
       registrations:
         delete_form:
           erase_reason_label: Motiu de la baixa
-          info: Aquesta acció no es pot desfer. Una vegada donis de baixa teu compte,
-            no podràs tornar a entrar-hi com a usuari.
+          info: Aquesta acció no es pot desfer. Una vegada donis de baixa teu compte, no podràs tornar a entrar-hi com a usuari.
           info_reason: Si vols, escriu el motiu pel qual et dones de baixa (opcional).
           submit: Esborra el meu compte
           title: Vull donar-me de baixa
@@ -117,6 +108,7 @@ ca:
           waiting_for: 'S''està esperant confirmació de:'
         new:
           email_label: Adreça electrònica
+          legal_lopd_text: 'D''acord amb la Llei Orgànica 15/1999, de 13 de desembre, de Protecció de Dades de Caràcter Personal, us informem que les vostres dades personals s''incorporaran al fitxer Participació Ciutadana de l''Ajuntament de Barcelona, amb la finalitat de Participar en el procés de definició del nou Pla d’Acció Municipal. Les vostres dades no seran cedides a tercers. Podeu exercitar els drets d''accés, rectificació, cancel·lació i oposició, adreçant-vos per escrit al Registre General de l''Ajuntament: pl. Sant Jaume 1, 08002 Barcelona, indicant clarament en l''assumpte Exercici de Dret LOPD.'
           organization_signup: Representes una organització o col·lectiu? %{signup_link}
           organization_signup_link: Registra't aquí
           password_confirmation_label: Confirma la contrasenya
@@ -131,9 +123,7 @@ ca:
           username_note: Nom que apareixerà en les teves publicacions
         success:
           back_to_index: Ho he entès; torna a la pàgina principal
-          instructions_1_html: "<b>Revisa el correu electrònic</b>. T'hem enviat un
-            <b>enllaç per confirmar el compte.</b>"
+          instructions_1_html: "<b>Revisa el correu electrònic</b>. T'hem enviat un <b>enllaç per confirmar el compte.</b>"
           instructions_2_html: Un cop confirmat, podràs començar a participar.
-          thank_you_html: Gràcies per registrar-te al web. Ara has de <b>confirmar
-            l'adreça electrònica</b>.
+          thank_you_html: Gràcies per registrar-te al web. Ara has de <b>confirmar l'adreça electrònica</b>.
           title: Revisa el correu
