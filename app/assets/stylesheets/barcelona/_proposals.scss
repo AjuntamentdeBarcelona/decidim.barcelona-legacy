@@ -8,7 +8,7 @@ a.button.new-proposal{
     background-color: $highlight;
     .proposal-content, .supports{
       padding: rem-calc(12) rem-calc(20);
-      min-height: rem-calc(250);
+      min-height: rem-calc(260);
       position: relative;
     }
 
@@ -31,13 +31,6 @@ a.button.new-proposal{
       &, a{
         font-weight: normal;
         font-size: rem-calc(22);
-      }
-    }
-
-    .proposal-description{
-      p{
-        font-size: rem-calc(18);
-        font-weight: 300;
       }
     }
 
