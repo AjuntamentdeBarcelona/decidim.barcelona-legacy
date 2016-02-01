@@ -62,7 +62,7 @@ es:
         error_not_allowed_age: Hay que tener al menos 16 años
         error_not_allowed_postal_code: Para verificarte, debes estar empadronado en el municipio de Barcelona.
         error_verifying_census: No se pudo verificar tu información en el padrón. Por favor, confirma que tus datos de empadronamiento sean correctos o visita cualquiera de las %{offices}.
-        error_verifying_census_offices: 26 oficinas de atención al ciudadano
+        error_verifying_census_offices: oficinas de atención al ciudadano
         form_errors: no se pudo verificar tu residencia
         postal_code: Código postal
         postal_code_note: Para verificar tus datos, debes estar empadronado en el municipio de Barcelona.
