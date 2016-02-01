@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160131090454) do
+ActiveRecord::Schema.define(version: 20160131235623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -302,14 +302,25 @@ ActiveRecord::Schema.define(version: 20160131090454) do
   add_index "proposals", ["author_id", "hidden_at"], name: "index_proposals_on_author_id_and_hidden_at", using: :btree
   add_index "proposals", ["author_id"], name: "index_proposals_on_author_id", using: :btree
   add_index "proposals", ["cached_votes_up"], name: "index_proposals_on_cached_votes_up", using: :btree
+  add_index "proposals", ["category_id"], name: "index_proposals_on_category_id", using: :btree
   add_index "proposals", ["confidence_score"], name: "index_proposals_on_confidence_score", using: :btree
+  add_index "proposals", ["created_at"], name: "index_proposals_on_created_at", using: :btree
   add_index "proposals", ["hidden_at"], name: "index_proposals_on_hidden_at", using: :btree
   add_index "proposals", ["hot_score"], name: "index_proposals_on_hot_score", using: :btree
+  add_index "proposals", ["official"], name: "index_proposals_on_official", using: :btree
   add_index "proposals", ["question"], name: "index_proposals_on_question", using: :btree
   add_index "proposals", ["slug"], name: "index_proposals_on_slug", unique: true, using: :btree
+  add_index "proposals", ["subcategory_id"], name: "index_proposals_on_subcategory_id", using: :btree
   add_index "proposals", ["summary"], name: "index_proposals_on_summary", using: :btree
   add_index "proposals", ["title"], name: "index_proposals_on_title", using: :btree
   add_index "proposals", ["tsv"], name: "index_proposals_on_tsv", using: :gin
+
+  create_table "settings", force: :cascade do |t|
+    t.string "key"
+    t.string "value"
+  end
+
+  add_index "settings", ["key"], name: "index_settings_on_key", using: :btree
 
   create_table "simple_captcha_data", force: :cascade do |t|
     t.string   "key",        limit: 40

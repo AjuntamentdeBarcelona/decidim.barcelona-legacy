@@ -25,7 +25,12 @@ class ProposalsController < ApplicationController
       end
     end
 
-    @proposals = @proposals.page(params[:page]).for_render.send("sort_by_#{@current_order}")
+    @proposals = @proposals.
+                 page(params[:page]).
+                 per(15).
+                 for_render.
+                 includes(:author).
+                 send("sort_by_#{@current_order}")
     set_resource_votes(@proposals)
   end
 
