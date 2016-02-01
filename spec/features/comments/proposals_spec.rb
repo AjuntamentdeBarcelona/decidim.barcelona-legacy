@@ -271,7 +271,7 @@ feature 'Commenting proposals' do
 
     login_as(user)
     visit proposals_path
-    click_link "Should we change the world?"
+    click_link "Should we change the world?", match: :first
 
     within "#comment_#{comment.id}" do
       page.find("#flag-expand-comment-#{comment.id}").click

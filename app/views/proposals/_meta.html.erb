@@ -1,12 +1,14 @@
-<div class="proposal-meta">
-  <span class="proposal-city">
-    <%= bcn_icon "localitzacio" %>
-    <% if proposal.scope == "city" %>
-      <%= I18n.t("components.filter_option.city") %>
-    <% else %>
-      <%= proposal.decorate.district_name %>
-    <% end %>
-  </span>
-  <span class="proposal-category"><%= category_icon(proposal.category) %> <%= proposal.category.decorate.name %></span>
-  <span class="proposal-subcategory"><%= proposal.subcategory.decorate.name %>
-</div>
+<%= cache proposal do %>
+  <div class="proposal-meta">
+    <span class="proposal-city">
+      <%= bcn_icon "localitzacio" %>
+      <% if proposal.scope == "city" %>
+        <%= I18n.t("components.filter_option.city") %>
+      <% else %>
+        <%= proposal.decorate.district_name %>
+      <% end %>
+    </span>
+    <span class="proposal-category"><%= category_icon(proposal.category) %> <%= proposal.category.decorate.name %></span>
+    <span class="proposal-subcategory"><%= proposal.subcategory.decorate.name %>
+  </div>
+<% end %>
