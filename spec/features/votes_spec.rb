@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Votes' do
 
-  background do
+  before :each do
     @manuela = create(:user, verified_at: Time.now)
     @pablo = create(:user)
   end
@@ -264,11 +264,10 @@ feature 'Votes' do
       scenario 'Create in featured proposal in index', :js do
         visit proposals_path
 
-        within("#proposal_#{@proposal.id}") do
+        within("#featured_proposal_#{@proposal.id}") do
           find('.in-favor a').click
-
-          expect(page).to have_content "You have already supported this proposal. Share it!"
         end
+        expect(page).to have_content "You have already supported this proposal. Share it!"
         expect(current_path).to eq(proposals_path)
       end
     end

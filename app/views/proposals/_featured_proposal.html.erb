@@ -1,4 +1,4 @@
-<li class="proposal-featured featured-proposal" id="<%= dom_id(proposal) %>">
+<li class="proposal-featured featured-proposal" id="<%= dom_id(proposal, "featured") %>">
   <div class="featured-proposal-inner">
     <div class="featured-proposal-content">
       <h3><%= link_to proposal.title, proposal %></h3>
@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div id="<%= dom_id(proposal) %>_votes">
+    <div id="<%= dom_id(proposal, "featured") %>_votes">
       <%= render 'featured_votes', proposal: proposal %>
     </div>
   </div>
