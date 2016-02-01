@@ -3,20 +3,20 @@ es:
   welcome:
     categories:
       subtitle: Desde el Ayuntamiento de Barcelona hemos elaborado una primera propuesta de plan para la ciudad y los distritos que incluye diferentes propuestas de actuación en diferentes ejes y líneas estraégicas.
-      title: Los cinco ejes del plan municipal
+      title: Los cinco ejes del Plan Municipal
     description:
       text: "<p>El <strong> Plan Municipal</strong> se elabora al inicio de cada mandato y establece las líneas prioritarias, objetivos y actuaciones de la acción de gobierno. Es, por lo tanto, la hoja de ruta municipal que orienta sobre qué modelo queremos para nuestra ciudad.</p><p>El Ayuntamiento de Barcelona abre un proceso de participación ciudadana para construir, pensar y debatir entre todos y todas las actuaciones y prioridades de los próximos tres años. Un paso adelante en la construcción colectiva de una ciudad más justa y democrática.</p>"
       title: "¿Qué es el Plan Municipal?"
     download:
       links:
-        epub: Descárgate el plan municipal
-        pam: Navega por el plan municipal y de los distritos
+        epub: Descárgate el Plan Municipal
+        pam: Navega por el Plan Municipal y de los distritos
       subtitle: Consulta el documento inicial que recoge las propuestas que el equipo de gobierno pone sobre la mesa para consensuar con la ciudadanía y con el resto de grupos políticos con representación en el Ayuntamiento.
       title: 73 barrios, una Barcelona. Hacia la ciudad de los derechos y las oportunidades
     header-motto:
       link: Entra y participa
     meetings:
-      title: citas presenciales
+      title: Citas presenciales
     tutorial:
       step-1:
         description: Navega por las propuestas del Ayuntamiento de Barcelona, coméntalas y apóyalas
