@@ -18,7 +18,7 @@ class SubcategoryPicker extends React.Component {
         <li className={classNames.join(' ')}
             key={subcategory.id}
             onClick={() => component.select(subcategory)}>
-          {subcategory.name} <a href={`/categories#subcategory_${subcategory.id}`} target="_blank"><i className="fa fa-info-circle"></i></a>
+          <span className="name">{subcategory.name} <a href={`/categories#subcategory_${subcategory.id}`} target="_blank"> <i className="fa fa-info-circle"></i></a></span>
         </li>
       );
     });

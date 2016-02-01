@@ -38,12 +38,16 @@ class CategoryPicker extends React.Component {
 
     var classNames = ['category-' + category.id];
     if(selected){ classNames.push('selected'); }
+    var iconName = "icon category-icon-" + category.id;
 
     return (
       <li className={classNames.join(' ')}
           key={category.id}
           onClick={() => this.selectCategory(category)}>
-        <span className="category">{name}</span>
+        <span className="category">
+          <span className={iconName}></span>
+          <span className="name">{name}</span>
+        </span>
       </li>
     );
   }
