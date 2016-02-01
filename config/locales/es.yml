@@ -155,7 +155,7 @@ es:
     messages:
       user_not_found: No se encontró el usuario
   form:
-    accept_terms: Acepto la %{policy} y las %{conditions}
+    accept_terms: Acepto las %{conditions}
     conditions: Condiciones de uso
     debate: el debate
     error: error
