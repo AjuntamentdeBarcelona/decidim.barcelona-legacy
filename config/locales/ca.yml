@@ -402,7 +402,6 @@ ca:
     placeholder: Introdueix el text de la imatge
     refresh_button_text: Refrescar
   social:
-    blog: Bloc
     facebook: Facebook
     github: GitHub
     instagram: Instagram
