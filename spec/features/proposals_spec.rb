@@ -24,7 +24,7 @@ feature 'Proposals' do
       end
     end
 
-    expect(page).to have_selector('#proposals .proposal', count: 3)
+    expect(page).to have_selector('#proposals .proposal', count: 6)
     proposals.each do |proposal|
       within('#proposals') do
         expect(page).to have_content proposal.title
@@ -48,7 +48,7 @@ feature 'Proposals' do
       click_link "Next", exact: false
     end
 
-    expect(page).to have_selector('#proposals .proposal', count: 2)
+    expect(page).to have_selector('#proposals .proposal', count: 5)
   end
 
   scenario 'Filtered Index', :js do
@@ -494,8 +494,6 @@ feature 'Proposals' do
     end
 
     scenario 'Proposals are ordered by confidence_score', :js do
-      create_featured_proposals
-
       create(:proposal, title: 'Best proposal').update_column(:confidence_score, 10)
       create(:proposal, title: 'Worst proposal').update_column(:confidence_score, 2)
       create(:proposal, title: 'Medium proposal').update_column(:confidence_score, 5)
