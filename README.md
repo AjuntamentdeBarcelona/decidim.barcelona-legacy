@@ -8,7 +8,6 @@ Citizen Participation and Open Government Application
 [![Circle CI](https://circleci.com/gh/AjuntamentdeBarcelona/decidim.barcelona/tree/master.svg?style=svg)](https://circleci.com/gh/AjuntamentdeBarcelona/decidim.barcelona/tree/master)
 [![Code Climate](https://codeclimate.com/github/AjuntamentdeBarcelona/decidim.barcelona/badges/gpa.svg)](https://codeclimate.com/github/AjuntamentdeBarcelona/decidim.barcelona)
 [![Dependency Status](https://gemnasium.com/AjuntamentdeBarcelona/decidim.barcelona.svg)](https://gemnasium.com/AjuntamentdeBarcelona/decidim.barcelona)
-[![Coverage Status](https://coveralls.io/repos/AjuntamentdeBarcelona/decidim.barcelona/badge.svg?branch=master&service=github)](https://coveralls.io/github/AjuntamentdeBarcelona/decidim.barcelona?branch=master)
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 This is the opensource code repository for "decidim.barcelona", based on [Consul](https://github.com/consul/consul), developed by the Madrid City government.
