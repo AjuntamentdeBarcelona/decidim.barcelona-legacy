@@ -10,16 +10,7 @@
   </div>
 
   <div class="header-wrapper">
-    <div class="session-menu">
-      <div class="row">
-        <div class="small-12 large-12 columns">
-          <ul>
-            <%= render "shared/admin_login_items" %>
-            <%= render "devise/menu/login_items" %>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <%= render 'layouts/session_menu' %>
 
     <% if content_for?(:header) %>
       <%= yield(:header) %>
