@@ -5,7 +5,10 @@ class MeetingsController < ApplicationController
   def index
     @filter = ResourceFilter.new(params)
     @meetings = @filter.filter_collection(Meeting.upcoming)
-    @tag_cloud = @filter.tag_cloud(@meetings)
+
+    if Setting["feature.meeting_tags"]
+      @tag_cloud = @filter.tag_cloud(@meetings)
+    end
 
     respond_to do |format|
       format.html

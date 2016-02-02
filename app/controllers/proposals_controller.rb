@@ -15,7 +15,10 @@ class ProposalsController < ApplicationController
   def index
     @filter = ResourceFilter.new(params)
     @proposals = @filter.filter_collection(Proposal.includes(:category, :subcategory, :author => [:organization]))
-    @tag_cloud = @filter.tag_cloud(@proposals)
+
+    if Setting["feature.proposal_tags"]
+      @tag_cloud = @filter.tag_cloud(@proposals)
+    end
 
     @featured_proposals = @proposals.sort_by_confidence_score.limit(FEATURED_PROPOSALS_LIMIT) if (@filter.search_filter.blank? && @filter.tag_filter.blank?)
     if @featured_proposals.present?
