@@ -36,7 +36,7 @@ defaults: &defaults
   facebook_handle: "bcn.cat"
   youtube_handle: "bcnajuntament"
   instagram_handle: "barcelona_cat"
-  github_handle: "AjuntamentdeBarcelona/decidimbcn"
+  github_handle: "AjuntamentdeBarcelona/decidim.barcelona"
   facebook_app_id: "929041747208547"
 
   blog_url: 
@@ -44,7 +44,7 @@ defaults: &defaults
     es: "http://eldigital.barcelona.cat/es/pambcn_es"
     en: "http://eldigital.barcelona.cat/en/pambcn_en"
 
-  url: "https://decidimbcn.herokuapp.com"
+  url: "https://decidim.barcelona"
 
   # Users with this email domain will automatically be marked as level 1 officials
   # Emails under the domain's subdomains will also be included
