@@ -2,7 +2,7 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="<%= setting 'twitter_handle' %>" />
 <meta name="twitter:title" content="<%= social_title %>" />
-<meta name="twitter:description" content="<%= social_description %>" />
+<meta name="twitter:description" content="<%= strip_tags(social_description) %>" />
 <meta name="twitter:image" content="<%= social_media_image %>" />
 <!-- Facebook OG -->
 <meta id="ogtitle" property="og:title" content="<%= social_title %>"/>
@@ -16,5 +16,5 @@
 <meta property="og:type" content="article"/>
 <meta id="ogimage" property="og:image" content="<%= social_media_image %>"/>
 <meta property="og:site_name" content="<%= Setting['org_name'] %>"/>
-<meta id="ogdescription" property="og:description" content="<%= social_description %>"/>
+<meta id="ogdescription" property="og:description" content="<%= strip_tags(social_description) %>"/>
 <meta property="fb:app_id" content="<%= Setting['facebook_app_id'] %>"/>
