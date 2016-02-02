@@ -107,7 +107,6 @@ feature 'Proposals' do
     fill_in 'proposal_video_url', with: 'http://youtube.com'
     fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
     fill_in 'proposal_captcha', with: correct_captcha_text
-    check 'proposal_terms_of_service'
 
     find('li', text: category.name["en"]).click
     find('li', text: subcategory.name["en"]).click
@@ -134,7 +133,6 @@ feature 'Proposals' do
     fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
     fill_in 'proposal_captcha', with: correct_captcha_text
     fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
-    check 'proposal_terms_of_service'
     find('li', text: category.name["en"]).click
     find('li', text: subcategory.name["en"]).click
 
@@ -155,7 +153,6 @@ feature 'Proposals' do
     fill_in 'proposal_summary', with: 'In summary, what we want is...'
     fill_in 'proposal_external_url', with: 'http://rescue.org/refugees'
     fill_in 'proposal_captcha', with: correct_captcha_text
-    check 'proposal_terms_of_service'
     find('li', text: category.name["en"]).click
     find('li', text: subcategory.name["en"]).click
 
@@ -173,7 +170,6 @@ feature 'Proposals' do
     fill_in 'proposal_external_url', with: 'http://rescue.org/refugees'
     fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
     fill_in 'proposal_captcha', with: "wrongText!"
-    check 'proposal_terms_of_service'
     find('li', text: category.name["en"]).click
     find('li', text: subcategory.name["en"]).click
 
@@ -199,7 +195,6 @@ feature 'Proposals' do
     fill_in 'proposal_external_url', with: 'http://rescue.org/refugees'
     fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
     fill_in 'proposal_captcha', with: correct_captcha_text
-    check 'proposal_terms_of_service'
     find('li', text: category.name["en"]).click
     find('li', text: subcategory.name["en"]).click
 
@@ -233,7 +228,6 @@ feature 'Proposals' do
     fill_in 'proposal_external_url', with: 'http://rescue.org/refugees'
     fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
     fill_in 'proposal_captcha', with: correct_captcha_text
-    check 'proposal_terms_of_service'
     find('li', text: category.name["en"]).click
     find('li', text: subcategory.name["en"]).click
 
@@ -255,7 +249,6 @@ feature 'Proposals' do
     fill_in 'proposal_summary', with: '<p>This is a link www.example.org</p>'
     fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
     fill_in 'proposal_captcha', with: correct_captcha_text
-    check 'proposal_terms_of_service'
     find('li', text: category.name["en"]).click
     find('li', text: subcategory.name["en"]).click
 
@@ -275,7 +268,6 @@ feature 'Proposals' do
     fill_in 'proposal_summary', with: '<script>alert("hey")</script>http://example.org'
     fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
     fill_in 'proposal_captcha', with: correct_captcha_text
-    check 'proposal_terms_of_service'
     find('li', text: category.name["en"]).click
     find('li', text: subcategory.name["en"]).click
 
@@ -313,7 +305,6 @@ feature 'Proposals' do
       fill_in 'proposal_external_url', with: 'http://rescue.org/refugees'
       fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
       fill_in 'proposal_captcha', with: correct_captcha_text
-      check 'proposal_terms_of_service'
       find('li', text: category.name["en"]).click
       find('li', text: subcategory.name["en"]).click
 
@@ -337,7 +328,6 @@ feature 'Proposals' do
       fill_in 'proposal_external_url', with: 'http://rescue.org/refugees'
       fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
       fill_in 'proposal_captcha', with: correct_captcha_text
-      check 'proposal_terms_of_service'
       find('li', text: category.name["en"]).click
       find('li', text: subcategory.name["en"]).click
 

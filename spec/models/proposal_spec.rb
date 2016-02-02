@@ -141,11 +141,6 @@ describe Proposal do
     end
   end
 
-  it "should not be valid without accepting terms of service" do
-    proposal.terms_of_service = nil
-    expect(proposal).to_not be_valid
-  end
-
   it "should have a code" do
     Setting["proposal_code_prefix"] = "TEST"
     proposal = create(:proposal)
