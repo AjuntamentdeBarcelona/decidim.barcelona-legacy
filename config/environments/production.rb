@@ -96,6 +96,15 @@ Rails.application.configure do
     }
   end
 
+  config.middleware.insert_before 0, Rack::Cors do
+    allow do
+      origins 'decidim.barcelona.cat'
+      resource '/assets/*',
+               :methods => [:get, :options, :head],
+               :headers => :any
+    end
+  end
+
 
   if ENV["MEMCACHEDCLOUD_SERVERS"]
     credentials = [ENV["MEMCACHEDCLOUD_SERVERS"].split(','), { :username => ENV["MEMCACHEDCLOUD_USERNAME"], :password => ENV["MEMCACHEDCLOUD_PASSWORD"] }]

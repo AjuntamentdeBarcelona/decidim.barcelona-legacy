@@ -141,4 +141,5 @@ group :production do
   gem 'rails_12factor'
   gem 'rollbar', '~> 1.2.13'
   gem 'rack-cache'
+  gem 'rack-cors', :require => 'rack/cors'
 end
