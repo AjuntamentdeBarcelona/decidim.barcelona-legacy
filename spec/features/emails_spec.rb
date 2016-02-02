@@ -84,7 +84,7 @@ feature 'Emails' do
     end
   end
 
-  context 'Comment replies' do
+  xcontext 'Comment replies' do
     scenario "Send email on comment reply", :js do
       user = create(:user, email_on_comment_reply: true)
       reply_to(user)
