@@ -58,6 +58,7 @@
 //= require home_animations
 //= require page_navigation
 //= require menu
+//= require share
 
 var initialize_modules = function() {
   App.Comments.initialize();
@@ -77,6 +78,7 @@ var initialize_modules = function() {
   App.PageNavigation.initialize();
   App.VerificationForm.initialize();
   App.Menu.initialize();
+  App.Share.initialize();
 };
 
 $(function(){
