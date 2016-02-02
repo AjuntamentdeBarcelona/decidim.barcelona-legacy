@@ -1,9 +1,9 @@
-//= require isMobile
-
 App.Share = {
   initialize: function(){
-    if(isMobile.android.device || isMobile.apple.device) {
+    var isMobile = /AndroidiPhone|iPad|iPod/i.test( navigator.userAgent );
+
+    if(isMobile) {
       $("html").addClass('is-mobile');
     }
   }
-}
+};
