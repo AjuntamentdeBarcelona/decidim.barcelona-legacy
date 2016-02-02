@@ -129,7 +129,7 @@ feature 'Proposals' do
       expect(current_path).to eq(management_proposals_path)
     end
 
-    scenario 'Voting proposals on behalf of someone in show view', :js do
+    xscenario 'Voting proposals on behalf of someone in show view', :js do
       proposal = create(:proposal)
 
       user = create(:user, :level_two)
