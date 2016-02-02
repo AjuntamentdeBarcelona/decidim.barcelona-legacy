@@ -4,3 +4,4 @@ production:
 :queues:
   - default
   - mailer
+  - mailers
