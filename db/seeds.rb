@@ -102,11 +102,9 @@ if ENV["SEED"]
 
     proposal = Proposal.create!(author: author,
                                 title: Faker::Lorem.sentence(3).truncate(60),
-                                question: Faker::Lorem.sentence(3),
-                                summary: Faker::Lorem.sentence(3),
+                                description: Faker::Lorem.sentence(3),
                                 responsible_name: Faker::Name.name,
                                 external_url: Faker::Internet.url,
-                                description: description,
                                 created_at: rand((Time.now - 1.week) .. Time.now),
                                 tag_list: tags.sample(3).join(','),
                                 subcategory: subcategory,

@@ -284,18 +284,16 @@ es:
         submit_button: Guardar cambios
       show_link: Ver propuesta
     form:
+      proposal_description: Resumen de la propuesta
+      proposal_description_note: "(máximo 300 caracteres)"
       proposal_external_url: Enlace a documentación adicional
       proposal_official: La propuesta es oficial
-      proposal_question: Pregunta de la propuesta
-      proposal_question_example_html: Debe ser resumida en una pregunta cuya respuesta sea Sí o No. <em>Ej. '¿Está usted de acuerdo en peatonalizar la calle Mayor?'</em>
       proposal_responsible_name: Nombre y apellidos de la persona que hace esta propuesta
       proposal_responsible_name_note: "(individualmente o como representante de un colectivo; no se mostrará públicamente)"
       proposal_scope: "Ámbito"
       proposal_scope_city: Toda la ciudad
       proposal_scope_district: Un distrito
       proposal_scope_note: "¿Es una medida para toda la ciudad o solo para un distrito?"
-      proposal_summary: Resumen de la propuesta
-      proposal_summary_note: "(máximo 300 caracteres)"
       proposal_title: Título de la propuesta
       proposal_video_url: Enlace a vídeo externo
       proposal_video_url_note: Puedes añadir un enlace a YouTube o Vimeo

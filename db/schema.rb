@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160131235623) do
+ActiveRecord::Schema.define(version: 20160202140751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -272,8 +272,6 @@ ActiveRecord::Schema.define(version: 20160131235623) do
 
   create_table "proposals", force: :cascade do |t|
     t.string   "title",             limit: 80
-    t.text     "description"
-    t.string   "question"
     t.string   "external_url"
     t.integer  "author_id"
     t.datetime "hidden_at"
@@ -287,7 +285,7 @@ ActiveRecord::Schema.define(version: 20160131235623) do
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
     t.string   "responsible_name",  limit: 60
-    t.text     "summary"
+    t.text     "description"
     t.string   "video_url"
     t.integer  "physical_votes",               default: 0
     t.tsvector "tsv"
@@ -305,13 +303,12 @@ ActiveRecord::Schema.define(version: 20160131235623) do
   add_index "proposals", ["category_id"], name: "index_proposals_on_category_id", using: :btree
   add_index "proposals", ["confidence_score"], name: "index_proposals_on_confidence_score", using: :btree
   add_index "proposals", ["created_at"], name: "index_proposals_on_created_at", using: :btree
+  add_index "proposals", ["description"], name: "index_proposals_on_description", using: :btree
   add_index "proposals", ["hidden_at"], name: "index_proposals_on_hidden_at", using: :btree
   add_index "proposals", ["hot_score"], name: "index_proposals_on_hot_score", using: :btree
   add_index "proposals", ["official"], name: "index_proposals_on_official", using: :btree
-  add_index "proposals", ["question"], name: "index_proposals_on_question", using: :btree
   add_index "proposals", ["slug"], name: "index_proposals_on_slug", unique: true, using: :btree
   add_index "proposals", ["subcategory_id"], name: "index_proposals_on_subcategory_id", using: :btree
-  add_index "proposals", ["summary"], name: "index_proposals_on_summary", using: :btree
   add_index "proposals", ["title"], name: "index_proposals_on_title", using: :btree
   add_index "proposals", ["tsv"], name: "index_proposals_on_tsv", using: :gin
 

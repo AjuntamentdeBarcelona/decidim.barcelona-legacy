@@ -4,7 +4,7 @@
             social_url: proposal_url(@proposal),
             social_title: @proposal.title,
             social_media_image: asset_url('social-media-icon.png'),
-            social_description: text_with_links(@proposal.summary) %>
+            social_description: text_with_links(@proposal.description) %>
 <% end %>
 
 <% cache [locale_and_user_status(@proposal), @proposal, @proposal.author, Flag.flagged?(current_user, @proposal), @proposal_votes] do %>
@@ -50,7 +50,7 @@
         </div>
 
         <div class="proposal-description">
-          <%= text_with_links @proposal.summary %>
+          <%= text_with_links @proposal.description %>
         </div>
 
         <% if @proposal.external_url.present? %>

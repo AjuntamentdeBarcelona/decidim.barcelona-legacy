@@ -284,18 +284,16 @@ ca:
         submit_button: Desa els canvis
       show_link: Veure proposta
     form:
+      proposal_description: Resum de la proposta
+      proposal_description_note: "(màxim 350 caràcters)"
       proposal_external_url: Enllaç a documentació addicional
       proposal_official: La proposta és oficial
-      proposal_question: Pregunta de la proposta
-      proposal_question_example_html: Ha de ser resumida en una pregunta la resposta sigui Sí o No. <em>Ex. 'Està vostè d'acord en vianants el carrer Major?'</em>
       proposal_responsible_name: Nom i cognoms de la persona que fa aquesta proposta
       proposal_responsible_name_note: "(individualment o com a representant d'un col·lectiu, no es mostrarà públicament)"
       proposal_scope: "Àmbit"
       proposal_scope_city: Tota la ciutat
       proposal_scope_district: Un districte
       proposal_scope_note: Es una mesura per a tota la ciutat o només per a un districte?
-      proposal_summary: Resum de la proposta
-      proposal_summary_note: "(màxim 350 caràcters)"
       proposal_title: Títol de la proposta
       proposal_video_url: Enllaç a vídeo extern
       proposal_video_url_note: Pots afegir un enllaç a YouTube o Vimeo

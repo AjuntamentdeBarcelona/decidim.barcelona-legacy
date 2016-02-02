@@ -24,7 +24,7 @@ class Proposal < ActiveRecord::Base
   has_many :meetings, through: :meeting_proposals
 
   validates :title, presence: true
-  validates :summary, presence: true, length: { maximum: 350 }
+  validates :description, presence: true
   validates :author, presence: true
   validates :responsible_name, presence: true
 
@@ -32,7 +32,6 @@ class Proposal < ActiveRecord::Base
   validates :description, length: { maximum: Proposal.description_max_length }
   validates :scope, inclusion: { in: %w(city district) }
   validates :district, inclusion: { in: DISTRICTS.map(&:last).map(&:to_i), allow_nil: true }
-  validates :question, length: { in: 10..Proposal.question_max_length }, allow_blank: true
   validates :responsible_name, length: { in: 6..Proposal.responsible_name_max_length }
 
   before_validation :set_responsible_name
@@ -52,9 +51,7 @@ class Proposal < ActiveRecord::Base
   pg_search_scope :pg_search, {
     against: {
       title:       'A',
-      question:    'B',
-      summary:     'C',
-      description: 'D'
+      description: 'B'
     },
     associated_against: {
       tags: :name
@@ -72,9 +69,7 @@ class Proposal < ActiveRecord::Base
   def searchable_values
     values = {
       title       => 'A',
-      question    => 'B',
-      summary     => 'C',
-      description => 'D'
+      description => 'B'
     }
     tag_list.each{ |tag| values[tag] = 'D' }
     values[author.username] = 'D'

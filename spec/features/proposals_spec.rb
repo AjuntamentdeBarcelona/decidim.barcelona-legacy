@@ -100,7 +100,7 @@ feature 'Proposals' do
     visit new_proposal_path
 
     fill_in 'proposal_title', with: 'Help refugees'
-    fill_in 'proposal_summary', with: 'In summary, what we want is...'
+    fill_in 'proposal_description', with: 'In summary, what we want is...'
     choose 'proposal_scope_district'
     select 'Ciutat Vella', from: 'proposal_district'
     fill_in 'proposal_external_url', with: 'http://rescue.org/refugees'
@@ -128,7 +128,7 @@ feature 'Proposals' do
 
     visit new_proposal_path
     fill_in 'proposal_title', with: 'Help refugees'
-    fill_in 'proposal_summary', with: 'In summary, what we want is...'
+    fill_in 'proposal_description', with: 'In summary, what we want is...'
     fill_in 'proposal_external_url', with: 'http://rescue.org/refugees'
     fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
     fill_in 'proposal_captcha', with: correct_captcha_text
@@ -150,7 +150,7 @@ feature 'Proposals' do
     expect(page).to_not have_selector('#proposal_responsible_name')
 
     fill_in 'proposal_title', with: 'Help refugees'
-    fill_in 'proposal_summary', with: 'In summary, what we want is...'
+    fill_in 'proposal_description', with: 'In summary, what we want is...'
     fill_in 'proposal_external_url', with: 'http://rescue.org/refugees'
     fill_in 'proposal_captcha', with: correct_captcha_text
     find('li', text: category.name["en"]).click
@@ -166,7 +166,7 @@ feature 'Proposals' do
 
     visit new_proposal_path
     fill_in 'proposal_title', with: "Great title"
-    fill_in 'proposal_summary', with: 'In summary, what we want is...'
+    fill_in 'proposal_description', with: 'In summary, what we want is...'
     fill_in 'proposal_external_url', with: 'http://rescue.org/refugees'
     fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
     fill_in 'proposal_captcha', with: "wrongText!"
@@ -191,7 +191,7 @@ feature 'Proposals' do
 
     visit new_proposal_path
     fill_in 'proposal_title', with: ""
-    fill_in 'proposal_summary', with: 'In summary, what we want is...'
+    fill_in 'proposal_description', with: 'In summary, what we want is...'
     fill_in 'proposal_external_url', with: 'http://rescue.org/refugees'
     fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
     fill_in 'proposal_captcha', with: correct_captcha_text
@@ -224,7 +224,7 @@ feature 'Proposals' do
 
     visit new_proposal_path
     fill_in 'proposal_title', with: 'Testing an attack'
-    fill_in 'proposal_summary', with: '<p>This is alert("an attack");</p>'
+    fill_in 'proposal_description', with: '<p>This is alert("an attack");</p>'
     fill_in 'proposal_external_url', with: 'http://rescue.org/refugees'
     fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
     fill_in 'proposal_captcha', with: correct_captcha_text
@@ -246,7 +246,7 @@ feature 'Proposals' do
 
     visit new_proposal_path
     fill_in 'proposal_title', with: 'Testing auto link'
-    fill_in 'proposal_summary', with: '<p>This is a link www.example.org</p>'
+    fill_in 'proposal_description', with: '<p>This is a link www.example.org</p>'
     fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
     fill_in 'proposal_captcha', with: correct_captcha_text
     find('li', text: category.name["en"]).click
@@ -265,7 +265,7 @@ feature 'Proposals' do
 
     visit new_proposal_path
     fill_in 'proposal_title', with: 'Testing auto link'
-    fill_in 'proposal_summary', with: '<script>alert("hey")</script>http://example.org'
+    fill_in 'proposal_description', with: '<script>alert("hey")</script>http://example.org'
     fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
     fill_in 'proposal_captcha', with: correct_captcha_text
     find('li', text: category.name["en"]).click
@@ -301,7 +301,7 @@ feature 'Proposals' do
       visit new_proposal_path
 
       fill_in 'proposal_title', with: 'A test with enough characters'
-      fill_in 'proposal_summary', with: 'In summary, what we want is...'
+      fill_in 'proposal_description', with: 'In summary, what we want is...'
       fill_in 'proposal_external_url', with: 'http://rescue.org/refugees'
       fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
       fill_in 'proposal_captcha', with: correct_captcha_text
@@ -324,7 +324,7 @@ feature 'Proposals' do
       visit new_proposal_path
 
       fill_in 'proposal_title', with: 'A test of dangerous strings'
-      fill_in 'proposal_summary', with: 'In summary, what we want is...'
+      fill_in 'proposal_description', with: 'In summary, what we want is...'
       fill_in 'proposal_external_url', with: 'http://rescue.org/refugees'
       fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
       fill_in 'proposal_captcha', with: correct_captcha_text
@@ -375,7 +375,7 @@ feature 'Proposals' do
     expect(current_path).to eq(edit_proposal_path(proposal))
 
     fill_in 'proposal_title', with: "End child poverty"
-    fill_in 'proposal_summary', with: 'Basically...'
+    fill_in 'proposal_description', with: 'Basically...'
     fill_in 'proposal_external_url', with: 'http://rescue.org/refugees'
     fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
     fill_in 'proposal_captcha', with: correct_captcha_text
@@ -569,7 +569,7 @@ feature 'Proposals' do
 
       visit proposals_path
 
-      find('.proposal-filters .search-filter').set("Show what you got")
+      find('.proposal-filters .search-filter').set("you got")
 
       expect(page).to_not have_content "Do not display"
 

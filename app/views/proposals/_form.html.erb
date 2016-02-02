@@ -8,10 +8,10 @@
     </div>
 
     <div class="small-12 column">
-      <%= f.label :summary, t("proposals.form.proposal_summary") %>
-      <p class="note"><%= t("proposals.form.proposal_summary_note") %></p>
-      <%= f.text_area :summary, rows: 4, maxlength: 350, label: false,
-                      placeholder: t('proposals.form.proposal_summary') %>
+      <%= f.label :description, t("proposals.form.proposal_description") %>
+      <p class="note"><%= t("proposals.form.proposal_description_note") %></p>
+      <%= f.text_area :description, rows: 4, maxlength: 350, label: false,
+                      placeholder: t('proposals.form.proposal_description') %>
     </div>
 
     <%= render 'shared/forms/district_fields', f: f, i18n_namespace: 'proposals.form.proposal' %>
