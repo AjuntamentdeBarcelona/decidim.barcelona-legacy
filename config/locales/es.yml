@@ -267,6 +267,12 @@ es:
       sign_up: Regístrate con Facebook
     finish_signup:
       title: Detalles adicionales de tu cuenta
+    google_oauth2:
+      sign_in: Entra con Google
+      sign_up: Regístrate con Google
+    twitter:
+      sign_in: Entra con Twitter
+      sign_up: Regístrate con Twitter
   proposals:
     create:
       form:
