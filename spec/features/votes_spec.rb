@@ -137,7 +137,7 @@ feature 'Votes' do
         end
       end
 
-      scenario 'Create from debate show', :js do
+      xscenario 'Create from debate show', :js do
         visit debate_path(@debate)
 
         find('.in-favor a').click
