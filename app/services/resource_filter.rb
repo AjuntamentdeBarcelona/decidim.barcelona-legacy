@@ -1,30 +1,54 @@
 class ResourceFilter
   IGNORE_FILTER_PARAMS = ["source", "other"]
-  attr_reader :collection, :tag_cloud, :search_filter, :tag_filter, :params
+  attr_reader :search_filter, :tag_filter, :params
 
-  def initialize(resources, params={})
-    @collection = resources
+  def initialize(params={})
     @params = params[:filter]
     @exclude_ids = params[:exclude_ids]
     @search_filter = params[:search] if params[:search].present?
     @tag_filter = params[:tag]
-    exclude
-    parse_filter_params
-    filter_by_search
-    filter_by_tag
-    filter
-    @tag_cloud = @collection.tag_counts.order("#{resources.table_name}_count": :desc, name: :asc).limit(20)
+  end
+
+  def filter_collection(collection)
+    collection = exclude(collection)
+    collection = filter_by_search(collection)
+    collection = filter_by_tag(collection)
+    collection = filter(collection)
+    collection
+  end
+
+  def tag_cloud(collection)
+    collection.tag_counts.order("#{collection.table_name}_count": :desc, name: :asc).limit(20)
   end
 
   private
 
-  def exclude
+  def exclude(collection)
     if @exclude_ids.present?
-      @collection = @collection.where("id not in (?)", @exclude_ids)
+      collection = collection.where("id not in (?)", @exclude_ids)
     end
+    collection
   end
 
-  def parse_filter_params
+  def filter_by_search(collection)
+    if @search_filter.present?
+      collection = collection.search(@search_filter)
+    end
+    collection
+  end
+
+  def filter_by_tag(collection)
+    if @tag_filter.present?
+      if @tag_filter.kind_of? String
+        @tag_filter = @tag_filter.split(',')
+      end
+      @tag_filter = @tag_filter if ActsAsTaggableOn::Tag.named_any(@tag_filter).exists?
+      collection = collection.tagged_with(@tag_filter) if @tag_filter
+    end
+    collection
+  end
+
+  def filter(collection)
     if @params.present?
       @params = @params.split(':').reduce({}) do |result, filterGroup|
         filterGroupName, filterGroupValue = filterGroup.split('=')
@@ -35,37 +59,18 @@ class ResourceFilter
       if @params["source"].present?
         @params["official"] = @params["source"].include? "official"
       end
-    end
-  end
 
-  def filter_by_search
-    if @search_filter.present?
-      @collection = @collection.search(@search_filter)
-    end
-  end
-
-  def filter_by_tag
-    if @tag_filter.present?
-      if @tag_filter.kind_of? String
-        @tag_filter = @tag_filter.split(',')
-      end
-      @tag_filter = @tag_filter if ActsAsTaggableOn::Tag.named_any(@tag_filter).exists?
-      @collection = @collection.tagged_with(@tag_filter) if @tag_filter
-    end
-  end
-
-  def filter
-    if @params.present?
       @params.each do |attr, value|
         unless IGNORE_FILTER_PARAMS.include? attr
-          @collection = @collection.where(attr => value)
+          collection = collection.where(attr => value)
         end
       end
 
       if @params["other"] && @params["other"].include?("meetings")
         proposal_in_meetings_ids = MeetingProposal.pluck(:proposal_id).uniq
-        @collection = @collection.where(id: proposal_in_meetings_ids)
+        collection = collection.where(id: proposal_in_meetings_ids)
       end
     end
+    collection
   end
 end

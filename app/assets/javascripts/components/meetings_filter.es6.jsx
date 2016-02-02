@@ -35,14 +35,22 @@ class MeetingsFilter extends React.Component {
           categories={this.props.categories}
           filterGroupValue={this.state.filters.get('category_id')} 
           onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) } />
-        <TagCloudFilter 
-          currentTags={this.state.tags} 
-          tagCloud={this.props.filter.tag_cloud} 
-          onSetFilterTags={(tags) => this.onSetFilterTags(tags)} />
-
+        {this.renderTagCloudFilter()}
         {this.renderCleanFilterLink()}
       </form>
     )
+  }
+
+  renderTagCloudFilter() {
+    if (this.props.tagsEnabled) {
+      return (
+        <TagCloudFilter 
+          currentTags={this.state.tags} 
+          tagCloud={this.props.tagCloud} 
+          onSetFilterTags={(tags) => this.onSetFilterTags(tags)} />
+      )
+    }
+    return null;
   }
 
   onSetFilterText(searchText) {

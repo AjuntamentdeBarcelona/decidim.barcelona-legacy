@@ -2,8 +2,7 @@ class Api::ProposalsController < ApplicationController
   skip_authorization_check
 
   def index
-    filter = ResourceFilter.new(Proposal.all, params)
-    @proposals = filter.collection
+    @proposals = ResourceFilter.new(params).filter_collection(Proposal.all)
 
     respond_to do |format|
       format.json { render json: @proposals }

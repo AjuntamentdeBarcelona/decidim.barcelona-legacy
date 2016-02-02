@@ -8,7 +8,7 @@
         <div class="sidebar-section proposal-filter-menu collapsed">
           <h2 class="title"><%= t 'proposals.index.filter.title' %> <span class="toggle-menu"></span></h2>
           <div class="sidebar-section-content">
-            <%= proposal_filters filter: @filter %>
+            <%= proposal_filters filter: @filter, tag_cloud: @tag_cloud %>
           </div>
         </div>
       </aside>

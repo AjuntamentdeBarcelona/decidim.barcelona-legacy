@@ -65,7 +65,7 @@ class ProposalFilters extends React.Component {
       return (
         <TagCloudFilter 
           currentTags={this.state.tags} 
-          tagCloud={this.props.filter.tag_cloud} 
+          tagCloud={this.props.tagCloud} 
           onSetFilterTags={(tags) => this.onSetFilterTags(tags)} />
       )
     }

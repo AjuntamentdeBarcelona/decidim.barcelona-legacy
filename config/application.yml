@@ -56,6 +56,7 @@ defaults: &defaults
   feature.spending_proposals: false
   feature.proposal_tags: false
   feature.proposal_video_url: false
+  feature.meeting_tags: true
 
 development:
   <<: *defaults

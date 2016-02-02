@@ -3,15 +3,20 @@ class MeetingsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @filter = ResourceFilter.new(Meeting.upcoming, params)
-    @meetings = @filter.collection
+    @filter = ResourceFilter.new(params)
+    @meetings = @filter.filter_collection(Meeting.upcoming)
+
+    if Setting["feature.meeting_tags"]
+      @tag_cloud = @filter.tag_cloud(@meetings)
+    end
 
     respond_to do |format|
       format.html
       format.json do 
         render json: {
           meetings: ActiveModel::ArraySerializer.new(@meetings, each_serializer: MeetingSerializer).as_json,
-          filter: @filter
+          filter: @filter,
+          tag_cloud: @tag_cloud
         }
       end
     end
