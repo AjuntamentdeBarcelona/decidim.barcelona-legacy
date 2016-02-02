@@ -32,3 +32,5 @@
 .env
 
 config/locales/*.csv
+
+/public/sitemap.xml.gz

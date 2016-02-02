@@ -475,6 +475,8 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (>= 1.3, < 3)
+    sitemap_generator (5.1.0)
+      builder
     spring (1.6.2)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
@@ -631,6 +633,7 @@ DEPENDENCIES
   sidekiq
   simple_captcha2
   sinatra
+  sitemap_generator
   social-share-button!
   spring
   spring-commands-rspec
