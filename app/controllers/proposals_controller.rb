@@ -13,8 +13,9 @@ class ProposalsController < ApplicationController
   respond_to :html, :js
 
   def index
-    @filter = ResourceFilter.new(Proposal.includes(:category, :subcategory, :author => [:organization]), params)
-    @proposals = @filter.collection
+    @filter = ResourceFilter.new(params)
+    @proposals = @filter.filter_collection(Proposal.includes(:category, :subcategory, :author => [:organization]))
+    @tag_cloud = @filter.tag_cloud(@proposals)
 
     @featured_proposals = @proposals.sort_by_confidence_score.limit(FEATURED_PROPOSALS_LIMIT) if (@filter.search_filter.blank? && @filter.tag_filter.blank?)
     if @featured_proposals.present?

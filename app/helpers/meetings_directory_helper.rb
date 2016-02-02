@@ -2,12 +2,14 @@ module MeetingsDirectoryHelper
   def meetings_directory(options = {})
     react_component(
       'MeetingsDirectory',
-      filter: serialized_filters(options[:filter]),
+      filter: options[:filter],
       filterUrl: meetings_url,
       meetings: serialized_meetings(options[:meetings]),
       districts: Proposal::DISTRICTS,
       categories: serialized_categories,
-      subcategories: serialized_subcategories
+      subcategories: serialized_subcategories,
+      tagCloud: options[:tag_cloud],
+      tagsEnabled: feature?(:meeting_tags)
     )
   end
 

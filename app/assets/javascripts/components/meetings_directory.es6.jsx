@@ -4,6 +4,7 @@ class MeetingsDirectory extends React.Component {
     this.state = {
       meetings: this.props.meetings,
       filter: this.props.filter,
+      tagCloud: this.props.tagCloud,
       loading: false
     };
   }
@@ -20,8 +21,10 @@ class MeetingsDirectory extends React.Component {
               meetings={this.state.meetings} 
               categories={this.props.categories}
               subcategories={this.props.subcategories} 
+              tagCloud={this.state.tagCloud}
+              tagsEnabled={this.props.tagsEnabled}
               onLoading={() => this.setState({ loading: true })}
-              onFilterResult={({ meetings, filter }) => this.setState({ meetings, filter, loading: false })} />
+              onFilterResult={({ meetings, filter, tag_cloud }) => this.setState({ meetings, filter, tagCloud: tag_cloud, loading: false })} />
           </aside>
         </div>
 
