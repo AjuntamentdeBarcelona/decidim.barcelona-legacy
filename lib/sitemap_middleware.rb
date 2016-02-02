@@ -31,20 +31,22 @@ class SitemapMiddleware
   end
 
   def generate_sitemap
-    writer = SitemapWriter.new
+    Rails.cache.fetch('sitemap', expires_in: 1.hour) do
+      writer = SitemapWriter.new
 
-    SitemapGenerator::Sitemap.default_host = "#{!ENV["FORCE_SSL"].blank? ? "https" : "http"}://#{ENV["SERVER_NAME"]}"
+      SitemapGenerator::Sitemap.default_host = "#{!ENV["FORCE_SSL"].blank? ? "https" : "http"}://#{ENV["SERVER_NAME"]}"
 
-    SitemapGenerator::Sitemap.create(adapter: writer) do
-      # Add meetings pages
-      Meeting.find_each { |meeting| add meeting_path(meeting), lastmod: meeting.updated_at }
-      # Add proposals pages
-      Proposal.find_each { |proposal| add proposal_path(proposal), lastmod: proposal.updated_at }
-      # Add static pages
-      add categories_path
-      add page_path('more_information')
+      SitemapGenerator::Sitemap.create(adapter: writer) do
+        # Add meetings pages
+        Meeting.find_each { |meeting| add meeting_path(meeting), lastmod: meeting.updated_at }
+        # Add proposals pages
+        Proposal.find_each { |proposal| add proposal_path(proposal), lastmod: proposal.updated_at }
+        # Add static pages
+        add categories_path
+        add page_path('more_information')
+      end
+
+      writer.to_s
     end
-
-    writer.to_s
   end
 end
