@@ -34,7 +34,6 @@ feature 'Proposals' do
       fill_in 'proposal_external_url', with: 'http://rescue.org/refugees'
       fill_in 'proposal_video_url', with: 'http://youtube.com'
       fill_in 'proposal_captcha', with: correct_captcha_text
-      check 'proposal_terms_of_service'
 
       find('li', text: category.name["en"]).click
       find('li', text: subcategory.name["en"]).click
