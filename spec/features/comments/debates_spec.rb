@@ -192,17 +192,18 @@ feature 'Commenting debates' do
     visit debate_path(debate)
 
     click_link "Reply"
+    page.find("#js-comment-form-comment_#{comment.id}", visible: true)
 
     within "#js-comment-form-comment_#{comment.id}" do
       fill_in "comment-body-comment_#{comment.id}", with: 'It will be done next week.'
       click_button 'Publish reply'
     end
 
+    page.find("#js-comment-form-comment_#{comment.id}", visible: false)
+
     within "#comment_#{comment.id}" do
       expect(page).to have_content 'It will be done next week.'
     end
-
-    expect(page).to_not have_selector("#js-comment-form-comment_#{comment.id}", visible: true)
   end
 
   scenario 'Errors on reply', :js do

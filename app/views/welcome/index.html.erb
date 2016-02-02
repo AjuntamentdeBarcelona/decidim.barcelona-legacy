@@ -21,6 +21,12 @@
   </div>
 <% end %>
 
+<%= render 'shared/social_media_meta_tags',
+            social_title: Setting['org_name'],
+            social_description: "Descobriu, debateu, proposeu les actuacions per a la ciutat de Barcelona dels propers 4 anys",
+            social_url: url_for(),
+            social_media_image: asset_url("social_media_cover.jpg") %>
+
 <div class="home-section">
   <%= render 'description' %>
   <%= render 'tutorial' %>
