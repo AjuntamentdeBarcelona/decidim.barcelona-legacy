@@ -23,37 +23,37 @@ feature 'Votes' do
       within("#debates") do
         within("#debate_#{debate1.id}_votes") do
           within(".in-favor") do
-            expect(page).to have_css("a.voted")
-            expect(page).to_not have_css("a.no-voted")
+            expect(page).to have_css(".voted")
+            expect(page).to_not have_css(".no-voted")
           end
 
           within(".against") do
-            expect(page).to have_css("a.no-voted")
-            expect(page).to_not have_css("a.voted")
+            expect(page).to have_css(".no-voted")
+            expect(page).to_not have_css(".voted")
           end
         end
 
         within("#debate_#{debate2.id}_votes") do
           within(".in-favor") do
-            expect(page).to_not have_css("a.voted")
-            expect(page).to_not have_css("a.no-voted")
+            expect(page).to_not have_css(".voted")
+            expect(page).to_not have_css(".no-voted")
           end
 
           within(".against") do
-            expect(page).to_not have_css("a.no-voted")
-            expect(page).to_not have_css("a.voted")
+            expect(page).to_not have_css(".no-voted")
+            expect(page).to_not have_css(".voted")
           end
         end
 
         within("#debate_#{debate3.id}_votes") do
           within(".in-favor") do
-            expect(page).to have_css("a.no-voted")
-            expect(page).to_not have_css("a.voted")
+            expect(page).to have_css(".no-voted")
+            expect(page).to_not have_css(".voted")
           end
 
           within(".against") do
-            expect(page).to have_css("a.voted")
-            expect(page).to_not have_css("a.no-voted")
+            expect(page).to have_css(".voted")
+            expect(page).to_not have_css(".no-voted")
           end
         end
       end
@@ -71,31 +71,31 @@ feature 'Votes' do
 
         within('.in-favor') do
           expect(page).to have_content "0%"
-          expect(page).to_not have_css("a.voted")
-          expect(page).to_not have_css("a.no-voted")
+          expect(page).to_not have_css(".voted")
+          expect(page).to_not have_css(".no-voted")
         end
 
         within('.against') do
           expect(page).to have_content "0%"
-          expect(page).to_not have_css("a.voted")
-          expect(page).to_not have_css("a.no-voted")
+          expect(page).to_not have_css(".voted")
+          expect(page).to_not have_css(".no-voted")
         end
       end
 
       scenario 'Update', :js do
         visit debate_path(@debate)
 
-        find('.in-favor a').click
+        find('.in-favor button').click
         find('.against a').click
 
         within('.in-favor') do
           expect(page).to have_content "0%"
-          expect(page).to have_css("a.no-voted")
+          expect(page).to have_css(".no-voted")
         end
 
         within('.against') do
           expect(page).to have_content "100%"
-          expect(page).to have_css("a.voted")
+          expect(page).to have_css(".voted")
         end
 
         expect(page).to have_content "1 vote"
@@ -104,9 +104,9 @@ feature 'Votes' do
       scenario 'Trying to vote multiple times', :js do
         visit debate_path(@debate)
 
-        find('.in-favor a').click
+        find('.in-favor button').click
         expect(page).to have_content "1 vote"
-        find('.in-favor a').click
+        find('.in-favor button').click
         expect(page).to_not have_content "2 votes"
 
         within('.in-favor') do
@@ -128,28 +128,28 @@ feature 'Votes' do
 
         within('.in-favor') do
           expect(page).to have_content "50%"
-          expect(page).to have_css("a.voted")
+          expect(page).to have_css(".voted")
         end
 
         within('.against') do
           expect(page).to have_content "50%"
-          expect(page).to have_css("a.no-voted")
+          expect(page).to have_css(".no-voted")
         end
       end
 
       xscenario 'Create from debate show', :js do
         visit debate_path(@debate)
 
-        find('.in-favor a').click
+        find('.in-favor button').click
 
         within('.in-favor') do
           expect(page).to have_content "100%"
-          expect(page).to have_css("a.voted")
+          expect(page).to have_css(".voted")
         end
 
         within('.against') do
           expect(page).to have_content "0%"
-          expect(page).to have_css("a.no-voted")
+          expect(page).to have_css(".no-voted")
         end
 
         expect(page).to have_content "1 vote"
@@ -160,16 +160,16 @@ feature 'Votes' do
 
         within("#debates") do
 
-          find('.in-favor a').click
+          find('.in-favor button').click
 
           within('.in-favor') do
             expect(page).to have_content "100%"
-            expect(page).to have_css("a.voted")
+            expect(page).to have_css(".voted")
           end
 
           within('.against') do
             expect(page).to have_content "0%"
-            expect(page).to have_css("a.no-voted")
+            expect(page).to have_css(".no-voted")
           end
 
           expect(page).to have_content "1 vote"
@@ -219,10 +219,10 @@ feature 'Votes' do
         visit proposal_path(@proposal)
 
         within('.supports') do
-          find('.in-favor a').click
+          find('.in-favor button').click
           expect(page).to have_content "1 support"
 
-          expect(page).to_not have_selector ".in-favor a"
+          expect(page).to_not have_selector ".in-favor button"
         end
       end
 
@@ -241,7 +241,7 @@ feature 'Votes' do
         visit proposal_path(@proposal)
 
         within('.supports') do
-          find('.in-favor a').click
+          find('.in-favor button').click
 
           expect(page).to have_content "1 support"
           expect(page).to have_content "You have already supported this proposal. Share it!"
@@ -253,7 +253,7 @@ feature 'Votes' do
         visit proposals_path
 
         within("#proposal_#{@proposal.id}") do
-          find('.in-favor a').click
+          find('.in-favor button').click
 
           expect(page).to have_content "1 support"
           expect(page).to have_content "You have already supported this proposal. Share it!"
@@ -265,7 +265,7 @@ feature 'Votes' do
         visit proposals_path
 
         within("#featured_proposal_#{@proposal.id}") do
-          find('.in-favor a').click
+          find('.in-favor button').click
         end
         expect(page).to have_content "You have already supported this proposal. Share it!"
         expect(current_path).to eq(proposals_path)
