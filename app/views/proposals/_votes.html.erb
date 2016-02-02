@@ -20,9 +20,10 @@
         <%= t("proposals.proposal.already_supported") %>
       </div>
     <% else %>
-      <%= link_to vote_url,
+      <%= button_to vote_url,
           class: "button button-support tiny radius expand",
-          title: t('proposals.proposal.support_title'), method: "post", remote: true do %>
+            title: t('proposals.proposal.support_title'), method: "post", remote: true,
+            data: { disable_with: '...' } do %>
         <%= t("proposals.proposal.support") %>
       <% end %>
     <% end %>
