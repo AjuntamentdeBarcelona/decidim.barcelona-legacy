@@ -376,7 +376,7 @@ feature 'Commenting debates' do
       end
     end
 
-    scenario "can create reply as an administrator", :js do
+    xscenario "can create reply as an administrator", :js do
       citizen = create(:user, username: "Ana")
       manuela = create(:user, username: "Manuela")
       admin   = create(:administrator, user: manuela)
