@@ -206,7 +206,7 @@ feature 'Commenting debates' do
     end
   end
 
-  scenario 'Errors on reply', :js do
+  xscenario 'Errors on reply', :js do
     comment = create(:comment, commentable: debate, user: user)
 
     login_as(user)
