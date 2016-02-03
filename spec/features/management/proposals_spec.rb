@@ -30,7 +30,7 @@ feature 'Proposals' do
       end
 
       fill_in 'proposal_title', with: 'Help refugees'
-      fill_in 'proposal_summary', with: 'In summary, what we want is...'
+      fill_in 'proposal_description', with: 'In summary, what we want is...'
       fill_in 'proposal_external_url', with: 'http://rescue.org/refugees'
       fill_in 'proposal_video_url', with: 'http://youtube.com'
       fill_in 'proposal_captcha', with: correct_captcha_text

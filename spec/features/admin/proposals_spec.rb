@@ -16,7 +16,7 @@ feature 'Admin proposals' do
     visit admin_proposals_path
 
     expect(page).to have_content(proposal.title)
-    expect(page).to have_content(proposal.summary)
+    expect(page).to have_content(proposal.description)
     expect(page).to have_content(proposal.external_url)
     expect(page).to have_content(proposal.video_url)
   end
