@@ -1,7 +1,7 @@
 <% voted_classes = css_classes_for_vote(@debate_votes, debate) %>
 <div class="votes">
   <div class="in-favor inline-block">
-    <%= link_to vote_debate_path(debate, value: 'yes'),
+    <%= button_to vote_debate_path(debate, value: 'yes'),
         class: "like #{voted_classes[:in_favor]}", title: t('votes.agree'), method: "post", remote: true do %>
       <i class="icon-like"></i>
       <span><%= votes_percentage('likes', debate) %></span>

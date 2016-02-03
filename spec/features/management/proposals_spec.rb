@@ -120,7 +120,7 @@ feature 'Proposals' do
       click_link "Support proposals"
 
       within("#proposals") do
-        find('.in-favor a').click
+        find('.in-favor ').click
 
         expect(page).to have_content "1 support"
         expect(page).to have_content "You have already supported this proposal. Share it!"
@@ -140,7 +140,7 @@ feature 'Proposals' do
         click_link proposal.title
       end
 
-      find('.in-favor a').click
+      find('.in-favor button').click
       expect(page).to have_content "1 support"
       expect(page).to have_content "You have already supported this proposal. Share it!"
       expect(current_path).to eq(management_proposal_path(proposal))
