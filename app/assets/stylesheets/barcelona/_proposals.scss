@@ -186,7 +186,7 @@ a.button.new-proposal{
 
 .proposal-meta{
   margin-top: $line-height / 2;
-  span {
+  a {
     @include label(
       $padding: rem-calc(10px),
       $bg: darken($highlight, 5%),
