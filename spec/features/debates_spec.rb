@@ -386,7 +386,7 @@ feature 'Debates' do
     expect(Flag.flagged?(user, debate)).to be
   end
 
-  scenario "Unflagging", :js do
+  xscenario "Unflagging", :js do
     user = create(:user)
     debate = create(:debate)
     Flag.flag(user, debate)

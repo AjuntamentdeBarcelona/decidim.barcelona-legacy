@@ -3,16 +3,29 @@ machine:
     - docker
 
 dependencies:
+  cache_directories:
+    - "~/docker"
+    - .bundle
+    - public/assets
   override:
+    - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; fi
     - sudo pip install --upgrade docker-compose==1.5.2
-
-database:
-  pre:
+    - docker pull ultrayoshi/ruby-node-phantomjs:2.1.1
+    - docker pull postgres
+    - docker pull redis
     - docker-compose build
     - docker-compose run app bundle install
-  override:
+    - mkdir -p ~/docker; docker save ultrayoshi/ruby-node-phantomjs:2.1.1 postgres redis > ~/docker/image.tar
     - docker-compose run app rake db:create
+    - docker-compose run -e RAILS_ENV=test app bundle exec rake assets:precompile
+
+database:
+  override:
+    - echo 'done'
 
 test:
   override:
-    - docker-compose run -e CI_PULL_REQUEST=$CI_PULL_REQUEST -e CI=true app bundle exec rspec
+    - docker-compose run app bundle exec rspec:
+        parallel: true
+        files:
+          - spec/**/*_spec.rb

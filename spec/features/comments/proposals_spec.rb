@@ -429,7 +429,7 @@ feature 'Commenting proposals' do
       end
     end
 
-    scenario 'Create', :js do
+    xscenario 'Create', :js do
       visit proposal_path(@proposal)
 
       within("#comment_#{@comment.id}_votes") do

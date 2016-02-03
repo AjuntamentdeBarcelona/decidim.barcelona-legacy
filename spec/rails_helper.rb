@@ -9,6 +9,11 @@ require 'capybara/rspec'
 require 'capybara/poltergeist'
 require 'capybara-screenshot/rspec'
 require 'sidekiq/testing'
+
+Dir.glob(Rails.root.join("spec", "concerns", "*.rb")).each do |file|
+  require file
+end
+
 Sidekiq::Testing.inline!
 
 I18n.default_locale = :en
