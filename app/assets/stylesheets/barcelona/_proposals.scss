@@ -53,7 +53,23 @@ a.button.new-proposal{
 
 }
 
+.submenu{
+  @include grid-column($columns: 12, $last-column: true);
+}
+
 .featured-proposals{
+  @media #{$small-only}{
+    .featured-proposals-inner{
+      @include grid-column($columns: 12, $last-column: true);
+    }
+  }
+
+  @media #{$medium-only}{
+    .featured-proposals-inner{
+      @include grid-column($columns: 12, $last-column: true);
+    }
+  }
+
   .featured-proposal{
     text-align: center;
   }
@@ -65,6 +81,7 @@ a.button.new-proposal{
 
     li{
       margin-bottom: rem-calc(15);
+      display: block;
     }
 
     @media #{$large-up} {
