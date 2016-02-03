@@ -120,6 +120,8 @@ class Proposal < ActiveRecord::Base
   end
 
   def calculate_hot_score
+    return if hot_score_changed?
+
     self.hot_score = ScoreCalculator.hot_score(created_at,
                                                total_votes,
                                                total_votes,

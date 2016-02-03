@@ -472,6 +472,7 @@ GEM
     thread (0.2.2)
     thread_safe (0.3.5)
     tilt (2.0.2)
+    timecop (0.8.0)
     tins (1.6.0)
     tolk (1.9.3)
       rails (>= 4.0, < 4.3)
@@ -611,6 +612,7 @@ DEPENDENCIES
   social-share-button!
   spring
   spring-commands-rspec
+  timecop
   tolk
   turbolinks
   turnout
