@@ -117,7 +117,8 @@ class Proposal < ActiveRecord::Base
   end
 
   def after_commented
-    save # updates the hot_score because there is a before_save
+    touch
+    calculate_scores
   end
 
   def calculate_scores

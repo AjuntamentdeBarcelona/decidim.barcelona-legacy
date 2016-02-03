@@ -1,6 +1,10 @@
 module CommonActions
   def last_email_content
     mail = ActionMailer::Base.deliveries.last
+    mail_content(mail)
+  end
+
+  def mail_content(mail)
     mail.body.parts.find {|p| p.content_type.match(/html/)}.body.raw_source
   end
 

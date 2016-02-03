@@ -10,3 +10,4 @@ ca:
     formats:
       datetime: "%d/%m/%Y %H:%M:%S"
       default: "%H:%M"
+    ago: fa %{time_in_words}

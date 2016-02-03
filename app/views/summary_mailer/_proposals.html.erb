@@ -1,0 +1,9 @@
+<ul>
+  <% proposals.each do |proposal|  %>
+    <li>
+      <%= link_to(proposal.title, proposal) %>
+      <br />
+      (<%= t '.activity', votes: summary.votes_count(proposal), comments: summary.comments_count(proposal) %>)
+    </li>
+  <% end %>
+</ul>

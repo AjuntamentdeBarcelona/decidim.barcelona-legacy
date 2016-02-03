@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   has_many :recommendations
   has_many :recommended_proposals, through: :recommendations, source: :proposal
 
+
   validates :username, presence: true, if: :username_required?
   validates :username, uniqueness: true, if: :username_required?
   validates :document_number, uniqueness: { scope: :document_type }, allow_blank: true

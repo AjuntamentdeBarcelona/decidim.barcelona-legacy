@@ -17,7 +17,7 @@ class ProposalsController < ApplicationController
 
   def index
     @filter = ResourceFilter.new(params)
-    @proposals = @current_order == "recommended" ? current_user.recommended_proposals : Proposal
+    @proposals = @current_order == "recommended" ? Recommender.new(current_user).proposals : Proposal.all
 
     @proposals = @filter.filter_collection(@proposals.includes(:category, :subcategory, :author => [:organization]))
 
@@ -39,9 +39,7 @@ class ProposalsController < ApplicationController
                  for_render.
                  includes(:author)
 
-    if @current_order == "recommended"
-      @proposals = @proposals.order("recommendations.score / (proposals.cached_votes_up + 1) desc")
-    else
+    if @current_order != "recommended"
       @proposals = @proposals.send("sort_by_#{@current_order}")
     end
 

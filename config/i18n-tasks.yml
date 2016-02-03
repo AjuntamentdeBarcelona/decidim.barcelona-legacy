@@ -102,6 +102,7 @@ ignore_missing:
   - 'devise.failure.invalid'
   - 'devise.registrations.destroyed'
   - 'date.day_names'
+  - 'time.*'
 
 ## Consider these keys used:
 ignore_unused:
