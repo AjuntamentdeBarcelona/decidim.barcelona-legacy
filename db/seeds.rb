@@ -113,8 +113,7 @@ if ENV["SEED"]
                                 category: subcategory.category,
                                 scope: scope,
                                 district: district,
-                                official: official,
-                                terms_of_service: "1")
+                                official: official)
     puts "    #{proposal.title}"
   end
 
