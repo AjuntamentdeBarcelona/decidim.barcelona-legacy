@@ -30,7 +30,7 @@ class Proposal < ActiveRecord::Base
   validates :responsible_name, presence: true
 
   validates :title, length: { in: 4..Proposal.title_max_length }
-  validates :description, length: { maximum: Proposal.description_max_length }
+  validates :description, length: { maximum: 350 }
   validates :scope, inclusion: { in: %w(city district) }
   validates :district, inclusion: { in: District.all.map(&:id), allow_nil: true }
   validates :responsible_name, length: { in: 6..Proposal.responsible_name_max_length }
