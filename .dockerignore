@@ -1,0 +1,4 @@
+.git
+.bundle
+.env
+*.log

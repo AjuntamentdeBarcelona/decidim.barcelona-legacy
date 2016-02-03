@@ -221,7 +221,7 @@ feature 'Commenting debates' do
 
   end
 
-  scenario "N replies", :js do
+  xscenario "N replies", :js do
     parent = create(:comment, commentable: debate)
 
     7.times do
