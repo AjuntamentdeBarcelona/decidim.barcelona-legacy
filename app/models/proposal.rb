@@ -12,8 +12,6 @@ class Proposal < ActiveRecord::Base
   include Categorizable
   include Filterable
 
-  before_save :sync_description
-
   apply_simple_captcha
   acts_as_votable
   acts_as_paranoid column: :hidden_at
@@ -138,9 +136,4 @@ class Proposal < ActiveRecord::Base
       end
     end
 
-  private
-
-    def sync_description
-      self.description = self.summary
-    end
 end
