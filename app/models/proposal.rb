@@ -56,8 +56,7 @@ class Proposal < ActiveRecord::Base
     against: {
       title:       'A',
       question:    'B',
-      summary:     'C',
-      description: 'D'
+      summary:     'C'
     },
     associated_against: {
       tags: :name
@@ -76,8 +75,7 @@ class Proposal < ActiveRecord::Base
     values = {
       title       => 'A',
       question    => 'B',
-      summary     => 'C',
-      description => 'D'
+      summary     => 'C'
     }
     tag_list.each{ |tag| values[tag] = 'D' }
     values[author.username] = 'D'
@@ -88,7 +86,7 @@ class Proposal < ActiveRecord::Base
     self.pg_search(terms)
   end
 
-  def description
+    def description
     super.try :html_safe
   end
 
