@@ -46,6 +46,11 @@ class Moderation::MeetingsController < Moderation::BaseController
     end
   end
 
+  def destroy
+    resource.destroy
+    redirect_to moderation_meetings_url, notice: t('flash.actions.destroy.notice', resource_name: "#{resource_name.capitalize}")
+  end
+
   private
 
   def meeting_params

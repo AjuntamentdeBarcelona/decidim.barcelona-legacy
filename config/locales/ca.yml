@@ -239,6 +239,7 @@ ca:
     index:
       close: Tancar
       edit: Editar
+      delete: Esborrar
       new: Crear cita
       title: Cites presencials
     new:

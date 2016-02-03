@@ -239,6 +239,7 @@ es:
     index:
       close: Cerrar
       edit: Editar
+      delete: Borrar
       new: Crear cita
       title: Citas presenciales
     new:

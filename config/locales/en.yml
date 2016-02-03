@@ -239,6 +239,7 @@ en:
     index:
       close: Close
       edit: Edit
+      delete: Delete
       new: Create meeting
       title: Meetings
     new:

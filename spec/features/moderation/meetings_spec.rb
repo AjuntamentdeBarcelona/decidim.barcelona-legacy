@@ -170,4 +170,19 @@ feature 'Moderate meetings' do
     expect(page).to have_content "Meeting updated successfully."
     expect(page).to_not have_content "A finished meeting"
   end
+
+  scenario 'Delete a meeting', :js do 
+    moderator = create(:moderator)
+    login_as(moderator.user)
+
+    proposal_1 = create(:proposal, title: "A proposal to discuss #1")
+    proposal_2 = create(:proposal, title: "A proposal to discuss #2")
+    create(:meeting, title: "A meeting", proposals: [proposal_1, proposal_2])
+
+    visit moderation_meetings_path
+    click_link 'Delete'
+
+    expect(page).to have_content "Meeting deleted successfully."
+    expect(page).to_not have_content "A meeting"
+  end
 end

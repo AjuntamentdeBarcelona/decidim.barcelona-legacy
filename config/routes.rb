@@ -206,7 +206,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :meetings, except: [:show, :destroy] do
+    resources :meetings, except: [:show] do
       resource :close, controller: 'meetings/close', only: [:new, :create]
     end
   end
