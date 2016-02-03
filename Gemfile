@@ -139,7 +139,7 @@ group :production do
   gem 'puma_worker_killer'
   gem 'heroku-deflater'
   gem 'rails_12factor'
-  gem 'rollbar', '~> 1.2.13'
+  gem 'rollbar'
   gem 'rack-cache'
   gem 'rack-cors', :require => 'rack/cors'
 end

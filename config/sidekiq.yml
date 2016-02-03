@@ -5,3 +5,4 @@ production:
   - default
   - mailer
   - mailers
+  - errors
