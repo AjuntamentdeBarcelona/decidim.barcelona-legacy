@@ -238,8 +238,8 @@ es:
       tags_placeholder: Escribe las etiquetas que desees separadas por coma (',')
     index:
       close: Cerrar
-      edit: Editar
       delete: Borrar
+      edit: Editar
       new: Crear cita
       title: Citas presenciales
     new:

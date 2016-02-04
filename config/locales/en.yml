@@ -238,8 +238,8 @@ en:
       tags_placeholder: Enter the tags you would like to use, separated by commas (',')
     index:
       close: Close
-      edit: Edit
       delete: Delete
+      edit: Edit
       new: Create meeting
       title: Meetings
     new:
