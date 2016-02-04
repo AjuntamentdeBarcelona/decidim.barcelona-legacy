@@ -238,8 +238,8 @@ ca:
       tags_placeholder: Escriu les etiquetes que vulguis separades per una coma (',')
     index:
       close: Tancar
-      edit: Editar
       delete: Esborrar
+      edit: Editar
       new: Crear cita
       title: Cites presencials
     new:
