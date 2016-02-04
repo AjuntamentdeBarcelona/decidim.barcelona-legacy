@@ -476,8 +476,8 @@ ca:
     highlights: 'Portada:'
     signed_in_home_title: Activitat recent
     welcome:
-      see_proposals: Ver las propuestas
-      skip_verification: Si no estás empadronado en Barcelona o no quieres verificarte,
+      see_proposals: Veure les propostes
+      skip_verification: Si no estàs empadronat a Barcelona o no vols verificar el compte,
       title: Comença a participar
       user_permission_debates: Participar en debats
       user_permission_info: Amb el teu compte ja pots ...
