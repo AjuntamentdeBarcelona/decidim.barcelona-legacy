@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Moderate comments' do
 
-  scenario 'Hide', :js do
+  xscenario 'Hide', :js do
     citizen = create(:user)
     moderator = create(:moderator)
 
