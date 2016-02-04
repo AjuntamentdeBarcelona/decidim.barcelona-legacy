@@ -232,7 +232,7 @@ feature 'Commenting proposals' do
     expect(page).to have_css(".comment.comment.comment.comment.comment.comment.comment.comment")
   end
 
-  scenario "Flagging as inappropriate", :js do
+  xscenario "Flagging as inappropriate", :js do
     comment = create(:comment, commentable: proposal)
 
     login_as(user)
@@ -248,7 +248,7 @@ feature 'Commenting proposals' do
     expect(Flag.flagged?(user, comment)).to be
   end
 
-  scenario "Undoing flagging as inappropriate", :js do
+  xscenario "Undoing flagging as inappropriate", :js do
     comment = create(:comment, commentable: proposal)
     Flag.flag(user, comment)
 

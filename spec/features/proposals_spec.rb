@@ -618,7 +618,7 @@ feature 'Proposals' do
     expect(page).to_not have_content "This proposal has been flagged as inappropriate by several users."
   end
 
-  scenario "Flagging", :js do
+  xscenario "Flagging", :js do
     user = create(:user)
     proposal = create(:proposal)
 
@@ -635,7 +635,7 @@ feature 'Proposals' do
     expect(Flag.flagged?(user, proposal)).to be
   end
 
-  scenario "Unflagging", :js do
+  xscenario "Unflagging", :js do
     user = create(:user)
     proposal = create(:proposal)
     Flag.flag(user, proposal)

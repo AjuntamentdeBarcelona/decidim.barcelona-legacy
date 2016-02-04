@@ -369,7 +369,7 @@ feature 'Debates' do
     end
   end
 
-  scenario "Flagging", :js do
+  xscenario "Flagging", :js do
     user = create(:user)
     debate = create(:debate)
 
