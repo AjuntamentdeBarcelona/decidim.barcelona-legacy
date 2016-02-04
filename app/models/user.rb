@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   has_many :comments, -> { with_hidden }
   has_many :failed_census_calls
   has_many :notifications
+  has_many :recommendations
+  has_many :recommended_proposals, through: :recommendations, source: :proposal
 
   validates :username, presence: true, if: :username_required?
   validates :username, uniqueness: true, if: :username_required?

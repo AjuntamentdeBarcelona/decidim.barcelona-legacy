@@ -212,10 +212,11 @@ if ENV["SEED"]
     comment.vote_by(voter: voter, vote: vote)
   end
 
-  (1..100).each do |i|
-    voter  = User.level_two_or_three_verified.reorder("RANDOM()").first
-    proposal = Proposal.reorder("RANDOM()").first
-    proposal.vote_by(voter: voter, vote: true)
+  User.level_two_or_three_verified.each do |voter|
+    (1..100).each do |i|
+      proposal = Proposal.reorder("RANDOM()").first
+      proposal.vote_by(voter: voter, vote: true)
+    end
   end
 
 

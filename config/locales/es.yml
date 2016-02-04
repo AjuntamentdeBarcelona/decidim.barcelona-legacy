@@ -307,7 +307,7 @@ es:
       tags_label: Temas
       tags_placeholder: Escribe las etiquetas que desees separadas por una coma (',')
     index:
-      featured_proposals: Destacadas
+      featured_proposals: Recomendadas
       filter:
         title: Filtrado por
       orders:

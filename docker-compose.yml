@@ -51,17 +51,10 @@ bundle:
 
 db:
   image: postgres
-  volumes_from:
-    - db_data
-
-db_data:
-  image: decidimbarcelona_app
-  command: echo 'Nothing to do here'
-  command: echo 'Nothing to do here'
   volumes:
-    - .db_data:/var/lib/postgresql/data
+    - .postgres_data:/var/lib/postgresql/data
 
 redis:
-  image: "redis"
+  image: redis
   volumes:
-    - /var/lib/redis:/data
+    - .redis_data:/data

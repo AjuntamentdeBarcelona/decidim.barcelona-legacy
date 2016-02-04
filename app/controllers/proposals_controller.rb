@@ -6,7 +6,7 @@ class ProposalsController < ApplicationController
   before_action :set_search_order, only: [:index]
   before_action :authenticate_user!, except: [:index, :show]
 
-  has_orders %w{hot_score confidence_score created_at relevance}, only: :index
+  has_orders %w{hot_score confidence_score created_at relevance recommended}, only: :index
   has_orders %w{most_voted newest oldest}, only: :show
 
   load_and_authorize_resource
@@ -20,18 +20,27 @@ class ProposalsController < ApplicationController
       @tag_cloud = @filter.tag_cloud(@proposals)
     end
 
-    @featured_proposals = @proposals.sort_by_confidence_score.limit(FEATURED_PROPOSALS_LIMIT) if (@filter.search_filter.blank? && @filter.tag_filter.blank?)
-    if @featured_proposals.present?
-      set_featured_proposal_votes(@featured_proposals)
-      @featured_proposals = @featured_proposals.send("sort_by_#{@current_order}")
+    unless @current_order == "recommended"
+      @featured_proposals = @proposals.sort_by_confidence_score.limit(FEATURED_PROPOSALS_LIMIT) if (@filter.search_filter.blank? && @filter.tag_filter.blank?)
+      if @featured_proposals.present?
+        set_featured_proposal_votes(@featured_proposals)
+        @featured_proposals = @featured_proposals.send("sort_by_#{@current_order}")
+      end
     end
 
     @proposals = @proposals.
                  page(params[:page]).
                  per(15).
                  for_render.
-                 includes(:author).
-                 send("sort_by_#{@current_order}")
+                 includes(:author)
+
+    if @current_order == "recommended"
+      Recommendations::Persistance.fetch_recommendations_for(current_user)
+      @proposals = @proposals.joins(:recommendations).order("recommendations.score desc")
+    else
+      @proposals = @proposals.send("sort_by_#{@current_order}")
+    end
+
     set_resource_votes(@proposals)
   end
 

@@ -15,8 +15,9 @@ ActiveRecord::Schema.define(version: 20160205080808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "unaccent"
+  enable_extension "pg_stat_statements"
   enable_extension "pg_trgm"
+  enable_extension "unaccent"
 
   create_table "activities", force: :cascade do |t|
     t.integer  "user_id"
@@ -315,12 +316,11 @@ ActiveRecord::Schema.define(version: 20160205080808) do
   add_index "proposals", ["title"], name: "index_proposals_on_title", using: :btree
   add_index "proposals", ["tsv"], name: "index_proposals_on_tsv", using: :gin
 
-  create_table "settings", force: :cascade do |t|
-    t.string "key"
-    t.string "value"
+  create_table "recommendations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "proposal_id"
+    t.float   "score"
   end
-
-  add_index "settings", ["key"], name: "index_settings_on_key", using: :btree
 
   create_table "simple_captcha_data", force: :cascade do |t|
     t.string   "key",        limit: 40
