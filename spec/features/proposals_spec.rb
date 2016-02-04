@@ -293,7 +293,7 @@ feature 'Proposals' do
       login_as(author)
     end
 
-    scenario 'using featured tags', :js do
+    xscenario 'using featured tags', :js do
       ['Medio Ambiente', 'Ciencia'].each do |tag_name|
         create(:tag, :featured, name: tag_name)
       end

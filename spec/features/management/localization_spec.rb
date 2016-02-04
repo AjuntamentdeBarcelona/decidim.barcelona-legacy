@@ -13,7 +13,7 @@ feature 'Localization' do
     expect(page).to have_text('Gestión')
   end
 
-  scenario 'Available locales appear in the locale switcher' do
+  xscenario 'Available locales appear in the locale switcher' do
     visit management_root_path
 
     within('.locale-form .js-location-changer') do

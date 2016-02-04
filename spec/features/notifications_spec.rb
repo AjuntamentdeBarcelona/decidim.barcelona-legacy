@@ -64,7 +64,7 @@ feature "Notifications" do
     expect(page).to have_xpath "//a[@href='#{notification_path(Notification.last)}']"
   end
 
-  scenario "User replied to my comment", :js do
+  xscenario "User replied to my comment", :js do
     comment = create :comment, commentable: debate, user: author
     login_as user
     visit debate_path debate
@@ -92,7 +92,7 @@ feature "Notifications" do
     expect(page).to have_xpath "//a[@href='#{notification_path(Notification.last)}']"
   end
 
-  scenario "Multiple replies to my comment", :js do
+  xscenario "Multiple replies to my comment", :js do
     comment = create :comment, commentable: debate, user: author
     3.times do |n|
       login_as create(:user)
@@ -136,7 +136,7 @@ feature "Notifications" do
     expect(page).to have_css ".notification", count: 0
   end
 
-  scenario "Author replied to his own comment", :js do
+  xscenario "Author replied to his own comment", :js do
     comment = create :comment, commentable: debate, user: author
     login_as author
     visit debate_path debate
