@@ -3,6 +3,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     build_resource(sign_up_params)
+
     if resource.valid_with_captcha?
       super
     else
@@ -50,9 +51,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
     def sign_up_params
-      params.require(:user).permit(:username, :email, :password,
-                                   :password_confirmation, :captcha, :newsletter,
-                                   :captcha_key, :terms_of_service, :locale)
+      sign_up_params = params.require(:user).permit(:username, :email, :password,
+                                                    :password_confirmation, :captcha, :newsletter,
+                                                    :notifications_by_default, :captcha_key,
+                                                    :terms_of_service, :locale).to_hash
+
+      if sign_up_params[:notifications_by_default] == "1"
+        sign_up_params[:weekly_summary] = true
+        sign_up_params[:email_on_comment] = true
+        sign_up_params[:email_on_comment_reply] = true
+      end
+
+      sign_up_params
     end
 
     def erase_params

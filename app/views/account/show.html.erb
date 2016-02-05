@@ -55,6 +55,13 @@
           </div>
 
           <div>
+            <%= f.label :weekly_summary do %>
+              <%= f.check_box :weekly_summary, label: false %>
+              <span class="checkbox"><%= t("account.show.weekly_summary") %></span>
+            <% end %>
+          </div>
+
+          <div>
             <%= f.label :email_newsletter_subscribed do %>
               <%= f.check_box :newsletter, label: false %>
               <span class="checkbox"><%= t("account.show.subscription_to_website_newsletter_label") %></span>

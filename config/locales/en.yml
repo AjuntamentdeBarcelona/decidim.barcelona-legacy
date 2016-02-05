@@ -3,6 +3,7 @@ en:
   account:
     show:
       change_credentials_link: Change my credentials
+      email_notifications: Receive information about relevant activity
       email_on_comment_label: Notify me by email when someone comments on my proposals or debates
       email_on_comment_reply_label: Notify me by email when someone replies to my comments
       erase_account_link: Erase my account
@@ -26,6 +27,7 @@ en:
       username_label: Username
       verified_account: Account verified
       verify_my_account: Verify my account
+      weekly_summary: Receive an email with a weekly summary of activity
   application:
     close: Close
   categories:

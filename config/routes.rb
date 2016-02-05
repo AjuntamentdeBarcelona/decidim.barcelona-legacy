@@ -68,6 +68,8 @@ Rails.application.routes.draw do
 
   resources :spending_proposals, only: [:index, :new, :create]
 
+  resource :email_notifications_reminder, only: [:create, :destroy]
+
   resources :legislations, only: [:show]
 
   resources :annotations do
