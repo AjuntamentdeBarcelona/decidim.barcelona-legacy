@@ -3,6 +3,7 @@ ca:
   account:
     show:
       change_credentials_link: Canviar les meves dades d'accés
+      email_notifications: Rebre informacio sobre activitat rellevant
       email_on_comment_label: Rebre un email quan algú comenta en les meves propostes o debats
       email_on_comment_reply_label: Rebre un email quan algú contesta els meus comentaris
       erase_account_link: Donar-me de baixa
@@ -26,6 +27,7 @@ ca:
       username_label: Nom d'usuari
       verified_account: Compte verificat
       verify_my_account: Verificar el meu compte
+      weekly_summary: Rebre un email amb un resum setmanal d'activitat
   application:
     close: Tancar
   categories:
