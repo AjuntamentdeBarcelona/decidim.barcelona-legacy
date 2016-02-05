@@ -1,5 +1,5 @@
 <% if Rails.application.secrets.analytics_enabled %>
-  <% if current_user.has_facebook_identity? %>
+  <% if current_user && current_user.has_facebook_identity? %>
     <!-- Facebook Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
