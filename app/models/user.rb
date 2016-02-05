@@ -203,6 +203,11 @@ class User < ActiveRecord::Base
     self.update(registering_with_oauth: true, email: nil)
   end
 
+  def has_facebook_identity?
+    return @has_facebook_identity if defined?(@has_facebook_identity)
+    @has_facebook_identity = identities.detect{|i| i.provider == 'facebook'}.present?
+  end
+
   private
     def clean_document_number
       self.document_number = self.document_number.gsub(/[^a-z0-9]+/i, "").upcase unless self.document_number.blank?
