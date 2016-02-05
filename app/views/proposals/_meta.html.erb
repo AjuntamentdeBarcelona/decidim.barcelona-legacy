@@ -15,7 +15,7 @@
       <%= category_icon(proposal.category) %> <%= proposal.category.decorate.name %>
     <% end %>
     <%= link_to proposals_path(filter: "category_id=#{proposal.category.id}:subcategory_id=#{proposal.subcategory.id}"), class: 'proposal-subcategory' do %>
-      <%= category_icon(proposal.category) %> <%= proposal.subcategory.decorate.name %>
+      <%= proposal.subcategory.decorate.name %>
     <% end %>
   </div>
 <% end %>
