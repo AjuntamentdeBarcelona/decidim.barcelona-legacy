@@ -1,10 +1,5 @@
 <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic,400italic,600italic' rel='stylesheet' type='text/css'>
 
-<% if Rails.application.secrets.analytics_enabled %>
-  <script type='text/javascript' charset='utf-8' src='https://w9.barcelona.cat/assets/core/javascripts/core.js'></script> 
-  <script type='text/javascript'>bcn.statistics({keys: ['UA-61717963-24', 'UA-73116847-1'] });</script>
-<% end %>
-
 <%= favicon_link_tag "favicon.png" %>
 <%= favicon_link_tag "apple-touch-icon.png",
                   rel: "apple-touch-icon",
