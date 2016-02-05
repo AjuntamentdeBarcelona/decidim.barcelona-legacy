@@ -5,7 +5,8 @@ class EmailNotificationsRemindersController < ApplicationController
     current_user.update_attributes(
       weekly_summary: true,
       email_on_comment: true,
-      email_on_comment_reply: true
+      email_on_comment_reply: true,
+      notifications_by_default: true
     )
 
     destroy
