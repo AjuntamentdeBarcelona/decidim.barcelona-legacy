@@ -10,6 +10,10 @@ es:
       close: Acepto
       more_info: Más información
       text: Utilizamos cookies propias y de terceros para mejorar la experiencia de navegación y ofrecer contenidos y servicios de interés. Al continuar con la navegación, entendemos que se acepta nuestra política de cookies.
+    email_notifications_reminder:
+      close: No, no quiero recibir las notificaciones.
+      enable: Si, quiero recibir las notificaciones.
+      text: No tienes las notificaciones por correo electronico activadas. No recibirás un correo cada vez que alguien haga un comentario en tus propuestas, ni un resumen semanal de actividad. Puedes cambiarlo en cualquier momento desde tu perfil de usuario (mi cuenta). ¿Quieres que activemos las notifiaciones por tí?
     filter_option:
       all: Todos
       citizenship: Ciudadania
