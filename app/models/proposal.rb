@@ -52,19 +52,13 @@ class Proposal < ActiveRecord::Base
   pg_search_scope :pg_search, {
     against: {
       title:       'A',
-      question:    'B',
-      summary:     'C',
-      description: 'D'
-    },
-    associated_against: {
-      tags: :name
+      summary:     'C'
     },
     using: {
-      tsearch: { dictionary: "spanish", tsvector_column: 'tsv' }
+      tsearch: { prefix: true },
+      trigram: { threshold: 0.5 }
     },
     ignoring: :accents,
-    ranked_by: '(:tsearch)',
-    order_within_rank: "proposals.cached_votes_up DESC"
   }
 
   friendly_id :title, use: [:slugged, :finders]
