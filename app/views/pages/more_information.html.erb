@@ -15,7 +15,7 @@
 
     <div class="text small-12 medium-9 column">
       <h2><%= t('.title') %></h2>
-      <% (1..9).to_a.each do |i| %>
+      <% (1..10).to_a.each do |i| %>
         <div id="section_<%= i %>"><%= render "pages/more_information/section_#{i}" %></div>
       <% end %>
       <div id="faq"><%= render 'pages/more_information/faq' %></div>
