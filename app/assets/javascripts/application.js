@@ -59,6 +59,7 @@
 //= require page_navigation
 //= require menu
 //= require share
+//= require tracking
 
 var initialize_modules = function() {
   App.Comments.initialize();

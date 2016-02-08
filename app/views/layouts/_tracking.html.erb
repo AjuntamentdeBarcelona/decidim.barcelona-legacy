@@ -1,5 +1,3 @@
-<% if Rails.application.secrets.analytics_enabled %>
-  <% if current_user && current_user.has_facebook_identity? %>
     <!-- Facebook Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -9,13 +7,13 @@
     document,'script','//connect.facebook.net/en_US/fbevents.js');
 
     fbq('init', '995746137140535');
-    fbq('track', "PageView");</script>
+    App.Tracking.Facebook.init();
+    </script>
+
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=995746137140535&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Facebook Pixel Code -->
-  <% end %>
 
   <script type='text/javascript' charset='utf-8' src='https://w9.barcelona.cat/assets/core/javascripts/core.js'></script> 
   <script type='text/javascript'>bcn.statistics({keys: ['UA-61717963-24', 'UA-73116847-1'] });</script>
-<% end %>

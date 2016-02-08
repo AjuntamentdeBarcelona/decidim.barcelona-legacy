@@ -12,6 +12,7 @@
     <%= csrf_meta_tags %>
     <%= content_for :social_media_meta_tags %>
     <%= render partial: 'layouts/scripts' %>
+    <%= render 'layouts/tracking' %>
 
     <%= Setting['per_page_code'].try(:html_safe) %>
 
@@ -68,7 +69,6 @@
     <div class="footer">
       <%= render 'layouts/footer' %>
     </div>
-    <%= render 'layouts/tracking' %>
   </body>
   <!--[if lt IE 9]>
     <%= javascript_include_tag "ie_lt9" %>
