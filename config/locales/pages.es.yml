@@ -13,16 +13,16 @@ es:
         question-10:
           answer: Lo primero es crear una cuenta básica. Para ello, hacemos clic en el enlace Crear y rellenamos los datos que nos solicitan. Es un requisito marcar la casilla de aceptación de las condiciones de uso, y rellenar correctamente el CAPTCHA (en la parte inferior del formulario se nos presenta una imagen con unas letras deformadas que tendremos que introducir en la casilla inferior como medida de seguridad; ten en cuenta la diferencia entre mayúsculas y minúsculas). Cuando hayamos creado una nueva cuenta nos llegará un correo electrónico a la dirección que hayamos especificado, y tendremos que hacer clic en el enlace que contiene (el enlace que pone "Confirmar mi cuenta") para finalizar la creación de la cuenta.
           answer-2: Una vez creada la cuenta básica, y después de entrar con nuestro correo y contraseña, el sistema nos ofrecerá la opción de realizar una verificación básica. Para hacerlo, hacemos clic en el enlace "Mi cuenta" de la parte superior derecha, y después en el botón "Verificar mi cuenta". Lo primero que se nos pedirá es que introduzcamos nuestros datos de residencia, para verificar que estamos empadronados en el municipio de Barcelona (es importante introducir el número de documento con la letra y marcar la casilla de aceptación de acceso al Padrón). Si los datos son correctos nuestra cuenta nos permitirá dar apoyo a las propuestas.
-          title: "Como creo y verifico mi cuenta?"
+          title: Como creo y verifico mi cuenta?
         question-11:
           answer: En breve pondremos en marcha una nueva funcionalidad de la web que permitirá marcar propuestas similares como tales y que se muestren al visualizar cualquiera de ellas. De este modo la gente podrá decidir a cuál o a cuáles da apoyo después de compararlas, y ayudará a que no se dispersen los apoyos y no se repitan las mismas propuestas. También implementaremos un sistema que cuando creemos nuestra propuesta nos mostrará propuestas similares, por si la idea que queremos lanzar ya existiera en el portal de participación.<p>Sobre la posibilidad de unificar propuestas, lo que pueden parecer pequeñas diferencias entre dos propuestas similares, pueden representar grandes diferencias a la hora de hacerlas realidad. Por ello hay personas que pueden querer dar apoyo a una de ellas y no a otras. Por este motivo tenemos que respetar los apoyos particulares que haya dado la gente, y no unificar las propuestas. Eso es independiente de que los autores de las propuestas quieran unirlas. Una vez las propuestas están recibiendo apoyos pasan a ser tanto de la gente que les da apoyo como de sus autores.</p>
-          title: "Hay muchas propuestas similares, no se podrían unificar?"
+          title: Hay muchas propuestas similares, no se podrían unificar?
         question-12:
           answer: Puedes solicitar un nueva contraseña para que se te envíe a tu correo electrónico. Si la solución anterior no funciona, puedes enviar un correo electrónico a la dirección suport@decidim.barcelona, donde te resolverán el problema asociado a tu cuenta. También puedes dirigirte y participar en los debates presenciales que se llevarán a cabo por toda Barcelona.
-          title: "Me he olvidado de la contraseña o no me funciona, ¿qué puedo hacer?"
+          title: Me he olvidado de la contraseña o no me funciona, ¿qué puedo hacer?
         question-13:
           answer: Revisa la sección "No me funciona la verificación de residencia", por si el problema estuviera en este paso, puesto que suele ser el problema más frecuente. Si no se ha solucionado, revisa la sección "Cómo creo y verifico mi cuenta?", Para asegurarse de que estás siguiendo los pasos adecuadamente. Si aún se mantiene el problema, puedes enviar un correo electrónico a la dirección suport@decidim.barcelona, y te lo resolverán.
-          title: "No consigo crear mi cuenta correctamente"
+          title: No consigo crear mi cuenta correctamente
         question-14:
           answer: Haz clic en el enlace "Entrar", introduce tu dirección electrónica y la contraseña, y pulsa el botón "Entrar". A continuación, haz clic en el enlace "Mi cuenta", donde encontrarás todas las opciones que te permitirán cambiar tu dirección electrónica, nombre de usuario, contraseña, darte de baja o activar o desactivar las notificaciones. Una vez hayas hecho la modificación adecuada asegúrate de hacer clic en el botón "Guardar los cambios".
           title: "¿Cómo puedo cambiar mi dirección electrónica, mi nombre de usuario, la contraseña, darme de baja o activar o desactivar las notificaciones que me llegan al correo electrónico?"
@@ -44,36 +44,39 @@ es:
           answer-list-2: "¿Estás seguro que estás empadronado en el municipio de Barcelona? (El municipio es geográficamente más pequeño que la provincia de Barcelona.)"
           answer-list-3: Puede que haya algún problema con tus datos en el registro de empadronamiento. Consulta en tu <a href="http://ajuntament.barcelona.cat/es/canales-comunicacion-ciudadana/presenciales/oac"> oficina de atención al ciudadano </a> más cercana y confirma que tu información del Padrón es correcta.
           answer-list-4: Si todos los pasos anteriores no solucionan el problema, puedes enviar un correo electrónico a suport@decidim.barcelona o venir a los debates presenciales que se están haciendo por toda la ciudad de Barcelona.
-          title: "No me funciona la verificación de residencia"
+          title: No me funciona la verificación de residencia
         question-7:
           answer: El apoyo y la votación de propuestas se limitan a la gente empadronada en Barcelona, ya que se trata de tomar decisiones que afectarán al municipio y a las personas que viven en él. Por lo tanto nos parece que son ellos los que tienen que tomar la decisión final. Es cierto que hay personas que no están empadronadas en Barcelona y que, aun así, estas decisiones las pueden afectar, pero el Padrón es el censo más amplio de que disponemos que nos permite que el proceso de participación sea seguro y lleguemos al máximo número de personas posible. Aunque sí que se puede participar a pesar de no estar empadronado. Puedes participar presencialmente en los debates para el proceso del Plan Municipal, y también es posible lanzar una propuesta, o comentar las propuestas existentes, sin necesidad de estar empadronado. Solo los apoyos a las propuestas se limitan a las personas empadronadas.
           title: No estoy empadronado en Barcelona, ​​por qué no puedo participar?
         question-8:
           answer: 'Para utilizar la web necesitas una cuenta de usuario. Según el grado de verificación podrás hacer más o menos cosas:'
-          answer-1: '1.	Si te registras en la web con la dirección electrónica y no das ningún dato más (no realizamos el proceso de verificación de residencia) podrás:'
+          answer-1: "1.\tSi te registras en la web con la dirección electrónica y no das ningún dato más (no realizamos el proceso de verificación de residencia) podrás:"
           answer-1-1: Apoyar propuestas.
           answer-1-2: Comentar y argumentar propuestas.
           answer-2: 'Si después de registrarte has hecho la verificación básica, es decir, has verificado la residencia a través de la web (+ info en "Cómo creo y verifico mi cuenta?") Podrás:'
           answer-part-2: Siempre puedes participar de forma presencial y sin autenticarte en cualquiera de los debates que se organizan por toda Barcelona.
-          title: '¿Para qué sirve verificar mi cuenta? ¿De qué trata lo de la carta con un código que me pedís?'
+          title: "¿Para qué sirve verificar mi cuenta? ¿De qué trata lo de la carta con un código que me pedís?"
         question-9:
           answer: No. Todas las acciones relacionadas con las propuestas, tanto crearlas como darles apoyo, votarlas o informarnos de ellas, las podemos hacer presencialmente en cualquiera de los debates que se están llevando a cabo y que se organizan por toda Barcelona. Además, podemos presentar hojas de firmas para dar apoyo a una propuesta concreta. También podemos crearnos una cuenta de usuario completamente verificada, en caso de que optemos en algún momento por utilizar la web directamente.
-          title: ¿Necesito teléfono móvil o internet para poder participar?
+          title: "¿Necesito teléfono móvil o internet para poder participar?"
         title: Preguntas frecuentes
       section_1:
         paragraph-1: El Plan Municipal se elabora al inicio de cada mandato y establece las líneas prioritarias, objetivos y actuaciones de la acción de gobierno. Es, por lo tanto, la hoja de ruta municipal y se prevén las medidas estratégicas para un nuevo modelo de ciudad.
         paragraph-2: El Ayuntamiento de Barcelona abre un proceso de participación ciudadana para construir, pensar y debatir entre todos y todas las actuaciones y prioridades de los próximos tres años. Un paso adelante en la construcción colectiva de una ciudad más justa y democrática.
         title: "¿Qué es el Plan Municipal de Barcelona?"
+      section_10:
+        paragraph-1: El mundo asociativo, las entidades, asociaciones, gremios, colectivos, son el espíritu de la ciudad, han jugado un papel clave en la construcción de Barcelona. Y son quiénes mejor conocen los problemas, necesidades, y muchas veces las soluciones de su barrio, sector, ámbito de trabajo, etc. Por eso, si eres una entidad o asociación y quieres organizar un debate, el Ayuntamiento te facilita la infraestructura necesaria para a que lo puedas hacer. Escríbenos un mail a participacio@bcn.cat y desde el Área de participación nos pondremos en contacto con usted para facilitarle el "KIT DE PARTICIPACIÓN PARA LA AUTOORGANIZACIÓN DE DEBATES EN EL PLAN MUNICIPAL 2016-2019" y el apoyo necesario para realizar el debate.
+        title: Quieres organizar un debate?
       section_2:
         links-1:
           link-1: Navega por la propuesta inicial del Ayuntamiento
           link-2: Baja el PDF
         paragraph-1: 'El Plan municipal 2016-2019, "73 barrios, una Barcelona. Hacia la ciudad de los derechos y las oportunidades", se estructura en cinco ejes: el buen vivir, la economía plural, las personas, el buen gobierno y el compromiso de la ciudad con la justicia global.'
-        paragraph-2: Marca como objetivos prioritarios generar un desarrollo social, económico y sostenible de la ciudad y revertir las desigualdades. 
-        paragraph-3: CCada uno de los cinco ejes está dividido en líneas estratégicas que abrazan diferentes ámbitos de acción municipal (vivienda, turismo, empleo, etcétera) que se detallan en objetivos y actuaciones concretas.
-        paragraph-4: En total, pues, el Plan Municipal está estructurado en cinco ejes temáticos, divididos en 30 líneas estratégicas, 157 objetivos y 789 actuaciones. 
+        paragraph-2: Marca como objetivos prioritarios generar un desarrollo social, económico y sostenible de la ciudad y revertir las desigualdades.
+        paragraph-3: Cada uno de los cinco ejes está dividido en líneas estratégicas que abrazan diferentes ámbitos de acción municipal (vivienda, turismo, empleo, etcétera) que se detallan en objetivos y actuaciones concretas.
+        paragraph-4: En total, pues, el Plan Municipal está estructurado en cinco ejes temáticos, divididos en 30 líneas estratégicas, 157 objetivos y 789 actuaciones.
         paragraph-5: Aparte, también existen diez planes de distrito con una estructura similar, pero con objetivos y actuaciones propias.
-        title: ¿Cómo se estructura este plan municipal?
+        title: "¿Cómo se estructura este plan municipal?"
       section_3:
         paragraph-1: El contexto político, económico y social actual ha demostrado la necesidad de contar con la ciudadanía en la toma de decisiones sobre las actuaciones municipales, así como la eficacia de las políticas públicas cuando son fruto del consenso más amplio. La implicación y participación ciudadana en la elaboración de las políticas públicas es una herramienta de mejora de la democracia por la que el Ayuntamiento de Barcelona, tal como recoge su Carta Municipal (enlace), hace una apuesta firme.
         paragraph-2: Cuando la apuesta por la implicación de la ciudadanía en el diseño y desarrollo de las políticas públicas es real y convincente, esta permite, en primer lugar, elaborar una política en mejores condiciones para responder más eficientemente a las demandas y necesidades sociales y, en segundo lugar, una corresponsabilización mayor entre ciudadanía y Ayuntamiento que mejoran, también, su aplicación, seguimiento y evaluación posteriores.
@@ -85,9 +88,9 @@ es:
           item-2: 'Citas presenciales: son jornadas, debates, encuentros en el espacio público y otras citas presenciales para debatir propuestas relacionadas tanto con la ciudad, como con los barrios y distritos.'
           item-2-link: Aquí puedes ver las citas presenciales
         paragraph-1: El proceso de participación para el Plan Municipal es un método híbrido entre las citas presenciales y los espacios digitales. Esta singularidad ha impulsado el nacimiento de la plataforma  <strong> decidim.barcelona </ strong>.
-        paragraph-2: Gracias a la plataforma decidim.barcelona se crea un espacio de participación abierto a toda la ciudadanía, se hace visible todo el proceso de forma transparente y trazable y hay un retorno de las propuestas introducidas. 
+        paragraph-2: Gracias a la plataforma decidim.barcelona se crea un espacio de participación abierto a toda la ciudadanía, se hace visible todo el proceso de forma transparente y trazable y hay un retorno de las propuestas introducidas.
         paragraph-3: 'Así pues, este proceso ha sido pensado para que durante dos meses puedas participar de diferentes maneras:'
-        paragraph-4: Con este proceso, queremos generar un debate ciudadano sobre los grandes temas de nuestra ciudad a partir de espacios de deliberación conjunta y la construcción colectiva. 
+        paragraph-4: Con este proceso, queremos generar un debate ciudadano sobre los grandes temas de nuestra ciudad a partir de espacios de deliberación conjunta y la construcción colectiva.
         title: "¿Cómo puedo participar?"
       section_5:
         part-1:
@@ -100,17 +103,17 @@ es:
             item-3: Comprobar si una idea ha sido incluida, modificada o rechazada en el Pleno municipal.
             item-4: Conocer el consenso obtenido por cada aportación.
             item-5: Ver los comentarios de otros participantes.
-          paragraph-1: Saber por qué participamos y qué pasa con las propuestas que hemos hecho es básico e imprescindible para que la participación ciudadana sea realmente efectiva. A través de la plataforma decidim.barcelona podrás seguir el recorrido de todas las propuestas y saber si finalmente se han incorporado al documento final del Plan Municipal. 
+          paragraph-1: Saber por qué participamos y qué pasa con las propuestas que hemos hecho es básico e imprescindible para que la participación ciudadana sea realmente efectiva. A través de la plataforma decidim.barcelona podrás seguir el recorrido de todas las propuestas y saber si finalmente se han incorporado al documento final del Plan Municipal.
           paragraph-2: 'Por lo tanto, trazabilidad quiere decir:'
           paragraph-3: Con la trazabilidad, en definitiva, podremos rastrear la evolución de las aportaciones y los debates y conocer el estado de las decisiones técnicas y políticas que se tomen en todo momento.
           title: Un proceso trazable
         part-3:
-          paragraph-1: Convivirán durante dos meses diversidad de espacios presenciales en los que se debatirán los temas de barrio y de ciudad. Así, convivirán los espacios reglados de participación como los consejos de barrio y los consejos de ciudad, con debates especializados por sectores, otros abiertos a la ciudadanía, con niños y dinamizaciones en el espacio público, y actos más lúdicos y culturales. También será posible que colectivos y asociaciones puedan organizar sus debates y que posteriormente hagan llegar sus propuestas para que puedan ser valoradas por el resto de la ciudadanía. 
+          paragraph-1: Convivirán durante dos meses diversidad de espacios presenciales en los que se debatirán los temas de barrio y de ciudad. Así, convivirán los espacios reglados de participación como los consejos de barrio y los consejos de ciudad, con debates especializados por sectores, otros abiertos a la ciudadanía, con niños y dinamizaciones en el espacio público, y actos más lúdicos y culturales. También será posible que colectivos y asociaciones puedan organizar sus debates y que posteriormente hagan llegar sus propuestas para que puedan ser valoradas por el resto de la ciudadanía.
           title: Un proceso de construcción colectiva
         part-4:
           paragraph-1: El seguimiento, evaluación y retorno a la ciudadanía de todos estos compromisos asumidos es uno de los principales retos de este proceso y de este gobierno.
-          paragraph-2: En este proceso participativo nos comprometemos a realizar el retorno de aquellas propuestas que hayan sido de consenso pero que finalmente no se hayan incorporado al documento final del Plan Municipal. 
-          paragraph-3: La plataforma permitirá, también, hacer un seguimiento de las propuestas generadas y ver su evolución. 
+          paragraph-2: En este proceso participativo nos comprometemos a realizar el retorno de aquellas propuestas que hayan sido de consenso pero que finalmente no se hayan incorporado al documento final del Plan Municipal.
+          paragraph-3: La plataforma permitirá, también, hacer un seguimiento de las propuestas generadas y ver su evolución.
           title: Retorno y compromiso
         title: Los cuatro puntos clave sobre este proceso participativo
       section_6:
@@ -119,11 +122,11 @@ es:
           item-2: Su viabilidad temporal, presupuestaria y técnica.
           item-3: Corresponderse con las competencias municipales.
           item-4: No ser contrarias al bien común.
-        paragraph-1: Este proceso no es vinculante porque el documento final debe ser aprobado por el Pleno municipal y requiere un consenso político suficiente que obtenga mayoría. 
-        paragraph-2: Es, sin embargo, la primera vez que el proceso participativo se abre antes de los trámites administrativos para aprobar el Plan. Lo que se presenta aquí es, por lo tanto, un primer borrador que se tendrá que modificar con las aportaciones que surjan del proceso participativo. Solo entonces empezará el trámite para la aprobación en el Pleno y el periodo de alegaciones. 
-        paragraph-3: El Gobierno se compromete a valorar la viabilidad de las propuestas que reciban más apoyos y a explicar por qué cada una de las propuestas se ha incorporado al documento final o se ha desestimado. 
+        paragraph-1: Este proceso no es vinculante porque el documento final debe ser aprobado por el Pleno municipal y requiere un consenso político suficiente que obtenga mayoría.
+        paragraph-2: Es, sin embargo, la primera vez que el proceso participativo se abre antes de los trámites administrativos para aprobar el Plan. Lo que se presenta aquí es, por lo tanto, un primer borrador que se tendrá que modificar con las aportaciones que surjan del proceso participativo. Solo entonces empezará el trámite para la aprobación en el Pleno y el periodo de alegaciones.
+        paragraph-3: El Gobierno se compromete a valorar la viabilidad de las propuestas que reciban más apoyos y a explicar por qué cada una de las propuestas se ha incorporado al documento final o se ha desestimado.
         paragraph-4: 'Los criterios para valorar las propuestas surgidas serán los siguientes:'
-        title: ¿Es vinculante este proceso participativo
+        title: "¿Es vinculante este proceso participativo"
       section_7:
         list-1:
           item-1: A.En la primera, el Gobierno municipal ha elaborado la propuesta de documento en la que también se han recogido propuestas de entidades y asociaciones, así como de los órganos de participación. Las propuestas de esta primera fase se pueden ver en la plataforma decidim.barcelona.
@@ -138,8 +141,8 @@ es:
           paragraph-2: decidim.barcelona es un espacio de referencia para construir una ciudad abierta, transparente, colaborativa y con el protagonismo de quien habita la ciudad.
           title: Una plataforma digital para la construcción colectiva
         part-2:
-          paragraph-1: EEl Ayuntamiento de Barcelona, atendiendo a las necesidades del proceso de construcción colectiva de la ciudad, contribuye a la comunidad con la puesta en funcionamiento de una plataforma basada en código abierto y disponible para el común. 
-          paragraph-2: Así pues, dado que el desarrollo es en código abierto, cualquier persona puede ver cómo está hecha la plataforma, además de realizar contribuciones, utilizarla, modificarla o mejorarla. 
+          paragraph-1: EEl Ayuntamiento de Barcelona, atendiendo a las necesidades del proceso de construcción colectiva de la ciudad, contribuye a la comunidad con la puesta en funcionamiento de una plataforma basada en código abierto y disponible para el común.
+          paragraph-2: Así pues, dado que el desarrollo es en código abierto, cualquier persona puede ver cómo está hecha la plataforma, además de realizar contribuciones, utilizarla, modificarla o mejorarla.
           title: Un proyecto colaborativo
         title: "¿Qué es decidim.barcelona?"
       section_9:
@@ -159,7 +162,7 @@ es:
           item-1: 'Haz un seguimiento de todas las propuestas: las iniciadas en la plataforma y las generadas en las citas presenciales.'
           item-2: Conoce todos los datos de las citas presenciales y los debates que se han llevado a cabo.
           item-3: Después de las citas presenciales consulta en la plataforma todo el recorrido de los debates y las aportaciones generadas.
-          item-4: Marca una propuesta y sigue toda su evolución, desde los comentarios de otras personas hasta el documento final del Plan Municipal.  
+          item-4: Marca una propuesta y sigue toda su evolución, desde los comentarios de otras personas hasta el documento final del Plan Municipal.
           title: Haz seguimiento de las propuestas
         title: "¿Qué puedo hacer en decidim.barcelona?"
       title: Infórmate
