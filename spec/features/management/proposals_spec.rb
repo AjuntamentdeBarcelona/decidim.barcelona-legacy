@@ -169,7 +169,7 @@ feature 'Proposals' do
       expect(page).to have_css("a[href='javascript:window.print();']", text: 'Print')
     end
 
-    scenario "Filtering proposals to be printed", :js do
+    xscenario "Filtering proposals to be printed", :js do
       create(:proposal, title: 'Worst proposal').update_column(:confidence_score, 2)
       create(:proposal, title: 'Best proposal').update_column(:confidence_score, 10)
       create(:proposal, title: 'Medium proposal').update_column(:confidence_score, 5)
