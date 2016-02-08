@@ -64,6 +64,9 @@ ca:
         paragraph-1: 'El Pla municipal s’elabora a l’inici de cada mandat i estableix les línies prioritàries, els objectius i les actuacions de l’acció de govern. És, per tant, el full de ruta municipal i s’hi preveuen les mesures estratègiques per a un nou model de ciutat. '
         paragraph-2: L’Ajuntament de Barcelona obre un procés de participació ciutadana per construir, pensar i debatre entre tots i totes les actuacions i prioritats dels propers tres anys. Un pas endavant en la construcció col·lectiva d’una ciutat més justa i democràtica.
         title: Què és el Pla municipal de Barcelona?
+      section_10:
+        paragraph-1: El món associatiu, les entitats, associacions, gremis, col·lectius, són l’esperit de la ciutat, han jugat un paper clau en la construcció de Barcelona. I són les que millor coneixen els problemes, necessitats, i moltes vegades les solucions del seu barri, sector, àmbit de treball, etc. Per això, si ets una entitat o associació i vols organitzar un debat, l’Ajuntament et facilita la infraestructura necessària per a què ho puguis fer. Escriu-nos un mail a participacio@bcn.cat  i des de l’Àrea de participació ens posarem en contacte amb vosaltres per facilitar-vos el "KIT DE PARTICIPACIÓ PER A L’AUTORGANITZACIÓ DE DEBATS EN EL PLA MUNICIPAL 2016-2019" i el suport necessari per a realitzar el debat.
+        title: Vols organitzar un debat?
       section_2:
         links-1:
           link-1: Navega per la proposta inicial de l'Ajuntament
@@ -163,9 +166,6 @@ ca:
           title: Fes seguiment de les propostes
         title: Què puc fer a decidim.barcelona?
       title: Informa't
-      section_10:
-        paragraph-1: El món associatiu, les entitats, associacions, gremis, col·lectius, són l’esperit de la ciutat, han jugat un paper clau en la construcció de Barcelona. I són les que millor coneixen els problemes, necessitats, i moltes vegades les solucions del seu barri, sector, àmbit de treball, etc. Per això, si ets una entitat o associació i vols organitzar un debat, l’Ajuntament et facilita la infraestructura necessària per a què ho puguis fer. Escriu-nos un mail a participacio@bcn.cat  i des de l’Àrea de participació ens posarem en contacte amb vosaltres per facilitar-vos el “KIT DE PARTICIPACIÓ PER A L’AUTORGANITZACIÓ DE DEBATS EN EL PLA MUNICIPAL 2016-2019” i el suport necessari per a realitzar el debat.
-      title: Vols organitzar un debat?
     titles:
       accessibility: Accessibilitat
     verify:
