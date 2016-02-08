@@ -1,0 +1,27 @@
+.item-meta{
+  margin-top: $line-height / 2;
+  & > a{
+    cursor: pointer;
+    &:hover{
+      background-color: lighten($highlight, 2%);
+    }
+  }
+
+  & > * {
+    cursor: default;
+    @include label(
+      $padding: rem-calc(10px),
+      $bg: darken($highlight, 5%),
+      $text-size: rem-calc(12),
+      $radius: rem-calc(4)
+    );
+
+    margin-left: rem-calc(3);
+
+    &:first-child{
+      margin-left: 0;
+    }
+
+    margin-bottom: rem-calc(4);
+  }
+}

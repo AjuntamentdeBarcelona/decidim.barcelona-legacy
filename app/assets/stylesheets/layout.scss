@@ -80,9 +80,8 @@ h6 {
   font-weight: $font-normal;
 }
 
-p {
+body {
   font-size: $base-font-size;
-  font-weight: $font-normal;
   line-height: $base-line-height;
 }
 
@@ -122,14 +121,6 @@ a {
 
 .inline-block {
   display: inline-block;
-}
-
-.row {
-  max-width: 1170px;
-}
-
-.row-full {
-  max-width: 100% !important;
 }
 
 .sidebar {

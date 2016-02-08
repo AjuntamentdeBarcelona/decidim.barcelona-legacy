@@ -1,0 +1,44 @@
+.meeting{
+  font-size: $base-font-size;
+
+  .meeting-title{
+    font-size: rem-calc(16);
+    font-weight: 600;
+  }
+
+  .meeting-held-at{
+    display: inline-block;
+    margin-top: rem-calc(5);
+    $color: lighten($text, 20%);
+    color: $color;
+    border: 1px solid lighten($color, 30%);
+    border-radius: rem-calc(5);
+    padding: rem-calc(2) rem-calc(15);
+    font-size: rem-calc(12);
+    text-transform: uppercase;
+    background-color: $highlight;
+
+    span{
+      display: inline-block;
+    }
+  }
+
+  .meeting-description{
+    margin-top: rem-calc(10);
+  }
+
+  .meeting-address{
+    position: relative;
+    font-size: rem-calc(14);
+
+    .icon{
+      @include bcn-icon(localitzacio, 1em);
+      position: absolute;
+      top: rem-calc(5);
+      left: 0;
+      margin-top: 0;
+    }
+
+    padding-left: 1.5em;
+  }
+}

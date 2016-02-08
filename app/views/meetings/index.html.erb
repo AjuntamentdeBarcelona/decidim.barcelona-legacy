@@ -3,7 +3,12 @@
 <section role="main">
   <div class="wrap row">
     <div class="small-12 columns">
-      <%= meetings_directory meetings: @meetings, filter: @filter, tag_cloud: @tag_cloud %>
+      <div class="page-title">
+        <h2><%= t '.title' %></h2>
+        <h3><%= t '.description' %></h3>
+      </div>
     </div>
   </div>
+
+  <%= meetings_directory meetings: @meetings, filter: @filter, tag_cloud: @tag_cloud %>
 </section>

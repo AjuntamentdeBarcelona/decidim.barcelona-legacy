@@ -1,16 +1,66 @@
 .meetings-directory {
+  clear: both;
+
   .map {
-    height: 400px;
+    height: rem-calc(370);
     margin-bottom: $line-height;
   }
-}
 
-.meetings-directory .meeting, .meeting-infowindow{
-  .meeting-title {
-    font-weight: bold;
+  .filters{
+    @include grid-column($columns: 12);
+
+    @media #{$medium-up}{
+      @include grid-column($columns: 4, $last-column: false);
+    }
+
+    @media #{$large-up}{
+      @include grid-column($columns: 3, $last-column: false);
+    }
   }
 
-  .tags{
-    margin-bottom: 0.5em;
+  .meetings-directory-content{
+    @include grid-row;
+  }
+
+  .meetings-list{
+    position: relative;
+
+    @include grid-column(
+      $columns: 12,
+      $collapse: true
+    );
+
+    @media #{$medium-up}{
+      @include grid-column($columns: 8, $collapse: true);
+    }
+
+    @media #{$large-up}{
+      @include grid-column($columns: 9, $collapse: true);
+    }
+
+    .meetings-list-items{
+      @include block-grid(
+        $per-row: 2
+      );
+
+      @media #{$large-up}{
+        @include block-grid(
+          $per-row: 3
+        );
+      }
+
+      .meeting-inner{
+        background-color: $highlight;
+        padding: rem-calc(20);
+
+        .meeting-content{
+          min-height: rem-calc(200);
+        }
+      }
+    }
+  }
+
+  .pagination{
+    @include grid-column($columns: 12);
   }
 }
