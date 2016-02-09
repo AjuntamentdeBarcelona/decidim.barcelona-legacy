@@ -15,9 +15,18 @@ RSpec.configure do |config|
   config.include(EmailSpec::Matchers)
   config.include(CommonActions)
 
-  config.before(:each) do |example|
+  config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.start
+    DatabaseCleaner.clean_with :truncation
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
+
+  config.before(:each) do |example|
     I18n.locale = :en
     Rails.cache.clear
     $redis.flushdb
@@ -25,7 +34,6 @@ RSpec.configure do |config|
   end
 
   config.after(:each) do
-    DatabaseCleaner.clean
     Setting.reload!
   end
 
