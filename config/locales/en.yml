@@ -241,6 +241,7 @@ en:
     index:
       close: Close
       delete: Delete
+      description: The events are attended conferences, debates, meetings in public places and other events to discuss proposals by the Municipal Plan related to each of the themes and strategic lines, both the entire city, as neighborhoods and districts level .
       edit: Edit
       new: Create meeting
       title: Meetings

@@ -18,7 +18,7 @@ $font-light:          200;
 $font-normal:         400;
 $font-bold:           600;
 
-$base-font-size:      rem-calc(14);
+$base-font-size:      14px;
 $base-line-height:    $base-font-size * 1.5;
 
 $h1-font-size:        rem-calc(40);
@@ -77,10 +77,10 @@ $proposals-border:  #CC8425;
 
 $budget:            #454372;
 
-$highlight:         #ececec;
+$highlight:         #f2f2f2;
 $featured:          #FED900;
 
-$footer-bg:         #f2f2f2;
+$footer-bg:         $highlight;
 $footer-color:      #9e9e9e;
 $footer-link:       #454A4C;
 $footer-border:     #BFC1C3;

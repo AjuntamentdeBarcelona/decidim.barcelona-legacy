@@ -12,8 +12,10 @@ class MeetingsDirectory extends React.Component {
   render () {
     return (
       <div className="meetings-directory">
-        <div className="small-12 medium-3 column">
-          <aside className="sidebar" role="complementary">
+        <MeetingsMap className="meetings-map" meetings={this.state.meetings} />
+
+        <div className="meetings-directory-content">
+          <aside className="filters sidebar" role="complementary">
             <MeetingsFilter 
               filterUrl={this.props.filterUrl}
               filter={this.state.filter}
@@ -26,18 +28,11 @@ class MeetingsDirectory extends React.Component {
               onLoading={() => this.setState({ loading: true })}
               onFilterResult={({ meetings, filter, tag_cloud }) => this.setState({ meetings, filter, tagCloud: tag_cloud, loading: false })} />
           </aside>
-        </div>
 
-        <div id="proposals" className="small-12 medium-9 column">
-          <Loading show={this.state.loading} />
-          <div className="row">
-            <MeetingsMap meetings={this.state.meetings} />
-          </div>
-          <div className="row">
-            <MeetingsList meetings={this.state.meetings} />
+          <div className="meetings-list-container">
+            <MeetingsList meetings={this.state.meetings} loading={ this.state.loading }/>
           </div>
         </div>
-
       </div>
     );
   }

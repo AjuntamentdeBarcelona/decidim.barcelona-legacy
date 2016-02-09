@@ -241,6 +241,7 @@ es:
     index:
       close: Cerrar
       delete: Borrar
+      description: Las citas presenciales son jornadas, debates, encuentros en el espacio público y otros tipos citas para debatir propuestas por el Plan Municipal relacionadas con cada uno de los ejes temáticos y las líneas estratégicas, tanto a nivel de toda la ciudad, como a nivel de barrios y distritos .
       edit: Editar
       new: Crear cita
       title: Citas presenciales

@@ -30,7 +30,7 @@ class TagCloudFilter extends React.Component {
           if(this.state.tagCloud.length > 0) {
             return (
               <div>
-                <h2 className="title">{I18n.t("shared.tags_cloud.tags")}</h2>
+                <h3 className="title">{I18n.t("shared.tags_cloud.tags")}</h3>
                 <br></br>
               </div>
             )
