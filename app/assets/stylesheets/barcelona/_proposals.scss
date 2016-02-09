@@ -55,8 +55,12 @@ a.button.new-proposal{
       background-color: #fff;
       border-radius: $size/2;
       position: absolute;
-      top: rem-calc(10);
-      right: 0;
+      top: rem-calc(15);
+      right: rem-calc(10);
+
+      @media #{$medium-up} {
+        right: -1 * rem-calc(25);
+      }
     }
   }
 
