@@ -70,6 +70,13 @@ class ResourceFilter
         proposal_in_meetings_ids = MeetingProposal.pluck(:proposal_id).uniq
         collection = collection.where(id: proposal_in_meetings_ids)
       end
+
+      if @params["source"] && @params["source"].include?("organizations")
+        #proposal_from_organizations_ids = Organization.verified.pluck(:id).uniq
+        proposal_from_organizations_ids = Organization.pluck(:id).uniq
+        collection = collection.where(id: proposal_from_organizations_ids)
+      end
+
     end
     collection
   end
