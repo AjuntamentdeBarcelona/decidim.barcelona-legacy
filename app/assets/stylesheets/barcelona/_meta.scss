@@ -1,5 +1,7 @@
 .item-meta{
+  white-space: nowrap;
   margin-top: $line-height / 2;
+
   & > a{
     cursor: pointer;
     &:hover{
@@ -8,6 +10,10 @@
   }
 
   & > * {
+    vertical-align: middle;
+    max-width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
     cursor: default;
     @include label(
       $padding: rem-calc(10px),
@@ -16,10 +22,10 @@
       $radius: rem-calc(4)
     );
 
-    margin-left: rem-calc(3);
+    margin-right: rem-calc(3);
 
-    &:first-child{
-      margin-left: 0;
+    &:last-child{
+      margin-right: 0;
     }
 
     margin-bottom: rem-calc(4);
