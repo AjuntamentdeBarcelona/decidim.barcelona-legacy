@@ -14,15 +14,13 @@ RSpec.configure do |config|
   config.include(EmailSpec::Helpers)
   config.include(EmailSpec::Matchers)
   config.include(CommonActions)
-  config.before(:suite) do
-    DatabaseCleaner.clean_with :truncation
-    I18n.locale = :en
-  end
 
   config.before(:each) do |example|
-    DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
+    DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.start
     I18n.locale = :en
+    Rails.cache.clear
+    $redis.flushdb
     load "#{Rails.root}/db/seeds.rb"
   end
 
