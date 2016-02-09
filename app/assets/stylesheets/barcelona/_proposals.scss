@@ -8,14 +8,20 @@ a.button.new-proposal{
     background-color: $highlight;
     .proposal-content, .supports{
       padding: rem-calc(12) rem-calc(20);
-      min-height: rem-calc(270);
+      padding-bottom: rem-calc(15);
       position: relative;
+
+      @media #{$medium-up} {
+        min-height: rem-calc(270);
+      }
     }
 
-    .bottom-bar{
-      position: absolute;
-      bottom: rem-calc(12);
-      left: rem-calc(12);
+    @media #{$medium-up}{
+      .bottom-bar{
+        position: absolute;
+        bottom: rem-calc(12);
+        left: rem-calc(12);
+      }
     }
 
     position: relative;
@@ -29,13 +35,16 @@ a.button.new-proposal{
 
     h3{
       color: $brand;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
 
       &, a{
         font-weight: normal;
         font-size: rem-calc(22);
+      }
+
+      @media #{$medium-up} {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
     }
 
@@ -46,8 +55,12 @@ a.button.new-proposal{
       background-color: #fff;
       border-radius: $size/2;
       position: absolute;
-      top: rem-calc(10);
-      right: 0;
+      top: rem-calc(15);
+      right: rem-calc(10);
+
+      @media #{$medium-up} {
+        right: -1 * rem-calc(25);
+      }
     }
   }
 
@@ -207,15 +220,19 @@ a.button.new-proposal{
       padding-bottom: rem-calc(15);
       border-bottom: 1px dotted $highlight;
       margin-bottom: rem-calc(15);
+      display: block;
     }
 
     border: 5px solid $highlight;
     background-color: $background;
 
     .total-supports{
-      padding: rem-calc(30) 0;
       text-align: center;
       color: $text-medium;
+
+      @media #{$medium-up} {
+        padding: rem-calc(30) 0;
+      }
     }
 
     .supports-count{
