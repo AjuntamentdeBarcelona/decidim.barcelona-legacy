@@ -2,7 +2,15 @@
   position: relative;
 
   .map{
-    height: rem-calc(360);
+    height: rem-calc(240);
+
+    @media #{$medium-up}{
+      height: rem-calc(300);
+    }
+
+    @media #{$large-up}{
+      height: rem-calc(370);
+    }
   }
 
   .map-overlay-shadow{
