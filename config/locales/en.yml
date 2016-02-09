@@ -228,7 +228,7 @@ en:
       meeting_description: Description
       meeting_end_at: What time does it end?
       meeting_held_at: When it will take place?
-      meeting_proposal_ids: Which proposals are being discussed?
+      meeting_proposal_ids: Which proposals are being discussed or have been discussed?
       meeting_scope: Scope
       meeting_scope_city: Whole city
       meeting_scope_district: A district
