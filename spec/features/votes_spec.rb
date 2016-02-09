@@ -137,7 +137,7 @@ feature 'Votes' do
         end
       end
 
-      xscenario 'Create from debate show', :js do
+      scenario 'Create from debate show', :js do
         visit debate_path(@debate)
 
         find('.in-favor button').click
@@ -278,7 +278,7 @@ feature 'Votes' do
 
     visit debates_path
     within("#debate_#{debate.id}") do
-      find("div.votes").hover
+      find("div.votes button").hover
       expect_message_you_need_to_sign_in
     end
   end
@@ -288,13 +288,13 @@ feature 'Votes' do
 
     visit proposals_path
     within("#proposal_#{proposal.id}") do
-      find("div.supports").hover
+      find("div.supports button").hover
       expect_message_you_need_to_sign_in
     end
 
     visit proposal_path(proposal)
     within("#proposal_#{proposal.id}") do
-      find("div.supports").hover
+      find("div.supports button").hover
       expect_message_you_need_to_sign_in
     end
   end
@@ -310,13 +310,13 @@ feature 'Votes' do
 
     visit debates_path
     within("#debate_#{debate.id}") do
-      find("div.votes").hover
+      find("div.votes button").hover
       expect_message_to_many_anonymous_votes
     end
 
     visit debate_path(debate)
     within("#debate_#{debate.id}") do
-      find("div.votes").hover
+      find("div.votes button").hover
       expect_message_to_many_anonymous_votes
     end
   end
@@ -329,13 +329,13 @@ feature 'Votes' do
     visit proposals_path
 
     within("#proposal_#{proposal.id}") do
-      find("div.supports").hover
+      find("div.supports button").hover
       expect_message_only_verified_can_vote_proposals
     end
 
     visit proposal_path(proposal)
     within("#proposal_#{proposal.id}") do
-      find("div.supports").hover
+      find("div.supports button").hover
       expect_message_only_verified_can_vote_proposals
     end
   end
