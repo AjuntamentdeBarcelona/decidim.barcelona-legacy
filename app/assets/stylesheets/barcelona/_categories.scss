@@ -42,6 +42,8 @@ $category-icons: (
     &:last-child{
       margin-right: 0;
     }
+
+    margin-bottom: rem-calc(30);
   }
 
   li a{
