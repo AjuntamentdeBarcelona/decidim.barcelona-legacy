@@ -82,6 +82,7 @@ es:
         signin_with_provider: Entrar con %{provider}
         signup: "¿No tienes una cuenta? %{signup_link}"
         signup_link: Regístrate
+        organization_signup: Registrarse como organización o colectivo
     unlocks:
       new:
         email_label: Correo electrónico

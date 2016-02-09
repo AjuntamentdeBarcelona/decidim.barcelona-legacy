@@ -82,6 +82,7 @@ ca:
         signin_with_provider: Inicia sessió amb %{provider}
         signup: No tens cap compte? %{signup_link}
         signup_link: Registra't
+        organization_signup: Registra'm com organització/col·lectiu
     unlocks:
       new:
         email_label: Adreça electrònica
