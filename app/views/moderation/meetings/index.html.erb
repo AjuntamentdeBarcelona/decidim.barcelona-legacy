@@ -34,6 +34,7 @@
         <div class="right">
           <%= link_to t("meetings.index.edit"), edit_moderation_meeting_path(meeting), class: 'button radius small' %>
           <%= link_to t("meetings.index.close"), new_moderation_meeting_close_path(meeting), class: 'button radius small' %>
+          <%= link_to t('meetings.index.delete'), moderation_meeting_path(meeting), method: :delete,  class: "button tiny radius alert", data: { confirm: t('admin.actions.confirm') } %>
         </div>
         <br>
         <div>

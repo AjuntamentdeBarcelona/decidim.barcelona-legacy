@@ -68,6 +68,8 @@ Rails.application.routes.draw do
 
   resources :spending_proposals, only: [:index, :new, :create]
 
+  resource :email_notifications_reminder, only: [:create, :destroy]
+
   resources :legislations, only: [:show]
 
   resources :annotations do
@@ -206,7 +208,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :meetings, except: [:show, :destroy] do
+    resources :meetings, except: [:show] do
       resource :close, controller: 'meetings/close', only: [:new, :create]
     end
   end

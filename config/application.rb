@@ -36,5 +36,7 @@ module Consul
     config.autoload_paths << Rails.root.join('lib')
     config.time_zone = 'Madrid'
     config.active_job.queue_adapter = :sidekiq
+
+    config.middleware.use "SitemapMiddleware"
   end
 end

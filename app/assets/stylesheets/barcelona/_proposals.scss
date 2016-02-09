@@ -8,7 +8,7 @@ a.button.new-proposal{
     background-color: $highlight;
     .proposal-content, .supports{
       padding: rem-calc(12) rem-calc(20);
-      min-height: rem-calc(260);
+      min-height: rem-calc(270);
       position: relative;
     }
 
@@ -50,9 +50,26 @@ a.button.new-proposal{
       right: 0;
     }
   }
+
+}
+
+.submenu{
+  @include grid-column($columns: 12, $last-column: true);
 }
 
 .featured-proposals{
+  @media #{$small-only}{
+    .featured-proposals-inner{
+      @include grid-column($columns: 12, $last-column: true);
+    }
+  }
+
+  @media #{$medium-only}{
+    .featured-proposals-inner{
+      @include grid-column($columns: 12, $last-column: true);
+    }
+  }
+
   .featured-proposal{
     text-align: center;
   }
@@ -64,6 +81,7 @@ a.button.new-proposal{
 
     li{
       margin-bottom: rem-calc(15);
+      display: block;
     }
 
     @media #{$large-up} {
@@ -168,13 +186,19 @@ a.button.new-proposal{
 
 .proposal-meta{
   margin-top: $line-height / 2;
-  span {
+  a {
+    &:hover{
+      background-color: lighten($highlight, 2%);
+    }
+
     @include label(
       $padding: rem-calc(10px),
       $bg: darken($highlight, 5%),
       $text-size: rem-calc(12),
       $radius: rem-calc(4)
     );
+
+    margin-bottom: rem-calc(4);
   }
 }
 

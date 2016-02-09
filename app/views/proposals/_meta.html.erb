@@ -1,14 +1,21 @@
 <%= cache proposal do %>
   <div class="proposal-meta">
-    <span class="proposal-city">
-      <%= bcn_icon "localitzacio" %>
-      <% if proposal.scope == "city" %>
+    <% if proposal.scope == "city" %>
+      <%= link_to proposals_path(filter: "source=official"), class: 'proposal-city' do %>
+        <%= bcn_icon "localitzacio" %>
         <%= I18n.t("components.filter_option.city") %>
-      <% else %>
+      <% end %>
+    <% else %>
+      <%= link_to proposals_path(filter: "scope=district:district=#{proposal.decorate.district_id}"), class: 'proposal-city' do %>
+        <%= bcn_icon "localitzacio" %>
         <%= proposal.decorate.district_name %>
       <% end %>
-    </span>
-    <span class="proposal-category"><%= category_icon(proposal.category) %> <%= proposal.category.decorate.name %></span>
-    <span class="proposal-subcategory"><%= proposal.subcategory.decorate.name %>
+    <% end %>
+    <%= link_to proposals_path(filter: "category_id=#{proposal.category.id}"), class: 'proposal-category' do %>
+      <%= category_icon(proposal.category) %> <%= proposal.category.decorate.name %>
+    <% end %>
+    <%= link_to proposals_path(filter: "category_id=#{proposal.category.id}:subcategory_id=#{proposal.subcategory.id}"), class: 'proposal-subcategory' do %>
+      <%= proposal.subcategory.decorate.name %>
+    <% end %>
   </div>
 <% end %>

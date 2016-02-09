@@ -1,17 +1,10 @@
-## Team members
-
-* Raimond Garcia [github](https://github.com/voodoorai2000) | [twitter](https://twitter.com/voodoorai2000)
-* Juanjo Bazán [github](https://github.com/xuanxu) | [twitter](https://twitter.com/xuanxu)
-* Enrique García Cota [github](https://github.com/kikito) | [twitter](https://twitter.com/otikik)
-* Alberto Garcia Cabeza [github](https://github.com/decabeza) | [twitter](https://twitter.com/decabeza)
-
 ## Code of conduct
 
 The team members and the project's community adopts an inclusive Code of Conduct that you can read in the [CODE_OF_CONDUCT_EN.md](CODE_OF_CONDUCT_EN.md) file.
 
 ## Report an issue
 
-The prefered way to report any bug is [opening an issue in the project's Github repo](https://github.com/consul/consul/issues/new).
+The prefered way to report any bug is [opening an issue in the project's Github repo](https://github.com/AjuntamentdeBarcelona/decidimbcn/issues/new).
 
 For more informal communication, contact team members via twitter
 
@@ -19,7 +12,7 @@ For more informal communication, contact team members via twitter
 
 Admins tag issues using two label related with collaboration availability:
 
-* `PRs-welcome`: [issues labeled with PRs-welcome](https://github.com/consul/consul/labels/PRs-welcome) are well defined features ready to be implemented by whoever wants to do it.
+* `PRs-welcome`: [issues labeled with PRs-welcome](https://github.com/AjuntamentdeBarcelona/decidimbcn/labels/PRs-welcome) are well defined features ready to be implemented by whoever wants to do it.
 
 * `Not-ready`: with this label admins mark features or changes that are not well defined yet or subject to an internal decision. Is not a good idea to start implementation of these issues.
 

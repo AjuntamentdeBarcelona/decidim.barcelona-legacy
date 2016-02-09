@@ -10,6 +10,10 @@ ca:
       close: D'acord
       more_info: Més informació
       text: Aquest lloc web fa servir cookies pròpies i de tercers per millorar l’experiència de navegació, i oferir continguts i serveis d’interès. En continuar la navegació entenem que s’accepta la nostra política de cookies.
+    email_notifications_reminder:
+      close: No, no vull rebre les notificacions.
+      enable: Sí, vull rebre les notificacions.
+      text: No tens les notificacions per correu electrònic activades. No rebràs un correu cada vop que algú faci un comentari a les teves propostes, ni un resum setmanal d'activitat. Pots canviar això en qualsevol moment de del teu perfil d'usuari (el meu compte). Vols que activem les notificacions per tu?
     filter_option:
       all: Tots
       citizenship: Ciutadania

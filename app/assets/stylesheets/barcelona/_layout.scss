@@ -1,3 +1,8 @@
+html, body{
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 .section-title{
   color: $brand;
   font-size: rem-calc(26);

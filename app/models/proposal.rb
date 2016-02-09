@@ -35,8 +35,6 @@ class Proposal < ActiveRecord::Base
   validates :question, length: { in: 10..Proposal.question_max_length }, allow_blank: true
   validates :responsible_name, length: { in: 6..Proposal.responsible_name_max_length }
 
-  validates :terms_of_service, acceptance: { allow_nil: false }, on: :create
-
   before_validation :set_responsible_name
 
   before_save :calculate_hot_score, :calculate_confidence_score

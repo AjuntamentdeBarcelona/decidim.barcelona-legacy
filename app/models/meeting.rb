@@ -13,7 +13,7 @@ class Meeting < ActiveRecord::Base
 
   scope :pending, -> { where(closed_at: nil) } 
   scope :closed, -> { where('closed_at is not ?', nil) } 
-  scope :upcoming, -> { where("held_at >= ?", Date.today) }
+  scope :upcoming, -> { where("held_at >= ?", Date.today).order(:held_at) }
 
   validates :author, presence: true
   validates :title, presence: true

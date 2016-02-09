@@ -2,7 +2,7 @@ class MeetingsMap extends React.Component {
   constructor(props) {
     super(props);
     this.defaultZoom = 12;
-    this.defaultLocation = { lat: 41.3833, lng: 2.1833 };
+    this.defaultLocation = { lat: 41.396449, lng: 2.169971 };
     this.currentInfoWindow = null;
   }
 

@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
   before_action :track_email_campaign
   before_action :set_return_url
 
+  helper_method :suggest_email_notifications?
+
   check_authorization unless: :devise_controller?
   self.responder = ApplicationResponder
 
@@ -115,11 +117,9 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def default_url_options(options={})
-      if !Rails.application.secrets.server_name.blank?
-        { host: Rails.application.secrets.server_name }
-      else
-        {}
-      end
+    def suggest_email_notifications?
+      return false unless current_user
+
+      $redis.sismember("email_notifications_reminder", current_user.id.to_s)
     end
 end

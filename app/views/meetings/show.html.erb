@@ -3,6 +3,7 @@
 <%= render "shared/social_media_meta_tags",
             social_url: meeting_url(@meeting),
             social_title: @meeting.title,
+            social_media_image: asset_url('social-media-icon.png'),
             social_description: text_with_links(@meeting.description) %>
 <% end %>
 <section class="meeting-show">

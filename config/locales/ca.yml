@@ -3,6 +3,7 @@ ca:
   account:
     show:
       change_credentials_link: Canviar les meves dades d'accés
+      email_notifications: Rebre informacio sobre activitat rellevant
       email_on_comment_label: Rebre un email quan algú comenta en les meves propostes o debats
       email_on_comment_reply_label: Rebre un email quan algú contesta els meus comentaris
       erase_account_link: Donar-me de baixa
@@ -26,6 +27,7 @@ ca:
       username_label: Nom d'usuari
       verified_account: Compte verificat
       verify_my_account: Verificar el meu compte
+      weekly_summary: Rebre un email amb un resum setmanal d'activitat
   application:
     close: Tancar
   categories:
@@ -238,6 +240,7 @@ ca:
       tags_placeholder: Escriu les etiquetes que vulguis separades per una coma (',')
     index:
       close: Tancar
+      delete: Esborrar
       edit: Editar
       new: Crear cita
       title: Cites presencials
@@ -267,6 +270,12 @@ ca:
       sign_up: Registra't amb Facebook
     finish_signup:
       title: Detalls adicionals del compte
+    google_oauth2:
+      sign_in: Entra amb Google
+      sign_up: Registra't amb Google
+    twitter:
+      sign_in: Entra amb Twitter
+      sign_up: Registra't amb Twitter
   proposals:
     create:
       form:
@@ -469,8 +478,8 @@ ca:
     highlights: 'Portada:'
     signed_in_home_title: Activitat recent
     welcome:
-      see_proposals: Ver las propuestas
-      skip_verification: Si no estás empadronado en Barcelona o no quieres verificarte,
+      see_proposals: Veure les propostes
+      skip_verification: Si no estàs empadronat a Barcelona o no vols verificar el compte,
       title: Comença a participar
       user_permission_debates: Participar en debats
       user_permission_info: Amb el teu compte ja pots ...

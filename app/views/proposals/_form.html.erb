@@ -66,18 +66,6 @@
     <% end %>
 
     <div class="small-12 column">
-      <% if @proposal.new_record? %>
-        <%= f.label :terms_of_service do %>
-          <%= f.check_box :terms_of_service, label: false %>
-          <span class="checkbox">
-            <%= t("form.accept_terms",
-                conditions: link_to(t("form.conditions"), "/conditions", target: "blank")).html_safe %>
-          </span>
-        <% end %>
-      <% end %>
-    </div>
-
-    <div class="small-12 column">
       <%= f.simple_captcha input_html: { required: false } %>
     </div>
 

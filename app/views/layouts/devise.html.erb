@@ -13,6 +13,7 @@
   </head>
 
   <body class="auth-page">
+    <%= render 'layouts/session_menu' %>
     <%= cookies_warning %>
     <div class="wrapper">
       <div class="row">
@@ -49,5 +50,7 @@
     <div class="footer">
       <%= render 'layouts/footer' %>
     </div>
+
+    <%= render 'layouts/tracking' %>
   </body>
 </html>

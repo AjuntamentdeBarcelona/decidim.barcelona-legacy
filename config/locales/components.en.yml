@@ -10,6 +10,10 @@ en:
       close: Continue
       more_info: Find out more
       text: We use our own and third-party cookies to improve your browsing experience and to offer you content and services of interest. Continued browsing on your part shall imply full acceptance of our cookies policy.
+    email_notifications_reminder:
+      close: No, I do not want to receive notifications.
+      enable: Yes, I want to receive notifications.
+      text: You don't have email notifications enabled. You will not receive an email every time someone comments on your proposals, or a weekly summary of activity. You can change this at any time in your user profile (my account). Do you want us to enable notifications for you?
     filter_option:
       all: All
       citizenship: Citizenship

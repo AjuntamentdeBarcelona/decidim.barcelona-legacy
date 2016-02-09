@@ -957,7 +957,7 @@ table {
   &:before {
     background: #CE3E26;
     content: "B";
-    font-family: "icons" !important;
+    font-family: "icons";
     font-size: rem-calc(24);
     left: 0;
     line-height: $line-height*2;
@@ -1004,81 +1004,6 @@ table {
   }
 }
 
-.share-supported {
-
-  .social-share-button {
-    display: inline-block;
-  }
-
-  .social-share-button-twitter {
-    background: none;
-    color: white;
-    height: $line-height;
-    position: relative;
-    width: $line-height*2;
-
-    &:before {
-      content: "f";
-      font-family: "icons" !important;
-      font-size: rem-calc(24);
-      left: 50%;
-      line-height: $line-height*2;
-      margin-left: rem-calc(-11);
-      position: absolute;
-      top: 0;
-    }
-
-    &:hover {
-      color: #40A2D1;
-    }
-  }
-
-  .social-share-button-facebook {
-    background: none;
-    color: white;
-    height: rem-calc(24);
-    position: relative;
-    width: rem-calc(48);
-
-    &:before {
-      content: "A";
-      font-family: "icons" !important;
-      font-size: rem-calc(24);
-      left: 50%;
-      line-height: $line-height*2;
-      margin-left: rem-calc(-11);
-      position: absolute;
-      top: 0;
-    }
-
-    &:hover {
-      color: #354F88;
-    }
-  }
-
-  .social-share-button-google_plus {
-    background: none;
-    color: white;
-    height: rem-calc(24);
-    position: relative;
-    width: rem-calc(48);
-
-    &:before {
-      content: "B";
-      font-family: "icons" !important;
-      font-size: rem-calc(24);
-      left: 50%;
-      line-height: $line-height*2;
-      margin-left: rem-calc(-11);
-      position: absolute;
-      top: 0;
-    }
-
-    &:hover {
-      color: #CE3E26;
-    }
-  }
-}
 
 // 14. Pages
 // - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -1,5 +1,3 @@
-require 'coveralls'
-Coveralls.wear!('rails')
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
@@ -11,6 +9,11 @@ require 'capybara/rspec'
 require 'capybara/poltergeist'
 require 'capybara-screenshot/rspec'
 require 'sidekiq/testing'
+
+Dir.glob(Rails.root.join("spec", "concerns", "*.rb")).each do |file|
+  require file
+end
+
 Sidekiq::Testing.inline!
 
 I18n.default_locale = :en

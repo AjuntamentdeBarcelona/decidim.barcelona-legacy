@@ -338,4 +338,37 @@ describe User do
     end
   end
 
+  describe "#has_facebook_identity" do
+    let(:user) { create(:user) }
+    context "when the user has no identities" do
+      it "returns false" do
+        expect(user).to_not have_facebook_identity
+      end
+    end
+
+    context "when the user has an identity with another provider" do
+      let!(:identity) { create(:identity, provider: 'twitter', user: user)}
+
+      it "returns false" do
+        expect(user).to_not have_facebook_identity
+      end
+    end
+
+    context "when the user has an identity with facebook" do
+      let!(:identity) { create(:identity, provider: 'facebook', user: user)}
+
+      it "returns true" do
+        expect(user).to have_facebook_identity
+      end
+    end
+
+    context "when the user identities with multiple providers, including facebook" do
+      let!(:identity1) { create(:identity, provider: 'twitter', user: user)}
+      let!(:identity2) { create(:identity, provider: 'facebook', user: user)}
+
+      it "returns true" do
+        expect(user).to have_facebook_identity
+      end
+    end
+  end
 end

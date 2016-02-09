@@ -3,6 +3,7 @@ en:
   account:
     show:
       change_credentials_link: Change my credentials
+      email_notifications: Receive information about relevant activity
       email_on_comment_label: Notify me by email when someone comments on my proposals or debates
       email_on_comment_reply_label: Notify me by email when someone replies to my comments
       erase_account_link: Erase my account
@@ -26,6 +27,7 @@ en:
       username_label: Username
       verified_account: Account verified
       verify_my_account: Verify my account
+      weekly_summary: Receive an email with a weekly summary of activity
   application:
     close: Close
   categories:
@@ -238,6 +240,7 @@ en:
       tags_placeholder: Enter the tags you would like to use, separated by commas (',')
     index:
       close: Close
+      delete: Delete
       edit: Edit
       new: Create meeting
       title: Meetings
@@ -267,6 +270,12 @@ en:
       sign_up: Sign up with Facebook
     finish_signup:
       title: Additional details
+    google_oauth2:
+      sign_in: Sign in with Google
+      sign_up: Sign up with Google
+    twitter:
+      sign_in: Sign in with Twitter
+      sign_up: Sign up with Twitter
   proposals:
     create:
       form:

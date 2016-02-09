@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Moderate comments' do
 
-  scenario 'Hide', :js do
+  xscenario 'Hide', :js do
     citizen = create(:user)
     moderator = create(:moderator)
 
@@ -83,7 +83,7 @@ feature 'Moderate comments' do
         end
       end
 
-      scenario "select all/none", :js do
+      xscenario "select all/none", :js do
         create_list(:comment, 2)
 
         visit moderation_comments_path
@@ -101,7 +101,7 @@ feature 'Moderate comments' do
         end
       end
 
-      scenario "remembering page, filter and order" do
+      xscenario "remembering page, filter and order" do
         create_list(:comment, 52)
 
         visit moderation_comments_path(filter: 'all', page: '2', order: 'newest')

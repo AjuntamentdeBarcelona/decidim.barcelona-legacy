@@ -3,6 +3,7 @@ es:
   account:
     show:
       change_credentials_link: Cambiar mis datos de acceso
+      email_notifications: Recibir información sobre actividad relevante
       email_on_comment_label: Recibir un email cuando alguien comenta en mis propuestas o debates
       email_on_comment_reply_label: Recibir un email cuando alguien contesta a mis comentarios
       erase_account_link: Darme de baja
@@ -26,6 +27,7 @@ es:
       username_label: Nombre de usuario
       verified_account: Cuenta verificada
       verify_my_account: Verificar mi cuenta
+      weekly_summary: Recibir un email con un resumen semanal de actividad
   application:
     close: Cerrar
   categories:
@@ -238,6 +240,7 @@ es:
       tags_placeholder: Escribe las etiquetas que desees separadas por coma (',')
     index:
       close: Cerrar
+      delete: Borrar
       edit: Editar
       new: Crear cita
       title: Citas presenciales
@@ -267,6 +270,12 @@ es:
       sign_up: Regístrate con Facebook
     finish_signup:
       title: Detalles adicionales de tu cuenta
+    google_oauth2:
+      sign_in: Entra con Google
+      sign_up: Regístrate con Google
+    twitter:
+      sign_in: Entra con Twitter
+      sign_up: Regístrate con Twitter
   proposals:
     create:
       form:

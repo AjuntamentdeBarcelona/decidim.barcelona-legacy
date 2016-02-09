@@ -143,7 +143,6 @@ FactoryGirl.define do
     external_url         'http://external_documention.es'
     video_url            'http://video_link.com'
     responsible_name     'John Snow'
-    terms_of_service     '1'
     association :author, factory: :user
     association :category, factory: :category
 

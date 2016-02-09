@@ -48,7 +48,7 @@ class ProposalsController < ApplicationController
   private
 
     def proposal_params
-      permitted_params = [:title, :question, :summary, :description, :external_url, :video_url, :responsible_name, :tag_list, :terms_of_service, :captcha, :captcha_key, :category_id, :subcategory_id, :scope, :district]
+      permitted_params = [:title, :question, :summary, :description, :external_url, :video_url, :responsible_name, :tag_list, :captcha, :captcha_key, :category_id, :subcategory_id, :scope, :district]
 
       if current_user.administrator?
         permitted_params << :official

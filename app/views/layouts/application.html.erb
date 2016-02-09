@@ -12,12 +12,14 @@
     <%= csrf_meta_tags %>
     <%= content_for :social_media_meta_tags %>
     <%= render partial: 'layouts/scripts' %>
+    <%= render 'layouts/tracking' %>
 
     <%= Setting['per_page_code'].try(:html_safe) %>
 
   </head>
   <body>
     <div class="wrapper">
+
       <%= cookies_warning %>
       <%= render 'layouts/header' %>
       
@@ -37,6 +39,8 @@
         </div>
       <% end %>
       <![endif]-->
+
+      <%= render partial: 'layouts/enable_notifications' %>
 
       <% if notice %>
       <div class="alert-messages">

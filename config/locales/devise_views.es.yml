@@ -109,7 +109,7 @@ es:
           waiting_for: 'Esperando confirmación de:'
         new:
           email_label: Correo electrónico
-          legal_lopd_text: 'D''acord amb la Llei Orgànica 15/1999, de 13 de desembre, de Protecció de Dades de Caràcter Personal, us informem que les vostres dades personals s''incorporaran al fitxer Participació Ciutadana de l''Ajuntament de Barcelona, amb la finalitat de Participar en el procés de definició del nou Pla d’Acció Municipal. Les vostres dades no seran cedides a tercers. Podeu exercitar els drets d''accés, rectificació, cancel·lació i oposició, adreçant-vos per escrit al Registre General de l''Ajuntament: pl. Sant Jaume 1, 08002 Barcelona, indicant clarament en l''assumpte Exercici de Dret LOPD.'
+          legal_lopd_text: "De acuerdo con la Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal, le informamos de que sus datos personales se incorporarán al fichero de participación ciudadana del Ayuntamiento de Barcelona, con la finalidad de participar en el proceso de definición del nuevo Programa de Actuación Municipal. Sus datos no serán cedidos a terceros. Puede ejercer los derechos de acceso, de rectificación, de cancelación y de oposición dirigiéndose por escrito al Registro General del Ayuntamiento: plaza de Sant Jaume 1, 08002 Barcelona, indicando claramente en el asunto \"Ejercicio de Derecho LOPD\""
           organization_signup: "¿Representas a una organización o colectivo? %{signup_link}"
           organization_signup_link: Regístrate aquí
           password_confirmation_label: Confirmar contraseña

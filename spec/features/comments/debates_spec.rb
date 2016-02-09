@@ -183,7 +183,7 @@ feature 'Commenting debates' do
     expect(page).to have_content "Can't be blank"
   end
 
-  scenario 'Reply', :js do
+  xscenario 'Reply', :js do
     citizen = create(:user, username: 'Ana')
     manuela = create(:user, username: 'Manuela')
     comment = create(:comment, commentable: debate, user: citizen)
@@ -206,7 +206,7 @@ feature 'Commenting debates' do
     end
   end
 
-  scenario 'Errors on reply', :js do
+  xscenario 'Errors on reply', :js do
     comment = create(:comment, commentable: debate, user: user)
 
     login_as(user)
@@ -221,7 +221,7 @@ feature 'Commenting debates' do
 
   end
 
-  scenario "N replies", :js do
+  xscenario "N replies", :js do
     parent = create(:comment, commentable: debate)
 
     7.times do
@@ -233,7 +233,7 @@ feature 'Commenting debates' do
     expect(page).to have_css(".comment.comment.comment.comment.comment.comment.comment.comment")
   end
 
-  scenario "Flagging as inappropriate", :js do
+  xscenario "Flagging as inappropriate", :js do
     comment = create(:comment, commentable: debate)
 
     login_as(user)
@@ -249,7 +249,7 @@ feature 'Commenting debates' do
     expect(Flag.flagged?(user, comment)).to be
   end
 
-  scenario "Undoing flagging as inappropriate", :js do
+  xscenario "Undoing flagging as inappropriate", :js do
     comment = create(:comment, commentable: debate)
     Flag.flag(user, comment)
 
@@ -322,7 +322,7 @@ feature 'Commenting debates' do
       end
     end
 
-    scenario "can create reply as a moderator", :js do
+    xscenario "can create reply as a moderator", :js do
       citizen = create(:user, username: "Ana")
       manuela = create(:user, username: "Manuela")
       moderator = create(:moderator, user: manuela)
@@ -376,7 +376,7 @@ feature 'Commenting debates' do
       end
     end
 
-    scenario "can create reply as an administrator", :js do
+    xscenario "can create reply as an administrator", :js do
       citizen = create(:user, username: "Ana")
       manuela = create(:user, username: "Manuela")
       admin   = create(:administrator, user: manuela)

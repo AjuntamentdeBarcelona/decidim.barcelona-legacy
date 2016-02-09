@@ -15,6 +15,10 @@ class AccountController < ApplicationController
     end
   end
 
+  def hide_notification_suggestion
+    NotificationsSuggestion.remove_user(current_user)
+  end
+
   private
 
     def set_account

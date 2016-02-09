@@ -99,6 +99,7 @@ gem 'rack-canonical-host'
 gem 'rack-robots'
 gem 'gaffe'
 gem 'geocoder'
+gem 'sitemap_generator'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -122,7 +123,6 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'poltergeist'
-  gem 'coveralls', require: false
   gem 'email_spec'
   gem "webmock"
 end
@@ -139,6 +139,7 @@ group :production do
   gem 'puma_worker_killer'
   gem 'heroku-deflater'
   gem 'rails_12factor'
-  gem 'rollbar', '~> 1.2.13'
+  gem 'rollbar'
   gem 'rack-cache'
+  gem 'rack-cors', :require => 'rack/cors'
 end
