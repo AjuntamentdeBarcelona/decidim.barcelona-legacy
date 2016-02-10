@@ -35,3 +35,6 @@ config/locales/*.csv
 
 /public/sitemap.xml
 /public/sitemap.xml.gz
+
+.postgres_data
+.redis_data

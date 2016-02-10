@@ -307,7 +307,7 @@ en:
       tags_label: Tags
       tags_placeholder: Enter the tags you would like to use, separated by commas (',')
     index:
-      featured_proposals: Featured
+      featured_proposals: Recommended
       filter:
         title: Filter by
       orders:

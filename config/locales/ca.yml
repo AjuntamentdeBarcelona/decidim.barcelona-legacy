@@ -307,7 +307,7 @@ ca:
       tags_label: Temes
       tags_placeholder: Escriu les etiquetes que vulguis separades per una coma (',')
     index:
-      featured_proposals: Destacades
+      featured_proposals: Recomenades
       filter:
         title: Filtrar per
       orders:
