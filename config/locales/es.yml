@@ -231,7 +231,7 @@ es:
       meeting_proposal_ids: "¿Qué propuestas se van a discutir o ya se han discutido?"
       meeting_scope: "Ámbito"
       meeting_scope_city: Toda la ciudad
-      meeting_scope_district: Un distrito
+      meeting_scope_district: Distritos
       meeting_scope_note: "¿Es una medida para toda la ciudad o solo para un distrito?"
       meeting_start_at: "¿A que hora empieza?"
       meeting_title: Título
@@ -296,7 +296,7 @@ es:
       proposal_responsible_name_note: "(individualmente o como representante de un colectivo; no se mostrará públicamente)"
       proposal_scope: "Ámbito"
       proposal_scope_city: Toda la ciudad
-      proposal_scope_district: Un distrito
+      proposal_scope_district: Distritos
       proposal_scope_note: "¿Es una medida para toda la ciudad o solo para un distrito?"
       proposal_summary: Resumen de la propuesta
       proposal_summary_note: "(máximo 300 caracteres)"

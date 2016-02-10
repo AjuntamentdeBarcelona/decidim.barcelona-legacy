@@ -231,7 +231,7 @@ ca:
       meeting_proposal_ids: Quines propostes es discutiran o ja s'han discutit?
       meeting_scope: "Àmbit"
       meeting_scope_city: Tota la ciutat
-      meeting_scope_district: Un districte
+      meeting_scope_district: Districtes
       meeting_scope_note: Es una mesura per a tota la ciutat o només per a un districte?
       meeting_start_at: A quina hora comença?
       meeting_title: Títol
@@ -296,7 +296,7 @@ ca:
       proposal_responsible_name_note: "(individualment o com a representant d'un col·lectiu, no es mostrarà públicament)"
       proposal_scope: "Àmbit"
       proposal_scope_city: Tota la ciutat
-      proposal_scope_district: Un districte
+      proposal_scope_district: Districtes
       proposal_scope_note: Es una mesura per a tota la ciutat o només per a un districte?
       proposal_summary: Resum de la proposta
       proposal_summary_note: "(màxim 350 caràcters)"
