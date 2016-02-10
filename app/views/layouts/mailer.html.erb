@@ -1,28 +1,37 @@
 <%= stylesheet_link_tag :email %>
+
 <div id="email-layout">
-  <table class="main">
-    <tbody>
-      <tr>
-        <td class="header">
-          <div class="application-title-wrapper">
-            <h1 class="application-title">
-              <%= link_to root_url do %>
-                <%= image_tag attachments['logo.png'].url %>
-              <% end %>
-            </h1>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="email-content">
-          <%= yield %>
-        </td>
-      </tr>
-      <tr>
-        <td class="footer">
-          <p><%= Setting['org_name'] %></p>
-        </td>
-      </tr>
-    </tbody>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td style="text-align: center;">
+        <table class="main">
+          <tbody>
+            <tr>
+              <td class="header">
+                <div class="application-title-wrapper">
+                  <h1 class="application-title">
+                    <%= link_to root_url do %>
+                      <%= image_tag attachments['logo.png'].url %>
+                    <% end %>
+                  </h1>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="email-content">
+                <div class="email-content-inner">
+                  <%= yield %>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="footer">
+                <p><%= Setting['org_name'] %></p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
   </table>
 </div>

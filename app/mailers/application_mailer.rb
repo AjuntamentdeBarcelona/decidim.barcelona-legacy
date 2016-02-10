@@ -18,4 +18,10 @@ class ApplicationMailer < ActionMailer::Base
     attachments.inline['logo.png'] = File.read(Rails.root.join('app/assets/images/decidim-logo.png'))
     true
   end
+
+  def roadie_options
+    super.merge(
+      keep_uninlinable_css: false
+    )
+  end
 end
