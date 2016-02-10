@@ -64,15 +64,10 @@ class MeetingsMap extends React.Component {
 
         marker._meeting = meeting;
         marker.addListener('click', () => {
-          var content = React.renderComponentToString();
           let meetingHeldAt = (meeting.start_at && meeting.end_at) ? `${meeting.held_at} // ${meeting.start_at} - ${meeting.end_at}` : meeting.held_at,
               infoWindow = new google.maps.InfoWindow({
-              content: `<div class="meeting-infowindow">
-                          <a href="/meetings/${meeting.slug}" class="meeting-title">${meeting.title}</a>
-                          <p class="tags"><span class="radius secondary label">${meetingHeldAt}</span></p>
-                          <div>${ meeting.description }</div>
-                        </div>`
-            });
+                content: ReactDOMServer.renderToString(<Meeting meeting={ meeting } />)
+              });
           markers.map((marker) => { if(marker.infoWindow) marker.infoWindow.close(); } );
           marker.infoWindow = infoWindow;
           infoWindow.open(map, marker);
@@ -87,7 +82,10 @@ class MeetingsMap extends React.Component {
 
   render () {
     return (
-      <div className="map"></div>
+      <div className="meetings-map">
+        <div className="map-overlay-shadow"></div>
+        <div className="map"></div>
+      </div>
     )
   }
 }
