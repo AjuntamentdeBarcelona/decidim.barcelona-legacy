@@ -26,6 +26,13 @@ RSpec.configure do |config|
     end
   end
 
+  config.verbose_retry = true
+  config.display_try_failure_messages = true
+
+  config.around :each, :js do |ex|
+    ex.run_with_retry retry: 3
+  end
+
   config.before(:each) do |example|
     I18n.locale = :en
     Rails.cache.clear
