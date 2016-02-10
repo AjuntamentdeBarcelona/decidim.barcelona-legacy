@@ -115,7 +115,6 @@ en:
         most_commented: most commented
         random: random
         relevance: relevance
-        recommended: recommended
       search_form:
         button: Search
         placeholder: Search debates...
@@ -317,6 +316,7 @@ en:
         hot_score: most active
         most_commented: most commented
         random: random
+        recommended: recommended
         relevance: relevance
       search_form:
         button: Search
