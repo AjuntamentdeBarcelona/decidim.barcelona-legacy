@@ -40,7 +40,7 @@ class ProposalsController < ApplicationController
                  includes(:author)
 
     if @current_order == "recommended"
-      @proposals = @proposals.order("recommendations.score desc")
+      @proposals = @proposals.order("recommendations.score / (proposals.cached_votes_up + 1) desc")
     else
       @proposals = @proposals.send("sort_by_#{@current_order}")
     end
