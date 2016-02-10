@@ -1,6 +1,6 @@
 :concurrency: 25
 production:
-  :concurrency: 7
+  :concurrency: 5
 :queues:
   - mailer
   - mailers
