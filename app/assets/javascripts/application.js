@@ -16,6 +16,8 @@
 //= require jquery-ui/datepicker-es
 //= require turbolinks
 //= require jquery.turbolinks
+//= require foundation/foundation
+//= require foundation/foundation.dropdown
 //= require modernizr
 //= require parallax
 //= require react
@@ -34,6 +36,7 @@
 //= require app
 //= require check_all_none
 //= require comments
+//= require dropdown
 //= require ie_alert
 //= require location_changer
 //= require moderator_comment
@@ -67,6 +70,7 @@ var initialize_modules = function() {
   App.Users.initialize();
   App.Votes.initialize();
   App.Tags.initialize();
+  App.Dropdown.initialize();
   App.LocationChanger.initialize();
   App.CheckAllNone.initialize();
   App.PreventDoubleSubmission.initialize();
