@@ -125,6 +125,7 @@ group :test do
   gem 'poltergeist'
   gem 'email_spec'
   gem "webmock"
+  gem 'rspec-retry'
 end
 
 group :development do
