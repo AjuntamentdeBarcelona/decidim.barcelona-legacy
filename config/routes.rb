@@ -306,7 +306,6 @@ Rails.application.routes.draw do
   mount Tolk::Engine => '/translate', :as => 'tolk'
 
   require 'sidekiq/web'
-  require 'sidetiq/web'
 
   if Rails.env.development?
     mount Sidekiq::Web => '/sidekiq'
