@@ -26,6 +26,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  rescue_from FeatureFlags::FeatureDisabled do |exception|
+    if Rails.env.production?
+      raise ActionController::RoutingError.new('Not Found')
+    else
+      raise exception
+    end
+  end
+
   layout :set_layout
   respond_to :html
 
