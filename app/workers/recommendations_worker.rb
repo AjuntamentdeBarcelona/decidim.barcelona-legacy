@@ -3,6 +3,6 @@ class RecommendationsWorker
 
   def perform(user_id)
     user = User.find(user_id)
-    Recommendations::Persistance.fetch_recommendations_for(user)
+    Recommendations::Persistence.fetch_recommendations_for(user)
   end
 end

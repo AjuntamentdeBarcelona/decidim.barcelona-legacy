@@ -1,4 +1,25 @@
+# Compute object recommendations for a given subject using the Euclidean Distance
 class Recommendations::Engine
+  # Static
+  #
+  # Compute object recommendations for a given subject based on the preferences matrix.
+  #
+  # It uses the similitude distance between the given subject and all subjects.
+  # If that similitude is greater than 0 it accumulate weights and similitude distances
+  # to compute the final score of each object.
+  #
+  # pref_matrix        - A hash where each key is a subject id and each value is another hash
+  #                      where each key is a object id and each value is the weight of the object
+  #                      for that subject. A visual representation of this matrix could be:
+  #                      {
+  #                        "1" => { "1" => 10, "2" => 5, "5" => 8 },
+  #                        "2" => { "1" => 4 , "2" => 2           },
+  #                        "3" => { "1" => 6 , "3" => 5, "4" => 1 }
+  #                      }
+  # subject_id         - id of the subject to compute his recommendations
+  # object_ids         - A collection of object ids to sort by recommendation score
+  # exclude_object_ids - A collection of object ids to exclude them from the final result
+  # n                  - The maximum number of the recommendations
   def self.get_recommendations(pref_matrix, subject_id, object_ids, exclude_object_ids = [], n = 100)
     totals = {}
     simSums = {}
@@ -37,6 +58,21 @@ class Recommendations::Engine
     rankings.sort.reverse.take(n)
   end
 
+  # Static
+  #
+  # Compute the similitude distance between two preferences vectors using
+  # the Euclidean Distance: sqrt((x1-x2)^2 + (y1-y2)^2)
+  #
+  # If a object id is not on a preferences vector the weight value is
+  # considered to be 0.
+  #
+  # object_ids                - Collection of object identifiers
+  # subject_preferences       - A hash where each key correspond to a object id and
+  #                             each value correspond to the weight of that object to
+  #                             the subject
+  # other_subject_preferences - A hash where each key correspond to a object id and
+  #                             each value correspond to the weight of that object to
+  #                             the other subject
   def self.sim_distance(object_ids, subject_preferences, other_subject_preferences)
     diff_squares = Array.new(object_ids.length)
 

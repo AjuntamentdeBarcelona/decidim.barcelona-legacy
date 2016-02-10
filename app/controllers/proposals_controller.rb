@@ -35,7 +35,7 @@ class ProposalsController < ApplicationController
                  includes(:author)
 
     if @current_order == "recommended"
-      Recommendations::Persistance.fetch_recommendations_for(current_user)
+      Recommendations::Persistence.fetch_recommendations_for(current_user)
       @proposals = @proposals.joins(:recommendations).order("recommendations.score desc")
     else
       @proposals = @proposals.send("sort_by_#{@current_order}")

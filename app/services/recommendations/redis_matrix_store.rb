@@ -1,9 +1,17 @@
+# Store/Load a matrix composed of a hash of hashes into the redis database
 class Recommendations::RedisMatrixStore
   def initialize(prefix)
     @prefix = prefix
     @redis = $redis
   end
 
+  # Public
+  #
+  # Store each row as a hash which key is composed based on a prefix
+  # and the row's key
+  #
+  # matrix - A hash where each key is a identifier and each value is
+  #          another hash.
   def save(matrix)
     @redis.pipelined do
       matrix.each do |subject_id, preferences|
@@ -14,6 +22,10 @@ class Recommendations::RedisMatrixStore
     end
   end
 
+  # Public
+  #
+  # Load matrix from the redis store. It fetch each row using keys
+  # lookup based on the initialized prefix
   def load
     keys = @redis.keys("#{@prefix}*") 
 
@@ -32,6 +44,14 @@ class Recommendations::RedisMatrixStore
     end
   end
 
+  # Public
+  #
+  # Update a single value of the redis store based on the subject and
+  # object identifiers.
+  #
+  # subject_id - Subject's identifier
+  # object_id  - Object's identifier
+  # score      - Object's weight for that subject
   def store_single_value(subject_id, object_id, score)
     @redis.hset "#{@prefix}_#{subject_id}", object_id, score
   end
