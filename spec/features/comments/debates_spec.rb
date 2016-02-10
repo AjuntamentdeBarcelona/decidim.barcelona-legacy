@@ -417,13 +417,8 @@ feature 'Commenting debates' do
       visit debate_path(@debate)
 
       within("#comment_#{@comment.id}_votes") do
-        within(".in_favor") do
-          expect(page).to have_content "1"
-        end
-
-        within(".against") do
-          expect(page).to have_content "1"
-        end
+        find(".in_favor", text: "1")
+        find(".against", text: "1")
 
         expect(page).to have_content "2 votes"
       end
@@ -435,13 +430,8 @@ feature 'Commenting debates' do
       within("#comment_#{@comment.id}_votes") do
         find(".in_favor a").click
 
-        within(".in_favor") do
-          expect(page).to have_content "1"
-        end
-
-        within(".against") do
-          expect(page).to have_content "0"
-        end
+        find(".in_favor", text: "1")
+        find(".against", text: "0")
 
         expect(page).to have_content "1 vote"
       end
@@ -454,13 +444,8 @@ feature 'Commenting debates' do
         find('.in_favor a').click
         find('.against a').click
 
-        within('.in_favor') do
-          expect(page).to have_content "0"
-        end
-
-        within('.against') do
-          expect(page).to have_content "1"
-        end
+        find(".in_favor", text: "0")
+        find(".against", text: "1")
 
         expect(page).to have_content "1 vote"
       end
@@ -471,9 +456,7 @@ feature 'Commenting debates' do
 
       within("#comment_#{@comment.id}_votes") do
         find('.in_favor a').click
-        within('.in_favor') do
-          expect(page).to have_content "1"
-        end
+        find(".in_favor", text: "1")
 
         find('.in_favor a').click
         within('.in_favor') do
@@ -481,10 +464,7 @@ feature 'Commenting debates' do
           expect(page).to have_content "1"
         end
 
-        within('.against') do
-          expect(page).to have_content "0"
-        end
-
+        find(".against", text: "0")
         expect(page).to have_content "1 vote"
       end
     end
