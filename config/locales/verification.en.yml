@@ -56,7 +56,7 @@ en:
         document_number: Document number
         document_type:
           passport: Passport
-          residence_card: Residence card
+          residence_card: Residence card / NIE
           spanish_id: National ID
         document_type_label: Document type
         error_not_allowed_age: You must be at least 16 years old

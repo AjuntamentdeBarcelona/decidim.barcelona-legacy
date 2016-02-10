@@ -56,7 +56,7 @@ ca:
         document_number: Número de document
         document_type:
           passport: Passaport
-          residence_card: Targeta de residència
+          residence_card: Targeta de residència / NIE
           spanish_id: DNI
         document_type_label: Tipus de document
         error_not_allowed_age: Has de tenir almenys 16 anys
