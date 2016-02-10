@@ -449,9 +449,6 @@ GEM
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
       redis (~> 3.2, >= 3.2.1)
-    sidekiq-rollbar (0.0.1)
-      rollbar
-      sidekiq
     simple_captcha2 (0.4.0)
       rails (>= 4.1)
     sinatra (1.4.6)
@@ -611,7 +608,6 @@ DEPENDENCIES
   savon
   settingslogic
   sidekiq
-  sidekiq-rollbar
   simple_captcha2
   sinatra
   sitemap_generator
