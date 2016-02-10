@@ -9,7 +9,7 @@ class ProposalsController < ApplicationController
   has_orders %w{hot_score confidence_score created_at relevance}, only: :index
   has_orders %w{most_voted newest oldest}, only: :show
   has_orders %w{recommended},
-             if: proc { current_user && current_user.recommendations.any? },
+             if: proc { current_user && current_user.recommended_proposals.any? },
              only: :index
 
   load_and_authorize_resource
@@ -17,7 +17,9 @@ class ProposalsController < ApplicationController
 
   def index
     @filter = ResourceFilter.new(params)
-    @proposals = @filter.filter_collection(Proposal.includes(:category, :subcategory, :author => [:organization]))
+    @proposals = @current_order == "recommended" ? current_user.recommended_proposals : Proposal
+
+    @proposals = @filter.filter_collection(@proposals.includes(:category, :subcategory, :author => [:organization]))
 
     if Setting["feature.proposal_tags"]
       @tag_cloud = @filter.tag_cloud(@proposals)
@@ -38,7 +40,7 @@ class ProposalsController < ApplicationController
                  includes(:author)
 
     if @current_order == "recommended"
-      @proposals = @proposals.joins(:recommendations).order("recommendations.score desc")
+      @proposals = @proposals.order("recommendations.score desc")
     else
       @proposals = @proposals.send("sort_by_#{@current_order}")
     end
