@@ -141,6 +141,7 @@ group :production do
   gem 'heroku-deflater'
   gem 'rails_12factor'
   gem 'rollbar'
+  gem 'sidekiq-rollbar'
   gem 'rack-cache'
   gem 'rack-cors', :require => 'rack/cors'
 end
