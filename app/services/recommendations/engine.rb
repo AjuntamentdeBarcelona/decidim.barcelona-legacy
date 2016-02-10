@@ -24,7 +24,7 @@ class Recommendations::Engine
     totals = {}
     simSums = {}
 
-    subject_preferences = pref_matrix[subject_id]
+    subject_preferences = pref_matrix[subject_id] || {}
 
     pref_matrix.each do |other_subject_id, other_subject_preferences|
       if other_subject_id != subject_id
