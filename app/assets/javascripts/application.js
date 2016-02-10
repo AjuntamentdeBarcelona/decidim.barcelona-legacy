@@ -14,9 +14,10 @@
 //= require jquery_ujs
 //= require jquery-ui/datepicker
 //= require jquery-ui/datepicker-es
-//= require foundation
 //= require turbolinks
 //= require jquery.turbolinks
+//= require foundation/foundation
+//= require foundation/foundation.dropdown
 //= require modernizr
 //= require parallax
 //= require react
