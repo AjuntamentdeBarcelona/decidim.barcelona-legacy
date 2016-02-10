@@ -9,7 +9,7 @@ class ProposalsController < ApplicationController
   has_orders %w{hot_score confidence_score created_at relevance}, only: :index
   has_orders %w{most_voted newest oldest}, only: :show
   has_orders %w{recommended},
-             if: proc { current_user && current_user.recommended_proposals.any? },
+             if: proc { current_user && can?(:see_recommendations, Proposal) && current_user.recommended_proposals.any? },
              only: :index
 
   load_and_authorize_resource
