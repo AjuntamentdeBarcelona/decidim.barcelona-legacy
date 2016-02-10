@@ -70,6 +70,7 @@ es:
       most_voted: Más votados
       newest: Más nuevos primero
       oldest: Más antiguos primero
+      recommended: Recomendadas
     select_order: Ordenar por
     show:
       return_to_commentable: 'Volver a '

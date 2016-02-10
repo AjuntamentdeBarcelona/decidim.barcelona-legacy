@@ -115,6 +115,7 @@ en:
         most_commented: most commented
         random: random
         relevance: relevance
+        recommended: recommended
       search_form:
         button: Search
         placeholder: Search debates...

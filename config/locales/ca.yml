@@ -317,6 +317,7 @@ ca:
         most_commented: més comentades
         random: aleatòries
         relevance: rellevància
+        recommended: recomanades
       search_form:
         button: Cercar
         placeholder: Cerca propostes ciutadanes ...
