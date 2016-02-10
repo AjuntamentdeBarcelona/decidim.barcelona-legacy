@@ -45,6 +45,7 @@ class Recommendations::Engine
           end
         end
       end
+      sleep(0)
     end
 
     rankings = totals.inject([]) do |result, (object_id, total)|

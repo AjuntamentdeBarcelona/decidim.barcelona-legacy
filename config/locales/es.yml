@@ -316,6 +316,7 @@ es:
         hot_score: Más activas hoy
         most_commented: Más comentadas
         random: aleatorio
+        recommended: Recomendadas
         relevance: Más relevantes
       search_form:
         button: Buscar
