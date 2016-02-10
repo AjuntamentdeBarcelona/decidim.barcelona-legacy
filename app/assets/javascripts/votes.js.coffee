@@ -6,7 +6,7 @@ App.Votes =
       vote_box.find("div.anonymous-votes").show()
       vote_box.find("div.organizations-votes").show()
       vote_box.find("div.not-logged").show()
-    $(selector).on "mouseleave", ".votes", ->
+    $(selector).on "mouseleave", ".vote-box, .votes", ->
       $(this).find("div.anonymous-votes").hide()
       $(this).find("div.organizations-votes").hide()
       $(this).find("div.not-logged").hide()
