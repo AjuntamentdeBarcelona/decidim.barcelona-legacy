@@ -8,7 +8,9 @@ class ProposalsController < ApplicationController
 
   has_orders %w{hot_score confidence_score created_at relevance}, only: :index
   has_orders %w{most_voted newest oldest}, only: :show
-  has_orders %w{recommended}, :if => proc { current_user && current_user.recommendations.any? }
+  has_orders %w{recommended},
+             if: proc { current_user && current_user.recommendations.any? },
+             only: :index
 
   load_and_authorize_resource
   respond_to :html, :js
@@ -36,7 +38,6 @@ class ProposalsController < ApplicationController
                  includes(:author)
 
     if @current_order == "recommended"
-      Recommendations::Persistence.fetch_recommendations_for(current_user)
       @proposals = @proposals.joins(:recommendations).order("recommendations.score desc")
     else
       @proposals = @proposals.send("sort_by_#{@current_order}")
