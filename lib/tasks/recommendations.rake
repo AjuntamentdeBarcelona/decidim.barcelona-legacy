@@ -1,9 +1,7 @@
 namespace :recommendations do
   desc "Compute preferences matrix and store it on redis"
   task compute_pref_matrix: :environment do
-    scales = Proposal.all.map { |proposal| Recommendations::ProposalScale.new(proposal) }
-    store = Recommendations::RedisMatrixStore.new('user_preferences')
-    Recommendations::PreferencesMatrix.new(store, scales, User.pluck(:id)).save
+    PreferencesMatrixWorker.new.perform
   end
 
   desc "Expire all users recommendations"
