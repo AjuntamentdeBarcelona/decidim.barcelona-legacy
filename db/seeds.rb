@@ -91,7 +91,7 @@ if ENV["SEED"]
 
     if [true, false].sample
       scope = 'district'
-      district = Proposal::DISTRICTS.map(&:last).sample
+      district = District.all.map(&:id).sample
     else
       scope = 'city'
       district = nil
@@ -130,7 +130,7 @@ if ENV["SEED"]
 
     if [true, false].sample
       scope = 'district'
-      district = Proposal::DISTRICTS.map(&:last).sample
+      district = District.all.map(&:id).sample
     else
       scope = 'city'
       district = nil

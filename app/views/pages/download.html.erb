@@ -13,10 +13,10 @@
           </span>
         </li>
 
-        <% Proposal::DISTRICTS.each do |name, key| %>
+        <% District.all.each do |district| %>
           <li>
             <span>
-              <%= link_to t('.download-district', district: name), download_for(key) %>
+              <%= link_to t('.download-district', district: district.name), download_for(district.id) %>
             </span>
           </li>
         <% end %>

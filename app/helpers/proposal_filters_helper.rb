@@ -4,7 +4,7 @@ module ProposalFiltersHelper
       'ProposalFilters', 
       filter: options[:filter],
       filterUrl: proposals_url,
-      districts: Proposal::DISTRICTS,
+      districts: District.all.map{ |district| [district.name, district.id] },
       categories: serialized_categories,
       subcategories: serialized_subcategories,
       tagCloud: options[:tag_cloud],
