@@ -71,10 +71,9 @@ class ResourceFilter
         collection = collection.where(id: proposal_in_meetings_ids)
       end
 
-      if @params["source"] && @params["source"].include?("organizations")
-        #proposal_from_organizations_ids = Organization.verified.pluck(:id).uniq
-        proposal_from_organizations_ids = Organization.pluck(:id).uniq
-        collection = collection.where(id: proposal_from_organizations_ids)
+      if @params["source"] && @params["source"].include?("organization")
+        proposal_from_organizations_ids = Organization.verified.map{ |o| o.user.proposals.ids }.flatten.uniq
+        collection = collection.where(author_id: proposal_from_organizations_ids)
       end
 
     end
