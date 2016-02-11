@@ -16,7 +16,7 @@ dependencies:
     - docker-compose build
     - docker-compose run app bundle install
     - mkdir -p ~/docker; docker save ultrayoshi/ruby-node-phantomjs:2.1.1 postgres redis > ~/docker/image.tar
-    - docker-compose run app rake db:create
+    - docker-compose run app rake db:setup
     - docker-compose run -e RAILS_ENV=test app bundle exec rake assets:precompile
 
 database:
@@ -25,7 +25,7 @@ database:
 
 test:
   override:
-    - docker-compose run app bundle exec rspec:
+    - docker-compose run -e CI=true -e CI_PULL_REQUEST=$CI_PULL_REQUEST -e CI_PULL_REQUESTS=$CI_PULL_REQUESTS -e COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN app bundle exec rspec:
         parallel: true
         files:
           - spec/**/*_spec.rb

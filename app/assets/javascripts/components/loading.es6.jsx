@@ -21,6 +21,7 @@ class Loading extends React.Component {
       return (
         <div className="loading-component">
           <span className="fa fa-spinner fa-spin"></span>
+          <p>{this.props.text}</p>
         </div>
       )
     }

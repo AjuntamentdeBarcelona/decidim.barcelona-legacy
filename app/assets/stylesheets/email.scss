@@ -1,37 +1,39 @@
-/*
- *= require normalize-rails
- */
-
-@import "bourbon";
 @import "foundation_and_overrides";
 @import "variables";
 
 #email-layout{
-  font-size: $base-font-size;
+  * {
+    font-family: 'Open Sans', Arial, sans-serif;
+  }
+
+  font-size: 14px;
   line-height: normal;
 
   h1{
     line-height: normal;
-    font-size: rem-calc(20);
-  }
-
-  a{
-    color: $brand !important;
+    font-size: 20px;
   }
 
   table{
     border: 0;
   }
 
+  a{
+    color: $brand;
+  }
+
   table.main{
     max-width: 600px;
+    text-align: left;
 
     td{
-      padding: 0 1rem;
-
       &.email-content{
-        padding: 1rem;
         background-color: $highlight;
+
+        .email-content-inner{
+          margin: 10px;
+          margin-bottom: 20px;
+        }
       }
 
       h2{
@@ -52,10 +54,6 @@
     }
   }
 
-  a{
-    color: $brand;
-  }
-
   blockquote{
     background-color: $background;
     margin: 0;
@@ -66,13 +64,14 @@
 
   .call-to-action{
     text-align: center;
-    padding-top: $line-height;
+    padding-top: $line-height / 2;
+
     a{
       border-radius: 5px;
-      color: $text-inverse !important;
+      color: $text-inverse;
       background-color: $brand;
       text-decoration: none;
-      padding: rem-calc(10) rem-calc(30);
+      border: 10px solid $brand;
     }
   }
 
@@ -82,5 +81,6 @@
       width: 225px;
       height: 37px;
     }
+    margin-bottom: 10px;
   }
 }

@@ -2,6 +2,9 @@ require 'factory_girl_rails'
 require 'database_cleaner'
 require 'email_spec'
 require 'devise'
+require 'coveralls'
+Coveralls.wear!
+
 Dir["./spec/support/**/*.rb"].sort.each { |f| require f }
 
 RSpec.configure do |config|
@@ -14,20 +17,33 @@ RSpec.configure do |config|
   config.include(EmailSpec::Helpers)
   config.include(EmailSpec::Matchers)
   config.include(CommonActions)
+
   config.before(:suite) do
     DatabaseCleaner.clean_with :truncation
-    I18n.locale = :en
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
+
+  config.verbose_retry = true
+  config.display_try_failure_messages = true
+
+  config.around :each, :js do |ex|
+    ex.run_with_retry retry: 3
   end
 
   config.before(:each) do |example|
-    DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
-    DatabaseCleaner.start
     I18n.locale = :en
+    Rails.cache.clear
+    $redis.flushdb
     load "#{Rails.root}/db/seeds.rb"
   end
 
   config.after(:each) do
-    DatabaseCleaner.clean
     Setting.reload!
   end
 

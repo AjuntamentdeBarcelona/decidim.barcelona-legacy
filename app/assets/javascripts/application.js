@@ -14,14 +14,18 @@
 //= require jquery_ujs
 //= require jquery-ui/datepicker
 //= require jquery-ui/datepicker-es
-//= require foundation
 //= require turbolinks
 //= require jquery.turbolinks
+//= require foundation/foundation
+//= require foundation/foundation.dropdown
 //= require modernizr
 //= require parallax
 //= require react
+//= require react-server
 //= require react_ujs
 //= require moment
+//= require moment/ca
+//= require moment/es
 //= require services
 //= require components
 //= require ckeditor/init
@@ -83,6 +87,9 @@ var initialize_modules = function() {
 };
 
 $(function(){
+  var locale = $("html").attr("lang");
+  moment.locale(locale);
+
   Turbolinks.enableProgressBar();
 
   initialize_modules();

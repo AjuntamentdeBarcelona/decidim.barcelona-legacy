@@ -1,0 +1,27 @@
+.meetings-map{
+  position: relative;
+
+  .map{
+    height: rem-calc(240);
+
+    @media #{$medium-up}{
+      height: rem-calc(300);
+    }
+
+    @media #{$large-up}{
+      height: rem-calc(370);
+    }
+  }
+
+  .map-overlay-shadow{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.3);
+    z-index: 100;
+    pointer-events: none;
+  }
+}

@@ -50,12 +50,12 @@ es:
         body: Comentario
         user: Usuario
       debate:
-        author: Autor
+        author: Autor/a
         description: Opinión
         terms_of_service: Términos de servicio
         title: Título
       proposal:
-        author: Autor
+        author: Autor/a
         title: Título
         question: Pregunta
         description: Descripción

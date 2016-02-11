@@ -19,7 +19,7 @@ describe ManagerAuthenticator do
   end
 
   describe '#auth' do
-    before(:all) do
+    before(:each) do
       @authenticator = ManagerAuthenticator.new({login: "JJB033", clave_usuario: "31415926", fecha_conexion: "20151031135905"})
     end
 
@@ -46,7 +46,7 @@ describe ManagerAuthenticator do
   end
 
   describe 'SOAP' do
-    before(:all) do
+    before(:each) do
       @authenticator = ManagerAuthenticator.new({login: "JJB033", clave_usuario: "31415926", fecha_conexion: "20151031135905"})
     end
 

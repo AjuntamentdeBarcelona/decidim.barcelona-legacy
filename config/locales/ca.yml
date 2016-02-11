@@ -228,10 +228,10 @@ ca:
       meeting_description: Descripció
       meeting_end_at: A quina hora acaba?
       meeting_held_at: Quan es realitzará?
-      meeting_proposal_ids: Quines propostes es discutiran?
+      meeting_proposal_ids: Quines propostes es discutiran o ja s'han discutit?
       meeting_scope: "Àmbit"
       meeting_scope_city: Tota la ciutat
-      meeting_scope_district: Un districte
+      meeting_scope_district: Districtes
       meeting_scope_note: Es una mesura per a tota la ciutat o només per a un districte?
       meeting_start_at: A quina hora comença?
       meeting_title: Títol
@@ -241,6 +241,7 @@ ca:
     index:
       close: Tancar
       delete: Esborrar
+      description: Les cites presencials són jornades, debats, trobades a l’espai públic i altres tipus cites per debatre propostes pel Pla Municipal relacionades amb cadascun dels eixos temàtics i les línies estratègiques, tant a nivell de tota la ciutat, com a nivell de barris i districtes.
       edit: Editar
       new: Crear cita
       title: Cites presencials
@@ -295,7 +296,7 @@ ca:
       proposal_responsible_name_note: "(individualment o com a representant d'un col·lectiu, no es mostrarà públicament)"
       proposal_scope: "Àmbit"
       proposal_scope_city: Tota la ciutat
-      proposal_scope_district: Un districte
+      proposal_scope_district: Districtes
       proposal_scope_note: Es una mesura per a tota la ciutat o només per a un districte?
       proposal_summary: Resum de la proposta
       proposal_summary_note: "(màxim 350 caràcters)"
@@ -306,7 +307,7 @@ ca:
       tags_label: Temes
       tags_placeholder: Escriu les etiquetes que vulguis separades per una coma (',')
     index:
-      featured_proposals: Destacades
+      featured_proposals: Recomenades
       filter:
         title: Filtrar per
       orders:
@@ -315,6 +316,7 @@ ca:
         hot_score: més actives avui
         most_commented: més comentades
         random: aleatòries
+        recommended: recomanades
         relevance: rellevància
       search_form:
         button: Cercar

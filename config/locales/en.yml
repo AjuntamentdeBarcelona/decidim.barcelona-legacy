@@ -228,10 +228,10 @@ en:
       meeting_description: Description
       meeting_end_at: What time does it end?
       meeting_held_at: When it will take place?
-      meeting_proposal_ids: Which proposals are being discussed?
+      meeting_proposal_ids: Which proposals are being discussed or have been discussed?
       meeting_scope: Scope
       meeting_scope_city: Whole city
-      meeting_scope_district: A district
+      meeting_scope_district: Districts
       meeting_scope_note: Is it a measure for the whole city or just for one district?
       meeting_start_at: What time does it start?
       meeting_title: Title
@@ -241,6 +241,7 @@ en:
     index:
       close: Close
       delete: Delete
+      description: The events are attended conferences, debates, meetings in public places and other events to discuss proposals by the Municipal Plan related to each of the themes and strategic lines, both the entire city, as neighborhoods and districts level .
       edit: Edit
       new: Create meeting
       title: Meetings
@@ -295,7 +296,7 @@ en:
       proposal_responsible_name_note: "(individually or as representative of a collective; will not be displayed publically)"
       proposal_scope: Scope
       proposal_scope_city: Whole city
-      proposal_scope_district: A district
+      proposal_scope_district: Districts
       proposal_scope_note: Is it a measure for the whole city or just for one district?
       proposal_summary: Proposal summary
       proposal_summary_note: "(maximum 350 characters)"
@@ -306,7 +307,7 @@ en:
       tags_label: Tags
       tags_placeholder: Enter the tags you would like to use, separated by commas (',')
     index:
-      featured_proposals: Featured
+      featured_proposals: Recommended
       filter:
         title: Filter by
       orders:
@@ -315,6 +316,7 @@ en:
         hot_score: most active
         most_commented: most commented
         random: random
+        recommended: recommended
         relevance: relevance
       search_form:
         button: Search

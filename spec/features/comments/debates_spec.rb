@@ -2,8 +2,8 @@ require 'rails_helper'
 include ActionView::Helpers::DateHelper
 
 feature 'Commenting debates' do
-  let(:user)   { create :user }
-  let(:debate) { create :debate }
+  let!(:user)   { create :user }
+  let!(:debate) { create :debate }
 
   scenario 'Index' do
     3.times { create(:comment, commentable: debate) }
@@ -292,18 +292,6 @@ feature 'Commenting debates' do
     end
   end
 
-  scenario 'Submit button is disabled after clicking', :js do
-    login_as(user)
-    visit debate_path(debate)
-
-    fill_in "comment-body-debate_#{debate.id}", with: 'Testing submit button!'
-    click_button 'Publish comment'
-
-    # The button's text should now be "..."
-    # This should be checked before the Ajax request is finished
-    expect(page).to_not have_button 'Publish comment'
-  end
-
   feature "Moderators" do
     scenario "can create comment as a moderator", :js do
       moderator = create(:moderator)
@@ -429,13 +417,8 @@ feature 'Commenting debates' do
       visit debate_path(@debate)
 
       within("#comment_#{@comment.id}_votes") do
-        within(".in_favor") do
-          expect(page).to have_content "1"
-        end
-
-        within(".against") do
-          expect(page).to have_content "1"
-        end
+        find(".in_favor", text: "1")
+        find(".against", text: "1")
 
         expect(page).to have_content "2 votes"
       end
@@ -447,13 +430,8 @@ feature 'Commenting debates' do
       within("#comment_#{@comment.id}_votes") do
         find(".in_favor a").click
 
-        within(".in_favor") do
-          expect(page).to have_content "1"
-        end
-
-        within(".against") do
-          expect(page).to have_content "0"
-        end
+        find(".in_favor", text: "1")
+        find(".against", text: "0")
 
         expect(page).to have_content "1 vote"
       end
@@ -466,13 +444,8 @@ feature 'Commenting debates' do
         find('.in_favor a').click
         find('.against a').click
 
-        within('.in_favor') do
-          expect(page).to have_content "0"
-        end
-
-        within('.against') do
-          expect(page).to have_content "1"
-        end
+        find(".in_favor", text: "0")
+        find(".against", text: "1")
 
         expect(page).to have_content "1 vote"
       end
@@ -483,9 +456,7 @@ feature 'Commenting debates' do
 
       within("#comment_#{@comment.id}_votes") do
         find('.in_favor a').click
-        within('.in_favor') do
-          expect(page).to have_content "1"
-        end
+        find(".in_favor", text: "1")
 
         find('.in_favor a').click
         within('.in_favor') do
@@ -493,10 +464,7 @@ feature 'Commenting debates' do
           expect(page).to have_content "1"
         end
 
-        within('.against') do
-          expect(page).to have_content "0"
-        end
-
+        find(".against", text: "0")
         expect(page).to have_content "1 vote"
       end
     end

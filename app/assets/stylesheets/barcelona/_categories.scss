@@ -42,6 +42,8 @@ $category-icons: (
     &:last-child{
       margin-right: 0;
     }
+
+    margin-bottom: rem-calc(30);
   }
 
   li a{
@@ -62,6 +64,7 @@ $category-icons: (
       margin-top: rem-calc(25);
       height: rem-calc(62);
       line-height: 1em;
+      font-weight: 300;
     }
 
     $icon-size: rem-calc(55);

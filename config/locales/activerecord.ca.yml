@@ -6,7 +6,7 @@ ca:
         body: Comentari
         user: Usuari
       debate:
-        author: Autor
+        author: Autor/a
         description: Opinió
         terms_of_service: Termes de servei
         title: Títol
@@ -14,7 +14,7 @@ ca:
         name: Nom d'organització
         responsible_name: Persona responsable del col·lectiu
       proposal:
-        author: Autor
+        author: Autor/a
         description: Descripció
         question: Pregunta
         terms_of_service: Termes de servei

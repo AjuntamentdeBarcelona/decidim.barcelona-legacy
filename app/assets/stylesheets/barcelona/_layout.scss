@@ -3,6 +3,10 @@ html, body{
   overflow-x: hidden;
 }
 
+h1, h2{
+  font-weight: 300;
+}
+
 .section-title{
   color: $brand;
   font-size: rem-calc(26);
@@ -62,4 +66,12 @@ footer{
     background-repeat: no-repeat;
     display: block;
   }
+}
+
+.page-title{
+  h3{
+    font-weight: normal;
+    font-size: rem-calc(18);
+  }
+  margin-bottom: rem-calc(15);
 }

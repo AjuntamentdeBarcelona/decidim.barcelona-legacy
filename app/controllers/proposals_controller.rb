@@ -8,30 +8,43 @@ class ProposalsController < ApplicationController
 
   has_orders %w{hot_score confidence_score created_at relevance}, only: :index
   has_orders %w{most_voted newest oldest}, only: :show
+  has_orders %w{recommended},
+             if: proc { current_user && can?(:see_recommendations, Proposal) && current_user.recommended_proposals.any? },
+             only: :index
 
   load_and_authorize_resource
   respond_to :html, :js
 
   def index
     @filter = ResourceFilter.new(params)
-    @proposals = @filter.filter_collection(Proposal.includes(:category, :subcategory, :author => [:organization]))
+    @proposals = @current_order == "recommended" ? current_user.recommended_proposals : Proposal
+
+    @proposals = @filter.filter_collection(@proposals.includes(:category, :subcategory, :author => [:organization]))
 
     if Setting["feature.proposal_tags"]
       @tag_cloud = @filter.tag_cloud(@proposals)
     end
 
-    @featured_proposals = @proposals.sort_by_confidence_score.limit(FEATURED_PROPOSALS_LIMIT) if (@filter.search_filter.blank? && @filter.tag_filter.blank?)
-    if @featured_proposals.present?
-      set_featured_proposal_votes(@featured_proposals)
-      @featured_proposals = @featured_proposals.send("sort_by_#{@current_order}")
+    unless @current_order == "recommended"
+      @featured_proposals = @proposals.sort_by_confidence_score.limit(FEATURED_PROPOSALS_LIMIT) if (@filter.search_filter.blank? && @filter.tag_filter.blank?)
+      if @featured_proposals.present?
+        set_featured_proposal_votes(@featured_proposals)
+        @featured_proposals = @featured_proposals.send("sort_by_#{@current_order}")
+      end
     end
 
     @proposals = @proposals.
                  page(params[:page]).
                  per(15).
                  for_render.
-                 includes(:author).
-                 send("sort_by_#{@current_order}")
+                 includes(:author)
+
+    if @current_order == "recommended"
+      @proposals = @proposals.order("recommendations.score / (proposals.cached_votes_up + 1) desc")
+    else
+      @proposals = @proposals.send("sort_by_#{@current_order}")
+    end
+
     set_resource_votes(@proposals)
   end
 

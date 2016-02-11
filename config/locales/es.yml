@@ -228,10 +228,10 @@ es:
       meeting_description: Descripción
       meeting_end_at: "¿A que hora acaba?"
       meeting_held_at: "¿Cuándo se va a realizar?"
-      meeting_proposal_ids: "¿Qué propuestas se van a discutir?"
+      meeting_proposal_ids: "¿Qué propuestas se van a discutir o ya se han discutido?"
       meeting_scope: "Ámbito"
       meeting_scope_city: Toda la ciudad
-      meeting_scope_district: Un distrito
+      meeting_scope_district: Distritos
       meeting_scope_note: "¿Es una medida para toda la ciudad o solo para un distrito?"
       meeting_start_at: "¿A que hora empieza?"
       meeting_title: Título
@@ -241,6 +241,7 @@ es:
     index:
       close: Cerrar
       delete: Borrar
+      description: Las citas presenciales son jornadas, debates, encuentros en el espacio público y otros tipos citas para debatir propuestas por el Plan Municipal relacionadas con cada uno de los ejes temáticos y las líneas estratégicas, tanto a nivel de toda la ciudad, como a nivel de barrios y distritos .
       edit: Editar
       new: Crear cita
       title: Citas presenciales
@@ -295,7 +296,7 @@ es:
       proposal_responsible_name_note: "(individualmente o como representante de un colectivo; no se mostrará públicamente)"
       proposal_scope: "Ámbito"
       proposal_scope_city: Toda la ciudad
-      proposal_scope_district: Un distrito
+      proposal_scope_district: Distritos
       proposal_scope_note: "¿Es una medida para toda la ciudad o solo para un distrito?"
       proposal_summary: Resumen de la propuesta
       proposal_summary_note: "(máximo 300 caracteres)"
@@ -306,7 +307,7 @@ es:
       tags_label: Temas
       tags_placeholder: Escribe las etiquetas que desees separadas por una coma (',')
     index:
-      featured_proposals: Destacadas
+      featured_proposals: Recomendadas
       filter:
         title: Filtrado por
       orders:
@@ -315,6 +316,7 @@ es:
         hot_score: Más activas hoy
         most_commented: Más comentadas
         random: aleatorio
+        recommended: Recomendadas
         relevance: Más relevantes
       search_form:
         button: Buscar

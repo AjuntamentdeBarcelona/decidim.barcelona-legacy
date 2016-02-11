@@ -13,45 +13,30 @@ class MeetingsList extends React.Component {
         meetings = this.props.meetings.slice(begin, end);
 
     return (
-      <div>
-        <ul className="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+      <div className="meetings-list">
+        <Loading show={this.props.loading} />
+        <ul className="meetings-list-items">
           {
             meetings.map((meeting) => {
               return (
-                <li className="meeting" key={ `meeting_${meeting.slug}` } >
-                  <a href={`/meetings/${meeting.slug}`} className="meeting-title" >
-                    { meeting.title }
-                  </a>
-                  <div className="tags">
-                    {this.renderMeetingHeldAt(meeting)}
-                  </div>
-                  <p>{ meeting.description }</p>
-                  <p><i className="fa fa-map-o"></i> { meeting.address }</p>
+                <li key={ `meeting_${meeting.slug}` } >
+                  <Meeting meeting={ meeting } />
                 </li>
               )
             })
           }
         </ul>
-        <div className="row">
-          <Pagination 
-            currentPage={this.state.currentPage}
-            totalPages={Math.ceil(this.props.meetings.length / this.props.perPage)}
-            onSetCurrentPage={(page) => this.setCurrentPage(page)} />
-        </div>
+        <Pagination 
+          className="pagination"
+          currentPage={this.state.currentPage}
+          totalPages={Math.ceil(this.props.meetings.length / this.props.perPage)}
+          onSetCurrentPage={(page) => this.setCurrentPage(page)} />
       </div>
     );
   }
 
   setCurrentPage(page) {
     this.setState({ currentPage: page });
-  }
-
-  renderMeetingHeldAt(meeting) {
-    let meetingHeldAt = (meeting.start_at && meeting.end_at) ? `${meeting.held_at} // ${meeting.start_at} - ${meeting.end_at}` : meeting.held_at;
-
-    return (
-      <span className="radius secondary label">{ meetingHeldAt }</span>
-    )
   }
 }
 

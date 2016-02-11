@@ -56,7 +56,7 @@ es:
         document_number: Número de documento
         document_type:
           passport: Pasaporte
-          residence_card: Tarjeta de residencia
+          residence_card: Tarjeta de residencia / NIE
           spanish_id: DNI
         document_type_label: Tipo de documento
         error_not_allowed_age: Hay que tener al menos 16 años
