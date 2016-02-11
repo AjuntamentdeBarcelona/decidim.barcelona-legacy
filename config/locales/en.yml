@@ -397,7 +397,7 @@ en:
     check: Select
     check_all: All
     check_none: None
-    collective: Collective
+    collective: Organization
     flag: Flag as inappropriate
     print:
       print_button: Print this info
@@ -474,7 +474,7 @@ en:
     agree: I agree
     anonymous: Too many anonymous votes to admit vote %{verify_account}.
     disagree: I disagree
-    organizations: Organisations are not permitted to vote
+    organizations: Organizations are not permitted to vote
     signin: Sign in
     signup: Sign up
     supports: Supports

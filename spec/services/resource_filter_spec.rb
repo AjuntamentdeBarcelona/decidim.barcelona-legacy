@@ -40,6 +40,18 @@ describe ResourceFilter do
         expect(collection).to_not include(@proposal2)
         expect(collection).to include(@proposal3)
       end
+
+      it "should filter proposals from organizations" do
+        @organization = create(:organization)
+        @proposal4 = create(:proposal, author: @organization.user)
+
+        filter = ResourceFilter.new(filter: 'source=organization')
+        collection = filter.filter_collection(Proposal.all)
+        expect(collection).to_not include(@proposal1)
+        expect(collection).to_not include(@proposal2)
+        expect(collection).to_not include(@proposal3)
+        expect(collection).to_not include(@proposal4)
+      end
     end
   end
 end

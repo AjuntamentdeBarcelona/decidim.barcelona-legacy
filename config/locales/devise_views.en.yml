@@ -82,6 +82,7 @@ en:
         signin_with_provider: Sign in with %{provider}
         signup: Don't have an account? %{signup_link}
         signup_link: Sign up
+        organization_signup: Register as an organisation or collective
     unlocks:
       new:
         email_label: Email

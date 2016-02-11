@@ -22,6 +22,7 @@ es:
       from_meetings: Citas presenciales
       meetings: Debatidas en citas presenciales
       official: Ayuntamiento
+      organization: Organizaciones
     filter_option_group:
       category_id: Eje
       district: Distrito

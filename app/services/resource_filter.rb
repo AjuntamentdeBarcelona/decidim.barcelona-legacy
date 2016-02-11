@@ -74,6 +74,11 @@ class ResourceFilter
         proposal_in_meetings_ids = MeetingProposal.pluck(:proposal_id).uniq
         collection = collection.where(id: proposal_in_meetings_ids)
       end
+
+      if @params["source"] && @params["source"].include?("organization")
+        collection = collection.where(author_id: Organization.verified.select(:user_id))
+      end
+
     end
     collection
   end

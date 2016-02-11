@@ -22,6 +22,7 @@ ca:
       from_meetings: Cites presencials
       meetings: Debatudes a cites presencials
       official: Ajuntament
+      organization: Organitzacions
     filter_option_group:
       category_id: Eix
       district: Districte

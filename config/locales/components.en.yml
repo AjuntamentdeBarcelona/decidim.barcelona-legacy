@@ -22,6 +22,7 @@ en:
       from_meetings: Meetings
       meetings: Meetings
       official: Town Hall
+      organization: Organizations
     filter_option_group:
       category_id: Axis
       district: District
