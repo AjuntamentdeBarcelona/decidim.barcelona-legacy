@@ -1,4 +1,4 @@
-<div id="<%= dom_id(proposal) %>" class="proposal clear <%= proposal_class_names proposal %>">
+<div id="<%= dom_id(proposal) %>" class="proposal clear <%= proposal_class_names proposal %>" data-timestamp="<%= proposal.created_at.to_i %>">
     <div class="row">
       <div class="small-12 medium-9 column">
         <%= cache [proposal, proposal.author, I18n.locale] do %>
