@@ -473,7 +473,7 @@ en:
     agree: I agree
     anonymous: Too many anonymous votes to admit vote %{verify_account}.
     disagree: I disagree
-    organizations: Organisations are not permitted to vote
+    organizations: Organizations are not permitted to vote
     signin: Sign in
     signup: Sign up
     supports: Supports
