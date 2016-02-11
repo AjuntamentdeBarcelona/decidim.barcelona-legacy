@@ -63,8 +63,12 @@ class ProposalsController < ApplicationController
     def proposal_params
       permitted_params = [:title, :question, :summary, :description, :external_url, :video_url, :responsible_name, :tag_list, :captcha, :captcha_key, :category_id, :subcategory_id, :scope, :district]
 
-      if current_user.administrator?
+      if can?(:mark_as_official, Proposal)
         permitted_params << :official
+      end
+
+      if can?(:manage, Meeting)
+        permitted_params << :from_meeting
       end
 
       params.require(:proposal).permit(permitted_params)

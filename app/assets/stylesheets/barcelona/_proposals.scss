@@ -48,12 +48,20 @@ a.button.new-proposal{
       }
     }
 
+    $badge-size: rem-calc(36);
+
     .official-badge{
-      $size: rem-calc(36);
-      @include bcn-icon(ajuntament, $size);
+      @include bcn-icon(ajuntament, $badge-size);
+    }
+
+    .meeting-badge{
+      @include bcn-icon(xat_gris, $badge-size);
+    }
+
+    .proposal-badge{
       background-size: 70%;
       background-color: #fff;
-      border-radius: $size/2;
+      border-radius: $badge-size/2;
       position: absolute;
       top: rem-calc(15);
       right: rem-calc(10);
