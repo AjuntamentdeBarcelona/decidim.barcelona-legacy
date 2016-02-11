@@ -213,7 +213,7 @@ es:
       form:
         close_report: Acta
         proposals:
-          groups: Colectivos
+          groups: Organizaciones
           title: Título
           votes: Apoyos
       new:
@@ -394,7 +394,7 @@ es:
     check: Seleccionar
     check_all: Todos
     check_none: Ninguno
-    collective: Colectivo
+    collective: Organización
     flag: Denunciar como inapropiado
     print:
       print_button: Imprimir esta información

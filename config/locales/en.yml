@@ -394,7 +394,7 @@ en:
     check: Select
     check_all: All
     check_none: None
-    collective: Collective
+    collective: Organization
     flag: Flag as inappropriate
     print:
       print_button: Print this info

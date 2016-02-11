@@ -213,7 +213,7 @@ ca:
       form:
         close_report: Acta
         proposals:
-          groups: Col·lectius
+          groups: Organitzacions
           title: Títol
           votes: Suports
       new:
@@ -394,7 +394,7 @@ ca:
     check: Seleccionar
     check_all: Tots
     check_none: Cap
-    collective: Col·lectiu
+    collective: Organització
     flag: Denunciar com inapropiat
     print:
       print_button: Imprimir aquesta informació
