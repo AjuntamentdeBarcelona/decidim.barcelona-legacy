@@ -6,6 +6,7 @@
 Citizen Participation and Open Government Application
 
 [![Circle CI](https://circleci.com/gh/AjuntamentdeBarcelona/decidim.barcelona/tree/master.svg?style=svg)](https://circleci.com/gh/AjuntamentdeBarcelona/decidim.barcelona/tree/master)
+[![Coverage Status](https://coveralls.io/repos/github/AjuntamentdeBarcelona/decidim.barcelona/badge.svg?branch=master)](https://coveralls.io/github/AjuntamentdeBarcelona/decidim.barcelona?branch=master)
 [![Code Climate](https://codeclimate.com/github/AjuntamentdeBarcelona/decidim.barcelona/badges/gpa.svg)](https://codeclimate.com/github/AjuntamentdeBarcelona/decidim.barcelona)
 [![Dependency Status](https://gemnasium.com/AjuntamentdeBarcelona/decidim.barcelona.svg)](https://gemnasium.com/AjuntamentdeBarcelona/decidim.barcelona)
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
