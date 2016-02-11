@@ -19,7 +19,8 @@ es:
       citizenship: Ciudadania
       city: Toda la ciudad
       district: Un distrito
-      meetings: Citas presenciales
+      from_meetings: Citas presenciales
+      meetings: Debatidas en citas presenciales
       official: Ayuntamiento
       organization: Organizaciones
     filter_option_group:

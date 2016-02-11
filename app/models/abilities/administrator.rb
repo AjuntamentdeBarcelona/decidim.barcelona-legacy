@@ -42,6 +42,8 @@ module Abilities
       can :manage, Category
       can :manage, Subcategory
 
+      can :mark_as_official, Proposal
+
       can :see_recommendations, Proposal
     end
   end

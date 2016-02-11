@@ -31,6 +31,7 @@ class ProposalFilters extends React.Component {
           <FilterOption filterName="official" />
           <FilterOption filterName="citizenship" />
           <FilterOption filterName="organization" />
+          <FilterOption filterName="meetings" filterLabel={I18n.t('components.filter_option.from_meetings')} />
         </FilterOptionGroup>
         <ScopeFilterOptionGroup 
           filterGroupValue={this.state.filters.get('scope')} 

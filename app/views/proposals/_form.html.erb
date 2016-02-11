@@ -54,12 +54,23 @@
       </div>
     <% end %>
 
-    <% if current_user.administrator? %>
+    <% if can?(:mark_as_official, @proposal) %>
       <div class="small-12 column">
         <%= f.label :official do %>
           <%= f.check_box :official, label: false %>
           <span class="checkbox">
             <%= t("proposals.form.proposal_official") %>
+          </span>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if can?(:manage, Meeting) %>
+      <div class="small-12 column">
+        <%= f.label :from_meeting do %>
+          <%= f.check_box :from_meeting, label: false %>
+          <span class="checkbox">
+            <%= t("proposals.form.proposal_from_meeting") %>
           </span>
         <% end %>
       </div>

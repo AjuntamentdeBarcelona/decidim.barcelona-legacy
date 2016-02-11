@@ -6,6 +6,8 @@ class Census
   end
 
   def valid?
+    return true if Rails.application.secrets.census_url.blank?
+
     response.xpath("//codiRetorn").text == "01"
   end
 
