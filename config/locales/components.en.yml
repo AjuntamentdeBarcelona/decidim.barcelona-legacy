@@ -19,6 +19,7 @@ en:
       citizenship: Citizenship
       city: Whole city
       district: A district
+      from_meetings: Meetings
       meetings: Meetings
       official: Town Hall
     filter_option_group:

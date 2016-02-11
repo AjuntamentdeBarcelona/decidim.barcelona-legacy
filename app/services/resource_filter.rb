@@ -57,7 +57,11 @@ class ResourceFilter
       end
 
       if @params["source"].present?
-        @params["official"] = @params["source"].include? "official"
+        @params["official"] = true if @params["source"].include? "official"
+      end
+
+      if @params["source"].present?
+        @params["from_meeting"] = true if @params["source"].include? "meetings"
       end
 
       @params.each do |attr, value|

@@ -4,8 +4,8 @@ describe ResourceFilter do
   describe "filter params" do
     before :each do
       @proposal1 = create(:proposal, scope: "city")
-      @proposal2 = create(:proposal, scope: "district", district: 1)
-      @proposal3 = create(:proposal, scope: "district", district: 2)
+      @proposal2 = create(:proposal, scope: "district", district: 1, official: true)
+      @proposal3 = create(:proposal, scope: "district", district: 2, from_meeting: true)
     end
 
     it "should filter collection based on a single filter params" do
@@ -22,6 +22,24 @@ describe ResourceFilter do
       expect(collection).to_not include(@proposal1)
       expect(collection).to include(@proposal2)
       expect(collection).to_not include(@proposal3)
+    end
+
+    describe "#source" do
+      it "should filter official resources" do
+        filter = ResourceFilter.new(filter: 'source=official')
+        collection = filter.filter_collection(Proposal.all)
+        expect(collection).to_not include(@proposal1)
+        expect(collection).to include(@proposal2)
+        expect(collection).to_not include(@proposal3)
+      end
+
+      it "should filter official resources" do
+        filter = ResourceFilter.new(filter: 'source=meetings')
+        collection = filter.filter_collection(Proposal.all)
+        expect(collection).to_not include(@proposal1)
+        expect(collection).to_not include(@proposal2)
+        expect(collection).to include(@proposal3)
+      end
     end
   end
 end
