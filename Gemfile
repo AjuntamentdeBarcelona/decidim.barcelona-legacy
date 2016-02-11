@@ -92,6 +92,8 @@ gem 'i18n_yaml_csv', github: 'josepjaume/i18n_yaml_csv'
 gem 'draper'
 gem 'roo' # implements read access for all common spreadsheet types
 
+gem 'axlsx', '2.1.0.pre'
+
 gem 'bourbon'
 
 gem 'nokogiri'

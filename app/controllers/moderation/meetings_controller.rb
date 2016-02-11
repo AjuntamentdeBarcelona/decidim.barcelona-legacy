@@ -11,8 +11,39 @@ class Moderation::MeetingsController < Moderation::BaseController
   def index
     @resources = @resources.send(@current_filter)
     @resources = @resources.search(params[:search]) if params[:search].present?
-    @resources = @resources.page(params[:page]).per(50)
-    set_resources_instance
+
+    respond_to do |format|
+      format.html do
+        @resources = @resources.page(params[:page]).per(50)
+        set_resources_instance
+      end
+
+      format.xls do
+        package = Axlsx::Package.new do |p|
+          p.workbook.add_worksheet(:name => "Meetings") do |sheet|
+            @resources.each do |meeting|
+              row = []
+              row.push meeting.title
+              row.push meeting.author.name
+              row.push meeting.held_at
+              row.push meeting.start_at.try(:strftime, "%H:%M")
+              row.push meeting.end_at.try(:strftime, "%H:%M")
+              row.push meeting.address
+              row.push meeting.category.try(:decorate).try(:name)
+              row.push meeting.subcategory.try(:decorate).try(:name)
+              row.push Proposal::DISTRICTS.find{ |d| d[1] == meeting.district.try(:to_s) }.try(:first)
+              row.push meeting.closed_at ? "CLOSED" : nil
+              row.push meeting.description
+
+              sheet.add_row row
+            end
+          end
+
+        end
+
+        send_data package.to_stream.read, disposition: 'inline', filename: "meetings.xls"
+      end
+    end
   end
 
 
