@@ -44,6 +44,7 @@ es:
         title: Debates
     meetings:
       index:
+        download_xls: Descargar informe en XLS
         filters:
           all: Todos
           closed: Cerrados

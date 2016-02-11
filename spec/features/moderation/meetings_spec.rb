@@ -185,4 +185,15 @@ feature 'Moderate meetings' do
     expect(page).to have_content "Meeting deleted successfully."
     expect(page).to_not have_content "A meeting"
   end
+
+  scenario "Download report" do
+    moderator = create(:moderator)
+    login_as(moderator.user)
+
+    create(:proposal, title: "A proposal to discuss #1")
+    create(:proposal, title: "A proposal to discuss #2")
+
+    visit moderation_meetings_path
+    expect{ click_link "Download XLS report" }.not_to raise_error
+  end
 end

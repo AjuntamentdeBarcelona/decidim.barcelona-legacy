@@ -44,6 +44,7 @@ ca:
         title: Debats
     meetings:
       index:
+        download_xls: Descarregar informe en XLS
         filters:
           all: Tots
           closed: Tancats
