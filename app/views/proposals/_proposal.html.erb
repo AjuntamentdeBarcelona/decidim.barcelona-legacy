@@ -25,7 +25,9 @@
                 <% else %>
                   <span class="bullet">&nbsp;&bull;&nbsp;</span>
                   <span class="author">
-                    <%= proposal.author.name %>
+                    <%= link_to user_path(proposal.author) do %>
+                      <%= proposal.author.name %>
+                    <% end %>
                   </span>
                   <% if proposal.author.official? %>
                     <span class="bullet">&nbsp;&bull;&nbsp;</span>
