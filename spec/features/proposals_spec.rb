@@ -293,7 +293,7 @@ feature 'Proposals' do
       login_as(author)
     end
 
-    xscenario 'using featured tags', :js do
+    scenario 'using featured tags', :js do
       ['Medio Ambiente', 'Ciencia'].each do |tag_name|
         create(:tag, :featured, name: tag_name)
       end
@@ -561,7 +561,7 @@ feature 'Proposals' do
       end
     end
 
-    xscenario "Reorder results maintaing search", :js do
+    scenario "Reorder results maintaing search", :js do
       proposal1 = create(:proposal, title: "Show you got",      cached_votes_up: 10,  created_at: 1.week.ago)
       proposal2 = create(:proposal, title: "Show what you got", cached_votes_up: 1,   created_at: 1.month.ago)
       proposal3 = create(:proposal, title: "Show you got",      cached_votes_up: 100, created_at: Time.now)
@@ -618,7 +618,7 @@ feature 'Proposals' do
     expect(page).to_not have_content "This proposal has been flagged as inappropriate by several users."
   end
 
-  xscenario "Flagging", :js do
+  scenario "Flagging", :js do
     user = create(:user)
     proposal = create(:proposal)
 
@@ -635,7 +635,7 @@ feature 'Proposals' do
     expect(Flag.flagged?(user, proposal)).to be
   end
 
-  xscenario "Unflagging", :js do
+  scenario "Unflagging", :js do
     user = create(:user)
     proposal = create(:proposal)
     Flag.flag(user, proposal)

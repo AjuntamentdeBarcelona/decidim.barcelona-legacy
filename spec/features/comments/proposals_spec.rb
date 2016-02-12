@@ -183,7 +183,7 @@ feature 'Commenting proposals' do
     expect(page).to have_content "Can't be blank"
   end
 
-  xscenario 'Reply', :js do
+  scenario 'Reply', :js do
     citizen = create(:user, username: 'Ana')
     manuela = create(:user, username: 'Manuela')
     comment = create(:comment, commentable: proposal, user: citizen)
@@ -205,7 +205,7 @@ feature 'Commenting proposals' do
     expect(page).to_not have_selector("#js-comment-form-comment_#{comment.id}", visible: true)
   end
 
-  xscenario 'Errors on reply', :js do
+  scenario 'Errors on reply', :js do
     comment = create(:comment, commentable: proposal, user: user)
 
     login_as(user)
@@ -232,7 +232,7 @@ feature 'Commenting proposals' do
     expect(page).to have_css(".comment.comment.comment.comment.comment.comment.comment.comment")
   end
 
-  xscenario "Flagging as inappropriate", :js do
+  scenario "Flagging as inappropriate", :js do
     comment = create(:comment, commentable: proposal)
 
     login_as(user)
@@ -248,7 +248,7 @@ feature 'Commenting proposals' do
     expect(Flag.flagged?(user, comment)).to be
   end
 
-  xscenario "Undoing flagging as inappropriate", :js do
+  scenario "Undoing flagging as inappropriate", :js do
     comment = create(:comment, commentable: proposal)
     Flag.flag(user, comment)
 
@@ -309,7 +309,7 @@ feature 'Commenting proposals' do
       end
     end
 
-    xscenario "can create reply as a moderator", :js do
+    scenario "can create reply as a moderator", :js do
       citizen = create(:user, username: "Ana")
       manuela = create(:user, username: "Manuela")
       moderator = create(:moderator, user: manuela)
@@ -363,7 +363,7 @@ feature 'Commenting proposals' do
       end
     end
 
-    xscenario "can create reply as an administrator", :js do
+    scenario "can create reply as an administrator", :js do
       citizen = create(:user, username: "Ana")
       manuela = create(:user, username: "Manuela")
       admin   = create(:administrator, user: manuela)
@@ -429,7 +429,7 @@ feature 'Commenting proposals' do
       end
     end
 
-    xscenario 'Create', :js do
+    scenario 'Create', :js do
       visit proposal_path(@proposal)
 
       within("#comment_#{@comment.id}_votes") do

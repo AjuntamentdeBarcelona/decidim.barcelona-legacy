@@ -90,7 +90,7 @@ feature 'Moderate debates' do
         end
       end
 
-      xscenario "select all/none", :js do
+      scenario "select all/none", :js do
         create_list(:debate, 2)
 
         visit moderation_debates_path
@@ -108,7 +108,7 @@ feature 'Moderate debates' do
         end
       end
 
-      xscenario "remembering page, filter and order" do
+      scenario "remembering page, filter and order" do
         create_list(:debate, 52)
 
         visit moderation_debates_path(filter: 'all', page: '2', order: 'created_at')

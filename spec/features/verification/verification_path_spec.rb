@@ -41,15 +41,6 @@ feature 'Verification path' do
     expect(current_path).to eq new_letter_path
   end
 
-  xscenario "User received a verification sms" do
-    user = create(:user, residence_verified_at: Time.now, unconfirmed_phone: "666666666", sms_confirmation_code: "666")
-
-    login_as(user)
-    visit verification_path
-
-    expect(current_path).to eq edit_sms_path
-  end
-
   scenario "User received verification email" do
     user = create(:user, residence_verified_at: Time.now, email_verification_token: "1234")
 

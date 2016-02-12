@@ -2,7 +2,7 @@
 require 'rails_helper'
 
 feature 'Localization' do
-  xscenario 'Available locales appear in the locale switcher' do
+  scenario 'Available locales appear in the locale switcher' do
     visit '/'
 
     within('.locale-form .js-location-changer') do

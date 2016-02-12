@@ -204,7 +204,7 @@ feature 'Debates' do
       login_as(author)
     end
 
-    xscenario 'using featured tags', :js do
+    scenario 'using featured tags', :js do
       ['Medio Ambiente', 'Ciencia'].each do |tag_name|
         create(:tag, :featured, name: tag_name)
       end
@@ -369,7 +369,7 @@ feature 'Debates' do
     end
   end
 
-  xscenario "Flagging", :js do
+  scenario "Flagging", :js do
     user = create(:user)
     debate = create(:debate)
 
@@ -386,7 +386,7 @@ feature 'Debates' do
     expect(Flag.flagged?(user, debate)).to be
   end
 
-  xscenario "Unflagging", :js do
+  scenario "Unflagging", :js do
     user = create(:user)
     debate = create(:debate)
     Flag.flag(user, debate)
@@ -639,7 +639,7 @@ feature 'Debates' do
 
         context "Predefined date ranges" do
 
-          xscenario "Last day", :js do
+          scenario "Last day", :js do
             debate1 = create(:debate, created_at: 1.minute.ago)
             debate2 = create(:debate, created_at: 1.hour.ago)
             debate3 = create(:debate, created_at: 2.days.ago)
@@ -659,7 +659,7 @@ feature 'Debates' do
             end
           end
 
-          xscenario "Last week", :js do
+          scenario "Last week", :js do
             debate1 = create(:debate, created_at: 1.day.ago)
             debate2 = create(:debate, created_at: 5.days.ago)
             debate3 = create(:debate, created_at: 8.days.ago)
@@ -679,7 +679,7 @@ feature 'Debates' do
             end
           end
 
-          xscenario "Last month", :js do
+          scenario "Last month", :js do
             debate1 = create(:debate, created_at: 10.days.ago)
             debate2 = create(:debate, created_at: 20.days.ago)
             debate3 = create(:debate, created_at: 33.days.ago)
@@ -699,7 +699,7 @@ feature 'Debates' do
             end
           end
 
-          xscenario "Last year", :js do
+          scenario "Last year", :js do
             debate1 = create(:debate, created_at: 300.days.ago)
             debate2 = create(:debate, created_at: 350.days.ago)
             debate3 = create(:debate, created_at: 370.days.ago)
@@ -721,7 +721,7 @@ feature 'Debates' do
 
         end
 
-        xscenario "Search by custom date range", :js do
+        scenario "Search by custom date range", :js do
           debate1 = create(:debate, created_at: 2.days.ago)
           debate2 = create(:debate, created_at: 3.days.ago)
           debate3 = create(:debate, created_at: 9.days.ago)
@@ -743,7 +743,7 @@ feature 'Debates' do
           end
         end
 
-        xscenario "Search by multiple filters", :js do
+        scenario "Search by multiple filters", :js do
           ana  = create :user, official_level: 1
           john = create :user, official_level: 1
 
@@ -766,7 +766,7 @@ feature 'Debates' do
           end
         end
 
-        xscenario "Maintain advanced search criteria", :js do
+        scenario "Maintain advanced search criteria", :js do
           visit debates_path
           click_link "Advanced search"
 
@@ -783,7 +783,7 @@ feature 'Debates' do
           end
         end
 
-        xscenario "Maintain custom date search criteria", :js do
+        scenario "Maintain custom date search criteria", :js do
           visit debates_path
           click_link "Advanced search"
 
