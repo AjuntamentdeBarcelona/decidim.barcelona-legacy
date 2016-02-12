@@ -16,14 +16,6 @@ feature 'Proposals' do
 
     visit proposals_path
 
-    expect(page).to have_selector('#proposals .proposal-featured', count: 3)
-    featured_proposals.each do |featured_proposal|
-      within('#featured-proposals') do
-        expect(page).to have_content featured_proposal.title
-        expect(page).to have_css("a[href='#{proposal_path(featured_proposal)}']")
-      end
-    end
-
     expect(page).to have_selector('#proposals .proposal', count: 6)
     proposals.each do |proposal|
       within('#proposals') do
@@ -281,7 +273,7 @@ feature 'Proposals' do
 
     click_link 'Edit'
 
-    expect(page).to have_content("Edit Testing auto link")
+    expect(page).to have_content("Edit proposal")
     expect(page).not_to have_link('click me')
     expect(page.html).to_not include "<script>alert('hey')</script>"
   end
@@ -470,7 +462,17 @@ feature 'Proposals' do
 
   feature 'Proposal index order filters' do
 
-    scenario 'Default order is hot_score', :js do
+    scenario 'Default order is random', :js do
+      create(:proposal, title: 'Best proposal').update_column(:hot_score, 10)
+      create(:proposal, title: 'Worst proposal').update_column(:hot_score, 2)
+      create(:proposal, title: 'Medium proposal').update_column(:hot_score, 5)
+      
+      visit proposals_path
+
+      expect(page).to have_css('.proposal', count: 3)
+    end
+
+    scenario 'Proposals are ordered by hot_score', :js do
       create_featured_proposals
 
       create(:proposal, title: 'Best proposal').update_column(:hot_score, 10)
@@ -478,9 +480,10 @@ feature 'Proposals' do
       create(:proposal, title: 'Medium proposal').update_column(:hot_score, 5)
 
       visit proposals_path
+      click_link 'most active'
 
-      expect('Best proposal').to appear_before('Medium proposal')
-      expect('Medium proposal').to appear_before('Worst proposal')
+      expect(current_url).to include('order=hot_score')
+      expect(current_url).to include('page=1')
     end
 
     scenario 'Proposals are ordered by confidence_score', :js do
