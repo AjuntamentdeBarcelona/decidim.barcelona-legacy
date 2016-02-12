@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'securerandom'
 
 class ProposalXLSImporter
@@ -136,9 +137,7 @@ class ProposalXLSImporter
       user = User.new( username: name, email: email, password: password, password_confirmation: password, confirmed_at: DateTime.now, terms_of_service: "1")
       result = user.save
       debugger unless result
-      org = user.create_organization( name: name, responsible_name: name )
-      org.verify
-      org
+      user.create_organization( name: name, responsible_name: name )
     end
 
   end
