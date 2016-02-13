@@ -183,7 +183,7 @@ feature 'Commenting debates' do
     expect(page).to have_content "Can't be blank"
   end
 
-  xscenario 'Reply', :js do
+  scenario 'Reply', :js do
     citizen = create(:user, username: 'Ana')
     manuela = create(:user, username: 'Manuela')
     comment = create(:comment, commentable: debate, user: citizen)
@@ -206,7 +206,7 @@ feature 'Commenting debates' do
     end
   end
 
-  xscenario 'Errors on reply', :js do
+  scenario 'Errors on reply', :js do
     comment = create(:comment, commentable: debate, user: user)
 
     login_as(user)
@@ -221,7 +221,7 @@ feature 'Commenting debates' do
 
   end
 
-  xscenario "N replies", :js do
+  scenario "N replies", :js do
     parent = create(:comment, commentable: debate)
 
     7.times do
@@ -233,7 +233,7 @@ feature 'Commenting debates' do
     expect(page).to have_css(".comment.comment.comment.comment.comment.comment.comment.comment")
   end
 
-  xscenario "Flagging as inappropriate", :js do
+  scenario "Flagging as inappropriate", :js do
     comment = create(:comment, commentable: debate)
 
     login_as(user)
@@ -249,7 +249,7 @@ feature 'Commenting debates' do
     expect(Flag.flagged?(user, comment)).to be
   end
 
-  xscenario "Undoing flagging as inappropriate", :js do
+  scenario "Undoing flagging as inappropriate", :js do
     comment = create(:comment, commentable: debate)
     Flag.flag(user, comment)
 
@@ -310,7 +310,7 @@ feature 'Commenting debates' do
       end
     end
 
-    xscenario "can create reply as a moderator", :js do
+    scenario "can create reply as a moderator", :js do
       citizen = create(:user, username: "Ana")
       manuela = create(:user, username: "Manuela")
       moderator = create(:moderator, user: manuela)
@@ -364,7 +364,7 @@ feature 'Commenting debates' do
       end
     end
 
-    xscenario "can create reply as an administrator", :js do
+    scenario "can create reply as an administrator", :js do
       citizen = create(:user, username: "Ana")
       manuela = create(:user, username: "Manuela")
       admin   = create(:administrator, user: manuela)
@@ -451,7 +451,7 @@ feature 'Commenting debates' do
       end
     end
 
-    xscenario 'Trying to vote multiple times', :js do
+    scenario 'Trying to vote multiple times', :js do
       visit debate_path(@debate)
 
       within("#comment_#{@comment.id}_votes") do

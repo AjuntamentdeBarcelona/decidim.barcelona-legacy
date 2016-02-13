@@ -42,7 +42,7 @@ feature 'Stats' do
       expect(page).to have_content "Votes 6"
     end
 
-    xscenario 'Users' do
+    scenario 'Users' do
       1.times { create(:user, :level_three) }
       2.times { create(:user, :level_two) }
       3.times { create(:user) }
@@ -56,22 +56,6 @@ feature 'Stats' do
       expect(page).to have_content "Users 7"
     end
 
-  end
-
-  xscenario 'Level 2 user' do
-    expect(Census).to receive(:new)
-                       .with(a_hash_including(document_type: "dni",
-                                              document_number: "12345678Z"))
-                       .and_return double(:valid? => true)
-
-    visit account_path
-    click_link 'Verify my account'
-    verify_residence
-    confirm_phone
-
-    visit admin_stats_path
-
-    expect(page).to have_content "Level 2 User (1)"
   end
 
 end
