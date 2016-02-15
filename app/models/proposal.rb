@@ -35,7 +35,7 @@ class Proposal < ActiveRecord::Base
 
   before_validation :set_responsible_name
 
-  before_save :calculate_hot_score, :calculate_confidence_score
+  after_commit :calculate_scores
 
   scope :for_render,               -> { includes(:tags) }
   scope :sort_by_hot_score ,       -> { reorder(hot_score: :desc) }
@@ -117,15 +117,8 @@ class Proposal < ActiveRecord::Base
     save # updates the hot_score because there is a before_save
   end
 
-  def calculate_hot_score
-    self.hot_score = ScoreCalculator.hot_score(created_at,
-                                               total_votes,
-                                               total_votes,
-                                               comments_count)
-  end
-
-  def calculate_confidence_score
-    self.confidence_score = ScoreCalculator.confidence_score(total_votes, total_votes)
+  def calculate_scores
+    ProposalScoreCalculatorWorker.perform_async(id)
   end
 
   def after_hide

@@ -235,30 +235,50 @@ describe Proposal do
     it "increases for newer proposals" do
       old = create(:proposal, :with_hot_score, created_at: now - 1.day)
       new = create(:proposal, :with_hot_score, created_at: now)
+
+      old.reload
+      new.reload
+
       expect(new.hot_score).to be > old.hot_score
     end
 
     it "increases for proposals with more comments" do
       more_comments = create(:proposal, :with_hot_score, created_at: now, comments_count: 25)
       less_comments = create(:proposal, :with_hot_score, created_at: now, comments_count: 1)
+
+      more_comments.reload
+      less_comments.reload
+
       expect(more_comments.hot_score).to be > less_comments.hot_score
     end
 
     it "increases for proposals with more positive votes" do
       more_likes = create(:proposal, :with_hot_score, created_at: now, cached_votes_up: 5)
       less_likes = create(:proposal, :with_hot_score, created_at: now, cached_votes_up: 1)
+
+      more_likes.reload
+      less_likes.reload
+
       expect(more_likes.hot_score).to be > less_likes.hot_score
     end
 
     it "increases for proposals with more confidence" do
       more_confidence = create(:proposal, :with_hot_score, created_at: now, cached_votes_up: 700)
       less_confidence = create(:proposal, :with_hot_score, created_at: now, cached_votes_up: 9)
+
+      more_confidence.reload
+      less_confidence.reload
+
       expect(more_confidence.hot_score).to be > less_confidence.hot_score
     end
 
     it "decays in older proposals, even if they have more votes" do
       older_more_voted = create(:proposal, :with_hot_score, created_at: now - 5.days, cached_votes_up: 900)
       new_less_voted   = create(:proposal, :with_hot_score, created_at: now, cached_votes_up: 9)
+
+      older_more_voted.reload
+      new_less_voted.reload
+
       expect(new_less_voted.hot_score).to be > older_more_voted.hot_score
     end
 
@@ -297,27 +317,32 @@ describe Proposal do
 
     it "takes into account votes" do
       proposal = create(:proposal, :with_confidence_score, cached_votes_up: 100)
-      expect(proposal.confidence_score).to eq(10000)
+      expect(proposal.reload.confidence_score).to eq(10000)
 
       proposal = create(:proposal, :with_confidence_score, cached_votes_up: 0)
-      expect(proposal.confidence_score).to eq(1)
+      expect(proposal.reload.confidence_score).to eq(1)
 
       proposal = create(:proposal, :with_confidence_score, cached_votes_up: 75)
-      expect(proposal.confidence_score).to eq(7500)
+      expect(proposal.reload.confidence_score).to eq(7500)
 
       proposal = create(:proposal, :with_confidence_score, cached_votes_up: 750)
-      expect(proposal.confidence_score).to eq(75000)
+      expect(proposal.reload.confidence_score).to eq(75000)
 
       proposal = create(:proposal, :with_confidence_score, cached_votes_up: 10)
-      expect(proposal.confidence_score).to eq(1000)
+      expect(proposal.reload.confidence_score).to eq(1000)
     end
 
     describe 'actions which affect it' do
       let(:proposal) { create(:proposal, :with_confidence_score) }
 
       it "increases with like" do
+        proposal.reload
+
         previous = proposal.confidence_score
         5.times { proposal.register_vote(create(:user, verified_at: Time.now), true) }
+
+        proposal.reload
+
         expect(previous).to be < proposal.confidence_score
       end
     end
