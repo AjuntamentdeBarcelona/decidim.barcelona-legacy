@@ -466,6 +466,10 @@ ca:
           other: "%{count} Propostes"
       no_activity: Usuari sense activitat pública
       private_activity: Aquest usuari ha decidit mantenir en privat la seva llista d'activitats
+  validators:
+    style:
+      caps: "massa majúscules"
+      marks: "massa signes d'interrogació i/o exclamació"
   votes:
     agree: Estic d'acord
     anonymous: Massa vots anònims, per poder votar %{verify_account}.

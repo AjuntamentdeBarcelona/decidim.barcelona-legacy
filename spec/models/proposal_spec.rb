@@ -471,7 +471,7 @@ describe Proposal do
     context "case" do
 
       it "searches case insensite" do
-        proposal = create(:proposal, title: 'SHOUT')
+        proposal = create(:proposal, title: 'Shout')
 
         results = Proposal.search('shout')
         expect(results).to eq([proposal])
