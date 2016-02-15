@@ -5,7 +5,7 @@ module MeetingsDirectoryHelper
       filter: options[:filter],
       filterUrl: meetings_url,
       meetings: serialized_meetings(options[:meetings]),
-      districts: Proposal::DISTRICTS,
+      districts: District.all.map{ |district| [district.name, district.id] },
       categories: serialized_categories,
       subcategories: serialized_subcategories,
       tagCloud: options[:tag_cloud],

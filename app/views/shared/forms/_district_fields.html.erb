@@ -10,6 +10,6 @@
 </div>
 
 <div class="small-12 column">
-  <%= f.select :district, Proposal::DISTRICTS %>
+  <%= f.select :district, District.all.map{|d| [d.name, d.id] } %>
 </div>
 

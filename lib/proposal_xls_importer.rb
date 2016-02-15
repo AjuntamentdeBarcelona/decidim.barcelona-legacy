@@ -40,7 +40,7 @@ class ProposalXLSImporter
     proposal = Proposal.new(attrs)
     result = proposal.save
     unless result
-      district = Proposal::DISTRICTS.detect { |district| proposal.district == district[1].to_i }
+      district = District.find(proposal.district)
       puts " #{district}|#{proposal.title}|#{proposal.errors.messages.to_s}"
     end
   end
@@ -77,7 +77,7 @@ class ProposalXLSImporter
       if @data[:district_name] == "Barcelona" or @data[:district_name] == "Tota la Ciutat (PAM)"
         @data[:scope] = "city"
       else
-        district = Proposal::DISTRICTS.detect { |district| district[0] == @data[:district_name] }
+        district = District.all.find { |d| d.name == @data[:district_name] }
         @data[:scope] = "district"
         @data[:district_id] = district[1]
       end

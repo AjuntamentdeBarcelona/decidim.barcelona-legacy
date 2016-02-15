@@ -2,16 +2,16 @@ class ProposalDecorator < ApplicationDecorator
   delegate_all
 
   def district_name
-    district[0] if district
+    district.name if district
   end
 
   def district_id
-    district[1] if district
+    district.id if district
   end
 
   private
 
   def district
-    @district ||= Proposal::DISTRICTS.detect { |district| object.district == district[1].to_i }
+    @district ||= District.find(object.district)
   end
 end
