@@ -22,6 +22,10 @@ class Meeting < ActiveRecord::Base
   validates :scope, inclusion: { in: %w(city district) }
   validates :district, inclusion: { in: District.all.map(&:id), allow_nil: true }
 
+  def closed?
+    !!closed_at
+  end
+
   pg_search_scope :pg_search, {
     against: {
       title:       'A',
@@ -51,9 +55,5 @@ class Meeting < ActiveRecord::Base
 
   def self.search(terms)
     self.pg_search(terms)
-  end
-
-  def supports
-    proposals.sum(:votes)
   end
 end

@@ -4,6 +4,7 @@
   .meeting-title{
     font-size: rem-calc(16);
     font-weight: 600;
+    display: block;
   }
 
   .meeting-held-at{
@@ -23,6 +24,16 @@
     }
   }
 
+  .tags{
+    display: inline-block;
+    margin-right: rem-calc(5);
+  }
+
+  .relative-time{
+    color: lighten($text, 40%);
+    display: inline-block;
+  }
+
   .meeting-description{
     margin-top: rem-calc(10);
   }
@@ -40,5 +51,82 @@
     }
 
     padding-left: 1.5em;
+  }
+}
+
+.meeting-show{
+  .meeting-date{
+    @include arrow-box(#d8d7d7, bottom);
+
+    text-align: center;
+    .date, .week-day{
+      display: block;
+      color: $text;
+      font-style: normal;
+    }
+
+    .date{
+      font-size: rem-calc(18);
+    }
+
+    .week-day{
+      font-size: rem-calc(18);
+      font-weight: 300;
+    }
+
+    .time{
+      display: block;
+      margin-top: 1rem;
+      font-size: rem-calc(18);
+      font-weight: 300;
+    }
+
+    margin-bottom: 1rem;
+  }
+
+  .description{
+    font-size: rem-calc(22);
+    font-weight: 300;
+  }
+
+  .meeting-map{
+    margin: 1rem 0;
+  }
+
+  .sidebar{
+    margin-top: $line-height * 1.5;
+  }
+
+  .address{
+    margin: 2rem 0;
+    font-size: rem-calc(18);
+  }
+
+  .sidebar{
+    h3{
+      margin-top: 2rem;
+      text-transform: none;
+      font-size: rem-calc(22);
+      font-weight: 300;
+    }
+
+    .proposals{
+      ul{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        border: 1px solid #e6e6e6;
+      }
+
+      li{
+        border-bottom: 1px solid #e6e6e6;
+
+        a{
+          display: block;
+          padding: rem-calc(15);
+        }
+      }
+    }
   }
 }

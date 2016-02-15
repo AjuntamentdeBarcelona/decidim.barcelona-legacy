@@ -7,9 +7,9 @@
             social_description: text_with_links(@proposal.summary) %>
 <% end %>
 
-<% cache [locale_and_user_status(@proposal), @proposal, @proposal.author, Flag.flagged?(current_user, @proposal), @proposal_votes] do %>
 
-  <section class="proposal-show" data-timestamp="<%= @proposal.created_at.to_i %>">
+<section class="proposal-show" data-timestamp="<%= @proposal.created_at.to_i %>">
+  <% cache [locale_and_user_status(@proposal), @proposal, @proposal.author, Flag.flagged?(current_user, @proposal), @proposal_votes] do %>
     <div id="<%= dom_id(@proposal) %>" class="row">
       <div class="small-12 medium-9 column">
         <i class="icon-angle-left left"></i>&nbsp;
@@ -89,23 +89,25 @@
         <%= social_share_button_tag(@proposal.title) %>
       </aside>
     </div>
+  <% end %>
 
-    <% unless @proposal.meetings.empty? %>
-      <div class="row">
-        <div class="small-12 medium-9 column">
-          <h2><%= t("proposals.show.meetings_title") %></h2>
-          <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
-            <% @proposal.meetings.sample(8).each do |meeting| %>
+  <% if @proposal.meetings.any? %>
+    <div class="row">
+      <div class="small-12 medium-9 column">
+        <h2><%= t("proposals.show.meetings_title") %></h2>
+        <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+          <% @proposal.meeting_proposals.each do |meeting_proposal| %>
               <li class="meeting">
-                <div class="date"><%= l meeting.held_at %></div>
-                <div class="title"><%= link_to meeting.title, meeting %></div>
-                <div class="support"><%= t("proposals.show.meeting_supports", counter: meeting.supports) %></div>
+                <div class="date"><%= l meeting_proposal.meeting.held_at %></div>
+                <div class="title"><%= link_to meeting_proposal.meeting.title, meeting_proposal.meeting %></div>
+                <% if meeting_proposal.meeting.closed? %>
+                  <div class="support"><%= t("proposals.show.meeting_supports", counter: meeting_proposal.votes) %></div>
+                <% end %>
               </li>
-            <% end %>
-          </ul>
+          <% end %>
         </ul>
-      </div>
-    <% end %>
+      </ul>
+    </div>
   </section>
 <% end %>
 <%= render "proposals/comments" %>

@@ -55,31 +55,6 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: $font-bold;
 }
 
-h1 {
-  @include h1();
-}
-
-h2 {
-  @include h2();
-}
-
-h3 {
-  @include h3();
-}
-
-h4 {
-  @include h4();
-}
-
-h5 {
-  @include h5();
-}
-
-h6 {
-  @include h6();
-  font-weight: $font-normal;
-}
-
 body {
   font-size: $base-font-size;
   line-height: $base-line-height;
