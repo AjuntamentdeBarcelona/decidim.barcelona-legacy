@@ -31,7 +31,7 @@ class Moderation::MeetingsController < Moderation::BaseController
               row.push meeting.address
               row.push meeting.category.try(:decorate).try(:name)
               row.push meeting.subcategory.try(:decorate).try(:name)
-              row.push Proposal::DISTRICTS.find{ |d| d[1] == meeting.district.try(:to_s) }.try(:first)
+              row.push District.find(meeting.district).try(:name)
               row.push meeting.closed_at ? "CLOSED" : nil
               row.push meeting.description
 
