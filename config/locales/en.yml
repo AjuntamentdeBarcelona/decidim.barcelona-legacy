@@ -470,6 +470,10 @@ en:
           other: "%{count} Proposals"
       no_activity: User has no public activity
       private_activity: This user decided to keep the activity list private
+  validators:
+    style:
+      caps: "too many capital letters"
+      marks: "too many exclamation and/or question marks"
   votes:
     agree: I agree
     anonymous: Too many anonymous votes to admit vote %{verify_account}.

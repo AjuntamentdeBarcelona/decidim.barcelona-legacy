@@ -470,6 +470,10 @@ es:
           other: "%{count} Propuestas"
       no_activity: Usuario sin actividad pública
       private_activity: Este usuario ha decidido mantener en privado su lista de actividades
+  validators:
+    style:
+      caps: "demasiadas mayúsculas"
+      marks: "demasiados signos de interrocación y/o exclamación"
   votes:
     agree: Estoy de acuerdo
     anonymous: Demasiados votos anónimos, para poder votar %{verify_account}.
