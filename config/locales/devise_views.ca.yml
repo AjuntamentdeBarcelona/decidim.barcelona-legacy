@@ -41,6 +41,7 @@ ca:
       registrations:
         new:
           email_label: Adreça electrònica
+          organization_document_number_label: NIF
           organization_name_label: Nom de l'organització
           password_confirmation_label: Confirma la contrasenya
           password_label: Contrasenya

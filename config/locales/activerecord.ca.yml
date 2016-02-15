@@ -12,6 +12,7 @@ ca:
         title: Títol
       organization:
         name: Nom d'organització
+        document_number: NIF
         responsible_name: Persona responsable del col·lectiu
       proposal:
         author: Autor/a

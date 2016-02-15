@@ -41,6 +41,7 @@ en:
       registrations:
         new:
           email_label: Email
+          organization_document_number_label: NIF
           organization_name_label: Name of organisation
           password_confirmation_label: Confirm password
           password_label: Password
