@@ -70,3 +70,4 @@ en:
       organization:
         name: Name of organisation
         responsible_name: Person responsible for the group
+        document_number: NIF
