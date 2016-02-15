@@ -34,9 +34,9 @@ ca:
         unlock_link: Desbloqueja el meu compte
     menu:
       login_items:
-        login: Entrada
+        login: Entra
         logout: Surt
-        signup: Registra'm
+        signup: Registra't
     organizations:
       registrations:
         new:
@@ -48,8 +48,8 @@ ca:
           phone_number_label: Telèfon
           responsible_name_label: Nom i cognoms de la persona responsable del col·lectiu
           responsible_name_note: Nom de la persona que representa l'associació o col·lectiu, en nom de la qual es presentaran les propostes
-          submit: Registra'm
-          title: Registra'm com organització/col·lectiu
+          submit: Registra't
+          title: Registra't com organització/col·lectiu
         success:
           back_to_index: Ho he entès; torna a la pàgina principal
           instructions_1_html: En breu <b>ens posarem en contacte amb tu</b> per verificar que realment representes aquest col·lectiu.
@@ -72,18 +72,18 @@ ca:
         email_label: Adreça electrònica
         password_label: Contrasenya
         remember_me: Recorda'm
-        submit: Entrada
-        title: Entrada
+        submit: Entra
+        title: Entra
     shared:
       links:
-        login: Entrada
+        login: Entra
         new_confirmation: No has rebut instruccions per confirmar el compte?
         new_password: Has oblidat la contrasenya?
         new_unlock: No has rebut instruccions per desbloquejar el compte?
         signin_with_provider: Inicia sessió amb %{provider}
         signup: No tens cap compte? %{signup_link}
         signup_link: Registra't
-        organization_signup: Registra'm com organització/col·lectiu
+        organization_signup: Registra't com organització/col·lectiu
     unlocks:
       new:
         email_label: Adreça electrònica
@@ -115,10 +115,10 @@ ca:
           organization_signup_link: Registra't aquí
           password_confirmation_label: Confirma la contrasenya
           password_label: Contrasenya
-          submit: Registra'm
+          submit: Registra't
           terms: En registrar-te acceptes les %{terms}
           terms_link: condicions d'ús
-          title: Registra'm
+          title: Registra't
           username_is_available: Nom d'usuari disponible
           username_is_not_available: Nom d'usuari ja existent
           username_label: Nom d'usuari

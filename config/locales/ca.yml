@@ -42,7 +42,7 @@ ca:
     new:
       form:
         submit_button: Crear eix
-    title: Pla Municipal
+    title: Pla municipal
   comments:
     comment:
       admin: Administrador
@@ -131,7 +131,7 @@ ca:
         submit_button: Comença un debat
       info: Si el que vols és fer una proposta, aquesta és la secció incorrecta, entra en %{info_link}.
       info_link: crear nova proposta
-      more_info: Informa't
+      more_info: Informació
       recommendation_four: Gaudeix d'aquest espai, de les veus que l'omplen, també és teu.
       recommendation_one: No escriguis el títol del debat o frases senceres en majúscules. A internet això es considera cridar. I a ningú li agrada que li cridin.
       recommendation_three: Les crítiques despietades són molt benvingudes. Aquest és un espai de pensament. Però et recomanem conservar l'elegància i la intel·ligència. El món és millor amb elles presents.
@@ -183,7 +183,7 @@ ca:
       code_links: Aquesta web està feta amb %{github_decidim_url}, basat en %{github_consul_url}.
       conditions: Condicions d'ús
       free_software: software lliure
-      more_info: Informa't
+      more_info: Informació
     header:
       administration: Administrar
       debates: Debats
@@ -191,7 +191,7 @@ ca:
       locale: 'Idioma:'
       meetings: Cites presencials
       moderation: Moderar
-      more_information: Informa't
+      more_information: Informació
       my_account_link: El meu compte
       my_activity_link: La meva activitat
       new_notifications:
@@ -241,7 +241,7 @@ ca:
     index:
       close: Tancar
       delete: Esborrar
-      description: Les cites presencials són jornades, debats, trobades a l’espai públic i altres tipus cites per debatre propostes pel Pla Municipal relacionades amb cadascun dels eixos temàtics i les línies estratègiques, tant a nivell de tota la ciutat, com a nivell de barris i districtes.
+      description: Les cites presencials són jornades, debats, trobades a l’espai públic i altres tipus cites per debatre propostes pel Pla municipal relacionades amb cadascun dels eixos temàtics i les línies estratègiques, tant a nivell de tota la ciutat, com a nivell de barris i districtes.
       edit: Editar
       new: Crear cita
       title: Cites presencials

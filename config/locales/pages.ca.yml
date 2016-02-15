@@ -4,12 +4,12 @@ ca:
     download:
       download-district: Descarrega't el PAD de %{district}
       download-pam: Descarrega't el PAM
-      title: Descarrega't el Pla Municipal
+      title: Descarrega't el Pla municipal
     more_information:
       faq:
         question-1:
           answer: El document inicial recull les propostes que l’equip de govern posa sobre la taula per consensuar amb la ciutadania i amb la resta de grups polítics presents a l’Ajuntament. Inclou les propostes que ja s’han començat a treballar en sessions presencials amb entitats i associacions dels deu districtes.
-          title: Quines propostes inclou el Pla Municipal?
+          title: Quines propostes inclou el Pla municipal?
         question-10:
           answer: El primer és crear un compte bàsic. Per això fem clic a l'enllaç Crea i emplenem les dades que ens demanen. És un requisit marcar la casella d'acceptació de les condicions d'ús, i emplenar correctament el CAPTCHA (a la part inferior del formulari se'ns presenta una imatge amb unes lletres deformades que haurem d'introduir a la casella inferior com a mesura de seguretat; tingues en compte la diferència entre majúscules i minúscules). Creant un nou compte ens arribarà un correu electrònic a l'adreça que hàgim especificat, i haurem de fer clic a l'enllaç que conté (l'enllaç que posa "Confirmar el meu compte") per acabar de crear el compte.
           answer-2: Un cop creat el compte bàsic, i després d'entrar amb el nostre correu i contrasenya, el sistema ens donarà l'opció de fer-ne una verificació bàsica. Per fer-ho, fem clic a l'enllaç "El meu compte" de la part superior dreta, i després al botó "Verificar el meu compte". El primer que se'ns demanarà és que introduïm les nostres dades de residència, per verificar que estem empadronats al municipi de Barcelona (és important introduir el número de document amb la lletra, i marcar la casella d'acceptació d'accés al Padró). Si les dades són correctes el nostre compte ens permetrà donar suport a les propostes.
@@ -28,7 +28,7 @@ ca:
           title: Com puc canviar la meva adreça electrònica, el meu nom d'usuari, la contrasenya, donar-me de baixa o activar o desactivar les notificacions que m'arriben al correu electrònic?
         question-2:
           answer: Qualsevol persona major de 16 anys pot fer aportacions i propostes, i donar suport i matisar les altres actuacions proposades, de manera que el debat serveixi per enriquir el document final que haurà d’aprovar el Ple de l’Ajuntament.
-          title: Qui pot fer aportacions al Pla Municipal?
+          title: Qui pot fer aportacions al Pla municipal?
         question-3:
           answer: L’ajuntament organitza un seguit de jornades, tallers i debats on, de manera presencial, es poden fer i debatre propostes relacionades tant amb la ciutat, com amb els barris i districtes. N’hi ha de sectorials i n’hi ha de territorials. Aquí hi ha el calendari previst. També es pot participar i debatre digitalment per mitjà d’aquesta plataforma digital.
           title: Com es poden fer propostes?
@@ -164,7 +164,7 @@ ca:
           item-4: Marca una proposta i segueix-ne tota l’evolució, des dels comentaris d’altres persones fins al document final del Pla municipal.
           title: Fes seguiment de les propostes
         title: Què puc fer a decidim.barcelona?
-      title: Informa't
+      title: Informació
     titles:
       accessibility: Accessibilitat
     verify:
