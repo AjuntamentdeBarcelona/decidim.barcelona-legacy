@@ -80,6 +80,7 @@ ca:
         new_confirmation: No has rebut instruccions per confirmar el compte?
         new_password: Has oblidat la contrasenya?
         new_unlock: No has rebut instruccions per desbloquejar el compte?
+        organization_signup: Registra'm com organització/col·lectiu
         signin_with_provider: Inicia sessió amb %{provider}
         signup: No tens cap compte? %{signup_link}
         signup_link: Registra't
