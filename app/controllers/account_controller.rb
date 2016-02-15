@@ -27,9 +27,13 @@ class AccountController < ApplicationController
 
     def account_params
       if @account.organization?
-        params.require(:account).permit(:phone_number, :email_on_comment, :email_on_comment_reply, :newsletter, organization_attributes: [:name, :responsible_name])
+        params.require(:account).permit(:phone_number, :email_on_comment,
+                                        :email_on_comment_reply, :newsletter,
+                                        :weekly_summary, organization_attributes: [:name, :responsible_name])
       else
-        params.require(:account).permit(:username, :public_activity, :email_on_comment, :email_on_comment_reply, :newsletter)
+        params.require(:account).permit(:username, :public_activity,
+                                        :email_on_comment,
+                                        :email_on_comment_reply, :newsletter, :weekly_summary)
       end
     end
 
