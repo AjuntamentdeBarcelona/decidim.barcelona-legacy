@@ -2,15 +2,15 @@
 ca:
   welcome:
     categories:
-      subtitle: Des de l’Ajuntament de Barcelona hem el·laborat una primera proposta de pla per a la ciutat i pels districtes que inclou diferents propostes d’actuació en diferents eixos i línies estratègiques
-      title: Els cinc eixos del Pla Municipal
+      subtitle: Des de l’Ajuntament de Barcelona hem el·laborat una primera proposta de pla per a la ciutat i per als districtes que inclou diferents actuacions en diversos eixos i línies estratègiques
+      title: Els cinc eixos del Pla municipal
     description:
-      text: "<p>El <strong>Pla Municipal</strong> s’elabora a l’inici de cada mandat i estableix les línies prioritàries, els objectius i les actuacions de l’acció del govern. És, per tant, el full de ruta municipal que orienta quin model volem per la nostra ciutat.</p><p>L’Ajuntament de Barcelona obre <strong>un procés de participació ciutadana</strong> per construir, pensar i debatre entre tots i totes les actuacions i prioritats dels propers tres anys. Un pas endavant en la construcció col·lectiva d’una ciutat més justa i democràtica.</p>"
-      title: Què és el Pla Municipal?
+      text: "<p>El <strong>Pla municipal</strong> s’elabora a l’inici de cada mandat i estableix les línies prioritàries, els objectius i les actuacions de l’acció del govern. És, per tant, el full de ruta municipal que orienta quin model volem per la nostra ciutat.</p><p>L’Ajuntament de Barcelona obre <strong>un procés de participació ciutadana</strong> per construir, pensar i debatre entre tots i totes les actuacions i prioritats dels propers tres anys. Un pas endavant en la construcció col·lectiva d’una ciutat més justa i democràtica.</p>"
+      title: Què és el Pla municipal?
     download:
       links:
-        epub: Descarrega’t el Pla Municipal
-        pam: Navega pel Pla Municipal i dels Districtes
+        epub: Baixa el Pla municipal
+        pam: Navega pel Pla municipal i dels districtes
       subtitle: Consulta el document inicial que recull les propostes que l’equip de govern posa sobre la taula per consensuar amb la ciutadania i amb la resta de grups polítics amb representació a l’Ajuntament.
       title: 73 barris, una Barcelona. Cap a la ciutat dels drets i les oportunitats
     header-motto:
@@ -19,12 +19,12 @@ ca:
       title: Cites presencials
     tutorial:
       step-1:
-        description: Navegueu per les propostes de l'Ajuntament de Barcelona, comenteu-les i doneu-hi suport
+        description: Navega per les propostes de l'Ajuntament de Barcelona, comenta-les i dóna-hi suport.
       step-2:
-        description: Llegiu i comenteu les propostes ciutadanes i doneu-hi suport
+        description: Llegeix i comenta les propostes ciutadanes i dóna-hi suport.
       step-3:
-        description: Feu les vostres propostes d'actuació
+        description: Fes les teves propostes d'actuació.
       step-4:
-        description: Descobriu els debats presencials que teniu a prop
-      subtitle: Descobriu, debateu, proposeu les actuacions per a la ciutat de Barcelona dels propers 4 anys
+        description: Descobreix els debats presencials que tens a prop.
+      subtitle: Descobreix, debat i proposa les actuacions per a la ciutat de Barcelona durant aquest mandat
       title: Com puc participar-hi?
