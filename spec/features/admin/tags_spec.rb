@@ -4,7 +4,7 @@ feature 'Admin tags' do
 
   background do
     @tag1 = create(:tag)
-    login_as(create(:administrator).user)
+    login_as(create(:administrator))
   end
 
   scenario 'Index' do

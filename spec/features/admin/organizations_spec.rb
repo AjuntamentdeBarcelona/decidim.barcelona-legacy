@@ -3,9 +3,7 @@ require 'rails_helper'
 feature 'Admin::Organizations' do
 
   background do
-    administrator = create(:user)
-    create(:administrator, user: administrator)
-
+    administrator = create(:administrator)
     login_as(administrator)
   end
 

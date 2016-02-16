@@ -1,23 +1,25 @@
 # coding: utf-8
 # Default admin user (change password after first deploy to a server!)
-if Administrator.count == 0 && !Rails.env.test?
-  admin = User.create!(username: 'admin', email: 'admin@bcn.cat', password: '12345678', password_confirmation: '12345678', confirmed_at: Time.now, terms_of_service: "1")
-  admin.create_administrator
+if User.administrators.count == 0 && !Rails.env.test?
+  admin = User.create!(username: 'admin', email: 'admin@bcn.cat',
+                       password: '12345678', password_confirmation: '12345678',
+                       confirmed_at: Time.now, terms_of_service: "1", roles: ["administrator"])
 end
 
 if ENV["SEED"]
   puts "Creating Geozones"
   ('A'..'Z').each{ |i| Geozone.create(name: "District #{i}") }
 
-  def create_user(email, username = Faker::Name.name)
+  def create_user(email, username = Faker::Name.name, roles = [])
     pwd = '12345678'
     puts "    #{username}"
-    User.create!(username: username, email: email, password: pwd, password_confirmation: pwd, confirmed_at: Time.now, terms_of_service: "1")
+    User.create!(username: username, email: email, password: pwd,
+                 password_confirmation: pwd, confirmed_at: Time.now,
+                 terms_of_service: "1", roles: [])
   end
 
   puts "Creating users"
-  moderator = create_user('mod@bcn.cat', 'mod')
-  moderator.create_moderator
+  moderator = create_user('mod@bcn.cat', 'mod', ["moderator"])
 
   (1..10).each do |i|
     org_name = Faker::Company.name

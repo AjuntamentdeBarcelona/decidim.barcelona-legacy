@@ -61,21 +61,10 @@ ca:
       hidden_proposals: Propostes ocultes
       hidden_users: Usuaris bloquejats
       incomplete_verifications: Verificacions incompletes
-      moderators: Moderadors
       officials: Càrrecs públics
       organizations: Organitzacions
       spending_proposals: Propostes de despesa
       stats: Estadístiques
-    moderators:
-      index:
-        title: Moderadors
-      moderator:
-        add: Afegeix
-        delete: Esborra
-      search:
-        email_placeholder: Cerca usuari per correu electrònic
-        search: Cerca
-        user_not_found: Usuari no trobat
     officials:
       edit:
         back: Torna

@@ -296,7 +296,7 @@ feature 'Commenting debates' do
     scenario "can create comment as a moderator", :js do
       moderator = create(:moderator)
 
-      login_as(moderator.user)
+      login_as(moderator)
       visit debate_path(debate)
 
       fill_in "comment-body-debate_#{debate.id}", with: "I am moderating!"
@@ -311,12 +311,10 @@ feature 'Commenting debates' do
     end
 
     scenario "can create reply as a moderator", :js do
-      citizen = create(:user, username: "Ana")
-      manuela = create(:user, username: "Manuela")
-      moderator = create(:moderator, user: manuela)
-      comment = create(:comment, commentable: debate, user: citizen)
+      moderator = create(:moderator)
+      comment = create(:comment, commentable: debate)
 
-      login_as(manuela)
+      login_as(moderator)
       visit debate_path(debate)
 
       click_link "Reply"
@@ -339,7 +337,7 @@ feature 'Commenting debates' do
     scenario "can not comment as an administrator" do
       moderator = create(:moderator)
 
-      login_as(moderator.user)
+      login_as(moderator)
       visit debate_path(debate)
 
       expect(page).to_not have_content "Comment as administrator"
@@ -350,7 +348,7 @@ feature 'Commenting debates' do
     scenario "can create comment as an administrator", :js do
       admin = create(:administrator)
 
-      login_as(admin.user)
+      login_as(admin)
       visit debate_path(debate)
 
       fill_in "comment-body-debate_#{debate.id}", with: "I am your Admin!"
@@ -366,11 +364,10 @@ feature 'Commenting debates' do
 
     scenario "can create reply as an administrator", :js do
       citizen = create(:user, username: "Ana")
-      manuela = create(:user, username: "Manuela")
-      admin   = create(:administrator, user: manuela)
+      admin = create(:administrator, username: "Manuela")
       comment = create(:comment, commentable: debate, user: citizen)
 
-      login_as(manuela)
+      login_as(admin)
       visit debate_path(debate)
 
       click_link "Reply"
@@ -393,7 +390,7 @@ feature 'Commenting debates' do
     scenario "can not comment as a moderator" do
       admin  = create(:administrator)
 
-      login_as(admin.user)
+      login_as(admin)
       visit debate_path(debate)
 
       expect(page).to_not have_content "Comment as moderator"

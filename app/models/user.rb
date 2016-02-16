@@ -10,8 +10,6 @@ class User < ActiveRecord::Base
   acts_as_paranoid column: :hidden_at
   include ActsAsParanoidAliases
 
-  has_one :administrator
-  has_one :moderator
   has_one :organization
   has_one :lock
   has_many :flags
@@ -42,8 +40,8 @@ class User < ActiveRecord::Base
 
   attr_accessor :skip_password_validation
 
-  scope :administrators, -> { joins(:administrators) }
-  scope :moderators,     -> { joins(:moderator) }
+  scope :administrators, -> { where.contains(roles: ['administrator']) }
+  scope :moderators,     -> { where.contains(roles: ['moderator']) }
   scope :organizations,  -> { joins(:organization) }
   scope :officials,      -> { where("official_level > 0") }
   scope :for_render,     -> { includes(:organization) }
@@ -87,11 +85,11 @@ class User < ActiveRecord::Base
   end
 
   def administrator?
-    administrator.present?
+    roles.include?('administrator')
   end
 
   def moderator?
-    moderator.present?
+    roles.include?('moderator')
   end
 
   def organization?

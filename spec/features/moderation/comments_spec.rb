@@ -8,7 +8,7 @@ feature 'Moderate comments' do
 
     comment = create(:comment)
 
-    login_as(moderator.user)
+    login_as(moderator)
     visit debate_path(comment.commentable)
 
     within("#comment_#{comment.id}") do
@@ -26,9 +26,9 @@ feature 'Moderate comments' do
 
   scenario 'Can not hide own comment' do
     moderator = create(:moderator)
-    comment = create(:comment, user: moderator.user)
+    comment = create(:comment, user: moderator)
 
-    login_as(moderator.user)
+    login_as(moderator)
     visit debate_path(comment.commentable)
 
     within("#comment_#{comment.id}") do
@@ -41,7 +41,7 @@ feature 'Moderate comments' do
 
     background do
       moderator = create(:moderator)
-      login_as(moderator.user)
+      login_as(moderator)
     end
 
     feature 'moderate in bulk' do

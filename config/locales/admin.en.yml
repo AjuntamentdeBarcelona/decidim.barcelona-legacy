@@ -61,21 +61,10 @@ en:
       hidden_proposals: Hidden proposals
       hidden_users: Blocked users
       incomplete_verifications: Incomplete verifications
-      moderators: Moderators
       officials: Public Officials
       organizations: Organisations
       spending_proposals: Spending proposals
       stats: Statistics
-    moderators:
-      index:
-        title: Moderators
-      moderator:
-        add: Add
-        delete: Delete
-      search:
-        email_placeholder: Search user by email
-        search: Search
-        user_not_found: User not found
     officials:
       edit:
         back: Back

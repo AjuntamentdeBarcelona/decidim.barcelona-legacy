@@ -14,7 +14,7 @@
   <% @activity.each do |activity| %>
     <tr id="<%= dom_id(activity) %>">
       <td>
-        <%= activity.actionable_type.constantize.model_name.human %><br>
+        <%= activity.actionable.class.model_name.human %><br>
         <span class="date"><%= l activity.actionable.created_at.to_date %></span>
       </td>
       <td>
@@ -22,7 +22,7 @@
         <span class="date"><%= l activity.created_at.to_date %></span>
       </td>
       <td>
-        <% case activity.actionable_type %>
+        <% case activity.actionable.class.name %>
         <% when "User" %>
           <%= activity.actionable.username %> (<%= activity.actionable.email %>)
         <% when "Comment" %>

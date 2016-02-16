@@ -4,7 +4,7 @@ feature 'Admin comments' do
 
   background do
     admin = create(:administrator)
-    login_as(admin.user)
+    login_as(admin)
   end
 
   scenario "Do not show comments from blocked users" do

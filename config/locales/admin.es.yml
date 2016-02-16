@@ -61,21 +61,10 @@ es:
       hidden_proposals: Propuestas ocultas
       hidden_users: Usuarios bloqueados
       incomplete_verifications: Verificaciones incompletas
-      moderators: Moderadores
       officials: Cargos públicos
       organizations: Organizaciones
       spending_proposals: Propuestas de gasto
       stats: Estadísticas
-    moderators:
-      index:
-        title: Moderadores
-      moderator:
-        add: Añadir
-        delete: Borrar
-      search:
-        email_placeholder: Buscar usuario por correo electrónico
-        search: Buscar
-        user_not_found: Usuario no encontrado
     officials:
       edit:
         back: Volver

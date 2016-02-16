@@ -295,7 +295,7 @@ feature 'Commenting proposals' do
     scenario "can create comment as a moderator", :js do
       moderator = create(:moderator)
 
-      login_as(moderator.user)
+      login_as(moderator)
       visit proposal_path(proposal)
 
       fill_in "comment-body-proposal_#{proposal.id}", with: "I am moderating!"
@@ -311,11 +311,10 @@ feature 'Commenting proposals' do
 
     scenario "can create reply as a moderator", :js do
       citizen = create(:user, username: "Ana")
-      manuela = create(:user, username: "Manuela")
-      moderator = create(:moderator, user: manuela)
+      moderator = create(:moderator, username: "Manuela")
       comment = create(:comment, commentable: proposal, user: citizen)
 
-      login_as(manuela)
+      login_as(moderator)
       visit proposal_path(proposal)
 
       click_link "Reply"
@@ -338,7 +337,7 @@ feature 'Commenting proposals' do
     scenario "can not comment as an administrator" do
       moderator = create(:moderator)
 
-      login_as(moderator.user)
+      login_as(moderator)
       visit proposal_path(proposal)
 
       expect(page).to_not have_content "Comment as administrator"
@@ -349,7 +348,7 @@ feature 'Commenting proposals' do
     scenario "can create comment as an administrator", :js do
       admin = create(:administrator)
 
-      login_as(admin.user)
+      login_as(admin)
       visit proposal_path(proposal)
 
       fill_in "comment-body-proposal_#{proposal.id}", with: "I am your Admin!"
@@ -365,11 +364,10 @@ feature 'Commenting proposals' do
 
     scenario "can create reply as an administrator", :js do
       citizen = create(:user, username: "Ana")
-      manuela = create(:user, username: "Manuela")
-      admin   = create(:administrator, user: manuela)
+      admin = create(:administrator, username: "Manuela")
       comment = create(:comment, commentable: proposal, user: citizen)
 
-      login_as(manuela)
+      login_as(admin)
       visit proposal_path(proposal)
 
       click_link "Reply"
@@ -392,7 +390,7 @@ feature 'Commenting proposals' do
     scenario "can not comment as a moderator" do
       admin  = create(:administrator)
 
-      login_as(admin.user)
+      login_as(admin)
       visit proposal_path(proposal)
 
       expect(page).to_not have_content "Comment as moderator"

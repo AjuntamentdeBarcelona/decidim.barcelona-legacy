@@ -11,7 +11,7 @@ feature 'Moderate users' do
     debate3 = create(:debate)
     comment3 = create(:comment, user: citizen, commentable: debate3, body: 'SPAMMER')
 
-    login_as(moderator.user)
+    login_as(moderator)
     visit debates_path
 
     expect(page).to have_content(debate1.title)
@@ -54,7 +54,7 @@ feature 'Moderate users' do
     citizen = create(:user, username: 'Wanda Maximoff')
     moderator = create(:moderator)
 
-    login_as(moderator.user)
+    login_as(moderator)
 
     visit moderation_users_path
 

@@ -2,8 +2,7 @@ require 'rails_helper'
 require 'cancan/matchers'
 
 describe "Abilities::Administrator" do
-  subject(:ability) { Ability.new(user) }
-  let(:user) { administrator.user }
+  subject(:ability) { Ability.new(administrator) }
   let(:administrator) { create(:administrator) }
 
   let(:other_user) { create(:user) }

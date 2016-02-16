@@ -5,14 +5,14 @@ feature 'Admin debates' do
   scenario 'Disabled with a feature flag' do
     Setting['feature.debates'] = nil
     admin = create(:administrator)
-    login_as(admin.user)
+    login_as(admin)
 
     expect{ visit admin_debates_path }.to raise_exception(FeatureFlags::FeatureDisabled)
   end
 
   background do
     admin = create(:administrator)
-    login_as(admin.user)
+    login_as(admin)
   end
 
   scenario 'Restore' do
