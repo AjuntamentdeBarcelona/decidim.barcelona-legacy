@@ -61,7 +61,7 @@ class Proposal < ActiveRecord::Base
       tags: :name
     },
     using: {
-      tsearch: { dictionary: "spanish", tsvector_column: 'tsv' }
+      tsearch: { dictionary: "spanish", tsvector_column: 'tsv', prefix: true }
     },
     ignoring: :accents,
     ranked_by: '(:tsearch)',
