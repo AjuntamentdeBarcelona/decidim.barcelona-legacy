@@ -24,7 +24,7 @@ class Proposal < ActiveRecord::Base
   has_many :recommendations
 
   validates :title, presence: true
-  validates :title, style: true, on: :create
+  validates :title, :summary, style: true, on: :create
   validates :summary, presence: true, length: { maximum: 350 }
   validates :author, presence: true
   validates :responsible_name, presence: true
