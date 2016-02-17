@@ -25,7 +25,4 @@ database:
 
 test:
   override:
-    - docker-compose run -e CI=true -e CI_PULL_REQUEST=$CI_PULL_REQUEST -e CI_PULL_REQUESTS=$CI_PULL_REQUESTS -e COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN -e COVERALLS_PARALLEL=true app bundle exec rspec:
-        parallel: true
-        files:
-          - spec/**/*_spec.rb
+    - docker-compose run -e CI=$CI -e CIRCLECI=$CIRCLECI -e CI_PULL_REQUEST=$CI_PULL_REQUEST -e CIRCLE_NODE_TOTAL=$CIRCLE_NODE_TOTAL -e CIRCLE_NODE_INDEX=$CIRCLE_NODE_INDEX -e COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN -e CIRCLE_BUILD_NUM=$CIRCLE_BUILD_NUM -e CIRCLE_BRANCH=$CIRCLE_BRANCH -e CIRCLE_SHA1=$CIRCLE_SHA1 app bundle exec rspec:

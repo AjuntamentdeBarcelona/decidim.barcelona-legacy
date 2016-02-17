@@ -2,8 +2,6 @@ require 'factory_girl_rails'
 require 'database_cleaner'
 require 'email_spec'
 require 'devise'
-require 'coveralls'
-Coveralls.wear!
 
 Dir["./spec/support/**/*.rb"].sort.each { |f| require f }
 
