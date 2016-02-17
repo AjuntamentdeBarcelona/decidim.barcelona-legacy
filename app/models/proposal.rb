@@ -25,7 +25,7 @@ class Proposal < ActiveRecord::Base
 
   validates :title, presence: true
   validates :title, :summary, style: true, on: :create
-  validates :summary, presence: true, length: { maximum: 350 }
+  validates :summary, presence: true, length: { maximum: 1000 }
   validates :author, presence: true
   validates :responsible_name, presence: true
 

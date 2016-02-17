@@ -280,7 +280,7 @@ ActiveRecord::Schema.define(version: 20160217164717) do
   add_index "organizations", ["user_id"], name: "index_organizations_on_user_id", using: :btree
 
   create_table "proposals", force: :cascade do |t|
-    t.string   "title",             limit: 80
+    t.string   "title",             limit: 255
     t.text     "description"
     t.string   "question"
     t.string   "external_url"
