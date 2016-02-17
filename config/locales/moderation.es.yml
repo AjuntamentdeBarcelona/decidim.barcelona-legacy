@@ -55,6 +55,11 @@ es:
           button: Buscar
           placeholder: Buscar
         title: Citas presenciales
+        pictures: "Imágenes"
+      pictures:
+        index:
+          upload: "Subir imagen"
+          destroy: "Eliminar"
     menu:
       flagged_comments: Comentarios
       flagged_debates: Debates

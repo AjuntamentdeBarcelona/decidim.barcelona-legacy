@@ -55,6 +55,11 @@ ca:
           button: Cercar
           placeholder: Cercar
         title: Cites presencials
+        pictures: "Imatges"
+      pictures:
+        index:
+          upload: "Pujar imatge"
+          destroy: "Eliminar"
     menu:
       flagged_comments: Comentaris
       flagged_debates: Debats

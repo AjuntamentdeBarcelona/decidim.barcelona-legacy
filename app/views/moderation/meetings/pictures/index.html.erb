@@ -1,0 +1,15 @@
+<h2><%= meeting.title %></h2>
+
+<div class="meeting-pictures">
+  <% meeting.pictures.each do |meeting_picture| %>
+    <span class="meeting-picture">
+      <%= image_tag meeting_picture.file.medium.url %>
+      <%= link_to t('.destroy'), url_for(action: :destroy, meeting_id: meeting.id, id: meeting_picture.id),  method: :delete %>
+    </span>
+  <% end %>
+</div>
+
+<%= form_for @meeting_picture, url: { action: :create}, html: { multipart: true } do |f| %>
+  <%= f.file_field :file, label: false %>
+  <%= f.button t('.upload'), data: { disable_with: '...' } %>
+<% end %>

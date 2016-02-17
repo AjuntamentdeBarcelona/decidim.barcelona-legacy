@@ -93,6 +93,33 @@ feature 'Moderate meetings' do
       expect(page).to have_content "1 error"
     end
 
+
+    scenario "Upload an picture" do
+      create(:meeting, title: "My meeting", author: @moderator)
+
+      visit moderation_meetings_path
+      click_link "Manage pictures"
+
+      page.attach_file "meeting_picture[file]",
+                       Rails.root.join('spec', 'assets', 'image.jpg')
+
+      click_button "Upload picture"
+      expect(page).to have_css('.meeting-picture', count: 1)
+    end
+
+    scenario "Destroy an picture" do
+      meeting = create(:meeting, title: "My meeting", author: @moderator)
+      create(:meeting_picture, meeting: meeting)
+
+      visit moderation_meetings_path
+      click_link "Manage pictures"
+
+      within ".meeting-picture" do
+        click_link "Remove"
+      end
+
+      expect(page).to have_css('.meeting-picture', count: 0)
+    end
   end
 
   context 'As an administrator' do

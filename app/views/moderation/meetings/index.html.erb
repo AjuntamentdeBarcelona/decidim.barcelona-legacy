@@ -32,10 +32,12 @@
           <span class="date"><%= l(meeting.start_at) %> - <%= l(meeting.end_at) %></span>
           <span class="bullet">&nbsp;&bull;&nbsp;</span>
         <% end %>
+
         <%= meeting.author.username %>
         <div class="right">
-          <%= link_to t("meetings.index.edit"), edit_moderation_meeting_path(meeting), class: 'button radius small' %>
-          <%= link_to t("meetings.index.close"), new_moderation_meeting_close_path(meeting), class: 'button radius small' %>
+          <%= link_to t("meetings.index.edit"), edit_moderation_meeting_path(meeting), class: 'button radius tiny secondary' %>
+          <%= link_to t(".pictures"), moderation_meeting_pictures_path(meeting), class: 'button radius tiny secondary' %>
+          <%= link_to t("meetings.index.close"), new_moderation_meeting_close_path(meeting), class: 'button radius tiny secondary' %>
           <%= link_to t('meetings.index.delete'), moderation_meeting_path(meeting), method: :delete,  class: "button tiny radius alert", data: { confirm: t('admin.actions.confirm') } %>
         </div>
         <br>
