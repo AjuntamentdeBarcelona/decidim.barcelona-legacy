@@ -212,10 +212,10 @@ en:
     close:
       form:
         close_report: Report
+        organizations_placeholder: Name of the organizations, separated by commas (,).
         proposals:
-          groups: Groups
+          consensus: Consensus
           title: Title
-          votes: Votes
       new:
         form:
           submit_button: Close meeting
@@ -472,8 +472,8 @@ en:
       private_activity: This user decided to keep the activity list private
   validators:
     style:
-      caps: "too many capital letters"
-      marks: "too many exclamation and/or question marks"
+      caps: too many capital letters
+      marks: too many exclamation and/or question marks
   votes:
     agree: I agree
     anonymous: Too many anonymous votes to admit vote %{verify_account}.

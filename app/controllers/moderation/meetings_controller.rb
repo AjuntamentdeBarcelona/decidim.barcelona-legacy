@@ -85,7 +85,12 @@ class Moderation::MeetingsController < Moderation::BaseController
   private
 
   def meeting_params
-    params.require(:meeting).permit(:title, :description, :address, :address_longitude, :address_latitude, :address_details, :held_at, :start_at, :end_at, :category_id, :subcategory_id, :tag_list, :scope, :district, :proposal_ids => [])
+    params.require(:meeting).permit(:title, :description, :address,
+                                    :address_longitude, :address_latitude,
+                                    :address_details, :held_at, :start_at,
+                                    :end_at, :category_id, :subcategory_id,
+                                    :tag_list, :scope, :district,
+                                    :proposal_ids => [])
   end
 
   def resource_model

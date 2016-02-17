@@ -20,7 +20,9 @@ class Moderation::Meetings::CloseController <  Moderation::BaseController
   private
 
   def meeting_params
-    params.require(:meeting).permit(:close_report, :meeting_proposals_attributes => [:id, :votes, :groups])
+    params.require(:meeting).permit(:close_report, :attendee_count,
+                                    :organizations,:interventions,
+                                    :meeting_proposals_attributes => [:id, :consensus])
   end
 
   def resource_model

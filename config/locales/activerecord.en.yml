@@ -54,6 +54,10 @@ en:
         description: Opinion
         terms_of_service: Terms and conditions of service
         title: Title
+      meeting:
+        attendee_count: "Number of attendees"
+        organizations: "Organizations"
+        interventions: Amount of interventions from the assistants
       proposal:
         author: Author
         title: Title
