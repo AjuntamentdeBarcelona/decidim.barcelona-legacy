@@ -6,7 +6,7 @@ feature 'Admin officials' do
     @citizen = create(:user, username: "Citizen Kane")
     @official = create(:user, official_position: "Mayor", official_level: 5)
     @admin = create(:administrator)
-    login_as(@admin.user)
+    login_as(@admin)
   end
 
   scenario 'Index' do

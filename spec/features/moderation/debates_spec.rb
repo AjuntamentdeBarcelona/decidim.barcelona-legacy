@@ -5,7 +5,7 @@ feature 'Moderate debates' do
   scenario 'Disabled with a feature flag' do
     Setting['feature.debates'] = nil
     moderator = create(:moderator)
-    login_as(moderator.user)
+    login_as(moderator)
 
     expect{ visit moderation_debates_path }.to raise_exception(FeatureFlags::FeatureDisabled)
   end
@@ -16,7 +16,7 @@ feature 'Moderate debates' do
 
     debate = create(:debate)
 
-    login_as(moderator.user)
+    login_as(moderator)
     visit debate_path(debate)
 
     within("#debate_#{debate.id}") do
@@ -33,9 +33,9 @@ feature 'Moderate debates' do
 
   scenario 'Can not hide own debate' do
     moderator = create(:moderator)
-    debate = create(:debate, author: moderator.user)
+    debate = create(:debate, author: moderator)
 
-    login_as(moderator.user)
+    login_as(moderator)
     visit debate_path(debate)
 
     within("#debate_#{debate.id}") do
@@ -48,7 +48,7 @@ feature 'Moderate debates' do
 
     background do
       moderator = create(:moderator)
-      login_as(moderator.user)
+      login_as(moderator)
     end
 
     feature 'moderate in bulk' do

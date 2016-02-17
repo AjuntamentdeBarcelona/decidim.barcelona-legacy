@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe User do
-
   describe "#debate_votes" do
     let(:user) { create(:user) }
 
@@ -91,8 +90,7 @@ describe User do
     end
 
     it "is true when the user is an admin" do
-      subject.save
-      create(:administrator, user: subject)
+      subject.update(roles: ["administrator"])
       expect(subject.administrator?).to be true
     end
   end
@@ -103,8 +101,7 @@ describe User do
     end
 
     it "is true when the user is a moderator" do
-      subject.save
-      create(:moderator, user: subject)
+      subject.update(roles: ["moderator"])
       expect(subject.moderator?).to be true
     end
   end
@@ -268,27 +265,6 @@ describe User do
 
   describe "verification" do
     it_behaves_like "verifiable"
-  end
-
-  describe "cache" do
-    let(:user) { create(:user) }
-
-    it "should expire cache with becoming a moderator" do
-      expect { create(:moderator, user: user) }
-      .to change { user.updated_at}
-    end
-
-    it "should expire cache with becoming an admin" do
-      expect { create(:administrator, user: user) }
-      .to change { user.updated_at}
-    end
-
-    it "should expire cache with becoming a veridied organization" do
-      create(:organization, user: user)
-      expect { user.organization.verify }
-      .to change { user.reload.updated_at}
-    end
-
   end
 
   describe "document_number" do

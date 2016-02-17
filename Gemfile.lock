@@ -313,6 +313,7 @@ GEM
     parser (2.3.0.1)
       ast (~> 2.2)
     pg (0.18.4)
+    pg_array_parser (0.0.9)
     pg_search (1.0.5)
       activerecord (>= 3.1)
       activesupport (>= 3.1)
@@ -322,6 +323,10 @@ GEM
       cliver (~> 0.3.1)
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
+    postgres_ext (2.4.1)
+      activerecord (>= 4.0.0)
+      arel (>= 4.0.1)
+      pg_array_parser (~> 0.0.9)
     puma (2.15.3)
     puma_worker_killer (0.0.4)
       get_process_mem (~> 0.2)
@@ -612,6 +617,7 @@ DEPENDENCIES
   pg
   pg_search
   poltergeist
+  postgres_ext
   puma
   puma_worker_killer
   quiet_assets

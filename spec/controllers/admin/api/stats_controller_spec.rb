@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Admin::Api::StatsController do
 
   describe 'GET index' do
-    let(:user) { create(:administrator).user }
+    let(:user) { create(:administrator) }
 
     context 'events or visits not present' do
       it 'should respond with bad_request' do

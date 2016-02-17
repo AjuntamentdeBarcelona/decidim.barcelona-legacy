@@ -4,7 +4,7 @@ feature 'Admin spending proposals' do
 
   background do
     admin = create(:administrator)
-    login_as(admin.user)
+    login_as(admin)
   end
 
   scenario 'Disabled with a feature flag' do

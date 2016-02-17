@@ -4,7 +4,7 @@ feature 'Admin activity' do
 
   background do
     @admin = create(:administrator)
-    login_as(@admin.user)
+    login_as(@admin)
   end
 
   context "Proposals" do
@@ -22,7 +22,7 @@ feature 'Admin activity' do
       within("#activity_#{Activity.last.id}") do
         expect(page).to have_content(proposal.title)
         expect(page).to have_content("Hidden")
-        expect(page).to have_content(@admin.user.username)
+        expect(page).to have_content(@admin.username)
       end
     end
 
@@ -64,7 +64,7 @@ feature 'Admin activity' do
       within("#activity_#{Activity.last.id}") do
         expect(page).to have_content(proposal.title)
         expect(page).to have_content("Restored")
-        expect(page).to have_content(@admin.user.username)
+        expect(page).to have_content(@admin.username)
       end
     end
   end
@@ -84,7 +84,7 @@ feature 'Admin activity' do
       within("#activity_#{Activity.last.id}") do
         expect(page).to have_content(debate.title)
         expect(page).to have_content("Hidden")
-        expect(page).to have_content(@admin.user.username)
+        expect(page).to have_content(@admin.username)
       end
     end
 
@@ -126,7 +126,7 @@ feature 'Admin activity' do
       within("#activity_#{Activity.last.id}") do
         expect(page).to have_content(debate.title)
         expect(page).to have_content("Restored")
-        expect(page).to have_content(@admin.user.username)
+        expect(page).to have_content(@admin.username)
       end
     end
   end
@@ -147,7 +147,7 @@ feature 'Admin activity' do
       within("#activity_#{Activity.last.id}") do
         expect(page).to have_content(comment.body)
         expect(page).to have_content("Hidden")
-        expect(page).to have_content(@admin.user.username)
+        expect(page).to have_content(@admin.username)
       end
     end
 
@@ -189,7 +189,7 @@ feature 'Admin activity' do
       within("#activity_#{Activity.last.id}") do
         expect(page).to have_content(comment.body)
         expect(page).to have_content("Restored")
-        expect(page).to have_content(@admin.user.username)
+        expect(page).to have_content(@admin.username)
       end
     end
   end
@@ -210,7 +210,7 @@ feature 'Admin activity' do
         expect(page).to have_content("Blocked")
         expect(page).to have_content(proposal.author.username)
         expect(page).to have_content(proposal.author.email)
-        expect(page).to have_content(@admin.user.username)
+        expect(page).to have_content(@admin.username)
         expect(page).not_to have_content(proposal.title)
       end
     end
@@ -229,7 +229,7 @@ feature 'Admin activity' do
       within("#activity_#{Activity.last.id}") do
         expect(page).to have_content(user.username)
         expect(page).to have_content(user.email)
-        expect(page).to have_content(@admin.user.username)
+        expect(page).to have_content(@admin.username)
       end
     end
 
@@ -326,7 +326,7 @@ feature 'Admin activity' do
         expect(page).to have_content(user.username)
         expect(page).to have_content(user.email)
         expect(page).to have_content("Restored")
-        expect(page).to have_content(@admin.user.username)
+        expect(page).to have_content(@admin.username)
       end
     end
   end

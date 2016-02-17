@@ -2,14 +2,8 @@ require 'rails_helper'
 
 feature 'Admin' do
   let(:user) { create(:user) }
-  let(:administrator) do
-    create(:administrator, user: user)
-    user
-  end
-  let(:moderator) do
-    create(:moderator, user: user)
-    user
-  end
+  let(:administrator) { create(:administrator) }
+  let(:moderator) { create(:moderator) }
 
   scenario 'Access as regular user is not authorized' do
     login_as(user)

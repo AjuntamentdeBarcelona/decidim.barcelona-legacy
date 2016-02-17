@@ -15,7 +15,7 @@ feature 'Admin' do
   end
 
   scenario 'Access as a moderator is authorized' do
-    create(:moderator, user: user)
+    user.update(roles: ["moderator"])
 
     login_as(user)
     visit root_path
@@ -28,7 +28,7 @@ feature 'Admin' do
   end
 
   scenario 'Access as an administrator is authorized' do
-    create(:administrator, user: user)
+    user.update(roles: ["administrator"])
 
     login_as(user)
     visit root_path

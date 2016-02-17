@@ -10,7 +10,7 @@ class Activity < ActiveRecord::Base
   scope :on_debates, -> { where(actionable_type: 'Debate') }
   scope :on_users, -> { where(actionable_type: 'User') }
   scope :on_comments, -> { where(actionable_type: 'Comment') }
-  scope :for_render, -> { includes(user: [:moderator, :administrator]).includes(:actionable) }
+  scope :for_render, -> { includes(:actionable) }
 
   def self.log(user, action, actionable)
     create(user: user, action: action.to_s, actionable: actionable)

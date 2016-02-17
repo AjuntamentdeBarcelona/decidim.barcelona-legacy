@@ -4,7 +4,7 @@ feature 'Admin users' do
 
   background do
     admin = create(:administrator)
-    login_as(admin.user)
+    login_as(admin)
   end
 
   scenario 'Show user activity' do

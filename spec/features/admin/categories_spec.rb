@@ -5,7 +5,7 @@ feature 'Admin categories' do
 
   background do
     admin = create(:administrator)
-    login_as(admin.user)
+    login_as(admin)
   end
 
   scenario "Can create new categories", :js do

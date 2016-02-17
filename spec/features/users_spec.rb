@@ -149,7 +149,7 @@ feature 'Users' do
 
       logout
 
-      login_as(create(:administrator).user)
+      login_as(create(:administrator))
       visit user_path(@user)
       expect(page).to_not have_content('activity list private')
     end
@@ -163,7 +163,7 @@ feature 'Users' do
 
       logout
 
-      login_as(create(:moderator).user)
+      login_as(create(:moderator))
       visit user_path(@user)
       expect(page).to_not have_content('activity list private')
     end
@@ -186,13 +186,13 @@ feature 'Users' do
       end
 
       scenario 'is not shown if logged in user is moderator' do
-        login_as(create(:moderator).user)
+        login_as(create(:moderator))
         visit user_path(@user)
         expect(page).to_not have_content(@user.email)
       end
 
       scenario 'is shown if logged in user is admin' do
-        login_as(create(:administrator).user)
+        login_as(create(:administrator))
         visit user_path(@user)
         expect(page).to have_content(@user.email)
       end
@@ -203,7 +203,7 @@ feature 'Users' do
   feature 'Special comments' do
 
     scenario 'comments posted as moderator are not visible in user activity' do
-      moderator = create(:administrator).user
+      moderator = create(:administrator)
       comment = create(:comment, user: moderator)
       moderator_comment = create(:comment, user: moderator, moderator_id: moderator.id)
 
@@ -214,7 +214,7 @@ feature 'Users' do
     end
 
     scenario 'comments posted as admin are not visible in user activity' do
-      admin = create(:administrator).user
+      admin = create(:administrator)
       comment = create(:comment, user: admin)
       admin_comment = create(:comment, user: admin, administrator_id: admin.id)
 

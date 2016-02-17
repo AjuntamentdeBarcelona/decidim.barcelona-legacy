@@ -151,9 +151,6 @@ Rails.application.routes.draw do
     end
 
     resources :settings, only: [:index, :update]
-    resources :moderators, only: [:index, :create, :destroy] do
-      collection { get :search }
-    end
 
     resources :verifications, controller: :verifications, only: :index do
       collection { get :search}

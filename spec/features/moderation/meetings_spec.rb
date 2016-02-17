@@ -9,7 +9,7 @@ feature 'Moderate meetings' do
   context 'As a moderator' do
     before :each do 
       @moderator = create(:moderator)
-      login_as(@moderator.user)
+      login_as(@moderator)
 
       @meeting_data = {
         title: 'First meeting',
@@ -61,8 +61,8 @@ feature 'Moderate meetings' do
 
     scenario 'List all meetings' do
       other_moderator = create(:moderator)
-      create(:meeting, title: "My meeting", author: @moderator.user)
-      create(:meeting, title: "Other meeting", author: other_moderator.user)
+      create(:meeting, title: "My meeting", author: @moderator)
+      create(:meeting, title: "Other meeting", author: other_moderator)
 
       visit moderation_meetings_path
 
@@ -71,7 +71,7 @@ feature 'Moderate meetings' do
     end
 
     scenario 'Update a meeting', :js do
-      meeting = create(:meeting, title: "My meeting", author: @moderator.user)
+      meeting = create(:meeting, title: "My meeting", author: @moderator)
       visit edit_moderation_meeting_path(meeting)
 
       fill_in 'meeting_title', with: "My updated meeting"
@@ -82,7 +82,7 @@ feature 'Moderate meetings' do
     end
 
     scenario 'Update a meeting with some invalid values', :js do
-      meeting = create(:meeting, title: "My meeting", author: @moderator.user)
+      meeting = create(:meeting, title: "My meeting", author: @moderator)
       visit edit_moderation_meeting_path(meeting)
 
       fill_in 'meeting_title', with: ''
@@ -98,12 +98,12 @@ feature 'Moderate meetings' do
   context 'As an administrator' do
     before :each do 
       @admin = create(:administrator)
-      login_as(@admin.user)
+      login_as(@admin)
     end
 
     scenario 'List all meetings' do 
-      create(:meeting, title: "My meeting", author: create(:moderator).user)
-      create(:meeting, title: "Other meeting", author: create(:moderator).user)
+      create(:meeting, title: "My meeting")
+      create(:meeting, title: "Other meeting")
 
       visit moderation_meetings_path
 
@@ -114,7 +114,7 @@ feature 'Moderate meetings' do
 
   scenario 'Using the search filter' do 
     moderator = create(:moderator)
-    login_as(moderator.user)
+    login_as(moderator)
 
     create(:meeting, title: "A meeting about dogs")
     create(:meeting, title: "A meeting about cats")
@@ -130,10 +130,10 @@ feature 'Moderate meetings' do
 
   scenario 'Edit meetings proposals', :js do
     admin = create(:administrator)
-    login_as(admin.user)
+    login_as(admin)
 
     create(:proposal, title: "My proposal")
-    create(:meeting, title: "My meeting", author: create(:moderator).user)
+    create(:meeting, title: "My meeting")
 
     visit moderation_meetings_path
 
@@ -149,7 +149,7 @@ feature 'Moderate meetings' do
 
   scenario 'Close a meeting', :js do 
     moderator = create(:moderator)
-    login_as(moderator.user)
+    login_as(moderator)
 
     proposal_1 = create(:proposal, title: "A proposal to discuss #1")
     proposal_2 = create(:proposal, title: "A proposal to discuss #2")
@@ -173,7 +173,7 @@ feature 'Moderate meetings' do
 
   scenario 'Delete a meeting', :js do 
     moderator = create(:moderator)
-    login_as(moderator.user)
+    login_as(moderator)
 
     proposal_1 = create(:proposal, title: "A proposal to discuss #1")
     proposal_2 = create(:proposal, title: "A proposal to discuss #2")
@@ -188,7 +188,7 @@ feature 'Moderate meetings' do
 
   scenario "Download report" do
     moderator = create(:moderator)
-    login_as(moderator.user)
+    login_as(moderator)
 
     create(:proposal, title: "A proposal to discuss #1")
     create(:proposal, title: "A proposal to discuss #2")

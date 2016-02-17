@@ -8,7 +8,7 @@ feature 'Moderate proposals' do
 
     proposal = create(:proposal)
 
-    login_as(moderator.user)
+    login_as(moderator)
     visit proposal_path(proposal)
 
     within("#proposal_#{proposal.id}") do
@@ -25,9 +25,9 @@ feature 'Moderate proposals' do
 
   scenario 'Can not hide own proposal' do
     moderator = create(:moderator)
-    proposal = create(:proposal, author: moderator.user)
+    proposal = create(:proposal, author: moderator)
 
-    login_as(moderator.user)
+    login_as(moderator)
     visit proposal_path(proposal)
 
     within("#proposal_#{proposal.id}") do
@@ -40,7 +40,7 @@ feature 'Moderate proposals' do
 
     background do
       moderator = create(:moderator)
-      login_as(moderator.user)
+      login_as(moderator)
     end
 
     feature 'moderate in bulk' do

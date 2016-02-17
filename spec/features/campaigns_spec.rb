@@ -7,7 +7,7 @@ feature 'Email campaigns' do
     @campaign2 = create(:campaign)
 
     admin = create(:administrator)
-    login_as(admin.user)
+    login_as(admin)
   end
 
   scenario "Track email templates" do

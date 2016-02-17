@@ -37,6 +37,17 @@ FactoryGirl.define do
     trait :with_confirmed_hide do
       confirmed_hide_at Time.now
     end
+
+    trait :administrator do
+      roles ["administrator"]
+    end
+
+    trait :moderator do
+      roles ["moderator"]
+    end
+
+    factory :administrator, traits: [:administrator]
+    factory :moderator, traits: [:moderator]
   end
 
   factory :identity do
@@ -247,14 +258,6 @@ FactoryGirl.define do
     user
   end
 
-  factory :administrator do
-    user
-  end
-
-  factory :moderator do
-    user
-  end
-
   factory :organization do
     user
     responsible_name "Johnny Utah"
@@ -349,7 +352,7 @@ FactoryGirl.define do
     held_at Date.today
     start_at Time.now
     end_at Time.now + 1.hour
-    association :author, factory: :user
+    association :author, factory: :moderator
     association :category, factory: :category
 
     after :build do |meeting|
