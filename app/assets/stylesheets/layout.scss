@@ -1267,7 +1267,7 @@ table {
 
     &.positive > .comment-body{
       & > .comment-user{
-        @include label-style(lighten(#43AC6A, 35%))
+        @include label-style(lighten(#43AC6A, 35%));
         padding-left: 0.5em;
         padding-right: 0.5em;
       }
@@ -1275,7 +1275,7 @@ table {
 
     &.negative > .comment-body{
       & > .comment-user{
-        @include label-style(lighten(#f04124, 35%))
+        @include label-style(lighten(#f04124, 35%));
         padding-left: 0.5em;
         padding-right: 0.5em;
       }
