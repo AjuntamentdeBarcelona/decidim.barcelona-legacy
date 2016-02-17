@@ -6,17 +6,14 @@ class Ability
     # from the moderation screen
     alias_action :hide_in_moderation_screen, to: :hide
 
-    if user # logged-in users
-      if user.administrator?
-        self.merge Abilities::Administrator.new(user)
-      elsif user.moderator?
-        self.merge Abilities::Moderator.new(user)
-      else
-        self.merge Abilities::Common.new(user)
+    self.merge Abilities::Everyone.new(user)
+
+    if user
+      self.merge Abilities::Common.new(user)
+
+      user.roles.each do |role|
+        self.merge Abilities.const_get(role.classify).new(user) rescue NameError
       end
-    else
-      self.merge Abilities::Everyone.new(user)
     end
   end
-
 end
