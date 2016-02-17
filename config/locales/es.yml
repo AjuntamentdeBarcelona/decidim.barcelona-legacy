@@ -212,10 +212,10 @@ es:
     close:
       form:
         close_report: Acta
+        organizations_placeholder: Nombres de las organizaciones que han participado, separados por comas (,).
         proposals:
-          groups: Organizaciones
+          consensus: Amplio soporte
           title: Título
-          votes: Apoyos
       new:
         form:
           submit_button: Cerrar cita
@@ -472,8 +472,8 @@ es:
       private_activity: Este usuario ha decidido mantener en privado su lista de actividades
   validators:
     style:
-      caps: "demasiadas mayúsculas"
-      marks: "demasiados signos de interrocación y/o exclamación"
+      caps: demasiadas mayúsculas
+      marks: demasiados signos de interrocación y/o exclamación
   votes:
     agree: Estoy de acuerdo
     anonymous: Demasiados votos anónimos, para poder votar %{verify_account}.

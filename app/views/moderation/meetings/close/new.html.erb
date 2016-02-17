@@ -4,34 +4,35 @@
       <%= render 'shared/errors', resource: @meeting %>
 
       <div class="row">
-        <div class="ckeditor small-12 column">
+        <div class="small-12 column">
+          <%= f.text_field :attendee_count %>
+          <%= f.text_field :interventions %>
+
+          <%= f.text_area :organizations, placeholder: t('meetings.close.form.organizations_placeholder') %>
+
           <%= f.label :close_report, t("meetings.close.form.close_report") %>
           <%= f.cktext_area :close_report, ckeditor: { language: I18n.locale }, label: false %>
-        </div>
 
-        <div class="small-12 column">
           <table>
             <thead>
               <tr>
                 <th><%= t("meetings.close.form.proposals.title") %></th>
-                <th><%= t("meetings.close.form.proposals.votes") %></th>
-                <th><%= t("meetings.close.form.proposals.groups") %></th>
+                <th><%= t("meetings.close.form.proposals.consensus") %></th>
               </tr>
             </thead>
             <tbody>
               <%= f.fields_for :meeting_proposals do |ff| %>
                 <tr>
                   <td><%= ff.object.title %></td>
-                  <td><%= ff.number_field :votes, label: false %></td>
-                  <td><%= ff.text_field :groups, label: false %></td>
+                  <td><%= ff.check_box :consensus, label: false %></td>
                 </tr>
               <% end %>
             </tbody>
           </table>
-        </div>
 
-        <div class="actions small-12 column">
-          <%= f.submit(class: "button radius", value: t("meetings.close.#{action_name}.form.submit_button")) %>
+          <div class="actions">
+            <%= f.submit(class: "button radius", value: t("meetings.close.#{action_name}.form.submit_button")) %>
+          </div>
         </div>
       </div>
     <% end %>

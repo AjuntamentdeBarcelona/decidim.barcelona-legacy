@@ -100,8 +100,8 @@
               <li class="meeting">
                 <div class="date"><%= l meeting_proposal.meeting.held_at %></div>
                 <div class="title"><%= link_to meeting_proposal.meeting.title, meeting_proposal.meeting %></div>
-                <% if meeting_proposal.meeting.closed? %>
-                  <div class="support"><%= t("proposals.show.meeting_supports", counter: meeting_proposal.votes) %></div>
+                <% if meeting_proposal.meeting.closed? && meeting_proposal.consensus %>
+                  <div class="support"><%= t("meetings.close.form.proposals.consensus") %></div>
                 <% end %>
               </li>
           <% end %>

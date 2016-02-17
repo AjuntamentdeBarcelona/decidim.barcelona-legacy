@@ -160,10 +160,8 @@ feature 'Moderate meetings' do
 
     fill_in_ckeditor 'meeting_close_report', with: 'We discussed a few proposals and decided some things'
 
-    fill_in 'meeting_meeting_proposals_attributes_0_votes', with: 100
-    fill_in 'meeting_meeting_proposals_attributes_0_groups', with: 'A,B,C'
-    fill_in 'meeting_meeting_proposals_attributes_1_votes', with: 300
-    fill_in 'meeting_meeting_proposals_attributes_1_groups', with: 'D'
+    check 'meeting_meeting_proposals_attributes_0_consensus'
+    fill_in 'Number of attendees', with: '10'
 
     click_button "Close meeting"
 

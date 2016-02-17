@@ -54,6 +54,10 @@ es:
         description: Opinión
         terms_of_service: Términos de servicio
         title: Título
+      meeting:
+        attendee_count: "Número de asistentes"
+        organizations: "Organizaciones participantes"
+        interventions: Número de intervenciones realizadas por los asistentes
       proposal:
         author: Autor/a
         title: Título

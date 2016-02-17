@@ -10,6 +10,10 @@ ca:
         description: Opinió
         terms_of_service: Termes de servei
         title: Títol
+      meeting:
+        attendee_count: "Nombre d'assistents"
+        organizations: "Organitzacions participants"
+        interventions: Nombre d'intervencions realitzades pels assistents
       organization:
         name: Nom d'organització
         document_number: NIF
