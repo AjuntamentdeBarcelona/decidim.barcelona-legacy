@@ -24,7 +24,7 @@ describe SpendingProposal do
     end
 
     it "should not be valid when very long" do
-      spending_proposal.title = "a" * 81
+      spending_proposal.title = "a" * 162
       expect(spending_proposal).to_not be_valid
     end
   end

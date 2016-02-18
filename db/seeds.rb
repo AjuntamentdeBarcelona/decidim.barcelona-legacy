@@ -103,9 +103,9 @@ if ENV["SEED"]
     official = [true, false, false, false].sample
 
     proposal = Proposal.create!(author: author,
-                                title: Faker::Lorem.sentence(3).truncate(60),
+                                title: Faker::Lorem.paragraph.truncate(150),
                                 question: Faker::Lorem.sentence(3),
-                                summary: Faker::Lorem.sentence(3),
+                                summary: Faker::Lorem.paragraph(10).truncate(1000),
                                 responsible_name: Faker::Name.name,
                                 external_url: Faker::Internet.url,
                                 description: description,

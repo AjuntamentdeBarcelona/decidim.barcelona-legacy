@@ -13,7 +13,8 @@ class ProposalXLSImporter
         if data[:category_name].present?  
           proposal_data = ProposalData.new(data)
           proposal_data.parse!
-          create_proposal(proposal_data.to_attributes)
+          proposal = create_proposal(proposal_data.to_attributes)
+          proposal.save!
         end
       end
     end
@@ -30,19 +31,12 @@ class ProposalXLSImporter
       summary: row[3].try(:value),
       author_organization: row[4].try(:value),
       author_email: row[5].try(:value),
-      author_name: row[6].try(:value),
-      author_responsable: row[7].try(:value),
-      author_phone: row[8].try(:value)
     }
   end
 
   def create_proposal(attrs)
     proposal = Proposal.new(attrs)
-    result = proposal.save
-    unless result
-      district = District.find(proposal.district)
-      puts " #{district}|#{proposal.title}|#{proposal.errors.messages.to_s}"
-    end
+    proposal
   end
 
   class ProposalData
@@ -54,7 +48,7 @@ class ProposalXLSImporter
       parse_district_name
       parse_category_name
       parse_subcategory_name
-      parse_author_organization
+      parse_author_admin
     end
 
     def to_attributes
@@ -79,7 +73,7 @@ class ProposalXLSImporter
       else
         district = District.all.find { |d| d.name == @data[:district_name] }
         @data[:scope] = "district"
-        @data[:district_id] = district[1]
+        @data[:district_id] = district.id
       end
     end
 
@@ -112,32 +106,6 @@ class ProposalXLSImporter
       @data[:responsible_name] = "Ajuntament"
       @data[:author_id] = user.id
       @data[:official] = true
-    end
-
-    def parse_author_organization
-      # Find or create the user
-      email = @data[:author_email].strip
-      user = User.find_by_email(email)
-      unless user
-        name = @data[:author_organization]
-        user = create_organization(name, email)
-      end
-      @data[:author_id] = user.id
-      @data[:official] = false
-      @data[:responsible_name] = @data[:responsible_name] ? @data[:responsible_name].length >= 6 : "Importado automáticamente"
-      #@data[:responsible_name] = user.name
-      #@data[:author_organization] =
-      #@data[:author_name] = 
-      #@data[:author_email] = 
-      #@data[:author_phone] = 
-    end
-
-    def create_organization(name, email)
-      password = SecureRandom.hex(20)
-      user = User.new( username: name, email: email, password: password, password_confirmation: password, confirmed_at: DateTime.now, terms_of_service: "1")
-      result = user.save
-      debugger unless result
-      user.create_organization( name: name, responsible_name: name )
     end
 
   end
