@@ -211,7 +211,7 @@ ca:
   meetings:
     close:
       form:
-        close_report: Acta
+        close_report: Descripció de la sessió
         organizations_placeholder: Noms de les organitzacions, separat per comes (,).
         proposals:
           consensus: Ampli suport

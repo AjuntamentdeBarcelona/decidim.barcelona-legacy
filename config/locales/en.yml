@@ -211,7 +211,7 @@ en:
   meetings:
     close:
       form:
-        close_report: Report
+        close_report: Meeting report
         organizations_placeholder: Name of the organizations, separated by commas (,).
         proposals:
           consensus: Consensus

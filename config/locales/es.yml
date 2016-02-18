@@ -211,7 +211,7 @@ es:
   meetings:
     close:
       form:
-        close_report: Acta
+        close_report: Descripción de la sesión
         organizations_placeholder: Nombres de las organizaciones que han participado, separados por comas (,).
         proposals:
           consensus: Amplio soporte
