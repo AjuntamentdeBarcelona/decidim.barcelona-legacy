@@ -7,7 +7,7 @@ module DownloadsHelper
 
     lang = langs[I18n.locale]
 
-    case district 
+    case district.to_s 
       when "1"  then "http://www.barcelona.cat/download/pam/#{I18n.locale}/PAD-Ciutat-Vella-#{lang}.pdf"
       when "2"  then "http://www.barcelona.cat/download/pam/#{I18n.locale}/PAD-Eixample-#{lang}.pdf"
       when "3"  then "http://www.barcelona.cat/download/pam/#{I18n.locale}/PAD-Sants-Montjuic-#{lang}.pdf"
