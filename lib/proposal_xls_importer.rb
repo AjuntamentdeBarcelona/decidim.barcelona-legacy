@@ -102,7 +102,7 @@ class ProposalXLSImporter
     end
 
     def parse_author_admin
-      user = Administrator.first
+      user = User.administrators.first
       @data[:responsible_name] = "Ajuntament"
       @data[:author_id] = user.id
       @data[:official] = true
