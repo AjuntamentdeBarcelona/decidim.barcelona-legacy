@@ -45,6 +45,7 @@ en:
     meetings:
       index:
         download_xls: Download XLS report
+        pictures: "Manage pictures"
         filters:
           all: All
           closed: Closed
@@ -55,6 +56,10 @@ en:
           button: Search
           placeholder: Search
         title: Meetings
+      pictures:
+        index:
+          upload: "Upload picture"
+          destroy: "Remove"
     menu:
       flagged_comments: Comments
       flagged_debates: Debates

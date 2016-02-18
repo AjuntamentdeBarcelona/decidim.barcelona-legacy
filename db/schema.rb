@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217123738) do
+ActiveRecord::Schema.define(version: 20160217164717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -212,6 +212,11 @@ ActiveRecord::Schema.define(version: 20160217123738) do
   end
 
   add_index "locks", ["user_id"], name: "index_locks_on_user_id", using: :btree
+
+  create_table "meeting_pictures", force: :cascade do |t|
+    t.string  "file"
+    t.integer "meeting_id"
+  end
 
   create_table "meetings", force: :cascade do |t|
     t.string   "title"

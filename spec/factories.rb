@@ -1,4 +1,4 @@
-FactoryGirl.define do  
+FactoryGirl.define do
   sequence(:document_number) { |n| "#{n.to_s.rjust(8, '0')}X" }
 
   factory :user do
@@ -362,6 +362,16 @@ FactoryGirl.define do
       meeting.address_longitude = place[:lng]
       meeting.subcategory = build(:subcategory, category_id: meeting.category_id)
     end
+  end
+
+  factory :meeting_picture do
+    file do
+      Rack::Test::UploadedFile.new(
+        File.join(Rails.root, 'spec', 'assets', "image.jpg")
+      )
+    end
+
+    meeting
   end
 
   factory :geozone do
