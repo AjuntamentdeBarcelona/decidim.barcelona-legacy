@@ -51,15 +51,15 @@ ca:
           pending: Pendents
         headers:
           meeting: Cita presencial
+        pictures: Imatges
         search_form:
           button: Cercar
           placeholder: Cercar
         title: Cites presencials
-        pictures: "Imatges"
       pictures:
         index:
-          upload: "Pujar imatge"
-          destroy: "Eliminar"
+          destroy: Eliminar
+          upload: Pujar imatge
     menu:
       flagged_comments: Comentaris
       flagged_debates: Debats

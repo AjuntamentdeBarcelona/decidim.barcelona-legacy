@@ -45,21 +45,21 @@ en:
     meetings:
       index:
         download_xls: Download XLS report
-        pictures: "Manage pictures"
         filters:
           all: All
           closed: Closed
           pending: Pending
         headers:
           meeting: Meeting
+        pictures: Manage pictures
         search_form:
           button: Search
           placeholder: Search
         title: Meetings
       pictures:
         index:
-          upload: "Upload picture"
-          destroy: "Remove"
+          destroy: Remove
+          upload: Upload picture
     menu:
       flagged_comments: Comments
       flagged_debates: Debates

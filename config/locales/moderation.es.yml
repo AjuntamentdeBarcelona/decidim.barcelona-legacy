@@ -51,15 +51,15 @@ es:
           pending: Pendientes
         headers:
           meeting: Cita presencial
+        pictures: Imágenes
         search_form:
           button: Buscar
           placeholder: Buscar
         title: Citas presenciales
-        pictures: "Imágenes"
       pictures:
         index:
-          upload: "Subir imagen"
-          destroy: "Eliminar"
+          destroy: Eliminar
+          upload: Subir imagen
     menu:
       flagged_comments: Comentarios
       flagged_debates: Debates
