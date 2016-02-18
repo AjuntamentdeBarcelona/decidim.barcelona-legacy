@@ -14,8 +14,7 @@ class ProposalXLSImporter
           proposal_data = ProposalData.new(data)
           proposal_data.parse!
           proposal = create_proposal(proposal_data.to_attributes)
-          result = proposal.save
-          debugger unless result
+          proposal.save!
         end
       end
     end
