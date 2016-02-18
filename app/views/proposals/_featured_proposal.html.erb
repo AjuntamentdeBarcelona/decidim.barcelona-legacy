@@ -1,7 +1,7 @@
 <li class="proposal-featured featured-proposal" id="<%= dom_id(proposal, "featured") %>">
   <div class="featured-proposal-inner">
     <div class="featured-proposal-content">
-      <h3><%= link_to proposal.title, proposal %></h3>
+      <h3><%= link_to truncate(proposal.title, length: 90), proposal %></h3>
       <div class="info">
         <% if proposal.author.hidden? || proposal.author.erased? %>
           <%= t("proposals.show.author_deleted") %>
