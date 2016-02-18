@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217164717) do
+ActiveRecord::Schema.define(version: 20160218154231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -280,31 +280,31 @@ ActiveRecord::Schema.define(version: 20160217164717) do
   add_index "organizations", ["user_id"], name: "index_organizations_on_user_id", using: :btree
 
   create_table "proposals", force: :cascade do |t|
-    t.string   "title",             limit: 160
+    t.string   "title",             limit: 250
     t.text     "description"
     t.string   "question"
     t.string   "external_url"
     t.integer  "author_id"
     t.datetime "hidden_at"
-    t.integer  "flags_count",                  default: 0
+    t.integer  "flags_count",                   default: 0
     t.datetime "ignored_flag_at"
-    t.integer  "cached_votes_up",              default: 0
-    t.integer  "comments_count",               default: 0
+    t.integer  "cached_votes_up",               default: 0
+    t.integer  "comments_count",                default: 0
     t.datetime "confirmed_hide_at"
-    t.integer  "hot_score",         limit: 8,  default: 0
-    t.integer  "confidence_score",             default: 0
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
+    t.integer  "hot_score",         limit: 8,   default: 0
+    t.integer  "confidence_score",              default: 0
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
     t.string   "responsible_name",  limit: 60
     t.text     "summary"
     t.string   "video_url"
-    t.integer  "physical_votes",               default: 0
+    t.integer  "physical_votes",                default: 0
     t.tsvector "tsv"
     t.integer  "category_id"
     t.integer  "subcategory_id"
-    t.string   "scope",                        default: "district"
+    t.string   "scope",                         default: "district"
     t.integer  "district"
-    t.boolean  "official",                     default: false
+    t.boolean  "official",                      default: false
     t.string   "slug"
     t.boolean  "from_meeting"
   end
