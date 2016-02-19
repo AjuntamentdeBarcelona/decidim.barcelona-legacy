@@ -48,8 +48,8 @@
             <% @meeting.meeting_proposals.each do |meeting_proposal| %>
               <li>
                 <%= link_to meeting_proposal.proposal.title, meeting_proposal.proposal %>
-                <% if meeting_proposal.meeting.closed? %>
-                  <span class="support"><%= t("proposals.show.meeting_supports", counter: meeting_proposal.votes) %></span>
+                <% if meeting_proposal.meeting.closed? && meeting_proposal.consensus %>
+                  <span class="support"><%= t("meetings.close.form.proposals.consensus") %></span>
                 <% end %>
               </li>
             <% end %>
