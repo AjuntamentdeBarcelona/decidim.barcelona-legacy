@@ -10,5 +10,7 @@
     </div>
   </div>
 
-  <%= meetings_directory meetings: @meetings, filter: @filter, tag_cloud: @tag_cloud %>
+  <%= cache @meetings.maximum(:updated_at) do %>
+    <%= meetings_directory meetings: @meetings, filter: @filter, tag_cloud: @tag_cloud %>
+  <% end %>
 </section>
