@@ -37,7 +37,7 @@ class WelcomeController < ApplicationController
 
   def citizenship_proposals
     @citizenship_proposals ||= ActiveModel::ArraySerializer.new(
-      proposals.where(official: false).where("cached_votes_up > ?", 5),
+      proposals.where(official: false),
       each_serializer: ProposalSerializer
     ).as_json
   end
