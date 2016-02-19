@@ -1,12 +1,16 @@
 <div class="page row-full categories-page">
   <div class="row">
     <div class="menu-outer small-12 medium-3 column">
-      <%= render partial: 'menu', locals: { categories: @categories } %>
+      <%= cache I18n.locale, @last_modified do %>
+        <%= render partial: 'menu', locals: { categories: @categories } %>
+      <% end %>
     </div>
 
     <div class="text small-12 medium-9 column">
       <h2 class="clear"><%= t('categories.title') %></h2>
-      <%= render partial: 'category', collection: @categories %>
+      <%= cache I18n.locale, @last_modified do %>
+        <%= render partial: 'category', collection: @categories %>
+      <% end %>
     </div>
   </div>
 </div>
