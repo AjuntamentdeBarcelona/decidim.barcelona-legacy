@@ -363,7 +363,6 @@ en:
       edit_proposal_link: Edit
       flag: This proposal has been flagged as inappropriate by several users.
       login_to_comment: You must %{signin} or %{signup} to leave a comment.
-      meeting_supports: "%{counter} presencial supports"
       meetings_title: Related meetings
       share: Share
     update:
