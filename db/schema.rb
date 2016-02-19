@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160218154231) do
+ActiveRecord::Schema.define(version: 20160219211608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,8 @@ ActiveRecord::Schema.define(version: 20160218154231) do
     t.text     "description"
     t.integer  "position"
   end
+
+  add_index "categories", ["position"], name: "index_categories_on_position", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.integer  "commentable_id"
@@ -372,6 +374,8 @@ ActiveRecord::Schema.define(version: 20160218154231) do
     t.datetime "updated_at",  null: false
     t.integer  "position"
   end
+
+  add_index "subcategories", ["category_id"], name: "index_subcategories_on_category_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
