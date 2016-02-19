@@ -44,3 +44,6 @@ ca:
       clean_filters: Netejar filtre
     search_filter:
       search_input_placeholder: Cercar
+  proposal_carousel:
+    see_more: Veure més
+    votes: "%{votes} suports"

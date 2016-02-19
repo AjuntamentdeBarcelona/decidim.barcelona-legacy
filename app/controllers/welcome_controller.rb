@@ -1,6 +1,8 @@
 class WelcomeController < ApplicationController
   skip_authorization_check
 
+  helper_method :featured_proposals, :citizenship_proposals
+
   layout "devise", only: :welcome
 
   def index
@@ -24,5 +26,26 @@ class WelcomeController < ApplicationController
     render 'highlights'
   end
 
+  private
 
+  def featured_proposals
+    @featured_proposals ||= ActiveModel::ArraySerializer.new(
+      proposals.where(official: true),
+      each_serializer: ProposalSerializer
+    ).as_json
+  end
+
+  def citizenship_proposals
+    @citizenship_proposals ||= ActiveModel::ArraySerializer.new(
+      proposals.where(official: false).where("cached_votes_up > ?", 5),
+      each_serializer: ProposalSerializer
+    ).as_json
+  end
+
+  def proposals
+    @proposals ||= Proposal.
+                 limit(16).
+                 order("random()").
+                 includes(:author)
+  end
 end

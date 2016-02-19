@@ -23,6 +23,7 @@
 //= require react
 //= require react-server
 //= require react_ujs
+//= require react-slick
 //= require moment
 //= require moment/ca
 //= require moment/es
