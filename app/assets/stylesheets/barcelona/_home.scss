@@ -90,6 +90,8 @@
   }
 
   .home-tutorial{
+    padding-top: rem-calc(50);
+
     .home-title{
       margin-bottom: rem-calc(40);
     }
@@ -274,6 +276,22 @@
       &:last-child{
         margin-bottom: 0;
       }
+    }
+  }
+
+  .section-proposals{
+    padding: 0;
+    background-color: #c4c4c4;
+    background-image: image-url("home/proposals-background.jpg");
+
+    .proposal-carousel-section{
+      margin: rem-calc(20) 0;
+    }
+
+    h3{
+      text-align: center;
+      font-size: rem-calc(21);
+      font-weight: normal;
     }
   }
 }

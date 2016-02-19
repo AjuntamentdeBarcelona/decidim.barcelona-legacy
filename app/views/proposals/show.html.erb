@@ -36,9 +36,9 @@
         <div class="proposal-info">
           <% unless @proposal.official? or @proposal.from_meeting? %>
             <%= render '/shared/author_info', resource: @proposal %>
+            <span class="bullet">&nbsp;&bull;&nbsp;</span>
           <% end %>
 
-          <span class="bullet">&nbsp;&bull;&nbsp;</span>
           <%= l @proposal.created_at.to_date %>
           <span class="bullet">&nbsp;&bull;&nbsp;</span>
           <i class="icon-comments"></i>&nbsp;
