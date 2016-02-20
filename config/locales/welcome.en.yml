@@ -2,6 +2,7 @@
 en:
   welcome:
     carousel:
+      citizenship:
         title: Citizenship proposals
       featured:
         title: Proposals from the City Council
