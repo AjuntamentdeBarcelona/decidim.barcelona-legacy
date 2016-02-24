@@ -3,11 +3,15 @@
     <div class="small-12 columns">
       <div class="proposal-carousel-section">
         <h3><%= I18n.t('welcome.carousel.featured.title') %></h3>
-        <%= react_component 'ProposalsCarousel', proposals: featured_proposals %>
+        <%= react_component 'ProposalsCarousel', items: featured_proposals %>
       </div>
       <div class="proposal-carousel-section">
         <h3><%= I18n.t('welcome.carousel.citizenship.title') %></h3>
-        <%= react_component 'ProposalsCarousel', proposals: citizenship_proposals %>
+        <%= react_component 'ProposalsCarousel', items: citizenship_proposals %>
+      </div>
+      <div class="proposal-carousel-section">
+        <h3><%= I18n.t('welcome.carousel.meetings.title') %></h3>
+        <%= react_component 'MeetingsCarousel', items: upcoming_meetings %>
       </div>
     </div>
   </div>
