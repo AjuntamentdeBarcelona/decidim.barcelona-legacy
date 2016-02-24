@@ -1,0 +1,32 @@
+.meeting-time{
+  display: inline-block;
+  margin-right: rem-calc(5);
+
+  $color: lighten($text, 45%);
+
+  .relative-time{
+    color: $color;
+    display: inline-block;
+    line-height: $line-height * 2;
+  }
+
+  .tags{
+    display: inline-block;
+  }
+
+  .meeting-held-at{
+    display: inline-block;
+    margin-top: rem-calc(5);
+    margin-right: rem-calc(10);
+    color: $color;
+    border: 1px solid $color;
+    border-radius: rem-calc(5);
+    padding: rem-calc(5) rem-calc(15);
+    font-size: rem-calc(12);
+    text-transform: uppercase;
+
+    span{
+      display: inline-block;
+    }
+  }
+}

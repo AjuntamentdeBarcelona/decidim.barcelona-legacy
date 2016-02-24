@@ -1,21 +1,10 @@
 class Meeting extends React.Component {
   constructor(props) {
     super(props);
-    let meeting = props.meeting;
-
-    this.state = { meeting: meeting };
-
-    if(this.state.meeting.start_at){
-      this.state.startsAt = moment(meeting.held_at + " " + meeting.start_at, "DD/MM/YYYY HH:mm");
-    }
-
-    if(this.state.meeting.end_at){
-      this.state.endsAt = moment(meeting.held_at + " " + meeting.end_at, "DD/MM/YYYY HH:mm");
-    }
   }
 
   render() {
-    let meeting = this.state.meeting;
+    let { meeting } = this.props;
 
     return(
       <div className="meeting">
@@ -24,10 +13,7 @@ class Meeting extends React.Component {
             <a href={`/meetings/${meeting.slug}`} className="meeting-title" >
               { meeting.title }
             </a>
-            <div className="tags">
-              {this.renderMeetingHeldAt()}
-            </div>
-            { this.relativeTime() }
+            <MeetingTime meeting={ meeting } relativeTime={true} />
             <p className="meeting-description">{ meeting.description }</p>
             <div className="meeting-address"><i className="icon"></i> { meeting.address }</div>
           </div>
@@ -38,7 +24,7 @@ class Meeting extends React.Component {
   }
 
   renderMeetingCategory() {
-    let meeting = this.state.meeting;
+    let { meeting } = this.props;
     if(!meeting.category){ return <div />; }
     var categoryClassNames = `category-icon category-icon-${ meeting.category.id }`;
 
@@ -53,39 +39,5 @@ class Meeting extends React.Component {
         </span>
       </div>
     );
-  }
-
-  renderMeetingHeldAt() {
-    let meeting = this.state.meeting;
-    let meetingDate = moment(meeting.held_at, "DD/MM/YYYY").format("LL");
-
-    return (
-      <span className="meeting-held-at">
-        <span className="meeting-held-at-date">{ meetingDate }</span>
-        { this.renderMeetingTime(meeting) }
-      </span>
-    );
-  }
-
-  relativeTime() {
-    let { startsAt } = this.state;
-    if(!startsAt) { return; }
-    if(startsAt < moment()){ return; }
-
-    return(
-      <span className="relative-time">{ startsAt.fromNow() }</span>
-    );
-  }
-
-  renderMeetingTime() {
-    if(this.state.startsAt && this.state.endsAt){
-      return(
-        <span className="meeting-datetime">
-          <span className="meeting-held-at-time">&nbsp;@&nbsp;{ this.state.startsAt.format("HH:mm") }&nbsp;-&nbsp;{ this.state.endsAt.format("HH:mm") }</span>
-        </span>
-      );
-    } else {
-      return null;
-    }
   }
 };

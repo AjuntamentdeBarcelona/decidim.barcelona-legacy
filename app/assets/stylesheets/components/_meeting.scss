@@ -7,33 +7,6 @@
     display: block;
   }
 
-  .meeting-held-at{
-    display: inline-block;
-    margin-top: rem-calc(5);
-    $color: lighten($text, 20%);
-    color: $color;
-    border: 1px solid lighten($color, 30%);
-    border-radius: rem-calc(5);
-    padding: rem-calc(2) rem-calc(15);
-    font-size: rem-calc(12);
-    text-transform: uppercase;
-    background-color: $highlight;
-
-    span{
-      display: inline-block;
-    }
-  }
-
-  .tags{
-    display: inline-block;
-    margin-right: rem-calc(5);
-  }
-
-  .relative-time{
-    color: lighten($text, 40%);
-    display: inline-block;
-  }
-
   .meeting-description{
     margin-top: rem-calc(10);
   }

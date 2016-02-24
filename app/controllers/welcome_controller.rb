@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   skip_authorization_check
 
-  helper_method :featured_proposals, :citizenship_proposals
+  helper_method :featured_proposals, :citizenship_proposals, :upcoming_meetings
 
   layout "devise", only: :welcome
 
@@ -42,9 +42,15 @@ class WelcomeController < ApplicationController
     ).as_json
   end
 
+  def upcoming_meetings
+    @upcoming_meetings||= ActiveModel::ArraySerializer.new(
+      Meeting.upcoming.limit(12), each_serializer: MeetingSerializer
+    ).as_json
+  end
+
   def proposals
     @proposals ||= Proposal.
-                 limit(16).
+                 limit(12).
                  order("random()").
                  includes(:author)
   end
