@@ -21,7 +21,7 @@
       <% if current_user and (current_user.moderator? or current_user.administrator?) %>
         <div class="right">
           <%= link_to t("meetings.index.edit"), edit_moderation_meeting_path(@meeting), class: 'button radius tiny secondary' %>
-          <%= link_to t("meeting.index.pictures"), moderation_meeting_pictures_path(@meeting), class: 'button radius tiny secondary' %>
+          <%= link_to t("meetings.index.pictures"), moderation_meeting_pictures_path(@meeting), class: 'button radius tiny secondary' %>
           <%= link_to t("meetings.index.close"), new_moderation_meeting_close_path(@meeting), class: 'button radius tiny secondary' %>
         </div>
       <% end %>
