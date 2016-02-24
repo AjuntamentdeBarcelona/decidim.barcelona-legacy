@@ -67,23 +67,6 @@
 }
 
 .home-section{
-  .home-title{
-    text-align: center;
-    max-width: rem-calc(1000);
-    margin: 0 auto;
-
-    h3{
-      font-size: rem-calc(33);
-      color: $brand;
-      font-weight: 300;
-    }
-
-    h4{
-      font-weight: normal;
-      font-style: italic;
-    }
-  }
-
   .home-section{
     padding-top: rem-calc(50);
     padding-bottom: rem-calc(50);
@@ -213,6 +196,24 @@
     }
   }
 
+  .home-title{
+    text-align: center;
+    max-width: rem-calc(1000);
+    margin: 0 auto;
+
+    h3{
+      font-size: rem-calc(33);
+      color: $brand;
+      font-weight: 300;
+    }
+
+    h4{
+      font-weight: normal;
+      font-style: italic;
+    }
+  }
+
+
   .section-download{
     background-color: #f2f2f2;
 
@@ -264,17 +265,19 @@
     }
   }
 
-  .home-description{
-    max-width: rem-calc(1000);
-    text-align: center;
-    padding: rem-calc(30) rem-calc(50);
-    background-color: $highlight;
-    margin: rem-calc(10) auto;
-    p{
-      font-size: $h4-font-size;
-      font-weight: normal;
-      &:last-child{
-        margin-bottom: 0;
+  .section-pam{
+    .home-description{
+      max-width: rem-calc(1000);
+      text-align: center;
+      padding: rem-calc(30) rem-calc(50);
+      background-color: $highlight;
+      margin: rem-calc(10) auto;
+      p{
+        font-size: $h4-font-size;
+        font-weight: normal;
+        &:last-child{
+          margin-bottom: 0;
+        }
       }
     }
   }
@@ -283,7 +286,6 @@
     padding: 0;
     background-color: #c4c4c4;
     background-image: image-url("home/proposals-background.jpg");
-
     .proposal-carousel-section{
       margin: rem-calc(20) 0;
     }
@@ -292,6 +294,44 @@
       text-align: center;
       font-size: rem-calc(21);
       font-weight: normal;
+    }
+  }
+
+  .section-description{
+    .description-content{
+      strong{
+        color: $brand;
+      }
+      p{
+        font-weight: 300;
+        font-size: rem-calc(20);
+        &.motto{
+          font-weight: 500;
+        }
+      }
+
+      @include grid-column(12);
+      @media #{$medium-up}{ @include grid-column(6); }
+      @media #{$large-up}{ @include grid-column(7); }
+    }
+
+    .description-video{
+      @include grid-column(12);
+      @media #{$medium-up}{ @include grid-column(6); }
+      @media #{$large-up}{ @include grid-column(5); }
+
+      .video-wrapper{
+        position: relative;
+        padding-bottom: 56.25%;
+        outline: 2px solid $highlight;
+        iframe{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
     }
   }
 }
