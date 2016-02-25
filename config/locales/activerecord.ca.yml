@@ -17,7 +17,7 @@ ca:
       organization:
         name: Nom d'organització
         document_number: NIF
-        responsible_name: Persona responsable del col·lectiu
+        responsible_name: Persona responsable de la organització
       proposal:
         author: Autor/a
         description: Descripció
