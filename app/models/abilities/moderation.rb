@@ -5,6 +5,8 @@ module Abilities
     def initialize(user)
       self.merge Abilities::Common.new(user)
 
+      can :access_panel, :moderation
+
       can :read, Organization
       can(:verify, Organization){ |o| !o.verified? }
       can(:reject, Organization){ |o| !o.rejected? }
