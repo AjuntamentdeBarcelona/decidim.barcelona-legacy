@@ -1,7 +1,8 @@
 class WelcomeController < ApplicationController
   skip_authorization_check
 
-  helper_method :featured_proposals, :citizenship_proposals, :upcoming_meetings
+  helper_method :featured_proposals, :citizenship_proposals, :upcoming_meetings,
+                :videos
 
   layout "devise", only: :welcome
 
@@ -53,5 +54,9 @@ class WelcomeController < ApplicationController
                  limit(12).
                  order("random()").
                  includes(:author)
+  end
+
+  def videos
+    %w{_RCslt3M6is Gus0e_KJE4Y P8a_MX2p3mI nlpPkrLQBoE K9FKTZgIQsM 6r_Bifc84zE N3OQAbgoMGY pmFI_EqA5A4 Tlyi_zHjmBM pKXB1W44LUc ssH0Md5ejZ0}
   end
 end

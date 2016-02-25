@@ -27,6 +27,8 @@ ca:
       link: Entra i participa
     meetings:
       title: Cites presencials
+    videos:
+      title: Ells ja hi han participat
     tutorial:
       step-1:
         description: Navega per les propostes de l'Ajuntament de Barcelona, comenta-les i dóna-hi suport.
