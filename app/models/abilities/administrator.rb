@@ -5,6 +5,8 @@ module Abilities
     def initialize(user)
       self.merge Abilities::Moderation.new(user)
 
+      can :access_panel, :administration
+
       can :restore, Comment
       cannot :restore, Comment, hidden_at: nil
 
