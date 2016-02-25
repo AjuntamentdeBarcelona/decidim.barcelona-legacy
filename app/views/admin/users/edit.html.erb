@@ -1,0 +1,51 @@
+<h2><%= t("admin.users.show.title", user: @user.name) %></h2>
+
+<p>
+  <strong><%= t("admin.users.show.registered_at") %></strong> <%= @user.confirmed_at %>
+  <% if @user.hidden? %>
+    | <strong><%= t("admin.users.show.hidden_at") %></strong> <%= @user.hidden_at %>
+  <% end %>
+</p>
+
+<%= form_for ['admin', @user] do |f| %>
+  <%= f.text_field :email %>
+  <%= f.text_field :username %>
+  <%= f.text_field :document_number %>
+  <%= f.text_field :document_type %>
+  <%= f.check_box :verified %>
+  <div>
+    <%= f.label :roles %>
+    <%= f.collection_check_boxes :roles, User::ROLES, :to_s, :to_s %>
+  </div>
+  <%= f.submit %>
+<% end %>
+
+<% if debates.present? %>
+  <h3><%= page_entries_info debates %></h3>
+<% end %>
+
+<ul class="admin-list">
+<% debates.each do |debate| %>
+  <li>
+    <%= link_to debate.title, debate_path(debate) %>
+  </li>
+<% end %>
+</ul>
+
+<% if comments.present? %>
+  <h3><%= page_entries_info comments %></h3>
+<% end %>
+
+<ul class="admin-list">
+<% comments.each do |comment| %>
+  <li id="<%= dom_id(comment) %>">
+      <div class="row">
+        <div class="small-12 medium-10 column">
+          <%= text_with_links comment.body %>
+        </div>
+      </div>
+    </li>
+<% end %>
+</ul>
+
+<%= paginate [debates, comments].sort_by {|x| x.size}.last %>

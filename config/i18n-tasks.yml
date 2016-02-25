@@ -116,6 +116,7 @@ ignore_unused:
   - 'admin.spending_proposals.index.filter*'
   - 'admin.organizations.index.filter*'
   - 'admin.users.index.filter*'
+  - 'admin.users.index.search_form.*'
   - 'admin.activity.show.filter*'
   - 'admin.comments.index.hidden_*'
   - 'moderation.comments.index.filter*'

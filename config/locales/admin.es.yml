@@ -59,12 +59,12 @@ es:
       hidden_comments: Comentarios ocultos
       hidden_debates: Debates ocultos
       hidden_proposals: Propuestas ocultas
-      hidden_users: Usuarios bloqueados
       incomplete_verifications: Verificaciones incompletas
       officials: Cargos públicos
       organizations: Organizaciones
       spending_proposals: Propuestas de gasto
       stats: Estadísticas
+      users: Usuarios
     officials:
       edit:
         back: Volver
@@ -174,12 +174,13 @@ es:
         filter: Filtro
         filters:
           all: Todos
-          with_confirmed_hide: Confirmados
-          without_confirmed_hide: Pendientes
-        title: Usuarios bloqueados
+          with_confirmed_hide: Ocultos
+          without_confirmed_hide: Pendientes de ocultar
+        search_form:
+          button: Buscar
+          placeholder: Nombre, email, DNI
+        title: Usuarios
       show:
-        back: Volver
-        email: 'Correo electrónico:'
         hidden_at: 'Bloqueado:'
         registered_at: 'Fecha de alta:'
         title: Actividad del usuario %{user}
