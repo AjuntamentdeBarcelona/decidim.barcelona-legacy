@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
+  ROLES = %w{administrator moderator dynamizer}
 
   include Verification
+  include PgSearch
 
   apply_simple_captcha
   devise :database_authenticatable, :registerable, :confirmable,
@@ -48,6 +50,16 @@ class User < ActiveRecord::Base
   scope :by_document,    -> (document_type, document_number) { where(document_type: document_type, document_number: document_number) }
 
   before_validation :clean_document_number
+
+  pg_search_scope :pg_search, {
+                    against: {
+                      document_number: 'A',
+                      email: 'B',
+                      username: 'C',
+                      name: 'D'
+                    },
+                    ignoring: :accents,
+                  }
 
   # Get the existing user by email if the provider gives us a verified email.
   def self.first_or_initialize_for_oauth(auth)

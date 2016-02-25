@@ -59,12 +59,12 @@ ca:
       hidden_comments: Comentaris ocults
       hidden_debates: Debats ocults
       hidden_proposals: Propostes ocultes
-      hidden_users: Usuaris bloquejats
       incomplete_verifications: Verificacions incompletes
       officials: Càrrecs públics
       organizations: Organitzacions
       spending_proposals: Propostes de despesa
       stats: Estadístiques
+      users: Usuaris
     officials:
       edit:
         back: Torna
@@ -173,13 +173,14 @@ ca:
       index:
         filter: Filtre
         filters:
-          all: Tots els públics
-          with_confirmed_hide: Confirmats
-          without_confirmed_hide: Pendents
-        title: Usuaris bloquejats
+          all: Tots
+          with_confirmed_hide: Amagats
+          without_confirmed_hide: Pendents d'amagar
+        search_form:
+          button: Buscar
+          placeholder: Nom, email, DNI
+        title: Usuaris
       show:
-        back: Torna
-        email: 'Adreça electrònica:'
         hidden_at: 'Bloquejat:'
         registered_at: 'Data d''alta:'
         title: Activitat de l'usuari %{user}

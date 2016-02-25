@@ -41,6 +41,22 @@ module Verification
     level_two_verified? || level_three_verified?
   end
 
+  def verified
+    level_three_verified?
+  end
+
+  def verified=(value)
+    return unless value.present?
+
+    if value == "1"
+      self.verified_at = Time.now
+      self.residence_verified_at = Time.now
+    else
+      self.verified_at = nil
+      self.residence_verified_at = nil
+    end
+  end
+
   def unverified?
     !level_two_or_three_verified?
   end

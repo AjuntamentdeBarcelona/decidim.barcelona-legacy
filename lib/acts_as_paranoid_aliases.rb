@@ -21,11 +21,11 @@ module ActsAsParanoidAliases
     end
 
     def confirm_hide
+      hide unless hidden?
       update_attribute(:confirmed_hide_at, Time.now)
     end
 
     def restore(opts={})
-      return false unless hidden?
       super(opts)
       update_attribute(:confirmed_hide_at, nil)
       after_restore
@@ -37,11 +37,11 @@ module ActsAsParanoidAliases
 
   module ClassMethods
     def with_confirmed_hide
-      where.not(confirmed_hide_at: nil)
+      only_hidden.where.not(confirmed_hide_at: nil)
     end
 
     def without_confirmed_hide
-      where(confirmed_hide_at: nil)
+      only_hidden.where(confirmed_hide_at: nil)
     end
 
     def with_hidden

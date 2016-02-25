@@ -59,12 +59,12 @@ en:
       hidden_comments: Hidden comments
       hidden_debates: Hidden debates
       hidden_proposals: Hidden proposals
-      hidden_users: Blocked users
       incomplete_verifications: Incomplete verifications
       officials: Public Officials
       organizations: Organisations
       spending_proposals: Spending proposals
       stats: Statistics
+      users: Users
     officials:
       edit:
         back: Back
@@ -174,12 +174,13 @@ en:
         filter: Filter
         filters:
           all: All
-          with_confirmed_hide: Confirmed
-          without_confirmed_hide: Pending
-        title: Blocked users
+          with_confirmed_hide: Hidden
+          without_confirmed_hide: Pending hide
+        search_form:
+          button: Search
+          placeholder: Name, email, Document Number
+        title: Users
       show:
-        back: Back
-        email: 'Email:'
         hidden_at: 'Blocked:'
         registered_at: 'Date of registration:'
         title: Activity of user %{user}

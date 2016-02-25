@@ -2,19 +2,25 @@
 
 <%= render 'shared/filter_subnav', i18n_namespace: "admin.users.index" %>
 
+<%= render "shared/search_form",
+            search_path: admin_users_path(page: 1),
+            i18n_namespace: "admin.users.index.search_form" %>
+
 <h3><%= page_entries_info @users %></h3>
 
 <ul class="admin-list">
 <% @users.each do |user| %>
   <li id="<%= dom_id(user) %>">
-    <%= link_to user.name, admin_user_path(user) %>
+    <%= link_to user.name, edit_admin_user_path(user) %>
 
-    <%= link_to t("admin.actions.restore"),
-          restore_admin_user_path(user, request.query_parameters),
-          method: :put,
-          data: { confirm: t("admin.actions.confirm") },
-          class: "button radius tiny success right" %>
-    <% unless user.confirmed_hide? %>
+    <% if user.hidden? %>
+      <%= link_to t("admin.actions.restore"),
+            restore_admin_user_path(user, request.query_parameters),
+            method: :put,
+            data: { confirm: t("admin.actions.confirm") },
+            class: "button radius tiny success right" %>
+    <% end %>
+    <% if user.hidden? && !user.confirmed_hide? %>
       <%= link_to t("admin.actions.confirm_hide"),
           confirm_hide_admin_user_path(user, request.query_parameters),
           method: :put,
