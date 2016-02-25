@@ -244,6 +244,7 @@ ca:
       description: Les cites presencials són jornades, debats, trobades a l’espai públic i altres tipus cites per debatre propostes pel Pla municipal relacionades amb cadascun dels eixos temàtics i les línies estratègiques, tant a nivell de tota la ciutat, com a nivell de barris i districtes.
       edit: Editar
       new: Crear cita
+      pictures: Imatges
       title: Cites presencials
     new:
       form:
