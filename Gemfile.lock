@@ -597,7 +597,7 @@ GEM
       nori (~> 2.4)
       wasabi (~> 3.4)
     settingslogic (2.0.9)
-    sidekiq (4.0.2)
+    sidekiq (4.1.0)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
       redis (~> 3.2, >= 3.2.1)
