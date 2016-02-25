@@ -1,0 +1,19 @@
+<div class="section-videos home-section">
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="home-title">
+        <h3><%= t '.title' %></h3>
+      </div>
+
+      <ul class="videos">
+        <% videos.shuffle.take(6).each do |video| %>
+          <li>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/<%= video %>?controls=0&modestbranding=1&playsinline=0&showinfo=0&rel=0" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

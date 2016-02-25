@@ -319,18 +319,37 @@
       @include grid-column(12);
       @media #{$medium-up}{ @include grid-column(6); }
       @media #{$large-up}{ @include grid-column(5); }
+    }
+  }
 
-      .video-wrapper{
-        position: relative;
-        padding-bottom: 56.25%;
-        outline: 2px solid $highlight;
-        iframe{
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-        }
+  .video-wrapper{
+    position: relative;
+    padding-bottom: 56.25%;
+    outline: 2px solid $highlight;
+    iframe{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .section-videos{
+    .home-title{
+      margin-bottom: $line-height;
+    }
+
+    .videos{
+
+      @include block-grid($per-row: 1);
+
+      @media #{$medium-up}{
+        @include block-grid($per-row: 2);
+      }
+
+      @media #{$large-up}{
+        @include block-grid($per-row: 3);
       }
     }
   }

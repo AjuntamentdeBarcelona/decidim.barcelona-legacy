@@ -14,9 +14,6 @@ en:
     description:
       text1: "<strong>decidim.barcelona</strong> is the platform of digital participation of the City of Barcelona. Its main objective is to make citizens protagonists in the collective construction of the city. Initially develops participation process for the preparation of the Plan aims to accommodate new processes and municipal participation on completing the current process."
       text2: "<strong>decidim.barcelona</strong > is a reference to build an open, transparent, and collaborative role in the lifes of those who live and build the city every day."
-    pam:
-      text: "<p>The <strong>Barcelona Municipal Plan</strong> is made at the beginning of each term and sets the priorities, objectives and actions of government action. It is the roadmap municipal and it measures therein strategic mandate.</p><p>The City Council opens a <strong>public participation process</strong> to build, think and debate collective actions and priorities for the next three years. One step forward and participate in building a more just and democratic.</p>"
-      title: What is the Barcelona Municipal Plan?
     download:
       links:
         epub: Download ePub
@@ -27,6 +24,9 @@ en:
       link: Join and participate
     meetings:
       title: dating face
+    pam:
+      text: "<p>The <strong>Barcelona Municipal Plan</strong> is made at the beginning of each term and sets the priorities, objectives and actions of government action. It is the roadmap municipal and it measures therein strategic mandate.</p><p>The City Council opens a <strong>public participation process</strong> to build, think and debate collective actions and priorities for the next three years. One step forward and participate in building a more just and democratic.</p>"
+      title: What is the Barcelona Municipal Plan?
     tutorial:
       step-1:
         description: Browse, comment and supports the proposals of the City of Barcelona
@@ -38,3 +38,5 @@ en:
         description: Discover discussions classroom near you
       subtitle: Discover, debate, propose actions to Barcelona for the next four years
       title: How can I participate?
+    videos:
+      title: They have already participated
