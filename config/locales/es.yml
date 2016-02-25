@@ -153,9 +153,6 @@ es:
     update:
       form:
         submit_button: Guardar cambios
-  errors:
-    messages:
-      user_not_found: No se encontró el usuario
   form:
     accept_terms: Acepto las %{conditions}
     conditions: Condiciones de uso
@@ -341,11 +338,7 @@ es:
         button: Buscar
         placeholder: Buscar propuestas...
         title: Buscar
-      search_results:
-        one: " que contiene '%{search_term}'"
-        other: " que contienen '%{search_term}'"
       select_order: Ordenar por
-      select_order_long: Estas viendo las propuestas
       start_proposal: Crea una propuesta
       title: Propuestas ciudadanas
     new:

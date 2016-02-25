@@ -153,9 +153,6 @@ ca:
     update:
       form:
         submit_button: Desa els canvis
-  errors:
-    messages:
-      user_not_found: No s'ha trobat l'usuari
   form:
     accept_terms: Accepto les %{conditions}
     conditions: Condicions d'ús
@@ -341,11 +338,7 @@ ca:
         button: Cercar
         placeholder: Cerca propostes ciutadanes ...
         title: Cercar
-      search_results:
-        one: " que conté '%{search_term}'"
-        other: " que contenen '%{search_term}'"
       select_order: Ordenar per
-      select_order_long: Estàs veient les propostes
       start_proposal: Crea una proposta
       title: Propostes ciutadanes
     new:
