@@ -13,6 +13,7 @@
   <%= f.text_field :document_number %>
   <%= f.text_field :document_type %>
   <%= f.check_box :verified %>
+  <%= f.select :official_level, official_level_options %>
   <div>
     <%= f.label :roles %>
     <%= f.collection_check_boxes :roles, User::ROLES, :to_s, :to_s %>

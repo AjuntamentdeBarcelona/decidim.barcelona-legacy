@@ -62,13 +62,6 @@
       <% end %>
     </li>
 
-    <li <%= "class=active" if controller_name == "officials" %>>
-      <%= link_to admin_officials_path do %>
-        <i class="icon-user"></i>
-        <%= t("admin.menu.officials") %>
-      <% end %>
-    </li>
-
     <li <%= 'class=active' if controller_name == 'activity' %>>
       <%= link_to admin_activity_path do %>
         <i class="icon-eye"></i>

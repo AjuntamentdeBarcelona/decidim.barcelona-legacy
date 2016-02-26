@@ -5,7 +5,7 @@ module AdminHelper
   end
 
   def official_level_options
-    options = [["",0]]
+    options = [[t("officials.level_0"), 0]]
     (1..5).each do |i|
       options << [t("officials.level_#{i}"), i]
     end
