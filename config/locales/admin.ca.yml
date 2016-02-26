@@ -60,25 +60,10 @@ ca:
       hidden_debates: Debats ocults
       hidden_proposals: Propostes ocultes
       incomplete_verifications: Verificacions incompletes
-      officials: Càrrecs públics
       organizations: Organitzacions
       spending_proposals: Propostes de despesa
       stats: Estadístiques
       users: Usuaris
-    officials:
-      edit:
-        back: Torna
-        destroy: Elimina condició de càrrec públic
-        title: 'Càrrecs públics: edita usuari'
-      flash:
-        official_destroyed: 'Dades desades: l''usuari ja no és càrrec públic'
-        official_updated: Dades del càrrec públic desades
-      index:
-        title: Càrrecs públics
-      search:
-        edit_official: Edita càrrec públic
-        make_official: Converteix a càrrec públic
-        title: 'Càrrecs públics: cerca d''usuaris'
     organizations:
       index:
         filter: Filtre
