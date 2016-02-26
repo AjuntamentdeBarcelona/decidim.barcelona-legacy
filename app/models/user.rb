@@ -44,6 +44,7 @@ class User < ActiveRecord::Base
 
   scope :administrators, -> { where.contains(roles: ['administrator']) }
   scope :moderators,     -> { where.contains(roles: ['moderator']) }
+  scope :dynamizers,     -> { where.contains(roles: ['dynamizer']) }
   scope :organizations,  -> { joins(:organization) }
   scope :officials,      -> { where("official_level > 0") }
   scope :for_render,     -> { includes(:organization) }
