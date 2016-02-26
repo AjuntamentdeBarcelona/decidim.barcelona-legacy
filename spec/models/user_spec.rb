@@ -176,49 +176,45 @@ describe User do
 
   describe "add_official_position!" do
     it "is false when level not valid" do
-      expect(subject.add_official_position!("Boss", 89)).to be false
+      expect(subject.add_official_position!(89)).to be false
     end
 
     it "updates official position fields" do
       expect(subject).not_to be_official
-      subject.add_official_position!("Veterinarian", 2)
+      subject.add_official_position!(2)
 
       expect(subject).to be_official
-      expect(subject.official_position).to eq("Veterinarian")
       expect(subject.official_level).to eq(2)
 
-      subject.add_official_position!("Brain surgeon", 3)
-      expect(subject.official_position).to eq("Brain surgeon")
+      subject.add_official_position!(3)
       expect(subject.official_level).to eq(3)
     end
   end
 
   describe "remove_official_position!" do
     it "updates official position fields" do
-      subject.add_official_position!("Brain surgeon", 3)
+      subject.add_official_position!(3)
       expect(subject).to be_official
 
       subject.remove_official_position!
 
       expect(subject).not_to be_official
-      expect(subject.official_position).to be_nil
       expect(subject.official_level).to eq(0)
     end
   end
 
   describe "officials scope" do
     it "returns only users with official positions" do
-      create(:user, official_position: "Mayor", official_level: 1)
-      create(:user, official_position: "Director", official_level: 3)
-      create(:user, official_position: "Math Teacher", official_level: 4)
-      create(:user, official_position: "Manager", official_level: 5)
+      create(:user, official_level: 1)
+      create(:user, official_level: 3)
+      create(:user, official_level: 4)
+      create(:user, official_level: 5)
       2.times { create(:user) }
 
       officials = User.officials
       expect(officials.size).to eq(4)
       officials.each do |user|
         expect(user.official_level).to be > 0
-        expect(user.official_position).to be_present
       end
     end
   end

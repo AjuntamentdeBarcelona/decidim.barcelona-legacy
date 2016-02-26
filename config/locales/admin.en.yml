@@ -75,12 +75,6 @@ en:
         official_updated: Public Official's saved details
       index:
         title: Public Officials
-      level_0: You are not a public official
-      level_1: Level 1
-      level_2: Level 2
-      level_3: Level 3
-      level_4: Level 4
-      level_5: Level 5
       search:
         edit_official: Edit public official
         make_official: Convert to public official

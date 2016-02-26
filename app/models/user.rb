@@ -116,13 +116,12 @@ class User < ActiveRecord::Base
     official_level && official_level > 0
   end
 
-  def add_official_position!(position, level)
-    return if position.blank? || level.blank?
-    update official_position: position, official_level: level.to_i
+  def add_official_position!(level = 0)
+    update official_level: level.to_i
   end
 
   def remove_official_position!
-    update official_position: nil, official_level: 0
+    update official_level: 0
   end
 
   def block

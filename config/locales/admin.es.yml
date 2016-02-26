@@ -75,12 +75,6 @@ es:
         official_updated: Datos del cargo público guardados
       index:
         title: Cargos públicos
-      level_0: No es un cargo público
-      level_1: Nivel 1
-      level_2: Nivel 2
-      level_3: Nivel 3
-      level_4: Nivel 4
-      level_5: Nivel 5
       search:
         edit_official: Editar cargo público
         make_official: Convertir en cargo público

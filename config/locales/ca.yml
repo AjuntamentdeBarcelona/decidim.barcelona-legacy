@@ -266,6 +266,13 @@ ca:
         one: Hi ha una resposta nova al teu comentari en
         other: Hi ha %{count} noves respostes al teu comentari en
       title: Notificacions
+  officials:
+    level_0: No és un càrrec públic
+    level_1: "Empleat/da públic"
+    level_2: "Organització general"
+    level_3: "Director/a General"
+    level_4: "Regidor/a"
+    level_5: "Alcaldessa"
   omniauth:
     facebook:
       sign_in: Entra amb Facebook

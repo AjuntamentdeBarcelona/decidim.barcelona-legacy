@@ -27,7 +27,7 @@
                 <% if debate.author.official? %>
                   <span class="bullet">&nbsp;&bull;&nbsp;</span>
                   <span class="label round level-<%= debate.author.official_level %>">
-                    <%= debate.author.official_position %>
+                    <%= official_position(debate.author) %>
                   </span>
                 <% end %>
               <% end %>

@@ -4,7 +4,7 @@ feature 'Admin officials' do
 
   background do
     @citizen = create(:user, username: "Citizen Kane")
-    @official = create(:user, official_position: "Mayor", official_level: 5)
+    @official = create(:user, official_level: 5)
     @admin = create(:administrator)
     login_as(@admin)
   end
@@ -14,7 +14,6 @@ feature 'Admin officials' do
 
     expect(page).to have_content @official.name
     expect(page).to_not have_content @citizen.name
-    expect(page).to have_content @official.official_position
     expect(page).to have_content @official.official_level
   end
 
@@ -28,8 +27,7 @@ feature 'Admin officials' do
     expect(page).to have_content @official.name
     expect(page).to have_content @official.email
 
-    fill_in 'user_official_position', with: 'School Teacher'
-    select '3', from: 'user_official_level', exact: false
+    select 'General director', from: 'user_official_level', exact: false
     click_button 'Update User'
 
     expect(page).to have_content 'saved details'
@@ -37,7 +35,6 @@ feature 'Admin officials' do
     visit admin_officials_path
 
     expect(page).to have_content @official.name
-    expect(page).to have_content 'School Teacher'
     expect(page).to have_content '3'
   end
 
@@ -51,8 +48,7 @@ feature 'Admin officials' do
 
     click_link @citizen.name
 
-    fill_in 'user_official_position', with: 'Hospital manager'
-    select '4', from: 'user_official_level', exact: false
+    select 'Councilor', from: 'user_official_level', exact: false
     click_button 'Update User'
 
     expect(page).to have_content 'saved'
@@ -61,7 +57,6 @@ feature 'Admin officials' do
 
     expect(page).to have_content @official.name
     expect(page).to have_content @citizen.name
-    expect(page).to have_content 'Hospital manager'
     expect(page).to have_content '4'
   end
 

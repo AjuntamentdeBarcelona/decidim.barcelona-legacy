@@ -75,12 +75,6 @@ ca:
         official_updated: Dades del càrrec públic desades
       index:
         title: Càrrecs públics
-      level_0: No és un càrrec públic
-      level_1: Nivell 1
-      level_2: Nivell 2
-      level_3: Nivell 3
-      level_4: Nivell 4
-      level_5: Nivell 5
       search:
         edit_official: Edita càrrec públic
         make_official: Converteix a càrrec públic

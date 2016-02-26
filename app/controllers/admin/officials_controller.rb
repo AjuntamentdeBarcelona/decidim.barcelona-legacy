@@ -26,7 +26,7 @@ class Admin::OfficialsController < Admin::BaseController
 
   private
     def user_params
-      params.require(:user).permit(:official_position, :official_level)
+      params.require(:user).permit(:official_level)
     end
 
 end

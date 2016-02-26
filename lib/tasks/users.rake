@@ -15,7 +15,7 @@ namespace :users do
       # The real check will be done by check_if_official_email, however.
       User.where('official_level = 0 and email like ?', "%#{domain}").find_each do |user|
         if user.has_official_email?
-          user.add_official_position! (Setting['official_level_1_name']), 1
+          user.add_official_position! 1
           puts "#{user.username} (#{user.email}) is now a level-1 official."
         end
       end
