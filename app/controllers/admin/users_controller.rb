@@ -48,7 +48,7 @@ class Admin::UsersController < Admin::BaseController
 
   def user_params
     params.require(:user).permit(:email, :name, :document_number, :document_type,
-                                 :address, :verified)
+                                 :address, :verified, :official_level)
   end
 
   def roles

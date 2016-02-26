@@ -266,6 +266,13 @@ en:
         one: Someone replied to your comment on
         other: There are %{count} new replies to your comment on
       title: Notifications
+  officials:
+    level_0: Not a public worker
+    level_1: Public workers
+    level_2: Town worker
+    level_3: General director
+    level_4: Councilor
+    level_5: Mayoress
   omniauth:
     facebook:
       sign_in: Sign in with Facebook

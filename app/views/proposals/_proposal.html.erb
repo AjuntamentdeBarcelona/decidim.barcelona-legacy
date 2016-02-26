@@ -32,7 +32,7 @@
                   <% if proposal.author.official? %>
                     <span class="bullet">&nbsp;&bull;&nbsp;</span>
                     <span class="label round level-<%= proposal.author.official_level %>">
-                      <%= proposal.author.official_position %>
+                      <%= official_position(proposal.author) %>
                     </span>
                   <% end %>
                 <% end %>

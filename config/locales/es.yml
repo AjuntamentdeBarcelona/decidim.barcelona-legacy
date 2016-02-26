@@ -266,6 +266,13 @@ es:
         one: Hay una respuesta nueva a tu comentario en
         other: Hay %{count} nuevas respuestas a tu comentario en
       title: Notificaciones
+  officials:
+    level_0: No és un càrrec públic
+    level_1: Empleado/a público
+    level_2: Organizació municipal
+    level_3: Director/a general
+    level_4: Concejal/a
+    level_5: Alcaldesa
   omniauth:
     facebook:
       sign_in: Entra con Facebook

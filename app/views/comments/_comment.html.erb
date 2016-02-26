@@ -39,7 +39,7 @@
                 <% if comment.user.official? %>
                   &nbsp;&bull;&nbsp;
                   <span class="label round level-<%= comment.user.official_level %>">
-                    <%= comment.user.official_position %>
+                    <%= official_position(comment.user) %>
                   </span>
                 <% end %>
               <% end %>

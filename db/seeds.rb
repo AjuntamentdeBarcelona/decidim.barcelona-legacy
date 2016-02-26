@@ -37,7 +37,7 @@ if ENV["SEED"]
 
   (1..5).each do |i|
     official = create_user("official#{i}@bcn.cat")
-    official.update(official_level: i, official_position: "Official position #{i}")
+    official.update(official_level: i)
   end
 
   (1..40).each do |i|

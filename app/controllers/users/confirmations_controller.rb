@@ -54,7 +54,7 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   private
 
     def set_official_position
-      resource.add_official_position! (Setting['official_level_1_name']), 1
+      resource.add_official_position! 1
     end
 
     def after_confirmation_path_for(resource_name, resource)

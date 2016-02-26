@@ -60,31 +60,10 @@ es:
       hidden_debates: Debates ocultos
       hidden_proposals: Propuestas ocultas
       incomplete_verifications: Verificaciones incompletas
-      officials: Cargos públicos
       organizations: Organizaciones
       spending_proposals: Propuestas de gasto
       stats: Estadísticas
       users: Usuarios
-    officials:
-      edit:
-        back: Volver
-        destroy: Eliminar condición de "cargo público"
-        title: 'Cargos públicos: Editar usuario'
-      flash:
-        official_destroyed: 'Datos guardados: el usuario ya no es cargo público'
-        official_updated: Datos del cargo público guardados
-      index:
-        title: Cargos públicos
-      level_0: No es un cargo público
-      level_1: Nivel 1
-      level_2: Nivel 2
-      level_3: Nivel 3
-      level_4: Nivel 4
-      level_5: Nivel 5
-      search:
-        edit_official: Editar cargo público
-        make_official: Convertir en cargo público
-        title: 'Cargos públicos: Búsqueda de usuarios'
     organizations:
       index:
         filter: Filtro

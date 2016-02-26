@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160219211608) do
+ActiveRecord::Schema.define(version: 20160226132111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -452,7 +452,6 @@ ActiveRecord::Schema.define(version: 20160219211608) do
     t.boolean  "email_on_comment",                     default: false
     t.boolean  "email_on_comment_reply",               default: false
     t.string   "phone_number",              limit: 30
-    t.string   "official_position"
     t.integer  "official_level",                       default: 0
     t.datetime "hidden_at"
     t.string   "sms_confirmation_code"

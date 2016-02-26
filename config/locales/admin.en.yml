@@ -60,31 +60,10 @@ en:
       hidden_debates: Hidden debates
       hidden_proposals: Hidden proposals
       incomplete_verifications: Incomplete verifications
-      officials: Public Officials
       organizations: Organisations
       spending_proposals: Spending proposals
       stats: Statistics
       users: Users
-    officials:
-      edit:
-        back: Back
-        destroy: Delete 'Public Official' status
-        title: 'Public Officials: Edit user'
-      flash:
-        official_destroyed: 'Details saved: the user is no longer a public official'
-        official_updated: Public Official's saved details
-      index:
-        title: Public Officials
-      level_0: You are not a public official
-      level_1: Level 1
-      level_2: Level 2
-      level_3: Level 3
-      level_4: Level 4
-      level_5: Level 5
-      search:
-        edit_official: Edit public official
-        make_official: Convert to public official
-        title: 'Official positions: User search'
     organizations:
       index:
         filter: Filter
