@@ -30,6 +30,7 @@
 .meeting-show{
   .meeting-date{
     @include arrow-box(#d8d7d7, bottom);
+    margin: 0 auto;
 
     text-align: center;
     .date, .week-day{
@@ -49,7 +50,7 @@
 
     .time{
       display: block;
-      margin-top: 1rem;
+      margin-top: 0.5rem;
       font-size: rem-calc(18);
       font-weight: 300;
     }
@@ -67,7 +68,9 @@
   }
 
   .sidebar{
-    margin-top: $line-height * 1.5;
+    .static-map{
+      height: rem-calc(200);
+    }
   }
 
   .address{
@@ -75,30 +78,123 @@
     font-size: rem-calc(18);
   }
 
-  .sidebar{
-    h3{
-      margin-top: 2rem;
-      text-transform: none;
-      font-size: rem-calc(22);
-      font-weight: 300;
+  .meeting-proposals{
+    ul{
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
     }
 
-    .proposals{
-      ul{
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
+    li{
+      background-color: $highlight;
+      margin-bottom: rem-calc(10);
+      display: block;
+      padding: rem-calc(15);
+      padding-right: rem-calc(110);
+      position: relative;
 
-        border: 1px solid #e6e6e6;
+      .support{
+        margin-left: rem-calc(10);
       }
 
-      li{
-        border-bottom: 1px solid #e6e6e6;
+      .see-more{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: rem-calc(10);
+      }
+    }
+  }
 
-        a{
-          display: block;
-          padding: rem-calc(15);
+  .tags{
+    display: block;
+    margin-bottom: rem-calc(15);
+  }
+
+  .meeting-pictures{
+    @include block-grid(1);
+    @media #{$small-up}{
+      @include block-grid(2);
+    }
+
+    @media #{$large-up}{
+      @include block-grid(3);
+    }
+  }
+
+  .meeting-main-info{
+    @include grid-row($behavior: nest);
+
+    .title-and-description{
+      @include grid-column(12);
+    }
+
+    .meeting-date-wrapper{
+      @include grid-column(12);
+      .meeting-date{
+        margin: 1.5rem 0;
+      }
+    }
+
+    @media #{$medium-up}{
+      .title-and-description{
+        @include grid-column(8);
+      }
+
+      .meeting-date-wrapper{
+        margin-top: 0;
+        margin-bottom: 0;
+
+        @include grid-column(4);
+        .meeting-date{
+          margin-left: auto;
+          margin-right: 0;
         }
+      }
+    }
+
+    @media #{$large-up}{
+      .title-and-description{
+        @include grid-column(9);
+      }
+
+      .meeting-date-wrapper{
+        @include grid-column(3);
+      }
+    }
+  }
+
+  .meeting-date{
+    margin: 0 auto;
+  }
+
+  .meeting-card{
+    border: 1px solid #c9c9c9;
+    margin-top: rem-calc(25);
+    padding: rem-calc(25);
+
+    .meeting-card-block{
+      padding: rem-calc(15) 0;
+      text-align: center;
+      border-bottom: 1px dotted #c9c9c9;
+
+      &:last-child{
+        border-bottom: none;
+      }
+
+      .meeting-card-number, .meeting-card-text{
+        display: block;
+      }
+
+      .meeting-card-number{
+        font-size: rem-calc(30);
+        color: #666;
+      }
+
+      .meeting-card-description{
+        display: block;
+        margin-top: rem-calc(10);
+        color: $brand;
       }
     }
   }

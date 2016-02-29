@@ -1,0 +1,6 @@
+<% if @meeting.closed? %>
+  <h3><%= t '.title' %></h3>
+  <div class="meeting-close-report">
+    <%== @meeting.close_report %>
+  </div>
+<% end %>

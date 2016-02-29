@@ -1,0 +1,12 @@
+<% if @meeting.pictures.any? %>
+  <h3><%= t '.title' %></h3>
+  <ul class="meeting-pictures">
+    <% @meeting.pictures.each do |picture| %>
+      <li>
+        <%= link_to picture.file.url do %>
+        <img src="<%= picture.file.medium.url %>" />
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

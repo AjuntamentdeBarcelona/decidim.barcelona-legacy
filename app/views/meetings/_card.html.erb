@@ -1,0 +1,19 @@
+<% if @meeting.closed? %>
+  <div class="meeting-card">
+    <div class="meeting-card-block">
+      <span class="meeting-card-number"><%= @meeting.attendee_count %></span>
+      <span class="meeting-card-description"><%= t('.attendee_count') %></span>
+    </div>
+    <div class="meeting-card-block">
+      <span class="meeting-card-number"><%= @meeting.interventions %></span>
+      <span class="meeting-card-description"><%= t('.interventions') %></span>
+    </div>
+    <% if !@meeting.organizations.blank? %>
+      <div class="meeting-card-block">
+        <span class="meeting-card-text"><%= @meeting.organizations %></span>
+        <span class="meeting-card-description"><%= t('.organizations') %></span>
+      </div>
+    <% end %>
+    <%= static_map latitude: @meeting.address_latitude, longitude: @meeting.address_longitude, zoom: 16 %>
+  </div>
+<% end %>

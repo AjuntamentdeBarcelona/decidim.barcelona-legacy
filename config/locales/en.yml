@@ -209,6 +209,10 @@ en:
       title: How I can comment this document?
   locale: English
   meetings:
+    card:
+      attendee_count: Number of Attendees
+      interventions: Number of interventions
+      organizations: Participating organizations
     close:
       form:
         close_report: Meeting report
@@ -219,6 +223,8 @@ en:
       new:
         form:
           submit_button: Close meeting
+    close_report:
+      title: Summary of the meeting
     edit:
       form:
         submit_button: Update meeting
@@ -249,6 +255,10 @@ en:
     new:
       form:
         submit_button: Create meeting
+    photos:
+      title: Pictures of the event
+    proposals:
+      see_more: See more
     show:
       back_link: Back
       proposals_title: Discussed proposals

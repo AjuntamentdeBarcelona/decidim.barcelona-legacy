@@ -31,6 +31,10 @@ class Meeting < ActiveRecord::Base
     !!closed_at
   end
 
+  def upcoming?
+    held_at >= Time.now
+  end
+
   pg_search_scope :pg_search, {
     against: {
       title:       'A',
