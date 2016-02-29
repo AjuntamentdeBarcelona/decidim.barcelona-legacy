@@ -1,5 +1,5 @@
 class ResourceFilter
-  IGNORE_FILTER_PARAMS = ["source", "other"]
+  IGNORE_FILTER_PARAMS = ["source", "other", "date"]
   attr_reader :search_filter, :tag_filter, :params
 
   def initialize(params={})
@@ -62,6 +62,12 @@ class ResourceFilter
 
       if @params["source"].present?
         @params["from_meeting"] = true if @params["source"].include? "meetings"
+      end
+
+      if @params["date"].present? && @params["date"].include?("past")
+        collection = collection.past
+      else
+        collection = collection.upcoming
       end
 
       @params.each do |attr, value|
