@@ -23,6 +23,14 @@ class MeetingsFilter extends React.Component {
         <SearchFilter 
           searchText={this.state.searchText}
           onSetFilterText={ (searchText) => this.onSetFilterText(searchText) } />
+        <FilterOptionGroup
+          filterGroupName="date"
+          filterGroupValue={this.state.filters.get('date')}
+          isExclusive={true}
+          labelAllKey="upcoming"
+          onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) }>
+          <FilterOption filterName="past" />
+        </FilterOptionGroup>
         <ScopeFilterOptionGroup 
           filterGroupValue={this.state.filters.get('scope')} 
           onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) } />

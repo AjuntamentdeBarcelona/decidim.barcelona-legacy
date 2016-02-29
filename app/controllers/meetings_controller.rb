@@ -3,8 +3,8 @@ class MeetingsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @filter = ResourceFilter.new(params)
-    @meetings = @filter.filter_collection(Meeting.upcoming).includes(:category, :subcategory)
+    @filter = ResourceFilter.new(params, filter_date: true)
+    @meetings = @filter.filter_collection(Meeting.all).includes(:category, :subcategory)
 
     if Setting["feature.meeting_tags"]
       @tag_cloud = @filter.tag_cloud(@meetings)

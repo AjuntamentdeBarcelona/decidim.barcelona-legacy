@@ -23,8 +23,11 @@ es:
       meetings: Debatidas en citas presenciales
       official: Ayuntamiento
       organization: Organizaciones
+      past: Pasadas
+      upcoming: Próximas
     filter_option_group:
       category_id: Eje
+      date: Fecha
       district: Distrito
       other: Otros
       scope: "Ámbito"

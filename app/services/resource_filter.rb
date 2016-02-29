@@ -1,12 +1,13 @@
 class ResourceFilter
-  IGNORE_FILTER_PARAMS = ["source", "other"]
+  IGNORE_FILTER_PARAMS = ["source", "other", "date"]
   attr_reader :search_filter, :tag_filter, :params
 
-  def initialize(params={})
-    @params = params[:filter]
+  def initialize(params={}, options = {})
+    @params = params[:filter].deep_dup
     @exclude_ids = params[:exclude_ids]
     @search_filter = params[:search] if params[:search].present?
     @tag_filter = params[:tag]
+    @options = options
   end
 
   def filter_collection(collection)
@@ -55,31 +56,41 @@ class ResourceFilter
         result[filterGroupName] = filterGroupValue.split(',') if filterGroupValue
         result
       end
-
-      if @params["source"].present?
-        @params["official"] = true if @params["source"].include? "official"
-      end
-
-      if @params["source"].present?
-        @params["from_meeting"] = true if @params["source"].include? "meetings"
-      end
-
-      @params.each do |attr, value|
-        unless IGNORE_FILTER_PARAMS.include? attr
-          collection = collection.where(attr => value)
-        end
-      end
-
-      if @params["other"] && @params["other"].include?("meetings")
-        proposal_in_meetings_ids = MeetingProposal.pluck(:proposal_id).uniq
-        collection = collection.where(id: proposal_in_meetings_ids)
-      end
-
-      if @params["source"] && @params["source"].include?("organization")
-        collection = collection.where(author_id: Organization.verified.select(:user_id))
-      end
-
+    else
+      @params = {}
     end
+
+    if @params["source"].present?
+      @params["official"] = true if @params["source"].include? "official"
+    end
+
+    if @params["source"].present?
+      @params["from_meeting"] = true if @params["source"].include? "meetings"
+    end
+
+    if @options[:filter_date]
+      if @params["date"] && @params["date"].include?("past")
+        collection = collection.past
+      else
+        collection = collection.upcoming
+      end
+    end
+
+    @params.each do |attr, value|
+      unless IGNORE_FILTER_PARAMS.include? attr
+        collection = collection.where(attr => value)
+      end
+    end
+
+    if @params["other"] && @params["other"].include?("meetings")
+      proposal_in_meetings_ids = MeetingProposal.pluck(:proposal_id).uniq
+      collection = collection.where(id: proposal_in_meetings_ids)
+    end
+
+    if @params["source"] && @params["source"].include?("organization")
+      collection = collection.where(author_id: Organization.verified.select(:user_id))
+    end
+
     collection
   end
 end
