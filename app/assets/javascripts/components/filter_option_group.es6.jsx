@@ -11,12 +11,12 @@ class FilterOptionGroup extends React.Component {
   }
 
   renderIncludeAll() {
-    if (this.props.isExclusive) {
+    if (this.props.isExclusive && !this.props.hideIncludeAll) {
       return (
         <FilterOption 
           isExclusive={true} 
           filterGroupName={this.props.filterGroupName}
-          filterName="all"
+          filterName={this.props.labelAllKey || "all" }
           onChangeFilter={() => this.clearFilter()}
           checked={this.state.filterGroupValue.count() === 0} />
       )

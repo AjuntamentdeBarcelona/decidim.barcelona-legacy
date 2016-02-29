@@ -23,8 +23,11 @@ ca:
       meetings: Debatudes a cites presencials
       official: Ajuntament
       organization: Organitzacions
+      past: Passades
+      upcoming: Properes
     filter_option_group:
       category_id: Eix
+      date: Data
       district: Districte
       other: Altres
       scope: "Àmbit"
