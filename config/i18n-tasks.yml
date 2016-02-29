@@ -143,8 +143,8 @@ ignore_unused:
   - 'helpers.page_entries_info.*' # kaminari
   - 'views.pagination.*' # kaminari
   - 'officials.*'
-  - 'components.filter_option.{city,district,official,citizenship,meetings,organization,all,past,upcoming}'
-  - 'components.filter_option_group.{category_id,district,scope,subcategory_id,other,source,date}'
+  - 'components.filter_option.{city,district,official,citizenship,meetings,organization,all}'
+  - 'components.filter_option_group.{category_id,district,scope,subcategory_id,other, source}'
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'
