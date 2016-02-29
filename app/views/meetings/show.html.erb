@@ -12,11 +12,29 @@
       <i class="icon-angle-left left"></i>&nbsp;
       <%= link_to t("meetings.show.back_link"), :back, class: 'left back' %>
 
-      <h2><%= @meeting.title %></h2>
+      <div class="meeting-main-info">
+        <div class="title-and-description">
+          <h2><%= @meeting.title %></h2>
 
-      <div class="description">
-        <%= text_with_links @meeting.description %>
+          <div class="description">
+            <%= text_with_links @meeting.description %>
+          </div>
+        </div>
+
+        <% if @meeting.held_at %>
+          <div class="meeting-date-wrapper">
+            <div class="meeting-date">
+              <span class="date"> <%= l @meeting.held_at %></span>
+              <span class="week-day"><%= (t 'date.day_names')[@meeting.held_at.wday] %></span>
+
+              <span class="time">
+                <%= meeting_time @meeting %>
+              </span>
+            </div>
+          </div>
+        <% end %>
       </div>
+
 
       <% if current_user and (current_user.moderator? or current_user.administrator?) %>
         <div class="right">
@@ -30,42 +48,27 @@
         <%= bcn_icon 'localitzacio' %>
         <%= @meeting.address %>
       </div>
-      <div class="meeting-map">
-        <%= static_map latitude: @meeting.address_latitude, longitude: @meeting.address_longitude, zoom: 16 %>
-      </div>
 
+      <% if @meeting.upcoming? %>
+        <div class="meeting-map">
+          <%= static_map latitude: @meeting.address_latitude, longitude: @meeting.address_longitude, zoom: 16 %>
+        </div>
+      <% end %>
+      <% if !@meeting.closed? %>
+        <%= static_map latitude: @meeting.address_latitude, longitude: @meeting.address_longitude, zoom: 16 %>
+      <% end %>
       <%= render 'shared/tags', taggable: @meeting %>
+
+      <%= render 'photos' %>
+      <%= render 'close_report' %>
+      <%= render 'proposals' %>
     </div>
 
     <aside class="small-12 medium-3 column sidebar">
-      <% if @meeting.held_at %>
-        <div class="meeting-date">
-          <span class="date"> <%= l @meeting.held_at %></span>
-          <span class="week-day"><%= (t 'date.day_names')[@meeting.held_at.wday] %></span>
-
-          <span class="time">
-            <%= meeting_time @meeting %>
-          </span>
-        </div>
-      <% end %>
-
-      <% unless @meeting.proposals.empty? %>
-        <div class="proposals">
-          <h3><%= t("meetings.show.proposals_title") %></h3>
-          <ul>
-            <% @meeting.meeting_proposals.each do |meeting_proposal| %>
-              <li>
-                <%= link_to meeting_proposal.proposal.title, meeting_proposal.proposal %>
-                <% if meeting_proposal.meeting.closed? && meeting_proposal.consensus %>
-                  <span class="support"><%= t("meetings.close.form.proposals.consensus") %></span>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
       <h3><%= t("meetings.show.share") %></h3>
       <%= social_share_button_tag(@meeting.title) %>
+
+      <%= render 'card' %>
     </aside>
   </div>
 </section>

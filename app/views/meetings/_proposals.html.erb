@@ -1,0 +1,16 @@
+<% unless @meeting.proposals.empty? %>
+  <div class="meeting-proposals">
+    <h3><%= t("meetings.show.proposals_title") %></h3>
+    <ul>
+      <% @meeting.meeting_proposals.each do |meeting_proposal| %>
+        <li>
+          <span class="proposal-title"><%= meeting_proposal.proposal.title %></span>
+          <% if meeting_proposal.meeting.closed? && meeting_proposal.consensus %>
+            <span class="support label round success "><%= t("meetings.close.form.proposals.consensus") %></span>
+          <% end %>
+          <%= link_to t('.see_more'), proposal_path(meeting_proposal.proposal), class: 'see-more button tiny round' %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

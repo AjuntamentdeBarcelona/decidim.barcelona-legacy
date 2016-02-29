@@ -209,6 +209,10 @@ ca:
       title: Com puc comentar aquest document?
   locale: Català
   meetings:
+    card:
+      attendee_count: Nombre d'assistents
+      interventions: Nombre d'intervencions
+      organizations: Organitzacions participants
     close:
       form:
         close_report: Descripció de la sessió
@@ -219,6 +223,8 @@ ca:
       new:
         form:
           submit_button: Tancar cita
+    close_report:
+      title: Resum de la cita
     edit:
       form:
         submit_button: Actualitzar cita
@@ -249,6 +255,10 @@ ca:
     new:
       form:
         submit_button: Crear cita
+    photos:
+      title: Fotografies de la cita
+    proposals:
+      see_more: Veure més
     show:
       back_link: Tornar
       proposals_title: Propostes tractades
@@ -268,11 +278,11 @@ ca:
       title: Notificacions
   officials:
     level_0: No és un càrrec públic
-    level_1: "Empleat/da públic"
-    level_2: "Organització general"
-    level_3: "Director/a General"
-    level_4: "Regidor/a"
-    level_5: "Alcaldessa"
+    level_1: Empleat/da públic
+    level_2: Organització general
+    level_3: Director/a General
+    level_4: Regidor/a
+    level_5: Alcaldessa
   omniauth:
     facebook:
       sign_in: Entra amb Facebook

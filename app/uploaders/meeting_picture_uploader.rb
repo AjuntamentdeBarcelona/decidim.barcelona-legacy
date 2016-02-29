@@ -6,7 +6,7 @@ class MeetingPictureUploader < ApplicationUploader
   end
 
   version :medium do
-    process :resize_to_fit => [400, 400]
+    process :resize_to_fill => [400, 300]
   end
 
   def extension_white_list
