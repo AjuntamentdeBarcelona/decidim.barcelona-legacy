@@ -1,13 +1,17 @@
 <% if @meeting.closed? %>
   <div class="meeting-card">
-    <div class="meeting-card-block">
-      <span class="meeting-card-number"><%= @meeting.attendee_count %></span>
-      <span class="meeting-card-description"><%= t('.attendee_count') %></span>
-    </div>
-    <div class="meeting-card-block">
-      <span class="meeting-card-number"><%= @meeting.interventions %></span>
-      <span class="meeting-card-description"><%= t('.interventions') %></span>
-    </div>
+    <% if !@meeting.attendee_count.blank? %>
+      <div class="meeting-card-block">
+        <span class="meeting-card-number"><%= @meeting.attendee_count %></span>
+        <span class="meeting-card-description"><%= t('.attendee_count') %></span>
+      </div>
+    <% end %>
+    <% if !@meeting.interventions.blank? %>
+      <div class="meeting-card-block">
+        <span class="meeting-card-number"><%= @meeting.interventions %></span>
+        <span class="meeting-card-description"><%= t('.interventions') %></span>
+      </div>
+    <% end %>
     <% if !@meeting.organizations.blank? %>
       <div class="meeting-card-block">
         <span class="meeting-card-text"><%= @meeting.organizations %></span>
