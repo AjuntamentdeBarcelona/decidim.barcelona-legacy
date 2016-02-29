@@ -4,7 +4,7 @@ class MeetingsController < ApplicationController
 
   def index
     @filter = ResourceFilter.new(params)
-    @meetings = @filter.filter_collection(Meeting.all).includes(:category, :subcategory)
+    @meetings = @filter.filter_collection(Meeting.upcoming).includes(:category, :subcategory)
 
     if Setting["feature.meeting_tags"]
       @tag_cloud = @filter.tag_cloud(@meetings)

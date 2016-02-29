@@ -7,7 +7,7 @@ class FilterOption extends React.Component {
         <input
           id={elemId}
           type={this.props.isExclusive ? "radio" : "checkbox"}
-          value="{this.props.filterValue || this.props.filterName}" 
+          value="{this.props.filterName}" 
           checked={this.props.checked}
           onChange={(event) => this.props.onChangeFilter(this.props.filterName, event.target.checked)}
         />

@@ -23,11 +23,8 @@ en:
       meetings: Meetings
       official: Town Hall
       organization: Organizations
-      past: Past
-      upcoming: Upcoming
     filter_option_group:
       category_id: Axis
-      date: Date
       district: District
       other: Other
       scope: Scope
