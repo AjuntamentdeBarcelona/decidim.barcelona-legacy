@@ -29,11 +29,13 @@ RSpec.configure do |config|
     end
   end
 
-  config.verbose_retry = true
-  config.display_try_failure_messages = true
+  if ENV["CI"]
+    config.verbose_retry = true
+    config.display_try_failure_messages = true
 
-  config.around :each, :js do |ex|
-    ex.run_with_retry retry: 3
+    config.around :each, :js do |ex|
+      ex.run_with_retry retry: 3
+    end
   end
 
   config.before(:each) do |example|

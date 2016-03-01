@@ -56,10 +56,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
                                                     :notifications_by_default, :captcha_key,
                                                     :terms_of_service, :locale).to_hash
 
-      if sign_up_params[:notifications_by_default] == "1"
-        sign_up_params[:weekly_summary] = true
-        sign_up_params[:email_on_comment] = true
-        sign_up_params[:email_on_comment_reply] = true
+      if sign_up_params["notifications_by_default"] == "1"
+        sign_up_params["weekly_summary"] = true
+        sign_up_params["email_on_comment"] = true
+        sign_up_params["email_on_comment_reply"] = true
       end
 
       sign_up_params

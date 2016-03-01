@@ -36,4 +36,6 @@ Capybara::Screenshot::RSpec.add_link_to_screenshot_for_failed_examples = false
 Capybara::Screenshot.webkit_options = { width: 1024, height: 768 }
 Capybara::Screenshot.prune_strategy = :keep_last_run
 
+SimpleCaptcha.always_pass = Rails.env.test?
+
 OmniAuth.config.test_mode = true
