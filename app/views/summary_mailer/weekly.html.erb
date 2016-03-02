@@ -28,10 +28,7 @@
     <% end %>
   <% end %>
 
-  <% if @summary.most_active.any? %>
-    <h3><%= t '.most_active' %></h3>
-    <%= render partial: 'proposals', locals: { proposals: @summary.most_active, summary: @summary } %>
-
+  <% if @official_random_proposals.any? %>
     <h3><%= t '.official_random_proposals' %></h3>
     <ul>
       <% @official_random_proposals.each do |proposal|  %>
@@ -51,6 +48,11 @@
         </li>
       <% end %>
     </ul>
+  <% end %>
+
+  <% if @summary.most_active.any? %>
+    <h3><%= t '.most_active' %></h3>
+    <%= render partial: 'proposals', locals: { proposals: @summary.most_active, summary: @summary } %>
   <% end %>
 
   <% if @upcoming_meetings.any? %>
