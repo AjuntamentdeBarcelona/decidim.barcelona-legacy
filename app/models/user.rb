@@ -73,8 +73,13 @@ class User < ActiveRecord::Base
       email: oauth_email,
       oauth_email: oauth_email,
       password: Devise.friendly_token[0,20],
+      password_confirmation: Devise.friendly_token[0,20],
       terms_of_service: '1',
-      confirmed_at: oauth_email_confirmed ? DateTime.now : nil
+      confirmed_at: oauth_email_confirmed ? DateTime.now : nil,
+      notifications_by_default: true,
+      weekly_summary: true,
+      email_on_comment: true,
+      email_on_comment_reply: true
     )
   end
 
