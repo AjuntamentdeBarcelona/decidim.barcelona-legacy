@@ -133,7 +133,7 @@ group :test do
   gem 'poltergeist'
   gem 'email_spec'
   gem "webmock"
-  gem 'rspec-retry'
+  gem 'rspec-repeat'
   gem "coveralls"
 end
 

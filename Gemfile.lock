@@ -565,8 +565,8 @@ GEM
       rspec-expectations (~> 3.4.0)
       rspec-mocks (~> 3.4.0)
       rspec-support (~> 3.4.0)
-    rspec-retry (0.4.5)
-      rspec-core
+    rspec-repeat (1.0.2)
+      rspec (~> 3.0)
     rspec-support (3.4.1)
     ruby-progressbar (1.7.5)
     rubyzip (1.1.7)
@@ -771,7 +771,7 @@ DEPENDENCIES
   rollbar
   roo
   rspec-rails (~> 3.3)
-  rspec-retry
+  rspec-repeat
   sassc-rails
   savon
   settingslogic
