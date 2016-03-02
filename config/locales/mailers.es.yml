@@ -22,7 +22,7 @@ es:
       title: Nueva respuesta a tu comentario
   summary_mailer:
     proposals:
-      activity: "%{votes} votos, %{comments} comentarios"
+      activity: "%{votes} soportes nuevos, %{comments} comentarios nuevos"
     weekly:
       most_active: Propuestas más activas
       official_random_proposals: Algunas propuestas del Ayuntamiento

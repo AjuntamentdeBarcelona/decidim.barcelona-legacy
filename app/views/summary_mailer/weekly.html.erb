@@ -15,13 +15,7 @@
 
     <% @summary.recent_comments_on_own_proposals.group_by { |c| c.commentable }.each do |proposal, comments|  %>
       <h4><%= link_to(proposal.title, proposal) %></h4>
-      <ul>
-        <% comments.each do |comment| %>
-          <li class="comment">
-            <%= truncate(comment.body, length: 140) %> - <strong><%= comment.author.name %></strong>, <em><%= t("time.ago", time_in_words: time_ago_in_words(comment.created_at)) %></em>
-          </li>
-        <% end %>
-      </ul>
+      <%= render partial: 'comments', locals: { comments: comments }%>
     <% end %>
   <% end %>
 
@@ -30,13 +24,7 @@
 
     <% @summary.recent_comments_on_voted_proposals.group_by { |c| c.commentable }.each do |proposal, comments|  %>
       <h4><%= link_to(proposal.title, proposal) %></h4>
-      <ul>
-        <% comments.each do |comment| %>
-          <li>
-            <%= truncate(comment.body, length: 140) %> - <strong><%= comment.author.name %></strong>, <em><%= t("time.ago", time_in_words: time_ago_in_words(comment.created_at)) %></em>
-          </li>
-        <% end %>
-      </ul>
+      <%= render partial: 'comments', locals: { comments: comments }%>
     <% end %>
   <% end %>
 

@@ -22,7 +22,7 @@ ca:
       title: Resposta nova al teu comentari
   summary_mailer:
     proposals:
-      activity: "%{votes} vots, %{comments} comentaris"
+      activity: "%{votes} suports nous, %{comments} comentaris nous"
     weekly:
       most_active: Propostes més actives
       official_random_proposals: Algunes propostes de l'Ajuntament

@@ -58,12 +58,13 @@ class ActivitySummary
   #
   # Returns an ActiveRecord::Relation
   def recent_comments_on_voted_proposals(limit = 5)
-    @recent_comments ||= Comment.
-                       where(commentable: @user.get_voted(Proposal)).
-                       where('updated_at > ?', @from).
-                       where('updated_at <= ?', @to).
-                       order('updated_at desc').
-                       limit(limit)
+    @recent_comments_on_voted_proposals ||= Comment.
+                                          where(commentable: @user.get_voted(Proposal)).
+                                          where.not(commentable: @user.proposals).
+                                          where('updated_at > ?', @from).
+                                          where('updated_at <= ?', @to).
+                                          order('updated_at desc').
+                                          limit(limit)
   end
 
   # Public: Returns a set of recommendations for a particular user.
