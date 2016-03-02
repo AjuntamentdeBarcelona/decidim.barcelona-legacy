@@ -30,11 +30,9 @@ RSpec.configure do |config|
   end
 
   if ENV["CI"]
-    config.verbose_retry = true
-    config.display_try_failure_messages = true
-
-    config.around :each, :js do |ex|
-      ex.run_with_retry retry: 3
+    config.include RSpec::Repeat
+    config.around :each do |example|
+      repeat example, 3.times
     end
   end
 
