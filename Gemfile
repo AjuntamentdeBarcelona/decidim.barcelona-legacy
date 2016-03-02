@@ -135,6 +135,7 @@ group :test do
   gem "webmock"
   gem 'rspec-repeat'
   gem "coveralls"
+  gem 'timecop'
 end
 
 group :development do

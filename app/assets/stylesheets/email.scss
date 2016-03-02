@@ -83,4 +83,35 @@
     }
     margin-bottom: 10px;
   }
+
+  ul{
+    li{
+      margin-bottom: rem-calc(5);
+    }
+  }
+
+  .weekly-summary{
+    h3{
+      padding-top: rem-calc(20);
+    }
+
+    .title{
+      text-align: center;
+
+      h2{
+        padding-top: rem-calc(20);
+        padding-bottom: 0;
+      }
+
+      h3{
+        margin: 0;
+        padding-top: rem-calc(5);
+        padding-bottom: rem-calc(5);
+        &.name{
+          font-weight: normal;
+        }
+      }
+    }
+
+  }
 }

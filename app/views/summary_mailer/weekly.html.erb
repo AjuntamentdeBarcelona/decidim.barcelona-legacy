@@ -1,0 +1,70 @@
+<div class="weekly-summary">
+  <div class="title">
+    <h2><%= t '.title' %></h2>
+    <h3 class="date"><%= l @from.to_date %> - <%= l @to.to_date %></h3>
+    <h3 class="name"><%= @user.name %></h3>
+  </div>
+
+  <% if @summary.own_active.any? %>
+    <h3><%= t '.own_active' %></h3>
+    <%= render partial: 'proposals', locals: { proposals: @summary.own_active, summary: @summary } %>
+  <% end %>
+
+  <% if @summary.recent_comments_on_own_proposals.any? %>
+    <h3><%= t '.recent_comments_on_own_proposals' %></h3>
+
+    <% @summary.recent_comments_on_own_proposals.group_by { |c| c.commentable }.each do |proposal, comments|  %>
+      <h4><%= link_to(proposal.title, proposal) %></h4>
+      <%= render partial: 'comments', locals: { comments: comments }%>
+    <% end %>
+  <% end %>
+
+  <% if @summary.recent_comments_on_voted_proposals.any? %>
+    <h3><%= t '.recent_comments_on_voted_proposals' %></h3>
+
+    <% @summary.recent_comments_on_voted_proposals.group_by { |c| c.commentable }.each do |proposal, comments|  %>
+      <h4><%= link_to(proposal.title, proposal) %></h4>
+      <%= render partial: 'comments', locals: { comments: comments }%>
+    <% end %>
+  <% end %>
+
+  <% if @summary.most_active.any? %>
+    <h3><%= t '.most_active' %></h3>
+    <%= render partial: 'proposals', locals: { proposals: @summary.most_active, summary: @summary } %>
+
+    <h3><%= t '.official_random_proposals' %></h3>
+    <ul>
+      <% @official_random_proposals.each do |proposal|  %>
+        <li>
+          <%= link_to(proposal.title, proposal) %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <% if @random_proposals.any? %>
+    <h3><%= t '.random_proposals' %></h3>
+    <ul>
+      <% @random_proposals.each do |proposal|  %>
+        <li>
+          <%= link_to(proposal.title, proposal) %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <% if @upcoming_meetings.any? %>
+    <h3><%= t '.upcoming_meetings' %></h3>
+    <ul>
+      <% @upcoming_meetings.each do |meeting|  %>
+        <li>
+          <%= link_to(meeting.title, meeting) %>
+          <% if meeting.held_at %>
+            <br />
+            (<%=l meeting.held_at %>, <%= time_ago_in_words(meeting.held_at)  %>)
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

@@ -3,6 +3,10 @@ class DeviseMailer < Devise::Mailer
   include Devise::Controllers::UrlHelpers
   default template_path: 'devise/mailer'
 
+  before_filter do
+    @hide_footer_link = true
+  end
+
   protected
 
   def devise_mail(record, action, opts={})

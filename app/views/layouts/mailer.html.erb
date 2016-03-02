@@ -26,6 +26,11 @@
             </tr>
             <tr>
               <td class="footer">
+                <% unless @hide_footer_link %>
+                  <p>
+                    <%= t("mailers.config.manage_email_subscriptions") %> <%= link_to t("account.show.title"), account_url %>
+                  </p>
+                <% end %>
                 <p><%= Setting['org_name'] %></p>
               </td>
             </tr>
