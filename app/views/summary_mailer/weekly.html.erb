@@ -63,7 +63,7 @@
           <%= link_to(meeting.title, meeting) %>
           <% if meeting.held_at %>
             <br />
-            (<%=l meeting.held_at %>, <%= time_ago_in_words(meeting.held_at)  %>)
+            <%=l meeting.held_at %><% if meeting.start_at %> - <%= l(meeting.start_at) %><% end %><br />(<%= meeting.address %>)
           <% end %>
         </li>
       <% end %>
