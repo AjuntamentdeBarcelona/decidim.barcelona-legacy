@@ -1,6 +1,8 @@
 class WeeklySummaryWorker
   include Sidekiq::Worker
 
+  sidekiq_options retry: false, backtrace: true
+
   def perform
     from = 1.week.ago
     to = Time.now
