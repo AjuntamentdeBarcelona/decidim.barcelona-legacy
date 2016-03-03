@@ -6,7 +6,7 @@ class ProposalsController < ApplicationController
   before_action :set_search_order, only: [:index]
   before_action :authenticate_user!, except: [:index, :show]
 
-  has_orders %w{hot_score confidence_score created_at relevance}, only: :index
+  has_orders %w{random hot_score confidence_score created_at relevance}, only: :index
   has_orders %w{most_voted newest oldest}, only: :show
   has_orders %w{recommended},
              if: proc { current_user && can?(:see_recommendations, Proposal) && current_user.recommended_proposals.any? },
