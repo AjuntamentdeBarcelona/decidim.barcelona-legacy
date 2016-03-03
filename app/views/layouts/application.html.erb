@@ -16,13 +16,14 @@
 
     <%= Setting['per_page_code'].try(:html_safe) %>
 
+    <!--[if lte IE 9]>
+      <%= split_stylesheet_link_tag "application", :media => "all" %>
+    <![endif]-->
+
   </head>
   <body>
     <div class="wrapper">
 
-      <%= cookies_warning %>
-      <%= render 'layouts/header' %>
-      
       <!--[if lte IE 9]>
       <% if browser.ie? && cookies['ie_alert_closed'] != 'true' %>
         <div data-alert class="alert-box info ie-alert-box">
@@ -40,6 +41,8 @@
       <% end %>
       <![endif]-->
 
+      <%= cookies_warning %>
+      <%= render 'layouts/header' %>
       <%= render partial: 'layouts/enable_notifications' %>
 
       <% if notice %>
