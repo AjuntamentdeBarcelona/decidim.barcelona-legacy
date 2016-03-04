@@ -5,8 +5,6 @@
 
         <div class="small-12 medium-9 column">
           <div class="debate-content">
-            <span class="label-debate left"><%= t("debates.debate.debate") %></span>
-            <i class="icon-debates"></i>
             <h3><%= link_to debate.title, debate %></h3>
             <p class="debate-info">
               <i class="icon-comments"></i>&nbsp;
@@ -41,15 +39,20 @@
 
             </p>
             <div class="debate-description">
-              <%= link_to debate.description, debate %>
-              <div class="truncate"></div>
+              <%== truncate strip_tags(debate.description), length: 450 %>
             </div>
             <%= render "shared/tags", taggable: debate, limit: 5 %>
+            <div class="actions">
+              <%= link_to t('.read_more'), debate_path(debate), class: 'button small' %>
+            </div>
           </div>
         </div>
 
         <div id="<%= dom_id(debate) %>_votes" class="small-12 medium-3 column text-center">
+          <%= render partial: 'debates/picture', locals: { debate: debate } %>
+          <% if Setting['feature.debates.vote'] %>
             <%= render 'debates/votes', debate: debate %>
+          <% end %>
         </div>
 
       </div>

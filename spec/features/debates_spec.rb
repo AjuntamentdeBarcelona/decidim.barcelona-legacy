@@ -2,6 +2,9 @@
 require 'rails_helper'
 
 feature 'Debates' do
+  before do
+    Setting['feature.debates.search'] = true
+  end
 
   scenario 'Disabled with a feature flag' do
     Setting['feature.debates'] = nil
@@ -16,8 +19,7 @@ feature 'Debates' do
     expect(page).to have_selector('#debates .debate', count: 3)
     debates.each do |debate|
       within('#debates') do
-        expect(page).to have_content debate.title
-        expect(page).to have_css("a[href='#{debate_path(debate)}']", text: debate.description)
+        expect(page).to have_css("a[href='#{debate_path(debate)}']", text: debate.title)
       end
     end
   end
@@ -68,7 +70,7 @@ feature 'Debates' do
   end
 
   scenario 'Create' do
-    author = create(:user)
+    author = create(:user, :official)
     login_as(author)
 
     visit new_debate_path
@@ -87,7 +89,7 @@ feature 'Debates' do
   end
 
   scenario 'Captcha is required for debate creation' do
-    login_as(create(:user))
+    login_as(create(:user, :official))
 
     visit new_debate_path
     fill_in 'debate_title', with: "Great title"
@@ -109,7 +111,7 @@ feature 'Debates' do
   scenario 'Failed creation goes back to new showing featured tags' do
     featured_tag = create(:tag, :featured)
     tag = create(:tag)
-    login_as(create(:user))
+    login_as(create(:user, :official))
 
     visit new_debate_path
     fill_in 'debate_title', with: ""
@@ -128,7 +130,7 @@ feature 'Debates' do
   end
 
   scenario 'Errors on create' do
-    author = create(:user)
+    author = create(:user, :official)
     login_as(author)
 
     visit new_debate_path
@@ -137,7 +139,7 @@ feature 'Debates' do
   end
 
   scenario 'JS injection is prevented but safe html is respected' do
-    author = create(:user)
+    author = create(:user, :official)
     login_as(author)
 
     visit new_debate_path
@@ -156,7 +158,7 @@ feature 'Debates' do
   end
 
   scenario 'Autolinking is applied to description' do
-    author = create(:user)
+    author = create(:user, :official)
     login_as(author)
 
     visit new_debate_path
@@ -173,7 +175,7 @@ feature 'Debates' do
   end
 
   scenario 'JS injection is prevented but autolinking is respected' do
-    author = create(:user)
+    author = create(:user, :official)
     login_as(author)
 
     visit new_debate_path
@@ -198,7 +200,7 @@ feature 'Debates' do
   end
 
   context 'Tagging debates' do
-    let(:author) { create(:user) }
+    let(:author) { create(:user, :official) }
 
     background do
       login_as(author)
@@ -251,7 +253,7 @@ feature 'Debates' do
   scenario 'Update should not be posible if logged user is not the author' do
     debate = create(:debate)
     expect(debate).to be_editable
-    login_as(create(:user))
+    login_as(create(:user, :official))
 
     visit edit_debate_path(debate)
     expect(current_path).not_to eq(edit_debate_path(debate))
@@ -472,9 +474,9 @@ feature 'Debates' do
           click_button "Search"
         end
 
-        within("#debates") do
-          expect(page).to have_css('.debate', count: 2)
+        expect(page).to have_content("2 debates")
 
+        within("#debates") do
           expect(page).to have_content(debate1.title)
           expect(page).to have_content(debate2.title)
           expect(page).to_not have_content(debate3.title)
@@ -507,9 +509,9 @@ feature 'Debates' do
         fill_in "Write the text", with: "Schwifty"
         click_button "Filter"
 
-        within("#debates") do
-          expect(page).to have_css('.debate', count: 2)
+        expect(page).to have_content("2 debates")
 
+        within("#debates") do
           expect(page).to have_content(debate1.title)
           expect(page).to have_content(debate2.title)
           expect(page).to_not have_content(debate3.title)
@@ -532,9 +534,9 @@ feature 'Debates' do
           select "Public employee", from: "advanced_search_official_level"
           click_button "Filter"
 
-          within("#debates") do
-            expect(page).to have_css('.debate', count: 2)
+          expect(page).to have_content("2 debates")
 
+          within("#debates") do
             expect(page).to have_content(debate1.title)
             expect(page).to have_content(debate2.title)
             expect(page).to_not have_content(debate3.title)
@@ -555,9 +557,9 @@ feature 'Debates' do
           select "Municipal Organization", from: "advanced_search_official_level"
           click_button "Filter"
 
-          within("#debates") do
-            expect(page).to have_css('.debate', count: 2)
+          expect(page).to have_content("2 debates")
 
+          within("#debates") do
             expect(page).to have_content(debate1.title)
             expect(page).to have_content(debate2.title)
             expect(page).to_not have_content(debate3.title)
@@ -578,9 +580,9 @@ feature 'Debates' do
           select "General director", from: "advanced_search_official_level"
           click_button "Filter"
 
-          within("#debates") do
-            expect(page).to have_css('.debate', count: 2)
+          expect(page).to have_content("2 debates")
 
+          within("#debates") do
             expect(page).to have_content(debate1.title)
             expect(page).to have_content(debate2.title)
             expect(page).to_not have_content(debate3.title)
@@ -601,9 +603,9 @@ feature 'Debates' do
           select "City councillor", from: "advanced_search_official_level"
           click_button "Filter"
 
-          within("#debates") do
-            expect(page).to have_css('.debate', count: 2)
+          expect(page).to have_content("2 debates")
 
+          within("#debates") do
             expect(page).to have_content(debate1.title)
             expect(page).to have_content(debate2.title)
             expect(page).to_not have_content(debate3.title)
@@ -624,9 +626,9 @@ feature 'Debates' do
           select "Mayoress", from: "advanced_search_official_level"
           click_button "Filter"
 
-          within("#debates") do
-            expect(page).to have_css('.debate', count: 2)
+          expect(page).to have_content("2 debates")
 
+          within("#debates") do
             expect(page).to have_content(debate1.title)
             expect(page).to have_content(debate2.title)
             expect(page).to_not have_content(debate3.title)
@@ -650,9 +652,9 @@ feature 'Debates' do
             select "Last 24 hours", from: "js-advanced-search-date-min"
             click_button "Filter"
 
-            within("#debates") do
-              expect(page).to have_css('.debate', count: 2)
+            expect(page).to have_content("2 debates")
 
+            within("#debates") do
               expect(page).to have_content(debate1.title)
               expect(page).to have_content(debate2.title)
               expect(page).to_not have_content(debate3.title)
@@ -670,9 +672,9 @@ feature 'Debates' do
             select "Last week", from: "js-advanced-search-date-min"
             click_button "Filter"
 
-            within("#debates") do
-              expect(page).to have_css('.debate', count: 2)
+            expect(page).to have_content("2 debates")
 
+            within("#debates") do
               expect(page).to have_content(debate1.title)
               expect(page).to have_content(debate2.title)
               expect(page).to_not have_content(debate3.title)
@@ -690,9 +692,9 @@ feature 'Debates' do
             select "Last month", from: "js-advanced-search-date-min"
             click_button "Filter"
 
-            within("#debates") do
-              expect(page).to have_css('.debate', count: 2)
+            expect(page).to have_content("2 debates")
 
+            within("#debates") do
               expect(page).to have_content(debate1.title)
               expect(page).to have_content(debate2.title)
               expect(page).to_not have_content(debate3.title)
@@ -710,9 +712,9 @@ feature 'Debates' do
             select "Last year", from: "js-advanced-search-date-min"
             click_button "Filter"
 
-            within("#debates") do
-              expect(page).to have_css('.debate', count: 2)
+            expect(page).to have_content("2 debates")
 
+            within("#debates") do
               expect(page).to have_content(debate1.title)
               expect(page).to have_content(debate2.title)
               expect(page).to_not have_content(debate3.title)
@@ -734,9 +736,9 @@ feature 'Debates' do
           fill_in "advanced_search_date_max", with: 1.days.ago
           click_button "Filter"
 
-          within("#debates") do
-            expect(page).to have_css('.debate', count: 2)
+          expect(page).to have_content("2 debates")
 
+          within("#debates") do
             expect(page).to have_content(debate1.title)
             expect(page).to have_content(debate2.title)
             expect(page).to_not have_content(debate3.title)
@@ -760,8 +762,9 @@ feature 'Debates' do
 
           click_button "Filter"
 
+          expect(page).to have_content("1 debate")
+
           within("#debates") do
-            expect(page).to have_css('.debate', count: 1)
             expect(page).to have_content(debate1.title)
           end
         end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226132111) do
+ActiveRecord::Schema.define(version: 20160308121450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,6 +130,8 @@ ActiveRecord::Schema.define(version: 20160226132111) do
     t.integer  "cached_votes_score",                      default: 0
     t.integer  "hot_score",                    limit: 8,  default: 0
     t.integer  "confidence_score",                        default: 0
+    t.string   "picture"
+    t.string   "slug"
   end
 
   add_index "debates", ["author_id", "hidden_at"], name: "index_debates_on_author_id_and_hidden_at", using: :btree
@@ -141,6 +143,7 @@ ActiveRecord::Schema.define(version: 20160226132111) do
   add_index "debates", ["confidence_score"], name: "index_debates_on_confidence_score", using: :btree
   add_index "debates", ["hidden_at"], name: "index_debates_on_hidden_at", using: :btree
   add_index "debates", ["hot_score"], name: "index_debates_on_hot_score", using: :btree
+  add_index "debates", ["slug"], name: "index_debates_on_slug", unique: true, using: :btree
   add_index "debates", ["title"], name: "index_debates_on_title", using: :btree
 
   create_table "failed_census_calls", force: :cascade do |t|

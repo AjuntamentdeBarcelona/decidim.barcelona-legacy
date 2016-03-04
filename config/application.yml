@@ -53,7 +53,9 @@ defaults: &defaults
   # Code to be included at the top (header) of every page (useful for tracking)
   per_page_code: ''
 
-  feature.debates: false
+  feature.debates: true
+  feature.debates.vote: false
+  feature.debates.search: false
   feature.spending_proposals: false
   feature.proposal_tags: false
   feature.proposal_video_url: false

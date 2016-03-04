@@ -35,7 +35,7 @@ module CommentableActions
 
     if @resource.save_with_captcha
       track_event
-      redirect_path = url_for(controller: controller_name, action: :show, id: @resource.id)
+      redirect_path = url_for(controller: controller_name, action: :show, id: @resource)
       redirect_to redirect_path, notice: t("flash.actions.create.#{resource_name.underscore}")
     else
       load_featured_tags

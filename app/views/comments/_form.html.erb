@@ -8,7 +8,7 @@
       <%= f.hidden_field :commentable_id, value: commentable.id %>
       <%= f.hidden_field :parent_id, value: parent_id %>
 
-      <% unless parent_id %>
+      <% if commentable.arguable? && !parent_id %>
         <div class="alignment">
           <span class="alignment-input">
             <%= f.radio_button "alignment", "1", label: t('comments.form.alignment.positive') %>

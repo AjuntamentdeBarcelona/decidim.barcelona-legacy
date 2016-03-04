@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'rails_helper'
 
 feature 'Tags' do
@@ -71,7 +72,7 @@ feature 'Tags' do
   end
 
   scenario 'Create' do
-    user = create(:user)
+    user = create(:user, :official)
     login_as(user)
 
     visit new_debate_path
@@ -91,7 +92,7 @@ feature 'Tags' do
   end
 
   scenario 'Create with too many tags' do
-    user = create(:user)
+    user = create(:user, :official)
     login_as(user)
 
     visit new_debate_path

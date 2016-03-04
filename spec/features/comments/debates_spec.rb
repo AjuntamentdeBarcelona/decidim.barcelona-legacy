@@ -133,7 +133,7 @@ feature 'Commenting debates' do
     end
   end
 
-  scenario 'Create a neutral comment', :js do
+  scenario 'Create a comment', :js do
     login_as(user)
     visit debate_path(debate)
 
@@ -143,34 +143,6 @@ feature 'Commenting debates' do
     within "#comments" do
       expect(page).to have_content 'Have you thought about...?'
       expect(page).to have_content 'Neutral: 1'
-    end
-  end
-
-  scenario 'Create a comment in favor', :js do
-    login_as(user)
-    visit debate_path(debate)
-
-    fill_in "comment-body-debate_#{debate.id}", with: 'Have you thought about...?'
-    choose "In favor"
-    click_button 'Publish comment'
-
-    within "#comments" do
-      expect(page).to have_content 'Have you thought about...?'
-      expect(page).to have_content 'In favor: 1'
-    end
-  end
-
-  scenario 'Create a comment against', :js do
-    login_as(user)
-    visit debate_path(debate)
-
-    fill_in "comment-body-debate_#{debate.id}", with: 'Have you thought about...?'
-    choose "Against"
-    click_button 'Publish comment'
-
-    within "#comments" do
-      expect(page).to have_content 'Have you thought about...?'
-      expect(page).to have_content 'Against: 1'
     end
   end
 

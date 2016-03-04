@@ -87,7 +87,7 @@ en:
         one: 1 comment
         other: "%{count} comments"
         zero: No comments
-      debate: Debate
+      read_more: Come in and participate
       votes:
         one: 1 vote
         other: "%{count} votes"

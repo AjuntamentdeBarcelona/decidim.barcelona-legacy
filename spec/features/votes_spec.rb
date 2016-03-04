@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 feature 'Votes' do
+  before do
+    Setting['feature.debates.vote'] = true
+  end
 
   before :each do
     @manuela = create(:user, verified_at: Time.now)
