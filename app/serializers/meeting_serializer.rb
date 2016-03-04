@@ -1,10 +1,15 @@
 class MeetingSerializer < ActiveModel::Serializer
   attributes :id, :slug, :title, :description, :address, :address_latitude, :url,
              :address_longitude, :held_at, :start_at, :end_at, :category,
-             :subcategory, :closed
+             :subcategory, :closed, :district, :address_details
 
   def held_at
     I18n.l(object.held_at)
+  end
+
+  def district
+    return unless object.district
+    @district ||= { id: object.district, name: District.find(object.district).name }
   end
 
   def closed

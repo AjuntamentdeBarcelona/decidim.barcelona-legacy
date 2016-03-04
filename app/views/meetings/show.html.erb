@@ -44,9 +44,24 @@
         </div>
       <% end %>
 
-      <div class="address">
-        <%= bcn_icon 'localitzacio' %>
-        <%= @meeting.address %>
+      <div class="location-info">
+        <% if @meeting.district %>
+          <div class="district">
+            <%= District.find(@meeting.district).name %>
+          </div>
+        <% end %>
+
+        <% if @meeting.address_details %>
+          <div class="address-details">
+            <%= bcn_icon 'localitzacio' %>
+            <%= @meeting.address_details %>
+          </div>
+        <% end %>
+
+        <div class="address">
+          <%= bcn_icon 'planol' %>
+          <%= @meeting.address %>
+        </div>
       </div>
 
       <% if @meeting.upcoming? %>
