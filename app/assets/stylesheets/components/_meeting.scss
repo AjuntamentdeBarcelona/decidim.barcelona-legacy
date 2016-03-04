@@ -11,12 +11,19 @@
     margin-top: rem-calc(10);
   }
 
-  .meeting-address{
+  .meeting-address-details .icon{
+    @include bcn-icon(localitzacio, 1em);
+  }
+
+  .meeting-address .icon{
+    @include bcn-icon(planol, 1em);
+  }
+
+  .meeting-address, .meeting-address-details{
     position: relative;
     font-size: rem-calc(14);
 
     .icon{
-      @include bcn-icon(localitzacio, 1em);
       position: absolute;
       top: rem-calc(5);
       left: 0;
@@ -73,9 +80,13 @@
     }
   }
 
-  .address{
-    margin: 2rem 0;
+  .location-info{
+    margin: rem-calc(15) 0;
     font-size: rem-calc(18);
+    & > *{ margin: rem-calc(15) 0; }
+    .district{
+      font-weight: bold;
+    }
   }
 
   .meeting-proposals{

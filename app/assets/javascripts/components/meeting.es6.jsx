@@ -15,6 +15,16 @@ class Meeting extends React.Component {
             </a>
             <MeetingTime meeting={ meeting } relativeTime={true} />
             <p className="meeting-description">{ meeting.description }</p>
+            { (() => { if(meeting.district) {
+              return (
+                <div className="district">
+                  <strong>{ meeting.district.name }</strong>
+                </div>
+              )
+            }})() }
+            { (() => { if(meeting.address_details) {
+              return (<div className="meeting-address-details"><i className="icon"></i> { meeting.address_details }</div>)
+            }})()}
             <div className="meeting-address"><i className="icon"></i> { meeting.address }</div>
           </div>
           {this.renderMeetingCategory()}
