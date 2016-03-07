@@ -49,6 +49,12 @@ constructor(props) {
           subcategories={this.props.subcategories}
           filterGroupValue={this.state.filters.get('subcategory_id')}
           onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) } />
+        <FilterOptionGroup 
+          filterGroupName="other" 
+          filterGroupValue={this.state.filters.get('other')}
+          onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) }>
+          <FilterOption filterName="meetings" />
+        </FilterOptionGroup>
         {this.renderTagCloudFilter()}
         {this.renderCleanFilterLink()}
       </form>
