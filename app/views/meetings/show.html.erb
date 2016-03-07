@@ -51,7 +51,7 @@
           </div>
         <% end %>
 
-        <% if @meeting.address_details %>
+        <% if !@meeting.address_details.blank? %>
           <div class="address-details">
             <%= bcn_icon 'localitzacio' %>
             <%= @meeting.address_details %>
