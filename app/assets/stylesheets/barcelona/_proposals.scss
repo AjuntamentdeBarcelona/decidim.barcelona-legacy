@@ -78,51 +78,6 @@ a.button.new-proposal{
   @include grid-column($columns: 12, $last-column: true);
 }
 
-.featured-proposals{
-  @media #{$small-only}{
-    .featured-proposals-inner{
-      @include grid-column($columns: 12, $last-column: true);
-    }
-  }
-
-  @media #{$medium-only}{
-    .featured-proposals-inner{
-      @include grid-column($columns: 12, $last-column: true);
-    }
-  }
-
-  .featured-proposal{
-    text-align: center;
-  }
-
-  ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-
-    li{
-      margin-bottom: rem-calc(15);
-      display: block;
-    }
-
-    @media #{$large-up} {
-      li{
-        margin-bottom: 0;
-      }
-      @include block-grid(3);
-    }
-  }
-
-  .featured-proposal-inner{
-    @include arrow-box(darken($highlight, 5%), bottom);
-  }
-
-  .featured-proposal-content{
-    min-height: rem-calc(120px);
-  }
-
-}
-
 .sidebar{
   .proposal-filter-menu{
     h2{
