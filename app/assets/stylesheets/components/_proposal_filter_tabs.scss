@@ -1,15 +1,97 @@
 .proposal-filter-tabs {
-  ul {
-    li {
-      display: inline-block;
-      width: 200px;
-      a {
-        display: block;
-        &:hover, &.active {
-          background: $brand;
-          color: $white;
+  @include grid-column($columns: 12, $last-column: true);
+
+  ul{
+    margin: 0;
+    padding: 0;
+  }
+
+  $border-color: #9a9a9a;
+
+  li{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    a{
+      color: $text;
+      line-height: 3em;
+      display: block;
+      padding-left: rem-calc(15);
+    }
+
+    a:before{
+      content: " ";
+      margin-right: rem-calc(5);
+    }
+
+    &#filter_source_official a:before{
+      @include bcn-icon("ajuntament");
+    }
+
+    &#filter_source_citizenship a:before{
+      @include bcn-icon("citizens");
+    }
+
+    &#filter_source_organization a:before{
+      @include bcn-icon("organizations");
+    }
+
+    &#filter_source_meetings a:before{
+      @include bcn-icon("meetings");
+    }
+
+    a{
+      border-left: 1px solid $border-color;
+      padding-top: 1px;
+      padding-bottom: 1px;
+
+      &.active{
+        padding-top: 0;
+        padding-bottom: 0;
+
+        border-left: 1px solid transparent;
+        border-top: 1px solid $border-color;
+        border-bottom: 1px solid $border-color;
+        border-right: 1px solid $border-color;
+
+        border-radius: 0 rem-calc(5) rem-calc(5) 0;
+      }
+    }
+  }
+
+  @media #{$medium-up}{
+    ul{
+      @include display(flex);
+    }
+
+    li{
+      @include flex(1);
+
+      a{
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 1px solid $border-color;
+        border-top: 1px solid transparent;
+        padding: 0;
+        text-align: center;
+
+        &.active{
+          border-left: 1px solid $border-color;
+          border-top: 1px solid $border-color;
+          border-right: 1px solid $border-color;
+          border-bottom: 1px solid transparent;
+
+          border-radius: rem-calc(5) rem-calc(5) 0 0;
         }
       }
+    }
+
+    margin: rem-calc(20) 0;
+  }
+
+  @media #{$large-up}{
+    li a {
+      font-size: rem-calc(18);
     }
   }
 }

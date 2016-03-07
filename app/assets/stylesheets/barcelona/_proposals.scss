@@ -270,4 +270,10 @@ a.button.new-proposal{
       text-decoration: underline;
     }
   }
+
+  @media #{$small-only}{
+    h3, .download-buttons{
+      display: none;
+    }
+  }
 }
