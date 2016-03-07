@@ -1,0 +1,15 @@
+.proposal-filter-tabs {
+  ul {
+    li {
+      display: inline-block;
+      width: 200px;
+      a {
+        display: block;
+        &:hover {
+          background: $brand;
+          color: $white;
+        }
+      }
+    }
+  }
+}

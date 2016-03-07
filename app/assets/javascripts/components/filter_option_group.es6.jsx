@@ -14,6 +14,7 @@ class FilterOptionGroup extends React.Component {
     if (this.props.isExclusive && !this.props.hideIncludeAll) {
       return (
         <FilterOption 
+          renderAs={this.props.renderAs || 'options'}
           isExclusive={true} 
           filterGroupName={this.props.filterGroupName}
           filterName={this.props.labelAllKey || "all" }
@@ -27,6 +28,7 @@ class FilterOptionGroup extends React.Component {
   renderChildren() {
     return React.Children.map(this.props.children, (child) => {
       return React.cloneElement(child, {
+        renderAs: this.props.renderAs || 'options',
         isExclusive: this.props.isExclusive,
         filterGroupName: this.props.filterGroupName,
         onChangeFilter: (filterName, filterValue) => this.changeFilter(filterName, filterValue),
@@ -38,11 +40,37 @@ class FilterOptionGroup extends React.Component {
   render() {
     return (
       <div className="filter-group">
+        {this.renderGroupAs(this.props.renderAs || 'options')}
+      </div>
+    )
+  }
+
+  renderGroupAs(renderAs) {
+    switch(renderAs) {
+      case 'options':
+        return this.renderGroupAsOptions();
+      case 'tabs':
+        return this.renderGroupAsTabs();
+    }
+  }
+
+  renderGroupAsOptions() {
+    return (
+      <div>
         <h3>{I18n.t(`components.filter_option_group.${this.props.filterGroupName}`)}</h3>
         {this.renderIncludeAll()}
         {this.renderChildren()}
       </div>
-    )
+    );
+  }
+
+  renderGroupAsTabs() {
+    return (
+      <ul>
+        {this.renderIncludeAll()}
+        {this.renderChildren()}
+      </ul> 
+    );
   }
 
   changeFilter(filterName, isChecked) {
