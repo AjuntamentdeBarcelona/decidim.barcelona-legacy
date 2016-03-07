@@ -64,11 +64,6 @@
         </div>
       </div>
 
-      <% if @meeting.upcoming? %>
-        <div class="meeting-map">
-          <%= static_map latitude: @meeting.address_latitude, longitude: @meeting.address_longitude, zoom: 16 %>
-        </div>
-      <% end %>
       <% if !@meeting.closed? %>
         <%= static_map latitude: @meeting.address_latitude, longitude: @meeting.address_longitude, zoom: 16 %>
       <% end %>
