@@ -1,18 +1,21 @@
 class ProposalFilters extends React.Component {
-  constructor(props) {
+constructor(props) {
     super(props);
 
-    this.state = {
-      searchText: this.props.filter.search_filter,
-      tags: Immutable.Set(this.props.filter.tag_filter || []),
-      filters : Immutable.Map(this.props.filter.params || {})
-    };
+    FilterServiceInstance.initState(
+      this.props.filter.search_filter,
+      this.props.filter.tag_filter,
+      this.props.filter.params
+    );
 
-    this.filterService = new FilterComponentService(this, {
+    this.state = FilterServiceInstance.state;
+
+    this.subscriberId = FilterServiceInstance.subscribe({
       requestUrl: this.props.filterUrl,
       requestDataType: 'script',
       onResultsCallback: (result) => {
         $(document).trigger('loading:hide');
+        this.setState(FilterServiceInstance.state);
       }
     });
   }
@@ -58,35 +61,24 @@ class ProposalFilters extends React.Component {
     return null;
   }
 
-  onSetFilterText(searchText) {
-    $(document).trigger('loading:show');
-    this.filterService.setFilterText(searchText);
-  }
-
   onChangeFilterGroup(filterGroupName, filterGroupValue) {
     $(document).trigger('loading:show');
-    this.filterService.changeFilterGroup(filterGroupName, filterGroupValue);
+    FilterServiceInstance.changeFilterGroup(filterGroupName, filterGroupValue);
+  }
+
+  onSetFilterText(searchText) {
+    $(document).trigger('loading:show');
+    FilterServiceInstance.setFilterText(searchText);
   }
 
   onSetFilterTags(tags) {
     $(document).trigger('loading:show');
-    this.filterService.setFilterTags(tags);
+    FilterServiceInstance.setFilterTags(tags);
   }
 
   cleanFilters() {
-    let filters = this.state.filters.clear(),
-        tags = this.state.tags.clear(),
-        searchText = '';
-
     $(document).trigger('loading:show');
-
-    this.filterService.applyFilters(
-      filters.toObject(), 
-      tags.toArray(),
-      searchText
-    );
-
-    this.setState({ filters, tags, searchText });
+    FilterServiceInstance.cleanState({ notify: true });
   }
 
   renderCleanFilterLink() {

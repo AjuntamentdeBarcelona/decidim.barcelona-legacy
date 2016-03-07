@@ -5,7 +5,7 @@
       width: 200px;
       a {
         display: block;
-        &:hover {
+        &:hover, &.active {
           background: $brand;
           color: $white;
         }

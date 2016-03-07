@@ -32,7 +32,7 @@ class FilterOption extends React.Component {
   renderOptionAsTabs(elemId) {
     return (
       <li id={elemId}>
-        <a onClick={(event) => this.props.onChangeFilter(this.props.filterName, true)}>
+        <a className={this.props.checked ? 'active' : ''} onClick={(event) => this.props.onChangeFilter(this.props.filterName, true)}>
           {this.props.filterLabel || I18n.t(`components.filter_option.${this.props.filterName}`)}
         </a>
       </li>

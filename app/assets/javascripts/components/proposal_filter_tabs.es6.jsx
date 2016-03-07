@@ -2,17 +2,20 @@ class ProposalFilterTabs extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      searchText: this.props.filter.search_filter,
-      tags: Immutable.Set(this.props.filter.tag_filter || []),
-      filters : Immutable.Map(this.props.filter.params || {})
-    };
+    FilterServiceInstance.initState(
+      this.props.filter.search_filter,
+      this.props.filter.tag_filter,
+      this.props.filter.params
+    );
 
-    this.filterService = new FilterComponentService(this, {
+    this.state = FilterServiceInstance.state;
+
+    this.subscriberId = FilterServiceInstance.subscribe({
       requestUrl: this.props.filterUrl,
       requestDataType: 'script',
       onResultsCallback: (result) => {
         $(document).trigger('loading:hide');
+        this.setState(FilterServiceInstance.state);
       }
     });
   }
@@ -37,7 +40,8 @@ class ProposalFilterTabs extends React.Component {
 
   onChangeFilterGroup(filterGroupName, filterGroupValue) {
     $(document).trigger('loading:show');
-    this.filterService.changeFilterGroup(filterGroupName, filterGroupValue);
+    FilterServiceInstance.cleanState({ notify: false });
+    FilterServiceInstance.changeFilterGroup(filterGroupName, filterGroupValue);
   }
 }
 
