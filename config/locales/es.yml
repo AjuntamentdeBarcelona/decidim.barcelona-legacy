@@ -480,6 +480,9 @@ es:
         proposals:
           one: 1 Propuesta
           other: "%{count} Propuestas"
+        meetings:
+          one: 1 Cita presencial
+          other: "%{count} Citas presenciales"
       no_activity: Usuario sin actividad pública
       private_activity: Este usuario ha decidido mantener en privado su lista de actividades
   validators:

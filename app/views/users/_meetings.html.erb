@@ -1,0 +1,13 @@
+<table class="clear activity-meetings">
+  <% @meetings.each do |meeting| %>
+    <tr id="meeting<%= meeting.id %>">
+      <td>
+        <%= link_to meeting.title, meeting %>
+        <br>
+        <%= meeting.description %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= paginate @meetings %>
