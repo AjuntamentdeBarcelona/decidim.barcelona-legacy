@@ -1,6 +1,6 @@
 class FilterService {
   constructor() {
-    this.subscribers = [];
+    this.subscribers = {};
 
     this.state = {
       searchText: '',
@@ -33,9 +33,12 @@ class FilterService {
     }
   }
 
-  subscribe(subscriber) {
-    this.subscribers.push(subscriber);
-    return this.subscribers.length - 1;
+  subscribe(subscriberId, subscriber) {
+    this.subscribers[subscriberId] = subscriber;
+  }
+
+  unsubscribe(subscriberId) {
+    delete this.subscribers[subscriberId];
   }
 
   changeFilterGroup(filterGroupName, filterGroupValue) {
@@ -97,10 +100,11 @@ class FilterService {
 
     this.searchTimeoutId = setTimeout(() => {
       // Iterate for each subscriber
-      for(let i = 0, l = this.subscribers.length; i < l; i += 1) {
-        let requestUrl = this.subscribers[i].requestUrl,
-            requestDataType = this.subscribers[i].requestDataType,
-            onResultsCallback = this.subscribers[i].onResultsCallback;
+      for(let subscriberId in this.subscribers) {
+        let subscriber = this.subscribers[subscriberId],
+            requestUrl = subscriber.requestUrl,
+            requestDataType = subscriber.requestDataType,
+            onResultsCallback = subscriber.onResultsCallback;
 
         $.ajax(requestUrl, { data, dataType: requestDataType }).then((result) => {
           if (onResultsCallback) {

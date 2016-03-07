@@ -9,8 +9,10 @@ constructor(props) {
     );
 
     this.state = FilterServiceInstance.state;
+  }
 
-    this.subscriberId = FilterServiceInstance.subscribe({
+  componentDidMount() {
+    FilterServiceInstance.subscribe('ProposalFilters', {
       requestUrl: this.props.filterUrl,
       requestDataType: 'script',
       onResultsCallback: (result) => {
@@ -18,6 +20,10 @@ constructor(props) {
         this.setState(FilterServiceInstance.state);
       }
     });
+  }
+
+  componentWillUnmount() {
+    FilterServiceInstance.unsubscribe('ProposalFilters');
   }
 
   render() {

@@ -9,8 +9,10 @@ class ProposalFilterTabs extends React.Component {
     );
 
     this.state = FilterServiceInstance.state;
+  }
 
-    this.subscriberId = FilterServiceInstance.subscribe({
+  componentDidMount() {
+    FilterServiceInstance.subscribe('ProposalFilterTabs', {
       requestUrl: this.props.filterUrl,
       requestDataType: 'script',
       onResultsCallback: (result) => {
@@ -18,6 +20,10 @@ class ProposalFilterTabs extends React.Component {
         this.setState(FilterServiceInstance.state);
       }
     });
+  }
+
+  componentWillUnmount() {
+    FilterServiceInstance.unsubscribe('ProposalFilterTabs');
   }
 
   render() {
