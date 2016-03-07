@@ -11,4 +11,12 @@ module ProposalFiltersHelper
       tagsEnabled: feature?(:proposal_tags)
     ) 
   end
+
+  def proposal_filter_tabs(options = {})
+    react_component(
+      'ProposalFilterTabs', 
+      filter: options[:filter],
+      filterUrl: proposals_url
+    ) 
+  end
 end

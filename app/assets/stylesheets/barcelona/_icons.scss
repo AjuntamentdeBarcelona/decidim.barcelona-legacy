@@ -22,7 +22,8 @@
 $icons: activitat ajuntament arbre campana cor correu dit_assenyala doc
                   doc_llapis espiral facebook fletxa google_plus imac info
                   localitzacio lupa ma ma_no_ok ma_ok ma_perfecte megafon nuvol
-                  planol safata sol twiter usuari xat_blanc xat_gris dit_assenyala_vermell;
+                  planol safata sol twiter usuari xat_blanc xat_gris
+                  dit_assenyala_vermell meetings citizens organizations;
 
 @each $icon in $icons{
   .bcn-icon-#{$icon}{

@@ -1,20 +1,29 @@
 class ProposalFilters extends React.Component {
-  constructor(props) {
+constructor(props) {
     super(props);
 
-    this.state = {
-      searchText: this.props.filter.search_filter,
-      tags: Immutable.Set(this.props.filter.tag_filter || []),
-      filters : Immutable.Map(this.props.filter.params || {})
-    };
+    FilterServiceInstance.initState(
+      this.props.filter.search_filter,
+      this.props.filter.tag_filter,
+      this.props.filter.params
+    );
 
-    this.filterService = new FilterComponentService(this, {
+    this.state = FilterServiceInstance.state;
+  }
+
+  componentDidMount() {
+    FilterServiceInstance.subscribe('ProposalFilters', {
       requestUrl: this.props.filterUrl,
       requestDataType: 'script',
       onResultsCallback: (result) => {
         $(document).trigger('loading:hide');
+        this.setState(FilterServiceInstance.state);
       }
     });
+  }
+
+  componentWillUnmount() {
+    FilterServiceInstance.unsubscribe('ProposalFilters');
   }
 
   render() {
@@ -23,16 +32,6 @@ class ProposalFilters extends React.Component {
         <SearchFilter 
           searchText={this.state.searchText}
           onSetFilterText={ (searchText) => this.onSetFilterText(searchText) } />
-        <FilterOptionGroup 
-          filterGroupName="source" 
-          filterGroupValue={this.state.filters.get('source')}
-          isExclusive={true}
-          onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) }>
-          <FilterOption filterName="official" />
-          <FilterOption filterName="citizenship" />
-          <FilterOption filterName="organization" />
-          <FilterOption filterName="meetings" filterLabel={I18n.t('components.filter_option.from_meetings')} />
-        </FilterOptionGroup>
         <ScopeFilterOptionGroup 
           filterGroupValue={this.state.filters.get('scope')} 
           onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) } />
@@ -74,35 +73,24 @@ class ProposalFilters extends React.Component {
     return null;
   }
 
-  onSetFilterText(searchText) {
-    $(document).trigger('loading:show');
-    this.filterService.setFilterText(searchText);
-  }
-
   onChangeFilterGroup(filterGroupName, filterGroupValue) {
     $(document).trigger('loading:show');
-    this.filterService.changeFilterGroup(filterGroupName, filterGroupValue);
+    FilterServiceInstance.changeFilterGroup(filterGroupName, filterGroupValue);
+  }
+
+  onSetFilterText(searchText) {
+    $(document).trigger('loading:show');
+    FilterServiceInstance.setFilterText(searchText);
   }
 
   onSetFilterTags(tags) {
     $(document).trigger('loading:show');
-    this.filterService.setFilterTags(tags);
+    FilterServiceInstance.setFilterTags(tags);
   }
 
   cleanFilters() {
-    let filters = this.state.filters.clear(),
-        tags = this.state.tags.clear(),
-        searchText = '';
-
     $(document).trigger('loading:show');
-
-    this.filterService.applyFilters(
-      filters.toObject(), 
-      tags.toArray(),
-      searchText
-    );
-
-    this.setState({ filters, tags, searchText });
+    FilterServiceInstance.cleanState({ notify: true });
   }
 
   renderCleanFilterLink() {

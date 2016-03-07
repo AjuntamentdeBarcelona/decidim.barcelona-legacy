@@ -20,6 +20,10 @@
   </div>
 
   <div class="wrap row">
+    <%= proposal_filter_tabs filter: @filter %>
+  </div>
+
+  <div class="wrap row">
     <div class="small-12 medium-3 column">
       <aside class="sidebar" role="complementary">
         <%= link_to t("proposals.index.start_proposal"), new_proposal_path, class: 'new-proposal button radius expand' %>

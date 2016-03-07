@@ -507,6 +507,24 @@ feature 'Proposals' do
       expect(current_url).to include('order=created_at')
       expect(current_url).to include('page=1')
     end
+
+    scenario 'Proposals source tabs filter', :js do
+      create(:proposal, title: 'Proposal no oficial 1')
+      create(:proposal, title: 'Proposal no oficial 2')
+      create(:proposal, title: 'Proposal oficial 1', official: true)
+      create(:proposal, title: 'Proposal oficial 2', official: true)
+
+      visit proposals_path
+
+      find('.proposal-filter-tabs a', text: 'Town Hall').click
+
+      within '#proposals' do
+        expect(page).to_not have_content("Proposal no oficial 1")
+        expect(page).to_not have_content("Proposal no oficial 2")
+        expect(page).to have_content("Proposal oficial 1")
+        expect(page).to have_content("Proposal oficial 2")
+      end
+    end
   end
 
   context "Search" do

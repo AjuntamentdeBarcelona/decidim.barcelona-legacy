@@ -27,8 +27,8 @@
 //= require moment
 //= require moment/ca
 //= require moment/es
+//= require immutable
 //= require services
-//= require components
 //= require ckeditor/init
 //= require_directory ./ckeditor
 //= require social-share-button
@@ -56,7 +56,6 @@
 //= require react
 //= require react_ujs
 //= require markerclusterer
-//= require immutable
 //= require components
 //= require registration_form
 //= require verification_form
