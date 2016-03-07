@@ -528,13 +528,15 @@ feature 'Proposals' do
       create(:proposal, title: 'Proposal oficial 2', official: true)
 
       visit proposals_path
-      click_link "Town Hall"
 
-      expect(page.find('.proposal', match: :first)).to have_content('Proposal oficial 1')
-      expect(page.find('.proposal', match: :last)).to have_content('Proposal oficial 2')
+      find('.proposal-filter-tabs a', text: 'Town Hall').click
 
-      expect(page).to have_not_content("Proposal no oficial 1")
-      expect(page).to have_not_content("Proposal no oficial 2")
+      within '#proposals' do
+        expect(page).to_not have_content("Proposal no oficial 1")
+        expect(page).to_not have_content("Proposal no oficial 2")
+        expect(page).to have_content("Proposal oficial 1")
+        expect(page).to have_content("Proposal oficial 2")
+      end
     end
   end
 
