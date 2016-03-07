@@ -1,19 +1,3 @@
-<% if @featured_proposals.present? %>
-  <div id="featured-proposals" class="row featured-proposals">
-    <div class="featured-proposals-inner">
-      <h2 class="section-title">
-        <%= t("proposals.index.featured_proposals") %>
-      </h2>
-
-      <ul>
-        <% @featured_proposals.each do |featured_proposal| %>
-          <%= render "featured_proposal", proposal: featured_proposal %>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-<% end %>
-
 <%= render 'shared/order_links', i18n_namespace: "proposals.index" %>
 
 <div class="show-for-small-only">

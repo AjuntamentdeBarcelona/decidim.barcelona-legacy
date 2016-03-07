@@ -1,5 +1,4 @@
 class ProposalsController < ApplicationController
-  FEATURED_PROPOSALS_LIMIT = 3
   include CommentableActions
   include FlagActions
 
@@ -25,14 +24,6 @@ class ProposalsController < ApplicationController
       @tag_cloud = @filter.tag_cloud(@proposals)
     end
 
-    unless @current_order == "recommended"
-      @featured_proposals = @proposals.sort_by_confidence_score.limit(FEATURED_PROPOSALS_LIMIT) if (@filter.search_filter.blank? && @filter.tag_filter.blank?)
-      if @featured_proposals.present?
-        set_featured_proposal_votes(@featured_proposals)
-        @featured_proposals = @featured_proposals.send("sort_by_#{@current_order}")
-      end
-    end
-
     @proposals = @proposals.
                  page(params[:page]).
                  per(15).
@@ -49,11 +40,6 @@ class ProposalsController < ApplicationController
   def vote
     @proposal.register_vote(current_user, 'yes')
     set_proposal_votes(@proposal)
-  end
-
-  def vote_featured
-    @proposal.register_vote(current_user, 'yes')
-    set_featured_proposal_votes(@proposal)
   end
 
   private
@@ -74,10 +60,6 @@ class ProposalsController < ApplicationController
 
     def resource_model
       Proposal
-    end
-
-    def set_featured_proposal_votes(proposals)
-      @featured_proposals_votes = current_user ? current_user.proposal_votes(proposals) : {}
     end
 
 end
