@@ -323,6 +323,8 @@ es:
       tags_label: Temas
       tags_placeholder: Escribe las etiquetas que desees separadas por una coma (',')
     index:
+      description: Aquí puedes navegar por las propuestas que el Gobierno ha elaborado para el Plan de Actuación Municipal 2016-2019. A estas propuestas se suman otras que provienen de iniciativas ciudadanas, de espacios de debate o de propuestas realizadas por entidades y organizaciones. Antes de elaborar una nueva, mira qué propuestas hay. De esta manera podrás participar con mayor conocimiento en el debate ya iniciado, apoyar las propuestas que creas convenientes y finalmente decidir crear otras nuevas, si consideras que ninguna de las existentes incluye lo que deseas proponer. ¡Lee, opina y participa!
+      download: Baja el Plan Municipal
       featured_proposals: Recomendadas
       filter:
         title: Filtrado por
@@ -340,7 +342,7 @@ es:
         title: Buscar
       select_order: Ordenar por
       start_proposal: Crea una propuesta
-      title: Propuestas ciudadanas
+      title: Propuestas
     new:
       back_link: Volver
       form:
