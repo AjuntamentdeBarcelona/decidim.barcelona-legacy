@@ -249,7 +249,6 @@ feature 'Votes' do
       end
 
       scenario 'Create in listed proposal in index', :js do
-        create_featured_proposals
         visit proposals_path
 
         within("#proposal_#{@proposal.id}") do
@@ -258,16 +257,6 @@ feature 'Votes' do
           expect(page).to have_content "1 support"
           expect(page).to have_content "You have already supported this proposal. Share it!"
         end
-        expect(current_path).to eq(proposals_path)
-      end
-
-      scenario 'Create in featured proposal in index', :js do
-        visit proposals_path
-
-        within("#featured_proposal_#{@proposal.id}") do
-          find('.in-favor button').click
-        end
-        expect(page).to have_content "You have already supported this proposal. Share it!"
         expect(current_path).to eq(proposals_path)
       end
     end
