@@ -11,20 +11,11 @@ feature 'Proposals' do
   end
 
   scenario 'Index' do
-    featured_proposals = create_featured_proposals
     proposals = [create(:proposal), create(:proposal), create(:proposal)]
 
     visit proposals_path
 
-    expect(page).to have_selector('#proposals .proposal-featured', count: 3)
-    featured_proposals.each do |featured_proposal|
-      within('#featured-proposals') do
-        expect(page).to have_content featured_proposal.title
-        expect(page).to have_css("a[href='#{proposal_path(featured_proposal)}']")
-      end
-    end
-
-    expect(page).to have_selector('#proposals .proposal', count: 6)
+    expect(page).to have_selector('#proposals .proposal', count: 3)
     proposals.each do |proposal|
       within('#proposals') do
         expect(page).to have_content proposal.title
@@ -52,7 +43,6 @@ feature 'Proposals' do
   end
 
   scenario 'Filtered Index', :js do
-    create_featured_proposals
     proposals = [
       create(:proposal, title: 'Proposal with city scope 1', scope: 'city'), 
       create(:proposal, title: 'Proposal with district scope', scope: 'district'), 
@@ -441,7 +431,6 @@ feature 'Proposals' do
 
   describe 'Limiting tags shown' do
     scenario 'Index page shows up to 5 tags per proposal' do
-      create_featured_proposals
       tag_list = ["Hacienda", "Economía", "Medio Ambiente", "Corrupción", "Fiestas populares", "Prensa"]
       create :proposal, tag_list: tag_list
 
@@ -453,7 +442,6 @@ feature 'Proposals' do
     end
 
     scenario 'Index page shows 3 tags with no plus link' do
-      create_featured_proposals
       tag_list = ["Medio Ambiente", "Corrupción", "Fiestas populares"]
       create :proposal, tag_list: tag_list
 
@@ -471,7 +459,6 @@ feature 'Proposals' do
   feature 'Proposal index order filters' do
 
     scenario 'Default order is hot_score', :js do
-      create_featured_proposals
 
       create(:proposal, title: 'Best proposal').update_column(:hot_score, 10)
       create(:proposal, title: 'Worst proposal').update_column(:hot_score, 2)
@@ -584,7 +571,6 @@ feature 'Proposals' do
     end
 
     scenario 'After a search do not show featured proposals', :js do
-      featured_proposals = create_featured_proposals
       proposal = create(:proposal, title: "Abcdefghi")
 
       visit proposals_path
@@ -598,7 +584,6 @@ feature 'Proposals' do
   end
 
   scenario 'Index tag does not show featured proposals' do
-    featured_proposals = create_featured_proposals
     proposal = create(:proposal, tag_list: "123")
 
     visit proposals_path(tag: "123")
@@ -663,8 +648,6 @@ feature 'Proposals' do
 
     visit proposal_path(proposal)
     expect(page).to have_content('User deleted')
-
-    create_featured_proposals
 
     visit proposals_path
     expect(page).to have_content('User deleted')

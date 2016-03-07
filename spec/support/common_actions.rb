@@ -170,12 +170,6 @@ module CommonActions
     expect(page).to have_selector('.in-favor button', visible: false)
   end
 
-  def create_featured_proposals
-    [create(:proposal, :with_confidence_score, cached_votes_up: 100),
-     create(:proposal, :with_confidence_score, cached_votes_up: 90),
-     create(:proposal, :with_confidence_score, cached_votes_up: 80)]
-  end
-
   def create_featured_debates
     [create(:debate, :with_confidence_score, cached_votes_up: 100),
      create(:debate, :with_confidence_score, cached_votes_up: 90),
