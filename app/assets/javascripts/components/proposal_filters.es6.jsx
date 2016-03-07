@@ -23,16 +23,6 @@ class ProposalFilters extends React.Component {
         <SearchFilter 
           searchText={this.state.searchText}
           onSetFilterText={ (searchText) => this.onSetFilterText(searchText) } />
-        <FilterOptionGroup 
-          filterGroupName="source" 
-          filterGroupValue={this.state.filters.get('source')}
-          isExclusive={true}
-          onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) }>
-          <FilterOption filterName="official" />
-          <FilterOption filterName="citizenship" />
-          <FilterOption filterName="organization" />
-          <FilterOption filterName="meetings" filterLabel={I18n.t('components.filter_option.from_meetings')} />
-        </FilterOptionGroup>
         <ScopeFilterOptionGroup 
           filterGroupValue={this.state.filters.get('scope')} 
           onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) } />
@@ -50,12 +40,6 @@ class ProposalFilters extends React.Component {
           subcategories={this.props.subcategories}
           filterGroupValue={this.state.filters.get('subcategory_id')}
           onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) } />
-        <FilterOptionGroup 
-          filterGroupName="other" 
-          filterGroupValue={this.state.filters.get('other')}
-          onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) }>
-          <FilterOption filterName="meetings" />
-        </FilterOptionGroup>
         {this.renderTagCloudFilter()}
         {this.renderCleanFilterLink()}
       </form>
