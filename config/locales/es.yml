@@ -497,8 +497,6 @@ es:
     verified_only: Las propuestas sólo pueden ser votadas por usuarios verificados, %{verify_account}.
     verify_account: verifica tu cuenta
   welcome:
-    highlights: 'Portada: '
-    signed_in_home_title: Actividad reciente
     welcome:
       see_proposals: Ver las propuestas
       skip_verification: Si no estás empadronado en Barcelona o no quieres verificarte,
