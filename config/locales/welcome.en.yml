@@ -13,7 +13,7 @@ en:
       title: PAM and PAD
     description:
       text1: "<strong>decidim.barcelona</strong> is the digital platform for participation of the City of Barcelona. Wants to be a reference to build a democratic city, open and transparent enhancing citizen participation in the construction and definition of policies for the city."
-      text2: "Initially develops participation process for the preparation of the Action Plan 2016-2019 and aims to include new municipal participation process once it ends.<strong>The Municipal Action Plan</strong> prepared at the beginning of each term and sets the priorities, objectives and actions that the city government will develop over the next four years."
+      text2: Initially develops participation process for the preparation of the Action Plan 2016-2019 and aims to include new municipal participation process once it ends.<strong>The Municipal Action Plan</strong> prepared at the beginning of each term and sets the priorities, objectives and actions that the city government will develop over the next four years.
     download:
       links:
         epub: Download ePub
@@ -24,6 +24,8 @@ en:
       link: Join and participate
     meetings:
       title: dating face
+    notifications:
+      debate: Gala decide Pin (Councillor stake) and James Asens (third deputy mayor) on March 9 at 20h
     pam:
       text: "<p>The <strong>Barcelona Municipal Plan</strong> is made at the beginning of each term and sets the priorities, objectives and actions of government action. It is the roadmap municipal and it measures therein strategic mandate.</p><p>The City Council opens a <strong>public participation process</strong> to build, think and debate collective actions and priorities for the next three years. One step forward and participate in building a more just and democratic.</p>"
       title: What is the Barcelona Municipal Plan?

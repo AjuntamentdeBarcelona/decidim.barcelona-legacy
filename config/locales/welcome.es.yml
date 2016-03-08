@@ -13,7 +13,7 @@ es:
       title: Los cinco ejes del Plan Municipal
     description:
       text1: "<Strong>decidim.barcelona</strong> es la plataforma de participación digital del Ayuntamiento de Barcelona.Pretende ser un espacio de referencia para construir una ciudad democrática, abierta y transparente que potencie la participación de la ciudadanía en la construcción y definición de las políticas de la ciudad."
-      text2: "Inicialmente se desarrolla el proceso de participación para la elaboración del Plan de Actuación Municipal 2016-2019 y pretende acoger nuevos procesos de participación una vez este finalice. <Strong>El Plan Municipal</strong> se elabora al inicio de cada mandato y establece las líneas prioritarias, los objetivos y las actuaciones que el Gobierno de la ciudad desarrollará en los próximos cuatro años."
+      text2: Inicialmente se desarrolla el proceso de participación para la elaboración del Plan de Actuación Municipal 2016-2019 y pretende acoger nuevos procesos de participación una vez este finalice. <Strong>El Plan Municipal</strong> se elabora al inicio de cada mandato y establece las líneas prioritarias, los objetivos y las actuaciones que el Gobierno de la ciudad desarrollará en los próximos cuatro años.
     download:
       links:
         epub: Descárgate el Plan Municipal
@@ -24,6 +24,8 @@ es:
       link: Entra y participa
     meetings:
       title: Citas presenciales
+    notifications:
+      debate: Decidimos con Gala Pin (concejala de participación) y Jaume Asens (tercer teniente de alcalde) el 9 de Marzo a las 20h
     pam:
       text: "<p>El <strong>Plan Municipal</strong> se elabora al inicio de cada mandato y establece las líneas prioritarias, los objetivos y las actuaciones de la acción de gobierno. Es, por lo tanto, la hoja de ruta municipal que orienta sobre qué modelo queremos para nuestra ciudad.</p><p>El Ayuntamiento de Barcelona abre un proceso de participación ciudadana para construir, pensar y debatir entre todos y todas las actuaciones y prioridades de este mandato. Un paso adelante en la construcción colectiva de una ciudad más justa y democrática.</p>"
       title: "¿Qué es el Plan Municipal?"

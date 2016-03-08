@@ -353,4 +353,22 @@
       }
     }
   }
+
+  .section-notifications{
+    margin: 0;
+    margin-top: rem-calc(20);
+    padding: 0;
+
+    .notifications{
+      @include grid-column(12);
+
+      a{
+        @include arrow-box($brand, left);
+        display: block;
+        text-align: center;
+        font-style: italic;
+        width: 100%;
+      }
+    }
+  }
 }
