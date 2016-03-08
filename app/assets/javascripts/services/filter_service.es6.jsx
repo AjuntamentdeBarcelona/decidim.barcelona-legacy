@@ -98,15 +98,24 @@ class FilterService {
       clearTimeout(this.searchTimeoutId);
     }
 
+    var cache = {};
     this.searchTimeoutId = setTimeout(() => {
       // Iterate for each subscriber
       for(let subscriberId in this.subscribers) {
         let subscriber = this.subscribers[subscriberId],
             requestUrl = subscriber.requestUrl,
             requestDataType = subscriber.requestDataType,
-            onResultsCallback = subscriber.onResultsCallback;
+            onResultsCallback = subscriber.onResultsCallback,
+            promise;
 
-        $.ajax(requestUrl, { data, dataType: requestDataType }).then((result) => {
+        promise = cache[`${requestUrl};${requestDataType}`];
+
+        if (!promise) {
+          promise = $.ajax(requestUrl, { data, dataType: requestDataType });
+          cache[`${requestUrl};${requestDataType}`] = promise;
+        }
+
+        promise.then((result) => {
           if (onResultsCallback) {
             onResultsCallback(result);
           }
