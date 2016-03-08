@@ -56,6 +56,7 @@
 
       <%= 
         react_component "Votes", 
+          vote_url: api_proposal_votes_url(proposal_id: proposal),
           total_votes: proposal.total_votes,
           already_voted: voted_for?(@proposal_votes, proposal),
           cant_vote: !user_signed_in? || 

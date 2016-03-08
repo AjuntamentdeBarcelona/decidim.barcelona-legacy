@@ -3,8 +3,10 @@ class Votes extends React.Component {
     super(props);
 
     this.state = {
+      totalVotes: this.props.total_votes,
       showCantVoteOverlay: false,
-      alreadyVoted: this.props.already_voted
+      alreadyVoted: this.props.already_voted,
+      loading: false
     };
   }
 
@@ -17,7 +19,7 @@ class Votes extends React.Component {
           <div className="support-progress">
             <span className="total-supports">
               <span className="supports-count">
-                {this.props.total_votes}
+                {this.state.totalVotes}
               </span>
               supports&nbsp;
             </span>
@@ -36,21 +38,29 @@ class Votes extends React.Component {
   }
 
   renderVoteButton() {
-    if(this.state.alreadyVoted) { 
+    if(this.state.loading) {
       return (
         <div className="supported">
-          Already supported
+          Loding...
         </div>
       )
     } else {
-      return (
-        <button 
-          className="button button-support tiny radius expand" 
-          onClick={() => { this.vote() }}
-          onMouseEnter={() => { this.setState({ showCantVoteOverlay: true }) }}>
-          Support
-        </button>
-      )
+      if(this.state.alreadyVoted) { 
+        return (
+          <div className="supported">
+            Already supported
+          </div>
+        )
+      } else {
+        return (
+          <button 
+            className="button button-support tiny radius expand" 
+            onClick={() => { this.vote() }}
+            onMouseEnter={() => { this.setState({ showCantVoteOverlay: true }) }}>
+            Support
+          </button>
+        )
+      }
     }
   }
 
@@ -66,7 +76,13 @@ class Votes extends React.Component {
   }
 
   vote() {
-    this.setState({ alreadyVoted: true });
+    this.setState({ loading: true });
+    $.ajax(this.props.vote_url, {
+      method: 'POST',
+      dataType: 'json'
+    }).then((data) => {
+      this.setState({ loading: false, totalVotes: data.total_votes, alreadyVoted: true });
+    });
   }
 }
 //  <% if voted_for?(@proposal_votes, proposal) && Setting['twitter_handle'] %>
