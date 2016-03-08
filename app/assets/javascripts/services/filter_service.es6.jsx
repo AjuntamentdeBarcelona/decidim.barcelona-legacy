@@ -46,8 +46,19 @@ class FilterService {
     if (filterGroupName === 'category_id') {
       filters = filters.delete('subcategory_id')
     }
-    if (filterGroupName === 'scope' && filterGroupValue !== 'district') {
-      filters = filters.delete('district');
+    if (filterGroupName === 'district') {
+      let scopeValue = filters.get("scope") || [],
+          index = scopeValue.indexOf("district");
+          
+      if (filterGroupValue.length > 0) {
+        if (index === -1) {
+          scopeValue.push("district");
+        }
+      } else {
+        scopeValue.splice(index, 1)
+      }
+
+      filters = filters.set("scope", scopeValue);
     }
     this.applyFilters(
       filters.toObject(), 

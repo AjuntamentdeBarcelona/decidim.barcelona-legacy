@@ -2,19 +2,28 @@ class MeetingsFilter extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      searchText: this.props.filter.search_filter,
-      tags: Immutable.Set(this.props.filter.tag_filter || []),
-      filters : Immutable.Map(this.props.filter.params || {})
-    };
+    FilterServiceInstance.initState(
+      this.props.filter.search_filter,
+      this.props.filter.tag_filter,
+      this.props.filter.params
+    );
 
-    this.filterService = new FilterComponentService(this, {
+    this.state = FilterServiceInstance.state;
+  }
+
+  componentDidMount() {
+    FilterServiceInstance.subscribe('MeetingFilters', {
       requestUrl: this.props.filterUrl,
       requestDataType: 'json',
       onResultsCallback: (result) => {
         this.props.onFilterResult(result);
+        this.setState(FilterServiceInstance.state);
       }
     });
+  }
+
+  componentWillUnmount() {
+    FilterServiceInstance.unsubscribe('MeetingFilters');
   }
 
   render() {
@@ -32,12 +41,9 @@ class MeetingsFilter extends React.Component {
           <FilterOption filterName="past" />
         </FilterOptionGroup>
         <ScopeFilterOptionGroup 
-          filterGroupValue={this.state.filters.get('scope')} 
-          onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) } />
-        <DistrictFilterOptionGroup 
-          scopeSelected={this.state.filters.get('scope')}
+          scopeFilterGroupValue={this.state.filters.get('scope')} 
+          districtFilterGroupValue={this.state.filters.get('district')} 
           districts={this.props.districts} 
-          filterGroupValue={this.state.filters.get('district')}
           onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) } />
         <CategoryFilterOptionGroup
           categories={this.props.categories}
@@ -61,35 +67,28 @@ class MeetingsFilter extends React.Component {
     return null;
   }
 
-  onSetFilterText(searchText) {
-    this.props.onLoading();
-    this.filterService.setFilterText(searchText);
-  }
-
   onChangeFilterGroup(filterGroupName, filterGroupValue) {
     this.props.onLoading();
-    this.filterService.changeFilterGroup(filterGroupName, filterGroupValue);
+    FilterServiceInstance.changeFilterGroup(filterGroupName, filterGroupValue);
+    this.setState(FilterServiceInstance.state);
+  }
+
+  onSetFilterText(searchText) {
+    this.props.onLoading();
+    FilterServiceInstance.setFilterText(searchText);
+    this.setState(FilterServiceInstance.state);
   }
 
   onSetFilterTags(tags) {
     this.props.onLoading();
-    this.filterService.setFilterTags(tags);
+    FilterServiceInstance.setFilterTags(tags);
+    this.setState(FilterServiceInstance.state);
   }
 
   cleanFilters() {
-    let filters = this.state.filters.clear(),
-        tags = this.state.tags.clear(),
-        searchText = '';
-
     this.props.onLoading();
-
-    this.filterService.applyFilters(
-      filters.toObject(), 
-      tags.toArray(),
-      searchText
-    );
-
-    this.setState({ filters, tags, searchText });
+    FilterServiceInstance.cleanState({ notify: true });
+    this.setState(FilterServiceInstance.state);
   }
 
   renderCleanFilterLink() {
