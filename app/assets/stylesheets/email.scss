@@ -31,7 +31,7 @@
         background-color: $highlight;
 
         .email-content-inner{
-          margin: 10px;
+          margin: 15px;
           margin-bottom: 20px;
         }
       }
@@ -65,6 +65,7 @@
   .call-to-action{
     text-align: center;
     padding-top: $line-height / 2;
+    padding-bottom: rem-calc(20);
 
     a{
       border-radius: 5px;

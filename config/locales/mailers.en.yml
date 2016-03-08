@@ -24,9 +24,13 @@ en:
     proposals:
       activity: "%{votes} votes %{comments} comments"
     weekly:
+      ending: And tomorrow <strong> 9 March at 16.30 </ strong>, the deputy mayor of the Rights of Citizenship, Participation and Transparency, James Asens, and the Councillor for Citizen Participation and Districts, Gala Pin, at debate direct citizens through decidim.barcelona. Councillors will answer those citizens who wish to issues of transparency and participation linked to the municipal plan.
+      introduction: Below is a summary of some of the proposals of the Municipal Plan. <a href="https://decidim.barcelona/proposals"> Browse proposals </a> add your arguments and different <a href="https://decidim.barcelona/meetings"> consultation appointments </a> face. 73 neighborhoods, a Barcelona. To the city of the rights and opportunities.
       most_active: Proposals more active this week
       official_random_proposals: Some proposals of the City
       own_active: Your active proposals
+      participate: Come in and participate
+      participate_debate: Come in and participate in the debate
       random_proposals: Some proposals citizenship
       recent_comments_on_own_proposals: Recent comments on your proposals
       recent_comments_on_voted_proposals: Recent comments on the proposals that have supported

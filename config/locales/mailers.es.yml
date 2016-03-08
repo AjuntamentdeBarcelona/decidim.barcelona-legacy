@@ -24,9 +24,13 @@ es:
     proposals:
       activity: "%{votes} soportes nuevos, %{comments} comentarios nuevos"
     weekly:
+      ending: Y mañana día <strong>9 de marzo, a las 16.30 horas</strong>, el teniente de alcalde de Derechos de la Ciudadanía, Participación y Transparencia, Jaume Asens, y la concejala de Participación y Distritos, Gala Pin, debatirán en directo con la ciudadanía a través de decidim.barcelona. Los concejales darán respuesta a aquellos ciudadanos que lo deseen sobre temas de transparencia y participación vinculados al Plan municipal.
+      introduction: A continuación encontrarás un resumen con algunas de las propuestas del Plan municipal. <a href="https://decidim.barcelona/proposals">Navega por las propuestas</a>, añade tus argumentos y <a href="https://decidim.barcelona/meetings">consulta las diferentes citas presenciales</a>. <strong>73 barrios, una Barcelona. Hacia la ciudad de los derechos y las oportunidades</strong>.
       most_active: Propuestas más activas
       official_random_proposals: Algunas propuestas del Ayuntamiento
       own_active: Tus propuestas más activas
+      participate: Entra y participa
+      participate_debate: Entra y participa en el debate
       random_proposals: Algunas propuestas de la ciudadanía
       recent_comments_on_own_proposals: Comentarios recientes en tus propuestas
       recent_comments_on_voted_proposals: Comentarios recientes en propuestas a las que has apoyado
