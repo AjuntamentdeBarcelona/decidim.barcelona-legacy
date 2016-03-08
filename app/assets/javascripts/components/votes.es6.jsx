@@ -81,7 +81,8 @@ class Votes extends React.Component {
       method: 'POST',
       dataType: 'json'
     }).then((data) => {
-      this.setState({ loading: false, totalVotes: data.total_votes, alreadyVoted: true });
+      console.log(data);
+      this.setState({ loading: false, totalVotes: this.state.totalVotes + 1, alreadyVoted: true });
     });
   }
 }
