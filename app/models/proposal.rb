@@ -24,8 +24,8 @@ class Proposal < ActiveRecord::Base
   has_many :recommendations
 
   validates :title, presence: true
-  validates :title, :summary, style: true, on: :create
-  validates :summary, presence: true, length: { maximum: 1000 }
+  validates :description, presence: true
+  validates :title, :description, style: true, on: :create
   validates :author, presence: true
   validates :responsible_name, presence: true
 
@@ -33,7 +33,6 @@ class Proposal < ActiveRecord::Base
   validates :description, length: { maximum: Proposal.description_max_length }
   validates :scope, inclusion: { in: %w(city district) }
   validates :district, inclusion: { in: District.all.map(&:id), allow_nil: true }
-  validates :question, length: { in: 10..Proposal.question_max_length }, allow_blank: true
   validates :responsible_name, length: { in: 6..Proposal.responsible_name_max_length }
 
   before_validation :set_responsible_name
@@ -53,9 +52,7 @@ class Proposal < ActiveRecord::Base
   pg_search_scope :pg_search, {
     against: {
       title:       'A',
-      question:    'B',
-      summary:     'C',
-      description: 'D'
+      description: 'B'
     },
     associated_against: {
       tags: :name
@@ -73,9 +70,7 @@ class Proposal < ActiveRecord::Base
   def searchable_values
     values = {
       title       => 'A',
-      question    => 'B',
-      summary     => 'C',
-      description => 'D'
+      description => 'B'
     }
     tag_list.each{ |tag| values[tag] = 'D' }
     values[author.username] = 'D'
@@ -86,7 +81,7 @@ class Proposal < ActiveRecord::Base
     self.pg_search(terms)
   end
 
-  def description
+    def description
     super.try :html_safe
   end
 

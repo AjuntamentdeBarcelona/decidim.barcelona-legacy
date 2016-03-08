@@ -13,8 +13,8 @@ describe Proposal do
     expect(proposal).to_not be_valid
   end
 
-  it "should not be valid without a summary" do
-    proposal.summary = nil
+  it "should not be valid without a description" do
+    proposal.description = nil
     expect(proposal).to_not be_valid
   end
 
@@ -61,18 +61,6 @@ describe Proposal do
 
     it "should not be valid with an arbitrary value" do
       proposal.scope = 'whatever'
-      expect(proposal).to_not be_valid
-    end
-  end
-
-  describe "#question" do
-    it "should not be valid when very short" do
-      proposal.question = "abc"
-      expect(proposal).to_not be_valid
-    end
-
-    it "should not be valid when very long" do
-      proposal.question = "a" * 141
       expect(proposal).to_not be_valid
     end
   end
@@ -409,21 +397,9 @@ describe Proposal do
         expect(results).to eq([proposal])
       end
 
-      it "searches by summary" do
-        proposal = create(:proposal, summary: 'basically...')
-        results = Proposal.search('basically')
-        expect(results).to eq([proposal])
-      end
-
       it "searches by description" do
         proposal = create(:proposal, description: 'in order to save the world one must think about...')
         results = Proposal.search('one must think')
-        expect(results).to eq([proposal])
-      end
-
-      it "searches by question" do
-        proposal = create(:proposal, question: 'to be or not to be')
-        results = Proposal.search('to be or not to be')
         expect(results).to eq([proposal])
       end
 
@@ -439,7 +415,7 @@ describe Proposal do
     context "stemming" do
 
       it "searches word stems" do
-        proposal = create(:proposal, summary: 'biblioteca')
+        proposal = create(:proposal, description: 'biblioteca')
 
         results = Proposal.search('bibliotecas')
         expect(results).to eq([proposal])
@@ -456,12 +432,12 @@ describe Proposal do
     context "accents" do
 
       it "searches with accents" do
-        proposal = create(:proposal, summary: 'difusión')
+        proposal = create(:proposal, description: 'difusión')
 
         results = Proposal.search('difusion')
         expect(results).to eq([proposal])
 
-        proposal2 = create(:proposal, summary: 'estadisticas')
+        proposal2 = create(:proposal, description: 'estadisticas')
         results = Proposal.search('estadísticas')
         expect(results).to eq([proposal2])
       end
@@ -497,17 +473,13 @@ describe Proposal do
     context "order" do
 
       it "orders by weight" do
-        proposal_question    = create(:proposal, question:    'stop corruption')
         proposal_title       = create(:proposal,  title:       'stop corruption')
         proposal_description = create(:proposal,  description: 'stop corruption')
-        proposal_summary     = create(:proposal,  summary:     'stop corruption')
 
         results = Proposal.search('stop corruption')
 
         expect(results.first).to eq(proposal_title)
-        expect(results.second).to eq(proposal_question)
-        expect(results.third).to eq(proposal_summary)
-        expect(results.fourth).to eq(proposal_description)
+        expect(results.second).to eq(proposal_description)
       end
 
       it "orders by weight and then by votes" do
@@ -515,14 +487,11 @@ describe Proposal do
         title_least_voted   = create(:proposal, title: 'stop corruption', cached_votes_up: 2)
         title_most_voted    = create(:proposal, title: 'stop corruption', cached_votes_up: 10)
 
-        summary_most_voted  = create(:proposal, summary: 'stop corruption', cached_votes_up: 10)
-
         results = Proposal.search('stop corruption')
 
         expect(results.first).to eq(title_most_voted)
         expect(results.second).to eq(title_some_votes)
         expect(results.third).to eq(title_least_voted)
-        expect(results.fourth).to eq(summary_most_voted)
       end
 
       it "gives much more weight to word matches than votes" do
