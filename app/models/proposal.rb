@@ -12,6 +12,8 @@ class Proposal < ActiveRecord::Base
   include Categorizable
   include Filterable
 
+  before_save :sync_description
+
   apply_simple_captcha
   acts_as_votable
   acts_as_paranoid column: :hidden_at
@@ -54,8 +56,7 @@ class Proposal < ActiveRecord::Base
     against: {
       title:       'A',
       question:    'B',
-      summary:     'C',
-      description: 'D'
+      summary:     'C'
     },
     associated_against: {
       tags: :name
@@ -74,8 +75,7 @@ class Proposal < ActiveRecord::Base
     values = {
       title       => 'A',
       question    => 'B',
-      summary     => 'C',
-      description => 'D'
+      summary     => 'C'
     }
     tag_list.each{ |tag| values[tag] = 'D' }
     values[author.username] = 'D'
@@ -86,7 +86,7 @@ class Proposal < ActiveRecord::Base
     self.pg_search(terms)
   end
 
-  def description
+    def description
     super.try :html_safe
   end
 
@@ -141,4 +141,9 @@ class Proposal < ActiveRecord::Base
       end
     end
 
+  private
+
+    def sync_description
+      self.description = self.summary
+    end
 end

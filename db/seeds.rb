@@ -124,7 +124,7 @@ if ENV["SEED"]
   places = YAML.load_file("#{Rails.root}/db/seeds/places.yml")[:places]
   proposals = Proposal.all
 
-  (1..1000).each do |i|
+  (1..100).each do |i|
     place = places.sample
     start_at = Faker::Time.forward(23, :morning)
 
