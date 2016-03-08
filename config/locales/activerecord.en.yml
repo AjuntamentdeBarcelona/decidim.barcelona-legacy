@@ -54,6 +54,7 @@ en:
         description: Opinion
         terms_of_service: Terms and conditions of service
         title: Title
+        picture: Picture
       meeting:
         attendee_count: "Number of attendees"
         organizations: "Organizations"

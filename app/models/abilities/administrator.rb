@@ -13,6 +13,8 @@ module Abilities
       can :restore, Debate
       cannot :restore, Debate, hidden_at: nil
 
+      can :create, Debate
+
       can :restore, Proposal
       cannot :restore, Proposal, hidden_at: nil
 

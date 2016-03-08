@@ -1,5 +1,6 @@
 require 'numeric'
 class Debate < ActiveRecord::Base
+  extend FriendlyId
   include Flaggable
   include Taggable
   include Conflictable
@@ -12,6 +13,8 @@ class Debate < ActiveRecord::Base
   acts_as_votable
   acts_as_paranoid column: :hidden_at
   include ActsAsParanoidAliases
+
+  mount_uploader :picture, DebatePictureUploader
 
   belongs_to :author, -> { with_hidden }, class_name: 'User', foreign_key: 'author_id'
   has_many :comments, as: :commentable
@@ -38,6 +41,8 @@ class Debate < ActiveRecord::Base
   scope :last_week,            -> { where("created_at >= ?", 7.days.ago)}
   # Ahoy setup
   visitable # Ahoy will automatically assign visit_id on create
+
+  friendly_id :title, use: [:slugged, :finders]
 
   pg_search_scope :pg_search, {
     against: {
@@ -135,6 +140,10 @@ class Debate < ActiveRecord::Base
 
   def after_restore
     self.tags.each{ |t| t.increment_custom_counter_for('Debate') }
+  end
+
+  def arguable?
+    false
   end
 
 end

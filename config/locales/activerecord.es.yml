@@ -54,6 +54,7 @@ es:
         description: Opinión
         terms_of_service: Términos de servicio
         title: Título
+        picture: Imagen
       meeting:
         attendee_count: "Número de asistentes"
         organizations: "Organizaciones participantes"

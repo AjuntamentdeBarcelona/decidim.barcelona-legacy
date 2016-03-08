@@ -20,7 +20,8 @@ module Abilities
       can :read, SpendingProposal
 
       can :create, Comment
-      can :create, Debate
+      can :create, Debate if user.official_level? &&
+                             user.official_level > 0
       can :create, Proposal
 
       can [:flag, :unflag], Comment

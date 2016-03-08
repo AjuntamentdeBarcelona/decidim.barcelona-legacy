@@ -20,6 +20,8 @@ describe "Abilities::Common" do
   it { should be_able_to(:show, user) }
   it { should be_able_to(:edit, user) }
 
+  it { should_not be_able_to(:create, Debate) }
+
   it { should be_able_to(:create, Comment) }
   it { should be_able_to(:vote, Comment) }
 
@@ -98,5 +100,10 @@ describe "Abilities::Common" do
     it { should be_able_to(:vote_featured, Proposal) }
 
     it { should be_able_to(:create, SpendingProposal) }
+  end
+
+  context "official user" do
+    before { user.update(official_level: 1) }
+    it { should be_able_to(:create, Debate) }
   end
 end

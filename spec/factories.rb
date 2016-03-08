@@ -46,6 +46,10 @@ FactoryGirl.define do
       roles ["moderator"]
     end
 
+    trait :official do
+      official_level 2
+    end
+
     factory :administrator, traits: [:administrator]
     factory :moderator, traits: [:moderator]
   end

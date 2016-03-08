@@ -40,7 +40,9 @@ class CommentsController < ApplicationController
   private
 
     def comment_params
-      params.require(:comment).permit(:commentable_type, :commentable_id, :parent_id, :body, :as_moderator, :as_administrator, :alignment)
+      permits = [:commentable_type, :commentable_id, :parent_id, :body, :as_moderator, :as_administrator]
+      permits << :alignment if @commentable.arguable? && params[:comment][:parent_id].blank?
+      params.require(:comment).permit(*permits)
     end
 
     def build_comment
@@ -57,7 +59,7 @@ class CommentsController < ApplicationController
     end
 
     def load_commentable
-      @commentable = Comment.find_commentable(comment_params[:commentable_type], comment_params[:commentable_id])
+      @commentable = Comment.find_commentable(params[:comment][:commentable_type], params[:comment][:commentable_id])
     end
 
     def administrator_comment?

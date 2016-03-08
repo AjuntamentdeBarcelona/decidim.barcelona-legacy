@@ -133,6 +133,10 @@ class Proposal < ActiveRecord::Base
     self.tags.each{ |t| t.increment_custom_counter_for('Proposal') }
   end
 
+  def arguable?
+    true
+  end
+
   protected
 
     def set_responsible_name

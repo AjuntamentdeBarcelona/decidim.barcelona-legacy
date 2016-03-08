@@ -1,4 +1,4 @@
-<%= form_for(@debate) do |f| %>
+<%= form_for(@debate, multipart: true) do |f| %>
   <%= render 'shared/errors', resource: @debate %>
 
   <div class="row">
@@ -21,6 +21,10 @@
         <% end %>
       </span>
       <%= f.text_field :tag_list, value: @debate.tag_list.to_s, label: false, placeholder: t("debates.form.tags_placeholder"), class: 'js-tag-list' %>
+    </div>
+
+    <div class="small-12 column">
+      <%= f.file_field :picture %>
     </div>
 
     <div class="small-12 column">

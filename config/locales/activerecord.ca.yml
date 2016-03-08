@@ -9,6 +9,7 @@ ca:
         author: Autor/a
         description: Opinió
         terms_of_service: Termes de servei
+        picture: Imatge
         title: Títol
       meeting:
         attendee_count: "Nombre d'assistents"

@@ -15,7 +15,7 @@ describe DebatesController do
   describe 'POST create' do
     it 'should create an ahoy event' do
 
-      sign_in create(:user)
+      sign_in create(:user, :official)
 
       post :create, debate: { title: 'A sample debate', description: 'this is a sample debate', terms_of_service: 1 }
       expect(Ahoy::Event.where(name: :debate_created).count).to eq 1

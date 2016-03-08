@@ -119,6 +119,10 @@ class Comment < ActiveRecord::Base
                                                              cached_votes_up)
   end
 
+  def arguable?
+    false
+  end
+
   private
 
     def validate_body_length

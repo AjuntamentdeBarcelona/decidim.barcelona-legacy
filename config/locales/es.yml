@@ -87,7 +87,7 @@ es:
         one: 1 Comentario
         other: "%{count} Comentarios"
         zero: Sin comentarios
-      debate: Debate
+      read_more: Entra y participa
       votes:
         one: 1 voto
         other: "%{count} votos"

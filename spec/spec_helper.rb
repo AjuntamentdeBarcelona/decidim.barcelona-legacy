@@ -31,8 +31,8 @@ RSpec.configure do |config|
 
   if ENV["CI"]
     config.include RSpec::Repeat
-    config.around :each do |example|
-      repeat example, 3.times
+    config.around :each, type: :feature do |example|
+      repeat example, 5.times, wait: 1, verbose: true
     end
   end
 

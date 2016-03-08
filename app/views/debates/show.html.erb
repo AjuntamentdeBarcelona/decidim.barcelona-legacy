@@ -13,7 +13,7 @@
           <% end %>
         <% end %>
 
-        <h1><%= @debate.title %></h1>
+        <h2><%= @debate.title %></h2>
         <% if @debate.conflictive? %>
           <div class="alert-box alert radius margin-top">
             <strong><%= t("debates.show.flag") %></strong>
@@ -45,13 +45,16 @@
 
       <aside class="small-12 medium-3 column">
         <div class="sidebar-divider"></div>
-        <h3><%= t("votes.supports") %></h3>
-        <div class="text-center">
-          <div id="<%= dom_id(@debate) %>_votes">
-           <%= render 'debates/votes', debate: @debate %>
+        <%= render partial: 'debates/picture', locals: { debate: @debate } %>
+        <% if Setting["feature.debates.vote"] %>
+          <h3><%= t("votes.supports") %></h3>
+          <div class="text-center">
+            <div id="<%= dom_id(@debate) %>_votes">
+            <%= render 'debates/votes', debate: @debate %>
+            </div>
           </div>
-        </div>
-        <div class="sidebar-divider"></div>
+          <div class="sidebar-divider"></div>
+        <% end %>
         <h3><%= t("debates.show.share") %></h3>
         <%= social_share_button_tag(@debate.title) %>
       </aside>
