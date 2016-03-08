@@ -1,6 +1,8 @@
 class ProposalSerializer < ActiveModel::Serializer
   attributes :id, :title, :url, :author_name, :votes, :official
 
+  link(:url) { proposal_path(object) }
+
   def author_name
     unless object.official? || object.from_meeting?
       object.author.name
@@ -9,9 +11,5 @@ class ProposalSerializer < ActiveModel::Serializer
 
   def votes
     object.total_votes
-  end
-
-  def url
-    proposal_path(object)
   end
 end

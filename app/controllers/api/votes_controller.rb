@@ -6,11 +6,8 @@ class Api::VotesController < ApplicationController
 
   def create
     @proposal.register_vote(current_user, 'yes')
-    respond_to do |format|
-      format.json do
-        render json: { total_votes: @proposal.total_votes }
-      end
-    end
+    @vote = Vote.where(voter: current_user, votable: @proposal).first
+    render json: @vote
   end
 
   private
