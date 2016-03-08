@@ -1,0 +1,6 @@
+<% if proposal.district %>
+  <strong><%= District.find(proposal.district).name %>, </strong>
+<% else %>
+  <strong><%= t 'components.filter_option.city' %>, </strong>
+<% end %>
+<%= [proposal.category.name[I18n.locale.to_s], proposal.subcategory.name[I18n.locale.to_s]].compact.join(', ') %>

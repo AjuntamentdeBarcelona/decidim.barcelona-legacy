@@ -5,6 +5,8 @@
     <h3 class="name"><%= @user.name %></h3>
   </div>
 
+  <p><%== t '.introduction' %></p>
+
   <% if @summary.own_active.any? %>
     <h3><%= t '.own_active' %></h3>
     <%= render partial: 'proposals', locals: { proposals: @summary.own_active, summary: @summary } %>
@@ -34,6 +36,8 @@
       <% @official_random_proposals.each do |proposal|  %>
         <li>
           <%= link_to(proposal.title, proposal) %>
+          <br />
+          <%= render partial: 'proposal_info', locals: { proposal: proposal } %>
         </li>
       <% end %>
     </ul>
@@ -45,6 +49,8 @@
       <% @random_proposals.each do |proposal|  %>
         <li>
           <%= link_to(proposal.title, proposal) %>
+          <br />
+          <%= render partial: 'proposal_info', locals: { proposal: proposal } %>
         </li>
       <% end %>
     </ul>
@@ -69,4 +75,14 @@
       <% end %>
     </ul>
   <% end %>
+
+  <p class="call-to-action">
+    <%= link_to t('.participate'), root_path, class: 'participate' %>
+  </p>
+
+  <p><%== t '.ending' %></p>
+
+  <p class="call-to-action">
+    <%= link_to t('.participate_debate'), debate_path(Debate.last), class: 'participate' %>
+  </p>
 </div>

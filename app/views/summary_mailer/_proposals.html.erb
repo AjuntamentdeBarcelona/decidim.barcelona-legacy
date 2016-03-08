@@ -3,7 +3,9 @@
     <li>
       <%= link_to(proposal.title, proposal) %>
       <br />
-      (<%= t '.activity', votes: summary.votes_count(proposal), comments: summary.comments_count(proposal) %>)
+      <%= render partial: 'proposal_info', locals: { proposal: proposal }%>
+      <br />
+      (<em><%= t '.activity', votes: summary.votes_count(proposal), comments: summary.comments_count(proposal) %></em>)
     </li>
   <% end %>
 </ul>
