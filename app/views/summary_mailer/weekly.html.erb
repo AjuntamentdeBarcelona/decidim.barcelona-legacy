@@ -80,9 +80,11 @@
     <%= link_to t('.participate'), root_path, class: 'participate' %>
   </p>
 
-  <p><%== t '.ending' %></p>
+  <% if Debate.any? %>
+    <p><%== t '.ending' %></p>
 
-  <p class="call-to-action">
-    <%= link_to t('.participate_debate'), debate_path(Debate.last), class: 'participate' %>
-  </p>
+    <p class="call-to-action">
+      <%= link_to t('.participate_debate'), debate_path(Debate.last), class: 'participate' %>
+    </p>
+  <% end %>
 </div>
