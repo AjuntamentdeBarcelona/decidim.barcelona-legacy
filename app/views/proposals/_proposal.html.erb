@@ -54,10 +54,13 @@
         <% end %>
       </div>
 
-      <div id="<%= dom_id(proposal) %>_votes" class="small-12 medium-3 column text-center">
-          <%= render 'votes',
-                    { proposal: proposal, vote_url: vote_proposal_path(proposal, value: 'yes') } %>
-      </div>
-
+      <%= 
+        react_component "Votes", 
+          total_votes: proposal.total_votes,
+          already_voted: voted_for?(@proposal_votes, proposal),
+          cant_vote: !user_signed_in? || 
+            (user_signed_in? && !proposal.votable_by?(current_user)) ||
+            (user_signed_in? && current_user.organization?)
+      %>
     </div>
 </div>
