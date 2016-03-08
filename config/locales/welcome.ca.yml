@@ -13,7 +13,7 @@ ca:
       title: Els cinc eixos del Pla municipal
     description:
       text1: "<strong>decidim.barcelona</strong> és la plataforma de participació digital de l'Ajuntament de Barcelona. Volser un espai de referència per construir una ciutat democràtica, oberta i transparent que potenciï la participació de la ciutadania en la construcció i definició de les polítiques de la ciutat."
-      text2: "Inicialment s'hi desenvolupa el procés de participació per a l’elaboració del Pla d'actuació municipal 2016-2019 i pretén incloure nous processos de participació un cop aquest acabi. <strong>El Pla d'actuació municipal</strong> s’elabora a l’inici de cada mandat i estableix les línies prioritàries, els objectius i les actuacions que el Govern de la ciutat desenvoluparà en els propers quatre anys."
+      text2: Inicialment s'hi desenvolupa el procés de participació per a l’elaboració del Pla d'actuació municipal 2016-2019 i pretén incloure nous processos de participació un cop aquest acabi. <strong>El Pla d'actuació municipal</strong> s’elabora a l’inici de cada mandat i estableix les línies prioritàries, els objectius i les actuacions que el Govern de la ciutat desenvoluparà en els propers quatre anys.
     download:
       links:
         epub: Baixa el Pla municipal
@@ -24,6 +24,8 @@ ca:
       link: Entra i participa
     meetings:
       title: Cites presencials
+    notifications:
+      debate: Decidim amb Gala Pin (regidora de participació) i Jaume Asens (tercer tinent d'alcalde) el 9 de Març a les 16:30h
     pam:
       text: "<p>El <strong>Pla municipal</strong> s’elabora a l’inici de cada mandat i estableix les línies prioritàries, els objectius i les actuacions de l’acció del govern. És, per tant, el full de ruta municipal que orienta quin model volem per la nostra ciutat.</p><p>L’Ajuntament de Barcelona obre <strong>un procés de participació ciutadana</strong> per construir, pensar i debatre entre tots i totes les actuacions i prioritats dels propers tres anys. Un pas endavant en la construcció col·lectiva d’una ciutat més justa i democràtica.</p>"
       title: Què és el Pla municipal?
@@ -40,5 +42,3 @@ ca:
       title: Com puc participar-hi?
     videos:
       title: Ja hi han participat
-    notifications:
-      debate: Decidim amb Gala Pin (regidora de participació) i Jaume Asens (tercer tinent d'alcalde) el 9 de Març a les 16:30h
