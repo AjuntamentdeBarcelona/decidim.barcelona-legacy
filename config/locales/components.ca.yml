@@ -15,7 +15,7 @@ ca:
       enable: Sí, vull rebre les notificacions.
       text: No tens les notificacions per correu electrònic activades. No rebràs un correu cada vop que algú faci un comentari a les teves propostes, ni un resum setmanal d'activitat. Pots canviar això en qualsevol moment de del teu perfil d'usuari (el meu compte). Vols que activem les notificacions per tu?
     filter_option:
-      all: Tots
+      all: Totes
       citizenship: Ciutadania
       city: Tota la ciutat
       district: Un districte
