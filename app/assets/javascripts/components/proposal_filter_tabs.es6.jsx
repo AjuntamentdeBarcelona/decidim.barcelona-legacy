@@ -48,6 +48,7 @@ class ProposalFilterTabs extends React.Component {
     $(document).trigger('loading:show');
     FilterServiceInstance.cleanState({ notify: false });
     FilterServiceInstance.changeFilterGroup(filterGroupName, filterGroupValue);
+    this.setState(FilterServiceInstance.state);
   }
 }
 

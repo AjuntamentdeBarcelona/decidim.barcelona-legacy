@@ -39,9 +39,17 @@ class FilterOptionGroup extends React.Component {
 
   render() {
     return (
-      <div className="filter-group">
-        {this.renderGroupAs(this.props.renderAs || 'options')}
-      </div>
+      (() => {
+        if (this.props.useWrapper) {
+          return (
+            <div className="filter-group">
+              {this.renderGroupAs(this.props.renderAs || 'options')}
+            </div>
+          )
+        } else {
+          return this.renderGroupAs(this.props.renderAs || 'options');
+        }
+      }())
     )
   }
 
@@ -57,7 +65,15 @@ class FilterOptionGroup extends React.Component {
   renderGroupAsOptions() {
     return (
       <div>
-        <h3>{I18n.t(`components.filter_option_group.${this.props.filterGroupName}`)}</h3>
+        {(() => {
+          if (this.props.useTitle) {
+            return (
+              <h3>{I18n.t(`components.filter_option_group.${this.props.filterGroupName}`)}</h3>
+            )
+          } else {
+            return null;
+          }
+        }())}
         {this.renderIncludeAll()}
         {this.renderChildren()}
       </div>
@@ -105,3 +121,7 @@ class FilterOptionGroup extends React.Component {
     );
   }
 }
+FilterOptionGroup.defaultProps = { 
+  useWrapper: true,
+  useTitle: true 
+};

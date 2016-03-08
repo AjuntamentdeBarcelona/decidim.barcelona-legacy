@@ -1,5 +1,5 @@
 class ProposalFilters extends React.Component {
-constructor(props) {
+  constructor(props) {
     super(props);
 
     FilterServiceInstance.initState(
@@ -33,12 +33,9 @@ constructor(props) {
           searchText={this.state.searchText}
           onSetFilterText={ (searchText) => this.onSetFilterText(searchText) } />
         <ScopeFilterOptionGroup 
-          filterGroupValue={this.state.filters.get('scope')} 
-          onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) } />
-        <DistrictFilterOptionGroup 
-          scopeSelected={this.state.filters.get('scope')}
+          scopeFilterGroupValue={this.state.filters.get('scope')} 
+          districtFilterGroupValue={this.state.filters.get('district')} 
           districts={this.props.districts} 
-          filterGroupValue={this.state.filters.get('district')}
           onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) } />
         <CategoryFilterOptionGroup
           categories={this.props.categories}
@@ -76,21 +73,25 @@ constructor(props) {
   onChangeFilterGroup(filterGroupName, filterGroupValue) {
     $(document).trigger('loading:show');
     FilterServiceInstance.changeFilterGroup(filterGroupName, filterGroupValue);
+    this.setState(FilterServiceInstance.state);
   }
 
   onSetFilterText(searchText) {
     $(document).trigger('loading:show');
     FilterServiceInstance.setFilterText(searchText);
+    this.setState(FilterServiceInstance.state);
   }
 
   onSetFilterTags(tags) {
     $(document).trigger('loading:show');
     FilterServiceInstance.setFilterTags(tags);
+    this.setState(FilterServiceInstance.state);
   }
 
   cleanFilters() {
     $(document).trigger('loading:show');
     FilterServiceInstance.cleanState({ notify: true });
+    this.setState(FilterServiceInstance.state);
   }
 
   renderCleanFilterLink() {
