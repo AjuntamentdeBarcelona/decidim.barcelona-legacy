@@ -493,8 +493,6 @@ ca:
     verified_only: Les propostes només poden ser votades per usuaris verificats, %{verify_account}.
     verify_account: verifica el teu compte
   welcome:
-    highlights: 'Portada:'
-    signed_in_home_title: Activitat recent
     welcome:
       see_proposals: Veure les propostes
       skip_verification: Si no estàs empadronat a Barcelona o no vols verificar el compte,

@@ -497,8 +497,6 @@ en:
     verified_only: Only verified users can vote on proposals; %{verify_account}.
     verify_account: verify your account
   welcome:
-    highlights: 'Highlights: '
-    signed_in_home_title: Recent activity
     welcome:
       see_proposals: View the Proposals
       skip_verification: If you are not registered or not quieres verificarte in Barcelona,
