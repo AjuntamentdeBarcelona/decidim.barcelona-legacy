@@ -46,6 +46,7 @@
 
     .header{
       background-color: $background;
+      background-position: center;
     }
 
     .footer{
@@ -78,11 +79,13 @@
 
   .application-title{
     text-align: center;
+    background-position: center;
+    margin-bottom: rem-calc(20);
+    margin-top: rem-calc(20);
     a img{
       width: 225px;
       height: 37px;
     }
-    margin-bottom: 10px;
   }
 
   ul{
