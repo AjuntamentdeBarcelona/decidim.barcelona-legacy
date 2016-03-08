@@ -2,9 +2,9 @@
   <div class="title">
     <h2><%= t '.title' %></h2>
     <h3 class="date"><%= l @from.to_date %> - <%= l @to.to_date %></h3>
-    <h3 class="name"><%= @user.name %></h3>
   </div>
 
+  <p><%= t '.greeting', name: @user.name %></p>
   <p><%== t '.introduction' %></p>
 
   <% if @summary.own_active.any? %>
