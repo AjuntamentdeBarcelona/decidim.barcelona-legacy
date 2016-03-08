@@ -51,7 +51,7 @@ feature 'Proposals' do
 
     visit proposals_path
 
-    choose 'filter_scope_city'
+    check 'filter_scope_city'
 
     expect(page).to have_content 'Proposal with city scope 1'
     expect(page).to have_content 'Proposal with city scope 2'
