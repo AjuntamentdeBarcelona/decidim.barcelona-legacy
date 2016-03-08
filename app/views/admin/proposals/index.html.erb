@@ -11,7 +11,7 @@
         <strong><%= proposal.title %></strong>
         <br>
         <div class="moderation-description">
-          <p><%= proposal.summary %></p>
+          <p><%= proposal.description %></p>
           <% if proposal.external_url.present? %>
             <p><%= text_with_links proposal.external_url %></p>
           <% end %>
