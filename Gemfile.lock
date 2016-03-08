@@ -13,12 +13,11 @@ GIT
 
 GIT
   remote: git://github.com/rails-api/active_model_serializers.git
-  revision: 6014b529885f0b0d9664605bd37c0075e4176307
+  revision: a105c603c4169375d3664ebef79846caa8e80902
+  branch: 0-9-stable
   specs:
-    active_model_serializers (0.10.0.rc4)
-      actionpack (>= 4.0)
-      activemodel (>= 4.0)
-      railties (>= 4.0)
+    active_model_serializers (0.9.4)
+      activemodel (>= 3.2)
 
 GIT
   remote: https://github.com/huacnlee/social-share-button.git
