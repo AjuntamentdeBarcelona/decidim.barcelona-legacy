@@ -33,7 +33,7 @@ module CommentableActions
     @resource = resource_model.new(strong_params)
     @resource.author = current_user
 
-    if @resource.save_with_captcha
+    if verify_recaptcha(model: @resource) && @resource.save
       track_event
       redirect_path = url_for(controller: controller_name, action: :show, id: @resource)
       redirect_to redirect_path, notice: t("flash.actions.create.#{resource_name.underscore}")
@@ -50,7 +50,7 @@ module CommentableActions
 
   def update
     resource.assign_attributes(strong_params)
-    if resource.save_with_captcha
+    if verify_recaptcha(model: resource) && resource.save
       redirect_to resource, notice: t("flash.actions.update.#{resource_name.underscore}")
     else
       load_featured_tags

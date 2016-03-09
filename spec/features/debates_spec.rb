@@ -76,7 +76,6 @@ feature 'Debates' do
     visit new_debate_path
     fill_in 'debate_title', with: 'A title for a debate'
     fill_in 'debate_description', with: 'This is very important because...'
-    fill_in 'debate_captcha', with: correct_captcha_text
     check 'debate_terms_of_service'
 
     click_button 'Start a debate'
@@ -102,7 +101,6 @@ feature 'Debates' do
     expect(page).to_not have_content "Debate created successfully."
     expect(page).to have_content "1 error"
 
-    fill_in 'debate_captcha', with: correct_captcha_text
     click_button "Start a debate"
 
     expect(page).to have_content "Debate created successfully."
@@ -116,7 +114,6 @@ feature 'Debates' do
     visit new_debate_path
     fill_in 'debate_title', with: ""
     fill_in 'debate_description', with: 'Very important issue...'
-    fill_in 'debate_captcha', with: correct_captcha_text
     check 'debate_terms_of_service'
 
     click_button "Start a debate"
@@ -145,7 +142,6 @@ feature 'Debates' do
     visit new_debate_path
     fill_in 'debate_title', with: 'Testing an attack'
     fill_in 'debate_description', with: '<p>This is <script>alert("an attack");</script></p>'
-    fill_in 'debate_captcha', with: correct_captcha_text
     check 'debate_terms_of_service'
 
     click_button 'Start a debate'
@@ -164,7 +160,6 @@ feature 'Debates' do
     visit new_debate_path
     fill_in 'debate_title', with: 'Testing auto link'
     fill_in 'debate_description', with: '<p>This is a link www.example.org</p>'
-    fill_in 'debate_captcha', with: correct_captcha_text
     check 'debate_terms_of_service'
 
     click_button 'Start a debate'
@@ -181,7 +176,6 @@ feature 'Debates' do
     visit new_debate_path
     fill_in 'debate_title', with: 'Testing auto link'
     fill_in 'debate_description', with: "<script>alert('hey')</script> <a href=\"javascript:alert('surprise!')\">click me<a/> http://example.org"
-    fill_in 'debate_captcha', with: correct_captcha_text
     check 'debate_terms_of_service'
 
     click_button 'Start a debate'
@@ -215,7 +209,6 @@ feature 'Debates' do
 
       fill_in 'debate_title', with: 'A test'
       fill_in_ckeditor 'debate_description', with: 'A test'
-      fill_in 'debate_captcha', with: correct_captcha_text
       check 'debate_terms_of_service'
 
       ['Medio Ambiente', 'Ciencia'].each do |tag_name|
@@ -235,7 +228,6 @@ feature 'Debates' do
 
       fill_in 'debate_title', with: 'A test of dangerous strings'
       fill_in 'debate_description', with: 'A description suitable for this test'
-      fill_in 'debate_captcha', with: correct_captcha_text
       check 'debate_terms_of_service'
 
       fill_in 'debate_tag_list', with: 'user_id=1, &a=3, <script>alert("hey");</script>'
@@ -283,7 +275,6 @@ feature 'Debates' do
 
     fill_in 'debate_title', with: "End child poverty"
     fill_in 'debate_description', with: "Let's do something to end child poverty"
-    fill_in 'debate_captcha', with: correct_captcha_text
 
     click_button "Save changes"
 
@@ -317,7 +308,6 @@ feature 'Debates' do
     expect(page).to_not have_content "Debate updated successfully."
     expect(page).to have_content "error"
 
-    fill_in 'debate_captcha', with: correct_captcha_text
     click_button "Save changes"
 
     expect(page).to have_content "Debate updated successfully."
@@ -333,7 +323,6 @@ feature 'Debates' do
     expect(current_path).to eq(edit_debate_path(debate))
 
     fill_in 'debate_title', with: ""
-    fill_in 'debate_captcha', with: correct_captcha_text
     click_button "Save changes"
 
     expect(page).to_not have_content "Debate updated successfully."

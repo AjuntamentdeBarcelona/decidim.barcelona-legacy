@@ -78,7 +78,6 @@ feature 'Tags' do
     visit new_debate_path
     fill_in 'debate_title', with: 'Title'
     fill_in 'debate_description', with: 'Description'
-    fill_in 'debate_captcha', with: correct_captcha_text
     check 'debate_terms_of_service'
 
     fill_in 'debate_tag_list', with: "Impuestos, Economía, Hacienda"
@@ -98,7 +97,6 @@ feature 'Tags' do
     visit new_debate_path
     fill_in 'debate_title', with: 'Title'
     fill_in 'debate_description', with: 'Description'
-    fill_in 'debate_captcha', with: correct_captcha_text
     check 'debate_terms_of_service'
 
     fill_in 'debate_tag_list', with: "Impuestos, Economía, Hacienda, Sanidad, Educación, Política, Igualdad"
@@ -118,7 +116,6 @@ feature 'Tags' do
     expect(page).to have_selector("input[value='Economía']")
 
     fill_in 'debate_tag_list', with: "Economía, Hacienda"
-    fill_in 'debate_captcha', with: correct_captcha_text
     click_button 'Save changes'
 
     expect(page).to have_content 'Debate updated successfully.'
@@ -135,7 +132,6 @@ feature 'Tags' do
     visit edit_debate_path(debate)
 
     fill_in 'debate_tag_list', with: ""
-    fill_in 'debate_captcha', with: correct_captcha_text
     click_button 'Save changes'
 
     expect(page).to have_content 'Debate updated successfully.'

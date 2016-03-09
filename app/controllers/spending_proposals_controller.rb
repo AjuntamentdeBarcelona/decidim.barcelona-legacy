@@ -18,7 +18,7 @@ class SpendingProposalsController < ApplicationController
     @spending_proposal = SpendingProposal.new(spending_proposal_params)
     @spending_proposal.author = current_user
 
-    if @spending_proposal.save_with_captcha
+    if verify_recaptcha(model: @spending_proposal) && @spending_proposal.save
       redirect_to spending_proposals_path, notice: t("flash.actions.create.spending_proposal")
     else
       render :new

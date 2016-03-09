@@ -25,7 +25,6 @@ feature 'Spending proposals' do
     fill_in 'spending_proposal_title', with: 'Build a skyscraper'
     fill_in 'spending_proposal_description', with: 'I want to live in a high tower over the clouds'
     fill_in 'spending_proposal_external_url', with: 'http://http://skyscraperpage.com/'
-    fill_in 'spending_proposal_captcha', with: correct_captcha_text
     select  'All city', from: 'spending_proposal_geozone_id'
     check 'spending_proposal_terms_of_service'
 
@@ -49,7 +48,6 @@ feature 'Spending proposals' do
     expect(page).to_not have_content 'Spending proposal created successfully'
     expect(page).to have_content '1 error'
 
-    fill_in 'spending_proposal_captcha', with: correct_captcha_text
     click_button 'Create'
 
     expect(page).to have_content 'Spending proposal created successfully'

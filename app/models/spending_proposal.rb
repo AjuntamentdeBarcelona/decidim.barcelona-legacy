@@ -2,8 +2,6 @@ class SpendingProposal < ActiveRecord::Base
   include Measurable
   include Sanitizable
 
-  apply_simple_captcha
-
   RESOLUTIONS = ["accepted", "rejected"]
 
   belongs_to :author, -> { with_hidden }, class_name: 'User', foreign_key: 'author_id'
