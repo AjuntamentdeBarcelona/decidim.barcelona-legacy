@@ -49,6 +49,8 @@ module Abilities
       can :mark_as_official, Proposal
 
       can :see_recommendations, Proposal
+
+      can :download_report, Proposal
     end
   end
 end

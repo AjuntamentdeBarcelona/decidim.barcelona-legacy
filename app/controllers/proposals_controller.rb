@@ -17,25 +17,37 @@ class ProposalsController < ApplicationController
 
   def index
     @filter = ResourceFilter.new(params)
-    @proposals = @current_order == "recommended" ? Recommender.new(current_user).proposals : Proposal.all
+    proposals = @current_order == "recommended" ? Recommender.new(current_user).proposals : Proposal.all
 
-    @proposals = @filter.filter_collection(@proposals.includes(:category, :subcategory, :author => [:organization]))
+    proposals = @filter.filter_collection(proposals.includes(:category, :subcategory, :author => [:organization]))
 
     if Setting["feature.proposal_tags"]
-      @tag_cloud = @filter.tag_cloud(@proposals)
+      @tag_cloud = @filter.tag_cloud(proposals)
     end
 
-    @proposals = @proposals.
-                 page(params[:page]).
-                 per(15).
-                 for_render.
-                 includes(:author)
+    proposals = proposals.includes(:author)
 
     if @current_order != "recommended"
-      @proposals = @proposals.send("sort_by_#{@current_order}")
+      proposals = proposals.send("sort_by_#{@current_order}")
     end
 
-    set_resource_votes(@proposals)
+    set_resource_votes(proposals)
+
+    respond_to do |format|
+      paginated_proposals = proposals.
+                            page(params[:page]).
+                            per(15).
+                            for_render
+
+      format.html{ @proposals = paginated_proposals }
+      format.js{ @proposals = paginated_proposals }
+
+      if can?(:download_report, Proposal)
+        format.xls do
+          send_data report(proposals), disposition: 'inline', filename: 'proposals.xls'
+        end
+      end
+    end
   end
 
   def vote
@@ -63,4 +75,23 @@ class ProposalsController < ApplicationController
       Proposal
     end
 
+    def report(proposals)
+      package = Axlsx::Package.new do |p|
+        p.workbook.add_worksheet(:name => "Proposals") do |sheet|
+          proposals.each do |proposal|
+            row = []
+            row.push proposal.id
+            row.push proposal.title
+            row.push proposal.summary.
+            row.push proposal.author.username
+            row.push proposal.created_at
+            row.push proposal.cached_votes_up
+            row.push proposal.comments_count
+            sheet.add_row row
+          end
+        end
+      end
+
+      package.to_stream.read
+    end
 end
