@@ -146,6 +146,7 @@ ignore_unused:
   - 'officials.*'
   - 'components.filter_option.{city,district,official,citizenship,meetings,organization,all,past,upcoming}'
   - 'components.filter_option_group.{category_id,district,scope,subcategory_id,other,source,date}'
+  - 'recaptcha.*'
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'

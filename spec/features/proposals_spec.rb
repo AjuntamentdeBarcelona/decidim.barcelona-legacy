@@ -148,28 +148,6 @@ feature 'Proposals' do
     expect(page).to have_content 'Proposal created successfully.'
   end
 
-  scenario 'Captcha is required for proposal creation', :js do
-    login_as(create(:user))
-
-    visit new_proposal_path
-    fill_in 'proposal_title', with: "Great title"
-    fill_in 'proposal_summary', with: 'In summary, what we want is...'
-    fill_in 'proposal_external_url', with: 'http://rescue.org/refugees'
-    fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
-    fill_in 'proposal_captcha', with: "wrongText!"
-    find('li', text: category.name["en"]).click
-    find('li', text: subcategory.name["en"]).click
-
-    click_button "Create proposal"
-
-    expect(page).to_not have_content "Proposal created successfully."
-    expect(page).to have_content "1 error"
-
-    click_button "Create proposal"
-
-    expect(page).to have_content "Proposal created successfully."
-  end
-
   scenario 'Failed creation goes back to new showing featured tags', :js do
     featured_tag = create(:tag, :featured)
     tag = create(:tag)
@@ -375,25 +353,6 @@ feature 'Proposals' do
     click_button "Save changes"
 
     expect(page).to have_content error_message
-  end
-
-  scenario 'Captcha is required to update a proposal' do
-    proposal = create(:proposal)
-    login_as(proposal.author)
-
-    visit edit_proposal_path(proposal)
-    expect(current_path).to eq(edit_proposal_path(proposal))
-
-    fill_in 'proposal_title', with: "New cool title"
-    fill_in 'proposal_captcha', with: "wrong!"
-    click_button "Save changes"
-
-    expect(page).to_not have_content "Proposal updated successfully."
-    expect(page).to have_content "error"
-
-    click_button "Save changes"
-
-    expect(page).to have_content "Proposal updated successfully."
   end
 
   scenario 'Failed update goes back to edit showing featured tags' do

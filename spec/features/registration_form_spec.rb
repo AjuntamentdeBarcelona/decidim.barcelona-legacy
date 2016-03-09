@@ -1,12 +1,6 @@
 require 'rails_helper'
 
 feature 'Registration form' do
-  around do |example|
-    SimpleCaptcha.always_pass = true
-    example.run
-    SimpleCaptcha.always_pass = false
-  end
-
   scenario 'username is not available', :js do
     user = create(:user)
 

@@ -87,25 +87,6 @@ feature 'Debates' do
     expect(page).to have_content I18n.l(Debate.last.created_at.to_date)
   end
 
-  scenario 'Captcha is required for debate creation' do
-    login_as(create(:user, :official))
-
-    visit new_debate_path
-    fill_in 'debate_title', with: "Great title"
-    fill_in 'debate_description', with: 'Very important issue...'
-    fill_in 'debate_captcha', with: "wrongText!"
-    check 'debate_terms_of_service'
-
-    click_button "Start a debate"
-
-    expect(page).to_not have_content "Debate created successfully."
-    expect(page).to have_content "1 error"
-
-    click_button "Start a debate"
-
-    expect(page).to have_content "Debate created successfully."
-  end
-
   scenario 'Failed creation goes back to new showing featured tags' do
     featured_tag = create(:tag, :featured)
     tag = create(:tag)
@@ -292,25 +273,6 @@ feature 'Debates' do
     click_button "Save changes"
 
     expect(page).to have_content error_message
-  end
-
-  scenario 'Captcha is required to update a debate' do
-    debate = create(:debate)
-    login_as(debate.author)
-
-    visit edit_debate_path(debate)
-    expect(current_path).to eq(edit_debate_path(debate))
-
-    fill_in 'debate_title', with: "New title"
-    fill_in 'debate_captcha', with: "wrong!"
-    click_button "Save changes"
-
-    expect(page).to_not have_content "Debate updated successfully."
-    expect(page).to have_content "error"
-
-    click_button "Save changes"
-
-    expect(page).to have_content "Debate updated successfully."
   end
 
   scenario 'Failed update goes back to edit showing featured tags' do
