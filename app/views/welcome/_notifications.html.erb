@@ -1,9 +1,0 @@
-<div class="section-notifications home-section">
-  <div class="row">
-    <div class="notifications">
-      <% if Debate.any? %>
-        <%= link_to t('.debate'), debate_path(Debate.first) %>
-      <% end %>
-    </div>
-  </div>
-</div>

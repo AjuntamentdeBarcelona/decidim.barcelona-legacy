@@ -79,12 +79,4 @@
   <p class="call-to-action">
     <%= link_to t('.participate'), root_url, class: 'participate' %>
   </p>
-
-  <% if Debate.any? %>
-    <p><%== t '.ending' %></p>
-
-    <p class="call-to-action">
-      <%= link_to t('.participate_debate'), Debate.last, class: 'participate' %>
-    </p>
-  <% end %>
 </div>

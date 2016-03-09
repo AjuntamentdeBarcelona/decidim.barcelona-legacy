@@ -24,14 +24,12 @@ ca:
     proposals:
       activity: "%{votes} suports nous, %{comments} comentaris nous"
     weekly:
-      ending: I avui dia <strong>9 de març, a les 16.30 hores</strong>, el tinent d'alcalde de Drets de la Ciutadania, Participació i Transparència, Jaume Asens, i la regidora de Participació i Districtes, Gala Pin, debatran en directe amb la ciutadania a través de decidim.barcelona. Els regidors donaran resposta a aquells ciutadans que ho desitgin sobre temes de transparència i participació vinculats al Pla municipal.
       greeting: Hola %{name},
       introduction: <a href="https://decidim.barcelona">decidim.barcelona</a> ja ha superat les <strong>10.000 persones registrades</strong> i cada dia hi ha més gent que participa en la construcció col·laborativa del Pla municipal per a la ciutat de Barcelona, per això et convidem a seguir-hi participant. A continuació trobaràs un resum amb algunes de les propostes del pla. També podràs <a href="https://decidim.barcelona/proposals">navegar per les diferents propostes</a>, afegir els teus arguments i <a href="https://decidim.barcelona/meetings">consultar les cites presencials</a> que hi ha a diferents punts de la ciutat. <strong>73 barris, una Barcelona. Seguim avançant cap a la ciutat dels drets i les oportunitats</strong>.
       most_active: Propostes més actives
       official_random_proposals: Algunes propostes de l'Ajuntament
       own_active: Les teves propostes més actives
       participate: Entra i participa
-      participate_debate: Entra i participa en el debat
       random_proposals: Algunes propostes de la ciutadania
       recent_comments_on_own_proposals: Comentaris recents a les teves propostes
       recent_comments_on_voted_proposals: Comentaris recents a propostes a les que has donat suport
