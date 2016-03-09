@@ -2,8 +2,8 @@
 production:
   :concurrency: 5
 :queues:
-  - mailer
-  - mailers
-  - default
-  - errors
-  - recommendations
+  - [default, 1]
+  - [mailer, 1]
+  - [mailers, 1]
+  - [errors, 1]
+  - [recommendations, 1]
