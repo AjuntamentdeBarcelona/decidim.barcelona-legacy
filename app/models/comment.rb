@@ -111,7 +111,7 @@ class Comment < ActiveRecord::Base
   end
 
   def self.body_max_length
-    2500
+    5000
   end
 
   def calculate_confidence_score
