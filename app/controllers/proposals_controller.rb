@@ -82,7 +82,8 @@ class ProposalsController < ApplicationController
             row = []
             row.push proposal.id
             row.push proposal.title
-            row.push proposal.summary.
+            row.push proposal.summary
+            row.push proposal.author.id
             row.push proposal.author.username
             row.push proposal.created_at
             row.push proposal.cached_votes_up
