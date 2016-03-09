@@ -24,9 +24,9 @@ es:
     proposals:
       activity: "%{votes} soportes nuevos, %{comments} comentarios nuevos"
     weekly:
-      ending: Y mañana día <strong>9 de marzo, a las 16.30 horas</strong>, el teniente de alcalde de Derechos de la Ciudadanía, Participación y Transparencia, Jaume Asens, y la concejala de Participación y Distritos, Gala Pin, debatirán en directo con la ciudadanía a través de decidim.barcelona. Los concejales darán respuesta a aquellos ciudadanos que lo deseen sobre temas de transparencia y participación vinculados al Plan municipal.
+      ending: Y hoy día <strong>9 de marzo, a las 16.30 horas</strong>, el teniente de alcalde de Derechos de la Ciudadanía, Participación y Transparencia, Jaume Asens, y la concejala de Participación y Distritos, Gala Pin, debatirán en directo con la ciudadanía a través de decidim.barcelona. Los concejales darán respuesta a aquellos ciudadanos que lo deseen sobre temas de transparencia y participación vinculados al Plan municipal.
       greeting: Hola %{name},
-      introduction: A continuación encontrarás un resumen con algunas de las propuestas del Plan municipal. <a href="https://decidim.barcelona/proposals">Navega por las propuestas</a>, añade tus argumentos y <a href="https://decidim.barcelona/meetings">consulta las diferentes citas presenciales</a>. <strong>73 barrios, una Barcelona. Hacia la ciudad de los derechos y las oportunidades</strong>.
+      introduction: <a href="https://decidim.barcelona">decidim.barcelona</a> ya ha superado las <strong>10.000 personas registradas</strong> y cada día hay más gente que participa en la construcción colaborativa del Plan Municipal para la ciudad de Barcelona, por eso te invitamos a seguir participando. A continuación encontrarás un resumen con algunas de las propuestas del plan. También podrás <a href="https://decidim.barcelona/proposals">navegar por las diferentes propuestas</a>, añadir tus argumentos y <a href="https://decidim.barcelona/meetings">consultar las citas presenciales que hay en diferentes puntos de la ciudad</a>. <strong>73 barrios, una Barcelona. Seguimos avanzando hacia la ciudad de los derechos y las oportunidades</strong>.
       most_active: Propuestas más activas
       official_random_proposals: Algunas propuestas del Ayuntamiento
       own_active: Tus propuestas más activas
