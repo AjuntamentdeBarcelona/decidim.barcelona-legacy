@@ -52,8 +52,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     def sign_up_params
       sign_up_params = params.require(:user).permit(:username, :email, :password,
-                                                    :password_confirmation, :captcha, :newsletter,
-                                                    :notifications_by_default, :captcha_key,
+                                                    :password_confirmation, :newsletter,
+                                                    :notifications_by_default,
                                                     :terms_of_service, :locale).to_hash
 
       if sign_up_params["notifications_by_default"] == "1"
