@@ -518,6 +518,8 @@ GEM
       execjs
       rails (>= 3.2)
       tilt
+    recaptcha (1.1.0)
+      json
     redcarpet (3.3.4)
     redis (3.2.2)
     redis-activesupport (4.1.5)
@@ -603,8 +605,6 @@ GEM
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
       redis (~> 3.2, >= 3.2.1)
-    simple_captcha2 (0.4.0)
-      rails (>= 4.1)
     simplecov (0.11.1)
       docile (~> 1.1.0)
       json (~> 1.8)
@@ -765,6 +765,7 @@ DEPENDENCIES
   rails-i18n
   rails_12factor
   react-rails
+  recaptcha
   redcarpet
   redis
   redis-activesupport
@@ -780,7 +781,6 @@ DEPENDENCIES
   savon
   settingslogic
   sidekiq
-  simple_captcha2
   sinatra
   sitemap_generator
   social-share-button!

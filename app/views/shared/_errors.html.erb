@@ -10,6 +10,12 @@
       <% else %>
         <%= t("form.not_saved", resource: t("form.#{resource.class.to_s.underscore}")) %>
       <% end %>
+
+      <ul>
+        <% resource.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
     </strong>
   </div>
 <% end %>

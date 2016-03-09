@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   include Verification
   include PgSearch
 
-  apply_simple_captcha
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :async
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308121450) do
+ActiveRecord::Schema.define(version: 20160309122802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,12 +30,6 @@ ActiveRecord::Schema.define(version: 20160308121450) do
 
   add_index "activities", ["actionable_id", "actionable_type"], name: "index_activities_on_actionable_id_and_actionable_type", using: :btree
   add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
-
-  create_table "administrators", force: :cascade do |t|
-    t.integer "user_id"
-  end
-
-  add_index "administrators", ["user_id"], name: "index_administrators_on_user_id", using: :btree
 
   create_table "ahoy_events", id: :uuid, default: nil, force: :cascade do |t|
     t.uuid     "visit_id"
@@ -258,12 +252,6 @@ ActiveRecord::Schema.define(version: 20160308121450) do
     t.boolean "consensus"
   end
 
-  create_table "moderators", force: :cascade do |t|
-    t.integer "user_id"
-  end
-
-  add_index "moderators", ["user_id"], name: "index_moderators_on_user_id", using: :btree
-
   create_table "notifications", force: :cascade do |t|
     t.integer "user_id"
     t.integer "notifiable_id"
@@ -337,22 +325,6 @@ ActiveRecord::Schema.define(version: 20160308121450) do
   end
 
   add_index "recommendations", ["user_id", "proposal_id"], name: "index_recommendations_on_user_id_and_proposal_id", unique: true, using: :btree
-
-  create_table "settings", force: :cascade do |t|
-    t.string "key"
-    t.string "value"
-  end
-
-  add_index "settings", ["key"], name: "index_settings_on_key", using: :btree
-
-  create_table "simple_captcha_data", force: :cascade do |t|
-    t.string   "key",        limit: 40
-    t.string   "value",      limit: 6
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "simple_captcha_data", ["key"], name: "idx_key", using: :btree
 
   create_table "spending_proposals", force: :cascade do |t|
     t.string   "title"

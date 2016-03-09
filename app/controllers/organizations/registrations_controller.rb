@@ -11,7 +11,7 @@ class Organizations::RegistrationsController < Devise::RegistrationsController
 
   def create
     build_resource(sign_up_params)
-    if resource.valid_with_captcha?
+    if verify_recaptcha(model: resource)
       super do |user|
         # Removes unuseful "organization is invalid" error message
         user.errors.messages.delete(:organization)

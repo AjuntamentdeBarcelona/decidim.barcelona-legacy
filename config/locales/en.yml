@@ -380,6 +380,9 @@ en:
     update:
       form:
         submit_button: Save changes
+  recaptcha:
+    errors:
+      verification_failed: Word verification was unsuccessful
   shared:
     advanced_search:
       author_type: By author category
