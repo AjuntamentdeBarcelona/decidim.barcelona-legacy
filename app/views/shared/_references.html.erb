@@ -1,0 +1,10 @@
+<% if (references = Reference.references_for(subject)).any? %>
+  <div class="references">
+    <p><%= t '.description' %></p>
+    <ul class="references-list">
+      <% references.each do |reference| %>
+        <li><%= link_to reference.title, reference %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

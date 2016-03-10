@@ -22,6 +22,8 @@ class Comment < ActiveRecord::Base
 
   before_save :calculate_confidence_score
 
+  before_destroy :dereference
+
   scope :for_render, -> { with_hidden.includes(user: :organization) }
   scope :with_visible_author, -> { joins(:user).where("users.hidden_at IS NULL") }
   scope :not_as_admin_or_moderator, -> { where("administrator_id IS NULL").where("moderator_id IS NULL")}
@@ -99,6 +101,7 @@ class Comment < ActiveRecord::Base
   end
 
   def after_restore
+    Referrer.new(self, self.commentable).reference!(body)
     commentable_type.constantize.with_hidden.reset_counters(commentable_id, :comments)
   end
 
@@ -130,6 +133,10 @@ class Comment < ActiveRecord::Base
         attributes: :body,
         maximum: Comment.body_max_length)
       validator.validate(self)
+    end
+
+    def dereference
+      Referrer.new(self, self.commentable).dereference!
     end
 
 end

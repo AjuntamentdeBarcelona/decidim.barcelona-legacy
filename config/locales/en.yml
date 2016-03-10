@@ -415,6 +415,8 @@ en:
     flag: Flag as inappropriate
     print:
       print_button: Print this info
+    references:
+      description: 'It seems that this proposal or discussion is related to:'
     tags_cloud:
       tags: Trending
     unflag: Unflag

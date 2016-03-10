@@ -1,0 +1,8 @@
+.references{
+  margin: rem-calc(15) 0;
+  @include alert($bg: #f1f1f1);
+
+  ul{
+    margin-left: rem-calc(20);
+  }
+}

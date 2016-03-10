@@ -31,12 +31,6 @@ ActiveRecord::Schema.define(version: 20160310142815) do
   add_index "activities", ["actionable_id", "actionable_type"], name: "index_activities_on_actionable_id_and_actionable_type", using: :btree
   add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
 
-  create_table "administrators", force: :cascade do |t|
-    t.integer "user_id"
-  end
-
-  add_index "administrators", ["user_id"], name: "index_administrators_on_user_id", using: :btree
-
   create_table "ahoy_events", id: :uuid, default: nil, force: :cascade do |t|
     t.uuid     "visit_id"
     t.integer  "user_id"
@@ -258,12 +252,6 @@ ActiveRecord::Schema.define(version: 20160310142815) do
     t.boolean "consensus"
   end
 
-  create_table "moderators", force: :cascade do |t|
-    t.integer "user_id"
-  end
-
-  add_index "moderators", ["user_id"], name: "index_moderators_on_user_id", using: :btree
-
   create_table "notifications", force: :cascade do |t|
     t.integer "user_id"
     t.integer "notifiable_id"
@@ -339,19 +327,15 @@ ActiveRecord::Schema.define(version: 20160310142815) do
   add_index "recommendations", ["user_id", "proposal_id"], name: "index_recommendations_on_user_id_and_proposal_id", unique: true, using: :btree
 
   create_table "references", force: :cascade do |t|
-    t.integer  "comment_id"
+    t.integer  "source_id"
+    t.string   "source_type"
+    t.integer  "referrer_id"
+    t.string   "referrer_type"
     t.integer  "referenced_id"
     t.string   "referenced_type"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
-
-  create_table "settings", force: :cascade do |t|
-    t.string "key"
-    t.string "value"
-  end
-
-  add_index "settings", ["key"], name: "index_settings_on_key", using: :btree
 
   create_table "spending_proposals", force: :cascade do |t|
     t.string   "title"

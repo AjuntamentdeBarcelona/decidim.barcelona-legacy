@@ -4,13 +4,14 @@ class Referrer
     debates: Debate
   }
 
-  def initialize(comment)
-    @comment = comment
+  def initialize(source, referrer)
+    @source = source
+    @referrer = referrer
   end
 
-  def references
+  def references(content)
     TYPES.flat_map do |type, model|
-      matches = @comment.body.scan(/https?:\/\/\S+\/#{type}\/([A-z\-]+)\/?/)
+      matches = content.scan(/https?:\/\/\S+\/#{type}\/([A-z\-]+)\/?/)
       next unless matches.any?
 
       matches.map do |match|
@@ -19,12 +20,17 @@ class Referrer
     end.compact
   end
 
-  def reference!
-    references.each do |referenced|
+  def reference!(content)
+    references(content).each do |referenced|
       Reference.create(
-        referenced: referenced,
-        comment: @comment
+        source: @source,
+        referrer: @referrer,
+        referenced: referenced
       )
     end
+  end
+
+  def dereference!
+    Reference.where(source: @source).destroy_all
   end
 end

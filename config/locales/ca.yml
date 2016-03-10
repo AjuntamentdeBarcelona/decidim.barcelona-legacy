@@ -415,6 +415,8 @@ ca:
     flag: Denunciar com inapropiat
     print:
       print_button: Imprimir aquesta informació
+    references:
+      description: 'Sembla que aquesta proposta o debat està relacionada amb:'
     tags_cloud:
       tags: Tendències
     unflag: Desfer denúncia

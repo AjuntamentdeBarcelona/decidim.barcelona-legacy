@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
   def create
     if @comment.save
       CommentNotifier.new(comment: @comment).process
+      CommentReferencesWorker.perform_async(@comment.id)
       add_notification @comment
     else
       render :new
