@@ -1,5 +1,5 @@
 class ProposalSerializer < ActiveModel::Serializer
-  attributes :id, :title, :url, :author_name, :votes
+  attributes :id, :title, :url, :author_name, :votes, :official
 
   def author_name
     unless object.official? || object.from_meeting?

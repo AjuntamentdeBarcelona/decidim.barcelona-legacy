@@ -7,15 +7,15 @@ class MeetingsCarousel extends Carousel {
     return (
       <div className="carousel-meeting">
         <a className="meeting-title" href={meeting.url}>
-          { this.trim(meeting.title, 50) }
+          { this.trim(meeting.title, 45) }
         </a>
         <MeetingTime meeting={meeting} />
         <p className="meeting-description">
-          { this.trim(meeting.description, 90) }
+          { this.trim(meeting.description, 70) }
         </p>
 
         <div className="meeting-address">
-          { meeting.address }
+          { meeting.address}
         </div>
       </div>
     )

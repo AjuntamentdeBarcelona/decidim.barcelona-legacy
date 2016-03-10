@@ -1,5 +1,6 @@
 .carousel{
   .carousel-proposal{
+    position: relative;
     @include arrow-box(white, bottom);
     margin: 0 rem-calc(5);
     padding: rem-calc(30) rem-calc(10);
@@ -25,13 +26,25 @@
 
     .see-more{
       @include button(
+        $bg: #f2f2f2,
         $padding: rem-calc(10),
         $radius: rem-calc(5)
       );
 
+      &, &:hover{
+        color: $brand;
+      }
+
+      text-decoration: underline;
       text-transform: uppercase;
       display: block;
       margin: 0 rem-calc(20);
+    }
+
+    .proposal-badge{
+      position: absolute;
+      top: rem-calc(10);
+      right: rem-calc(5);
     }
   }
 }
