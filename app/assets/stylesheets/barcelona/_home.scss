@@ -223,14 +223,14 @@
 
       a{
         &.download-pam{
-          @include arrow-box($brand, left);
+          @include arrow-box(#D33150, left);
           padding: 0;
           text-decoration: underline;
           background-image: image-url("home/download-pam.jpg");
         }
 
         &.download-epub{
-          @include arrow-box(#3c3c3b, right);
+          @include arrow-box(#494947, right);
           padding: 0;
           text-decoration: underline;
           background-image: image-url("home/download-epub.jpg");
