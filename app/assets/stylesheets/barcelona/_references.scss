@@ -4,5 +4,8 @@
 
   ul{
     margin-left: rem-calc(20);
+    li{
+      margin-bottom: rem-calc(5);
+    }
   }
 }
