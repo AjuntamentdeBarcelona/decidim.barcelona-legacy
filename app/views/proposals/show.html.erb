@@ -70,6 +70,8 @@
           <%= render 'shared/tags', taggable: @proposal %>
         <% end %>
 
+        <%= render partial: 'shared/references', locals: { subject: @proposal } %>
+
         <div class="js-moderator-proposal-actions margin">
           <%= render 'proposals/actions', proposal: @proposal %>
         </div>

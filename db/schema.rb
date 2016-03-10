@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309122802) do
+ActiveRecord::Schema.define(version: 20160310142815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -325,6 +325,17 @@ ActiveRecord::Schema.define(version: 20160309122802) do
   end
 
   add_index "recommendations", ["user_id", "proposal_id"], name: "index_recommendations_on_user_id_and_proposal_id", unique: true, using: :btree
+
+  create_table "references", force: :cascade do |t|
+    t.integer  "source_id"
+    t.string   "source_type"
+    t.integer  "referrer_id"
+    t.string   "referrer_type"
+    t.integer  "referenced_id"
+    t.string   "referenced_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "spending_proposals", force: :cascade do |t|
     t.string   "title"

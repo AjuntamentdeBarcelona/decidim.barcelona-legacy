@@ -38,6 +38,8 @@
 
         <%= render 'shared/tags', taggable: @debate %>
 
+        <%= render partial: 'shared/references', locals: { subject: @debate } %>
+
         <div class="js-moderator-debate-actions margin">
           <%= render 'actions', debate: @debate %>
         </div>

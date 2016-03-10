@@ -136,6 +136,10 @@ class Proposal < ActiveRecord::Base
     true
   end
 
+  def references
+    Reference.references_for(self)
+  end
+
   protected
 
     def set_responsible_name
