@@ -48,7 +48,6 @@
 //= require annotator
 //= require tags
 //= require users
-//= require votes
 //= require annotatable
 //= require i18n
 //= require districts
@@ -68,7 +67,6 @@
 var initialize_modules = function() {
   App.Comments.initialize();
   App.Users.initialize();
-  App.Votes.initialize();
   App.Tags.initialize();
   App.Dropdown.initialize();
   App.LocationChanger.initialize();

@@ -16,4 +16,15 @@
     top: rem-calc(200);
     color: $brand;
   }
+
+  &.votes{
+    min-height: 100%;
+    font-size: rem-calc(40);
+    span {
+      top: 40%;
+      left: 40%;
+      @include transform(translateX(-40%));
+    }
+  }
+
 }

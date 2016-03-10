@@ -12,6 +12,14 @@ GIT
     i18n_yaml_csv (0.1.0)
 
 GIT
+  remote: git://github.com/rails-api/active_model_serializers.git
+  revision: a105c603c4169375d3664ebef79846caa8e80902
+  branch: 0-9-stable
+  specs:
+    active_model_serializers (0.9.4)
+      activemodel (>= 3.2)
+
+GIT
   remote: https://github.com/huacnlee/social-share-button.git
   revision: e46a6a3e82b86023bc43b72c9379d3c6afe36b6b
   ref: e46a6a3e82b86023bc
@@ -43,8 +51,6 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    active_model_serializers (0.9.4)
-      activemodel (>= 3.2)
     activejob (4.2.5)
       activesupport (= 4.2.5)
       globalid (>= 0.3.0)
@@ -688,7 +694,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model_serializers
+  active_model_serializers!
   acts-as-taggable-on
   acts_as_votable
   ahoy_matey (~> 1.2.1)
