@@ -1,4 +1,14 @@
-class ProposalFilters extends React.Component {
+import { Component } from 'react';
+
+import SearchFilter from './search_filter';
+import ScopeFilterOptionGroup from './scope_filter_option_group';
+import CategoryFilterOptionGroup from './category_filter_option_group';
+import SubcategoryFilterOptionGroup from './subcategory_filter_option_group';
+import FilterOptionGroup from './filter_option_group';
+import FilterOption from './filter_option';
+import TagCloudFilter from './tag_cloud_filter';
+
+export default class ProposalFilters extends Component {
   constructor(props) {
     super(props);
 

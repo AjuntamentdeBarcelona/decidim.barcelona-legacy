@@ -1,4 +1,9 @@
-class CategoryFilterOptionGroup extends React.Component {
+import { Component } from 'react';
+
+import FilterOptionGroup from './filter_option_group';
+import FilterOption from './filter_option';
+
+export default class CategoryFilterOptionGroup extends Component {
   render() {
     return (
       <FilterOptionGroup 

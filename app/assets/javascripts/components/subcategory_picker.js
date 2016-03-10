@@ -1,4 +1,6 @@
-class SubcategoryPicker extends React.Component {
+import { Component } from 'react';
+
+export default class SubcategoryPicker extends Component {
   subcategories () {
     var categoryId = this.props.categoryId;
     var subcategories = this.props.subcategories.filter( (subcategory) =>

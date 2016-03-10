@@ -20,15 +20,10 @@
 //= require foundation/foundation.dropdown
 //= require modernizr
 //= require parallax
-//= require react
-//= require react-server
-//= require react_ujs
-//= require react-slick
 //= require moment
 //= require moment/ca
 //= require moment/es
 //= require immutable
-//= require services
 //= require ckeditor/init
 //= require_directory ./ckeditor
 //= require social-share-button
@@ -53,7 +48,6 @@
 //= require i18n
 //= require districts
 //= require advanced_search
-//= require react
 //= require react_ujs
 //= require markerclusterer
 //= require components

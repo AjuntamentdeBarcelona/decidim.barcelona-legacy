@@ -1,4 +1,6 @@
-class TagCloudFilter extends React.Component {
+import { Component } from 'react';
+
+export default class TagCloudFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,16 +28,7 @@ class TagCloudFilter extends React.Component {
   render() {
     return (
       <div id="tag-cloud" className="tag-cloud">
-        {(() => {
-          if(this.state.tagCloud.length > 0) {
-            return (
-              <div>
-                <h3 className="title">{I18n.t("shared.tags_cloud.tags")}</h3>
-                <br></br>
-              </div>
-            )
-          }
-        }())}
+        {this.renderTitle()}
         {
           this.state.tagCloud.map((tag) => {
           return <a 
@@ -49,6 +42,18 @@ class TagCloudFilter extends React.Component {
         }
       </div>
     );
+  }
+
+  renderTitle() {
+    if(this.state.tagCloud.length > 0) {
+      return (
+        <div>
+          <h3 className="title">{I18n.t("shared.tags_cloud.tags")}</h3>
+          <br></br>
+        </div>
+      )
+    }
+    return null;
   }
 
   toggleTag(tag) {

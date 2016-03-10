@@ -1,4 +1,7 @@
-class Carousel extends React.Component {
+import { Component } from 'react';
+import Slider from 'react-slick';
+
+export default class Carousel extends Component {
   render() {
     var settings = {
       infinite: false,

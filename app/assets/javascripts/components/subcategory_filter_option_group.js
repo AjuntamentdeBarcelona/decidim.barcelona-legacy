@@ -1,4 +1,9 @@
-class SubcategoryFilterOptionGroup extends React.Component {
+import { Component } from 'react';
+
+import FilterOptionGroup from './filter_option_group';
+import FilterOption from './filter_option';
+
+export default class SubcategoryFilterOptionGroup extends Component {
   render() {
     if (this.props.selectedCategory && this.props.selectedCategory.length > 0) {
       let subcategories = this.props.subcategories.filter((subcategory) => this.props.selectedCategory.indexOf(subcategory.categoryId) !== -1);

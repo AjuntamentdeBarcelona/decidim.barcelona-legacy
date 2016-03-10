@@ -1,8 +1,7 @@
-class MeetingsCarousel extends Carousel {
-  constructor(props) {
-    super(props);
-  }
+import Carousel from './carousel';
+import MeetingTime from './meeting_time';
 
+export default class MeetingsCarousel extends Carousel {
   renderItem(meeting){
     return (
       <div className="carousel-meeting">

@@ -1,4 +1,9 @@
-class ProposalFilterTabs extends React.Component {
+import { Component } from 'react';
+
+import FilterOptionGroup from './filter_option_group';
+import FilterOption from './filter_option';
+
+export default class ProposalFilterTabs extends Component {
   constructor(props) {
     super(props);
 

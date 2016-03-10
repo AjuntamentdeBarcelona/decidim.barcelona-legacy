@@ -1,4 +1,6 @@
-class FilterOption extends React.Component {
+import { Component } from 'react';
+
+export default class FilterOption extends Component {
   render() {
     let elemId = `filter_${this.props.filterGroupName}_${this.props.filterName}`;
 

@@ -1,4 +1,6 @@
-class MeetingProposalsTable extends React.Component {
+import { Component } from 'react';
+
+export default class MeetingProposalsTable extends Component {
   render() {
     return (
       <table>

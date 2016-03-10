@@ -38,5 +38,7 @@ module Consul
     config.active_job.queue_adapter = :sidekiq
 
     config.middleware.use "SitemapMiddleware"
+
+    config.browserify_rails.commandline_options = '-t babelify'
   end
 end

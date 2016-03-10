@@ -1,4 +1,6 @@
-class SearchFilter extends React.Component {
+import { Component } from 'react';
+
+export default class SearchFilter extends Component {
   render() {
     return (
       <div className="row collapse prefix-radius">

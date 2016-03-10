@@ -1,4 +1,6 @@
-class StaticMap extends React.Component {
+import { Component } from 'react';
+
+export default class StaticMap extends Component {
   componentDidMount() {
     this.createGmapsIntegration();
   }

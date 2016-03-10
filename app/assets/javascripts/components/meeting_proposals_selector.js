@@ -1,4 +1,9 @@
-class MeetingProposalsSelector extends React.Component {
+import { Component } from 'react';
+
+import MeetingProposalsAutocompleteInput from './meeting_proposals_autocomplete_input';
+import MeetingProposalsTable from './meeting_proposals_table';
+
+export default class MeetingProposalsSelector extends Component {
   constructor(props) {
     super(props);
     this.state = {

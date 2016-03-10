@@ -1,4 +1,4 @@
-class FilterService {
+export default class FilterService {
   constructor() {
     this.subscribers = {};
 
@@ -160,5 +160,3 @@ class FilterService {
     }
   }
 }
-
-window.FilterServiceInstance = new FilterService();

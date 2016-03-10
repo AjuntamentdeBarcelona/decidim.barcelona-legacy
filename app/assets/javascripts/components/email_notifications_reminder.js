@@ -1,4 +1,6 @@
-class EmailNotificationsReminder extends React.Component {
+import { Component } from 'react';
+
+export default class EmailNotificationsReminder extends Component {
   constructor(props) {
     super(props);
     this.state = {

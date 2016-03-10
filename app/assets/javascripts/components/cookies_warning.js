@@ -1,4 +1,6 @@
-class CookiesWarning extends React.Component {
+import { Component } from 'react';
+
+export default class CookiesWarning extends Component {
   render() {
     return (
       <div ref="warning" className="cookies-warning">

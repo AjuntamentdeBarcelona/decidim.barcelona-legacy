@@ -1,13 +1,13 @@
-class ProposalsCarousel extends Carousel {
+import Carousel from './carousel';
+
+export default class ProposalsCarousel extends Carousel {
   renderItem(proposal){
     return (
       <div className="carousel-proposal">
         <span className="proposal-title">
           { this.trim(proposal.title, 80) }
         </span>
-        { (() => { if (proposal.official) {
-          return (<span className="proposal-badge bcn-icon-ajuntament"></span>)
-        } }()) }
+        {this.renderOfficialBadge(proposal)}
         <span className="proposal-metadata">
           { (() => { if(proposal.author_name) {
             return (<span>{ this.trim(proposal.author_name, 15) } - </span>)
@@ -17,5 +17,12 @@ class ProposalsCarousel extends Carousel {
         <a className="see-more" href={ proposal.url }>{ I18n.t('proposal_carousel.see_more') }</a>
       </div>
     )
+  }
+
+  renderOfficialBadge(proposal) {
+    if (proposal.official) {
+      return (<span className="proposal-badge bcn-icon-ajuntament"></span>)
+    }
+    return null;
   }
 }

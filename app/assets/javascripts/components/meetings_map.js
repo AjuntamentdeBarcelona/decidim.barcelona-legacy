@@ -1,4 +1,9 @@
-class MeetingsMap extends React.Component {
+import { Component } from 'react';
+import ReactDOMServer from 'react-dom/server';
+
+import Meeting from './meeting';
+
+export default class MeetingsMap extends Component {
   constructor(props) {
     super(props);
     this.defaultZoom = 12;

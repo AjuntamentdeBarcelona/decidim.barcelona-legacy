@@ -1,4 +1,8 @@
-class Meeting extends React.Component {
+import { Component } from 'react';
+
+import MeetingTime from './meeting_time';
+
+export default class Meeting extends Component {
   constructor(props) {
     super(props);
   }

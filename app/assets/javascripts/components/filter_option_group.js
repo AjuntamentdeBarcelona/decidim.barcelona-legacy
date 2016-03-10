@@ -1,4 +1,8 @@
-class FilterOptionGroup extends React.Component {
+import { Component } from 'react';
+
+import FilterOption from './filter_option';
+
+export default class FilterOptionGroup extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,19 +42,15 @@ class FilterOptionGroup extends React.Component {
   }
 
   render() {
-    return (
-      (() => {
-        if (this.props.useWrapper) {
-          return (
-            <div className="filter-group">
-              {this.renderGroupAs(this.props.renderAs || 'options')}
-            </div>
-          )
-        } else {
-          return this.renderGroupAs(this.props.renderAs || 'options');
-        }
-      }())
-    )
+    if (this.props.useWrapper) {
+      return (
+        <div className="filter-group">
+          {this.renderGroupAs(this.props.renderAs || 'options')}
+        </div>
+      )
+    } else {
+      return this.renderGroupAs(this.props.renderAs || 'options');
+    }
   }
 
   renderGroupAs(renderAs) {
@@ -62,18 +62,20 @@ class FilterOptionGroup extends React.Component {
     }
   }
 
+  renderTitle() {
+    if (this.props.useTitle) {
+      return (
+        <h3>{I18n.t(`components.filter_option_group.${this.props.filterGroupName}`)}</h3>
+      )
+    } else {
+      return null;
+    }
+  }
+
   renderGroupAsOptions() {
     return (
       <div>
-        {(() => {
-          if (this.props.useTitle) {
-            return (
-              <h3>{I18n.t(`components.filter_option_group.${this.props.filterGroupName}`)}</h3>
-            )
-          } else {
-            return null;
-          }
-        }())}
+        {this.renderTitle()}
         {this.renderIncludeAll()}
         {this.renderChildren()}
       </div>

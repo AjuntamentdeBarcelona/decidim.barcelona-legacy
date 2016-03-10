@@ -1,4 +1,13 @@
-class MeetingsFilter extends React.Component {
+import { Component } from 'react';
+
+import SearchFilter from './search_filter';
+import FilterOptionGroup from './filter_option_group';
+import FilterOption from './filter_option';
+import ScopeFilterOptionGroup from './scope_filter_option_group';
+import CategoryFilterOptionGroup from './category_filter_option_group';
+import TagCloudFilter from './tag_cloud_filter';
+
+export default class MeetingsFilter extends Component {
   constructor(props) {
     super(props);
 

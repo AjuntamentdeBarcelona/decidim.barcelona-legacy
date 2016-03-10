@@ -1,4 +1,10 @@
-class MeetingsList extends React.Component {
+import { Component } from 'react';
+
+import Loading from './loading';
+import Meeting from './meeting';
+import Pagination from './pagination';
+
+export default class MeetingsList extends Component {
   constructor(props) {
     super(props);
 
