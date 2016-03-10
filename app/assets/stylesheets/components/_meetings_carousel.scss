@@ -7,7 +7,13 @@
       font-size: rem-calc(18);
       font-weight: bold;
       display: block;
-      height: $line-height * 2;
+      height: rem-calc(42);
+      overflow: hidden;
+    }
+
+    .meeting-held-at{
+      padding: 0;
+      border: 0;
     }
 
     .meeting-description{

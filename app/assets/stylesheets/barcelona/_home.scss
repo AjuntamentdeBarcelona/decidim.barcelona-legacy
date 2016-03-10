@@ -223,14 +223,14 @@
 
       a{
         &.download-pam{
-          @include arrow-box($brand, left);
+          @include arrow-box(#D33150, left);
           padding: 0;
           text-decoration: underline;
           background-image: image-url("home/download-pam.jpg");
         }
 
         &.download-epub{
-          @include arrow-box(#3c3c3b, right);
+          @include arrow-box(#494947, right);
           padding: 0;
           text-decoration: underline;
           background-image: image-url("home/download-epub.jpg");
@@ -265,27 +265,9 @@
     }
   }
 
-  .section-pam{
-    .home-description{
-      max-width: rem-calc(1000);
-      text-align: center;
-      padding: rem-calc(30) rem-calc(50);
-      background-color: $highlight;
-      margin: rem-calc(10) auto;
-      p{
-        font-size: $h4-font-size;
-        font-weight: normal;
-        &:last-child{
-          margin-bottom: 0;
-        }
-      }
-    }
-  }
-
   .section-proposals{
     padding: 0;
     background-color: #c4c4c4;
-    background-image: image-url("home/proposals-background.jpg");
     .proposal-carousel-section{
       margin: rem-calc(20) 0;
     }

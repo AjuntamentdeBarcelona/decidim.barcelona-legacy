@@ -5,6 +5,9 @@ class ProposalsCarousel extends Carousel {
         <span className="proposal-title">
           { this.trim(proposal.title, 80) }
         </span>
+        { (() => { if (proposal.official) {
+          return (<span className="proposal-badge bcn-icon-ajuntament"></span>)
+        } }()) }
         <span className="proposal-metadata">
           { (() => { if(proposal.author_name) {
             return (<span>{ this.trim(proposal.author_name, 15) } - </span>)
