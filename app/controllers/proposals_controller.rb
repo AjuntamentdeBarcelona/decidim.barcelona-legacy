@@ -100,17 +100,7 @@ class ProposalsController < ApplicationController
     end
 
     def set_seed
-      from = 1457697764
-      to = 1773230584
-
-      granularity = 3600 # 10 minutes
-
-      current_time = (Time.now.to_i/granularity - from/granularity).to_f
-      time_seed = (current_time / (to - from)/granularity)
-      user_seed = (current_user.try(:id) || 0.5).to_f / 1_000_000
-
-      seed = (time_seed + user_seed)/2 * 2 - 1
-
-      Proposal.connection.execute "select setseed(#{seed})"
+      @random_seed = params[:random_seed] ? params[:random_seed].to_f : (rand * 2 - 1)
+      Proposal.connection.execute "select setseed(#{@random_seed})"
     end
 end
