@@ -6,6 +6,7 @@ dependencies:
   cache_directories:
     - "~/docker"
     - .bundle
+    - node_modules
     - public/assets
   override:
     - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; fi
@@ -15,6 +16,7 @@ dependencies:
     - docker pull redis
     - docker-compose build
     - docker-compose run app bundle install
+    - docker-compose run app npm install
     - mkdir -p ~/docker; docker save ultrayoshi/ruby-node-phantomjs:2.1.1 postgres redis > ~/docker/image.tar
     - docker-compose run app rake db:setup
     - docker-compose run -e RAILS_ENV=test app bundle exec rake assets:precompile
