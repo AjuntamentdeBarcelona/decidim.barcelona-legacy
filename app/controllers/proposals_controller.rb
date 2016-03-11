@@ -34,13 +34,16 @@ class ProposalsController < ApplicationController
     set_resource_votes(proposals)
 
     respond_to do |format|
-      paginated_proposals = proposals.
-                            page(params[:page]).
-                            per(15).
-                            for_render
-
-      format.html{ @proposals = paginated_proposals }
-      format.js{ @proposals = paginated_proposals }
+      format.any(:html, :js) do
+        ActiveRecord::Base.transaction do
+          set_seed
+          @proposals = proposals.
+                       page(params[:page]).
+                       per(15).
+                       for_render.
+                       all
+        end
+      end
 
       if can?(:download_report, Proposal)
         format.xls do
@@ -94,5 +97,20 @@ class ProposalsController < ApplicationController
       end
 
       package.to_stream.read
+    end
+
+    def set_seed
+      from = 1457697764
+      to = 1773230584
+
+      granularity = 3600 # 10 minutes
+
+      current_time = (Time.now.to_i/granularity - from/granularity).to_f
+      time_seed = (current_time / (to - from)/granularity)
+      user_seed = (current_user.try(:id) || 0.5).to_f / 1_000_000
+
+      seed = (time_seed + user_seed)/2 * 2 - 1
+
+      Proposal.connection.execute "select setseed(#{seed})"
     end
 end
