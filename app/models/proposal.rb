@@ -140,6 +140,13 @@ class Proposal < ActiveRecord::Base
     Reference.references_for(self)
   end
 
+  def source
+    return 'meeting' if from_meeting
+    return 'official' if official
+    return 'organization' if author.organization?
+    return 'citizen'
+  end
+
   protected
 
     def set_responsible_name

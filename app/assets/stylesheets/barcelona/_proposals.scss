@@ -6,6 +6,7 @@ a.button.new-proposal{
 .proposals-list{
   .proposal{
     background-color: $highlight;
+
     .proposal-content, .supports{
       padding: rem-calc(12) rem-calc(20);
       padding-bottom: rem-calc(15);
@@ -48,20 +49,7 @@ a.button.new-proposal{
       }
     }
 
-    $badge-size: rem-calc(36);
-
-    .official-badge{
-      @include bcn-icon(ajuntament, $badge-size);
-    }
-
-    .meeting-badge{
-      @include bcn-icon(xat_gris, $badge-size);
-    }
-
     .proposal-badge{
-      background-size: 70%;
-      background-color: #fff;
-      border-radius: $badge-size/2;
       position: absolute;
       top: rem-calc(15);
       right: rem-calc(10);
@@ -71,7 +59,6 @@ a.button.new-proposal{
       }
     }
   }
-
 }
 
 .submenu{
@@ -163,8 +150,18 @@ a.button.new-proposal{
 .proposal-show{
   h2{
     font-weight: 300;
+    position: relative;
+    padding-right: rem-calc(40);
+
     a{
       color: $text;
+    }
+
+    .proposal-badge{
+      position: absolute;
+      top: rem-calc(5);
+      right: 0;
+      background-color: $highlight;
     }
   }
   .proposal-description{
@@ -218,7 +215,7 @@ a.button.new-proposal{
       padding-top: rem-calc(100);
       background: #3c3c3c image-url("proposals/download-pam.png") center no-repeat;
       background-position: top;
-      background-size: contain;
+      background-size: cover;
       border-radius: rem-calc(5);
       span{
         display: block;
@@ -232,4 +229,28 @@ a.button.new-proposal{
       display: none;
     }
   }
+}
+
+.proposal-badge{
+  $badge-size: rem-calc(36);
+
+  &.official-badge{
+    @include bcn-icon(ajuntament, $badge-size);
+  }
+
+  &.meeting-badge{
+    @include bcn-icon(meetings, $badge-size);
+  }
+
+  &.organization-badge{
+    @include bcn-icon(organizations, $badge-size);
+  }
+
+  &.citizen-badge{
+    @include bcn-icon(citizens, $badge-size);
+  }
+
+  background-size: 70% !important;
+  background-color: #fff;
+  border-radius: $badge-size/2;
 }

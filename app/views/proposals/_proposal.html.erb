@@ -3,14 +3,7 @@
       <div class="small-12 medium-9 column">
         <%= cache [proposal, proposal.author, I18n.locale] do %>
           <div class="proposal-content">
-            <% if proposal.official? %>
-              <span class="proposal-badge official-badge"></span>
-            <% end %>
-
-            <% if proposal.from_meeting? %>
-              <span class="proposal-badge meeting-badge"></span>
-            <% end %>
-
+            <%= proposal_badge(proposal) %>
             <span class="label-proposal"><%= t("proposals.proposal.proposal") %></span>
             <h3><%= link_to truncate(proposal.title, length: 100), namespaced_proposal_path(proposal) %></h3>
             <p class="proposal-info">

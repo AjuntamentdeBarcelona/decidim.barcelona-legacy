@@ -12,4 +12,8 @@ module ProposalsHelper
   def proposal_class_names(proposal)
     proposal.official? ? 'official' : ''
   end
+
+  def proposal_badge(proposal)
+    content_tag :span, nil, class: "proposal-badge #{proposal.source}-badge"
+  end
 end
