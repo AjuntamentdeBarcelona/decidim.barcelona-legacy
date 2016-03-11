@@ -404,18 +404,6 @@ feature 'Proposals' do
 
   feature 'Proposal index order filters' do
 
-    scenario 'Default order is hot_score', :js do
-
-      create(:proposal, title: 'Best proposal').update_column(:hot_score, 10)
-      create(:proposal, title: 'Worst proposal').update_column(:hot_score, 2)
-      create(:proposal, title: 'Medium proposal').update_column(:hot_score, 5)
-
-      visit proposals_path
-
-      expect('Best proposal').to appear_before('Medium proposal')
-      expect('Medium proposal').to appear_before('Worst proposal')
-    end
-
     scenario 'Proposals are ordered by confidence_score', :js do
       create(:proposal, title: 'Best proposal').update_column(:confidence_score, 10)
       create(:proposal, title: 'Worst proposal').update_column(:confidence_score, 2)
@@ -493,22 +481,6 @@ feature 'Proposals' do
           expect(page).to have_content(proposal2.title)
           expect(page).to_not have_content(proposal3.title)
         end
-      end
-    end
-
-    scenario "Order by relevance by default", :js do
-      proposal1 = create(:proposal, title: "Show you got",      cached_votes_up: 10)
-      proposal2 = create(:proposal, title: "Show what you got", cached_votes_up: 1)
-      proposal3 = create(:proposal, title: "Show you got",      cached_votes_up: 100)
-
-      visit proposals_path
-
-      find('.proposal-filters .search-filter').set("Show what you got")
-
-      within("#proposals") do
-        expect(all(".proposal")[0].text).to match "Show you got"
-        expect(all(".proposal")[1].text).to match "Show you got"
-        expect(all(".proposal")[2].text).to match "Show what you got"
       end
     end
 
