@@ -31,6 +31,8 @@
 # Ignore custom environment variables file
 .env
 
+node_modules
+
 config/locales/*.csv
 
 /public/sitemap.xml
