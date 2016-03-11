@@ -5,4 +5,4 @@
 </div>
 
 <%= render partial: 'proposals/proposal', collection: @proposals %>
-<%= paginate @proposals %>
+<%= paginate @proposals, params: { random_seed: @random_seed } %>
