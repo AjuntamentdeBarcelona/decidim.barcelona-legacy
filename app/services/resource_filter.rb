@@ -91,6 +91,10 @@ class ResourceFilter
       collection = collection.where(author_id: Organization.verified.select(:user_id))
     end
 
+    if @params["source"] && @params["source"].include?("citizenship")
+      collection = collection.where(official: false)
+    end
+
     collection
   end
 end
