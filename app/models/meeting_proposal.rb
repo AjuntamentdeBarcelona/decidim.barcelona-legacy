@@ -5,6 +5,4 @@ class MeetingProposal < ActiveRecord::Base
   belongs_to :proposal
 
   delegate :title, to: :proposal
-
-  validates :meeting, :proposal, presence: true
 end

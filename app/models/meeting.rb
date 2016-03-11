@@ -7,7 +7,7 @@ class Meeting < ActiveRecord::Base
 
   belongs_to :author, -> { with_hidden }, class_name: 'User', foreign_key: 'author_id'
 
-  has_many :meeting_proposals
+  has_many :meeting_proposals, dependent: :destroy
   accepts_nested_attributes_for :meeting_proposals
   has_many :proposals, through: :meeting_proposals
 
