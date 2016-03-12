@@ -62,7 +62,7 @@ gem 'whenever', require: false
 gem 'pg_search'
 gem 'foreman'
 
-gem 'ahoy_matey'
+gem 'ahoy_matey', '~> 1.2.1'
 gem 'groupdate'   # group temporary data
 gem 'tolk' # Web interface for translations
 gem 'roadie-rails'
