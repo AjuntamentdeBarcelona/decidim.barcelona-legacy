@@ -42,7 +42,9 @@ if defined?(Rollbar)
     # Enable delayed reporting (using Sidekiq)
     # config.use_sidekiq
     # You can supply custom Sidekiq options:
-    config.use_sidekiq 'queue' => 'errors'
+    # config.use_sidekiq 'queue' => 'errors'
+
+    config.use_thread
 
     # If you run your staging application instance in production environment then
     # you'll want to override the environment reported by `Rails.env` with an

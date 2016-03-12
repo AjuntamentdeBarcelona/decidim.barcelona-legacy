@@ -5,5 +5,4 @@ production:
   - [default, 1]
   - [mailer, 1]
   - [mailers, 1]
-  - [errors, 1]
   - [recommendations, 1]
