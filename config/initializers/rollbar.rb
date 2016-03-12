@@ -5,11 +5,6 @@ if defined?(Rollbar)
 
     config.access_token = Rails.application.secrets.rollbar_access_token
 
-    # Here we'll disable in 'test':
-    if Rails.env.test?
-      config.enabled = false
-    end
-
     # By default, Rollbar will try to call the `current_user` controller method
     # to fetch the logged-in user object, and then call that object's `id`,
     # `username`, and `email` methods to fetch those properties. To customize:
