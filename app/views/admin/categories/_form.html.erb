@@ -17,7 +17,7 @@
 
         <div class="small-12 column">
           <%= label_tag "description_#{locale}", t("categories.form.category_description") %>
-          <%= cktext_area_tag "#{resource_name}[description][#{locale}]", category.description[locale], ckeditor: { language: I18n.locale }, id: "description_#{locale}", label: false %>
+          <%= react_component "RichEditor" %>
         </div>
       </fieldset>
     <% end %>

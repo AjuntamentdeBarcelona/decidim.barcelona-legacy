@@ -43,7 +43,6 @@ gem 'foundation-rails'
 gem 'foundation_rails_helper'
 gem 'acts_as_votable'
 gem 'recaptcha', require: "recaptcha/rails"
-gem 'ckeditor', '~> 4.1.5'
 gem 'cancancan'
 gem 'social-share-button', git: 'https://github.com/huacnlee/social-share-button.git', ref: 'e46a6a3e82b86023bc'
 gem 'initialjs-rails', '0.2.0.1'

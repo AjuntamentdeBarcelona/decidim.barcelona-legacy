@@ -24,8 +24,6 @@
 //= require moment/ca
 //= require moment/es
 //= require immutable
-//= require ckeditor/init
-//= require_directory ./ckeditor
 //= require social-share-button
 //= require initial
 //= require ahoy
