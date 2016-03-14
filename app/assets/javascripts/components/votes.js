@@ -1,4 +1,6 @@
-class Votes extends React.Component {
+import { Component } from 'react';
+
+export default class Votes extends Component {
   constructor(props) {
     super(props);
 
