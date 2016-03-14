@@ -3,3 +3,5 @@
 .env
 node_modules
 *.log
+.db_data
+.postgres_data

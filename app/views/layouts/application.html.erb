@@ -7,6 +7,7 @@
     <title><%= content_for?(:title) ? yield(:title) : Setting['org_name'] %></title>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "bundle" %>
     <%= javascript_include_google_maps_api_tag %>
     <%= render partial: 'layouts/i18n' %>
     <%= csrf_meta_tags %>
