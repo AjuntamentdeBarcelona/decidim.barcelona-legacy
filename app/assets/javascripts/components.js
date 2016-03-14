@@ -16,6 +16,7 @@ import MeetingProposalsSelector from './components/meeting_proposals_selector';
 import CategoryPicker from './components/category_picker';
 import CookiesWarning from './components/cookies_warning';
 import EmailNotificationsReminder from './components/email_notifications_reminder';
+import Votes from './components/votes';
 
 window.React = React;
 window.ReactDOM = ReactDOM;
@@ -35,3 +36,4 @@ window.MeetingProposalsSelector = MeetingProposalsSelector;
 window.CategoryPicker = CategoryPicker;
 window.CookiesWarning = CookiesWarning;
 window.EmailNotificationsReminder = EmailNotificationsReminder;
+window.Votes = Votes;
