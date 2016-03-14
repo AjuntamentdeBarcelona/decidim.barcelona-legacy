@@ -1,8 +1,8 @@
-import { Component } from 'react';
+import { Component }  from 'react';
 
-import MeetingsMap from './meetings_map';
-import MeetingsFilter from './meetings_filter';
-import MeetingsList from './meetings_list';
+import MeetingsMap    from './meetings_map.component';
+import MeetingsFilter from './meetings_filter.component';
+import MeetingsList   from './meetings_list.component';
 
 export default class MeetingsDirectory extends Component {
   constructor(props) {

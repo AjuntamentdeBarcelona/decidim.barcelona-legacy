@@ -1,6 +1,6 @@
-import { Component } from 'react';
+import { Component }     from 'react';
 
-import SubcategoryPicker from './subcategory_picker';
+import SubcategoryPicker from './subcategory_picker.component';
 
 export default class CategoryPicker extends Component {
   constructor(props) {
