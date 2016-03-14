@@ -81,9 +81,27 @@ class ProposalsController < ApplicationController
     def report(proposals)
       package = Axlsx::Package.new do |p|
         p.workbook.add_worksheet(:name => "Proposals") do |sheet|
+          sheet.add_row [
+            "Proposal ID",
+            "District",
+            "Category",
+            "Subcategory",
+            "Title",
+            "Description",
+            "Author ID",
+            "Author Username",
+            "Created at",
+            "Votes",
+            "Comments",
+            "URL"
+          ]
+
           proposals.each do |proposal|
             row = []
             row.push proposal.id
+            row.push proposal.district_object.try(:name)
+            row.push proposal.category.try(:name).try(:[], I18n.locale.to_s)
+            row.push proposal.subcategory.try(:name).try(:[], I18n.locale.to_s)
             row.push proposal.title
             row.push proposal.summary
             row.push proposal.author.id
@@ -91,6 +109,7 @@ class ProposalsController < ApplicationController
             row.push proposal.created_at
             row.push proposal.cached_votes_up
             row.push proposal.comments_count
+            row.push url_for(proposal)
             sheet.add_row row
           end
         end

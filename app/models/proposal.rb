@@ -147,6 +147,10 @@ class Proposal < ActiveRecord::Base
     return 'citizen'
   end
 
+  def district_object
+    @district_object ||= District.find(district) if district
+  end
+
   protected
 
     def set_responsible_name
