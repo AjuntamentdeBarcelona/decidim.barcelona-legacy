@@ -1,7 +1,7 @@
-import { Component } from 'react';
+import { Component }  from 'react';
 import ReactDOMServer from 'react-dom/server';
 
-import Meeting from './meeting';
+import Meeting        from './meeting.component';
 
 export default class MeetingsMap extends Component {
   constructor(props) {

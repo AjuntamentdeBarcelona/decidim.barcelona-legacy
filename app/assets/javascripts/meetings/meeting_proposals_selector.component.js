@@ -1,7 +1,7 @@
-import { Component } from 'react';
+import { Component }                     from 'react';
 
-import MeetingProposalsAutocompleteInput from './meeting_proposals_autocomplete_input';
-import MeetingProposalsTable from './meeting_proposals_table';
+import MeetingProposalsAutocompleteInput from './meeting_proposals_autocomplete_input.component';
+import MeetingProposalsTable             from './meeting_proposals_table.component';
 
 export default class MeetingProposalsSelector extends Component {
   constructor(props) {

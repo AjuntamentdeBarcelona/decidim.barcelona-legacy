@@ -1,7 +1,7 @@
-import { Component } from 'react';
+import { Component }     from 'react';
 
-import FilterOptionGroup from './filter_option_group';
-import FilterOption from './filter_option';
+import FilterOptionGroup from '../filters/filter_option_group.component';
+import FilterOption      from '../filters/filter_option.component';
 
 export default class ProposalFilterTabs extends Component {
   constructor(props) {

@@ -1,7 +1,7 @@
-import { Component } from 'react';
+import { Component }     from 'react';
 
-import FilterOptionGroup from './filter_option_group';
-import FilterOption from './filter_option';
+import FilterOptionGroup from './filter_option_group.component';
+import FilterOption      from './filter_option.component';
 
 export default class ScopeFilterOptionGroup extends Component {
   render() {

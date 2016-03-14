@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import MeetingTime from './meeting_time';
+import MeetingTime   from './meeting_time.component';
 
 export default class Meeting extends Component {
   constructor(props) {

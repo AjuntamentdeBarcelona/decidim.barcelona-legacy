@@ -1,8 +1,8 @@
 import { Component } from 'react';
 
-import Loading from './loading';
-import Meeting from './meeting';
-import Pagination from './pagination';
+import Loading       from '../application/loading.component';
+import Pagination    from '../application/pagination.component';
+import Meeting       from './meeting.component';
 
 export default class MeetingsList extends Component {
   constructor(props) {
