@@ -1,3 +1,5 @@
+window.App = window.App || {}
+
 App.ModeratorComments =
 
   add_class_faded: (id) ->

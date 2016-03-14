@@ -1,3 +1,5 @@
+window.App = window.App || {}
+
 App.IeAlert =
   set_cookie_and_hide: (event) ->
     event.preventDefault()

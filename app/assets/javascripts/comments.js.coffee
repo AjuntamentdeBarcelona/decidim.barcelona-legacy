@@ -1,3 +1,5 @@
+window.App = window.App || {}
+
 App.Comments =
 
   add_comment: (parent_id, response_html) ->

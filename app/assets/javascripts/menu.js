@@ -1,3 +1,5 @@
+window.App = window.App || {};
+
 App.Menu = {
   initialize: function(){
     $(".toggle-menu").on('click', function(){

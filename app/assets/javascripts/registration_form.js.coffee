@@ -1,3 +1,5 @@
+window.App = window.App || {}
+
 App.RegistrationForm =
 
   initialize: ->

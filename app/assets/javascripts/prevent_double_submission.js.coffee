@@ -1,3 +1,5 @@
+window.App = window.App || {}
+
 App.PreventDoubleSubmission =
   disable_buttons: (buttons) ->
     setTimeout ->

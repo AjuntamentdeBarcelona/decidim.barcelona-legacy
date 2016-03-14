@@ -1,6 +1,8 @@
 # Helper for generate C3.js graphs
 #----------------------------------------------------------------------
 
+window.App = window.App || {}
+
 buildGraph = (el) ->
   url = $(el).data 'graph'
   conf = bindto: el,  data: {x: 'x', url: url, mimeType: 'json'},  axis: { x: {type: 'timeseries',tick: { format: '%Y-%m-%d' } }}
