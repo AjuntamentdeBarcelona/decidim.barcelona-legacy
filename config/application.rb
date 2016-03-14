@@ -28,6 +28,7 @@ module Consul
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
 
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.assets.paths << Rails.root.join("node_modules")
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
@@ -39,6 +40,6 @@ module Consul
 
     config.middleware.use "SitemapMiddleware"
 
-    config.browserify_rails.commandline_options = '-t babelify'
+    config.browserify_rails.commandline_options = '-t babelify --fast'
   end
 end

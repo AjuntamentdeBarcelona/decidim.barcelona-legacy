@@ -126,14 +126,7 @@ GEM
       json (>= 1.7)
       mime-types (>= 1.16)
     chronic (0.10.2)
-    ckeditor (4.1.6)
-      cocaine
-      orm_adapter (~> 0.5.0)
-    climate_control (0.0.3)
-      activesupport (>= 3.0)
     cliver (0.3.2)
-    cocaine (0.5.8)
-      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -712,7 +705,6 @@ DEPENDENCIES
   capybara
   capybara-screenshot
   carrierwave (~> 0.10.0)
-  ckeditor (~> 4.1.5)
   coffee-rails (~> 4.1.0)
   coveralls
   css_splitter
