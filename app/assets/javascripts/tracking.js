@@ -1,3 +1,5 @@
+window.App = window.App || {};
+
 App.Tracking = App.Tracking || {};
 
 App.Tracking.Facebook = {

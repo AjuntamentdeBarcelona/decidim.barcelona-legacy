@@ -1,5 +1,7 @@
 //= require scrollreveal
 
+window.App = window.App || {};
+
 App.HomeAnimations = {
   initialize: function(){
     if(!$(".home-section")[0]){ return; }

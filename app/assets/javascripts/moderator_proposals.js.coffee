@@ -1,3 +1,5 @@
+window.App = window.App || {}
+
 App.ModeratorProposals =
 
   add_class_faded: (id) ->

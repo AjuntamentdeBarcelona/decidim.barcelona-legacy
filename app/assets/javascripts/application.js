@@ -29,7 +29,6 @@
 //= require social-share-button
 //= require initial
 //= require ahoy
-//= require app
 //= require check_all_none
 //= require comments
 //= require dropdown

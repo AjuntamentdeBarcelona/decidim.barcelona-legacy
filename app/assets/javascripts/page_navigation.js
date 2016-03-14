@@ -1,6 +1,8 @@
 //= require jquery.visualNav
 //= require jquery.sticky
 
+window.App = window.App || {};
+
 App.PageNavigation = {
   initialize: function(){
     var menu = $(".page .menu");

@@ -3,6 +3,8 @@
 //= require c3ext
 //= require stats
 
+window.App = window.App || {};
+
 var initialize_stats_modules = function() {
   App.Stats.initialize();
 };
