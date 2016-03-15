@@ -35,4 +35,5 @@ es:
       recent_comments_on_voted_proposals: Comentarios recientes en propuestas a las que has apoyado
       subject: Resumen de actividad (%{from} - %{to})
       title: Resumen de actividad
+      upcoming_debates: próximos debates
       upcoming_meetings: Próximas citas presenciales

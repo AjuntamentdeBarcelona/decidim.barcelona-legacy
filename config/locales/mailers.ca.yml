@@ -35,4 +35,5 @@ ca:
       recent_comments_on_voted_proposals: Comentaris recents a propostes a les que has donat suport
       subject: Resum setmanal d'activitat (%{from} - %{to})
       title: Resum setmanal d'activitat
+      upcoming_debates: Propers debats
       upcoming_meetings: Properes cites presencials

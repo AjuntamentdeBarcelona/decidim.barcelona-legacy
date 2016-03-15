@@ -35,4 +35,5 @@ en:
       recent_comments_on_voted_proposals: Recent comments on the proposals that have supported
       subject: Activity summary (%{from} - %{to})
       title: Activity Summary
+      upcoming_debates: Upcoming discussions
       upcoming_meetings: Upcoming events attended
