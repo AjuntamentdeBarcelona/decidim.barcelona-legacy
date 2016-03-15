@@ -24,6 +24,10 @@ ca:
       link: Entra i participa
     meetings:
       title: Cites presencials
+    notifications:
+      debate:
+        now: 'Ara mateix: %{title}'
+        upcoming: "%{title} - %{time}"
     tutorial:
       step-1:
         description: Navega per les propostes de l'Ajuntament de Barcelona, comenta-les i dóna-hi suport.

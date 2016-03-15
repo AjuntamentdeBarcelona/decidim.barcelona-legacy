@@ -119,6 +119,9 @@ referenced_id 1
     sequence(:title)     { |n| "Debate #{n} title" }
     description          'Debate description'
     terms_of_service     '1'
+    starts_at { 1.hour.ago }
+    ends_at { 1.hour.from_now }
+
     association :author, factory: :user
 
     trait :hidden do

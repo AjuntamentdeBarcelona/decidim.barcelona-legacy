@@ -79,4 +79,17 @@
   <p class="call-to-action">
     <%= link_to t('.participate'), root_url, class: 'participate' %>
   </p>
+
+  <% if Debate.upcoming.any? %>
+    <h3><%= t '.upcoming_debates' %></h3>
+
+    <ul>
+      <% @upcoming_debates.each do |debate|  %>
+        <li>
+          <%= link_to(debate.title, debate) %>
+           (<%= l(debate.starts_at, format: :datetime) %>)
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>

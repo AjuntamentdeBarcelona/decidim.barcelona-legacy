@@ -11,6 +11,8 @@ ca:
         terms_of_service: Termes de servei
         picture: Imatge
         title: Títol
+        starts_at: Data i hora d'inici
+        ends_at: Data i hora de fi
       meeting:
         attendee_count: "Nombre d'assistents"
         organizations: "Organitzacions participants"

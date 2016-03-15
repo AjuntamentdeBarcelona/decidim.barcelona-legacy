@@ -24,6 +24,10 @@ en:
       link: Join and participate
     meetings:
       title: dating face
+    notifications:
+      debate:
+        now: 'Now: %{title}'
+        upcoming: "%{title} - %{time}"
     tutorial:
       step-1:
         description: Browse, comment and supports the proposals of the City of Barcelona

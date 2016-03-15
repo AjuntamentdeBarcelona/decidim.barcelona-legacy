@@ -23,6 +23,14 @@
       <%= f.text_field :tag_list, value: @debate.tag_list.to_s, label: false, placeholder: t("debates.form.tags_placeholder"), class: 'js-tag-list' %>
     </div>
 
+    <div class="small-12 column datetime">
+      <%= f.datetime_select :starts_at %>
+    </div>
+
+    <div class="small-12 column datetime">
+      <%= f.datetime_select :ends_at %>
+    </div>
+
     <div class="small-12 column">
       <%= f.file_field :picture %>
     </div>
