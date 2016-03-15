@@ -15,6 +15,7 @@ dependencies:
     - docker pull postgres
     - docker pull redis
     - docker-compose build
+    - docker-compose run app webpack 
     - docker-compose run app bundle install
     - docker-compose run app npm install
     - mkdir -p ~/docker; docker save ultrayoshi/ruby-node-phantomjs:2.1.1 postgres redis > ~/docker/image.tar
