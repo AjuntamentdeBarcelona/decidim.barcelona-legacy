@@ -1,5 +1,3 @@
-require("react-quill/node_modules/quill/dist/quill.snow")
-
 require('expose?React!react');
 require('expose?ReactDOM!react-dom');
 
@@ -36,3 +34,6 @@ window.MeetingsDirectory          = MeetingsDirectory;
 window.MeetingsCarousel           = MeetingsCarousel;
 window.MeetingsMap                = MeetingsMap;
 window.MeetingProposalsSelector   = MeetingProposalsSelector;
+
+require('quill/dist/quill.snow');
+

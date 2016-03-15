@@ -11,6 +11,7 @@
     "expose-loader": "^0.7.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "imports-loader": "^0.6.5",
+    "quill": "^0.20.1",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
     "react-quill": "^0.4.1",
