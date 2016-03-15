@@ -105,6 +105,8 @@ ca:
       tags_label: Temes
       tags_placeholder: Escriu les etiquetes que vulguis separades per coma (',')
     index:
+      title: Debats
+      description: Els debats són un espai obert de preguntes amb els diferents tinents alcaldes i l'alcaldessa de Barcelona i tenen lloc en el marc del Pla d'Actuació Municipal. 48 hores abans que comenci el debat ja es poden començar a fer preguntes i/o votar aquelles que es considerin més rellevants. Un cop comenci el debat a l'hora assenyalada s'aniran responent les preguntes donant prioritat a aquelles que tinguin més vots. Per tant és important participar activament en la decisió col·laborativa de quines preguntes són més prioritàries i quines menys. Igualment és important fer les preguntes amb suficient antelació i formulades de la manera més clara i raonada possible perquè estigui ben posicionada quan es comencin a respondre les preguntes.
       filter_topic:
         one: " amb el tema '%{topic}'"
         other: " amb el tema '%{topic}'"

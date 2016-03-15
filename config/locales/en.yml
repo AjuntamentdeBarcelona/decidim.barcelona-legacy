@@ -105,6 +105,7 @@ en:
       tags_label: Topics
       tags_placeholder: Enter the tags you would like to use, separated by commas (',')
     index:
+      description: The debates are open questions with different deputy mayors and the mayor of Barcelona taking place under the Municipal Action Plan. 48 hours before the start of the debate can now begin to ask questions and / or vote for those deemed most relevant. Once the debate begins at the appointed time will be answering questions giving priority to those with the most votes. Therefore it is important to actively participate in deciding what questions are more collaborative priority and which less. Equally important is to ask the questions in advance and made the clearest way possible and reasonable to be well positioned when to start answering the questions.
       filter_topic:
         one: " with topic '%{topic}'"
         other: " with topic '%{topic}'"
