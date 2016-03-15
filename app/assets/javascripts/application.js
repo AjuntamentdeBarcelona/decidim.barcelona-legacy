@@ -53,6 +53,7 @@
 //= require menu
 //= require share
 //= require tracking
+//= require bundle
 
 var initialize_modules = function() {
   App.Comments.initialize();
