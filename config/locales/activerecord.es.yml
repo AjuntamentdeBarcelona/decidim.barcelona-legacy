@@ -55,6 +55,8 @@ es:
         terms_of_service: Términos de servicio
         title: Título
         picture: Imagen
+        starts_at: Fecha y hora de inicio
+        ends_at: Fecha y hora de fin
       meeting:
         attendee_count: "Número de asistentes"
         organizations: "Organizaciones participantes"

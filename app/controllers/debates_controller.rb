@@ -26,7 +26,7 @@ class DebatesController < ApplicationController
 
     def debate_params
       params.require(:debate).permit(:title, :description, :tag_list,
-                                     :terms_of_service, :picture)
+                                     :terms_of_service, :picture, :starts_at, :ends_at)
     end
 
     def resource_model
