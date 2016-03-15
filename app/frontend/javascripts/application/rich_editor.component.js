@@ -49,7 +49,7 @@ export default class RichEditor extends Component {
             ref="editor"
             className="quill-contents" />
         </ReactQuill>
-        <input type="hidden" name={this.props.name} value={this.state.value} />
+        <input id={this.props.id} type="hidden" name={this.props.name} value={this.state.value} />
       </div>
     );
   }

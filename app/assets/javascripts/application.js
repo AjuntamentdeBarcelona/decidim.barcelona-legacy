@@ -53,6 +53,7 @@
 //= require menu
 //= require share
 //= require tracking
+//= require votes
 //= require bundle
 
 var initialize_modules = function() {
@@ -73,6 +74,7 @@ var initialize_modules = function() {
   App.VerificationForm.initialize();
   App.Menu.initialize();
   App.Share.initialize();
+  App.Votes.initialize();
 };
 
 $(function(){

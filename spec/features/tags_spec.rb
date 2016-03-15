@@ -71,13 +71,13 @@ feature 'Tags' do
     end
   end
 
-  scenario 'Create' do
+  scenario 'Create', :js do
     user = create(:user, :official)
     login_as(user)
 
     visit new_debate_path
     fill_in 'debate_title', with: 'Title'
-    fill_in 'debate_description', with: 'Description'
+    fill_in_editor 'debate_description', with: 'Description'
     check 'debate_terms_of_service'
 
     fill_in 'debate_tag_list', with: "Impuestos, Economía, Hacienda"
@@ -90,13 +90,13 @@ feature 'Tags' do
     expect(page).to have_content 'Impuestos'
   end
 
-  scenario 'Create with too many tags' do
+  scenario 'Create with too many tags', :js do
     user = create(:user, :official)
     login_as(user)
 
     visit new_debate_path
     fill_in 'debate_title', with: 'Title'
-    fill_in 'debate_description', with: 'Description'
+    fill_in_editor 'debate_description', with: 'Description'
     check 'debate_terms_of_service'
 
     fill_in 'debate_tag_list', with: "Impuestos, Economía, Hacienda, Sanidad, Educación, Política, Igualdad"

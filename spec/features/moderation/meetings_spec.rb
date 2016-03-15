@@ -185,7 +185,7 @@ feature 'Moderate meetings' do
     visit moderation_meetings_path
     click_link 'Close'
 
-    fill_in_ckeditor 'meeting_close_report', with: 'We discussed a few proposals and decided some things'
+    fill_in_editor 'meeting_close_report', with: 'We discussed a few proposals and decided some things'
 
     check 'meeting_meeting_proposals_attributes_0_consensus'
     fill_in 'Number of attendees', with: '10'

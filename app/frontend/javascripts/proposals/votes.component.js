@@ -15,7 +15,7 @@ export default class Votes extends Component {
   render() {
     return (
       <div 
-        className="small-12 medium-3 column text-center"
+        className="text-center"
         onMouseLeave={() => { this.setState({ showCantVoteOverlay: false }) }}>
         <div className="supports vote-box">
           <div className="support-progress">

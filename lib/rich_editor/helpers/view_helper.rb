@@ -4,7 +4,12 @@ module RichEditor
       extend ActiveSupport::Concern
 
       def rich_editor_tag(name, content = nil, options = {})
-        react_component "RichEditor", name: name, value: content, maxlength: options[:maxlength]
+        react_component "RichEditor", {
+          id: options[:id],
+          name: name, 
+          value: content, 
+          maxlength: options[:maxlength]
+        }
       end
     end
   end

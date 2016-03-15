@@ -17,9 +17,9 @@ feature 'Admin categories' do
     fill_in "name_ca", with: "Eix 1"
     fill_in "name_es", with: "Eje 1"
     fill_in "name_en", with: "Axis 1"
-    fill_in_ckeditor 'description_ca', with: 'Aquesta es una categoria'
-    fill_in_ckeditor 'description_es', with: 'Esta es una categoría'
-    fill_in_ckeditor 'description_en', with: 'This is a category'
+    fill_in_editor 'description_ca', with: 'Aquesta es una categoria'
+    fill_in_editor 'description_es', with: 'Esta es una categoría'
+    fill_in_editor 'description_en', with: 'This is a category'
 
     click_button "Create axis"
 
@@ -66,9 +66,9 @@ feature 'Admin categories' do
     fill_in "name_ca", with: "Línea de acció 1"
     fill_in "name_es", with: "Línea de acción 1"
     fill_in "name_en", with: "Action line 1"
-    fill_in_ckeditor 'description_ca', with: 'Aquesta es una subcategoria'
-    fill_in_ckeditor 'description_es', with: 'Esta es una subcategoría'
-    fill_in_ckeditor 'description_en', with: 'This is a subcategory'
+    fill_in_editor 'description_ca', with: 'Aquesta es una subcategoria'
+    fill_in_editor 'description_es', with: 'Esta es una subcategoría'
+    fill_in_editor 'description_en', with: 'This is a subcategory'
 
     click_button "Create strategic line"
 
