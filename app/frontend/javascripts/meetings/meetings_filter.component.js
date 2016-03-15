@@ -1,14 +1,13 @@
-import { Component } from 'react';
+import { Component }             from 'react';
 
-import SearchFilter from './search_filter';
-import ScopeFilterOptionGroup from './scope_filter_option_group';
-import CategoryFilterOptionGroup from './category_filter_option_group';
-import SubcategoryFilterOptionGroup from './subcategory_filter_option_group';
-import FilterOptionGroup from './filter_option_group';
-import FilterOption from './filter_option';
-import TagCloudFilter from './tag_cloud_filter';
+import SearchFilter              from '../filters/search_filter.component';
+import FilterOptionGroup         from '../filters/filter_option_group.component';
+import FilterOption              from '../filters/filter_option.component';
+import ScopeFilterOptionGroup    from '../filters/scope_filter_option_group.component';
+import CategoryFilterOptionGroup from '../filters/category_filter_option_group.component';
+import TagCloudFilter            from '../filters/tag_cloud_filter.component';
 
-export default class ProposalFilters extends Component {
+export default class MeetingsFilter extends Component {
   constructor(props) {
     super(props);
 
@@ -22,26 +21,34 @@ export default class ProposalFilters extends Component {
   }
 
   componentDidMount() {
-    FilterServiceInstance.subscribe('ProposalFilters', {
+    FilterServiceInstance.subscribe('MeetingFilters', {
       requestUrl: this.props.filterUrl,
-      requestDataType: 'script',
+      requestDataType: 'json',
       onResultsCallback: (result) => {
-        $(document).trigger('loading:hide');
+        this.props.onFilterResult(result);
         this.setState(FilterServiceInstance.state);
       }
     });
   }
 
   componentWillUnmount() {
-    FilterServiceInstance.unsubscribe('ProposalFilters');
+    FilterServiceInstance.unsubscribe('MeetingFilters');
   }
 
   render() {
     return (
-      <form className="proposal-filters">
+      <form>
         <SearchFilter 
           searchText={this.state.searchText}
           onSetFilterText={ (searchText) => this.onSetFilterText(searchText) } />
+        <FilterOptionGroup
+          filterGroupName="date"
+          filterGroupValue={this.state.filters.get('date')}
+          isExclusive={true}
+          labelAllKey="upcoming"
+          onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) }>
+          <FilterOption filterName="past" />
+        </FilterOptionGroup>
         <ScopeFilterOptionGroup 
           scopeFilterGroupValue={this.state.filters.get('scope')} 
           districtFilterGroupValue={this.state.filters.get('district')} 
@@ -51,17 +58,6 @@ export default class ProposalFilters extends Component {
           categories={this.props.categories}
           filterGroupValue={this.state.filters.get('category_id')} 
           onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) } />
-        <SubcategoryFilterOptionGroup
-          selectedCategory={this.state.filters.get('category_id')}
-          subcategories={this.props.subcategories}
-          filterGroupValue={this.state.filters.get('subcategory_id')}
-          onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) } />
-        <FilterOptionGroup 
-          filterGroupName="other" 
-          filterGroupValue={this.state.filters.get('other')}
-          onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) }>
-          <FilterOption filterName="meetings" />
-        </FilterOptionGroup>
         {this.renderTagCloudFilter()}
         {this.renderCleanFilterLink()}
       </form>
@@ -81,25 +77,25 @@ export default class ProposalFilters extends Component {
   }
 
   onChangeFilterGroup(filterGroupName, filterGroupValue) {
-    $(document).trigger('loading:show');
+    this.props.onLoading();
     FilterServiceInstance.changeFilterGroup(filterGroupName, filterGroupValue);
     this.setState(FilterServiceInstance.state);
   }
 
   onSetFilterText(searchText) {
-    $(document).trigger('loading:show');
+    this.props.onLoading();
     FilterServiceInstance.setFilterText(searchText);
     this.setState(FilterServiceInstance.state);
   }
 
   onSetFilterTags(tags) {
-    $(document).trigger('loading:show');
+    this.props.onLoading();
     FilterServiceInstance.setFilterTags(tags);
     this.setState(FilterServiceInstance.state);
   }
 
   cleanFilters() {
-    $(document).trigger('loading:show');
+    this.props.onLoading();
     FilterServiceInstance.cleanState({ notify: true });
     this.setState(FilterServiceInstance.state);
   }
@@ -107,7 +103,7 @@ export default class ProposalFilters extends Component {
   renderCleanFilterLink() {
     if ((this.state.searchText && this.state.searchText.length > 0) || this.state.filters.size > 0 || this.state.tags.size > 0) {
       return (
-        <a onClick={() => this.cleanFilters()}>{I18n.t('components.proposal_filters.clean_filters')}</a>
+        <a onClick={() => this.cleanFilters()}>{I18n.t('components.meetings_filters.clean_filters')}</a>
       )
     }
     return null;

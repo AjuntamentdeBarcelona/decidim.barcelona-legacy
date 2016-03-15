@@ -1,3 +1,5 @@
+window.App = window.App || {}
+
 _t = (key) -> new Gettext().gettext(key)
 
 App.Annotatable =

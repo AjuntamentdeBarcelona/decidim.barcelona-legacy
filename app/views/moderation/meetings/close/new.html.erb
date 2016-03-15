@@ -11,7 +11,7 @@
           <%= f.text_area :organizations, placeholder: t('meetings.close.form.organizations_placeholder') %>
 
           <%= f.label :close_report, t("meetings.close.form.close_report") %>
-          <%= f.cktext_area :close_report, ckeditor: { language: I18n.locale }, label: false %>
+          <%= f.rich_editor :close_report %>
 
           <table>
             <thead>

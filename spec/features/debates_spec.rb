@@ -69,13 +69,13 @@ feature 'Debates' do
     expect(link_text).to include(debates_path order: :hot_score, page: 1)
   end
 
-  scenario 'Create' do
+  scenario 'Create', :js do
     author = create(:user, :official)
     login_as(author)
 
     visit new_debate_path
     fill_in 'debate_title', with: 'A title for a debate'
-    fill_in 'debate_description', with: 'This is very important because...'
+    fill_in_editor 'debate_description', with: 'This is very important because...'
     check 'debate_terms_of_service'
 
     click_button 'Start a debate'
@@ -87,14 +87,14 @@ feature 'Debates' do
     expect(page).to have_content I18n.l(Debate.last.created_at.to_date)
   end
 
-  scenario 'Failed creation goes back to new showing featured tags' do
+  scenario 'Failed creation goes back to new showing featured tags', :js do
     featured_tag = create(:tag, :featured)
     tag = create(:tag)
     login_as(create(:user, :official))
 
     visit new_debate_path
     fill_in 'debate_title', with: ""
-    fill_in 'debate_description', with: 'Very important issue...'
+    fill_in_editor 'debate_description', with: 'Very important issue...'
     check 'debate_terms_of_service'
 
     click_button "Start a debate"
@@ -116,13 +116,13 @@ feature 'Debates' do
     expect(page).to have_content error_message
   end
 
-  scenario 'JS injection is prevented but safe html is respected' do
+  scenario 'JS injection is prevented but safe html is respected', :js do
     author = create(:user, :official)
     login_as(author)
 
     visit new_debate_path
     fill_in 'debate_title', with: 'Testing an attack'
-    fill_in 'debate_description', with: '<p>This is <script>alert("an attack");</script></p>'
+    fill_in_editor 'debate_description', with: '<p>This is <script>alert(\"an attack\");</script></p>'
     check 'debate_terms_of_service'
 
     click_button 'Start a debate'
@@ -134,13 +134,13 @@ feature 'Debates' do
     expect(page.html).to_not include '&lt;p&gt;This is'
   end
 
-  scenario 'Autolinking is applied to description' do
+  scenario 'Autolinking is applied to description', :js do
     author = create(:user, :official)
     login_as(author)
 
     visit new_debate_path
     fill_in 'debate_title', with: 'Testing auto link'
-    fill_in 'debate_description', with: '<p>This is a link www.example.org</p>'
+    fill_in_editor 'debate_description', with: '<p>This is a link www.example.org</p>'
     check 'debate_terms_of_service'
 
     click_button 'Start a debate'
@@ -150,13 +150,13 @@ feature 'Debates' do
     expect(page).to have_link('www.example.org', href: 'http://www.example.org')
   end
 
-  scenario 'JS injection is prevented but autolinking is respected' do
+  scenario 'JS injection is prevented but autolinking is respected', :js do
     author = create(:user, :official)
     login_as(author)
 
     visit new_debate_path
     fill_in 'debate_title', with: 'Testing auto link'
-    fill_in 'debate_description', with: "<script>alert('hey')</script> <a href=\"javascript:alert('surprise!')\">click me<a/> http://example.org"
+    fill_in_editor 'debate_description', with: "<script>alert('hey')</script> http://example.org"
     check 'debate_terms_of_service'
 
     click_button 'Start a debate'
@@ -164,13 +164,6 @@ feature 'Debates' do
     expect(page).to have_content 'Debate created successfully.'
     expect(page).to have_content 'Testing auto link'
     expect(page).to have_link('http://example.org', href: 'http://example.org')
-    expect(page).not_to have_link('click me')
-    expect(page.html).to_not include "<script>alert('hey')</script>"
-
-    click_link 'Edit'
-
-    expect(current_path).to eq edit_debate_path(Debate.last)
-    expect(page).not_to have_link('click me')
     expect(page.html).to_not include "<script>alert('hey')</script>"
   end
 
@@ -188,8 +181,8 @@ feature 'Debates' do
 
       visit new_debate_path
 
-      fill_in 'debate_title', with: 'A test'
-      fill_in_ckeditor 'debate_description', with: 'A test'
+      fill_in 'debate_title', with: 'A super test'
+      fill_in_editor 'debate_description', with: 'A super test'
       check 'debate_terms_of_service'
 
       ['Medio Ambiente', 'Ciencia'].each do |tag_name|
@@ -204,11 +197,11 @@ feature 'Debates' do
       end
     end
 
-    scenario 'using dangerous strings' do
+    scenario 'using dangerous strings', :js do
       visit new_debate_path
 
       fill_in 'debate_title', with: 'A test of dangerous strings'
-      fill_in 'debate_description', with: 'A description suitable for this test'
+      fill_in_editor 'debate_description', with: 'A description suitable for this test'
       check 'debate_terms_of_service'
 
       fill_in 'debate_tag_list', with: 'user_id=1, &a=3, <script>alert("hey");</script>'
@@ -247,7 +240,7 @@ feature 'Debates' do
     expect(page).to have_content 'You do not have permission to'
   end
 
-  scenario 'Update should be posible for the author of an editable debate' do
+  scenario 'Update should be posible for the author of an editable debate', :js do
     debate = create(:debate)
     login_as(debate.author)
 
@@ -255,7 +248,7 @@ feature 'Debates' do
     expect(current_path).to eq(edit_debate_path(debate))
 
     fill_in 'debate_title', with: "End child poverty"
-    fill_in 'debate_description', with: "Let's do something to end child poverty"
+    fill_in_editor 'debate_description', with: "Let's do something to end child poverty"
 
     click_button "Save changes"
 

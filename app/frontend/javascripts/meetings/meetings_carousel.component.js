@@ -1,5 +1,5 @@
-import Carousel from './carousel';
-import MeetingTime from './meeting_time';
+import Carousel    from '../application/carousel.component';
+import MeetingTime from './meeting_time.component';
 
 export default class MeetingsCarousel extends Carousel {
   renderItem(meeting){

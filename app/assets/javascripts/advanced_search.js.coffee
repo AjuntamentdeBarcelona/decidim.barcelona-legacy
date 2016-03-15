@@ -1,3 +1,5 @@
+window.App = window.App || {}
+
 App.AdvancedSearch =
 
   advanced_search_terms: ->

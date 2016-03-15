@@ -24,12 +24,9 @@
 //= require moment/ca
 //= require moment/es
 //= require immutable
-//= require ckeditor/init
-//= require_directory ./ckeditor
 //= require social-share-button
 //= require initial
 //= require ahoy
-//= require app
 //= require check_all_none
 //= require comments
 //= require dropdown
@@ -43,14 +40,12 @@
 //= require annotator
 //= require tags
 //= require users
-//= require votes
 //= require annotatable
 //= require i18n
 //= require districts
 //= require advanced_search
 //= require react_ujs
 //= require markerclusterer
-//= require components
 //= require registration_form
 //= require verification_form
 //= require home_animations
@@ -58,11 +53,12 @@
 //= require menu
 //= require share
 //= require tracking
+//= require votes
+//= require bundle
 
 var initialize_modules = function() {
   App.Comments.initialize();
   App.Users.initialize();
-  App.Votes.initialize();
   App.Tags.initialize();
   App.Dropdown.initialize();
   App.LocationChanger.initialize();
@@ -78,6 +74,7 @@ var initialize_modules = function() {
   App.VerificationForm.initialize();
   App.Menu.initialize();
   App.Share.initialize();
+  App.Votes.initialize();
 };
 
 $(function(){

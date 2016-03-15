@@ -1,4 +1,4 @@
-import Carousel from './carousel';
+import Carousel from '../application/carousel.component';
 
 export default class ProposalsCarousel extends Carousel {
   renderItem(proposal){

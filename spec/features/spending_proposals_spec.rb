@@ -18,12 +18,12 @@ feature 'Spending proposals' do
     expect(page).to_not have_link('verify your account')
   end
 
-  scenario 'Create' do
+  scenario 'Create', :js do
     login_as(author)
 
     visit new_spending_proposal_path
     fill_in 'spending_proposal_title', with: 'Build a skyscraper'
-    fill_in 'spending_proposal_description', with: 'I want to live in a high tower over the clouds'
+    fill_in_editor 'spending_proposal_description', with: 'I want to live in a high tower over the clouds'
     fill_in 'spending_proposal_external_url', with: 'http://http://skyscraperpage.com/'
     select  'All city', from: 'spending_proposal_geozone_id'
     check 'spending_proposal_terms_of_service'

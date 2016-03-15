@@ -43,6 +43,12 @@ sidekiq:
     - db
     - redis
 
+webpack:
+  image: decidimbarcelona_app
+  command: webpack --watch --colors
+  volumes:
+    - .:/decidim.barcelona
+
 bundle:
   image: decidimbarcelona_app
   command: echo 'Nothing to do here'

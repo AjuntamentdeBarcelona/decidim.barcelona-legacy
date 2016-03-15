@@ -12,6 +12,14 @@ GIT
     i18n_yaml_csv (0.1.0)
 
 GIT
+  remote: git://github.com/rails-api/active_model_serializers.git
+  revision: a105c603c4169375d3664ebef79846caa8e80902
+  branch: 0-9-stable
+  specs:
+    active_model_serializers (0.9.4)
+      activemodel (>= 3.2)
+
+GIT
   remote: https://github.com/huacnlee/social-share-button.git
   revision: e46a6a3e82b86023bc43b72c9379d3c6afe36b6b
   ref: e46a6a3e82b86023bc
@@ -43,8 +51,6 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    active_model_serializers (0.9.4)
-      activemodel (>= 3.2)
     activejob (4.2.5)
       activesupport (= 4.2.5)
       globalid (>= 0.3.0)
@@ -95,9 +101,6 @@ GEM
       sass (~> 3.4)
       thor (~> 0.19)
     browser (1.1.0)
-    browserify-rails (3.0.1)
-      railties (>= 4.0.0, < 5.0)
-      sprockets (>= 3.5.2)
     builder (3.2.2)
     bullet (5.0.0)
       activesupport (>= 3.0.0)
@@ -120,14 +123,7 @@ GEM
       json (>= 1.7)
       mime-types (>= 1.16)
     chronic (0.10.2)
-    ckeditor (4.1.6)
-      cocaine
-      orm_adapter (~> 0.5.0)
-    climate_control (0.0.3)
-      activesupport (>= 3.0)
     cliver (0.3.2)
-    cocaine (0.5.8)
-      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -691,7 +687,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model_serializers
+  active_model_serializers!
   acts-as-taggable-on
   acts_as_votable
   ahoy_matey (~> 1.2.1)
@@ -699,14 +695,12 @@ DEPENDENCIES
   axlsx (= 2.1.0.pre)
   bourbon
   browser
-  browserify-rails
   bullet
   byebug
   cancancan
   capybara
   capybara-screenshot
   carrierwave (~> 0.10.0)
-  ckeditor (~> 4.1.5)
   coffee-rails (~> 4.1.0)
   coveralls
   css_splitter

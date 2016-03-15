@@ -1,5 +1,7 @@
+window.App = window.App || {}
+
 App.Users =
 
   initialize: ->
-    $('.initialjs-avatar').initial();
+    $('.initialjs-avatar').initial()
     false

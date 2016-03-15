@@ -96,17 +96,13 @@ module CommonActions
     "img.initialjs-avatar[data-name='#{name}']"
   end
 
-  # Used to fill ckeditor fields
+  # Used to fill rich editor fields
   # @param [String] locator label text for the textarea or textarea id
-  def fill_in_ckeditor(locator, params = {})
-    # Find out ckeditor id at runtime using its label
-    locator = find('label', text: locator)[:for] if page.has_css?('label', text: locator)
+  def fill_in_editor(locator, params = {})
     # Fill the editor content
     page.execute_script <<-SCRIPT
-        var ckeditor = CKEDITOR.instances.#{locator}
-        ckeditor.setData('#{params[:with]}')
-        ckeditor.focus()
-        ckeditor.updateElement()
+      $('##{locator}').siblings('.quill').find('.ql-editor')[0].innerHTML = "#{params[:with]}";
+      $('##{locator}').val("#{params[:with]}")
     SCRIPT
   end
 

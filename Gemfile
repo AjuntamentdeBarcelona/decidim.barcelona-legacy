@@ -43,7 +43,6 @@ gem 'foundation-rails'
 gem 'foundation_rails_helper'
 gem 'acts_as_votable'
 gem 'recaptcha', require: "recaptcha/rails"
-gem 'ckeditor', '~> 4.1.5'
 gem 'cancancan'
 gem 'social-share-button', git: 'https://github.com/huacnlee/social-share-button.git', ref: 'e46a6a3e82b86023bc'
 gem 'initialjs-rails', '0.2.0.1'
@@ -77,7 +76,7 @@ gem 'redcarpet'
 gem "faker"
 
 gem 'rails-i18n'
-gem 'active_model_serializers'
+gem 'active_model_serializers', github: 'rails-api/active_model_serializers', branch: '0-9-stable'
 gem 'friendly_id', '~> 5.1.0'
 gem 'momentjs-rails'
 
@@ -110,8 +109,6 @@ gem "fog"
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick'
 gem 'css_splitter'
-
-gem "browserify-rails"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

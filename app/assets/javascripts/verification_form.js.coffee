@@ -1,3 +1,5 @@
+window.App = window.App || {}
+
 App.VerificationForm =
   initialize: ->
     this.$form = $("form#new_residence")

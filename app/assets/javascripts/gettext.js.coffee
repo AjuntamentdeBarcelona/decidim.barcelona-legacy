@@ -1,3 +1,5 @@
+window.App = window.App || {}
+
 i18n = {
   es: {
     "Comments": "Comentarios",

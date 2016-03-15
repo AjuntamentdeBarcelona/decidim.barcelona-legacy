@@ -1,3 +1,5 @@
+window.App = window.App || {}
+
 App.Votes =
 
   hoverize: (selector) ->
@@ -13,5 +15,4 @@ App.Votes =
 
   initialize: ->
     App.Votes.hoverize $("#debates, .debate-show")
-    App.Votes.hoverize $("#proposals, #featured-proposals, .proposal-show")
     false

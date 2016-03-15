@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import Slider from 'react-slick';
+import Slider        from 'react-slick';
 
 export default class Carousel extends Component {
   render() {

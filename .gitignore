@@ -41,3 +41,6 @@ config/locales/*.csv
 
 .postgres_data
 .redis_data
+
+app/assets/javascripts/bundle*
+app/assets/stylesheets/bundle*

@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import FilterOption from './filter_option';
+import FilterOption  from './filter_option.component';
 
 export default class FilterOptionGroup extends Component {
   constructor(props) {
