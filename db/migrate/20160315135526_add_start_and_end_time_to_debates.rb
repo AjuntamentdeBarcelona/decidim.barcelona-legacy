@@ -4,7 +4,5 @@ class AddStartAndEndTimeToDebates < ActiveRecord::Migration
       t.datetime :starts_at
       t.datetime :ends_at
     end
-
-    Debate.update_all('starts_at = created_at, ends_at = created_at')
   end
 end
