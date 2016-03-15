@@ -101,8 +101,8 @@ module CommonActions
   def fill_in_editor(locator, params = {})
     # Fill the editor content
     page.execute_script <<-SCRIPT
-      $('##{locator}').siblings('.quill').find('.ql-editor').html('#{params[:with]}')
-      $('##{locator}').val('#{params[:with]}')
+      $('##{locator}').siblings('.quill').find('.ql-editor')[0].innerHTML = "#{params[:with]}";
+      $('##{locator}').val("#{params[:with]}")
     SCRIPT
   end
 

@@ -185,7 +185,7 @@ feature 'Votes' do
   feature 'Proposals' do
     background { login_as(@manuela) }
 
-    scenario "Index shows user votes on proposals" do
+    scenario "Index shows user votes on proposals", :js do
       proposal1 = create(:proposal)
       proposal2 = create(:proposal)
       proposal3 = create(:proposal)
@@ -213,7 +213,7 @@ feature 'Votes' do
         @proposal = create(:proposal)
       end
 
-      scenario 'Show no votes' do
+      scenario 'Show no votes', :js do
         visit proposal_path(@proposal)
         expect(page).to have_content "0 supports"
       end
@@ -229,7 +229,7 @@ feature 'Votes' do
         end
       end
 
-      scenario 'Show' do
+      scenario 'Show', :js do
         create(:vote, voter: @manuela, votable: @proposal, vote_flag: true)
         create(:vote, voter: @pablo, votable: @proposal, vote_flag: true)
 
