@@ -1,11 +1,12 @@
 var path = require('path');
 var webpack = require('webpack');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var config = module.exports = {
   // the base path which will be used to resolve entry points
   context: __dirname,
   // the main entry point for our application's frontend JS
-  entry: './app/frontend/javascripts/entry.js',
+  entry: './app/frontend/entry.js',
 };
 
 config.output = {
@@ -20,7 +21,7 @@ config.output = {
 config.resolve = {
   // tell webpack which extensions to auto search when it resolves modules. With this,
   // you'll be able to do `require('./utils')` instead of `require('./utils.js')`
-  extensions: ['', '.js', '.coffee'],
+  extensions: ['', '.js', '.coffee', '.css'],
   // by default, webpack will search in `web_modules` and `node_modules`. Because we're using
   // Bower, we want it to look in there too
   modulesDirectories: [ 'node_modules', 'bower_components' ],
@@ -31,7 +32,8 @@ config.plugins = [
   // as these may not have a package.json file
   new webpack.ResolverPlugin([
     new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('.bower.json', ['main'])
-  ])
+  ]),
+  new ExtractTextPlugin("../stylesheets/bundle.css")
 ];
 
 config.module = {
@@ -44,6 +46,10 @@ config.module = {
       query: {
         presets: ['react', 'es2015', 'stage-2']
       }
+    },
+    {
+      test: /\.css$/,
+      loader: ExtractTextPlugin.extract("style-loader", "css-loader")
     }
   ]
 };

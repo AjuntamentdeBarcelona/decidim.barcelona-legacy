@@ -43,3 +43,4 @@ config/locales/*.csv
 .redis_data
 
 app/assets/javascripts/bundle*
+app/assets/stylesheets/bundle*
