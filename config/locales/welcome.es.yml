@@ -24,6 +24,10 @@ es:
       link: Entra y participa
     meetings:
       title: Citas presenciales
+    notifications:
+      debate:
+        now: 'Ahora mismo: %{title}'
+        upcoming: "%{title} - %{time}"
     tutorial:
       step-1:
         description: Navega por las propuestas del Ayuntamiento de Barcelona, coméntalas y apóyalas.

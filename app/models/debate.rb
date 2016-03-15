@@ -38,6 +38,15 @@ class Debate < ActiveRecord::Base
   scope :sort_by_relevance,        -> { all }
   scope :sort_by_flags,            -> { order(flags_count: :desc, updated_at: :desc) }
   scope :last_week,            -> { where("created_at >= ?", 7.days.ago)}
+
+  scope :upcoming, -> { where(arel_table[:starts_at].lt 2.days.from_now).
+                        where(arel_table[:starts_at].gt Time.now) }
+
+  scope :ongoing, -> { where(arel_table[:starts_at].lt Time.now).
+                        where(arel_table[:ends_at].gt Time.now) }
+
+  scope :past, -> { where(arel_table[:ends_at].lt Time.now) }
+
   # Ahoy setup
   visitable # Ahoy will automatically assign visit_id on create
 
