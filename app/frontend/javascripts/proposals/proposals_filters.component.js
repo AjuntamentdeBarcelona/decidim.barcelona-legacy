@@ -47,7 +47,6 @@ export default class ProposalFilters extends Component {
           districtFilterGroupValue={[]} 
           onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) } />
         <CategoryFilterOptionGroup
-          categories={[]}
           filterGroupValue={[]} 
           onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) } />
         <SubcategoryFilterOptionGroup
