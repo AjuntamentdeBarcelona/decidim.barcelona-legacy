@@ -61,8 +61,11 @@ if ENV["SEED"]
   (1..30).each do |i|
     author = User.reorder("RANDOM()").first
     description = "<p>#{Faker::Lorem.paragraphs.join('</p><p>')}</p>"
+    starts_at = (-30..30).to_a.sample.days.from_now
     debate = Debate.create!(author: author,
                             title: Faker::Lorem.sentence(3).truncate(60),
+                            starts_at: starts_at,
+                            ends_at: (starts_at + 2.hours),
                             created_at: rand((Time.now - 1.week) .. Time.now),
                             description: description,
                             tag_list: tags.sample(3).join(','),
