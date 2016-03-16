@@ -18,6 +18,7 @@ import MeetingsCarousel           from './javascripts/meetings/meetings_carousel
 import MeetingsMap                from './javascripts/meetings/meetings_map.component';
 import MeetingProposalsSelector   from './javascripts/meetings/meeting_proposals_selector.component';
 import DebateInfoBox              from './javascripts/debates/debate_info_box.component';
+import ProposalsApp               from './javascripts/proposals/proposals_app.component';
 
 window.Loading                    = Loading;
 window.CookiesWarning             = CookiesWarning;
@@ -36,6 +37,7 @@ window.MeetingsCarousel           = MeetingsCarousel;
 window.MeetingsMap                = MeetingsMap;
 window.MeetingProposalsSelector   = MeetingProposalsSelector;
 window.DebateInfoBox              = DebateInfoBox;
+window.ProposalsApp               = ProposalsApp;
 
 require('quill/dist/quill.snow');
 
