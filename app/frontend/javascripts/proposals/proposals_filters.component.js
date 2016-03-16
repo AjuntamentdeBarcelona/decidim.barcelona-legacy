@@ -80,23 +80,26 @@ export default class ProposalFilters extends Component {
     return null;
   }
 
-  //onChangeFilterGroup(filterGroupName, filterGroupValue) {
-  //  $(document).trigger('loading:show');
-  //  FilterServiceInstance.changeFilterGroup(filterGroupName, filterGroupValue);
-  //  this.setState(FilterServiceInstance.state);
-  //}
+  onChangeFilterGroup(filterGroupName, filterGroupValue) {
+    console.log("Not implemented...yet!");
+    //$(document).trigger('loading:show');
+    //FilterServiceInstance.changeFilterGroup(filterGroupName, filterGroupValue);
+    //this.setState(FilterServiceInstance.state);
+  }
 
-  //onSetFilterText(searchText) {
-  //  $(document).trigger('loading:show');
-  //  FilterServiceInstance.setFilterText(searchText);
-  //  this.setState(FilterServiceInstance.state);
-  //}
+  onSetFilterText(searchText) {
+    console.log("Not implemented...yet!");
+    //$(document).trigger('loading:show');
+    //FilterServiceInstance.setFilterText(searchText);
+    //this.setState(FilterServiceInstance.state);
+  }
 
-  //onSetFilterTags(tags) {
-  //  $(document).trigger('loading:show');
-  //  FilterServiceInstance.setFilterTags(tags);
-  //  this.setState(FilterServiceInstance.state);
-  //}
+  onSetFilterTags(tags) {
+    console.log("Not implemented...yet!");
+    //$(document).trigger('loading:show');
+    //FilterServiceInstance.setFilterTags(tags);
+    //this.setState(FilterServiceInstance.state);
+  }
 
   //cleanFilters() {
   //  $(document).trigger('loading:show');

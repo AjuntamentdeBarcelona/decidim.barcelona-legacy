@@ -50,10 +50,11 @@ export default class ProposalFilterTabs extends Component {
   }
 
   onChangeFilterGroup(filterGroupName, filterGroupValue) {
-    $(document).trigger('loading:show');
-    FilterServiceInstance.cleanState({ notify: false });
-    FilterServiceInstance.changeFilterGroup(filterGroupName, filterGroupValue);
-    this.setState(FilterServiceInstance.state);
+    console.log("Not implemented...yet!");
+    //$(document).trigger('loading:show');
+    //FilterServiceInstance.cleanState({ notify: false });
+    //FilterServiceInstance.changeFilterGroup(filterGroupName, filterGroupValue);
+    //this.setState(FilterServiceInstance.state);
   }
 }
 

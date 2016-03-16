@@ -5,9 +5,8 @@ export default class Votes extends Component {
     super(props);
 
     this.state = {
-      totalVotes: this.props.total_votes,
-      showCantVoteOverlay: false,
-      alreadyVoted: this.props.already_voted,
+      totalVotes: 10,
+      alreadyVoted: false,
       loading: false
     };
   }
@@ -27,14 +26,12 @@ export default class Votes extends Component {
             </span>
             <div className="proposal-comments">
               <i className="icon-comments"></i>&nbsp;
-              <a href={this.props.comments_url}>{I18n.t("proposals.proposal.comments", { count: this.props.comments_count})}</a>
+              <a>{I18n.t("proposals.proposal.comments", { count: 20 })}</a>
             </div>
           </div>
           <div className="in-favor">
             {this.renderVoteButton()}
           </div>
-          {this.renderShare()}
-          {this.renderCantVoteOverlay()}
         </div>
       </div>
     )
@@ -68,39 +65,18 @@ export default class Votes extends Component {
     }
   }
 
-  renderCantVoteOverlay() {
-    if (this.props.cant_vote && this.state.showCantVoteOverlay) {
-      return (
-        <div className="anonymous-votes">
-          <p dangerouslySetInnerHTML={{__html: this.props.cant_vote_text }}></p>
-        </div>
-      );
-    }
-    return null;
-  }
-
-  renderShare() {
-      if(this.state.alreadyVoted) { 
-        return (
-          <div className="share-supported">
-            <div dangerouslySetInnerHTML={{__html: this.props.share_buttons_html }}></div>
-          </div>
-        )
-      }
-      return null;
-  }
-
   vote() {
-    this.setState({ loading: true });
-    $.ajax(this.props.vote_url, {
-      method: 'POST',
-      dataType: 'json'
-    }).then((data) => {
-      this.setState({ 
-        loading: false,
-        totalVotes: this.state.totalVotes + 1,
-        alreadyVoted: true
-      });
-    });
+    console.log("Not implemented...yet!");
+    //this.setState({ loading: true });
+    //$.ajax(this.props.vote_url, {
+    //  method: 'POST',
+    //  dataType: 'json'
+    //}).then((data) => {
+    //  this.setState({ 
+    //    loading: false,
+    //    totalVotes: this.state.totalVotes + 1,
+    //    alreadyVoted: true
+    //  });
+    //});
   }
 }
