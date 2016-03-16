@@ -53,6 +53,8 @@
 
       <aside class="small-12 medium-3 column">
         <div class="sidebar-divider"></div>
+        <%= debate_info_box(@debate) %>
+
         <%= render partial: 'debates/picture', locals: { debate: @debate } %>
         <% if Setting["feature.debates.vote"] %>
           <h3><%= t("votes.supports") %></h3>
