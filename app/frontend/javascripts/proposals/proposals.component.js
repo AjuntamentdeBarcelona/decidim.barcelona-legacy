@@ -1,35 +1,55 @@
-import { Component }          from 'react';
-import { connect }            from 'react-redux';
-import { bindActionCreators } from 'redux';
+import ProposalsHeader        from './proposals_header.component';
+import ProposalsFilterTabs    from './proposals_filter_tabs.component';
+import ProposalsSidebar       from './proposals_sidebar.component';
+import ProposalsOrderSelector from './proposals_order_selector.component';
+import NewProposalButton      from './new_proposal_button.component';
+import ProposalsList          from './proposals_list.component';
 
-const testAction = function (value) {
-  return {
-    type: 'SET_TEST',
-    payload: value
-  };
-}
+export default function () {
+  return (
+    <div>
+      <ProposalsHeader />
 
-class Proposals extends Component {
-  render() {
-    return (
-      <div id="test">
-        <p>In progress {this.props.test}</p>
-        <input onChange={(event) => this.onInputChange(event)} />
+      <div className="wrap row">
+        <ProposalsFilterTabs />
       </div>
-    );
-  }
 
-  onInputChange(event) {
-    this.props.testAction(event.target.value);
-  }
+      <div className="wrap row">
+        <div className="small-12 medium-3 column">
+          <ProposalsSidebar />
+        </div>
+
+        <div className="small-12 medium-9 column">
+          <ProposalsOrderSelector />
+          <div className="show-for-small-only">
+            <NewProposalButton />
+          </div>
+          <ProposalsList />
+        </div>
+      </div>
+    </div>
+  );
 }
 
-function mapStateToProps({ test }) {
-  return { test };
-}
+//import { connect }            from 'react-redux';
+//import { bindActionCreators } from 'redux';
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ testAction }, dispatch);
-}
+//const testAction = function (value) {
+//  return {
+//    type: 'SET_TEST',
+//    payload: value
+//  };
+//}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Proposals);
+//onInputChange(event) {
+//  this.props.testAction(event.target.value);
+//}
+//function mapStateToProps({ test }) {
+//  return { test };
+//}
+//
+//function mapDispatchToProps(dispatch) {
+//  return bindActionCreators({ testAction }, dispatch);
+//}
+//
+//export default connect(mapStateToProps, mapDispatchToProps)(Proposals);
