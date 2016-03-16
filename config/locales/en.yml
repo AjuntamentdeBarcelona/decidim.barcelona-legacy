@@ -101,6 +101,7 @@ en:
     form:
       debate_text: Initial debate text
       debate_title: Debate title
+      instructions: Instructions
       tags_instructions: Tag this debate. You can choose from our suggestions or enter your own.
       tags_label: Topics
       tags_placeholder: Enter the tags you would like to use, separated by commas (',')
