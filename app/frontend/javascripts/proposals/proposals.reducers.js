@@ -1,15 +1,15 @@
-//import { combineReducers } from 'redux';
+import { FETCH_DISTRICTS } from './proposals.actions';
 
-//const rootReducer = combineReducers({
-//  weather: WeatherReducer
-//});
-
-//export default rootReducer;
-
-export default function (state = {}, action) {
+export default function (state = {
+  districts: []
+}, action) {
+  console.log(action);
   switch (action.type) {
-    case 'SET_TEST':
-      return { test: action.payload };
+    case FETCH_DISTRICTS:
+      return {
+        ...state,
+        districts: action.payload.districts
+      };
   }
   return state;
 }

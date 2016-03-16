@@ -1,9 +1,17 @@
-import { Component }     from 'react';
+import { Component }          from 'react';
+import { bindActionCreators } from 'redux';
+import { connect }            from 'react-redux';
 
-import FilterOptionGroup from './filter_option_group.component';
-import FilterOption      from './filter_option.component';
+import { fetchDistricts }     from '../proposals/proposals.actions';
 
-export default class ScopeFilterOptionGroup extends Component {
+import FilterOptionGroup      from './filter_option_group.component';
+import FilterOption           from './filter_option.component';
+
+class ScopeFilterOptionGroup extends Component {
+  componentDidMount() {
+    this.props.fetchDistricts();
+  }
+
   render() {
     return (
         <div className="filter-group">
@@ -30,3 +38,15 @@ export default class ScopeFilterOptionGroup extends Component {
     )
   }
 }
+
+function mapStateToProps({ districts }) {
+  return {
+    districts
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchDistricts }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ScopeFilterOptionGroup);
