@@ -1277,6 +1277,14 @@ table {
       }
     }
 
+    &.comment-author > .comment-body{
+      & > .comment-user{
+        @include label-style(lighten($author, 47%))
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+      }
+    }
+
     .comment-body {
       margin-left: rem-calc(42);
 

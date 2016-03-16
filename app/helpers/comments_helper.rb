@@ -34,14 +34,15 @@ module CommentsHelper
 
   def comment_author_class(comment, author_id)
     if comment.user_id == author_id
-      "is-author"
+      "comment-author"
     else
       "" # Default not author class
     end
   end
 
-  def comment_class_names(comment)
-    classes = ["comment", comment_alignment_class(comment.alignment)]
+  def comment_class_names(comment, author)
+    classes = ["comment", comment_alignment_class(comment.alignment),
+               comment_author_class(comment, author.id)]
     classes.compact.join(" ")
   end
 

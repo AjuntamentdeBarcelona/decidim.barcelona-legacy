@@ -1,6 +1,6 @@
 <% cache [locale_and_user_status(comment), comment, commentable_cache_key(comment.commentable), comment.author, (@comment_flags[comment.id] if @comment_flags)] do %>
   <div class="row">
-  	<div id="<%= dom_id(comment) %>" class="comment small-12 column <%= comment_class_names comment %>" data-timestamp="<%= comment.created_at.to_i%>">
+  	<div id="<%= dom_id(comment) %>" class="comment small-12 column <%= comment_class_names comment, comment.commentable.author %>" data-timestamp="<%= comment.created_at.to_i%>">
 
       <% if comment.hidden? || comment.user.hidden? %>
         <% if comment.children.size > 0 %>
@@ -44,7 +44,7 @@
                 <% end %>
               <% end %>
 
-              <% if comment.alignment %>
+              <% if comment.commentable.arguable? && comment.alignment %>
                 &nbsp;&bull;&nbsp;
                 <% if comment.alignment > 0 %>
                   <span class="success round label">
