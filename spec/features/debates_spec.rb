@@ -49,6 +49,7 @@ feature 'Debates' do
 
     expect(page).to have_content debate.title
     expect(page).to have_content "Debate description"
+    expect(page).to have_content "Debate instructions"
     expect(page).to have_content debate.author.name
     expect(page).to have_content I18n.l(debate.created_at.to_date)
     expect(page).to have_selector(avatar(debate.author.name))

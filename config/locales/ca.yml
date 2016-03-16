@@ -101,6 +101,7 @@ ca:
     form:
       debate_text: Text inicial del debat
       debate_title: Títol del debat
+      instructions: Instruccions
       tags_instructions: Etiqueta aquest debat. Pots triar entre les nostres propostes o introduir les que vulguis.
       tags_label: Temes
       tags_placeholder: Escriu les etiquetes que vulguis separades per coma (',')

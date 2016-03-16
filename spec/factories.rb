@@ -118,6 +118,7 @@ referenced_id 1
   factory :debate do
     sequence(:title)     { |n| "Debate #{n} title" }
     description          'Debate description'
+    instructions         'Debate instructions'
     terms_of_service     '1'
     starts_at { 1.hour.ago }
     ends_at { 1.hour.from_now }
