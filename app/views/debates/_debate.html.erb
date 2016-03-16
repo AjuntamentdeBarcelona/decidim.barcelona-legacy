@@ -39,7 +39,7 @@
 
             </p>
             <div class="debate-description">
-              <%== truncate strip_tags(debate.description), length: 450 %>
+              <%== truncate strip_tags(debate.description), length: 900 %>
             </div>
             <%= render "shared/tags", taggable: debate, limit: 5 %>
             <div class="actions">
@@ -49,6 +49,7 @@
         </div>
 
         <div id="<%= dom_id(debate) %>_votes" class="small-12 medium-3 column text-center">
+          <%= debate_info_box(debate) %>
           <%= render partial: 'debates/picture', locals: { debate: debate } %>
           <% if Setting['feature.debates.vote'] %>
             <%= render 'debates/votes', debate: debate %>
