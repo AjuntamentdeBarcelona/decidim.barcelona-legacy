@@ -25,7 +25,7 @@ class DebatesController < ApplicationController
   private
 
     def debate_params
-      params.require(:debate).permit(:title, :description, :tag_list,
+      params.require(:debate).permit(:title, :description, :tag_list, :instructions,
                                      :terms_of_service, :picture, :starts_at, :ends_at)
     end
 

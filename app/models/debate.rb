@@ -15,6 +15,10 @@ class Debate < ActiveRecord::Base
 
   mount_uploader :picture, DebatePictureUploader
 
+  before_validation do
+    self.instructions = WYSIWYGSanitizer.new.sanitize(instructions)
+  end
+
   belongs_to :author, -> { with_hidden }, class_name: 'User', foreign_key: 'author_id'
   has_many :comments, as: :commentable
 

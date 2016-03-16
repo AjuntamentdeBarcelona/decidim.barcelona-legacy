@@ -7,4 +7,13 @@
     margin-top: rem-calc(10);
     height: auto;
   }
+
+}
+
+.debate-show{
+  .debate-instructions{
+    margin-top: $line-height;
+    background-color: #E49D9E;
+    padding: rem-calc(15);
+  }
 }
