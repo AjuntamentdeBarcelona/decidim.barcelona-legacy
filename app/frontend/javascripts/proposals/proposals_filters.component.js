@@ -14,9 +14,7 @@ export default class ProposalFilters extends Component {
       <form className="proposal-filters">
         <SearchFilter />
         <ScopeFilterOptionGroup />
-        <CategoryFilterOptionGroup
-          filterGroupValue={[]} 
-          onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) } />
+        <CategoryFilterOptionGroup />
         <SubcategoryFilterOptionGroup
           selectedCategory={[]}
           subcategories={[]}

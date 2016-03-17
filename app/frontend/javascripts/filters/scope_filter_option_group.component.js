@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
 
 import { fetchDistricts }     from '../districts/districts.actions';
+import { setFilterGroup }     from './filters.actions';
 
 import FilterOptionGroup      from './filter_option_group.component';
 import FilterOption           from './filter_option.component';
@@ -18,8 +19,8 @@ class ScopeFilterOptionGroup extends Component {
           <FilterOptionGroup 
             useWrapper={false}
             filterGroupName="scope" 
-            filterGroupValue={this.props.scopeFilterGroupValue}
-            onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.props.onChangeFilterGroup(filterGroupName, filterGroupValue) }>
+            filterGroupValue={[]}
+            onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
             <FilterOption filterName="city" />
           </FilterOptionGroup>
           <FilterOptionGroup 
@@ -27,7 +28,7 @@ class ScopeFilterOptionGroup extends Component {
             useTitle={false}
             filterGroupName="district" 
             filterGroupValue={this.props.districtFilterGroupValue}
-            onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.props.onChangeFilterGroup(filterGroupName, filterGroupValue) }>
+            onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
             {
               this.props.districts.map(function (district) {
                 return <FilterOption key={district[1]} filterName={district[1]} filterLabel={district[0]} />
@@ -46,7 +47,7 @@ function mapStateToProps({ districts }) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchDistricts }, dispatch);
+  return bindActionCreators({ fetchDistricts, setFilterGroup }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ScopeFilterOptionGroup);

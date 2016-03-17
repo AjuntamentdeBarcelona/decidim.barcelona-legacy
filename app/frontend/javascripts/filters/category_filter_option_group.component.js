@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
 
 import { fetchCategories }    from '../categories/categories.actions';
+import { setFilterGroup }     from './filters.actions';
 
 import FilterOptionGroup      from './filter_option_group.component';
 import FilterOption           from './filter_option.component';
@@ -18,7 +19,7 @@ export default class CategoryFilterOptionGroup extends Component {
         filterGroupName="category_id" 
         filterGroupValue={[]}
         isExclusive={true}
-        onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.props.onChangeFilterGroup(filterGroupName, filterGroupValue) }>
+        onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
         {
           this.props.categories.map(function (category) {
             return <FilterOption key={category.id} filterName={category.id} filterLabel={category.name}>
@@ -38,7 +39,7 @@ function mapStateToProps({ categories }) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchCategories }, dispatch);
+  return bindActionCreators({ fetchCategories, setFilterGroup }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryFilterOptionGroup);
