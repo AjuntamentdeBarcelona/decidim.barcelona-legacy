@@ -2,6 +2,7 @@ class ProposalsController < ApplicationController
   FEATURED_PROPOSALS_LIMIT = 3
   include CommentableActions
   include FlagActions
+  helper_method :random_proposals
 
   before_action :set_search_order, only: [:index]
   before_action :authenticate_user!, except: [:index, :show]
@@ -59,6 +60,13 @@ class ProposalsController < ApplicationController
   end
 
   private
+
+  def random_proposals
+    @random_proposals ||= ActiveModel::ArraySerializer.new(
+      Proposal.order('random()').limit(8),
+      each_serializer: ProposalSerializer
+    ).as_json
+  end
 
     def proposal_params
       permitted_params = [:title, :question, :summary, :description, :external_url, :video_url, :responsible_name, :tag_list, :category_id, :subcategory_id, :scope, :district]
