@@ -1,3 +1,5 @@
+import { Component }          from 'react';
+import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
 
 import ProposalsHeader        from './proposals_header.component';
@@ -7,46 +9,53 @@ import ProposalsOrderSelector from './proposals_order_selector.component';
 import NewProposalButton      from './new_proposal_button.component';
 import ProposalsList          from './proposals_list.component';
 
-const Proposals = ({
-  proposals
-}) => (
-  <div>
-    <ProposalsHeader />
+import { fetchProposals }     from './proposals.actions';
 
-    <div className="wrap row">
-      <ProposalsFilterTabs />
-    </div>
+class Proposals extends Component {
+  componentDidMount() {
+    this.props.fetchProposals();
+  }
 
-    <div className="wrap row">
-      <div className="small-12 medium-3 column">
-        <ProposalsSidebar />
-      </div>
+  componentWillReceiveProps({ filters }) {
+    if (this.props.filters !== filters) {
+      // TODO: update url and stuff
+      this.props.fetchProposals({ filters });
+    }
+  }
 
-      <div className="small-12 medium-9 column">
-        <ProposalsOrderSelector />
-        <div className="show-for-small-only">
-          <NewProposalButton />
+  render() {
+    return (
+      <div>
+        <ProposalsHeader />
+
+        <div className="wrap row">
+          <ProposalsFilterTabs />
         </div>
-        <ProposalsList proposals={proposals} />
-      </div>
-    </div>
-  </div>
-);
 
-function mapStateToProps(state) {
-  return { 
-    proposals: [
-      { id: 1, title: "My proposal #1" },
-      { id: 2, title: "My proposal #2" },
-      { id: 3, title: "My proposal #3" },
-      { id: 4, title: "My proposal #4" },
-      { id: 5, title: "My proposal #5" },
-      { id: 6, title: "My proposal #6" },
-      { id: 7, title: "My proposal #7" },
-      { id: 8, title: "My proposal #8" },
-      { id: 9, title: "My proposal #9" }
-    ]
-  };
+        <div className="wrap row">
+          <div className="small-12 medium-3 column">
+            <ProposalsSidebar />
+          </div>
+
+          <div className="small-12 medium-9 column">
+            <ProposalsOrderSelector />
+            <div className="show-for-small-only">
+              <NewProposalButton />
+            </div>
+            <ProposalsList proposals={this.props.proposals} />
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
-export default connect(mapStateToProps, null)(Proposals);
+function mapStateToProps({ proposals, filters }) {
+  return { proposals, filters };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchProposals }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Proposals);

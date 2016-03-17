@@ -1,6 +1,10 @@
-import { Component } from 'react';
+import { Component }          from 'react';
+import { bindActionCreators } from 'redux';
+import { connect }            from 'react-redux';
 
-export default class SearchFilter extends Component {
+import { setFilterText }      from './filters.actions';
+
+class SearchFilter extends Component {
   render() {
     return (
       <div className="row collapse prefix-radius">
@@ -12,15 +16,11 @@ export default class SearchFilter extends Component {
             className="search-filter"
             value={this.props.searchText}
             placeholder={I18n.t("components.search_filter.search_input_placeholder")}
-            onChange={(event) => this.filterByText(event.target.value)} 
+            onChange={(event) => this.props.setFilterText(event.target.value)} 
             onKeyDown={(event) => this.onKeyDown(event)} />
         </div>
       </div>
     );
-  }
-
-  filterByText(searchText) {
-    this.props.onSetFilterText(searchText);
   }
 
   onKeyDown(event) {
@@ -32,3 +32,9 @@ export default class SearchFilter extends Component {
   }
 
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ setFilterText }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(SearchFilter);

@@ -9,43 +9,11 @@ import FilterOption                 from '../filters/filter_option.component';
 import TagCloudFilter               from '../filters/tag_cloud_filter.component';
 
 export default class ProposalFilters extends Component {
-  constructor(props) {
-    super(props);
-
-    //FilterServiceInstance.initState(
-    //  this.props.filter.search_filter,
-    //  this.props.filter.tag_filter,
-    //  this.props.filter.params
-    //);
-
-    //this.state = FilterServiceInstance.state;
-  }
-
-  componentDidMount() {
-    //FilterServiceInstance.subscribe('ProposalFilters', {
-    //  requestUrl: this.props.filterUrl,
-    //  requestDataType: 'script',
-    //  onResultsCallback: (result) => {
-    //    $(document).trigger('loading:hide');
-    //    this.setState(FilterServiceInstance.state);
-    //  }
-    //});
-  }
-
-  componentWillUnmount() {
-    //FilterServiceInstance.unsubscribe('ProposalFilters');
-  }
-
   render() {
     return (
       <form className="proposal-filters">
-        <SearchFilter 
-          searchText=""
-          onSetFilterText={ (searchText) => this.onSetFilterText(searchText) } />
-        <ScopeFilterOptionGroup 
-          scopeFilterGroupValue={[]} 
-          districtFilterGroupValue={[]} 
-          onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) } />
+        <SearchFilter />
+        <ScopeFilterOptionGroup />
         <CategoryFilterOptionGroup
           filterGroupValue={[]} 
           onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) } />
@@ -82,13 +50,6 @@ export default class ProposalFilters extends Component {
     console.log("Not implemented...yet!");
     //$(document).trigger('loading:show');
     //FilterServiceInstance.changeFilterGroup(filterGroupName, filterGroupValue);
-    //this.setState(FilterServiceInstance.state);
-  }
-
-  onSetFilterText(searchText) {
-    console.log("Not implemented...yet!");
-    //$(document).trigger('loading:show');
-    //FilterServiceInstance.setFilterText(searchText);
     //this.setState(FilterServiceInstance.state);
   }
 
