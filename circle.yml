@@ -14,6 +14,7 @@ dependencies:
     - docker pull ultrayoshi/ruby-node-phantomjs:2.1.1
     - docker pull postgres
     - docker pull redis
+    - touch .env
     - docker-compose build
     - docker-compose run app bundle install
     - docker-compose run app npm install
