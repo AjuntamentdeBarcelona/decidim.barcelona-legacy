@@ -1,20 +1,19 @@
-import { FETCH_DISTRICTS, FETCH_CATEGORIES } from './proposals.actions';
+import { combineReducers } from 'redux';
 
-export default function (state = {
-  districts: [],
-  categories: []
-}, action) {
+import districts           from '../districts/districts.reducers';
+import categories          from '../categories/categories.reducers';
+
+import { FETCH_PROPOSALS } from './proposals.actions';
+
+const proposals = function (state = [], action) {
   switch (action.type) {
-    case FETCH_DISTRICTS:
-      return {
-        ...state,
-        districts: action.payload.districts
-      };
-    case FETCH_CATEGORIES:
-      return {
-        ...state,
-        categories: action.payload.categories
-      };
+    case FETCH_PROPOSALS:
+      return action.payload.proposals
   }
   return state;
 }
+
+export default combineReducers({
+  districts,
+  categories
+});

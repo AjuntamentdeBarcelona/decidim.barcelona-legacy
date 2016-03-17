@@ -2,7 +2,7 @@ import { Component }          from 'react';
 import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
 
-import { fetchDistricts }     from '../proposals/proposals.actions';
+import { fetchDistricts }     from '../districts/districts.actions';
 
 import FilterOptionGroup      from './filter_option_group.component';
 import FilterOption           from './filter_option.component';

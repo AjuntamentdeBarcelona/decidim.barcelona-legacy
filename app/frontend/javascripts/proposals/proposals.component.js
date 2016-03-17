@@ -1,3 +1,5 @@
+import { connect }            from 'react-redux';
+
 import ProposalsHeader        from './proposals_header.component';
 import ProposalsFilterTabs    from './proposals_filter_tabs.component';
 import ProposalsSidebar       from './proposals_sidebar.component';
@@ -5,28 +7,46 @@ import ProposalsOrderSelector from './proposals_order_selector.component';
 import NewProposalButton      from './new_proposal_button.component';
 import ProposalsList          from './proposals_list.component';
 
-export default function () {
-  return (
-    <div>
-      <ProposalsHeader />
+const Proposals = ({
+  proposals
+}) => (
+  <div>
+    <ProposalsHeader />
 
-      <div className="wrap row">
-        <ProposalsFilterTabs />
+    <div className="wrap row">
+      <ProposalsFilterTabs />
+    </div>
+
+    <div className="wrap row">
+      <div className="small-12 medium-3 column">
+        <ProposalsSidebar />
       </div>
 
-      <div className="wrap row">
-        <div className="small-12 medium-3 column">
-          <ProposalsSidebar />
+      <div className="small-12 medium-9 column">
+        <ProposalsOrderSelector />
+        <div className="show-for-small-only">
+          <NewProposalButton />
         </div>
-
-        <div className="small-12 medium-9 column">
-          <ProposalsOrderSelector />
-          <div className="show-for-small-only">
-            <NewProposalButton />
-          </div>
-          <ProposalsList />
-        </div>
+        <ProposalsList proposals={proposals} />
       </div>
     </div>
-  );
+  </div>
+);
+
+function mapStateToProps(state) {
+  return { 
+    proposals: [
+      { id: 1, title: "My proposal #1" },
+      { id: 2, title: "My proposal #2" },
+      { id: 3, title: "My proposal #3" },
+      { id: 4, title: "My proposal #4" },
+      { id: 5, title: "My proposal #5" },
+      { id: 6, title: "My proposal #6" },
+      { id: 7, title: "My proposal #7" },
+      { id: 8, title: "My proposal #8" },
+      { id: 9, title: "My proposal #9" }
+    ]
+  };
 }
+
+export default connect(mapStateToProps, null)(Proposals);
