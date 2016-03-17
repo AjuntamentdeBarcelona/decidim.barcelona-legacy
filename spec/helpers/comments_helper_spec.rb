@@ -45,11 +45,11 @@ RSpec.describe CommentsHelper, type: :helper do
   end
 
   describe '#comment_author_class' do
-    it 'returns is-author if author is the commenting user' do
+    it 'returns the right class if author is the commenting user' do
       author_id = 42
       comment = double user_id: author_id
 
-      expect(helper.comment_author_class(comment, author_id)).to eq('is-author')
+      expect(helper.comment_author_class(comment, author_id)).to eq('comment-author')
     end
 
     it 'returns an empty string if commenter is not the author' do
