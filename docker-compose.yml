@@ -1,6 +1,7 @@
 app:
   build: .
   command: "bundle exec rails s -b 0.0.0.0"
+  env_file: .env
   environment:
     - DATABASE_HOST=db
     - DATABASE_USERNAME=postgres
@@ -8,13 +9,6 @@ app:
     - DATABASE_NAME=postgres
     - REDIS_URL=redis://redis:6379
     - GEM_HOME=/bundle
-    - GOOGLE_MAPS_API_KEY=${GOOGLE_MAPS_API_KEY}
-    - FACEBOOK_KEY=${FACEBOOK_KEY}
-    - FACEBOOK_SECRET=${FACEBOOK_SECRET}
-    - TWITTER_KEY=${TWITTER_KEY}
-    - TWITTER_SECRET=${TWITTER_SECRET}
-    - GOOGLE_OAUTH2_KEY=${GOOGLE_OAUTH2_KEY}
-    - GOOGLE_OAUTH2_SECRET=${GOOGLE_OAUTH2_SECRET}
   volumes:
     - .:/decidim.barcelona
   volumes_from:
