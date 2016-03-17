@@ -114,7 +114,7 @@ class Comment < ActiveRecord::Base
   end
 
   def self.body_max_length
-    5000
+    1000
   end
 
   def calculate_confidence_score
@@ -129,10 +129,12 @@ class Comment < ActiveRecord::Base
   private
 
     def validate_body_length
-      validator = ActiveModel::Validations::LengthValidator.new(
-        attributes: :body,
-        maximum: Comment.body_max_length)
-      validator.validate(self)
+      unless Ability.new(user).can?(:write_long, self)
+        validator = ActiveModel::Validations::LengthValidator.new(
+          attributes: :body,
+          maximum: Comment.body_max_length)
+        validator.validate(self)
+      end
     end
 
     def dereference

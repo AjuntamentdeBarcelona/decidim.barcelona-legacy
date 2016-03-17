@@ -24,6 +24,8 @@ module Abilities
                              user.official_level > 0
       can :create, Proposal
 
+      can :write_long, Comment if user.official?
+
       can [:flag, :unflag], Comment
       cannot [:flag, :unflag], Comment, user_id: user.id
 
