@@ -14,6 +14,10 @@ export default function (state = {
 
       filter[action.name] = action.value;
 
+      if (action.name === 'category_id') {
+        filter["subcategory_id"] = []
+      }
+
       return {
         ...state,
         filter

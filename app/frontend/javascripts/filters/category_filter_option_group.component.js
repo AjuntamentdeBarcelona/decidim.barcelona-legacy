@@ -8,7 +8,7 @@ import { setFilterGroup }     from './filters.actions';
 import FilterOptionGroup      from './filter_option_group.component';
 import FilterOption           from './filter_option.component';
 
-export default class CategoryFilterOptionGroup extends Component {
+class CategoryFilterOptionGroup extends Component {
   componentDidMount() {
     this.props.fetchCategories();
   }
@@ -17,7 +17,7 @@ export default class CategoryFilterOptionGroup extends Component {
     return (
       <FilterOptionGroup 
         filterGroupName="category_id" 
-        filterGroupValue={[]}
+        filterGroupValue={this.props.filters.filter["category_id"]}
         isExclusive={true}
         onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
         {
@@ -32,8 +32,9 @@ export default class CategoryFilterOptionGroup extends Component {
   }
 }
 
-function mapStateToProps({ categories }) {
+function mapStateToProps({ filters, categories }) {
   return {
+    filters,
     categories
   };
 }

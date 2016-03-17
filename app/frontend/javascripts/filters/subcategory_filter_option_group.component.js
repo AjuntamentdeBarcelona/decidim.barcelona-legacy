@@ -1,18 +1,24 @@
-import { Component }     from 'react';
+import { Component }          from 'react';
+import { bindActionCreators } from 'redux';
+import { connect }            from 'react-redux';
 
-import FilterOptionGroup from './filter_option_group.component';
-import FilterOption      from './filter_option.component';
+import { setFilterGroup }     from './filters.actions';
 
-export default class SubcategoryFilterOptionGroup extends Component {
+import FilterOptionGroup      from './filter_option_group.component';
+import FilterOption           from './filter_option.component';
+
+class SubcategoryFilterOptionGroup extends Component {
   render() {
-    if (this.props.selectedCategory && this.props.selectedCategory.length > 0) {
-      let subcategories = this.props.subcategories.filter((subcategory) => this.props.selectedCategory.indexOf(subcategory.categoryId) !== -1);
+    let categoryId = this.props.filters.filter["category_id"] && this.props.filters.filter["category_id"][0];
+
+    if (categoryId) {
+      let subcategories = this.props.categories.filter((category) => categoryId === category.id)[0].subcategories;
 
       return (
         <FilterOptionGroup 
           filterGroupName="subcategory_id" 
-          filterGroupValue={this.props.filterGroupValue}
-          onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.props.onChangeFilterGroup(filterGroupName, filterGroupValue) }>
+          filterGroupValue={this.props.filters.filter["subcategory_id"]}
+          onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
           {
             subcategories.map(function (subcategory) {
               return <FilterOption key={subcategory.id} filterName={subcategory.id} filterLabel={subcategory.name}>
@@ -26,4 +32,16 @@ export default class SubcategoryFilterOptionGroup extends Component {
     return null;
   }
 }
-//subcategories={this.filteredSubCategories(this.state.filters)}
+
+function mapStateToProps({ categories, filters }) {
+  return {
+    categories,
+    filters
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ setFilterGroup }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SubcategoryFilterOptionGroup);

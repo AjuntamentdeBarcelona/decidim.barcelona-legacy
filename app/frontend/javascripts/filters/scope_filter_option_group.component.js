@@ -19,7 +19,7 @@ class ScopeFilterOptionGroup extends Component {
           <FilterOptionGroup 
             useWrapper={false}
             filterGroupName="scope" 
-            filterGroupValue={[]}
+            filterGroupValue={this.props.filters.filter["scope"]}
             onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
             <FilterOption filterName="city" />
           </FilterOptionGroup>
@@ -27,7 +27,7 @@ class ScopeFilterOptionGroup extends Component {
             useWrapper={false}
             useTitle={false}
             filterGroupName="district" 
-            filterGroupValue={this.props.districtFilterGroupValue}
+            filterGroupValue={this.props.filters.filter["district"]}
             onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
             {
               this.props.districts.map(function (district) {
@@ -40,8 +40,9 @@ class ScopeFilterOptionGroup extends Component {
   }
 }
 
-function mapStateToProps({ districts }) {
+function mapStateToProps({ filters, districts }) {
   return {
+    filters,
     districts
   };
 }
