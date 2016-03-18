@@ -8,9 +8,12 @@ export default function ({
   created_at,
   category,
   subcategory,
-  scope,
+  scope_,
   district,
-  source
+  source,
+  total_votes,
+  total_comments,
+  voted
 }) {
   return (
     <div className="proposal clear">
@@ -35,7 +38,7 @@ export default function ({
             </div>
             <div className="bottom-bar">
               <div className="item-meta">
-                {renderMetaScope(scope, district)}
+                {renderMetaScope(scope_, district)}
                 <a className="category">
                   <i className={`category-icon category-icon-${category.id}`} />
                   { category.name }
@@ -46,7 +49,7 @@ export default function ({
           </div>
         </div>
         <aside className="small-12 medium-3 column">
-          <ProposalVoteBox />
+          <ProposalVoteBox proposalId={ id } voted={ voted } totalVotes={ total_votes } totalComments={ total_comments } />
         </aside>
       </div>
     </div>

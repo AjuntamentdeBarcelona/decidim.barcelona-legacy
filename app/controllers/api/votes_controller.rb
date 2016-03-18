@@ -1,5 +1,6 @@
 class Api::VotesController < ApplicationController
   skip_authorization_check
+  serialization_scope :view_context
   before_action :authenticate_user!
   before_action :load_proposal
   respond_to :json

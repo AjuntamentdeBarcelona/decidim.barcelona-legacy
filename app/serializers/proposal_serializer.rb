@@ -1,10 +1,11 @@
 class ProposalSerializer < ActiveModel::Serializer
-  attributes :id, :title, :url, :summary, :created_at, :scope, :district, :source
+  attributes :id, :title, :url, :summary, :created_at, :scope_, :district, :source, :total_votes, :total_comments, :voted
 
   has_one :category
   has_one :subcategory
 
-  def scope
+  # Name collision with serialization `scope`
+  def scope_
     object.scope
   end
 
@@ -14,8 +15,12 @@ class ProposalSerializer < ActiveModel::Serializer
     end
   end
 
-  def votes
-    object.total_votes
+  def total_comments
+    object.comments.count
+  end
+
+  def voted
+    scope.current_user && scope.current_user.voted_up_on?(object)
   end
 
   def url

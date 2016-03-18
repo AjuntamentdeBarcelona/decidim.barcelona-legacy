@@ -1,7 +1,8 @@
-export const API_BASE_URL = '/api';
+export const API_BASE_URL    = '/api';
 export const FETCH_PROPOSALS = 'FETCH_PROPOSALS';
+export const VOTE_PROPOSAL   = 'VOTE_PROPOSAL';
 
-export function fetchProposals (options = {}) {
+export function fetchProposals(options = {}) {
   let filterString = [], 
       filters,
       filter,
@@ -34,4 +35,13 @@ export function fetchProposals (options = {}) {
     type: FETCH_PROPOSALS,
     payload: request
   };
+}
+
+export function voteProposal(proposalId) {
+  const request = $.ajax(`${API_BASE_URL}/proposals/${proposalId}/votes.json`, { method: 'POST' });
+
+  return {
+    type: VOTE_PROPOSAL,
+    payload: request
+  }
 }
