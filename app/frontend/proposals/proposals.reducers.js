@@ -1,10 +1,18 @@
-import { combineReducers } from 'redux';
+import { combineReducers }                from 'redux';
 
-import districts           from '../districts/districts.reducers';
-import categories          from '../categories/categories.reducers';
-import filters             from '../filters/filters.reducers';
+import districts                          from '../districts/districts.reducers';
+import categories                         from '../categories/categories.reducers';
+import filters                            from '../filters/filters.reducers';
 
 import { FETCH_PROPOSALS, VOTE_PROPOSAL } from './proposals.actions';
+
+const pagination = function (state = {}, action) {
+  switch (action.type) {
+    case FETCH_PROPOSALS:
+      return action.payload.meta
+  }
+  return state;
+}
 
 const proposals = function (state = [], action) {
   switch (action.type) {
@@ -38,5 +46,6 @@ export default combineReducers({
   districts,
   categories,
   proposals,
-  filters
+  filters,
+  pagination
 });

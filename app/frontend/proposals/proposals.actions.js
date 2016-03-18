@@ -6,9 +6,11 @@ export function fetchProposals(options = {}) {
   let filterString = [], 
       filters,
       filter,
+      page,
       data;
 
   filters = options.filters || {};
+  page    = options.page || 1;
 
   // TODO: worst name ever
   filter = filters.filter;
@@ -26,7 +28,8 @@ export function fetchProposals(options = {}) {
   data = {
     search: filters.text,
     //tag: tags,
-    filter: filterString 
+    filter: filterString,
+    page: page
   }
 
   const request = $.ajax(`${API_BASE_URL}/proposals.json`, { data });

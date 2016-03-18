@@ -8,6 +8,7 @@ import ProposalsSidebar       from './proposals_sidebar.component';
 import ProposalsOrderSelector from './proposals_order_selector.component';
 import NewProposalButton      from './new_proposal_button.component';
 import ProposalsList          from './proposals_list.component';
+import Pagination             from '../application/pagination.component';
 
 import { fetchProposals }     from './proposals.actions';
 
@@ -43,6 +44,10 @@ class Proposals extends Component {
               <NewProposalButton />
             </div>
             <ProposalsList proposals={this.props.proposals} />
+            <Pagination 
+              onSetCurrentPage={(page) => this.props.fetchProposals({ filters: this.props.filters, page })}
+              currentPage={this.props.pagination.current_page} 
+              totalPages={this.props.pagination.total_pages} />
           </div>
         </div>
       </div>
@@ -50,8 +55,8 @@ class Proposals extends Component {
   }
 }
 
-function mapStateToProps({ proposals, filters }) {
-  return { proposals, filters };
+function mapStateToProps({ proposals, filters, pagination }) {
+  return { proposals, filters, pagination };
 }
 
 function mapDispatchToProps(dispatch) {
