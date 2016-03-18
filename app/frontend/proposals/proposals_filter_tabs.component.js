@@ -1,60 +1,39 @@
-import { Component }     from 'react';
+import { Component }          from 'react';
+import { bindActionCreators } from 'redux';
+import { connect }            from 'react-redux';
 
-import FilterOptionGroup from '../filters/filter_option_group.component';
-import FilterOption      from '../filters/filter_option.component';
+import { setFilterGroup }     from '../filters/filters.actions';
 
-export default class ProposalFilterTabs extends Component {
-  constructor(props) {
-    super(props);
+import FilterOptionGroup      from '../filters/filter_option_group.component';
+import FilterOption           from '../filters/filter_option.component';
 
-    //FilterServiceInstance.initState(
-    //  this.props.filter.search_filter,
-    //  this.props.filter.tag_filter,
-    //  this.props.filter.params
-    //);
+const ProposalFilterTabs = ({ 
+  filters,
+  setFilterGroup
+}) => (
+  <div className="proposal-filter-tabs">
+    <FilterOptionGroup 
+      renderAs="tabs"
+      filterGroupName="source" 
+      filterGroupValue={filters.filter["source"]}
+      isExclusive={true}
+      onChangeFilterGroup={(name, value) => setFilterGroup(name, value) }>
+      <FilterOption filterName="official" />
+      <FilterOption filterName="citizenship" />
+      <FilterOption filterName="organization" />
+      <FilterOption filterName="meetings" filterLabel={I18n.t('components.filter_option.from_meetings')} />
+    </FilterOptionGroup>
+  </div>
+);
 
-    //this.state = FilterServiceInstance.state;
-  }
-
-  componentDidMount() {
-    //FilterServiceInstance.subscribe('ProposalFilterTabs', {
-    //  requestUrl: this.props.filterUrl,
-    //  requestDataType: 'script',
-    //  onResultsCallback: (result) => {
-    //    $(document).trigger('loading:hide');
-    //    this.setState(FilterServiceInstance.state);
-    //  }
-    //});
-  }
-
-  componentWillUnmount() {
-    //FilterServiceInstance.unsubscribe('ProposalFilterTabs');
-  }
-
-  render() {
-    return (
-      <div className="proposal-filter-tabs">
-        <FilterOptionGroup 
-          renderAs="tabs"
-          filterGroupName="source" 
-          filterGroupValue={[]}
-          isExclusive={true}
-          onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) }>
-          <FilterOption filterName="official" />
-          <FilterOption filterName="citizenship" />
-          <FilterOption filterName="organization" />
-          <FilterOption filterName="meetings" filterLabel={I18n.t('components.filter_option.from_meetings')} />
-        </FilterOptionGroup>
-      </div>
-    )
-  }
-
-  onChangeFilterGroup(filterGroupName, filterGroupValue) {
-    console.log("Not implemented...yet!");
-    //$(document).trigger('loading:show');
-    //FilterServiceInstance.cleanState({ notify: false });
-    //FilterServiceInstance.changeFilterGroup(filterGroupName, filterGroupValue);
-    //this.setState(FilterServiceInstance.state);
-  }
+function mapStateToProps({ filters }) {
+  return {
+    filters
+  };
 }
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ setFilterGroup }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProposalFilterTabs);
