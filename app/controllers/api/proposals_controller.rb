@@ -2,10 +2,14 @@ class Api::ProposalsController < ApplicationController
   skip_authorization_check
   serialization_scope :view_context
 
+  has_orders %w{random hot_score confidence_score created_at}, only: :index
+
   def index
+    proposals = @current_order == "recommended" ? Recommender.new(current_user).proposals : Proposal.all
+
     @proposals = ResourceFilter.new(params)
-      .filter_collection(Proposal.all)
-      .order(:created_at)
+      .filter_collection(proposals.includes(:category, :subcategory, :author => [:organization]))
+      .send("sort_by_#{@current_order}")
       .page(params[:page])
       .per(15)
 

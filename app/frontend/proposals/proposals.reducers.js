@@ -7,7 +7,8 @@ import filters                            from '../filters/filters.reducers';
 import { 
   FETCH_PROPOSALS, 
   APPEND_PROPOSALS_PAGE, 
-  VOTE_PROPOSAL 
+  VOTE_PROPOSAL,
+  SET_ORDER
 } from './proposals.actions';
 
 const pagination = function (state = {}, action) {
@@ -52,10 +53,19 @@ const proposal = function (state = {}, action) {
   return state;
 }
 
+const order = function (state = "random", action) {
+  switch (action.type) {
+    case SET_ORDER:
+      return action.order;
+  }
+  return state;
+}
+
 export default combineReducers({
   districts,
   categories,
   proposals,
   filters,
+  order,
   pagination
 });

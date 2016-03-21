@@ -25,11 +25,11 @@ class Proposals extends Component {
     this.props.fetchProposals();
   }
 
-  componentWillReceiveProps({ filters }) {
-    if (this.props.filters !== filters) {
+  componentWillReceiveProps({ filters, order }) {
+    if (this.props.filters !== filters || this.props.order !== order) {
       // TODO: update url and stuff
       this.setState({ loading: true });
-      this.props.fetchProposals({ filters });
+      this.props.fetchProposals({ filters, order });
     } else {
       this.setState({ loading: false });
     }
@@ -81,8 +81,8 @@ class Proposals extends Component {
   }
 }
 
-function mapStateToProps({ proposals, filters, pagination }) {
-  return { proposals, filters, pagination };
+function mapStateToProps({ proposals, filters, order, pagination }) {
+  return { proposals, filters, order, pagination };
 }
 
 function mapDispatchToProps(dispatch) {

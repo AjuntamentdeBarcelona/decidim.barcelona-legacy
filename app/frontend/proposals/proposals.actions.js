@@ -4,6 +4,7 @@ export const API_BASE_URL          = '/api';
 export const FETCH_PROPOSALS       = 'FETCH_PROPOSALS';
 export const APPEND_PROPOSALS_PAGE = 'APPEND_PROPOSALS_PAGE';
 export const VOTE_PROPOSAL         = 'VOTE_PROPOSAL';
+export const SET_ORDER             = 'SET_ORDER';
 
 export function fetchProposals(options) {
   return {
@@ -28,15 +29,24 @@ export function voteProposal(proposalId) {
   }
 }
 
+export function setOrder(order) {
+  return {
+    type: SET_ORDER,
+    order
+  }
+}
+
 function buildProposalsRequest(options = {}) {
   let filterString = [], 
       filters,
       filter,
+      order,
       page,
       params;
 
   filters = options.filters || {};
   page    = options.page || 1;
+  order   = options.order;
 
   // TODO: worst name ever
   filter = filters.filter;
@@ -55,7 +65,8 @@ function buildProposalsRequest(options = {}) {
     search: filters.text,
     //tag: tags,
     filter: filterString,
-    page: page
+    page: page,
+    order: order
   }
 
   return axios.get(`${API_BASE_URL}/proposals.json`, { params });
