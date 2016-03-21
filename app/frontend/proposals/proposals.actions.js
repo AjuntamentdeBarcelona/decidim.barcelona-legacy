@@ -1,10 +1,34 @@
 import axios from 'axios';
 
-export const API_BASE_URL    = '/api';
-export const FETCH_PROPOSALS = 'FETCH_PROPOSALS';
-export const VOTE_PROPOSAL   = 'VOTE_PROPOSAL';
+export const API_BASE_URL          = '/api';
+export const FETCH_PROPOSALS       = 'FETCH_PROPOSALS';
+export const APPEND_PROPOSALS_PAGE = 'APPEND_PROPOSALS_PAGE';
+export const VOTE_PROPOSAL         = 'VOTE_PROPOSAL';
 
-export function fetchProposals(options = {}) {
+export function fetchProposals(options) {
+  return {
+    type: FETCH_PROPOSALS,
+    payload: buildProposalsRequest(options)
+  };
+}
+
+export function appendProposalsPage(options) {
+  return {
+    type: APPEND_PROPOSALS_PAGE,
+    payload: buildProposalsRequest(options)
+  }
+}
+
+export function voteProposal(proposalId) {
+  const request = axios.post(`${API_BASE_URL}/proposals/${proposalId}/votes.json`);
+
+  return {
+    type: VOTE_PROPOSAL,
+    payload: request
+  }
+}
+
+function buildProposalsRequest(options = {}) {
   let filterString = [], 
       filters,
       filter,
@@ -34,19 +58,5 @@ export function fetchProposals(options = {}) {
     page: page
   }
 
-  const request = axios.get(`${API_BASE_URL}/proposals.json`, { params });
-
-  return {
-    type: FETCH_PROPOSALS,
-    payload: request
-  };
-}
-
-export function voteProposal(proposalId) {
-  const request = axios.post(`${API_BASE_URL}/proposals/${proposalId}/votes.json`);
-
-  return {
-    type: VOTE_PROPOSAL,
-    payload: request
-  }
+  return axios.get(`${API_BASE_URL}/proposals.json`, { params });
 }

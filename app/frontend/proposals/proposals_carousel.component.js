@@ -12,9 +12,9 @@ export default class ProposalsCarousel extends Carousel {
           { (() => { if(proposal.author_name) {
             return (<span>{ this.trim(proposal.author_name, 15) } - </span>)
           }})()}
-          { I18n.t('proposal_carousel.votes', { votes: proposal.votes }) }
+          { I18n.t('components.proposal_carousel.votes', { votes: proposal.total_votes }) }
         </span>
-        <a className="see-more" href={ proposal.url }>{ I18n.t('proposal_carousel.see_more') }</a>
+        <a className="see-more" href={ proposal.url }>{ I18n.t('components.proposal_carousel.see_more') }</a>
       </div>
     )
   }

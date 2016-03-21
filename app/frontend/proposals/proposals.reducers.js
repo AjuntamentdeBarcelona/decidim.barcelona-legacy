@@ -4,11 +4,16 @@ import districts                          from '../districts/districts.reducers'
 import categories                         from '../categories/categories.reducers';
 import filters                            from '../filters/filters.reducers';
 
-import { FETCH_PROPOSALS, VOTE_PROPOSAL } from './proposals.actions';
+import { 
+  FETCH_PROPOSALS, 
+  APPEND_PROPOSALS_PAGE, 
+  VOTE_PROPOSAL 
+} from './proposals.actions';
 
 const pagination = function (state = {}, action) {
   switch (action.type) {
     case FETCH_PROPOSALS:
+    case APPEND_PROPOSALS_PAGE:
       return action.payload.data.meta
   }
   return state;
@@ -18,6 +23,11 @@ const proposals = function (state = [], action) {
   switch (action.type) {
     case FETCH_PROPOSALS:
       return action.payload.data.proposals
+    case APPEND_PROPOSALS_PAGE:
+      return [
+        ...state,
+        ...action.payload.data.proposals
+      ];
     case VOTE_PROPOSAL:
       return state.map(p => proposal(p, action));
   }

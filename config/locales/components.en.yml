@@ -47,6 +47,8 @@ en:
       clean_filters: Clean filter
     search_filter:
       search_input_placeholder: Search
-  proposal_carousel:
-    see_more: See more
-    votes: "%{votes} supports"
+    proposal_carousel:
+      see_more: See more
+      votes: "%{votes} supports"
+    infinite_pagination:
+      loading_more: Loading more results...
