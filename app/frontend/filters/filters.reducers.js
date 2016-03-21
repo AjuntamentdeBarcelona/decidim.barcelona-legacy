@@ -1,4 +1,4 @@
-import { SET_FILTER_TEXT, SET_FILTER_GROUP } from './filters.actions';
+import { SET_FILTER_TEXT, SET_FILTER_GROUP, CLEAR_FILTERS } from './filters.actions';
 
 export default function (state = getInitialFiltersState(), action) {
   switch(action.type) {
@@ -20,13 +20,19 @@ export default function (state = getInitialFiltersState(), action) {
         ...state,
         filter
       };
+    case CLEAR_FILTERS:
+      return {
+        filter: {},
+        text: ""
+      };
   }
   return state;
 }
 
 function getInitialFiltersState() {
   let filters = {
-        filter: {}
+        filter: {},
+        text: ""
       },
       matchData;
 

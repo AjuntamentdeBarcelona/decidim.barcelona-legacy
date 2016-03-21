@@ -1,5 +1,6 @@
 export const SET_FILTER_TEXT  = 'SET_FILTER_TEXT';
 export const SET_FILTER_GROUP = 'SET_FILTER_GROUP';
+export const CLEAR_FILTERS    = 'CLEAR_FILTERS';
 
 export function setFilterText (text) {
   return {
@@ -13,5 +14,11 @@ export function setFilterGroup (name, value) {
     type: SET_FILTER_GROUP,
     name,
     value
+  }
+}
+
+export function clearFilters () {
+  return {
+    type: CLEAR_FILTERS
   }
 }
