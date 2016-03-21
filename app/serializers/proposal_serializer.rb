@@ -20,7 +20,7 @@ class ProposalSerializer < ActiveModel::Serializer
   end
 
   def voted
-    scope.current_user && scope.current_user.voted_up_on?(object)
+    scope && scope.current_user && scope.current_user.voted_up_on?(object)
   end
 
   def url
