@@ -6,7 +6,7 @@ export default function () {
     <aside className="sidebar" role="complementary">
       <NewProposalButton />
       <div className="sidebar-section proposal-filter-menu collapsed">
-        <h2 className="title">Filter <span className="toggle-menu"></span></h2>
+        <h2 className="title">{I18n.t('proposals.index.filter.title')}<span className="toggle-menu"></span></h2>
         <div className="sidebar-section-content">
           <ProposalsFilters />
         </div>

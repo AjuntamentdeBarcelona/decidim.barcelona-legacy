@@ -1,8 +1,9 @@
 class ProposalSerializer < ActiveModel::Serializer
-  attributes :id, :title, :url, :summary, :created_at, :scope_, :district, :source, :total_votes, :total_comments, :voted
+  attributes :id, :title, :url, :summary, :created_at, :scope_, :district, :source, :total_votes, :total_comments, :voted, :official, :from_meeting
 
   has_one :category
   has_one :subcategory
+  has_one :author
 
   # Name collision with serialization `scope`
   def scope_
