@@ -9,7 +9,7 @@ import { FETCH_PROPOSALS, VOTE_PROPOSAL } from './proposals.actions';
 const pagination = function (state = {}, action) {
   switch (action.type) {
     case FETCH_PROPOSALS:
-      return action.payload.meta
+      return action.payload.data.meta
   }
   return state;
 }
@@ -17,7 +17,7 @@ const pagination = function (state = {}, action) {
 const proposals = function (state = [], action) {
   switch (action.type) {
     case FETCH_PROPOSALS:
-      return action.payload.proposals
+      return action.payload.data.proposals
     case VOTE_PROPOSAL:
       return state.map(p => proposal(p, action));
   }
@@ -27,7 +27,7 @@ const proposals = function (state = [], action) {
 const proposal = function (state = {}, action) {
   switch (action.type) {
     case VOTE_PROPOSAL:
-      let vote = action.payload.vote;
+      let vote = action.payload.data.vote;
 
       if (state.id === vote.votable.id) {
         return {

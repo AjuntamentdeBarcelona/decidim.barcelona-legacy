@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const API_BASE_URL    = '/api';
 export const FETCH_PROPOSALS = 'FETCH_PROPOSALS';
 export const VOTE_PROPOSAL   = 'VOTE_PROPOSAL';
@@ -7,7 +9,7 @@ export function fetchProposals(options = {}) {
       filters,
       filter,
       page,
-      data;
+      params;
 
   filters = options.filters || {};
   page    = options.page || 1;
@@ -25,14 +27,14 @@ export function fetchProposals(options = {}) {
     filterString = filterString.join(':');
   }
 
-  data = {
+  params = {
     search: filters.text,
     //tag: tags,
     filter: filterString,
     page: page
   }
 
-  const request = $.ajax(`${API_BASE_URL}/proposals.json`, { data });
+  const request = axios.get(`${API_BASE_URL}/proposals.json`, { params });
 
   return {
     type: FETCH_PROPOSALS,
@@ -41,7 +43,7 @@ export function fetchProposals(options = {}) {
 }
 
 export function voteProposal(proposalId) {
-  const request = $.ajax(`${API_BASE_URL}/proposals/${proposalId}/votes.json`, { method: 'POST' });
+  const request = axios.post(`${API_BASE_URL}/proposals/${proposalId}/votes.json`);
 
   return {
     type: VOTE_PROPOSAL,
