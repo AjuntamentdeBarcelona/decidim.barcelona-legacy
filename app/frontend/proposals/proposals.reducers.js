@@ -53,7 +53,7 @@ const proposal = function (state = {}, action) {
   return state;
 }
 
-const order = function (state = "random", action) {
+const order = function (state = getInitialOrderState(), action) {
   switch (action.type) {
     case SET_ORDER:
       return action.order;
@@ -69,3 +69,16 @@ export default combineReducers({
   order,
   pagination
 });
+
+function getInitialOrderState() {
+  let order = "random",
+      matchData;
+
+  matchData = location.search.match(/order=([^&]*)/)
+
+  if (matchData) {
+    order = matchData[1];
+  }
+
+  return order;
+}

@@ -11,7 +11,7 @@ class SubcategoryFilterOptionGroup extends Component {
   render() {
     let categoryId = this.props.filters.filter["category_id"] && this.props.filters.filter["category_id"][0];
 
-    if (categoryId) {
+    if (this.props.categories.length > 0 && categoryId) {
       let subcategories = this.props.categories.filter((category) => categoryId === category.id)[0].subcategories;
 
       return (

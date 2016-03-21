@@ -22,12 +22,14 @@ class Proposals extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchProposals();
+    this.props.fetchProposals({
+      filters: this.props.filters,
+      order: this.props.order
+    });
   }
 
   componentWillReceiveProps({ filters, order }) {
     if (this.props.filters !== filters || this.props.order !== order) {
-      // TODO: update url and stuff
       this.setState({ loading: true });
       this.props.fetchProposals({ filters, order });
     } else {

@@ -17,7 +17,7 @@ class ProposalFilters extends Component {
   render() {
     return (
       <form className="proposal-filters">
-        <SearchFilter />
+        <SearchFilter searchText={this.props.filters.text} />
         <ScopeFilterOptionGroup />
         <CategoryFilterOptionGroup />
         <SubcategoryFilterOptionGroup />

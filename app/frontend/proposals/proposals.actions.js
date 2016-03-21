@@ -69,5 +69,38 @@ function buildProposalsRequest(options = {}) {
     order: order
   }
 
+  replaceUrl(params);
+
   return axios.get(`${API_BASE_URL}/proposals.json`, { params });
+}
+
+function replaceUrl(params) {
+  if (window.history) {
+    let queryParams = [],
+        url;
+
+    if (params.search) {
+      queryParams.push(`search=${params.search}`);
+    }
+
+    if (params.tag && params.tag.length > 0) {
+      queryParams.push(`tag=${params.tag}`);
+    }
+
+    if (params.filter.length > 0) {
+      queryParams.push(`filter=${params.filter}`);
+    }
+
+    if (params.order) {
+      queryParams.push(`order=${params.order}`);
+    }
+
+    if (queryParams.length > 0) {
+      url = `${location.href.replace(/\?.*/, "")}?${queryParams.join('&')}`;
+    }
+
+    params.turbolinks = true;
+
+    history.pushState(params, '', url);
+  }
 }
