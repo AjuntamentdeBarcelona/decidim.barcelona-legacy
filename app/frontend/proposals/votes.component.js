@@ -1,3 +1,4 @@
+//TODO: Deprecated when proposals#show use only components
 import { Component } from 'react';
 
 export default class Votes extends Component {

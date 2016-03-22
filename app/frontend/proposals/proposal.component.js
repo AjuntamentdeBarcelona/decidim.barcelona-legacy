@@ -15,6 +15,7 @@ export default function ({
   total_votes,
   total_comments,
   voted,
+  votable,
   official,
   from_meeting,
   author
@@ -45,7 +46,7 @@ export default function ({
           </div>
         </div>
         <aside className="small-12 medium-3 column">
-          <ProposalVoteBox proposalId={ id } voted={ voted } totalVotes={ total_votes } totalComments={ total_comments } />
+          <ProposalVoteBox proposalId={ id } voted={ voted } votable={ votable } totalVotes={ total_votes } totalComments={ total_comments } />
         </aside>
       </div>
     </div>

@@ -1,3 +1,11 @@
 <section role="main">
-  <%= react_component "ProposalsApp" %>
+  <%= 
+    react_component(
+      "ProposalsApp", 
+      session: {
+        signed_in: user_signed_in?,
+        is_organization: current_user && current_user.organization?
+      }
+    )
+  %>
 </section>
