@@ -15,6 +15,20 @@ export default function (state = getInitialFiltersState(), action) {
       if (action.name === 'category_id') {
         filter["subcategory_id"] = []
       }
+      
+      if (!filter["scope"]) {
+        filter["scope"] = [];
+      }
+
+      let idx = filter["scope"].indexOf("district");
+
+      if (filter["district"] && filter["district"].length > 0) {
+        if (idx === -1) {
+          filter["scope"] = [...filter["scope"], "district"];
+        }
+      } else if (idx >= 0) {
+        filter["scope"].splice(idx, 1);
+      }
 
       return {
         ...state,

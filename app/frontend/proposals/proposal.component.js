@@ -1,3 +1,4 @@
+import FilterLink      from '../filters/filter_link.component';
 import ProposalVoteBox from './proposal_vote_box.component';
 
 export default function ({
@@ -37,11 +38,8 @@ export default function ({
             <div className="bottom-bar">
               <div className="item-meta">
                 {renderMetaScope(scope_, district)}
-                <a className="category">
-                  <i className={`category-icon category-icon-${category.id}`} />
-                  { category.name }
-                </a>
-                <a className="subcategory">{ subcategory.name }</a>
+                <FilterLink name="category_id" value={category.id} label={` ${category.name}`} cssClass={`category-icon category-icon-${category.id}`} />
+                <FilterLink name="subcategory_id" value={subcategory.id} label={subcategory.name} />
               </div>
             </div>
           </div>
@@ -57,17 +55,11 @@ export default function ({
 function renderMetaScope(scope, district) {
   if (scope === "city") {
     return (
-      <a>
-        <span className="bcn-icon-localitzacio bcn-icon" />
-        { I18n.t("components.filter_option.city") }
-      </a>
+      <FilterLink name="scope" value="city" cssClass="bcn-icon-localitzacio bcn-icon" label={I18n.t("components.filter_option.city")} />
     );
   }
   return (
-    <a>
-      <span className="bcn-icon-localitzacio bcn-icon" />
-      { district.name }
-    </a>
+    <FilterLink name="district" value={district.id} cssClass="bcn-icon-localitzacio bcn-icon" label={district.name} />
   );
 }
 
