@@ -21,7 +21,7 @@ export default function ({
   author
 }) {
   return (
-    <div className="proposal clear">
+    <div id={`proposal_${id}`} className="proposal clear">
       <div className="row">
         <div className="small-12 medium-9 column">
           <div className="proposal-content">

@@ -33,7 +33,11 @@ config.plugins = [
   new webpack.ResolverPlugin([
     new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('.bower.json', ['main'])
   ]),
-  new ExtractTextPlugin("../stylesheets/bundle.css")
+  new ExtractTextPlugin("../stylesheets/bundle.css"),
+  new webpack.ProvidePlugin({
+    Promise: 'imports?this=>global!exports?global.Promise!es6-promise',
+    fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+  })
 ];
 
 config.module = {
