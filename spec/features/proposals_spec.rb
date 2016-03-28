@@ -10,7 +10,7 @@ feature 'Proposals' do
     Setting['feature.proposal_video_url'] = true
   end
 
-  scenario 'Index' do
+  scenario 'Index', :js do
     proposals = [create(:proposal), create(:proposal), create(:proposal)]
 
     visit proposals_path
@@ -24,34 +24,38 @@ feature 'Proposals' do
     end
   end
 
-  scenario 'Paginated Index' do
-    per_page = 15
-    (per_page + 5).times { create(:proposal) }
+  #TODO: test infinite pagination?
+  #scenario 'Paginated Index', :js do
+  #  per_page = 15
+  #  (per_page + 5).times { create(:proposal) }
 
-    visit proposals_path
+  #  visit proposals_path
 
-    expect(page).to have_selector('#proposals .proposal', count: per_page)
+  #  expect(page).to have_selector('#proposals .proposal', count: per_page)
 
-    within("ul.pagination") do
-      expect(page).to have_content("1")
-      expect(page).to have_content("2")
-      expect(page).to_not have_content("3")
-      click_link "Next", exact: false
-    end
+  #  within("ul.pagination") do
+  #    expect(page).to have_content("1")
+  #    expect(page).to have_content("2")
+  #    expect(page).to_not have_content("3")
+  #    click_link "Next", exact: false
+  #  end
 
-    expect(page).to have_selector('#proposals .proposal', count: 5)
-  end
+  #  expect(page).to have_selector('#proposals .proposal', count: 5)
+  #end
 
   scenario 'Filtered Index', :js do
     proposals = [
-      create(:proposal, title: 'Proposal with city scope 1', scope: 'city'), 
-      create(:proposal, title: 'Proposal with district scope', scope: 'district'), 
+      create(:proposal, title: 'Proposal with city scope 1', scope: 'city'),
+      create(:proposal, title: 'Proposal with district scope', district: 1, scope: 'district'),
       create(:proposal, title: 'Proposal with city scope 2', scope: 'city')
     ]
 
     visit proposals_path
 
     check 'filter_scope_city'
+
+    expect(page).to have_selector('.loading-component')
+    expect(page).to have_selector('#proposals .proposal', count: 2)
 
     expect(page).to have_content 'Proposal with city scope 1'
     expect(page).to have_content 'Proposal with city scope 2'
