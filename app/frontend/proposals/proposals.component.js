@@ -2,13 +2,14 @@ import { Component }                           from 'react';
 import { bindActionCreators }                  from 'redux';
 import { connect }                             from 'react-redux';
 
+import Loading                                 from '../application/loading.component';
+import InfinitePagination                      from '../application/infinite_pagination.component';
 import ProposalsHeader                         from './proposals_header.component';
 import ProposalsFilterTabs                     from './proposals_filter_tabs.component';
 import ProposalsSidebar                        from './proposals_sidebar.component';
 import ProposalsOrderSelector                  from './proposals_order_selector.component';
 import NewProposalButton                       from './new_proposal_button.component';
 import ProposalsList                           from './proposals_list.component';
-import InfinitePagination                      from '../application/infinite_pagination.component';
 
 import { fetchProposals, appendProposalsPage } from './proposals.actions';
 
