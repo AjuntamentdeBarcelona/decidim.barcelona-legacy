@@ -14,6 +14,7 @@ function buildMeetingsRequest(options = {}) {
   let filterString = [], 
       filters,
       filter,
+      tags,
       page,
       params;
 
@@ -22,6 +23,7 @@ function buildMeetingsRequest(options = {}) {
 
   // TODO: worst name ever
   filter = filters.filter;
+  tags = filters.tags;
 
   for (let name in filter) {
     if(filter[name].length > 0) {
@@ -35,7 +37,7 @@ function buildMeetingsRequest(options = {}) {
 
   params = {
     search: filters.text,
-    //tag: tags,
+    tag: tags,
     filter: filterString,
     page: page
   }

@@ -29,13 +29,16 @@ class MeetingsFilters extends Component {
         <ScopeFilterOptionGroup />
         <CategoryFilterOptionGroup />
         <SubcategoryFilterOptionGroup />
+        <TagCloudFilter />
         {this.renderClearFilterLink()}
       </form>
     )
   }
 
   renderClearFilterLink() {
-    if (Object.keys(this.props.filters.filter).length > 0 || this.props.filters.text.length > 0) {
+    if (Object.keys(this.props.filters.filter).length > 0 || 
+        this.props.filters.text.length > 0 ||
+        this.props.filters.tags.length > 0) {
       return (
         <a onClick={() => this.props.clearFilters()}>{I18n.t('components.proposal_filters.clean_filters')}</a>
       )
@@ -55,15 +58,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MeetingsFilters);
-
-//renderTagCloudFilter() {
-//  if (this.props.tagsEnabled) {
-//    return (
-//      <TagCloudFilter 
-//        currentTags={this.state.tags} 
-//        tagCloud={this.props.tagCloud} 
-//        onSetFilterTags={(tags) => this.onSetFilterTags(tags)} />
-//    )
-//  }
-//  return null;
-//}

@@ -26,6 +26,14 @@ const pagination = function (state = {}, action) {
   return state;
 }
 
+const tags = function (state = [], action) {
+  switch (action.type) {
+    case FETCH_MEETINGS:
+      return action.payload.data.meta.tag_cloud
+  }
+  return state;
+}
+
 function createReducers(sessionState) {
   let session = function (state = sessionState, action) {
     return state;
@@ -37,7 +45,8 @@ function createReducers(sessionState) {
     categories,
     meetings,
     filters,
-    pagination
+    pagination,
+    tags
   });
 }
 

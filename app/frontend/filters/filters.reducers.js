@@ -1,6 +1,13 @@
-import { SET_FILTER_TEXT, SET_FILTER_GROUP, CLEAR_FILTERS } from './filters.actions';
+import { 
+  SET_FILTER_TEXT, 
+  SET_FILTER_GROUP, 
+  TOGGLE_TAG, 
+  CLEAR_FILTERS 
+} from './filters.actions';
 
 export default function (state = getInitialFiltersState(), action) {
+  var idx;
+
   switch(action.type) {
     case SET_FILTER_TEXT:
       return {
@@ -20,7 +27,7 @@ export default function (state = getInitialFiltersState(), action) {
         filter["scope"] = [];
       }
 
-      let idx = filter["scope"].indexOf("district");
+      idx = filter["scope"].indexOf("district");
 
       if (filter["district"] && filter["district"].length > 0) {
         if (idx === -1) {
@@ -34,10 +41,29 @@ export default function (state = getInitialFiltersState(), action) {
         ...state,
         filter
       };
+    case TOGGLE_TAG:
+      let tags;
+
+      idx = state.tags.indexOf(action.tag);
+
+      if (idx === -1) {
+        tags = [...state.tags, action.tag];
+      } else {
+        tags = [
+          ...state.tags.slice(0, idx),
+          ...state.tags.slice(idx + 1)
+        ];
+      }
+
+      return {
+        ...state,
+        tags 
+      };
     case CLEAR_FILTERS:
       return {
         filter: {},
-        text: ""
+        text: "",
+        tags: []
       };
   }
   return state;
@@ -46,7 +72,8 @@ export default function (state = getInitialFiltersState(), action) {
 function getInitialFiltersState() {
   let filters = {
         filter: {},
-        text: ""
+        text: "",
+        tags: []
       },
       matchData;
 
@@ -72,6 +99,12 @@ function getInitialFiltersState() {
 
   if (matchData) {
     filters.text = matchData[1];
+  }
+
+  matchData = location.search.match(/tag=([^&]*)/)
+
+  if (matchData) {
+    filters.tags = matchData[1].split(',').map(decodeURI);
   }
 
   return filters;

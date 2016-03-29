@@ -1,40 +1,20 @@
-import { Component } from 'react';
+import { Component }          from 'react';
+import { bindActionCreators } from 'redux';
+import { connect }            from 'react-redux';
 
-export default class TagCloudFilter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tagCloud: this.props.tagCloud, 
-      tags: Immutable.Set(this.props.currentTags)
-    }
-  }
+import { toggleTag }          from './filters.actions';
 
-  componentDidMount() {
-    $(document).on('tags:reload', (event, tagCloud) => this.reloadTagCloud(event, tagCloud));
-  }
-
-  componentWillUnmount() {
-    $(document).off('tags:reload');
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({ tagCloud: nextProps.tagCloud, tags: nextProps.currentTags });
-  }
-
-  reloadTagCloud(event, tagCloud) {
-    this.setState({ tagCloud: JSON.parse(tagCloud) });
-  }
-
+class TagCloudFilter extends Component {
   render() {
     return (
       <div id="tag-cloud" className="tag-cloud">
         {this.renderTitle()}
         {
-          this.state.tagCloud.map((tag) => {
+          this.props.tags.map((tag) => {
           return <a 
-              className={this.state.tags.has(tag.name) ? 'active' : ''}
-              key={tag.id} 
-              onClick={(event) => this.toggleTag(tag.name)}>
+              className={this.props.filters.tags.indexOf(tag.name) !== -1 ? 'active' : ''}
+              onClick={() => this.props.toggleTag(tag.name)}
+              key={tag.id}> 
               {tag.name}&nbsp;
               <span className="info">{tag.count}</span>
             </a>
@@ -44,8 +24,9 @@ export default class TagCloudFilter extends Component {
     );
   }
 
+  
   renderTitle() {
-    if(this.state.tagCloud.length > 0) {
+    if(this.props.tags.length > 0) {
       return (
         <div>
           <h3 className="title">{I18n.t("shared.tags_cloud.tags")}</h3>
@@ -55,14 +36,17 @@ export default class TagCloudFilter extends Component {
     }
     return null;
   }
-
-  toggleTag(tag) {
-    if (this.state.tags.has(tag)) {
-      this.state.tags = this.state.tags.delete(tag);
-    } else {
-      this.state.tags = this.state.tags.add(tag);
-    }
-
-    this.props.onSetFilterTags(this.state.tags);
-  }
 }
+
+function mapStateToProps({ filters, tags }) {
+  return {
+    filters,
+    tags
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ toggleTag }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TagCloudFilter);
