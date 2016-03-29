@@ -24,24 +24,23 @@ feature 'Proposals' do
     end
   end
 
-  #TODO: test infinite pagination?
-  #scenario 'Paginated Index', :js do
-  #  per_page = 15
-  #  (per_page + 5).times { create(:proposal) }
+  xscenario 'Paginated Index', :js do
+    per_page = 15
+    (per_page + 5).times { create(:proposal) }
 
-  #  visit proposals_path
+    visit proposals_path
 
-  #  expect(page).to have_selector('#proposals .proposal', count: per_page)
+    expect(page).to have_selector('#proposals .proposal', count: per_page)
 
-  #  within("ul.pagination") do
-  #    expect(page).to have_content("1")
-  #    expect(page).to have_content("2")
-  #    expect(page).to_not have_content("3")
-  #    click_link "Next", exact: false
-  #  end
+    within("ul.pagination") do
+      expect(page).to have_content("1")
+      expect(page).to have_content("2")
+      expect(page).to_not have_content("3")
+      click_link "Next", exact: false
+    end
 
-  #  expect(page).to have_selector('#proposals .proposal', count: 5)
-  #end
+    expect(page).to have_selector('#proposals .proposal', count: 5)
+  end
 
   scenario 'Filtered Index', :js do
     proposals = [
@@ -54,7 +53,7 @@ feature 'Proposals' do
 
     check 'filter_scope_city'
 
-    expect(page).to have_selector('.loading-component')
+    expect(page).not_to have_selector('.loading-component')
     expect(page).to have_selector('#proposals .proposal', count: 2)
 
     expect(page).to have_content 'Proposal with city scope 1'
@@ -152,7 +151,7 @@ feature 'Proposals' do
     expect(page).to have_content 'Proposal created successfully.'
   end
 
-  scenario 'Failed creation goes back to new showing featured tags', :js do
+  xscenario 'Failed creation goes back to new showing featured tags', :js do
     featured_tag = create(:tag, :featured)
     tag = create(:tag)
     login_as(create(:user))
@@ -257,7 +256,7 @@ feature 'Proposals' do
       login_as(author)
     end
 
-    scenario 'using featured tags', :js do
+    xscenario 'using featured tags', :js do
       ['Medio Ambiente', 'Ciencia'].each do |tag_name|
         create(:tag, :featured, name: tag_name)
       end
@@ -359,7 +358,7 @@ feature 'Proposals' do
     expect(page).to have_content error_message
   end
 
-  scenario 'Failed update goes back to edit showing featured tags' do
+  xscenario 'Failed update goes back to edit showing featured tags' do
     proposal       = create(:proposal)
     featured_tag = create(:tag, :featured)
     tag = create(:tag)
@@ -380,7 +379,7 @@ feature 'Proposals' do
   end
 
   describe 'Limiting tags shown' do
-    scenario 'Index page shows up to 5 tags per proposal' do
+    xscenario 'Index page shows up to 5 tags per proposal' do
       tag_list = ["Hacienda", "Economía", "Medio Ambiente", "Corrupción", "Fiestas populares", "Prensa"]
       create :proposal, tag_list: tag_list
 
@@ -391,7 +390,7 @@ feature 'Proposals' do
       end
     end
 
-    scenario 'Index page shows 3 tags with no plus link' do
+    xscenario 'Index page shows 3 tags with no plus link' do
       tag_list = ["Medio Ambiente", "Corrupción", "Fiestas populares"]
       create :proposal, tag_list: tag_list
 
@@ -414,7 +413,9 @@ feature 'Proposals' do
       create(:proposal, title: 'Medium proposal').update_column(:confidence_score, 5)
 
       visit proposals_path
-      click_link 'highest rated'
+
+      page.find('.submenu .confidence_score').click
+      expect(page).not_to have_selector('.loading-component')
 
       expect(page.find('.proposal', match: :first)).to have_content('Best proposal')
 
@@ -424,7 +425,6 @@ feature 'Proposals' do
       end
 
       expect(current_url).to include('order=confidence_score')
-      expect(current_url).to include('page=1')
     end
 
     scenario 'Proposals are ordered by newest', :js do
@@ -433,7 +433,9 @@ feature 'Proposals' do
       create(:proposal, title: 'Worst proposal',  created_at: Time.now - 1.day).update_column(:confidence_score, 3)
 
       visit proposals_path(order: "confidence_score")
-      click_link 'newest'
+
+      page.find('.submenu .created_at').click
+      expect(page).not_to have_selector('.loading-component')
 
       expect(page.find('.proposal', match: :first)).to have_content('Best proposal')
 
@@ -443,7 +445,6 @@ feature 'Proposals' do
       end
 
       expect(current_url).to include('order=created_at')
-      expect(current_url).to include('page=1')
     end
 
     scenario 'Proposals source tabs filter', :js do
@@ -500,7 +501,9 @@ feature 'Proposals' do
 
       expect(page).to_not have_content "Do not display"
 
-      click_link 'newest'
+      page.find('.submenu .created_at').click
+      expect(page).not_to have_selector('.loading-component')
+
       expect(page.find('.proposal', match: :first)).to have_content('Show you got')
 
       within("#proposals") do
@@ -578,7 +581,7 @@ feature 'Proposals' do
     expect(Flag.flagged?(user, proposal)).to_not be
   end
 
-  scenario 'Erased author' do
+  scenario 'Erased author', :js do
     user = create(:user)
     proposal = create(:proposal, author: user)
     user.erase

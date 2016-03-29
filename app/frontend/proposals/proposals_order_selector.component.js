@@ -8,10 +8,18 @@ const ProposalsOrderSelector = ({
   setOrder 
 }) => (
   <section className="submenu">
-    <a onClick={() => setOrder("random")} className={order === 'random' ? 'active' : ''}>Aleatories</a>
-    <a onClick={() => setOrder("hot_score")} className={order === 'hot_score' ? 'active' : ''}>Més actives avui</a>
-    <a onClick={() => setOrder("confidence_score")} className={order === 'confidence_score' ? 'active' : ''}>Amb més suport</a>
-    <a onClick={() => setOrder("created_at")} className={order === 'created_at' ? 'active' : ''}>Més noves</a>
+    <a onClick={() => setOrder("random")} className={order === 'random' ? 'random active' : 'random'}>
+      { I18n.t('proposals.index.orders.random') }
+    </a>
+    <a onClick={() => setOrder("hot_score")} className={order === 'hot_score' ? 'hot_score active' : 'hot_score'}>
+      { I18n.t('proposals.index.orders.hot_score') }
+    </a>
+    <a onClick={() => setOrder("confidence_score")} className={order === 'confidence_score' ? 'confidence_score active' : 'confidence_score'}>
+      { I18n.t('proposals.index.orders.confidence_score') }
+    </a>
+    <a onClick={() => setOrder("created_at")} className={order === 'created_at' ? 'created_at active' : 'created_at'}>
+      { I18n.t('proposals.index.orders.created_at') }
+    </a>
   </section>
 );
 

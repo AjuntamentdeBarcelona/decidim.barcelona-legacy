@@ -10,7 +10,5 @@
     </div>
   </div>
 
-  <%= cache @meetings.maximum(:updated_at) do %>
-    <%= meetings_directory meetings: @meetings, filter: @filter, tag_cloud: @tag_cloud %>
-  <% end %>
+  <%= react_app("Meetings") %>
 </section>

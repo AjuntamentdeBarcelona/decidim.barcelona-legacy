@@ -1,4 +1,11 @@
 module ComponentsHelper
+  def react_app(name) 
+    react_component("#{name}App", session: {
+      signed_in: user_signed_in?,
+      is_organization: current_user && current_user.organization?
+    })
+  end
+
   def static_map(options={})
     react_component(
       'StaticMap',
