@@ -1,112 +1,67 @@
-import { Component }             from 'react';
+import { Component }                    from 'react';
+import { bindActionCreators }           from 'redux';
+import { connect }                      from 'react-redux';
 
-import SearchFilter              from '../filters/search_filter.component';
-import FilterOptionGroup         from '../filters/filter_option_group.component';
-import FilterOption              from '../filters/filter_option.component';
-import ScopeFilterOptionGroup    from '../filters/scope_filter_option_group.component';
-import CategoryFilterOptionGroup from '../filters/category_filter_option_group.component';
-import TagCloudFilter            from '../filters/tag_cloud_filter.component';
+import { setFilterGroup, clearFilters } from '../filters/filters.actions';
 
-export default class MeetingsFilters extends Component {
-  //constructor(props) {
-  //  super(props);
+import SearchFilter                     from '../filters/search_filter.component';
+import ScopeFilterOptionGroup           from '../filters/scope_filter_option_group.component';
+import CategoryFilterOptionGroup        from '../filters/category_filter_option_group.component';
+import TagCloudFilter                   from '../filters/tag_cloud_filter.component';
 
-  //  FilterServiceInstance.initState(
-  //    this.props.filter.search_filter,
-  //    this.props.filter.tag_filter,
-  //    this.props.filter.params
-  //  );
+import FilterOptionGroup                from '../filters/filter_option_group.component';
+import FilterOption                     from '../filters/filter_option.component';
 
-  //  this.state = FilterServiceInstance.state;
-  //}
-
-  //componentDidMount() {
-  //  FilterServiceInstance.subscribe('MeetingFilters', {
-  //    requestUrl: this.props.filterUrl,
-  //    requestDataType: 'json',
-  //    onResultsCallback: (result) => {
-  //      this.props.onFilterResult(result);
-  //      this.setState(FilterServiceInstance.state);
-  //    }
-  //  });
-  //}
-
-  //componentWillUnmount() {
-  //  FilterServiceInstance.unsubscribe('MeetingFilters');
-  //}
-
+class MeetingsFilters extends Component {
   render() {
     return (
-        <div>In progress</div>
-  //    <form>
-  //      <SearchFilter 
-  //        searchText={this.state.searchText}
-  //        onSetFilterText={ (searchText) => this.onSetFilterText(searchText) } />
-  //      <FilterOptionGroup
-  //        filterGroupName="date"
-  //        filterGroupValue={this.state.filters.get('date')}
-  //        isExclusive={true}
-  //        labelAllKey="upcoming"
-  //        onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) }>
-  //        <FilterOption filterName="past" />
-  //      </FilterOptionGroup>
-  //      <ScopeFilterOptionGroup 
-  //        scopeFilterGroupValue={this.state.filters.get('scope')} 
-  //        districtFilterGroupValue={this.state.filters.get('district')} 
-  //        districts={this.props.districts} 
-  //        onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) } />
-  //      <CategoryFilterOptionGroup
-  //        categories={this.props.categories}
-  //        filterGroupValue={this.state.filters.get('category_id')} 
-  //        onChangeFilterGroup={(filterGroupName, filterGroupValue) => this.onChangeFilterGroup(filterGroupName, filterGroupValue) } />
-  //      {this.renderTagCloudFilter()}
-  //      {this.renderCleanFilterLink()}
-  //    </form>
+      <form className="meeting-filters">
+        <SearchFilter searchText={this.props.filters.text} />
+        <FilterOptionGroup
+          filterGroupName="date"
+          filterGroupValue={this.props.filters.filter['date']}
+          isExclusive={true}
+          labelAllKey="upcoming"
+          onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
+          <FilterOption filterName="past" />
+        </FilterOptionGroup>
+        <ScopeFilterOptionGroup />
+        <CategoryFilterOptionGroup />
+        {this.renderClearFilterLink()}
+      </form>
     )
   }
 
-  //renderTagCloudFilter() {
-  //  if (this.props.tagsEnabled) {
-  //    return (
-  //      <TagCloudFilter 
-  //        currentTags={this.state.tags} 
-  //        tagCloud={this.props.tagCloud} 
-  //        onSetFilterTags={(tags) => this.onSetFilterTags(tags)} />
-  //    )
-  //  }
-  //  return null;
-  //}
-
-  //onChangeFilterGroup(filterGroupName, filterGroupValue) {
-  //  this.props.onLoading();
-  //  FilterServiceInstance.changeFilterGroup(filterGroupName, filterGroupValue);
-  //  this.setState(FilterServiceInstance.state);
-  //}
-
-  //onSetFilterText(searchText) {
-  //  this.props.onLoading();
-  //  FilterServiceInstance.setFilterText(searchText);
-  //  this.setState(FilterServiceInstance.state);
-  //}
-
-  //onSetFilterTags(tags) {
-  //  this.props.onLoading();
-  //  FilterServiceInstance.setFilterTags(tags);
-  //  this.setState(FilterServiceInstance.state);
-  //}
-
-  //cleanFilters() {
-  //  this.props.onLoading();
-  //  FilterServiceInstance.cleanState({ notify: true });
-  //  this.setState(FilterServiceInstance.state);
-  //}
-
-  //renderCleanFilterLink() {
-  //  if ((this.state.searchText && this.state.searchText.length > 0) || this.state.filters.size > 0 || this.state.tags.size > 0) {
-  //    return (
-  //      <a onClick={() => this.cleanFilters()}>{I18n.t('components.meetings_filters.clean_filters')}</a>
-  //    )
-  //  }
-  //  return null;
-  //}
+  renderClearFilterLink() {
+    if (Object.keys(this.props.filters.filter).length > 0 || this.props.filters.text.length > 0) {
+      return (
+        <a onClick={() => this.props.clearFilters()}>{I18n.t('components.proposal_filters.clean_filters')}</a>
+      )
+    }
+    return null;
+  }
 }
+
+function mapStateToProps({ filters }) {
+  return {
+    filters
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ setFilterGroup, clearFilters }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MeetingsFilters);
+
+//renderTagCloudFilter() {
+//  if (this.props.tagsEnabled) {
+//    return (
+//      <TagCloudFilter 
+//        currentTags={this.state.tags} 
+//        tagCloud={this.props.tagCloud} 
+//        onSetFilterTags={(tags) => this.onSetFilterTags(tags)} />
+//    )
+//  }
+//  return null;
+//}

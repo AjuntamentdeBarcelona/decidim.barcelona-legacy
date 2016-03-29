@@ -13,7 +13,7 @@ import TagCloudFilter                   from '../filters/tag_cloud_filter.compon
 import FilterOptionGroup                from '../filters/filter_option_group.component';
 import FilterOption                     from '../filters/filter_option.component';
 
-class ProposalFilters extends Component {
+class ProposalsFilters extends Component {
   render() {
     return (
       <form className="proposal-filters">
@@ -52,7 +52,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ setFilterGroup, clearFilters }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProposalFilters);
+export default connect(mapStateToProps, mapDispatchToProps)(ProposalsFilters);
 
 //renderTagCloudFilter() {
 //  //if (this.props.tagsEnabled) {

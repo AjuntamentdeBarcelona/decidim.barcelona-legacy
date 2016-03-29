@@ -14,10 +14,10 @@ import Meetings          from './meetings.component';
 //  APPEND_PROPOSALS_PAGE,
 //  SET_ORDER
 //}                        from './proposals.actions';
-//import proposals         from './proposals.reducers';
-//import districts         from '../districts/districts.reducers';
-//import categories        from '../categories/categories.reducers';
-//import filters           from '../filters/filters.reducers';
+import meetings         from './meetings.reducers';
+import districts         from '../districts/districts.reducers';
+import categories        from '../categories/categories.reducers';
+import filters           from '../filters/filters.reducers';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
@@ -58,10 +58,10 @@ function createReducers(sessionState) {
 
   return combineReducers({
     session, 
-  //  districts,
-  //  categories,
-  //  proposals,
-  //  filters,
+    districts,
+    categories,
+    meetings,
+    filters,
   //  order,
   //  pagination
   });
