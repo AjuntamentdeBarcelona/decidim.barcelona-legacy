@@ -1,9 +1,12 @@
+import Loading from '../application/loading.component';
 import Meeting from './meeting.component';
 
 export default ({
-  meetings
+  meetings,
+  loading
 }) => (
-  <div className="meetings-list">
+  <div>
+    <Loading show={loading} />
     <ul className="meetings-list-items">
       {
         meetings.map((meeting) => (

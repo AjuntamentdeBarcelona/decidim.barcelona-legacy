@@ -1,6 +1,7 @@
 import { Component } from 'react';
 
 import MeetingTime   from './meeting_time.component';
+import FilterLink    from '../filters/filter_link.component';
 
 export default class Meeting extends Component {
   constructor(props) {
@@ -39,18 +40,15 @@ export default class Meeting extends Component {
 
   renderMeetingCategory() {
     let { meeting } = this.props;
+    let { category, subcategory } = meeting;
+
     if(!meeting.category){ return <div />; }
     var categoryClassNames = `category-icon category-icon-${ meeting.category.id }`;
 
     return (
       <div className="item-meta">
-        <span className="category">
-          <i className={ categoryClassNames }></i>&nbsp;
-          { meeting.category.name }
-        </span>
-        <span className="subcategory">
-          { meeting.subcategory.name }
-        </span>
+        <FilterLink name="category_id" value={category.id} label={` ${category.name}`} cssClass={`category-icon category-icon-${category.id}`} />
+        <FilterLink name="subcategory_id" value={subcategory.id} label={subcategory.name} />
       </div>
     );
   }

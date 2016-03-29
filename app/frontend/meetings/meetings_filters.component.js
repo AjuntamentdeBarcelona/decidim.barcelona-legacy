@@ -7,6 +7,7 @@ import { setFilterGroup, clearFilters } from '../filters/filters.actions';
 import SearchFilter                     from '../filters/search_filter.component';
 import ScopeFilterOptionGroup           from '../filters/scope_filter_option_group.component';
 import CategoryFilterOptionGroup        from '../filters/category_filter_option_group.component';
+import SubcategoryFilterOptionGroup     from '../filters/subcategory_filter_option_group.component';
 import TagCloudFilter                   from '../filters/tag_cloud_filter.component';
 
 import FilterOptionGroup                from '../filters/filter_option_group.component';
@@ -27,6 +28,7 @@ class MeetingsFilters extends Component {
         </FilterOptionGroup>
         <ScopeFilterOptionGroup />
         <CategoryFilterOptionGroup />
+        <SubcategoryFilterOptionGroup />
         {this.renderClearFilterLink()}
       </form>
     )

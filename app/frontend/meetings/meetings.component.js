@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
 
 import Loading                from '../application/loading.component';
+import Pagination             from '../application/pagination.component';
 import MeetingsMap            from './meetings_map.component';
 import MeetingsFilters        from './meetings_filters.component';
 import MeetingsList           from './meetings_list.component';
@@ -44,8 +45,13 @@ class Meetings extends Component {
           </aside>
 
           <div className="meetings-list-container">
-            <Loading show={this.state.loading} />
-            <MeetingsList meetings={this.props.meetings} />
+            <div className="meetings-list">
+              <MeetingsList meetings={this.props.meetings} loading={this.state.loading} />
+              <Pagination 
+                currentPage={this.props.pagination.current_page} 
+                totalPages={this.props.pagination.total_pages} 
+                onSetCurrentPage={(page) => this.props.fetchMeetings({ filters: this.props.filters, page })} />
+            </div>
           </div>
         </div>
       </div>
@@ -53,8 +59,8 @@ class Meetings extends Component {
   }
 }
 
-function mapStateToProps({ meetings, filters }) {
-  return { meetings, filters };
+function mapStateToProps({ meetings, filters, pagination }) {
+  return { meetings, filters, pagination };
 }
 
 function mapDispatchToProps(dispatch) {
