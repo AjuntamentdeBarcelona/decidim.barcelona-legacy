@@ -25,6 +25,8 @@ module Abilities
       can :confirm_hide, Comment
       cannot :confirm_hide, Comment, hidden_at: nil
 
+      can :write_long, Comment
+
       can :confirm_hide, Debate
       cannot :confirm_hide, Debate, hidden_at: nil
 
