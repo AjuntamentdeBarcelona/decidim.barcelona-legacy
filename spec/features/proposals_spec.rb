@@ -19,7 +19,7 @@ feature 'Proposals' do
     proposals.each do |proposal|
       within('#proposals') do
         expect(page).to have_content proposal.title
-        expect(page).to have_css("a[href='#{proposal_path(proposal)}']", text: proposal.title)
+        expect(page).to have_xpath "//a[contains(@href,'#{proposal_path(proposal)}')]"
       end
     end
   end
@@ -61,7 +61,7 @@ feature 'Proposals' do
     expect(page).to_not have_content 'Proposal with district scope'
   end
 
-  scenario 'Show' do
+  scenario 'Show', :js do
     proposal = create(:proposal)
 
     visit proposal_path(proposal)
@@ -73,8 +73,10 @@ feature 'Proposals' do
     expect(page).to have_selector(avatar(proposal.author.name))
     expect(page.html).to include "<title>#{proposal.title}</title>"
 
-    within('.social-share-button') do
-      expect(page.all('a').count).to be(3) # Twitter, Facebook, Google+
+    expect(page).to have_selector('.share-buttons')
+
+    within('.share-buttons') do
+      expect(page.all('div.SocialMediaShareButton').count).to be(3) # Twitter, Facebook, Google+
     end
   end
 
