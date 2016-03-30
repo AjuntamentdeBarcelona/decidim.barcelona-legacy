@@ -9,7 +9,10 @@ import ReduxPromise        from 'redux-promise';
 
 import Meetings            from './meetings.component';
 
-import { FETCH_MEETINGS }  from './meetings.actions';
+import { 
+  FETCH_MEETINGS,
+  APPEND_MEETINGS_PAGE
+}  from './meetings.actions';
 
 import meetings            from './meetings.reducers';
 import districts           from '../districts/districts.reducers';
@@ -21,6 +24,7 @@ const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 const pagination = function (state = {}, action) {
   switch (action.type) {
     case FETCH_MEETINGS:
+    case APPEND_MEETINGS_PAGE:
       return action.payload.data.meta
   }
   return state;

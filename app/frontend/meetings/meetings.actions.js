@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-export const API_BASE_URL   = '/api';
-export const FETCH_MEETINGS = 'FETCH_MEETINGS';
+export const API_BASE_URL         = '/api';
+export const FETCH_MEETINGS       = 'FETCH_MEETINGS';
+export const APPEND_MEETINGS_PAGE = 'APPEND_MEETINGS_PAGE';
 
 export function fetchMeetings(options) {
   return {
@@ -9,6 +10,14 @@ export function fetchMeetings(options) {
     payload: buildMeetingsRequest(options)
   };
 }
+
+export function appendMeetingsPage(options) {
+  return {
+    type: APPEND_MEETINGS_PAGE,
+    payload: buildMeetingsRequest(options)
+  }
+}
+
 
 function buildMeetingsRequest(options = {}) {
   let filterString = [], 
