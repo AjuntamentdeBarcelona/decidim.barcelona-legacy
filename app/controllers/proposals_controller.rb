@@ -13,7 +13,7 @@ class ProposalsController < ApplicationController
              only: :index
 
   load_and_authorize_resource
-  respond_to :html
+  respond_to :html, :js
 
   def index
     respond_to do |format|
