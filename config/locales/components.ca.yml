@@ -33,6 +33,8 @@ ca:
       scope: "Àmbit"
       source: Origen
       subcategory_id: Línia estratègica
+    infinite_pagination:
+      loading_more: Carregant més resultats...
     meeting_proposals_autocomplete_input:
       loading: Carregant...
       no_results: No s'han trobat resultats.
@@ -43,12 +45,10 @@ ca:
       title: Títol
     meetings_filters:
       clean_filters: Netejar filtre
+    proposal_carousel:
+      see_more: Veure més
+      votes: "%{votes} suports"
     proposal_filters:
       clean_filters: Netejar filtre
     search_filter:
       search_input_placeholder: Cercar
-    proposal_carousel:
-      see_more: Veure més
-      votes: "%{votes} suports"
-    infinite_pagination:
-      loading_more: Carregant més resultats...

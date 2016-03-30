@@ -33,6 +33,8 @@ es:
       scope: "Ámbito"
       source: Origen
       subcategory_id: Línea estratégica
+    infinite_pagination:
+      loading_more: Cargando más resultados...
     meeting_proposals_autocomplete_input:
       loading: Cargando...
       no_results: No se han encontrado resultados.
@@ -43,12 +45,10 @@ es:
       title: Título
     meetings_filters:
       clean_filters: Limpiar filtro
+    proposal_carousel:
+      see_more: Ver más
+      votes: "%{votes} soportes"
     proposal_filters:
       clean_filters: Limpiar filtro
     search_filter:
       search_input_placeholder: Buscar
-    proposal_carousel:
-      see_more: Ver más
-      votes: "%{votes} soportes"
-    infinite_pagination:
-      loading_more: Cargando más resultados...
