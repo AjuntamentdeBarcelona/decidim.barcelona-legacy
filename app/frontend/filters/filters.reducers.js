@@ -80,7 +80,7 @@ function getInitialFiltersState() {
   matchData = location.search.match(/filter=([^&]*)/)
 
   if (matchData) {
-    let filterData = matchData[1].split(":");
+    let filterData = decodeURIComponent(matchData[1]).split(":");
 
     filterData.map(function (data) {
       let [name, values] = data.split("=");
