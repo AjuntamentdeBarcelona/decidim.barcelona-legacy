@@ -29,23 +29,4 @@ module ComponentsHelper
       longitude: resource.address_longitude
     ) 
   end
-
-  def serialized_categories
-    CategoryDecorator.decorate_collection(Category.all).map do |category|
-      {
-        id: category.id.to_s,
-        name: category.name
-      }
-    end
-  end
-
-  def serialized_subcategories
-    SubcategoryDecorator.decorate_collection(Subcategory.all).map do |subcategory|
-      {
-        id: subcategory.id.to_s,
-        name: subcategory.name,
-        categoryId: subcategory.category_id.to_s
-      }
-    end
-  end
 end

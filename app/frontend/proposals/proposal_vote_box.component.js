@@ -63,7 +63,15 @@ class ProposalVoteBox extends Component {
   renderShareButtons(title, url) {
       if(this.props.voted) { 
         return (
-          <SocialShareButtons title={title} url={url} />
+          <div>
+            <SocialShareButtons title={title} url={url} />
+            <a 
+              className="whatsapp-share" 
+              href="whatsapp://send?text=#{proposal.title} #{proposal_url(proposal)}" 
+              data-action="share/whatsapp/share">
+              <i className="fa fa-whatsapp" />
+            </a>
+          </div>
         )
       }
       return null;
@@ -114,38 +122,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProposalVoteBox);
-
-//if(this.state.loading) {
-//  return (
-//    <div className="loading-component votes">
-//      <span className="fa fa-spinner fa-spin"></span>
-//    </div>
-//  )
-//} else {
-//}
-              //<div className="social-share-button">
-              //  <a
-              //    rel="nofollow" 
-              //    data-site="twitter" 
-              //    className="social-share-button-twitter" 
-              //    onClick={(event) => { SocialShareButton.share(event.target) }} 
-              //    title="Comparteix a Twitter"/>
-              //  <a
-              //    rel="nofollow" 
-              //    data-site="facebook" 
-              //    className="social-share-button-facebook" 
-              //    onClick={(event) => { SocialShareButton.share(event.target) }} 
-              //    title="Comparteix a Facebook"/>
-              //  <a
-              //    rel="nofollow" 
-              //    data-site="google_plus" 
-              //    className="social-share-button-google_plus" 
-              //    onClick={(event) => { SocialShareButton.share(event.target) }} 
-              //    title="Comparteix a Google+"/>
-              //</div>
-              //<a 
-              //  className="whatsapp-share" 
-              //  href="whatsapp://send?text=#{proposal.title} #{proposal_url(proposal)}" 
-              //  data-action="share/whatsapp/share">
-              //  <i className="fa fa-whatsapp" />
-              //</a>

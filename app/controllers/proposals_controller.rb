@@ -13,40 +13,31 @@ class ProposalsController < ApplicationController
              only: :index
 
   load_and_authorize_resource
-  respond_to :html, :js
+  respond_to :html
 
   def index
-    @filter = ResourceFilter.new(params)
-    proposals = @current_order == "recommended" ? Recommender.new(current_user).proposals : Proposal.all
-
-    proposals = @filter.filter_collection(proposals.includes(:category, :subcategory, :author => [:organization]))
-
-    if Setting["feature.proposal_tags"]
-      @tag_cloud = @filter.tag_cloud(proposals)
-    end
-
-    proposals = proposals.includes(:author)
-
-    if @current_order != "recommended"
-      proposals = proposals.send("sort_by_#{@current_order}")
-    end
-
-    set_resource_votes(proposals)
-
     respond_to do |format|
-      format.any(:html, :js) do
-        ActiveRecord::Base.transaction do
-          set_seed
-          @proposals = proposals.
-                       page(params[:page]).
-                       per(15).
-                       for_render.
-                       all
-        end
-      end
+      format.html
 
       if can?(:download_report, Proposal)
         format.xls do
+          @filter = ResourceFilter.new(params)
+          proposals = @current_order == "recommended" ? Recommender.new(current_user).proposals : Proposal.all
+
+          proposals = @filter.filter_collection(proposals.includes(:category, :subcategory, :author => [:organization]))
+
+          if Setting["feature.proposal_tags"]
+            @tag_cloud = @filter.tag_cloud(proposals)
+          end
+
+          proposals = proposals.includes(:author)
+
+          if @current_order != "recommended"
+            proposals = proposals.send("sort_by_#{@current_order}")
+          end
+
+          set_resource_votes(proposals)
+
           send_data report(proposals), disposition: 'inline', filename: 'proposals.xls'
         end
       end
