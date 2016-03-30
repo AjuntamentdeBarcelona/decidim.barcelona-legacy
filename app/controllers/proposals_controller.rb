@@ -108,9 +108,4 @@ class ProposalsController < ApplicationController
 
       package.to_stream.read
     end
-
-    def set_seed
-      @random_seed = params[:random_seed] ? params[:random_seed].to_f : (rand * 2 - 1)
-      Proposal.connection.execute "select setseed(#{@random_seed})"
-    end
 end

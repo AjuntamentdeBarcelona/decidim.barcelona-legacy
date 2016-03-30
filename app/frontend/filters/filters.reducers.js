@@ -77,7 +77,7 @@ function getInitialFiltersState() {
       },
       matchData;
 
-  matchData = location.search.match(/filter=([^&]*)/)
+  matchData = location.search.match(/filter=([^&]*)/);
 
   if (matchData) {
     let filterData = decodeURIComponent(matchData[1]).split(":");

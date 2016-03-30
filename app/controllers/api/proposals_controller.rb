@@ -5,6 +5,8 @@ class Api::ProposalsController < ApplicationController
   has_orders %w{random hot_score confidence_score created_at}, only: :index
 
   def index
+    set_seed
+
     proposals = @current_order == "recommended" ? Recommender.new(current_user).proposals : Proposal.all
 
     @proposals = ResourceFilter.new(params)
@@ -16,6 +18,7 @@ class Api::ProposalsController < ApplicationController
     respond_to do |format|
       format.json { 
         render json: @proposals, meta: {
+          seed: @random_seed,
           current_page: @proposals.current_page,
           next_page: @proposals.next_page,
           prev_page: @proposals.prev_page,
@@ -24,5 +27,12 @@ class Api::ProposalsController < ApplicationController
         }
       }
     end
+  end
+
+  private
+
+  def set_seed
+    @random_seed = params[:random_seed] ? params[:random_seed].to_f : (rand * 2 - 1)
+    Proposal.connection.execute "select setseed(#{@random_seed})"
   end
 end

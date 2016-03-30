@@ -25,14 +25,19 @@ class Proposals extends Component {
   componentDidMount() {
     this.props.fetchProposals({
       filters: this.props.filters,
-      order: this.props.order
+      order: this.props.order,
+      seed: this.props.seed
     });
   }
 
   componentWillReceiveProps({ filters, order }) {
     if (this.props.filters !== filters || this.props.order !== order) {
       this.setState({ loading: true });
-      this.props.fetchProposals({ filters, order });
+      this.props.fetchProposals({ 
+        filters: filters || this.props.filters, 
+        order: order || this.props.order, 
+        seed: this.props.seed 
+      });
     } else {
       this.setState({ loading: false });
     }
@@ -75,7 +80,9 @@ class Proposals extends Component {
         <InfinitePagination 
           onVisible={() => this.props.appendProposalsPage({ 
             filters: this.props.filters, 
-            page: this.props.pagination.current_page + 1
+            order: this.props.order,
+            page: this.props.pagination.current_page + 1,
+            seed: this.props.seed
           })} /> 
       );
     }
@@ -84,8 +91,8 @@ class Proposals extends Component {
   }
 }
 
-function mapStateToProps({ proposals, filters, order, pagination }) {
-  return { proposals, filters, order, pagination };
+function mapStateToProps({ proposals, filters, order, pagination, seed }) {
+  return { proposals, filters, order, pagination, seed };
 }
 
 function mapDispatchToProps(dispatch) {

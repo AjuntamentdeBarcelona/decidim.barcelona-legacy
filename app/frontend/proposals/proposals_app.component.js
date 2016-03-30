@@ -46,9 +46,45 @@ const pagination = function (state = {}, action) {
   switch (action.type) {
     case FETCH_PROPOSALS:
     case APPEND_PROPOSALS_PAGE:
-      return action.payload.data.meta
+      let { 
+        current_page, 
+        next_page, 
+        prev_page, 
+        total_pages, 
+        total_count 
+      } = action.payload.data.meta;
+
+      return {
+        current_page,
+        next_page,
+        prev_page,
+        total_pages,
+        total_count
+      };
   }
   return state;
+}
+
+const seed = function (state = getInitialSeedState(), action) {
+  switch (action.type) {
+    case FETCH_PROPOSALS:
+    case APPEND_PROPOSALS_PAGE:
+      return action.payload.data.meta.seed;
+  }
+  return state;
+}
+
+function getInitialSeedState() {
+  let seed = null, 
+      matchData;
+
+  matchData = location.search.match(/random_seed=([^&]*)/);
+
+  if (matchData) {
+    seed = matchData[1];
+  }
+
+  return seed;
 }
 
 function createReducers(sessionState) {
@@ -63,7 +99,8 @@ function createReducers(sessionState) {
     proposals,
     filters,
     order,
-    pagination
+    pagination,
+    seed
   });
 }
 
