@@ -46,7 +46,14 @@ export default function ({
           </div>
         </div>
         <aside className="small-12 medium-3 column">
-          <ProposalVoteBox proposalId={ id } voted={ voted } votable={ votable } totalVotes={ total_votes } totalComments={ total_comments } />
+          <ProposalVoteBox 
+            proposalId={ id } 
+            proposalTitle={ title } 
+            proposalUrl={ url } 
+            voted={ voted } 
+            votable={ votable } 
+            totalVotes={ total_votes } 
+            totalComments={ total_comments } />
         </aside>
       </div>
     </div>

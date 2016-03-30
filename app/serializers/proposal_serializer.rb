@@ -29,7 +29,7 @@ class ProposalSerializer < ActiveModel::Serializer
   end
 
   def url
-    proposal_path(object)
+    scope && scope.proposal_url(object)
   end
 
   def created_at

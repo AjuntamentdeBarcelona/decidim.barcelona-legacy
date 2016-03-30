@@ -2,11 +2,14 @@ import { Component }          from 'react';
 import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
 
+import SocialShareButtons     from '../application/social_share_buttons.component';
+
 import { voteProposal }       from './proposals.actions';
 
 class ProposalVoteBox extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       showCantVoteOverlay: false
     };
@@ -30,7 +33,7 @@ class ProposalVoteBox extends Component {
           <div className="in-favor">
             {this.renderVoteButton()}
           </div>
-          {this.renderShare()}
+          {this.renderShareButtons(this.props.proposalTitle, this.props.proposalUrl)}
           {this.renderCantVoteOverlay()}
         </div>
       </div>
@@ -57,39 +60,10 @@ class ProposalVoteBox extends Component {
     }
   }
 
-  renderShare() {
+  renderShareButtons(title, url) {
       if(this.props.voted) { 
         return (
-          <div className="share-supported">
-            <div className="share-buttons">
-              <div className="social-share-button">
-                <a
-                  rel="nofollow" 
-                  data-site="twitter" 
-                  className="social-share-button-twitter" 
-                  onClick={(event) => { SocialShareButton.share(event.target) }} 
-                  title="Comparteix a Twitter"/>
-                <a
-                  rel="nofollow" 
-                  data-site="facebook" 
-                  className="social-share-button-facebook" 
-                  onClick={(event) => { SocialShareButton.share(event.target) }} 
-                  title="Comparteix a Facebook"/>
-                <a
-                  rel="nofollow" 
-                  data-site="google_plus" 
-                  className="social-share-button-google_plus" 
-                  onClick={(event) => { SocialShareButton.share(event.target) }} 
-                  title="Comparteix a Google+"/>
-              </div>
-              <a 
-                className="whatsapp-share" 
-                href="whatsapp://send?text=#{proposal.title} #{proposal_url(proposal)}" 
-                data-action="share/whatsapp/share">
-                <i className="fa fa-whatsapp" />
-              </a>
-            </div>
-          </div>
+          <SocialShareButtons title={title} url={url} />
         )
       }
       return null;
@@ -149,3 +123,29 @@ export default connect(mapStateToProps, mapDispatchToProps)(ProposalVoteBox);
 //  )
 //} else {
 //}
+              //<div className="social-share-button">
+              //  <a
+              //    rel="nofollow" 
+              //    data-site="twitter" 
+              //    className="social-share-button-twitter" 
+              //    onClick={(event) => { SocialShareButton.share(event.target) }} 
+              //    title="Comparteix a Twitter"/>
+              //  <a
+              //    rel="nofollow" 
+              //    data-site="facebook" 
+              //    className="social-share-button-facebook" 
+              //    onClick={(event) => { SocialShareButton.share(event.target) }} 
+              //    title="Comparteix a Facebook"/>
+              //  <a
+              //    rel="nofollow" 
+              //    data-site="google_plus" 
+              //    className="social-share-button-google_plus" 
+              //    onClick={(event) => { SocialShareButton.share(event.target) }} 
+              //    title="Comparteix a Google+"/>
+              //</div>
+              //<a 
+              //  className="whatsapp-share" 
+              //  href="whatsapp://send?text=#{proposal.title} #{proposal_url(proposal)}" 
+              //  data-action="share/whatsapp/share">
+              //  <i className="fa fa-whatsapp" />
+              //</a>
