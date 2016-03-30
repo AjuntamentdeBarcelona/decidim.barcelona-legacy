@@ -4,6 +4,7 @@ require('expose?ReactDOM!react-dom');
 import CookiesWarning             from './application/cookies_warning.component';
 import EmailNotificationsReminder from './application/email_notifications_reminder.component';
 import RichEditor                 from './application/rich_editor.component';
+import SocialShareButtons         from './application/social_share_buttons.component';
 import AutocompleteInputAddress   from './location/autocomplete_input_address.component';
 import CategoryPicker             from './categories/category_picker.component';
 import MeetingProposalsSelector   from './meetings/meeting_proposals_selector.component';
@@ -22,6 +23,7 @@ import Votes                      from './proposals/votes.component'; // Depreca
 window.CookiesWarning             = CookiesWarning;
 window.EmailNotificationsReminder = EmailNotificationsReminder;
 window.RichEditor                 = RichEditor;
+window.SocialShareButtons         = SocialShareButtons;
 window.AutocompleteInputAddress   = AutocompleteInputAddress;
 window.CategoryPicker             = CategoryPicker;
 window.MeetingProposalsSelector   = MeetingProposalsSelector;

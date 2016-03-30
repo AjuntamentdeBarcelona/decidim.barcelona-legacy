@@ -1,6 +1,8 @@
 //TODO: Deprecated when proposals#show use only components
 import { Component } from 'react';
 
+import SocialShareButtons from '../application/social_share_buttons.component';
+
 export default class Votes extends Component {
   constructor(props) {
     super(props);
@@ -34,7 +36,7 @@ export default class Votes extends Component {
           <div className="in-favor">
             {this.renderVoteButton()}
           </div>
-          {this.renderShare()}
+          {this.renderShareButtons()}
           {this.renderCantVoteOverlay()}
         </div>
       </div>
@@ -80,12 +82,12 @@ export default class Votes extends Component {
     return null;
   }
 
-  renderShare() {
+  renderShareButtons() {
       if(this.state.alreadyVoted) { 
+        let { title, url } = this.props.proposal;
+
         return (
-          <div className="share-supported">
-            <div dangerouslySetInnerHTML={{__html: this.props.share_buttons_html }}></div>
-          </div>
+          <SocialShareButtons title={title} url={url} />
         )
       }
       return null;

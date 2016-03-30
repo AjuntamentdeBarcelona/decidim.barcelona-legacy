@@ -84,7 +84,7 @@
       <%= vote_component_for @proposal %>
       <div class="sidebar-divider"></div>
       <h3><%= t("proposals.show.share") %></h3>
-      <%= social_share_button_tag(@proposal.title) %>
+      <%= react_component 'SocialShareButtons', title: @proposal.title, url: proposal_url(@proposal) %>
     </aside>
   </div>
 
