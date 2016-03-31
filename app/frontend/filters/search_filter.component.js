@@ -5,6 +5,14 @@ import { connect }            from 'react-redux';
 import { setFilterText }      from './filters.actions';
 
 class SearchFilter extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      searchText: this.props.searchText
+    };
+  }
+
   render() {
     return (
       <div className="row collapse prefix-radius">
@@ -14,9 +22,9 @@ class SearchFilter extends Component {
         <div className="small-10 large-11 columns">
           <input 
             className="search-filter"
-            value={this.props.searchText}
+            value={this.state.searchText}
             placeholder={I18n.t("components.search_filter.search_input_placeholder")}
-            onChange={(event) => this.props.setFilterText(event.target.value)} 
+            onChange={(event) => this.onChange(event.target.value)} 
             onKeyDown={(event) => this.onKeyDown(event)} />
         </div>
       </div>
@@ -29,6 +37,18 @@ class SearchFilter extends Component {
     if (key === 13) { // Prevent form submission
       event.preventDefault();
     }
+  }
+
+  onChange(searchText) {
+    this.setState({ searchText });
+
+    if (this.timeoutId) {
+      clearTimeout(this.timeoutId);
+    }
+
+    this.timeoutId = setTimeout(() => {
+      this.props.setFilterText(searchText)
+    }, 300);
   }
 
 }

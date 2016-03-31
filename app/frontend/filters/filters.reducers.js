@@ -98,13 +98,13 @@ function getInitialFiltersState() {
   matchData = location.search.match(/search=([^&]*)/)
 
   if (matchData) {
-    filters.text = matchData[1];
+    filters.text = decodeURIComponent(matchData[1]);
   }
 
   matchData = location.search.match(/tag=([^&]*)/)
 
   if (matchData) {
-    filters.tags = matchData[1].split(',').map(decodeURI);
+    filters.tags = decodeURIComponent(matchData[1]).split(',').map(decodeURI);
   }
 
   return filters;
