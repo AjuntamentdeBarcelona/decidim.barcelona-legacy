@@ -63,15 +63,7 @@ class ProposalVoteBox extends Component {
   renderShareButtons(title, url) {
       if(this.props.voted) { 
         return (
-          <div>
-            <SocialShareButtons title={title} url={url} />
-            <a 
-              className="whatsapp-share" 
-              href="whatsapp://send?text=#{proposal.title} #{proposal_url(proposal)}" 
-              data-action="share/whatsapp/share">
-              <i className="fa fa-whatsapp" />
-            </a>
-          </div>
+          <SocialShareButtons title={title} url={url} />
         )
       }
       return null;
