@@ -257,9 +257,12 @@ Rails.application.routes.draw do
   #   end
 
   namespace :api do
+    resources :districts, only: [:index]
+    resources :categories, only: [:index]
     resources :proposals, only: [:index] do
       resources :votes, only: [:create]
     end
+    resources :meetings, only: [:index]
   end
 
   if Rails.env.development?

@@ -1,4 +1,11 @@
 module ComponentsHelper
+  def react_app(name) 
+    react_component("#{name}App", session: {
+      signed_in: user_signed_in?,
+      is_organization: current_user && current_user.organization?
+    })
+  end
+
   def static_map(options={})
     react_component(
       'StaticMap',
@@ -21,24 +28,5 @@ module ComponentsHelper
       longitudeInputName: "#{resource_name}[address_longitude]",
       longitude: resource.address_longitude
     ) 
-  end
-
-  def serialized_categories
-    CategoryDecorator.decorate_collection(Category.all).map do |category|
-      {
-        id: category.id.to_s,
-        name: category.name
-      }
-    end
-  end
-
-  def serialized_subcategories
-    SubcategoryDecorator.decorate_collection(Subcategory.all).map do |subcategory|
-      {
-        id: subcategory.id.to_s,
-        name: subcategory.name,
-        categoryId: subcategory.category_id.to_s
-      }
-    end
   end
 end

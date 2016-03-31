@@ -33,6 +33,8 @@ en:
       scope: Scope
       source: Source
       subcategory_id: Strategic Line
+    infinite_pagination:
+      loading_more: Loading more results...
     meeting_proposals_autocomplete_input:
       loading: Loading...
       no_results: No results.
@@ -43,10 +45,10 @@ en:
       title: Title
     meetings_filters:
       clean_filters: Clean filter
+    proposal_carousel:
+      see_more: See more
+      votes: "%{votes} supports"
     proposal_filters:
       clean_filters: Clean filter
     search_filter:
       search_input_placeholder: Search
-  proposal_carousel:
-    see_more: See more
-    votes: "%{votes} supports"

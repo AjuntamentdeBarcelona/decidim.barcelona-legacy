@@ -1,41 +1,43 @@
 require('expose?React!react');
 require('expose?ReactDOM!react-dom');
 
-import Loading                    from './javascripts/application/loading.component';
-import CookiesWarning             from './javascripts/application/cookies_warning.component';
-import EmailNotificationsReminder from './javascripts/application/email_notifications_reminder.component';
-import RichEditor                 from './javascripts/application/rich_editor.component';
-import StaticMap                  from './javascripts/location/static_map.component';
-import AutocompleteInputAddress   from './javascripts/location/autocomplete_input_address.component';
-import FilterService              from './javascripts/filters/filter.service';
-import CategoryPicker             from './javascripts/categories/category_picker.component';
-import ProposalsCarousel          from './javascripts/proposals/proposals_carousel.component';
-import ProposalFilterTabs         from './javascripts/proposals/proposal_filter_tabs.component';
-import ProposalFilters            from './javascripts/proposals/proposal_filters.component';
-import Votes                      from './javascripts/proposals/votes.component';
-import MeetingsDirectory          from './javascripts/meetings/meetings_directory.component';
-import MeetingsCarousel           from './javascripts/meetings/meetings_carousel.component';
-import MeetingsMap                from './javascripts/meetings/meetings_map.component';
-import MeetingProposalsSelector   from './javascripts/meetings/meeting_proposals_selector.component';
+import CookiesWarning             from './application/cookies_warning.component';
+import EmailNotificationsReminder from './application/email_notifications_reminder.component';
+import RichEditor                 from './application/rich_editor.component';
+import SocialShareButtons         from './application/social_share_buttons.component';
+import AutocompleteInputAddress   from './location/autocomplete_input_address.component';
+import CategoryPicker             from './categories/category_picker.component';
+import MeetingProposalsSelector   from './meetings/meeting_proposals_selector.component';
 import DebateInfoBox              from './javascripts/debates/debate_info_box.component';
 
-window.Loading                    = Loading;
+import StaticMap                  from './location/static_map.component';
+import MeetingsApp                from './meetings/meetings_app.component';
+import MeetingsCarousel           from './meetings/meetings_carousel.component';
+import MeetingsMap                from './meetings/meetings_map.component';
+
+import ProposalsApp               from './proposals/proposals_app.component';
+import ProposalsCarousel          from './proposals/proposals_carousel.component';
+
+import Votes                      from './proposals/votes.component'; // Deprecated
+
 window.CookiesWarning             = CookiesWarning;
 window.EmailNotificationsReminder = EmailNotificationsReminder;
 window.RichEditor                 = RichEditor;
-window.StaticMap                  = StaticMap;
+window.SocialShareButtons         = SocialShareButtons;
 window.AutocompleteInputAddress   = AutocompleteInputAddress;
-window.FilterServiceInstance      = new FilterService();
 window.CategoryPicker             = CategoryPicker;
-window.ProposalsCarousel          = ProposalsCarousel;
-window.ProposalFilterTabs         = ProposalFilterTabs;
-window.ProposalFilters            = ProposalFilters;
-window.Votes                      = Votes;
-window.MeetingsDirectory          = MeetingsDirectory;
-window.MeetingsCarousel           = MeetingsCarousel;
-window.MeetingsMap                = MeetingsMap;
 window.MeetingProposalsSelector   = MeetingProposalsSelector;
 window.DebateInfoBox              = DebateInfoBox;
+
+window.StaticMap                  = StaticMap;
+window.MeetingsApp                = MeetingsApp;
+window.MeetingsCarousel           = MeetingsCarousel;
+window.MeetingsMap                = MeetingsMap;
+
+window.ProposalsApp               = ProposalsApp;
+window.ProposalsCarousel          = ProposalsCarousel;
+
+window.Votes                      = Votes; // Depcrecated
 
 require('quill/dist/quill.snow');
 

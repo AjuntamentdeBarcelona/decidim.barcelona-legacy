@@ -31,6 +31,7 @@ end
 
 Capybara.javascript_driver = :poltergeist
 Capybara.exact = true
+Capybara.default_max_wait_time = 3
 
 Capybara::Screenshot::RSpec.add_link_to_screenshot_for_failed_examples = false
 Capybara::Screenshot.webkit_options = { width: 1024, height: 768 }

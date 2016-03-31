@@ -78,6 +78,7 @@ search:
   exclude:
     - app/assets/images
     - app/assets/fonts
+    - app/assets/*.map
 
   ## Alternatively, the only files or `File.fnmatch patterns` to search in `paths`:
   ## If specified, this settings takes priority over `exclude`, but `exclude` still applies.
@@ -102,6 +103,7 @@ ignore_missing:
   - 'devise.failure.invalid'
   - 'devise.registrations.destroyed'
   - 'date.day_names'
+  - 'officials.level_*'
   - 'time.*'
 
 ## Consider these keys used:

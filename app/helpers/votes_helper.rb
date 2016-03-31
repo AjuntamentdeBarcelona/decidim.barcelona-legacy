@@ -53,6 +53,10 @@ module VotesHelper
       cant_vote_text: cant_vote_text,
       comments_count: resource.comments_count,
       comments_url: namespaced_proposal_path(resource, anchor: "comments"),
-      share_buttons_html: share_button_for(resource)
+      share_buttons_html: share_button_for(resource),
+      proposal: {
+        title: resource.title,
+        url: proposal_url(resource)
+      }
   end
 end
