@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  has_filters %w{proposals debates comments}, only: :show
+  has_filters %w{proposals meetings debates comments}, only: :show
 
   load_and_authorize_resource
 
@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     def set_activity_counts
       @activity_counts = HashWithIndifferentAccess.new(
                           proposals: Proposal.where(author_id: @user.id).count,
+                          meetings: Meeting.where(author_id: @user.id).count,
                           debates: Debate.where(author_id: @user.id).count,
                           comments: Comment.not_as_admin_or_moderator.where(user_id: @user.id).count)
     end
@@ -19,6 +20,7 @@ class UsersController < ApplicationController
       set_activity_counts
       case params[:filter]
       when "proposals" then load_proposals
+      when "meetings" then load_meetings
       when "debates"   then load_debates
       when "comments"  then load_comments
       else load_available_activity
@@ -29,6 +31,9 @@ class UsersController < ApplicationController
       if @activity_counts[:proposals] > 0
         load_proposals
         @current_filter = "proposals"
+      elsif  @activity_counts[:meetings] > 0
+        load_meetings
+        @current_filter = "meetings"
       elsif  @activity_counts[:debates] > 0
         load_debates
         @current_filter = "debates"
@@ -40,6 +45,10 @@ class UsersController < ApplicationController
 
     def load_proposals
       @proposals = Proposal.where(author_id: @user.id).order(created_at: :desc).page(params[:page])
+    end
+
+    def load_meetings
+      @meetings = Meeting.where(author_id: @user.id).order(created_at: :desc).page(params[:page])
     end
 
     def load_debates

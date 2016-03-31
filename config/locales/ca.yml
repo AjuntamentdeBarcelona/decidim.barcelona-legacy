@@ -482,6 +482,9 @@ ca:
         proposals:
           one: 1 Proposta
           other: "%{count} Propostes"
+        meetings:
+          one: 1 Cita presencial
+          other: "%{count} Cites presencials"
       no_activity: Usuari sense activitat pública
       private_activity: Aquest usuari ha decidit mantenir en privat la seva llista d'activitats
   validators:

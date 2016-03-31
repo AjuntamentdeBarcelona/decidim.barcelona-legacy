@@ -1424,5 +1424,10 @@ table {
       content: "h";
       top: 18px;
     }
+
+    &.activity-meetings td:before {
+      content: "g";
+      top: 18px;
+    }
   }
 }
