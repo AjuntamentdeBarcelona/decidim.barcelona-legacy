@@ -33,3 +33,7 @@ test:
         parallel: true
         files:
           - spec/**/*_spec.rb
+    - docker-compose run app npm test:
+        parallel: true
+        files:
+          - app/frontend/**/*.test.js
