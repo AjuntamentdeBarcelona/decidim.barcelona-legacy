@@ -1,6 +1,3 @@
-require('expose?React!react');
-require('expose?ReactDOM!react-dom');
-
 import CookiesWarning             from './application/cookies_warning.component';
 import EmailNotificationsReminder from './application/email_notifications_reminder.component';
 import RichEditor                 from './application/rich_editor.component';

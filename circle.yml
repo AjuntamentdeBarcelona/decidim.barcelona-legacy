@@ -33,3 +33,4 @@ test:
         parallel: true
         files:
           - spec/**/*_spec.rb
+    - docker-compose run app npm test
