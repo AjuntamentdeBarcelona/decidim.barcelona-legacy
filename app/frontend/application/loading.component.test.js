@@ -1,15 +1,15 @@
-import React                      from 'react';
-import { shallow, mount, render } from 'enzyme';
-import Loading                    from './loading.component';
+import React       from 'react';
+import { shallow } from 'enzyme';
+import Loading     from './loading.component';
 
 describe("Loading component", function() {
-  it("should return null if show props is false", function () {
-    expect(shallow(<Loading />).type())
-      .toBe(null);
+  it("should return a blank component if show props is false", function () {
+    const wrapper = shallow(<Loading />)
+    expect(wrapper).to.be.blank();
   });
 
-  it("should return a div with a spinner if show props is true", function () {
-    expect(shallow(<Loading show="true" />).contains(<span className="fa fa-spinner fa-spin" />))
-      .toBe(true);
+  it("should return a span with a spinner if show props is true", function () {
+    const wrapper = shallow(<Loading show="true" />);
+    expect(wrapper.find('span')).to.have.className('fa fa-spinner fa-spin');
   });
 });

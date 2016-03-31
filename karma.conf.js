@@ -6,16 +6,18 @@ module.exports = function(config) {
     basePath: '',
     frameworks: ['jasmine'],
     files: [
-      'app/frontend/**/*.test.js'
+      'app/frontend/entry.test.js'
     ],
 
     preprocessors: {
-      // add webpack as preprocessor
-      'app/frontend/**/*.js': ['webpack', 'sourcemap']
+      'app/frontend/entry.test.js': ['webpack', 'sourcemap']
     },
 
     webpack: { //kind of a copy of your webpack config
       module: {
+        noParse: [
+          /\/sinon\.js/
+        ],
         loaders: [
           { test: /\.coffee$/, loader: 'coffee-loader' },
           {
