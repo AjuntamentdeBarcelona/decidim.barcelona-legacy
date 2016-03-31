@@ -15,8 +15,9 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "imports-loader": "^0.6.5",
     "quill": "^0.20.1",
-    "react": "^0.14.2",
-    "react-dom": "^0.14.2",
+    "react": "^0.14.6",
+    "react-addons-test-utils": "^0.14.6",
+    "react-dom": "^0.14.6",
     "react-quill": "^0.4.1",
     "react-redux": "^4.0.0",
     "react-share": "^1.4.1",
@@ -27,6 +28,23 @@
     "style-loader": "^0.13.0",
     "webpack": "^1.12.14",
     "whatwg-fetch": "^0.11.0"
+  },
+  "devDependencies": {
+    "enzyme": "^2.2.0",
+    "karma": "^0.13.19",
+    "karma-babel-preprocessor": "^6.0.1",
+    "karma-browserify": "^5.0.0",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-jasmine": "^0.3.7",
+    "karma-mocha": "^0.2.1",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^1.7.0",
+    "phantomjs-prebuilt": "^2.1.7"
+  },
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS",
+    "test:watch": "./node_modules/karma/bin/karma start"
   },
   "license": "GPLv3",
   "engines": {
