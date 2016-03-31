@@ -500,6 +500,7 @@ feature 'Proposals' do
       visit proposals_path
 
       find('.proposal-filters .search-filter').set("Show what you got")
+      sleep 1 # Debounce
 
       expect(page).to_not have_content "Do not display"
 
