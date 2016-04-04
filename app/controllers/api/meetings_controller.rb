@@ -1,6 +1,5 @@
-class Api::MeetingsController < ApplicationController
-  skip_authorization_check
-  serialization_scope :view_context
+class Api::MeetingsController < Api::ApplicationController
+  load_and_authorize_resource
 
   def index
     meetings = Meeting.all

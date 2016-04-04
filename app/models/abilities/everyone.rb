@@ -11,6 +11,9 @@ module Abilities
       can :read, Legislation
       can :read, User
       can [:search, :read], Annotation
+      can :read, Category
+      can :read, Subcategory
+      can :read, District
     end
   end
 end

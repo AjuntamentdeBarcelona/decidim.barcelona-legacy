@@ -1,5 +1,5 @@
-class Api::DistrictsController < ApplicationController
-  skip_authorization_check
+class Api::DistrictsController < Api::ApplicationController
+  load_and_authorize_resource
 
   def index
     @districts = District.all.map { |district| [district.name, district.id] }
