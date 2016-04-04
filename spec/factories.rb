@@ -1,10 +1,4 @@
-FactoryGirl.define do  factory :reference do
-    referral_type "MyString"
-referral_id 1
-referenced_type "MyString"
-referenced_id 1
-  end
-
+FactoryGirl.define do  
   sequence(:document_number) { |n| "#{n.to_s.rjust(8, '0')}X" }
 
   factory :user do
@@ -391,4 +385,18 @@ referenced_id 1
   factory :geozone do
     sequence(:name) { |n| "District #{n}" }
   end
+
+  factory :proposal_answer do
+    proposal
+    message "I'm totally agree with that"
+    status "accepted"
+  end
+
+  factory :reference do
+    referral_type "MyString"
+    referral_id 1
+    referenced_type "MyString"
+    referenced_id 1
+  end
+
 end

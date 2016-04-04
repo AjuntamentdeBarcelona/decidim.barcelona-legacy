@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160316100823) do
+ActiveRecord::Schema.define(version: 20160404080535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,12 +30,6 @@ ActiveRecord::Schema.define(version: 20160316100823) do
 
   add_index "activities", ["actionable_id", "actionable_type"], name: "index_activities_on_actionable_id_and_actionable_type", using: :btree
   add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
-
-  create_table "administrators", force: :cascade do |t|
-    t.integer "user_id"
-  end
-
-  add_index "administrators", ["user_id"], name: "index_administrators_on_user_id", using: :btree
 
   create_table "ahoy_events", id: :uuid, default: nil, force: :cascade do |t|
     t.uuid     "visit_id"
@@ -261,12 +255,6 @@ ActiveRecord::Schema.define(version: 20160316100823) do
     t.boolean "consensus"
   end
 
-  create_table "moderators", force: :cascade do |t|
-    t.integer "user_id"
-  end
-
-  add_index "moderators", ["user_id"], name: "index_moderators_on_user_id", using: :btree
-
   create_table "notifications", force: :cascade do |t|
     t.integer "user_id"
     t.integer "notifiable_id"
@@ -286,6 +274,14 @@ ActiveRecord::Schema.define(version: 20160316100823) do
   end
 
   add_index "organizations", ["user_id"], name: "index_organizations_on_user_id", using: :btree
+
+  create_table "proposal_answers", force: :cascade do |t|
+    t.integer  "proposal_id", null: false
+    t.text     "message"
+    t.string   "status",      null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "proposals", force: :cascade do |t|
     t.string   "title",             limit: 250
@@ -351,13 +347,6 @@ ActiveRecord::Schema.define(version: 20160316100823) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
-
-  create_table "settings", force: :cascade do |t|
-    t.string "key"
-    t.string "value"
-  end
-
-  add_index "settings", ["key"], name: "index_settings_on_key", using: :btree
 
   create_table "spending_proposals", force: :cascade do |t|
     t.string   "title"
