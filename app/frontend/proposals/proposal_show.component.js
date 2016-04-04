@@ -11,21 +11,29 @@ class ProposalShow extends Component {
   }
 
   render() {
-    const proposalId = this.props.proposalId;
-    const answer = this.props.proposal.answer;
+    return this.renderAnswerBox();
+  }
 
-    return (
-      <ProposalAnswerBox 
-        answerMessage={answer && answer.message}
-        answerStatus={answer && answer.status}
-        onButtonClick={(answerParams) => this.props.updateAnswer(proposalId, answer, answerParams)} 
-      />
-    );
+  renderAnswerBox() {
+    const { session, proposalId, proposal } = this.props;
+    const { answer } = proposal;
+
+    if (session.is_reviewer) {
+      return (
+        <ProposalAnswerBox 
+          answerMessage={answer && answer.message}
+          answerStatus={answer && answer.status}
+          onButtonClick={(answerParams) => this.props.updateAnswer(proposalId, answer, answerParams)} 
+        />
+      );
+    }
+
+    return null;
   }
 }
 
-function mapStateToProps({ proposal }) {
-  return { proposal };
+function mapStateToProps({ session, proposal }) {
+  return { session, proposal };
 }
 
 function mapDispatchToProps(dispatch) {

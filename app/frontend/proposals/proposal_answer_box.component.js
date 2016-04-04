@@ -6,27 +6,29 @@ export default class ProposalAnswerBox extends Component {
     super(props);
 
     this.state = {
-      message: this.props.answerMessage
+      message: this.props.answerMessage,
+      status: this.props.answerStatus
     };
   }
 
-  componentWillReceiveProps({ answerMessage }) {
-    this.setState({ message: answerMessage });
+  componentWillReceiveProps({ answerMessage, answerStatus }) {
+    this.setState({ 
+      message: answerMessage,
+      status: answerStatus
+    });
   }
 
   render() {
-    const { answerStatus } = this.props;
-
     return (
       <div>
         <h2>Proposal Answer</h2>
 
         <RichEditor 
-          onTextChange={(answerMessage) => this.setState({ message: answerMessage })}
+          onTextChange={(answerMessage) => this.setState({ message: answerMessage, status: null })}
           value={this.state.message} />
 
-        {this.renderButton("accept", "accepted", answerStatus)}
-        {this.renderButton("reject", "rejected", answerStatus)}
+        {this.renderButton("accept", "accepted", this.state.status)}
+        {this.renderButton("reject", "rejected", this.state.status)}
       </div>
     );
   }

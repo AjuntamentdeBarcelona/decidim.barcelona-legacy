@@ -3,12 +3,15 @@ class Api::ProposalAnswersController < Api::ApplicationController
   #before_action :authenticate_user!
 
   def create
-    @answer = @proposal.create_answer(strong_params)
+    @answer = @proposal.build_answer(strong_params)
+    authorize! :create, @answer
+    @answer.save
     set_response
   end
 
   def update
     @answer = @proposal.answer
+    authorize! :update, @answer
     @answer.update_attributes(strong_params)
     set_response
   end
