@@ -1,6 +1,7 @@
 class Api::ApplicationController < ActionController::Base
   serialization_scope :view_context
   check_authorization
+  respond_to :json
 
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|

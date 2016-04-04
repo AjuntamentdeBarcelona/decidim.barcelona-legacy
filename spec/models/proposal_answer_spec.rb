@@ -12,12 +12,11 @@ describe ProposalAnswer do
     expect(proposal_answer).to_not be_valid
   end
 
-  it "should not be valid with a status different of 'accepted', 'rejected or 'pending'" do
+  it "should not be valid with a status different of 'accepted' or 'rejected'" do
     {
       nil => false,
       'accepted' => true,
       'rejected' => true,
-      'pending' => true,
       'completed' => false
     }.each do |status, is_valid|
       proposal_answer.status = status

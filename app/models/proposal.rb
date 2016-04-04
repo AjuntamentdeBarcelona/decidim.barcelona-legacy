@@ -21,7 +21,7 @@ class Proposal < ActiveRecord::Base
   has_many :meeting_proposals
   has_many :meetings, through: :meeting_proposals
   has_many :recommendations
-  has_one  :proposal_answer
+  has_one  :answer, class_name: ProposalAnswer
 
   validates :title, presence: true
   validates :title, :summary, style: true, on: :create

@@ -261,6 +261,7 @@ Rails.application.routes.draw do
     resources :categories, only: [:index]
     resources :proposals, only: [:index] do
       resources :votes, only: [:create]
+      resource :answers, only: [:create, :update], controller: :proposal_answers
     end
     resources :meetings, only: [:index]
   end
