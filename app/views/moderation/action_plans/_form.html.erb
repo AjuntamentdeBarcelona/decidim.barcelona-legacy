@@ -1,0 +1,67 @@
+<%= form_for(@action_plan, url: create_moderation_action_plan_url) do |f| %>
+  <%= render 'shared/errors', resource: @action %>
+
+  <div class="row">
+    <div class="small-12 column">
+      <%= f.label :title, t("meetings.form.meeting_title") %>
+      <%= f.text_field :title, placeholder: t("meetings.form.meeting_title"), label: false %>
+    </div>
+
+    <div class="small-12 column">
+      <%= f.label :description, t("meetings.form.meeting_description") %>
+      <%= f.text_area :description, rows: 4, maxlength: 350, label: false,
+                      placeholder: t('meetings.form.meeting_description') %>
+    </div>
+
+    <div class="small-12 column">
+      <%= f.label :address, t("meetings.form.meeting_address") %>
+      <%= autocomplete_input_address resource: @meeting %>
+    </div>
+
+    <div class="small-12 column">
+      <%= f.label :address_details, t("meetings.form.meeting_address_details") %>
+      <%= f.text_field :address_details, placeholder: t("meetings.form.meeting_address_details"), label: false %>
+    </div>
+
+    <div class="small-12 column">
+      <%= f.label :held_at, t("meetings.form.meeting_held_at") %>
+      <%= f.date_field :held_at, label: false %>
+    </div>
+
+    <div class="small-12 column">
+      <%= f.label :start_at, t("meetings.form.meeting_start_at") %>
+      <%= f.time_field :start_at, label: false %>
+    </div>
+
+    <div class="small-12 column">
+      <%= f.label :end_at, t("meetings.form.meeting_end_at") %>
+      <%= f.time_field :end_at, label: false %>
+    </div>
+
+    <div class="small-12 column">
+      <label><%= t("meetings.form.meeting_proposal_ids")%></label>
+      <%= meeting_proposals_selector proposals: @meeting.proposals %>
+    </div>
+
+    <%= render 'shared/forms/district_fields', f: f, i18n_namespace: 'meetings.form.meeting' %>
+
+    <div class="small-12 column">
+      <%= category_picker(@meeting) %>
+    </div>
+
+    <div class="small-12 column">
+      <%= f.label :tag_list, t("meetings.form.tags_label") %>
+      <p class="note"><%= t("meetings.form.tags_instructions") %></p>
+      <span class="tags">
+        <% @featured_tags.each do |tag| %>
+          <a class="js-add-tag-link"><%= tag.name %></a>
+        <% end %>
+      </span>
+      <%= f.text_field :tag_list, value: @meeting.tag_list.to_s, label: false, placeholder: t("meetings.form.tags_placeholder"), class: 'js-tag-list' %>
+    </div>
+
+    <div class="actions small-12 column">
+      <%= f.submit(class: "button radius", value: t("meetings.#{action_name}.form.submit_button")) %>
+    </div>
+  </div>
+<% end %>

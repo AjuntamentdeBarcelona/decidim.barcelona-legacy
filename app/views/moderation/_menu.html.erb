@@ -48,5 +48,14 @@
         <% end %>
       </li>
     <% end %>
+
+    <% if can? :moderate, ActionPlan %>
+      <li <%= "class=active" if controller_name == "actions" %>>
+        <%= link_to moderation_action_plans_path do %>
+          <i class="icon-document"></i>
+          <%= t("moderation.menu.actions") %>
+        <% end %>
+      </li>
+    <% end %>
   </ul>
 </nav>

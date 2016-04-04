@@ -205,6 +205,8 @@ Rails.application.routes.draw do
       resource :close, controller: 'meetings/close', only: [:new, :create]
       resources :pictures, controller: 'meetings/pictures'
     end
+
+    resources :action_plans, except: [:show]
   end
 
   namespace :revision do

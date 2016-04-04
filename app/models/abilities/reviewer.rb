@@ -3,7 +3,7 @@ module Abilities
     include CanCan::Ability
 
     def initialize(user)
-      self.merge Abilities::Everyone.new(user)
+      self.merge Abilities::Common.new(user)
 
       can :access_panel, :revision
 
@@ -12,6 +12,7 @@ module Abilities
       can :comment, Proposal
 
       can [:read, :create, :update], [ProposalAnswer]
+      can :manage, ActionPlan
     end
   end
 end
