@@ -88,6 +88,12 @@
     </aside>
   </div>
 
+  <div class="row">
+    <div class="small-12 medium-9 column">
+      <%= react_app 'Proposal', proposalId: @proposal.id %>
+    </div>
+  </div>
+
   <% if @proposal.meetings.any? %>
     <div class="row">
       <div class="small-12 medium-9 column">

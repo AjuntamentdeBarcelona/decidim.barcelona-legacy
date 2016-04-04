@@ -7,6 +7,14 @@ import {
 import { Provider }      from 'react-redux';
 import ReduxPromise      from 'redux-promise';
 
+const middlewares = [ReduxPromise];
+
+if (process.env.NODE_ENV === 'development') {
+  const createLogger = require('redux-logger');
+  const logger = createLogger();
+  middlewares.push(logger);
+}
+
 import Proposals         from './proposals.component';
 
 import {
@@ -14,12 +22,12 @@ import {
   APPEND_PROPOSALS_PAGE,
   SET_ORDER
 }                        from './proposals.actions';
-import proposals         from './proposals.reducers';
+import { proposals }     from './proposals.reducers';
 import districts         from '../districts/districts.reducers';
 import categories        from '../categories/categories.reducers';
 import filters           from '../filters/filters.reducers';
 
-const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
+const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
 const order = function (state = getInitialOrderState(), action) {
   switch (action.type) {

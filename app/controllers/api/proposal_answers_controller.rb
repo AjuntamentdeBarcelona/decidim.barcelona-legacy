@@ -3,7 +3,7 @@ class Api::ProposalAnswersController < Api::ApplicationController
   #before_action :authenticate_user!
 
   def create
-    @answer = @proposal.create_proposal_answer(strong_params)
+    @answer = @proposal.create_answer(strong_params)
     set_response
   end
 
@@ -17,7 +17,7 @@ class Api::ProposalAnswersController < Api::ApplicationController
 
   def strong_params
     permitted_params = [:message, :status]
-    params.require(:proposal_answer).permit(permitted_params)
+    params.require(:answer).permit(permitted_params)
   end
 
   def set_response

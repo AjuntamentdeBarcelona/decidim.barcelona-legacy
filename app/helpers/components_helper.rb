@@ -1,9 +1,12 @@
 module ComponentsHelper
-  def react_app(name) 
-    react_component("#{name}App", session: {
-      signed_in: user_signed_in?,
-      is_organization: current_user && current_user.organization?
+  def react_app(name, props = {}) 
+    props.merge!({
+      session: {
+        signed_in: user_signed_in?,
+        is_organization: current_user && current_user.organization?
+      }
     })
+    react_component("#{name}App", props)
   end
 
   def static_map(options={})

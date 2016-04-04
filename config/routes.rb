@@ -259,7 +259,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :districts, only: [:index]
     resources :categories, only: [:index]
-    resources :proposals, only: [:index] do
+    resources :proposals, only: [:show, :index] do
       resources :votes, only: [:create]
       resource :answers, only: [:create, :update], controller: :proposal_answers
     end

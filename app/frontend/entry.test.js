@@ -1,7 +1,7 @@
 // ---------------------------------------
 // Test Environment Setup
 // ---------------------------------------
-import sinon from 'sinon'
+import sinon from 'sinon/pkg/sinon';
 import chai from 'chai'
 import sinonChai from 'sinon-chai'
 import chaiAsPromised from 'chai-as-promised'
@@ -19,5 +19,10 @@ global.should = chai.should()
 // ---------------------------------------
 // Require Tests
 // ---------------------------------------
-const testsContext = require.context('./application/', true, /\.test\.js$/);
-testsContext.keys().forEach(testsContext)
+let testsContext;
+
+testsContext = require.context('./application/', true, /\.test\.js$/);
+testsContext.keys().forEach(testsContext);
+
+testsContext = require.context('./proposals/', true, /\.test\.js$/);
+testsContext.keys().forEach(testsContext);

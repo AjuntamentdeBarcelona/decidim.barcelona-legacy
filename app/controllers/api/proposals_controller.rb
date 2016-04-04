@@ -30,6 +30,10 @@ class Api::ProposalsController < Api::ApplicationController
     end
   end
 
+  def show
+    render json: @proposal
+  end
+
   private
 
   def set_seed

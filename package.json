@@ -24,6 +24,7 @@
     "react-slick": "^0.11.1",
     "react-visibility-sensor": "^3.0.0",
     "redux": "^3.0.4",
+    "redux-logger": "^2.6.1",
     "redux-promise": "^0.5.3",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.14",
@@ -41,8 +42,10 @@
     "karma-chrome-launcher": "^0.2.2",
     "karma-jasmine": "^0.3.7",
     "karma-phantomjs-launcher": "^1.0.0",
+    "karma-sinon-chai": "^1.2.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.7.0",
+    "lolex": "^1.4.0",
     "phantomjs-prebuilt": "^2.1.7",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0"
