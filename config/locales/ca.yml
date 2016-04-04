@@ -479,12 +479,12 @@ ca:
         debates:
           one: 1 Debat
           other: "%{count} Debats"
-        proposals:
-          one: 1 Proposta
-          other: "%{count} Propostes"
         meetings:
           one: 1 Cita presencial
           other: "%{count} Cites presencials"
+        proposals:
+          one: 1 Proposta
+          other: "%{count} Propostes"
       no_activity: Usuari sense activitat pública
       private_activity: Aquest usuari ha decidit mantenir en privat la seva llista d'activitats
   validators:

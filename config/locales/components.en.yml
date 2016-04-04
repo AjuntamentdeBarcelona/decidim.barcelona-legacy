@@ -45,6 +45,10 @@ en:
       title: Title
     meetings_filters:
       clean_filters: Clean filter
+    proposal_answer_box:
+      accept: Validate
+      reject: Reject
+      title: Proposal answer
     proposal_carousel:
       see_more: See more
       votes: "%{votes} supports"
