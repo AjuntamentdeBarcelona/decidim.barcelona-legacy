@@ -1,5 +1,5 @@
 class ResourceFilter
-  IGNORE_FILTER_PARAMS = ["source", "other", "date"]
+  IGNORE_FILTER_PARAMS = ["source", "other", "date", "reviewer_status"]
   attr_reader :search_filter, :tag_filter, :params
 
   def initialize(params={}, options = {})
@@ -93,6 +93,14 @@ class ResourceFilter
 
     if @params["source"] && @params["source"].include?("citizenship")
       collection = collection.where(official: false)
+    end
+
+    if @params["reviewer_status"]
+      if params["reviewer_status"].include? "reviewed"
+        collection = collection.reviewed
+      else
+        collection = collection.not_reviewed
+      end
     end
 
     collection

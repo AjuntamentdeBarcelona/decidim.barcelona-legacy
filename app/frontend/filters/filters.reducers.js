@@ -87,7 +87,7 @@ function getInitialFiltersState() {
 
       values = values.split(",");
 
-      if (name !== "scope" && name !== "other" && name !== "source") {
+      if (name !== "scope" && name !== "other" && name !== "source" && name !== 'reviewer_status') {
         values = values.map((x) => parseInt(x, 10));
       }
 

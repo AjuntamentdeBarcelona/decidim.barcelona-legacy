@@ -21,15 +21,18 @@ en:
       district: A district
       from_meetings: Meetings
       meetings: Meetings
+      not_reviewed: Not reviewed
       official: Town Hall
       organization: Organizations
       past: Past
+      reviewed: Reviewed
       upcoming: Upcoming
     filter_option_group:
       category_id: Axis
       date: Date
       district: District
       other: Other
+      reviewer_status: Revision status
       scope: Scope
       source: Source
       subcategory_id: Strategic Line

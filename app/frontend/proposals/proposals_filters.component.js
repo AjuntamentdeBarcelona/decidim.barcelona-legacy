@@ -9,6 +9,7 @@ import ScopeFilterOptionGroup           from '../filters/scope_filter_option_gro
 import CategoryFilterOptionGroup        from '../filters/category_filter_option_group.component';
 import SubcategoryFilterOptionGroup     from '../filters/subcategory_filter_option_group.component';
 import TagCloudFilter                   from '../filters/tag_cloud_filter.component';
+import ReviewerFilter                   from '../filters/reviewer_filter.component';
 
 import FilterOptionGroup                from '../filters/filter_option_group.component';
 import FilterOption                     from '../filters/filter_option.component';
@@ -18,6 +19,7 @@ class ProposalsFilters extends Component {
     return (
       <form className="proposal-filters">
         <SearchFilter searchText={this.props.filters.text} />
+        <ReviewerFilter />
         <ScopeFilterOptionGroup />
         <CategoryFilterOptionGroup />
         <SubcategoryFilterOptionGroup />
