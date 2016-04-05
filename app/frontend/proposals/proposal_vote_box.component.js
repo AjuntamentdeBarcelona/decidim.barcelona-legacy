@@ -31,7 +31,7 @@ class ProposalVoteBox extends Component {
             </div>
           </div>
           <div className="in-favor">
-            {this.renderVoteButton()}
+            {this.renderVoteButton(this.props.proposalTitle, this.props.proposalUrl)}
           </div>
           {this.renderShareButtons(this.props.proposalTitle, this.props.proposalUrl)}
           {this.renderCantVoteOverlay()}
@@ -40,7 +40,7 @@ class ProposalVoteBox extends Component {
     )
   }
 
-  renderVoteButton() {
+  renderVoteButton(title, url) {
     if(this.props.voted) { 
       return (
         <div className="supported">
@@ -49,7 +49,7 @@ class ProposalVoteBox extends Component {
       )
     } else {
       if (this.props.hideButton) {
-        return null;
+        return <SocialShareButtons title={title} url={url} />
       } else {
         return (
           <button 

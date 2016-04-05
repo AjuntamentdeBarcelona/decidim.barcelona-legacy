@@ -1,5 +1,6 @@
 import FilterLink      from '../filters/filter_link.component';
 import ProposalVoteBox from './proposal_vote_box.component';
+import ProposalBadge   from './proposal_badge.component';
 
 export default function ({
   id,
@@ -26,7 +27,7 @@ export default function ({
       <div className="row">
         <div className="small-12 medium-9 column">
           <div className="proposal-content">
-            <span className={`proposal-badge ${source}-badge`}></span>
+            <ProposalBadge source={source} />
             <span className="label-proposal">{ I18n.t('proposals.proposal.proposal') }</span>
             <h3><a href={url}>{ title }</a></h3>
             <p className="proposal-info">
