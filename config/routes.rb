@@ -207,6 +207,12 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :revision do
+    root to: "proposals#index"
+
+    resources :proposals, only: [:index, :show]
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

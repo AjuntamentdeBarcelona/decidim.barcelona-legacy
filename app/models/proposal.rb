@@ -44,6 +44,7 @@ class Proposal < ActiveRecord::Base
   scope :sort_by_hot_score ,       -> { reorder(hot_score: :desc) }
   scope :sort_by_confidence_score, -> { reorder(confidence_score: :desc) }
   scope :sort_by_created_at,       -> { reorder(created_at: :desc) }
+  scope :sort_by_created_at_asc,   -> { reorder(created_at: :asc) }
   scope :sort_by_most_commented,   -> { reorder(comments_count: :desc) }
   scope :sort_by_random,           -> { reorder("RANDOM()") }
   scope :sort_by_relevance ,       -> { all }
@@ -150,6 +151,14 @@ class Proposal < ActiveRecord::Base
 
   def district_object
     @district_object ||= District.find(district) if district
+  end
+
+  def self.reviewed
+    joins(:answer).where("proposal_answers.proposal_id = proposals.id")
+  end
+
+  def self.not_reviewed
+    where.not(id: reviewed) 
   end
 
   protected
