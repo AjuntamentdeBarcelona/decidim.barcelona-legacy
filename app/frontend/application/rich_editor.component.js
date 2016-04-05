@@ -31,8 +31,16 @@ export default class RichEditor extends Component {
 
   }
 
+  componentWillReceiveProps({ value }) {
+    this.setState({ value });
+  }
+
   onTextChange(value) {
     this.setState({ value });
+
+    if (this.props.onTextChange && this.props.value !== value) {
+      this.props.onTextChange(value);
+    }
   }
 
   render() {

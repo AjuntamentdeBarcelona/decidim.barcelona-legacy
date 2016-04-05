@@ -45,6 +45,11 @@ es:
       title: Título
     meetings_filters:
       clean_filters: Limpiar filtro
+    proposal_answer_box:
+      accept: Validar
+      message_label: Nota / motivo
+      reject: Rebutjar
+      title: Resposta de la proposta
     proposal_carousel:
       see_more: Ver más
       votes: "%{votes} soportes"

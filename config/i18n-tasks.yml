@@ -24,6 +24,7 @@ data:
     - config/locales/%{locale}.yml
     - config/locales/admin.%{locale}.yml
     - config/locales/moderation.%{locale}.yml
+    - config/locales/revision.%{locale}.yml
     - config/locales/management.%{locale}.yml
     - config/locales/verification.%{locale}.yml
     - config/locales/mailers.%{locale}.yml
@@ -149,6 +150,7 @@ ignore_unused:
   - 'components.filter_option.{city,district,official,citizenship,meetings,organization,all,past,upcoming}'
   - 'components.filter_option_group.{category_id,district,scope,subcategory_id,other,source,date}'
   - 'recaptcha.*'
+  - 'components.proposal_answer_box.*'
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'

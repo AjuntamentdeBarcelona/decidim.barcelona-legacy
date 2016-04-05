@@ -1,0 +1,9 @@
+---
+es:
+  revision:
+    dashboard:
+      index:
+        title: Revisión
+    menu:
+      proposals: Propuestas
+

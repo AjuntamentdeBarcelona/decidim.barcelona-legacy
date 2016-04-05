@@ -13,6 +13,7 @@ import MeetingsCarousel           from './meetings/meetings_carousel.component';
 import MeetingsMap                from './meetings/meetings_map.component';
 
 import ProposalsApp               from './proposals/proposals_app.component';
+import ProposalApp                from './proposals/proposal_app.component';
 import ProposalsCarousel          from './proposals/proposals_carousel.component';
 
 import Votes                      from './proposals/votes.component'; // Deprecated
@@ -32,6 +33,7 @@ window.MeetingsCarousel           = MeetingsCarousel;
 window.MeetingsMap                = MeetingsMap;
 
 window.ProposalsApp               = ProposalsApp;
+window.ProposalApp                = ProposalApp;
 window.ProposalsCarousel          = ProposalsCarousel;
 
 window.Votes                      = Votes; // Depcrecated

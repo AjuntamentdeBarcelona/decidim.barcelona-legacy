@@ -1,10 +1,12 @@
 import { 
   FETCH_PROPOSALS, 
+  FETCH_PROPOSAL, 
   APPEND_PROPOSALS_PAGE, 
-  VOTE_PROPOSAL 
+  VOTE_PROPOSAL,
+  UPDATE_ANSWER
 } from './proposals.actions';
 
-export default function (state = [], action) {
+export const proposals = function (state = [], action) {
   switch (action.type) {
     case FETCH_PROPOSALS:
       return action.payload.data.proposals
@@ -19,8 +21,20 @@ export default function (state = [], action) {
   return state;
 }
 
-const proposal = function (state = {}, action) {
+export const proposal = function (state = {}, action) {
   switch (action.type) {
+    case FETCH_PROPOSAL:
+      return action.payload.data.proposal;
+    case UPDATE_ANSWER:
+      let answer = action.payload.data.proposal_answer;
+
+      if (state.id === answer.proposal_id) {
+        return {
+          ...state,
+          answer
+        };
+      }
+      return state;
     case VOTE_PROPOSAL:
       let vote = action.payload.data.vote;
 
@@ -30,9 +44,8 @@ const proposal = function (state = {}, action) {
           total_votes: state.total_votes + 1,
           voted: true
         };
-      } else {
-        return state;
       }
+      return state;
   }
   return state;
 }

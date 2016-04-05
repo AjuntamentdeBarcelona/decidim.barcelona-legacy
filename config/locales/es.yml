@@ -198,6 +198,7 @@ es:
         other: Tienes %{count} notificaciones nuevas
       no_notifications: No tienes notificaciones nuevas
       proposals: Propuestas
+      revision: Revisar
       spending_proposals: Presupuestos ciudadanos
   legislation:
     help:
@@ -483,12 +484,12 @@ es:
         debates:
           one: 1 Debate
           other: "%{count} Debates"
-        proposals:
-          one: 1 Propuesta
-          other: "%{count} Propuestas"
         meetings:
           one: 1 Cita presencial
           other: "%{count} Citas presenciales"
+        proposals:
+          one: 1 Propuesta
+          other: "%{count} Propuestas"
       no_activity: Usuario sin actividad pública
       private_activity: Este usuario ha decidido mantener en privado su lista de actividades
   validators:

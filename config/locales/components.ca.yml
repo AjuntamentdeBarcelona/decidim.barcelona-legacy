@@ -45,6 +45,11 @@ ca:
       title: Títol
     meetings_filters:
       clean_filters: Netejar filtre
+    proposal_answer_box:
+      accept: Validar
+      message_label: Nota / motiu
+      reject: Rebutjar
+      title: Resposta de la proposta
     proposal_carousel:
       see_more: Veure més
       votes: "%{votes} suports"

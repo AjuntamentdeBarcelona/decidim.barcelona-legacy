@@ -198,6 +198,7 @@ en:
         other: You have %{count} new notifications
       no_notifications: You don't have new notifications
       proposals: Proposals
+      revision: Review
       spending_proposals: Spending proposals
   legislation:
     help:
@@ -483,12 +484,12 @@ en:
         debates:
           one: 1 Debate
           other: "%{count} Debates"
-        proposals:
-          one: 1 Proposal
-          other: "%{count} Proposals"
         meetings:
           one: 1 Presencial meeting
           other: "%{count} Presencial meetings"
+        proposals:
+          one: 1 Proposal
+          other: "%{count} Proposals"
       no_activity: User has no public activity
       private_activity: This user decided to keep the activity list private
   validators:

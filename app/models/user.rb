@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  ROLES = %w{administrator moderator dynamizer}
+  ROLES = %w{administrator moderator dynamizer reviewer}
 
   include Verification
   include PgSearch
@@ -44,6 +44,7 @@ class User < ActiveRecord::Base
 
   scope :administrators, -> { where.contains(roles: ['administrator']) }
   scope :moderators,     -> { where.contains(roles: ['moderator']) }
+  scope :reviewer,       -> { where.contains(roles: ['reviewer']) }
   scope :dynamizers,     -> { where.contains(roles: ['dynamizer']) }
   scope :organizations,  -> { joins(:organization) }
   scope :officials,      -> { where("official_level > 0") }
@@ -108,6 +109,10 @@ class User < ActiveRecord::Base
 
   def moderator?
     roles.include?('moderator')
+  end
+
+  def reviewer?
+    roles.include?('reviewer')
   end
 
   def organization?

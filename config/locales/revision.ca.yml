@@ -1,0 +1,9 @@
+---
+ca:
+  revision:
+    dashboard:
+      index:
+        title: Revisió
+    menu:
+      proposals: Propostes
+

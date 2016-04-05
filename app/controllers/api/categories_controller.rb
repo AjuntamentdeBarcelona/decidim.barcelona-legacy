@@ -1,5 +1,5 @@
-class Api::CategoriesController < ApplicationController
-  skip_authorization_check
+class Api::CategoriesController < Api::ApplicationController
+  load_and_authorize_resource
 
   def index
     @categories = Category.all

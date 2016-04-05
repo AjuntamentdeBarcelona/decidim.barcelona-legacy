@@ -1,6 +1,7 @@
-class Api::ProposalsController < ApplicationController
-  skip_authorization_check
-  serialization_scope :view_context
+class Api::ProposalsController < Api::ApplicationController
+  include HasOrders
+
+  load_and_authorize_resource
 
   has_orders %w{random hot_score confidence_score created_at}, only: :index
 
@@ -27,6 +28,10 @@ class Api::ProposalsController < ApplicationController
         }
       }
     end
+  end
+
+  def show
+    render json: @proposal
   end
 
   private

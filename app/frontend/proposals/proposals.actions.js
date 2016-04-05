@@ -2,9 +2,11 @@ import axios from 'axios';
 
 export const API_BASE_URL          = '/api';
 export const FETCH_PROPOSALS       = 'FETCH_PROPOSALS';
+export const FETCH_PROPOSAL        = 'FETCH_PROPOSAL';
 export const APPEND_PROPOSALS_PAGE = 'APPEND_PROPOSALS_PAGE';
 export const VOTE_PROPOSAL         = 'VOTE_PROPOSAL';
 export const SET_ORDER             = 'SET_ORDER';
+export const UPDATE_ANSWER         = 'UPDATE_ANSWER';
 
 export function fetchProposals(options) {
   return {
@@ -13,11 +15,20 @@ export function fetchProposals(options) {
   };
 }
 
+export function fetchProposal(proposalId) {
+  const request = axios.get(`${API_BASE_URL}/proposals/${proposalId}.json`);
+
+  return {
+    type: FETCH_PROPOSAL,
+    payload: request
+  };
+}
+
 export function appendProposalsPage(options) {
   return {
     type: APPEND_PROPOSALS_PAGE,
     payload: buildProposalsRequest(options)
-  }
+  };
 }
 
 export function voteProposal(proposalId) {
@@ -26,14 +37,26 @@ export function voteProposal(proposalId) {
   return {
     type: VOTE_PROPOSAL,
     payload: request
-  }
+  };
 }
 
 export function setOrder(order) {
   return {
     type: SET_ORDER,
     order
-  }
+  };
+}
+
+export function updateAnswer(proposalId, answer, answerParams) {
+  const method  = answer ? 'patch' : 'post';
+  const request = axios[method](`${API_BASE_URL}/proposals/${proposalId}/answers.json`, {
+    answer: answerParams
+  });
+
+  return {
+    type: UPDATE_ANSWER,
+    payload: request
+  };
 }
 
 function buildProposalsRequest(options = {}) {

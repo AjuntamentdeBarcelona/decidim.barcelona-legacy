@@ -10,7 +10,7 @@
 
 <section class="proposal-show" data-timestamp="<%= @proposal.created_at.to_i %>">
   <div id="<%= dom_id(@proposal) %>" class="row">
-    <div class="small-12 medium-9 column">
+    <div class="small-12 medium-12 column">
       <i class="icon-angle-left left"></i>&nbsp;
       <%= link_to t("proposals.show.back_link"), :back, class: 'left back' %>
 
@@ -41,9 +41,6 @@
         <% end %>
 
         <%= l @proposal.created_at.to_date %>
-        <span class="bullet">&nbsp;&bull;&nbsp;</span>
-        <i class="icon-comments"></i>&nbsp;
-        <%= link_to t("proposals.show.comments", count: @proposal.comments_count), "#comments" %>
         <span class="bullet">&nbsp;&bull;&nbsp;</span>
         <span class="js-flag-actions">
           <%= render 'proposals/flag_actions', proposal: @proposal %>
@@ -77,40 +74,11 @@
         <%= render 'proposals/actions', proposal: @proposal %>
       </div>
     </div>
-
-    <aside class="small-12 medium-3 column">
-      <div class="sidebar-divider"></div>
-      <h3><%= t("votes.supports") %></h3>
-      <%= vote_component_for @proposal %>
-      <div class="sidebar-divider"></div>
-      <h3><%= t("proposals.show.share") %></h3>
-      <%= react_component 'SocialShareButtons', title: @proposal.title, url: proposal_url(@proposal) %>
-    </aside>
   </div>
 
   <div class="row">
-    <div class="small-12 medium-9 column">
+    <div class="small-12 medium-12 column">
       <%= react_app 'Proposal', proposalId: @proposal.id %>
     </div>
   </div>
-
-  <% if @proposal.meetings.any? %>
-    <div class="row">
-      <div class="small-12 medium-9 column">
-        <h2><%= t("proposals.show.meetings_title") %></h2>
-        <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
-          <% @proposal.meeting_proposals.each do |meeting_proposal| %>
-              <li class="meeting">
-                <div class="date"><%= l meeting_proposal.meeting.held_at %></div>
-                <div class="title"><%= link_to meeting_proposal.meeting.title, meeting_proposal.meeting %></div>
-                <% if meeting_proposal.meeting.closed? && meeting_proposal.consensus %>
-                  <div class="support"><%= t("meetings.close.form.proposals.consensus") %></div>
-                <% end %>
-              </li>
-          <% end %>
-        </ul>
-      </ul>
-    </div>
-  </section>
-<% end %>
-<%= render "proposals/comments" %>
+</section>
