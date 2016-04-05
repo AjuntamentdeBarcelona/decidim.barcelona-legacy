@@ -21,15 +21,18 @@ ca:
       district: Un districte
       from_meetings: Cites presencials
       meetings: Debatudes a cites presencials
+      not_reviewed: No revisades
       official: Ajuntament
       organization: Organitzacions
       past: Passades
+      reviewed: Revisades
       upcoming: Properes
     filter_option_group:
       category_id: Eix
       date: Data
       district: Districte
       other: Altres
+      reviewer_status: Estat de la revisió
       scope: "Àmbit"
       source: Origen
       subcategory_id: Línia estratègica

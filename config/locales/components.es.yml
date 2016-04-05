@@ -21,15 +21,18 @@ es:
       district: Un distrito
       from_meetings: Citas presenciales
       meetings: Debatidas en citas presenciales
+      not_reviewed: No revisadas
       official: Ayuntamiento
       organization: Organizaciones
       past: Pasadas
+      reviewed: Revisadas
       upcoming: Próximas
     filter_option_group:
       category_id: Eje
       date: Fecha
       district: Distrito
       other: Otros
+      reviewer_status: Estado de la revisión
       scope: "Ámbito"
       source: Origen
       subcategory_id: Línea estratégica
