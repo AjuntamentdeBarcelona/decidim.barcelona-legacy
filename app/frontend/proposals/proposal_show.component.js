@@ -5,6 +5,7 @@ import { bindActionCreators }          from 'redux';
 import { fetchProposal, updateAnswer } from './proposals.actions';
 
 import ProposalAnswerBox               from './proposal_answer_box.component';
+import CategoryPicker                  from '../categories/new_category_picker.component';
 import Loading                         from '../application/loading.component';
 
 class ProposalShow extends Component {
@@ -25,7 +26,13 @@ class ProposalShow extends Component {
   }
 
   render() {
-    return this.renderAnswerBox();
+    return (
+      <div>
+        <Loading show={this.state.loading} />
+        {this.renderAnswerBox()}
+        <CategoryPicker />
+      </div>
+    );
   }
 
   renderAnswerBox() {
@@ -34,14 +41,11 @@ class ProposalShow extends Component {
 
     if (session.is_reviewer) {
       return (
-        <div>
-          <Loading show={this.state.loading} />
-          <ProposalAnswerBox 
-            answerMessage={answer && answer.message}
-            answerStatus={answer && answer.status}
-            onButtonClick={(answerParams) => this.props.updateAnswer(proposalId, answer, answerParams)} 
-          />
-        </div>
+        <ProposalAnswerBox 
+          answerMessage={answer && answer.message}
+          answerStatus={answer && answer.status}
+          onButtonClick={(answerParams) => this.props.updateAnswer(proposalId, answer, answerParams)} 
+        />
       );
     }
 
