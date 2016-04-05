@@ -15,6 +15,7 @@ export default function ({
   total_votes,
   total_comments,
   voted,
+  closed,
   votable,
   official,
   from_meeting,
@@ -47,6 +48,7 @@ export default function ({
         </div>
         <aside id={`proposal_${id}_votes`} className="small-12 medium-3 column">
           <ProposalVoteBox 
+            hideButton={ closed }
             proposalId={ id } 
             proposalTitle={ title } 
             proposalUrl={ url } 

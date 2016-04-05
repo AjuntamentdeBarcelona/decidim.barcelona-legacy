@@ -1,5 +1,6 @@
 class ProposalSerializer < ActiveModel::Serializer
-  attributes :id, :title, :url, :summary, :created_at, :scope_, :district, :source, :total_votes, :total_comments, :voted, :votable, :official, :from_meeting
+  attributes :id, :title, :url, :summary, :created_at, :scope_, :district, :source, 
+    :total_votes, :total_comments, :voted, :votable, :closed, :official, :from_meeting
 
   has_one :category
   has_one :subcategory
@@ -31,6 +32,12 @@ class ProposalSerializer < ActiveModel::Serializer
 
   def url
     scope && scope.proposal_url(object)
+  end
+
+  def closed
+    Time.now > Time.now - 1.hour
+    #TODO: correct time
+    #Time.now > Setting[:proposal_closing_time]
   end
 
   def created_at

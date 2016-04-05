@@ -48,15 +48,19 @@ class ProposalVoteBox extends Component {
         </div>
       )
     } else {
-      return (
-        <button 
-          className="button button-support tiny radius expand" 
-          title={I18n.t('proposals.proposal.support_title')}
-          onClick={() => { this.props.voteProposal(this.props.proposalId) }}
-          onMouseEnter={() => { this.setState({ showCantVoteOverlay: true }) }}>
-          {I18n.t("proposals.proposal.support")}
-        </button>
-      )
+      if (this.props.hideButton) {
+        return null;
+      } else {
+        return (
+          <button 
+            className="button button-support tiny radius expand" 
+            title={I18n.t('proposals.proposal.support_title')}
+            onClick={() => { this.props.voteProposal(this.props.proposalId) }}
+            onMouseEnter={() => { this.setState({ showCantVoteOverlay: true }) }}>
+            {I18n.t("proposals.proposal.support")}
+          </button>
+        )
+      }
     }
   }
 
