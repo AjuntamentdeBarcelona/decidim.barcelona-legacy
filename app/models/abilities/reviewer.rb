@@ -8,6 +8,7 @@ module Abilities
       can :access_panel, :revision
 
       can :moderate, Proposal
+      can :update, Proposal
 
       can [:read, :create, :update], [ProposalAnswer]
     end

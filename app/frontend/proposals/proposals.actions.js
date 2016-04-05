@@ -3,6 +3,7 @@ import axios from 'axios';
 export const API_BASE_URL          = '/api';
 export const FETCH_PROPOSALS       = 'FETCH_PROPOSALS';
 export const FETCH_PROPOSAL        = 'FETCH_PROPOSAL';
+export const UPDATE_PROPOSAL       = 'UPDATE_PROPOSAL';
 export const APPEND_PROPOSALS_PAGE = 'APPEND_PROPOSALS_PAGE';
 export const VOTE_PROPOSAL         = 'VOTE_PROPOSAL';
 export const SET_ORDER             = 'SET_ORDER';
@@ -20,6 +21,15 @@ export function fetchProposal(proposalId) {
 
   return {
     type: FETCH_PROPOSAL,
+    payload: request
+  };
+}
+
+export function updateProposal(proposalId, proposalParams) {
+  const request = axios.patch(`${API_BASE_URL}/proposals/${proposalId}.json`, { proposal: proposalParams });
+
+  return {
+    type: UPDATE_PROPOSAL,
     payload: request
   };
 }

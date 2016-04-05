@@ -1,6 +1,7 @@
 class Api::ProposalsController < Api::ApplicationController
   include HasOrders
 
+  before_action :authenticate_user!, only: [:update]
   load_and_authorize_resource
 
   has_orders %w{random hot_score confidence_score created_at}, only: :index
@@ -34,7 +35,18 @@ class Api::ProposalsController < Api::ApplicationController
     render json: @proposal
   end
 
+  def update
+    @proposal.assign_attributes(strong_params)
+    @proposal.save
+    render json: @proposal
+  end
+
   private
+
+  def strong_params
+    permitted_params = [:scope, :district, :category_id, :subcategory_id]
+    params.require(:proposal).permit(permitted_params)
+  end
 
   def set_seed
     @random_seed = params[:random_seed] ? params[:random_seed].to_f : (rand * 2 - 1)

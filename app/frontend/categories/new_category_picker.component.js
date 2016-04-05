@@ -1,20 +1,21 @@
-import { Component }     from 'react';
+import { Component }          from 'react';
+import { bindActionCreators } from 'redux';
+import { connect }            from 'react-redux';
 
-//import SubcategoryPicker from './subcategory_picker.component';
+import { updateProposal }     from '../proposals/proposals.actions';
+
+import SubcategoryPicker      from './new_subcategory_picker.component';
 
 class CategoryPicker extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      //selectedCategoryId: props.selectedCategoryId,
-      //selectedSubcategoryId: props.selectedSubcategoryId,
-      //subcategories: props.subcategories.sort( () => Math.round(Math.random())-0.5 )
-    }
-  }
-
   render () {
-    var category = this.props.categories.map(category => this.renderRow(category));
+    const { categories, proposal } = this.props;
+    const subcategories = (categories.length > 0 && proposal.category) ? categories
+      .filter(category => {
+        return proposal && category.id === proposal.category.id
+      })[0]
+      .subcategories : [];
+
+    var category = categories.map(category => this.renderRow(category));
 
     return (
       <div>
@@ -22,22 +23,17 @@ class CategoryPicker extends Component {
           <label>{I18n.t("components.category_picker.category.label")}</label>
           <ul>{category}</ul>
         </div>
-
-        {this.actionLinePicker()}
-
-        <input type="hidden"
-               name={this.props.categoryInputName}
-               value={this.state.selectedCategoryId} />
-
-        <input type="hidden"
-               name={this.props.subcategoryInputName}
-               value={this.state.selectedSubcategoryId} />
+        <SubcategoryPicker 
+          subcategories={subcategories} 
+          onSelect={subcategory => this.selectSubcategory(subcategory)} />
       </div>
     );
   }
 
   renderRow (category) {
-    var selected = this.state.selectedCategoryId === category.id;
+    const { proposal } = this.props;
+
+    var selected = proposal.category && proposal.category.id === category.id;
     var name = category.name;
 
     var classNames = ['category-' + category.id];
@@ -56,26 +52,37 @@ class CategoryPicker extends Component {
     );
   }
 
-  actionLinePicker() {
-    if(this.state.selectedCategoryId){
-      return (
-        <SubcategoryPicker
-            categoryId={this.state.selectedCategoryId}
-            subcategories={this.state.subcategories}
-            selectedId={this.state.selectedSubcategoryId}
-            onSelect={ (actionLine) => this.setState({selectedSubcategoryId: actionLine.id}) }
-        />
-      );
-    }
+  selectCategory(selectedCategory ){
+    const { categories, proposal } = this.props;
+
+    const subcategories = categories
+      .filter(category => {
+        return category.id === selectedCategory.id
+      })[0]
+      .subcategories;
+
+    this.props.updateProposal(proposal.id, {
+      category_id: selectedCategory.id,
+      subcategory_id: subcategories[0].id
+    });
   }
 
-  selectCategory(category){
-    var state = {selectedCategoryId: category.id};
+  selectSubcategory(subcategory){
+    const { proposal } = this.props;
 
-    if(this.state.selectedCategoryId !== category.id){
-      state = {...state, selectedSubcategoryId: null };
-    }
 
-    this.setState(state);
+    this.props.updateProposal(proposal.id, {
+      subcategory_id: subcategory.id
+    });
   }
 }
+
+function mapStateToProps({ categories, proposal }) {
+  return { categories, proposal };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ updateProposal }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryPicker);
