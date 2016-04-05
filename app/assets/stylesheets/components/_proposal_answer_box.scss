@@ -2,6 +2,8 @@
   button{
     border: 1px solid transparent;
     background-color: $highlight;
+    margin-right: rem-calc(10);
+    margin-top: rem-calc(10);
   }
 
   button.accept{
