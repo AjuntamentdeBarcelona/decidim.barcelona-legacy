@@ -1,9 +1,28 @@
 .proposal-answer-box{
+  button{
+    border: 1px solid transparent;
+    background-color: $highlight;
+  }
+
   button.accept{
+    color: green;
+    border-color: green;
+  }
+
+  button.reject{
+    color: $delete;
+    border-color: $delete;
+  }
+
+  button.selected{
+    color: $text-inverse;
+  }
+
+  button.accept.selected{
     background-color: green;
   }
 
-  .selected{
-    text-decoration: underline;
+  button.reject.selected{
+    background-color: $delete;
   }
 }
