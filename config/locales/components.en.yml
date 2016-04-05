@@ -47,6 +47,7 @@ en:
       clean_filters: Clean filter
     proposal_answer_box:
       accept: Validate
+      message_label: Note / reason
       reject: Reject
       title: Proposal answer
     proposal_carousel:

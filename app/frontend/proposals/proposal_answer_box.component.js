@@ -20,16 +20,17 @@ export default class ProposalAnswerBox extends Component {
 
   render() {
     return (
-      <div className="proposal-answer-box">
+      <form className="proposal-answer-box">
         <h2>{ I18n.t("components.proposal_answer_box.title") }</h2>
 
+        <label>{ I18n.t("components.proposal_answer_box.message_label") }</label>
         <RichEditor 
           onTextChange={(answerMessage) => this.setState({ message: answerMessage, status: null })}
           value={this.state.message} />
 
         {this.renderButton("accept", "accepted", this.state.status)}
         {this.renderButton("reject", "rejected", this.state.status)}
-      </div>
+      </form>
     );
   }
 
