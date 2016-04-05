@@ -198,6 +198,7 @@ es:
         other: Tienes %{count} notificaciones nuevas
       no_notifications: No tienes notificaciones nuevas
       proposals: Propuestas
+      revision: Revisar
       spending_proposals: Presupuestos ciudadanos
   legislation:
     help:

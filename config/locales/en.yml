@@ -198,6 +198,7 @@ en:
         other: You have %{count} new notifications
       no_notifications: You don't have new notifications
       proposals: Proposals
+      revision: Review
       spending_proposals: Spending proposals
   legislation:
     help:

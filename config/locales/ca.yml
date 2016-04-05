@@ -198,6 +198,7 @@ ca:
         other: Tens %{count} notificacions noves
       no_notifications: No tens notificacions noves
       proposals: Propostes
+      revision: Revisar
       spending_proposals: Pressupostos ciutadans
   legislation:
     help:
