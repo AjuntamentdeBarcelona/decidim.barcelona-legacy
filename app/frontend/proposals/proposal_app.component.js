@@ -10,6 +10,7 @@ import ReduxPromise      from 'redux-promise';
 import { proposal }      from './proposals.reducers';
 import categories        from '../categories/categories.reducers';
 import districts         from '../districts/districts.reducers';
+import filters           from '../filters/filters.reducers';
 
 import ProposalShow      from './proposal_show.component';
 
@@ -31,7 +32,8 @@ function createReducers(sessionState) {
     session,
     proposal,
     categories,
-    districts
+    districts,
+    filters
   });
 }
 

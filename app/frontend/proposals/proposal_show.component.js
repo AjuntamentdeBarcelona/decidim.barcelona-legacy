@@ -6,11 +6,17 @@ import { fetchProposal, updateAnswer } from './proposals.actions';
 import { fetchCategories }             from '../categories/categories.actions';
 import { fetchDistricts }              from '../districts/districts.actions';
 
-import ProposalAnswerBox               from './proposal_answer_box.component';
-import CategoryPicker                  from '../categories/new_category_picker.component';
-import ScopePicker                     from './scope_picker.component';
 import Loading                         from '../application/loading.component';
+import SocialShareButtons              from '../application/social_share_buttons.component';
+
+import CategoryPicker                  from '../categories/new_category_picker.component';
+
+import ProposalAnswerBox               from './proposal_answer_box.component';
 import ProposalBadge                   from './proposal_badge.component';
+import ProposalInfo                    from './proposal_info.component';
+import ProposalMeta                    from './proposal_meta.component';
+import ProposalVoteBox                 from './proposal_vote_box.component';
+import ScopePicker                     from './scope_picker.component';
 
 class ProposalShow extends Component {
   constructor(props) {
@@ -25,11 +31,8 @@ class ProposalShow extends Component {
     const { session } = this.props;
 
     this.props.fetchProposal(this.props.proposalId);
-
-    if (session.is_reviewer) {
-      this.props.fetchCategories();
-      this.props.fetchDistricts();
-    }
+    this.props.fetchCategories();
+    this.props.fetchDistricts();
   }
 
   componentWillReceiveProps() {
@@ -37,33 +40,96 @@ class ProposalShow extends Component {
   }
 
   render() {
-    const { proposalId, proposal } = this.props;
-    const { url, title, source } = proposal;
-
     return (
-      <div id={`proposal_${proposalId}`}>
+      <div>
         <Loading show={this.state.loading} />
-        <div className="small-12 medium-9 column">
-          <i className="icon-angle-left left"></i>&nbsp;
-          <a className="left back">{I18n.t('proposals.show.back_link')}</a>
-
-          <h2>
-            <a href={url}>
-              {title}
-              <ProposalBadge source={source} />
-            </a>
-          </h2>
-
-        </div>
-
-        {this.renderReviewBox()}
+        {this.renderProposal()}
       </div>
     );
   }
 
+  renderProposal() {
+    const { proposal } = this.props;
+
+    if (proposal.id) {
+      const { 
+        id,
+        url, 
+        title, 
+        source, 
+        created_at, 
+        official, 
+        from_meeting, 
+        author,
+        summary,
+        closed,
+        voted,
+        votable,
+        total_votes,
+        total_comments,
+        scope_,
+        district,
+        category,
+        subcategory
+      } = proposal;
+
+      return (
+        <div className="row" id={`proposal_${proposal.id}`}>
+          <div className="small-12 medium-9 column">
+            <i className="icon-angle-left left"></i>&nbsp;
+
+            <a className="left back" href="/proposals">
+              {I18n.t('proposals.show.back_link')}
+            </a>
+
+            <h2>
+              <a href={url}>{title}<ProposalBadge source={source} /></a>
+            </h2>
+
+            <ProposalInfo 
+              created_at={ created_at }
+              official={ official }
+              from_meeting={ from_meeting }
+              author={ author }/>
+
+            <div className="proposal-description">{ summary }</div>
+
+            <ProposalMeta 
+              scope={ scope_ }
+              district={ district }
+              category={ category }
+              subcategory={ subcategory } />
+
+            {this.renderReviewBox()}
+          </div>
+
+          <aside className="small-12 medium-3 column">
+            <div className="sidebar-divider"></div>
+            <h3>{ I18n.t("votes.supports") }</h3>
+            <ProposalVoteBox 
+              hideButton={ closed }
+              proposalId={ proposal.id } 
+              proposalTitle={ title } 
+              proposalUrl={ url } 
+              voted={ voted } 
+              votable={ votable } 
+              totalVotes={ total_votes } 
+              totalComments={ total_comments } />
+            <div className="sidebar-divider"></div>
+            <h3>{ I18n.t("proposals.show.share") }</h3>
+            <SocialShareButtons 
+              title={ title }
+              url={ url }/>
+          </aside>
+        </div>
+      );
+    }
+    return null;
+  }
+
   renderReviewBox() {
-    const { session, proposalId, proposal } = this.props;
-    const { answer } = proposal;
+    const { session, proposal } = this.props;
+    const { id, answer } = proposal;
 
     if (session.is_reviewer) {
       return (
@@ -74,26 +140,11 @@ class ProposalShow extends Component {
           <ProposalAnswerBox 
             answerMessage={answer && answer.message}
             answerStatus={answer && answer.status}
-            onButtonClick={(answerParams) => this.props.updateAnswer(proposalId, answer, answerParams)} 
+            onButtonClick={(answerParams) => this.props.updateAnswer(proposal.id, answer, answerParams)} 
           />
         </div>
       );
     }
-
-    return null;
-  }
-
-  renderAnswerBox() {
-    const { proposalId, proposal } = this.props;
-    const { answer } = proposal;
-
-    return (
-      <ProposalAnswerBox 
-        answerMessage={answer && answer.message}
-        answerStatus={answer && answer.status}
-        onButtonClick={(answerParams) => this.props.updateAnswer(proposalId, answer, answerParams)} 
-      />
-    );
 
     return null;
   }

@@ -9,11 +9,7 @@
 
 
 <section class="proposal-show" data-timestamp="<%= @proposal.created_at.to_i %>">
-  <div class="row">
-    <div class="small-12 medium-9 column">
-      <%= react_app 'Proposal', proposalId: @proposal.id %>
-    </div>
-  </div>
+  <%= react_app 'Proposal', proposalId: @proposal.id %>
 
 
   <%= render partial: 'closing_alert' %>
