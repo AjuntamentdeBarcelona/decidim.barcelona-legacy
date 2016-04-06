@@ -4,12 +4,8 @@ class Api::VotesController < Api::ApplicationController
 
   def create
     authorize! :vote, @proposal
-    unless @proposal.closed
-      @proposal.register_vote(current_user, 'yes')
-      @vote = Vote.where(voter: current_user, votable: @proposal).first
-      render json: @vote
-    else
-      render json: { error: I18n.t('unauthorized.default') }, status: :forbidden
-    end
+    @proposal.register_vote(current_user, 'yes')
+    @vote = Vote.where(voter: current_user, votable: @proposal).first
+    render json: @vote
   end
 end

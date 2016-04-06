@@ -166,6 +166,7 @@ class Proposal < ActiveRecord::Base
     #TODO: correct time
     #Time.now > Setting[:proposal_closing_time]
   end
+  alias :closed? :closed
 
   protected
 

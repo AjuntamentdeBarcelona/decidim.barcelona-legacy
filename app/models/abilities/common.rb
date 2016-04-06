@@ -14,7 +14,7 @@ module Abilities
 
       can :read, Proposal
       can :update, Proposal do |proposal|
-        proposal.editable_by?(user)
+        proposal.editable_by?(user) && !proposal.closed?
       end
 
       can :read, SpendingProposal
@@ -41,7 +41,7 @@ module Abilities
       end
 
       if user.level_two_or_three_verified?
-        can :vote, Proposal
+        can :vote, Proposal, closed: false
         can :vote_featured, Proposal
         can :create, SpendingProposal
       end

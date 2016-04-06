@@ -60,20 +60,22 @@ class ProposalShow extends Component {
     );
   }
 
-  renderAnswerBox() {
+  renderReviewBox() {
     const { session, proposalId, proposal } = this.props;
     const { answer } = proposal;
 
     if (session.is_reviewer) {
       return (
-        <h2>{I18n.t('proposals.edit.editing')}</h2>
-        <ScopePicker />
-        <CategoryPicker />
-        <ProposalAnswerBox 
-          answerMessage={answer && answer.message}
-          answerStatus={answer && answer.status}
-          onButtonClick={(answerParams) => this.props.updateAnswer(proposalId, answer, answerParams)} 
-        />
+        <div>
+          <h2>{I18n.t('proposals.edit.editing')}</h2>
+          <ScopePicker />
+          <CategoryPicker />
+          <ProposalAnswerBox 
+            answerMessage={answer && answer.message}
+            answerStatus={answer && answer.status}
+            onButtonClick={(answerParams) => this.props.updateAnswer(proposalId, answer, answerParams)} 
+          />
+        </div>
       );
     }
 
