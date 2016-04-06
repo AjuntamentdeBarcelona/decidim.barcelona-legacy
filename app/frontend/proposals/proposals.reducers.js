@@ -4,7 +4,8 @@ import {
   UPDATE_PROPOSAL,
   APPEND_PROPOSALS_PAGE, 
   VOTE_PROPOSAL,
-  UPDATE_ANSWER
+  UPDATE_ANSWER,
+  FETCH_RELATED_MEETINGS
 } from './proposals.actions';
 
 export const proposals = function (state = [], action) {
@@ -27,6 +28,13 @@ export const proposal = function (state = {}, action) {
     case FETCH_PROPOSAL:
     case UPDATE_PROPOSAL:
       return action.payload.data.proposal;
+    case FETCH_RELATED_MEETINGS:
+      let meetings = action.payload.data.meetings;
+
+      return {
+        ...state,
+        meetings
+      };
     case UPDATE_ANSWER:
       let answer = action.payload.data.proposal_answer;
 

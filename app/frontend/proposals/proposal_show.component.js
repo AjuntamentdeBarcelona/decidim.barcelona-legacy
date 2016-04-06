@@ -16,6 +16,7 @@ import ProposalBadge                   from './proposal_badge.component';
 import ProposalInfo                    from './proposal_info.component';
 import ProposalMeta                    from './proposal_meta.component';
 import ProposalVoteBox                 from './proposal_vote_box.component';
+import ProposalMeetings                from './proposal_meetings.component';
 import ScopePicker                     from './scope_picker.component';
 
 class ProposalShow extends Component {
@@ -35,8 +36,10 @@ class ProposalShow extends Component {
     this.props.fetchDistricts();
   }
 
-  componentWillReceiveProps() {
-    this.setState({ loading: false });
+  componentWillReceiveProps(newProps) {
+    if (newProps.proposal.id) {
+      this.setState({ loading: false });
+    }
   }
 
   render() {
@@ -74,53 +77,56 @@ class ProposalShow extends Component {
       } = proposal;
 
       return (
-        <div className="row" id={`proposal_${proposal.id}`}>
-          <div className="small-12 medium-9 column">
-            <i className="icon-angle-left left"></i>&nbsp;
+        <div>
+          <div className="row" id={`proposal_${proposal.id}`}>
+            <div className="small-12 medium-9 column">
+              <i className="icon-angle-left left"></i>&nbsp;
 
-            <a className="left back" href="/proposals">
-              {I18n.t('proposals.show.back_link')}
-            </a>
+              <a className="left back" href="/proposals">
+                {I18n.t('proposals.show.back_link')}
+              </a>
 
-            <h2>
-              <a href={url}>{title}<ProposalBadge source={source} /></a>
-            </h2>
+              <h2>
+                <a href={url}>{title}<ProposalBadge source={source} /></a>
+              </h2>
 
-            <ProposalInfo 
-              created_at={ created_at }
-              official={ official }
-              from_meeting={ from_meeting }
-              author={ author }/>
+              <ProposalInfo 
+                created_at={ created_at }
+                official={ official }
+                from_meeting={ from_meeting }
+                author={ author }/>
 
-            <div className="proposal-description">{ summary }</div>
+              <div className="proposal-description">{ summary }</div>
 
-            <ProposalMeta 
-              scope={ scope_ }
-              district={ district }
-              category={ category }
-              subcategory={ subcategory } />
+              <ProposalMeta 
+                scope={ scope_ }
+                district={ district }
+                category={ category }
+                subcategory={ subcategory } />
 
-            {this.renderReviewBox()}
+              {this.renderReviewBox()}
+            </div>
+
+            <aside className="small-12 medium-3 column">
+              <div className="sidebar-divider"></div>
+              <h3>{ I18n.t("votes.supports") }</h3>
+              <ProposalVoteBox 
+                hideButton={ closed }
+                proposalId={ proposal.id } 
+                proposalTitle={ title } 
+                proposalUrl={ url } 
+                voted={ voted } 
+                votable={ votable } 
+                totalVotes={ total_votes } 
+                totalComments={ total_comments } />
+              <div className="sidebar-divider"></div>
+              <h3>{ I18n.t("proposals.show.share") }</h3>
+              <SocialShareButtons 
+                title={ title }
+                url={ url }/>
+            </aside>
           </div>
-
-          <aside className="small-12 medium-3 column">
-            <div className="sidebar-divider"></div>
-            <h3>{ I18n.t("votes.supports") }</h3>
-            <ProposalVoteBox 
-              hideButton={ closed }
-              proposalId={ proposal.id } 
-              proposalTitle={ title } 
-              proposalUrl={ url } 
-              voted={ voted } 
-              votable={ votable } 
-              totalVotes={ total_votes } 
-              totalComments={ total_comments } />
-            <div className="sidebar-divider"></div>
-            <h3>{ I18n.t("proposals.show.share") }</h3>
-            <SocialShareButtons 
-              title={ title }
-              url={ url }/>
-          </aside>
+          <ProposalMeetings />
         </div>
       );
     }

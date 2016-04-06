@@ -268,6 +268,7 @@ Rails.application.routes.draw do
     resources :proposals, only: [:show, :index, :update] do
       resources :votes, only: [:create]
       resource :answers, only: [:create, :update], controller: :proposal_answers
+      resources :meetings, only: [:index]
     end
     resources :meetings, only: [:index]
   end

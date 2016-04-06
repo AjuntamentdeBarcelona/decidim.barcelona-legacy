@@ -1,13 +1,14 @@
 import axios from 'axios';
 
-export const API_BASE_URL          = '/api';
-export const FETCH_PROPOSALS       = 'FETCH_PROPOSALS';
-export const FETCH_PROPOSAL        = 'FETCH_PROPOSAL';
-export const UPDATE_PROPOSAL       = 'UPDATE_PROPOSAL';
-export const APPEND_PROPOSALS_PAGE = 'APPEND_PROPOSALS_PAGE';
-export const VOTE_PROPOSAL         = 'VOTE_PROPOSAL';
-export const SET_ORDER             = 'SET_ORDER';
-export const UPDATE_ANSWER         = 'UPDATE_ANSWER';
+export const API_BASE_URL           = '/api';
+export const FETCH_PROPOSALS        = 'FETCH_PROPOSALS';
+export const FETCH_PROPOSAL         = 'FETCH_PROPOSAL';
+export const UPDATE_PROPOSAL        = 'UPDATE_PROPOSAL';
+export const APPEND_PROPOSALS_PAGE  = 'APPEND_PROPOSALS_PAGE';
+export const VOTE_PROPOSAL          = 'VOTE_PROPOSAL';
+export const SET_ORDER              = 'SET_ORDER';
+export const UPDATE_ANSWER          = 'UPDATE_ANSWER';
+export const FETCH_RELATED_MEETINGS = 'FETCH_RELATED_MEETINGS';
 
 export function fetchProposals(options) {
   return {
@@ -65,6 +66,15 @@ export function updateAnswer(proposalId, answer, answerParams) {
 
   return {
     type: UPDATE_ANSWER,
+    payload: request
+  };
+}
+
+export function fetchRelatedMeetings(proposalId) {
+  const request = axios.get(`${API_BASE_URL}/proposals/${proposalId}/meetings.json`);
+
+  return {
+    type: FETCH_RELATED_MEETINGS,
     payload: request
   };
 }

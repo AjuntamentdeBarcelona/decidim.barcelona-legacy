@@ -11,26 +11,7 @@
 <section class="proposal-show" data-timestamp="<%= @proposal.created_at.to_i %>">
   <%= react_app 'Proposal', proposalId: @proposal.id %>
 
-
   <%= render partial: 'closing_alert' %>
+</section>
 
-  <% if @proposal.meetings.any? %>
-    <div class="row">
-      <div class="small-12 medium-9 column">
-        <h2><%= t("proposals.show.meetings_title") %></h2>
-        <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
-          <% @proposal.meeting_proposals.each do |meeting_proposal| %>
-              <li class="meeting">
-                <div class="date"><%= l meeting_proposal.meeting.held_at %></div>
-                <div class="title"><%= link_to meeting_proposal.meeting.title, meeting_proposal.meeting %></div>
-                <% if meeting_proposal.meeting.closed? && meeting_proposal.consensus %>
-                  <div class="support"><%= t("meetings.close.form.proposals.consensus") %></div>
-                <% end %>
-              </li>
-          <% end %>
-        </ul>
-      </ul>
-    </div>
-  </section>
-<% end %>
 <%= render "proposals/comments" %>
