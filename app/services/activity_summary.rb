@@ -21,11 +21,7 @@ class ActivitySummary
   #
   # Returns an ActiveRecord::Relation
   def most_active(limit = 5)
-    @most_active ||= Proposal.
-                   where('updated_at > ?', @from).
-                   where('updated_at <= ?', @to).
-                   order('hot_score desc').
-                   limit(limit)
+    most_voted(Proposal.all, limit)
   end
 
   # Public: Returns the most active proposals created by you on a time period.
@@ -34,7 +30,9 @@ class ActivitySummary
   #
   # Returns an ActiveRecord::Relation
   def own_active(limit = 5)
-    @own_active ||= most_active.where(author_id: @user)
+    most_voted(
+      Proposal.where(author_id: @user)
+    )
   end
 
   # Public: Returns the recent comments on the proposals in which you're the author.
@@ -81,7 +79,9 @@ class ActivitySummary
   #
   # Returns an ActiveRecord::Relation
   def most_active_voted(limit = 5)
-    most_active.where(id: @user.get_voted(Proposal))
+    most_voted(
+      Proposal.where(id: @user.get_voted(Proposal))
+    )
   end
 
   # Public: Returns the amount of votes a Proposal received during a time period.
@@ -98,5 +98,22 @@ class ActivitySummary
       where('created_at > ?', @from).
       where('created_at <= ?', @to).
       count
+  end
+
+  def most_voted(scope, max = 10)
+    vote_amounts = Vote.where(Vote.arel_table[:created_at].gt @from).
+                    where(Vote.arel_table[:created_at].lt @to).
+                    where(votable_id: scope).
+                    where(votable_type: 'Proposal').
+                    group(:votable_id).
+                    order('count_all desc').
+                    limit(max).
+                    count
+
+    proposal_ids = vote_amounts.to_a.map(&:first)
+
+    Proposal.where(id: proposal_ids).to_a.sort do |a, b| 
+      proposal_ids.index(a.id) <=> proposal_ids.index(b.id)
+    end
   end
 end
