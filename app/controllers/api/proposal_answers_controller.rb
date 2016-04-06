@@ -1,6 +1,6 @@
 class Api::ProposalAnswersController < Api::ApplicationController
+  before_action :authenticate_user!
   load_and_authorize_resource :proposal
-  #before_action :authenticate_user!
 
   def create
     @answer = @proposal.build_answer(strong_params)

@@ -8,6 +8,8 @@ import { Provider }      from 'react-redux';
 import ReduxPromise      from 'redux-promise';
 
 import { proposal }      from './proposals.reducers';
+import categories        from '../categories/categories.reducers';
+import districts         from '../districts/districts.reducers';
 
 import ProposalShow      from './proposal_show.component';
 
@@ -27,7 +29,9 @@ function createReducers(sessionState) {
 
   return combineReducers({
     session,
-    proposal
+    proposal,
+    categories,
+    districts
   });
 }
 
