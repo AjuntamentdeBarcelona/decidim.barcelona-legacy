@@ -5,7 +5,7 @@
   </div>
 
   <p><%= t '.greeting', name: @user.name %></p>
-  <p><%== t '.introduction' %></p>
+  <%== t '.introduction' %>
 
   <% if @summary.own_active.any? %>
     <h3><%= t '.own_active' %></h3>
@@ -76,15 +76,13 @@
     </ul>
   <% end %>
 
-  <p class="call-to-action">
-    <%= link_to t('.participate'), root_url, class: 'participate' %>
-  </p>
-
   <% if Debate.upcoming.any? %>
     <h3><%= t '.upcoming_debates' %></h3>
 
+    <%== t '.ending' %>
+
     <ul>
-      <% @upcoming_debates.each do |debate|  %>
+      <% Debate.upcoming.each do |debate|  %>
         <li>
           <%= link_to(debate.title, debate) %>
            (<%= l(debate.starts_at, format: :datetime) %>)
@@ -92,4 +90,8 @@
       <% end %>
     </ul>
   <% end %>
+
+  <p class="call-to-action">
+    <%= link_to t('.participate'), root_url, class: 'participate' %>
+  </p>
 </div>

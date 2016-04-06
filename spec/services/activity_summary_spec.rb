@@ -3,7 +3,7 @@ require 'rails_helper'
 describe ActivitySummary do
   let(:user) { create(:user) }
   let(:since) { 7.days.ago }
-  let(:subject) { described_class.new(user, since) }
+  let(:subject) { described_class.new(user, since, DateTime.tomorrow) }
 
   before do
     allow(ProposalScoreCalculatorWorker).
@@ -11,9 +11,13 @@ describe ActivitySummary do
   end
 
   describe "#most_active_proposals" do
-    let!(:past_proposals){ create_list(:proposal, 3, hot_score: 15, updated_at: 30.days.ago) }
-    let!(:hot_proposals){ create_list(:proposal, 3, hot_score: 10) }
-    let!(:inactive_proposals){ create_list(:proposal, 3, hot_score: 3) }
+    let!(:past_proposals){ create_list(:proposal, 3, updated_at: 30.days.ago) }
+    let!(:hot_proposals){ create_list(:proposal, 3) }
+    let!(:inactive_proposals){ create_list(:proposal, 3) }
+
+    before do
+      hot_proposals.each{ |p| p.vote_by(voter: create(:user)) }
+    end
 
     it "includes the most active" do
       expect(subject.most_active(3)).to include(*hot_proposals)
@@ -21,10 +25,18 @@ describe ActivitySummary do
   end
 
   describe "#own_active_proposals" do
-    let!(:own_hot_proposals){ create_list(:proposal, 3, hot_score: 8, author: user) }
-    let!(:own_proposals){ create_list(:proposal, 3, hot_score: 5, author: user) }
-    let!(:hot_proposals){ create_list(:proposal, 3, hot_score: 10) }
-    let!(:past_proposals){ create_list(:proposal, 3, hot_score: 15, updated_at: 30.days.ago) }
+    let!(:own_hot_proposals){ create_list(:proposal, 3, author: user) }
+    let!(:own_proposals){ create_list(:proposal, 3, author: user) }
+    let!(:hot_proposals){ create_list(:proposal, 3) }
+    let!(:past_proposals){ create_list(:proposal, 3, updated_at: 30.days.ago) }
+
+    before do
+      own_hot_proposals.each{ |p| p.vote_by(voter: create(:user)) }
+    end
+
+    before do
+      hot_proposals.each{ |p| p.vote_by(voter: create(:user)) }
+    end
 
     it "includes the user's proposals" do
       expect(subject.own_active(3)).to include(*own_hot_proposals)
@@ -53,8 +65,12 @@ describe ActivitySummary do
   end
 
   describe "#most_active_voted" do
-    let!(:proposals) { create_list(:proposal, 3, hot_score: 20) }
-    let!(:voted_proposals) { create_list(:proposal, 3, hot_score: 10) }
+    let!(:proposals) { create_list(:proposal, 3) }
+    let!(:voted_proposals) { create_list(:proposal, 3) }
+
+    before do
+      proposals.each{ |p| p.vote_by(voter: create(:user)) }
+    end
 
     before do
       voted_proposals.each{ |proposal| user.likes proposal }
