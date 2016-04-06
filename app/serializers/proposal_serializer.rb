@@ -34,12 +34,6 @@ class ProposalSerializer < ActiveModel::Serializer
     scope && scope.proposal_url(object)
   end
 
-  def closed
-    Time.now > Time.now - 1.hour
-    #TODO: correct time
-    #Time.now > Setting[:proposal_closing_time]
-  end
-
   def created_at
     I18n.l object.created_at.to_date
   end

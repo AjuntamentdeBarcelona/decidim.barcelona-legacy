@@ -161,6 +161,12 @@ class Proposal < ActiveRecord::Base
     where.not(id: reviewed) 
   end
 
+  def closed
+    Time.now > Time.now - 1.hour
+    #TODO: correct time
+    #Time.now > Setting[:proposal_closing_time]
+  end
+
   protected
 
     def set_responsible_name

@@ -469,6 +469,10 @@ ca:
     new:
       form:
         submit_button: Crear línia estratègica
+  unauthorized:
+    default: No tens permís per a accedir en aquesta pàgina.
+    manage:
+      all: No tens permís per a '%{action}' en aquest %{subject}.
   users:
     show:
       deleted: Eliminat
