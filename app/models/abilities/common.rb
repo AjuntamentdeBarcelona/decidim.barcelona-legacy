@@ -22,7 +22,8 @@ module Abilities
       can :create, Comment
       can :create, Debate if user.official_level? &&
                              user.official_level > 0
-      can :create, Proposal
+
+      can :create, Proposal unless Proposal.closed?
 
       can :write_long, Comment if user.official?
 

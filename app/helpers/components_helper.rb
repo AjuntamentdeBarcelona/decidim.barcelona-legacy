@@ -4,7 +4,8 @@ module ComponentsHelper
       session: {
         signed_in: user_signed_in?,
         is_organization: current_user && current_user.organization?,
-        is_reviewer: current_user && current_user.reviewer?
+        is_reviewer: current_user && current_user.reviewer?,
+        can_create_new_proposals: !Proposal.closed?
       }
     })
     react_component("#{name}App", props)

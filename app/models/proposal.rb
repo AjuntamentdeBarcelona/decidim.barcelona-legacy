@@ -162,11 +162,13 @@ class Proposal < ActiveRecord::Base
   end
 
   def closed
-    Time.now > Time.now - 1.hour
-    #TODO: correct time
-    #Time.now > Setting[:proposal_closing_time]
+    Proposal.closed?
   end
   alias :closed? :closed
+
+  def self.closed?
+    Time.now > Setting[:proposal_closing_time]
+  end
 
   protected
 
