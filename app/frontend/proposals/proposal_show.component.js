@@ -24,8 +24,9 @@ class ProposalShow extends Component {
   componentDidMount() {
     const { session } = this.props;
 
+    this.props.fetchProposal(this.props.proposalId);
+
     if (session.is_reviewer) {
-      this.props.fetchProposal(this.props.proposalId);
       this.props.fetchCategories();
       this.props.fetchDistricts();
     }
