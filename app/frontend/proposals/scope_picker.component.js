@@ -6,13 +6,13 @@ import { updateProposal }     from './proposals.actions';
 
 class ScopePicker extends Component {
   render() {
-    const { proposal, districts } = this.props;
+    const { proposal } = this.props;
 
     return (
       <div>
         <div className="scope-radio small-12 column">
-          <label>Scope</label>
-          <p className="note">Scope note</p>
+          <label>{I18n.t('proposals.form.proposal_scope')}</label>
+          <p className="note">{I18n.t('proposals.form.proposal_scope_note')}</p>
           <div className="small-3 column">
             <input 
               id="proposal_scope_district"
@@ -20,7 +20,7 @@ class ScopePicker extends Component {
               value="district" 
               onChange={() => this.selectScope('district')}
               checked={proposal.scope_ === 'district'}/>
-            <label htmlFor="proposal_scope_district">District</label>
+            <label htmlFor="proposal_scope_district">{I18n.t('proposals.form.proposal_scope_district')}</label>
           </div>
           <div className="small-3 end column">
             <input 
@@ -29,23 +29,34 @@ class ScopePicker extends Component {
               value="city" 
               onChange={() => this.selectScope('city')}
               checked={proposal.scope_ === 'city'}/>
-            <label htmlFor="proposal_scope_city">City</label>
+            <label htmlFor="proposal_scope_city">{I18n.t('proposals.form.proposal_scope_city')}</label>
           </div>
         </div>
 
+        {this.renderDistrictPicker()}
+      </div>
+    );
+  }
+
+  renderDistrictPicker() {
+    const { proposal, districts } = this.props;
+
+    if (proposal.scope_ === 'district') {
+      return (
         <div className="small-12 column">
-          <select onChange={(event) => this.selectDistrict(event.target.value)}>
+          <select onChange={(event) => this.selectDistrict(event.target.value)} value={proposal.district && String(proposal.district.id)}>
             {
               districts.map((district) => 
-                <option key={district[1]} value={district[1]} defaultValue={proposal.district.id === district[1]}>
+                <option key={district[1]} value={district[1]}>
                   {district[0]}
                 </option>
               )
             }
           </select>
         </div>
-      </div>
-    );
+      );
+    }
+    return null;
   }
 
   selectScope(scope) {
