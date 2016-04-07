@@ -82,6 +82,15 @@ const seed = function (state = getInitialSeedState(), action) {
   return state;
 }
 
+
+const count = function (state = 0, action) {
+  switch (action.type) {
+  case FETCH_PROPOSALS:
+    return action.payload.data.meta.total_count;
+  }
+  return state;
+}
+
 function getInitialSeedState() {
   let seed = null, 
       matchData;
@@ -101,14 +110,15 @@ function createReducers(sessionState) {
   };
 
   return combineReducers({
-    session, 
+    session,
     districts,
     categories,
     proposals,
     filters,
     order,
     pagination,
-    seed
+    seed,
+    count
   });
 }
 

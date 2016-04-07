@@ -254,3 +254,10 @@ a.button.new-proposal{
   background-color: #fff;
   border-radius: $badge-size/2;
 }
+
+.proposals-count{
+  font-weight: 200;
+  padding-top: rem-calc(10);
+  padding-bottom: rem-calc(10);
+  color: lighten($text, 30%);
+}
