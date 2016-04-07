@@ -113,6 +113,9 @@ class ProposalShow extends Component {
                 author={ author }
                 totalComments={ total_comments } />
 
+              <span className="bullet">&nbsp;&bull;&nbsp;</span>
+              {this.renderFlagActions(id)}
+
               <div className="proposal-description">{ summary }</div>
 
               {this.renderExternalUrl(external_url)}
@@ -219,6 +222,55 @@ class ProposalShow extends Component {
     }
 
     return null;
+  }
+
+  renderFlagActions(id) {
+    return (
+      <span className="js-flag-actions">
+        <span className="flag-content">
+          <a 
+            id={`flag-expand-proposal-${id}`}
+            data-dropdown={`flag-drop-proposal-${id}`} 
+            aria-controls={`flag-drop-proposal-${id}`}
+            aria-expanded="false"
+            title={ I18n.t('shared.flag') }>
+            &nbsp;<i className="icon-flag flag-disable"></i>&nbsp;&nbsp;
+          </a>
+          <ul 
+            id={`flag-drop-proposal-${id}`} 
+            className="f-dropdown"
+            data-dropdown-content
+            aria-hidden="true"
+            tabindex="-1">
+            <li>
+              <a id={`flag-proposal-${id}`}>
+                { I18n.t('shared.flag') }
+              </a>
+            </li>
+          </ul>
+          <a 
+            id={`unflag-expand-proposal-${id}`} 
+            data-dropdown={`unflag-drop-proposal-${id}`}
+            aria-controls={`unflag-drop-proposal-${id}`}
+            aria-expanded="false"
+            title={ I18n.t('shared.unflag') }>
+            &nbsp;<i className="icon-flag flag-active"></i>&nbsp;&nbsp;
+          </a>
+          <ul 
+            id={`unflag-drop-proposal-${id}`}
+            className="f-dropdown"
+            data-dropdown-content
+            aria-hidden="true"
+            tabindex="-1">
+            <li>
+              <a id={`unflag-proposal-${id}`}>
+                { I18n.t('shared.unflag') }
+              </a>
+            </li>
+          </ul>
+        </span>
+      </span>
+    )
   }
 
   renderReviewBox() {
