@@ -27,7 +27,7 @@ class ProposalVoteBox extends Component {
             </span>
             <div className="proposal-comments">
               <i className="icon-comments"></i>&nbsp;
-              <a>{I18n.t("proposals.proposal.comments", { count: this.props.totalComments })}</a>
+              <a href={`${this.props.proposalUrl}#comments`}>{I18n.t("proposals.proposal.comments", { count: this.props.totalComments })}</a>
             </div>
           </div>
           <div className="in-favor">

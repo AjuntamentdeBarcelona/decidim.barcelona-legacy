@@ -13,7 +13,7 @@ import CategoryPicker                  from '../categories/new_category_picker.c
 
 import ProposalAnswerBox               from './proposal_answer_box.component';
 import ProposalBadge                   from './proposal_badge.component';
-import ProposalInfo                    from './proposal_info.component';
+import ProposalInfoExtended            from './proposal_info_extended.component';
 import ProposalMeta                    from './proposal_meta.component';
 import ProposalVoteBox                 from './proposal_vote_box.component';
 import ProposalReferences              from './proposal_references.component';
@@ -91,11 +91,12 @@ class ProposalShow extends Component {
                 <a href={url}>{title}<ProposalBadge source={source} /></a>
               </h2>
 
-              <ProposalInfo 
+              <ProposalInfoExtended
                 created_at={ created_at }
                 official={ official }
                 from_meeting={ from_meeting }
-                author={ author }/>
+                author={ author }
+                totalComments={ total_comments } />
 
               <div className="proposal-description">{ summary }</div>
 
