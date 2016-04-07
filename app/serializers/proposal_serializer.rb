@@ -1,7 +1,7 @@
 class ProposalSerializer < ActiveModel::Serializer
   attributes :id, :title, :url, :summary, :created_at, :scope_, :district, :source, 
     :total_votes, :total_comments, :voted, :votable, :closed, :official, :from_meeting,
-    :editable
+    :editable, :conflictive?, :external_url
 
   has_one :category
   has_one :subcategory

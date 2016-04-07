@@ -23,6 +23,7 @@ import ScopePicker                     from './scope_picker.component';
 class ProposalShow extends Component {
   constructor(props) {
     super(props);
+    console.log(autoLink);
 
     this.state = {
       loading: true
@@ -75,7 +76,9 @@ class ProposalShow extends Component {
         district,
         category,
         subcategory,
-        editable
+        editable,
+        conflictive,
+        external_url
       } = proposal;
 
       return (
@@ -94,6 +97,8 @@ class ProposalShow extends Component {
                 <a href={url}>{title}<ProposalBadge source={source} /></a>
               </h2>
 
+              {this.renderConflictiveWarning(conflictive)}
+
               <ProposalInfoExtended
                 created_at={ created_at }
                 official={ official }
@@ -102,6 +107,8 @@ class ProposalShow extends Component {
                 totalComments={ total_comments } />
 
               <div className="proposal-description">{ summary }</div>
+
+              <div className="document-link" dangerouslySetInnerHTML={{ __html: external_url.autoLink() }}></div>
 
               <ProposalMeta 
                 scope={ scope_ }
@@ -150,6 +157,18 @@ class ProposalShow extends Component {
       );
     }
 
+    return null;
+  }
+
+  renderConflictiveWarning(isConflictive) {
+    if (isConflictive) {
+      return (
+        <div className="alert-box alert radius margin-top">
+          <strong>{ I18n.t("proposals.show.flag") }</strong>
+        </div>
+      );
+    }
+    
     return null;
   }
 
