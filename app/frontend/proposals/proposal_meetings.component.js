@@ -14,12 +14,22 @@ class ProposalMeetings extends Component {
   }
 
   render() {
-    const { proposal } = this.props;
-    const meetings = proposal.meetings || [];
-
     return (
       <div className="row">
         <div className="small-12 medium-12 column">
+          {this.renderMeetings()}
+        </div>
+      </div>
+    );
+  }
+
+  renderMeetings() {
+    const { proposal } = this.props;
+    const meetings = proposal.meetings || [];
+
+    if (meetings.length > 0) {
+      return (
+        <div>
           <h2>{ I18n.t("proposals.show.meetings_title") }</h2>
           <div className="meetings-directory">
             <div className="meetings-list">
@@ -35,8 +45,9 @@ class ProposalMeetings extends Component {
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
+    return null;
   }
 }
 
