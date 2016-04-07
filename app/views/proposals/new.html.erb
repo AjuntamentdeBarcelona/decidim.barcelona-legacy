@@ -6,6 +6,7 @@
       <%= t("proposals.new.back_link") %>
     <% end %>
     <h1><%= t("proposals.new.start_new") %></h1>
+    <%= render partial: 'closing_alert' %>
     <%= render "proposals/form", form_url: proposals_url %>
   </div>
 
