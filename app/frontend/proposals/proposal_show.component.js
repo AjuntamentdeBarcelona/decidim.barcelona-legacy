@@ -16,6 +16,7 @@ import ProposalBadge                   from './proposal_badge.component';
 import ProposalInfo                    from './proposal_info.component';
 import ProposalMeta                    from './proposal_meta.component';
 import ProposalVoteBox                 from './proposal_vote_box.component';
+import ProposalReferences              from './proposal_references.component';
 import ProposalMeetings                from './proposal_meetings.component';
 import ScopePicker                     from './scope_picker.component';
 
@@ -103,6 +104,8 @@ class ProposalShow extends Component {
                 district={ district }
                 category={ category }
                 subcategory={ subcategory } />
+
+              <ProposalReferences />
 
               {this.renderReviewBox()}
             </div>

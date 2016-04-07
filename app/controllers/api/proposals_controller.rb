@@ -2,7 +2,9 @@ class Api::ProposalsController < Api::ApplicationController
   include HasOrders
 
   before_action :authenticate_user!, only: [:update]
-  load_and_authorize_resource
+
+  load_resource
+  authorize_resource except: [:references]
 
   has_orders %w{random hot_score confidence_score created_at}, only: :index
 
@@ -39,6 +41,12 @@ class Api::ProposalsController < Api::ApplicationController
     @proposal.assign_attributes(strong_params)
     @proposal.save
     render json: @proposal
+  end
+
+  def references
+    @references = Reference.references_for(@proposal)
+    authorize! :read, @proposal
+    render json: @references
   end
 
   private

@@ -9,6 +9,7 @@ export const VOTE_PROPOSAL          = 'VOTE_PROPOSAL';
 export const SET_ORDER              = 'SET_ORDER';
 export const UPDATE_ANSWER          = 'UPDATE_ANSWER';
 export const FETCH_RELATED_MEETINGS = 'FETCH_RELATED_MEETINGS';
+export const FETCH_REFERENCES       = 'FETCH_REFERENCES';
 
 export function fetchProposals(options) {
   return {
@@ -75,6 +76,15 @@ export function fetchRelatedMeetings(proposalId) {
 
   return {
     type: FETCH_RELATED_MEETINGS,
+    payload: request
+  };
+}
+
+export function fetchReferences(proposalId) {
+  const request = axios.get(`${API_BASE_URL}/proposals/${proposalId}/references.json`);
+
+  return {
+    type: FETCH_REFERENCES,
     payload: request
   };
 }

@@ -167,7 +167,7 @@ class Proposal < ActiveRecord::Base
   alias :closed? :closed
 
   def self.closed?
-    Time.now > Setting[:proposal_closing_time]
+    Setting[:proposal_closing_time] && (Time.now > Setting[:proposal_closing_time])
   end
 
   protected

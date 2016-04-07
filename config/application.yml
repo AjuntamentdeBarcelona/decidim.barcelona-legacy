@@ -39,7 +39,7 @@ defaults: &defaults
   github_handle: "AjuntamentdeBarcelona/decidim.barcelona"
   facebook_app_id: "929041747208547"
 
-  proposal_closing_time: <%= Time.zone.parse('2016-04-09 00:00:00 +0200') %>
+  proposal_closing_time: <%= ENV['PROPOSAL_CLOSING_DATE'] ? Time.zone.parse(ENV['PROPOSAL_CLOSING_DATE']) : nil %>
 
   blog_url: 
     ca: "http://eldigital.barcelona.cat/pambcn"
