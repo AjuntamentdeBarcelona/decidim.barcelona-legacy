@@ -28,6 +28,8 @@
         <% end %>
       </h2>
 
+      <%= render partial: 'closing_alert' %>
+
       <% if @proposal.conflictive? %>
         <div class="alert-box alert radius margin-top">
           <strong><%= t("proposals.show.flag") %></strong>

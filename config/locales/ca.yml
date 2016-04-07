@@ -356,6 +356,7 @@ ca:
       start_new: Crear una proposta
     proposal:
       already_supported: Ja has donat suport a aquesta proposta, comparteix-la!
+      closing: El procés de recollida de propostes finalitza el proper 9 d'abril a les 23:59 h. 
       comments:
         one: 1 Comentari
         other: "%{count} Comentaris"

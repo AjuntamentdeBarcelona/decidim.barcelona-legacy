@@ -356,6 +356,7 @@ es:
       start_new: Crear una propuesta
     proposal:
       already_supported: "¡Ya has apoyado esta propuesta, compártela!"
+      closing: El proceso de recogida de propuestas finaliza el próximo 9 de abril a las 23:59 h.
       comments:
         one: 1 Comentario
         other: "%{count} Comentarios"
