@@ -63,6 +63,9 @@ class Proposals extends Component {
               <NewProposalButton />
             </div>
             <Loading show={this.state.loading} />
+            <h3 className="proposals-count">
+              { I18n.t('components.proposals.count', { count: this.props.count }) }
+            </h3>
             <ProposalsList proposals={this.props.proposals} />
             {this.renderInfinitePagination()}
           </div>
@@ -91,8 +94,8 @@ class Proposals extends Component {
   }
 }
 
-function mapStateToProps({ proposals, filters, order, pagination, seed }) {
-  return { proposals, filters, order, pagination, seed };
+function mapStateToProps({ proposals, filters, order, pagination, seed, count }) {
+  return { proposals, filters, order, pagination, seed, count };
 }
 
 function mapDispatchToProps(dispatch) {

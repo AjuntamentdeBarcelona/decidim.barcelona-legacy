@@ -58,5 +58,7 @@ en:
       votes: "%{votes} supports"
     proposal_filters:
       clean_filters: Clean filter
+    proposals:
+      count: Showing %{count} proposals
     search_filter:
       search_input_placeholder: Search
