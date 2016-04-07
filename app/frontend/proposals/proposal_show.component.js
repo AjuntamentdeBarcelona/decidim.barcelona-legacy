@@ -74,7 +74,8 @@ class ProposalShow extends Component {
         scope_,
         district,
         category,
-        subcategory
+        subcategory,
+        editable
       } = proposal;
 
       return (
@@ -86,6 +87,8 @@ class ProposalShow extends Component {
               <a className="left back" href="/proposals">
                 {I18n.t('proposals.show.back_link')}
               </a>
+
+              {this.renderEditButton(editable, url)}
 
               <h2>
                 <a href={url}>{title}<ProposalBadge source={source} /></a>
@@ -134,6 +137,19 @@ class ProposalShow extends Component {
         </div>
       );
     }
+    return null;
+  }
+
+  renderEditButton(editable, url) {
+    if (editable) {
+      return (
+        <a href={`${url}/edit`} className="edit-proposal button success tiny radius right">
+          <i className="icon-edit"></i>
+          { I18n.t("proposals.show.edit_proposal_link") }
+        </a>
+      );
+    }
+
     return null;
   }
 

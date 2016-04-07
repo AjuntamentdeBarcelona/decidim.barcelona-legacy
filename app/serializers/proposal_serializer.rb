@@ -1,6 +1,7 @@
 class ProposalSerializer < ActiveModel::Serializer
   attributes :id, :title, :url, :summary, :created_at, :scope_, :district, :source, 
-    :total_votes, :total_comments, :voted, :votable, :closed, :official, :from_meeting
+    :total_votes, :total_comments, :voted, :votable, :closed, :official, :from_meeting,
+    :editable
 
   has_one :category
   has_one :subcategory
@@ -28,6 +29,10 @@ class ProposalSerializer < ActiveModel::Serializer
 
   def votable
     scope && scope.current_user && scope.current_user.level_two_or_three_verified?
+  end
+
+  def editable
+    scope && scope.can?(:update , object)
   end
 
   def url
