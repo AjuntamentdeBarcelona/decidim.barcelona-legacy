@@ -10,6 +10,8 @@ export const SET_ORDER              = 'SET_ORDER';
 export const UPDATE_ANSWER          = 'UPDATE_ANSWER';
 export const FETCH_RELATED_MEETINGS = 'FETCH_RELATED_MEETINGS';
 export const FETCH_REFERENCES       = 'FETCH_REFERENCES';
+export const HIDE_PROPOSAL          = 'HIDE_PROPOSAL';
+export const HIDE_PROPOSAL_AUTHOR   = 'HIDE_PROPOSAL_AUTHOR';
 
 export function fetchProposals(options) {
   return {
@@ -85,6 +87,24 @@ export function fetchReferences(proposalId) {
 
   return {
     type: FETCH_REFERENCES,
+    payload: request
+  };
+}
+
+export function hideProposal(proposalId) {
+  const request = axios.patch(`${API_BASE_URL}/proposals/${proposalId}/hide.json`);
+
+  return {
+    type: HIDE_PROPOSAL,
+    payload: request
+  };
+}
+
+export function hideProposalAuthor(proposalId) {
+  const request = axios.patch(`${API_BASE_URL}/proposals/${proposalId}/author/hide.json`);
+
+  return {
+    type: HIDE_PROPOSAL_AUTHOR,
     payload: request
   };
 }

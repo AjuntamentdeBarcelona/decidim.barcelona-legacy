@@ -6,7 +6,9 @@ import {
   VOTE_PROPOSAL,
   UPDATE_ANSWER,
   FETCH_RELATED_MEETINGS,
-  FETCH_REFERENCES
+  FETCH_REFERENCES,
+  HIDE_PROPOSAL,
+  HIDE_PROPOSAL_AUTHOR
 } from './proposals.actions';
 
 export const proposals = function (state = [], action) {
@@ -28,7 +30,15 @@ export const proposal = function (state = {}, action) {
   switch (action.type) {
     case FETCH_PROPOSAL:
     case UPDATE_PROPOSAL:
+    case HIDE_PROPOSAL:
       return action.payload.data.proposal;
+    case HIDE_PROPOSAL_AUTHOR:
+      let author = action.payload.data.user;
+
+      return {
+        ...state,
+        author
+      }
     case FETCH_RELATED_MEETINGS:
       let meetings = action.payload.data.meetings;
 

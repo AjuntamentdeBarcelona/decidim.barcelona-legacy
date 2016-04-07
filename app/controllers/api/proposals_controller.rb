@@ -49,6 +49,12 @@ class Api::ProposalsController < Api::ApplicationController
     render json: @references
   end
 
+  def hide
+    @proposal.hide
+    Activity.log(current_user, :hide, @proposal)
+    render json: @proposal
+  end
+
   private
 
   def strong_params

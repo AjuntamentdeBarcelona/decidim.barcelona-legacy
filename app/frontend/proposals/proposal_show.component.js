@@ -2,7 +2,12 @@ import { Component }                   from 'react';
 import { connect }                     from 'react-redux';
 import { bindActionCreators }          from 'redux';
 
-import { fetchProposal, updateAnswer } from './proposals.actions';
+import { 
+  fetchProposal, 
+  updateAnswer,
+  hideProposal,
+  hideProposalAuthor
+} from './proposals.actions';
 import { fetchCategories }             from '../categories/categories.actions';
 import { fetchDistricts }              from '../districts/districts.actions';
 
@@ -23,7 +28,6 @@ import ScopePicker                     from './scope_picker.component';
 class ProposalShow extends Component {
   constructor(props) {
     super(props);
-    console.log(autoLink);
 
     this.state = {
       loading: true
@@ -54,7 +58,7 @@ class ProposalShow extends Component {
   }
 
   renderProposal() {
-    const { proposal } = this.props;
+    const { proposal, hideProposal, hideProposalAuthor } = this.props;
 
     if (proposal.id) {
       const { 
@@ -78,12 +82,15 @@ class ProposalShow extends Component {
         subcategory,
         editable,
         conflictive,
-        external_url
+        external_url,
+        hidden,
+        can_hide,
+        can_hide_author
       } = proposal;
 
       return (
         <div>
-          <div className="row" id={`proposal_${proposal.id}`}>
+          <div className={(hidden || author.hidden) ? 'row faded' : 'row'} id={`proposal_${proposal.id}`}>
             <div className="small-12 medium-9 column">
               <i className="icon-angle-left left"></i>&nbsp;
 
@@ -108,7 +115,7 @@ class ProposalShow extends Component {
 
               <div className="proposal-description">{ summary }</div>
 
-              <div className="document-link" dangerouslySetInnerHTML={{ __html: external_url.autoLink() }}></div>
+              {this.renderExternalUrl(external_url)}
 
               <ProposalMeta 
                 scope={ scope_ }
@@ -117,6 +124,11 @@ class ProposalShow extends Component {
                 subcategory={ subcategory } />
 
               <ProposalReferences />
+
+              <div className="js-moderator-proposal-actions margin">
+                {this.renderHideButton(id, can_hide)}
+                {this.renderHideAuthorButton(id, can_hide_author)}
+              </div>
 
               {this.renderReviewBox()}
             </div>
@@ -140,6 +152,7 @@ class ProposalShow extends Component {
                 url={ url }/>
             </aside>
           </div>
+
           <ProposalMeetings />
         </div>
       );
@@ -160,6 +173,30 @@ class ProposalShow extends Component {
     return null;
   }
 
+  renderHideButton(id, hasPermission) {
+    if (hasPermission) {
+      return (
+        <a onClick={() => hideProposal(id)}>
+          { I18n.t('admin.actions.hide') }
+        </a>
+      );
+    }
+    return null;
+  }
+
+  renderHideAuthorButton(id, hasPermission) {
+    if (hasPermission) {
+      return (
+        <span>
+          <span>&nbsp;|&nbsp;</span>
+          <a onClick={() => hideProposalAuthor(id)}>
+            { I18n.t('admin.actions.hide_author') }
+          </a>
+        </span>
+      );
+    }
+    return null;
+  }
   renderConflictiveWarning(isConflictive) {
     if (isConflictive) {
       return (
@@ -169,6 +206,18 @@ class ProposalShow extends Component {
       );
     }
     
+    return null;
+  }
+
+  renderExternalUrl(externalUrl) {
+    if (externalUrl) {
+      return (
+        <div 
+          className="document-link" 
+          dangerouslySetInnerHTML={{ __html: externalUrl.autoLink() }} />
+      );
+    }
+
     return null;
   }
 
@@ -200,7 +249,14 @@ function mapStateToProps({ session, proposal }) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchProposal, updateAnswer, fetchCategories, fetchDistricts }, dispatch);
+  return bindActionCreators({ 
+    fetchProposal, 
+    updateAnswer, 
+    fetchCategories, 
+    fetchDistricts,
+    hideProposal,
+    hideProposalAuthor
+  }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProposalShow);

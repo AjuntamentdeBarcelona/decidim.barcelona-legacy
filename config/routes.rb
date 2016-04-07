@@ -268,10 +268,16 @@ Rails.application.routes.draw do
     resources :proposals, only: [:show, :index, :update] do
       member do
         get :references
+        patch :hide
       end
       resources :votes, only: [:create]
       resource :answers, only: [:create, :update], controller: :proposal_answers
       resources :meetings, only: [:index]
+      resource :author, only: [], controller: 'author' do
+        member do
+          patch :hide
+        end
+      end
     end
     resources :meetings, only: [:index]
   end
