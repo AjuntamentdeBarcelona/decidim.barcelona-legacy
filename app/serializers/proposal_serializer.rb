@@ -1,5 +1,8 @@
 class ProposalSerializer < ActiveModel::Serializer
-  attributes :id, :title, :url, :summary, :created_at, :scope_, :district, :source, :total_votes, :total_comments, :voted, :votable, :official, :from_meeting
+  attributes :id, :title, :url, :summary, :created_at, :scope_, :district, :source, 
+    :total_votes, :total_comments, :voted, :votable, :closed, :official, :from_meeting,
+    :editable, :conflictive?, :external_url, :hidden?, :can_hide, :can_hide_author,
+    :flagged
 
   has_one :category
   has_one :subcategory
@@ -27,6 +30,22 @@ class ProposalSerializer < ActiveModel::Serializer
 
   def votable
     scope && scope.current_user && scope.current_user.level_two_or_three_verified?
+  end
+
+  def editable
+    scope && scope.can?(:update , object)
+  end
+
+  def can_hide
+    scope && scope.can?(:hide , object)
+  end
+
+  def can_hide_author
+    scope && scope.can?(:hide , object.author)
+  end
+
+  def flagged
+    scope && Flag.flagged?(scope.current_user, object)
   end
 
   def url

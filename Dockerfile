@@ -1,4 +1,4 @@
-FROM ultrayoshi/ruby-node-phantomjs:2.1.1
+FROM codegram/ruby-node-phantomjs
 MAINTAINER david.morcillo@codegram.com
 
 # Create working directory

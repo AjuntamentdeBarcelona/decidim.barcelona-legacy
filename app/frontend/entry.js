@@ -39,4 +39,4 @@ window.ProposalsCarousel          = ProposalsCarousel;
 window.Votes                      = Votes; // Depcrecated
 
 require('quill/dist/quill.snow');
-
+require('expose?autoLink!autolink-js');

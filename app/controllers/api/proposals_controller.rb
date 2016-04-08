@@ -1,8 +1,10 @@
 class Api::ProposalsController < Api::ApplicationController
   include HasOrders
 
-  before_action :authenticate_user!, only: [:update]
-  load_and_authorize_resource
+  before_action :authenticate_user!, only: [:update, :flag, :unflag]
+
+  load_resource
+  authorize_resource except: [:update, :references]
 
   has_orders %w{random hot_score confidence_score created_at}, only: :index
 
@@ -36,8 +38,31 @@ class Api::ProposalsController < Api::ApplicationController
   end
 
   def update
+    authorize! :review, @proposal
     @proposal.assign_attributes(strong_params)
     @proposal.save
+    render json: @proposal
+  end
+
+  def references
+    @references = Reference.references_for(@proposal)
+    authorize! :read, @proposal
+    render json: @references
+  end
+
+  def hide
+    @proposal.hide
+    Activity.log(current_user, :hide, @proposal)
+    render json: @proposal
+  end
+
+  def flag
+    Flag.flag(current_user, @proposal)
+    render json: @proposal
+  end
+
+  def unflag
+    Flag.unflag(current_user, @proposal)
     render json: @proposal
   end
 

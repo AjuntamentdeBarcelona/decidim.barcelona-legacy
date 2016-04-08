@@ -1,0 +1,116 @@
+<% provide :title do %><%= @proposal.title %><% end %>
+<% provide :social_media_meta_tags do %>
+<%= render "shared/social_media_meta_tags",
+            social_url: proposal_url(@proposal),
+            social_title: @proposal.title,
+            social_media_image: asset_url('social-media-icon.png'),
+            social_description: text_with_links(@proposal.summary) %>
+<% end %>
+
+
+<section class="proposal-show" data-timestamp="<%= @proposal.created_at.to_i %>">
+  <div id="<%= dom_id(@proposal) %>" class="row">
+    <div class="small-12 medium-9 column">
+      <i class="icon-angle-left left"></i>&nbsp;
+      <%= link_to t("proposals.show.back_link"), :back, class: 'left back' %>
+
+      <% if current_user && @proposal.editable_by?(current_user) %>
+        <%= link_to edit_proposal_path(@proposal), class: 'edit-proposal button success tiny radius right' do %>
+          <i class="icon-edit"></i>
+          <%= t("proposals.show.edit_proposal_link") %>
+        <% end %>
+      <% end %>
+
+      <h2>
+        <%= link_to proposal_path(@proposal) do %>
+          <%= @proposal.title %>
+          <%= proposal_badge(@proposal) %>
+        <% end %>
+      </h2>
+
+      <% if @proposal.conflictive? %>
+        <div class="alert-box alert radius margin-top">
+          <strong><%= t("proposals.show.flag") %></strong>
+        </div>
+      <% end %>
+
+      <div class="proposal-info">
+        <% unless @proposal.official? or @proposal.from_meeting? %>
+          <%= render '/shared/author_info', resource: @proposal %>
+          <span class="bullet">&nbsp;&bull;&nbsp;</span>
+        <% end %>
+
+        <%= l @proposal.created_at.to_date %>
+        <span class="bullet">&nbsp;&bull;&nbsp;</span>
+        <i class="icon-comments"></i>&nbsp;
+        <%= link_to t("proposals.show.comments", count: @proposal.comments_count), "#comments" %>
+        <span class="bullet">&nbsp;&bull;&nbsp;</span>
+        <span class="js-flag-actions">
+          <%= render 'proposals/flag_actions', proposal: @proposal %>
+        </span>
+      </div>
+
+      <div class="proposal-description">
+        <%= text_with_links @proposal.summary %>
+      </div>
+
+      <% if @proposal.external_url.present? %>
+        <div class="document-link">
+          <%= text_with_links @proposal.external_url %>
+        </div>
+      <% end %>
+
+      <% if feature?(:proposal_video_url) && @proposal.video_url.present? %>
+        <div class="video-link">
+          <%= text_with_links @proposal.video_url %>
+        </div>
+      <% end %>
+
+      <%= render "proposals/meta", proposal: @proposal %>
+      <% if feature?(:proposal_tags) %>
+        <%= render 'shared/tags', taggable: @proposal %>
+      <% end %>
+
+      <%= render partial: 'shared/references', locals: { subject: @proposal } %>
+
+      <div class="js-moderator-proposal-actions margin">
+        <%= render 'proposals/actions', proposal: @proposal %>
+      </div>
+    </div>
+
+    <aside class="small-12 medium-3 column">
+      <div class="sidebar-divider"></div>
+      <h3><%= t("votes.supports") %></h3>
+      <%= vote_component_for @proposal %>
+      <div class="sidebar-divider"></div>
+      <h3><%= t("proposals.show.share") %></h3>
+      <%= react_component 'SocialShareButtons', title: @proposal.title, url: proposal_url(@proposal) %>
+    </aside>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-9 column">
+      <%= react_app 'Proposal', proposalId: @proposal.id %>
+    </div>
+  </div>
+
+  <% if @proposal.meetings.any? %>
+    <div class="row">
+      <div class="small-12 medium-9 column">
+        <h2><%= t("proposals.show.meetings_title") %></h2>
+        <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+          <% @proposal.meeting_proposals.each do |meeting_proposal| %>
+              <li class="meeting">
+                <div class="date"><%= l meeting_proposal.meeting.held_at %></div>
+                <div class="title"><%= link_to meeting_proposal.meeting.title, meeting_proposal.meeting %></div>
+                <% if meeting_proposal.meeting.closed? && meeting_proposal.consensus %>
+                  <div class="support"><%= t("meetings.close.form.proposals.consensus") %></div>
+                <% end %>
+              </li>
+          <% end %>
+        </ul>
+      </ul>
+    </div>
+  </section>
+<% end %>
+<%= render "proposals/comments" %>

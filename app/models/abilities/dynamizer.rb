@@ -8,6 +8,7 @@ module Abilities
 
       can :manage, Meeting
       can :create, Meeting
+      can :create, Proposal
     end
   end
 end

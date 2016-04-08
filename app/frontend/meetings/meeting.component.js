@@ -1,7 +1,8 @@
-import { Component } from 'react';
+import { Component }    from 'react';
 
-import MeetingTime   from './meeting_time.component';
-import FilterLink    from '../filters/filter_link.component';
+import MeetingTime      from './meeting_time.component';
+import FilterLink       from '../filters/filter_link.component';
+import FilterServerLink from '../filters/filter_server_link.component';
 
 export default class Meeting extends Component {
   constructor(props) {
@@ -39,17 +40,26 @@ export default class Meeting extends Component {
   }
 
   renderMeetingCategory() {
-    let { meeting } = this.props;
+    let { meeting, useServerLinks } = this.props;
     let { category, subcategory } = meeting;
 
     if(!meeting.category){ return <div />; }
     var categoryClassNames = `category-icon category-icon-${ meeting.category.id }`;
 
-    return (
-      <div className="item-meta">
-        <FilterLink name="category_id" value={category.id} label={` ${category.name}`} cssClass={`category-icon category-icon-${category.id}`} />
-        <FilterLink name="subcategory_id" value={subcategory.id} label={subcategory.name} />
-      </div>
-    );
+    if (useServerLinks) {
+      return (
+        <div className="item-meta">
+          <FilterServerLink namespace="meetings" name="category_id" value={category.id} label={` ${category.name}`} cssClass={`category-icon category-icon-${category.id}`} />
+          <FilterServerLink namespace="meetings" name="subcategory_id" value={subcategory.id} label={subcategory.name} />
+        </div>
+      );
+    } else {
+      return (
+        <div className="item-meta">
+          <FilterLink name="category_id" value={category.id} label={` ${category.name}`} cssClass={`category-icon category-icon-${category.id}`} />
+          <FilterLink name="subcategory_id" value={subcategory.id} label={subcategory.name} />
+        </div>
+      );
+    }
   }
 };

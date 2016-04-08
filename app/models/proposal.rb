@@ -161,6 +161,15 @@ class Proposal < ActiveRecord::Base
     where.not(id: reviewed) 
   end
 
+  def closed
+    Proposal.closed?
+  end
+  alias :closed? :closed
+
+  def self.closed?
+    Setting[:proposal_closing_time] && (Time.now > Setting[:proposal_closing_time])
+  end
+
   protected
 
     def set_responsible_name

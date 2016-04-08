@@ -1,13 +1,19 @@
 import axios from 'axios';
 
-export const API_BASE_URL          = '/api';
-export const FETCH_PROPOSALS       = 'FETCH_PROPOSALS';
-export const FETCH_PROPOSAL        = 'FETCH_PROPOSAL';
-export const UPDATE_PROPOSAL       = 'UPDATE_PROPOSAL';
-export const APPEND_PROPOSALS_PAGE = 'APPEND_PROPOSALS_PAGE';
-export const VOTE_PROPOSAL         = 'VOTE_PROPOSAL';
-export const SET_ORDER             = 'SET_ORDER';
-export const UPDATE_ANSWER         = 'UPDATE_ANSWER';
+export const API_BASE_URL           = '/api';
+export const FETCH_PROPOSALS        = 'FETCH_PROPOSALS';
+export const FETCH_PROPOSAL         = 'FETCH_PROPOSAL';
+export const UPDATE_PROPOSAL        = 'UPDATE_PROPOSAL';
+export const APPEND_PROPOSALS_PAGE  = 'APPEND_PROPOSALS_PAGE';
+export const VOTE_PROPOSAL          = 'VOTE_PROPOSAL';
+export const SET_ORDER              = 'SET_ORDER';
+export const UPDATE_ANSWER          = 'UPDATE_ANSWER';
+export const FETCH_RELATED_MEETINGS = 'FETCH_RELATED_MEETINGS';
+export const FETCH_REFERENCES       = 'FETCH_REFERENCES';
+export const HIDE_PROPOSAL          = 'HIDE_PROPOSAL';
+export const HIDE_PROPOSAL_AUTHOR   = 'HIDE_PROPOSAL_AUTHOR';
+export const FLAG_PROPOSAL          = 'FLAG_PROPOSAL';
+export const UNFLAG_PROPOSAL        = 'UNFLAG_PROPOSAL';
 
 export function fetchProposals(options) {
   return {
@@ -65,6 +71,60 @@ export function updateAnswer(proposalId, answer, answerParams) {
 
   return {
     type: UPDATE_ANSWER,
+    payload: request
+  };
+}
+
+export function fetchRelatedMeetings(proposalId) {
+  const request = axios.get(`${API_BASE_URL}/proposals/${proposalId}/meetings.json`);
+
+  return {
+    type: FETCH_RELATED_MEETINGS,
+    payload: request
+  };
+}
+
+export function fetchReferences(proposalId) {
+  const request = axios.get(`${API_BASE_URL}/proposals/${proposalId}/references.json`);
+
+  return {
+    type: FETCH_REFERENCES,
+    payload: request
+  };
+}
+
+export function hideProposal(proposalId) {
+  const request = axios.patch(`${API_BASE_URL}/proposals/${proposalId}/hide.json`);
+
+  return {
+    type: HIDE_PROPOSAL,
+    payload: request
+  };
+}
+
+export function hideProposalAuthor(proposalId) {
+  const request = axios.patch(`${API_BASE_URL}/proposals/${proposalId}/author/hide.json`);
+
+  return {
+    type: HIDE_PROPOSAL_AUTHOR,
+    payload: request
+  };
+}
+
+export function flagProposal(proposalId) {
+  const request = axios.patch(`${API_BASE_URL}/proposals/${proposalId}/flag.json`);
+
+  return {
+    type: FLAG_PROPOSAL,
+    payload: request
+  };
+}
+
+export function unFlagProposal(proposalId) {
+  const request = axios.patch(`${API_BASE_URL}/proposals/${proposalId}/unflag.json`);
+
+  return {
+    type: UNFLAG_PROPOSAL,
     payload: request
   };
 }

@@ -3,8 +3,12 @@ module ComponentsHelper
     props.merge!({
       session: {
         signed_in: user_signed_in?,
+        user: {
+          id: current_user && current_user.id
+        },
         is_organization: current_user && current_user.organization?,
-        is_reviewer: current_user && current_user.reviewer?
+        is_reviewer: current_user && current_user.reviewer?,
+        can_create_new_proposals: can?(:create, Proposal)
       }
     })
     react_component("#{name}App", props)

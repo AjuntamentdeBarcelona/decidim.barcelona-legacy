@@ -11,11 +11,8 @@ feature 'Moderate proposals' do
     login_as(moderator)
     visit proposal_path(proposal)
 
-    within("#proposal_#{proposal.id}") do
-      click_link 'Hide'
-    end
-
-    expect(page).to have_css("#proposal_#{proposal.id}.faded")
+    expect(page).to have_selector("#proposal_#{proposal.id}")
+    find("#proposal_#{proposal.id} a", text: "Hide").click
 
     login_as(citizen)
     visit proposals_path
@@ -23,7 +20,7 @@ feature 'Moderate proposals' do
     expect(page).to have_css('.proposal', count: 0)
   end
 
-  scenario 'Can not hide own proposal' do
+  scenario 'Can not hide own proposal', :js do
     moderator = create(:moderator)
     proposal = create(:proposal, author: moderator)
 

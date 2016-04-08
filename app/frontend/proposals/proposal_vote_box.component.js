@@ -27,11 +27,11 @@ class ProposalVoteBox extends Component {
             </span>
             <div className="proposal-comments">
               <i className="icon-comments"></i>&nbsp;
-              <a>{I18n.t("proposals.proposal.comments", { count: this.props.totalComments })}</a>
+              <a href={`${this.props.proposalUrl}#comments`}>{I18n.t("proposals.proposal.comments", { count: this.props.totalComments })}</a>
             </div>
           </div>
           <div className="in-favor">
-            {this.renderVoteButton()}
+            {this.renderVoteButton(this.props.proposalTitle, this.props.proposalUrl)}
           </div>
           {this.renderShareButtons(this.props.proposalTitle, this.props.proposalUrl)}
           {this.renderCantVoteOverlay()}
@@ -40,7 +40,7 @@ class ProposalVoteBox extends Component {
     )
   }
 
-  renderVoteButton() {
+  renderVoteButton(title, url) {
     if(this.props.voted) { 
       return (
         <div className="supported">
@@ -48,15 +48,19 @@ class ProposalVoteBox extends Component {
         </div>
       )
     } else {
-      return (
-        <button 
-          className="button button-support tiny radius expand" 
-          title={I18n.t('proposals.proposal.support_title')}
-          onClick={() => { this.props.voteProposal(this.props.proposalId) }}
-          onMouseEnter={() => { this.setState({ showCantVoteOverlay: true }) }}>
-          {I18n.t("proposals.proposal.support")}
-        </button>
-      )
+      if (this.props.hideButton) {
+        return <SocialShareButtons title={title} url={url} />
+      } else {
+        return (
+          <button 
+            className="button button-support tiny radius expand" 
+            title={I18n.t('proposals.proposal.support_title')}
+            onClick={() => { this.props.voteProposal(this.props.proposalId) }}
+            onMouseEnter={() => { this.setState({ showCantVoteOverlay: true }) }}>
+            {I18n.t("proposals.proposal.support")}
+          </button>
+        )
+      }
     }
   }
 

@@ -266,8 +266,20 @@ Rails.application.routes.draw do
     resources :districts, only: [:index]
     resources :categories, only: [:index]
     resources :proposals, only: [:show, :index, :update] do
+      member do
+        get :references
+        patch :hide
+        patch :flag
+        patch :unflag
+      end
       resources :votes, only: [:create]
       resource :answers, only: [:create, :update], controller: :proposal_answers
+      resources :meetings, only: [:index]
+      resource :author, only: [], controller: 'author' do
+        member do
+          patch :hide
+        end
+      end
     end
     resources :meetings, only: [:index]
   end
