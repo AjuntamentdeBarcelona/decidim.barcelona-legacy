@@ -57,6 +57,7 @@ class ProposalInfoExtended extends Component {
     if (!flagged) {
       return (
         <a 
+          id={`flag-proposal-${id}`}
           onClick={ () => this.props.flagProposal(id) }
           title={ I18n.t('shared.flag') }>
           &nbsp;<i className="icon-flag flag-disable"></i>&nbsp;&nbsp;
@@ -71,6 +72,7 @@ class ProposalInfoExtended extends Component {
     if (flagged) {
       return (
         <a 
+          id={`unflag-proposal-${id}`}
           onClick={ () => this.props.unFlagProposal(id) }
           title={ I18n.t('shared.unflag') }>
           &nbsp;<i className="icon-flag flag-active"></i>&nbsp;&nbsp;

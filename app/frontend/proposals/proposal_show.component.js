@@ -4,26 +4,20 @@ import { bindActionCreators }          from 'redux';
 
 import { 
   fetchProposal, 
-  updateAnswer,
   hideProposal,
   hideProposalAuthor
 } from './proposals.actions';
-import { fetchCategories }             from '../categories/categories.actions';
-import { fetchDistricts }              from '../districts/districts.actions';
 
 import Loading                         from '../application/loading.component';
 import SocialShareButtons              from '../application/social_share_buttons.component';
 
-import CategoryPicker                  from '../categories/new_category_picker.component';
-
-import ProposalAnswerBox               from './proposal_answer_box.component';
+import ProposalReviewer                from './proposal_reviewer.component';
 import ProposalBadge                   from './proposal_badge.component';
 import ProposalInfoExtended            from './proposal_info_extended.component';
 import ProposalMeta                    from './proposal_meta.component';
 import ProposalVoteBox                 from './proposal_vote_box.component';
 import ProposalReferences              from './proposal_references.component';
 import ProposalMeetings                from './proposal_meetings.component';
-import ScopePicker                     from './scope_picker.component';
 
 class ProposalShow extends Component {
   constructor(props) {
@@ -38,8 +32,6 @@ class ProposalShow extends Component {
     const { session } = this.props;
 
     this.props.fetchProposal(this.props.proposalId);
-    this.props.fetchCategories();
-    this.props.fetchDistricts();
   }
 
   componentWillReceiveProps(newProps) {
@@ -116,7 +108,9 @@ class ProposalShow extends Component {
                 totalComments={ total_comments } 
                 flagged={ flagged } />
 
-              <div className="proposal-description">{ summary }</div>
+              <div 
+                className="proposal-description"
+                dangerouslySetInnerHTML={{ __html: summary.autoLink() }} />
 
               {this.renderExternalUrl(external_url)}
 
@@ -134,7 +128,7 @@ class ProposalShow extends Component {
                 {this.renderHideAuthorButton(id, can_hide_author)}
               </div>
 
-              {this.renderReviewBox()}
+              <ProposalReviewer />
             </div>
 
             <aside className="small-12 medium-3 column">
@@ -224,28 +218,6 @@ class ProposalShow extends Component {
 
     return null;
   }
-
-  renderReviewBox() {
-    const { session, proposal } = this.props;
-    const { id, answer } = proposal;
-
-    if (session.is_reviewer) {
-      return (
-        <div>
-          <h2>{I18n.t('proposals.edit.editing')}</h2>
-          <ScopePicker />
-          <CategoryPicker />
-          <ProposalAnswerBox 
-            answerMessage={answer && answer.message}
-            answerStatus={answer && answer.status}
-            onButtonClick={(answerParams) => this.props.updateAnswer(proposal.id, answer, answerParams)} 
-          />
-        </div>
-      );
-    }
-
-    return null;
-  }
 }
 
 function mapStateToProps({ session, proposal }) {
@@ -255,9 +227,6 @@ function mapStateToProps({ session, proposal }) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ 
     fetchProposal, 
-    updateAnswer, 
-    fetchCategories, 
-    fetchDistricts,
     hideProposal,
     hideProposalAuthor
   }, dispatch);

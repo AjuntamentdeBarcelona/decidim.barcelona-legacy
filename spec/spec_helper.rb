@@ -29,6 +29,10 @@ RSpec.configure do |config|
     end
   end
 
+  config.after(:each, :js) do |example|
+    sleep 1
+  end
+
   if ENV["CI"]
     config.include RSpec::Repeat
     config.around :each, type: :feature do |example|
@@ -89,6 +93,4 @@ RSpec.configure do |config|
   # test failures related to randomization by passing the same `--seed` value
   # as the one that triggered the failure.
   Kernel.srand config.seed
-
-
 end

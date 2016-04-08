@@ -13,9 +13,8 @@ feature 'Admin activity' do
 
       visit proposal_path(proposal)
 
-      within("#proposal_#{proposal.id}") do
-        click_link 'Hide'
-      end
+      expect(page).to have_selector("#proposal_#{proposal.id}")
+      find("#proposal_#{proposal.id} a", text: 'Hide').click
 
       visit admin_activity_path
 
@@ -195,14 +194,13 @@ feature 'Admin activity' do
   end
 
   context "User" do
-    scenario "Shows moderation activity on users" do
+    scenario "Shows moderation activity on users", :js do
       proposal = create(:proposal)
 
       visit proposal_path(proposal)
 
-      within("#proposal_#{proposal.id}") do
-        click_link 'Block author'
-      end
+      expect(page).to have_selector("#proposal_#{proposal.id}")
+      find("#proposal_#{proposal.id} a", text: 'Block author').click
 
       visit admin_activity_path
 

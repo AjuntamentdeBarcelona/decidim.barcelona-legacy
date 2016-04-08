@@ -42,7 +42,9 @@ module Abilities
       end
 
       if user.level_two_or_three_verified?
-        can :vote, Proposal, closed: false
+        can :vote, Proposal do |proposal|
+          !proposal.closed?
+        end
         can :vote_featured, Proposal
         can :create, SpendingProposal
       end

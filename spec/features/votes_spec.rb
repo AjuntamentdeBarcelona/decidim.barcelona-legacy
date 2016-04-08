@@ -254,6 +254,8 @@ feature 'Votes' do
       scenario 'Create in listed proposal in index', :js do
         visit proposals_path
 
+        expect(page).to have_selector("#proposal_#{@proposal.id}")
+
         within("#proposal_#{@proposal.id}") do
           find('.in-favor button').click
 
