@@ -124,7 +124,8 @@ class ProposalShow extends Component {
                 scope={ scope_ }
                 district={ district }
                 category={ category }
-                subcategory={ subcategory } />
+                subcategory={ subcategory } 
+                useServerLinks={ true }/>
 
               <ProposalReferences />
 
@@ -156,7 +157,7 @@ class ProposalShow extends Component {
             </aside>
           </div>
 
-          <ProposalMeetings />
+          <ProposalMeetings useServerLinks={ true } />
         </div>
       );
     }

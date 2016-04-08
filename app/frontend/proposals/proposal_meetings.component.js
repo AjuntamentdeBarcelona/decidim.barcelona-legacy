@@ -24,7 +24,7 @@ class ProposalMeetings extends Component {
   }
 
   renderMeetings() {
-    const { proposal } = this.props;
+    const { proposal, useServerLinks } = this.props;
     const meetings = proposal.meetings || [];
 
     if (meetings.length > 0) {
@@ -37,7 +37,7 @@ class ProposalMeetings extends Component {
                 { 
                   meetings.map((meeting) => 
                     <li key={ meeting.id }>
-                      <Meeting meeting={ meeting } />
+                      <Meeting meeting={ meeting } useServerLinks={ useServerLinks } />
                     </li>
                   )
                 }
