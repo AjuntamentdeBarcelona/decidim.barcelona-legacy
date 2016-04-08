@@ -8,7 +8,9 @@ import {
   FETCH_RELATED_MEETINGS,
   FETCH_REFERENCES,
   HIDE_PROPOSAL,
-  HIDE_PROPOSAL_AUTHOR
+  HIDE_PROPOSAL_AUTHOR,
+  FLAG_PROPOSAL,
+  UNFLAG_PROPOSAL
 } from './proposals.actions';
 
 export const proposals = function (state = [], action) {
@@ -31,7 +33,15 @@ export const proposal = function (state = {}, action) {
     case FETCH_PROPOSAL:
     case UPDATE_PROPOSAL:
     case HIDE_PROPOSAL:
-      return action.payload.data.proposal;
+    case FLAG_PROPOSAL:
+    case UNFLAG_PROPOSAL:
+      let proposal = action.payload.data.proposal;
+
+      return {
+        ...proposal,
+        meetings: state.meetings,
+        references: state.references
+      }
     case HIDE_PROPOSAL_AUTHOR:
       let author = action.payload.data.user;
 

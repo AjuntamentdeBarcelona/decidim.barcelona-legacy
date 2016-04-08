@@ -269,6 +269,8 @@ Rails.application.routes.draw do
       member do
         get :references
         patch :hide
+        patch :flag
+        patch :unflag
       end
       resources :votes, only: [:create]
       resource :answers, only: [:create, :update], controller: :proposal_answers

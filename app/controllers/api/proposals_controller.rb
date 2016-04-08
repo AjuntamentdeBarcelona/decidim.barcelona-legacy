@@ -1,7 +1,7 @@
 class Api::ProposalsController < Api::ApplicationController
   include HasOrders
 
-  before_action :authenticate_user!, only: [:update]
+  before_action :authenticate_user!, only: [:update, :flag, :unflag]
 
   load_resource
   authorize_resource except: [:references]
@@ -52,6 +52,16 @@ class Api::ProposalsController < Api::ApplicationController
   def hide
     @proposal.hide
     Activity.log(current_user, :hide, @proposal)
+    render json: @proposal
+  end
+
+  def flag
+    Flag.flag(current_user, @proposal)
+    render json: @proposal
+  end
+
+  def unflag
+    Flag.unflag(current_user, @proposal)
     render json: @proposal
   end
 
