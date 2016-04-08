@@ -50,7 +50,7 @@ class ProposalShow extends Component {
 
   render() {
     return (
-      <div>
+      <div className="proposal-show component">
         <Loading show={this.state.loading} />
         {this.renderProposal()}
       </div>
