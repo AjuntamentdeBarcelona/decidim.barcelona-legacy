@@ -247,7 +247,7 @@ ca:
     index:
       close: Tancar
       delete: Esborrar
-      description: Aquí podràs trobar les més de dues-centes cinquanta cites previstes en el procés de participació. Les cites són trobades presencials en forma de jornades, debats i dinamitzacions en l’espai públic per debatre propostes del Pla d'actuació municipal relacionades amb cadascun dels eixos temàtics (habitatge, educació, sanitat, participació, economia, etc.). Hi ha cites de barri, de districte i de ciutat. Pots participar en totes les que vulguis i les propostes sorgides d’aquestes cites seran penjades a la plataforma perquè tothom les pugui conèixer i debatre.
+      description: Aquí podràs trobar totes les cites presencials realitzades en el procés de participació. Les cites són trobades presencials en forma de jornades, debats i dinamitzacions en l’espai públic per debatre propostes del Pla d'actuació municipal relacionades amb cadascun dels eixos temàtics (habitatge, educació, sanitat, participació, economia, etc.). Hi ha cites de barri, de districte i de ciutat. Pots consultar totes les cites realitzades, l'acta de cadascuna d'elles i les propostes sorgides d’aquestes cites.
       edit: Editar
       new: Crear cita
       pictures: Imatges
@@ -326,7 +326,7 @@ ca:
       tags_label: Temes
       tags_placeholder: Escriu les etiquetes que vulguis separades per una coma (',')
     index:
-      description: Aquí pots navegar per les propostes que el Govern ha elaborat per al Pla d'actuació municipal 2016-2019. A aquestes propostes se sumen d’altres que provenen d’iniciatives ciutadanes, d’espais de debat o de propostes realitzades per entitats i organitzacions. Abans de fer-ne una de nova, mira quines propostes hi ha. D’aquesta manera podràs participar amb més coneixement en el debat ja iniciat, donar suport a les propostes que creguis convenients i, finalment, fer-ne de noves si creus que cap de les que hi ha recull allò que vols proposar. Llegeix, opina i participa-hi!
+      description: Aquí pots navegar tant per les propostes que el Govern ha elaborat per al Pla d'actuació municipal 2016-2019 com per aquelles que provenen de la ciutadania, d’espais de debat o de propostes realitzades per entitats i organitzacions. També pots consultar els suports rebuts i els comentaris de cada proposta. Aquestes propostes estan sent estudiades per la seva possible incorporació al pla i totes elles rebran una resposta en les pròximes setmanes.
       download: Baixa el Pla Municipal
       filter:
         title: Filtrar per
