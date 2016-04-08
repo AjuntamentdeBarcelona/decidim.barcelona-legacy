@@ -97,6 +97,10 @@ class ProposalShow extends Component {
                 <a href={url}>{title}<ProposalBadge source={source} /></a>
               </h2>
 
+              <div className="alert-box info radius margin-top">
+                <strong>{ I18n.t("proposals.proposal.closing") }</strong>
+              </div>
+
               {this.renderConflictiveWarning(conflictive)}
 
               <ProposalInfoExtended

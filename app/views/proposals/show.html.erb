@@ -10,8 +10,6 @@
 
 <section class="proposal-show" data-timestamp="<%= @proposal.created_at.to_i %>">
   <%= react_app 'Proposal', proposalId: @proposal.id %>
-
-  <%= render partial: 'closing_alert' %>
 </section>
 
 <%= render "proposals/comments" %>
