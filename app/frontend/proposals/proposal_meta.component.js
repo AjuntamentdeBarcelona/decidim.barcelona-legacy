@@ -28,15 +28,17 @@ export default class ProposalMeta extends Component {
       }
     }
 
-    if (useServerLinks) {
+    if (useServerLinks && district) {
       return (
         <FilterServerLink name="district" value={district.id} cssClass="bcn-icon-localitzacio bcn-icon" label={district.name} />
       );
-    } else {
+    } else if (district) {
       return (
         <FilterLink name="district" value={district.id} cssClass="bcn-icon-localitzacio bcn-icon" label={district.name} />
       );
     }
+
+    return null;
   }
 
   renderMetaCategories() {
