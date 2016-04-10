@@ -24,6 +24,7 @@ ca:
       not_reviewed: No revisades
       official: Ajuntament
       organization: Organitzacions
+      closed: Tancades
       past: Passades
       reviewed: Revisades
       upcoming: Properes

@@ -247,7 +247,7 @@ es:
     index:
       close: Cerrar
       delete: Borrar
-      description: Aquí podrás encontrar las más de doscientas cincuenta citas previstas en el proceso de participación. Las citas son encuentros presenciales en forma de jornadas, debates y dinamizaciones en el espacio público para debatir propuestas del Plan de Actuación Municipal relacionadas con cada uno de los ejes temáticos (vivienda, educación, sanidad, participación, economía, etc.). Hay citas de barrio, de distrito y de ciudad. Puedes participar en todas las que quieras y las propuestas surgidas de estas citas serán colgadas en la plataforma para que todo el mundo las pueda conocer y debatir.
+      description: Aquí podrás encontrar todas las citas presenciales realizadas en el proceso de participación. Las citas son encuentros presenciales en forma de jornadas, debates y dinamizaciones en el espacio público para debatir propuestas del Plan de actuación municipal relacionadas con cada uno de los ejes temáticos (vivienda , educación, sanidad, participación, economía, etc.). hay citas de barrio, de distrito y de ciudad. Puedes consultar todas las citas realizadas, el acta de cada una de ellas y las propuestas surgidas de estas citas.
       edit: Editar
       new: Crear cita
       pictures: Imágenes
@@ -326,7 +326,7 @@ es:
       tags_label: Temas
       tags_placeholder: Escribe las etiquetas que desees separadas por una coma (',')
     index:
-      description: Aquí puedes navegar por las propuestas que el Gobierno ha elaborado para el Plan de Actuación Municipal 2016-2019. A estas propuestas se suman otras que provienen de iniciativas ciudadanas, de espacios de debate o de propuestas realizadas por entidades y organizaciones. Antes de elaborar una nueva, mira qué propuestas hay. De esta manera podrás participar con mayor conocimiento en el debate ya iniciado, apoyar las propuestas que creas convenientes y finalmente decidir crear otras nuevas, si consideras que ninguna de las existentes incluye lo que deseas proponer. ¡Lee, opina y participa!
+      description: Aquí puedes navegar tanto por las propuestas que el Gobierno ha elaborado para el Plan de actuación municipal 2016-2019 como para aquellas que provienen de la ciudadanía, de espacios de debate o de propuestas realizadas por entidades y organizaciones. También puedes consultar los apoyos recibidos y los comentarios de cada propuesta. Estas propuestas están siendo estudiadas por su posible incorporación al plan y todas ellas recibirán una respuesta en las próximas semanas.
       download: Baja el Plan Municipal
       filter:
         title: Filtrado por
@@ -356,7 +356,7 @@ es:
       start_new: Crear una propuesta
     proposal:
       already_supported: "¡Ya has apoyado esta propuesta, compártela!"
-      closing: El proceso de recogida de propuestas finaliza el próximo 9 de abril a las 23:59 h.
+      closing: Se está estudiando la viabilidad de esta propuesta y la posible inclusión en el Plan Municipal 2016 a 2019. A lo largo de las próximas semanas esta propuesta recibirá una respuesta del Ayuntamiento de Barcelona. Recuerda que puedes participar en los debates de evaluación del proceso participativo del Plan Municipal.
       comments:
         one: 1 Comentario
         other: "%{count} Comentarios"
