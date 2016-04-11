@@ -9,6 +9,7 @@ import MeetingsFilters                       from './meetings_filters.component'
 import MeetingsList                          from './meetings_list.component';
 
 import { fetchMeetings, appendMeetingsPage } from './meetings.actions';
+import { setFilterGroup }                    from '../filters/filters.actions';
 
 class Meetings extends Component {
   constructor(props) {
@@ -20,9 +21,11 @@ class Meetings extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchMeetings({
-      filters: this.props.filters
-    });
+    if(Object.keys(this.props.filters.filter).length === 0){
+      this.props.setFilterGroup("date", ["past"]);
+    } else {
+      this.props.fetchMeetings({ filters: this.props.filters });
+    }
   }
 
   componentWillReceiveProps({ filters }) {
@@ -78,7 +81,7 @@ function mapStateToProps({ meetings, filters, pagination }) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchMeetings, appendMeetingsPage }, dispatch);
+  return bindActionCreators({ fetchMeetings, appendMeetingsPage, setFilterGroup }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Meetings);
