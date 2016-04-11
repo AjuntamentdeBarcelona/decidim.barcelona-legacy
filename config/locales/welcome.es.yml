@@ -23,7 +23,7 @@ es:
     header-motto:
       link: Entra y participa
     meetings:
-      title: Citas presenciales pasadas
+      title: Citas presenciales
     notifications:
       debate:
         now: 'Ahora mismo: %{title}'
