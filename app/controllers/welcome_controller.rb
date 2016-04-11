@@ -2,13 +2,13 @@ class WelcomeController < ApplicationController
   skip_authorization_check
 
   helper_method :featured_proposals, :citizenship_proposals, :upcoming_meetings,
-                :closed_meetings, :videos
+                :videos
 
   layout "devise", only: :welcome
 
   def index
     @categories = Category.order(:position).decorate
-    @meetings = Meeting.closed
+    @meetings = Meeting.upcoming
   end
 
   def welcome
@@ -46,12 +46,6 @@ class WelcomeController < ApplicationController
   def upcoming_meetings
     @upcoming_meetings||= ActiveModel::ArraySerializer.new(
       Meeting.upcoming.limit(12), each_serializer: MeetingSerializer
-    ).as_json
-  end
-
-  def closed_meetings
-    @upcoming_meetings||= ActiveModel::ArraySerializer.new(
-      Meeting.closed.limit(12), each_serializer: MeetingSerializer
     ).as_json
   end
 

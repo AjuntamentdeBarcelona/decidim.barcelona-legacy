@@ -22,10 +22,9 @@ class MeetingsFilters extends Component {
           filterGroupName="date"
           filterGroupValue={this.props.filters.filter['date']}
           isExclusive={true}
-          labelAllKey="closed"
+          labelAllKey="upcoming"
           onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
           <FilterOption filterName="past" />
-          <FilterOption filterName="upcoming" />
         </FilterOptionGroup>
         <ScopeFilterOptionGroup />
         <CategoryFilterOptionGroup />

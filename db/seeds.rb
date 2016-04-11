@@ -141,12 +141,6 @@ if ENV["SEED"]
       district = nil
     end
 
-    if [true, false].sample
-      closed_at = DateTime.now
-    else
-      closed_at = nil
-    end
-
     meeting = Meeting.create!(
       author: moderator,
       title: Faker::Lorem.sentence(3).truncate(60),
@@ -162,8 +156,7 @@ if ENV["SEED"]
       category: subcategory.category,
       scope: scope,
       district: district,
-      proposal_ids: proposals.sample(3).collect(&:id),
-      closed_at: closed_at
+      proposal_ids: proposals.sample(3).collect(&:id)
     )
     puts "    #{meeting.title}"
   end
