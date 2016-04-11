@@ -11,7 +11,7 @@ dependencies:
   override:
     - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; fi
     - sudo pip install --upgrade docker-compose==1.5.2
-    - docker pull ultrayoshi/ruby-node-phantomjs:2.1.1
+    - docker pull codegram/ruby-node-phantomjs
     - docker pull postgres
     - docker pull redis
     - cp .env.example .env
