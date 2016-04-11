@@ -140,5 +140,4 @@ class Comment < ActiveRecord::Base
     def dereference
       Referrer.new(self, self.commentable).dereference!
     end
-
 end

@@ -10,9 +10,11 @@
 
         <%= render 'shared/wide_order_selector', i18n_namespace: "comments" %>
 
-        <% unless @proposal.closed? %>
+        <% if !@proposal.closed? %>
           <% if user_signed_in? %>
-            <%= render 'comments/form', {commentable: @proposal, parent_id: nil, toggeable: false} %>
+            <% if can?(:comment, @proposal) %>
+              <%= render 'comments/form', {commentable: @proposal, parent_id: nil, toggeable: false} %>
+            <% end %>
           <% else %>
             <br>
 

@@ -36,6 +36,12 @@ module Abilities
       can [:flag, :unflag], Proposal
       cannot [:flag, :unflag], Proposal, author_id: user.id
 
+      can :comment, Proposal do |proposal| 
+        !proposal.closed?
+      end
+
+      can :comment, Debate
+
       unless user.organization?
         can :vote, Debate
         can :vote, Comment
