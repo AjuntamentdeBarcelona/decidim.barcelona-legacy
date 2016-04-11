@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   respond_to :html, :js
 
   def create
-    if @comment.save
+    if can?(:comment, @commentable) && @comment.save
       CommentNotifier.new(comment: @comment).process
       CommentReferencesWorker.perform_async(@comment.id)
       add_notification @comment

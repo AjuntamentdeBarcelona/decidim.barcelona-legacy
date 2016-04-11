@@ -9,6 +9,7 @@ module Abilities
 
       can :moderate, Proposal
       can :review, Proposal
+      can :comment, Proposal
 
       can [:read, :create, :update], [ProposalAnswer]
     end
