@@ -12,9 +12,8 @@ export default class SmartButton extends Component {
   render() {
     return (
       <button 
-        disabled={this.state.disabled}
-        className={this.props.className}
-        onClick={() => this.onClick()}>
+        {...this.props}
+        disabled={this.state.disabled}>
         {this.props.children}
       </button>
     );

@@ -16,8 +16,6 @@ import ProposalsApp               from './proposals/proposals_app.component';
 import ProposalApp                from './proposals/proposal_app.component';
 import ProposalsCarousel          from './proposals/proposals_carousel.component';
 
-import Votes                      from './proposals/votes.component'; // Deprecated
-
 window.CookiesWarning             = CookiesWarning;
 window.EmailNotificationsReminder = EmailNotificationsReminder;
 window.RichEditor                 = RichEditor;
@@ -35,8 +33,6 @@ window.MeetingsMap                = MeetingsMap;
 window.ProposalsApp               = ProposalsApp;
 window.ProposalApp                = ProposalApp;
 window.ProposalsCarousel          = ProposalsCarousel;
-
-window.Votes                      = Votes; // Depcrecated
 
 require('quill/dist/quill.snow');
 require('expose?autoLink!autolink-js');

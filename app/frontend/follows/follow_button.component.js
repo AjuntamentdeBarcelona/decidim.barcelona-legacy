@@ -8,9 +8,11 @@ import { follow, unFollow, fetchFollow } from './follows.actions';
 
 export class FollowButton extends Component {
   componentDidMount() {
-    const { followingId, followingType, fetchFollow } = this.props;
+    const { session, followingId, followingType, fetchFollow } = this.props;
 
-    fetchFollow({ followingId, followingType });
+    if (session.signed_in) {
+      fetchFollow({ followingId, followingType });
+    }
   }
 
   render() {
