@@ -8,12 +8,21 @@ import Icon                              from '../application/icon.component';
 import { follow, unFollow, fetchFollow } from './follows.actions';
 
 export class FollowButton extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { loading: true };
+  }
+
   componentDidMount() {
     const { session, followingId, followingType, fetchFollow } = this.props;
 
     if (session.signed_in) {
       fetchFollow({ followingId, followingType });
     }
+  }
+
+  componentWillReceiveProps() {
+    this.setState({ loading: false });
   }
 
   render() {
@@ -34,12 +43,12 @@ export class FollowButton extends Component {
   renderFollowButton() {
     const { followingId, followingType, followId, follow } = this.props;
 
-    if (!followId) {
+    if (!followId && !this.state.loading) {
       return (
         <SmartButton
           className="follow"
           onClick={() => follow({ followingId, followingType })}>
-          <Icon name="plus">{I18n.t('components.follow_button.follow')}</Icon>
+          <Icon name="check">{I18n.t('components.follow_button.follow')}</Icon>
         </SmartButton>
       );
     }
@@ -49,12 +58,12 @@ export class FollowButton extends Component {
   renderUnFollowButton() {
     const { followId, unFollow } = this.props;
 
-    if (followId) {
+    if (followId && !this.state.loading) {
       return (
         <SmartButton 
           className="unfollow"
           onClick={() => unFollow(followId)}>
-          <Icon name="minus">{I18n.t('components.follow_button.unfollow')}</Icon>
+          <Icon name="times">{I18n.t('components.follow_button.unfollow')}</Icon>
         </SmartButton>
       );
     }
