@@ -2,6 +2,8 @@ import { Component }                     from 'react';
 import { connect }                       from 'react-redux';
 import { bindActionCreators }            from 'redux';
 
+import SmartButton                       from '../application/smart_button.component';
+
 import { follow, unFollow, fetchFollow } from './follows.actions';
 
 export class FollowButton extends Component {
@@ -31,11 +33,11 @@ export class FollowButton extends Component {
 
     if (!followId) {
       return (
-        <button 
+        <SmartButton
           className="follow"
           onClick={() => follow({ followingId, followingType })}>
           Follow
-        </button>
+        </SmartButton>
       );
     }
     return null;
@@ -46,11 +48,11 @@ export class FollowButton extends Component {
 
     if (followId) {
       return (
-        <button 
+        <SmartButton 
           className="unfollow"
           onClick={() => unFollow(followId)}>
           Unfollow
-        </button>
+        </SmartButton>
       );
     }
 

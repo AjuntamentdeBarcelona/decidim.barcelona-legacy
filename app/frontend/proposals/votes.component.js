@@ -1,6 +1,7 @@
 //TODO: Deprecated when proposals#show use only components
 import { Component } from 'react';
 
+import SmartButton        from '../application/smart_button.component';
 import SocialShareButtons from '../application/social_share_buttons.component';
 
 export default class Votes extends Component {
@@ -59,13 +60,13 @@ export default class Votes extends Component {
         )
       } else {
         return (
-          <button 
+          <SmartButton 
             className="button button-support tiny radius expand" 
             title={I18n.t('proposals.proposal.support_title')}
             onClick={() => { this.vote() }}
             onMouseEnter={() => { this.setState({ showCantVoteOverlay: true }) }}>
             {I18n.t("proposals.proposal.support")}
-          </button>
+          </SmartButton>
         )
       }
     }
