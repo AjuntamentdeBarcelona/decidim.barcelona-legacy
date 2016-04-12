@@ -8,21 +8,12 @@ import Icon                              from '../application/icon.component';
 import { follow, unFollow, fetchFollow } from './follows.actions';
 
 export class FollowButton extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { loading: true };
-  }
-
   componentDidMount() {
     const { session, followingId, followingType, fetchFollow } = this.props;
 
     if (session.signed_in) {
       fetchFollow({ followingId, followingType });
     }
-  }
-
-  componentWillReceiveProps() {
-    this.setState({ loading: false });
   }
 
   render() {
@@ -43,7 +34,7 @@ export class FollowButton extends Component {
   renderFollowButton() {
     const { followingId, followingType, followId, follow } = this.props;
 
-    if (!followId && !this.state.loading) {
+    if (!followId) {
       return (
         <SmartButton
           className="follow"
@@ -58,7 +49,7 @@ export class FollowButton extends Component {
   renderUnFollowButton() {
     const { followId, unFollow } = this.props;
 
-    if (followId && !this.state.loading) {
+    if (followId) {
       return (
         <SmartButton 
           className="unfollow"
