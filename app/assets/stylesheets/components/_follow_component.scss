@@ -1,0 +1,15 @@
+.follow-component{
+  margin: rem-calc(15px) 0;
+  button{
+    width: 100%;
+
+    @include button($padding: $button-sml)
+
+    &.unfollow{
+      @include button(
+        $padding: $button-sml,
+        $bg: $highlight
+      );
+    }
+  }
+}

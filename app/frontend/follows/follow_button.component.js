@@ -3,6 +3,7 @@ import { connect }                       from 'react-redux';
 import { bindActionCreators }            from 'redux';
 
 import SmartButton                       from '../application/smart_button.component';
+import Icon                              from '../application/icon.component';
 
 import { follow, unFollow, fetchFollow } from './follows.actions';
 
@@ -20,7 +21,7 @@ export class FollowButton extends Component {
 
     if (session.signed_in) {
       return (
-        <div>
+        <div className="follow-component">
           {this.renderFollowButton()}
           {this.renderUnFollowButton()}
         </div>
@@ -38,7 +39,7 @@ export class FollowButton extends Component {
         <SmartButton
           className="follow"
           onClick={() => follow({ followingId, followingType })}>
-          {I18n.t('components.follow_button.follow')}
+          <Icon name="plus">{I18n.t('components.follow_button.follow')}</Icon>
         </SmartButton>
       );
     }
@@ -53,7 +54,7 @@ export class FollowButton extends Component {
         <SmartButton 
           className="unfollow"
           onClick={() => unFollow(followId)}>
-          {I18n.t('components.follow_button.unfollow')}
+          <Icon name="minus">{I18n.t('components.follow_button.unfollow')}</Icon>
         </SmartButton>
       );
     }
