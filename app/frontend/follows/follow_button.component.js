@@ -36,7 +36,7 @@ export class FollowButton extends Component {
         <SmartButton
           className="follow"
           onClick={() => follow({ followingId, followingType })}>
-          Follow
+          {I18n.t('components.follow_button.follow')}
         </SmartButton>
       );
     }
@@ -51,7 +51,7 @@ export class FollowButton extends Component {
         <SmartButton 
           className="unfollow"
           onClick={() => unFollow(followId)}>
-          Unfollow
+          {I18n.t('components.follow_button.unfollow')}
         </SmartButton>
       );
     }

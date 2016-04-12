@@ -62,3 +62,6 @@ ca:
       count: Mostrant %{count} propostes
     search_filter:
       search_input_placeholder: Cercar
+    follow_button:
+      follow: Seguir
+      unfollow: Deixar de seguir
