@@ -16,6 +16,7 @@ import ProposalBadge                   from './proposal_badge.component';
 import ProposalInfoExtended            from './proposal_info_extended.component';
 import ProposalMeta                    from './proposal_meta.component';
 import ProposalVoteBox                 from './proposal_vote_box.component';
+import ProposalFollowButton            from './proposal_follow_button.component';
 import ProposalReferences              from './proposal_references.component';
 import ProposalMeetings                from './proposal_meetings.component';
 
@@ -147,6 +148,9 @@ class ProposalShow extends Component {
                 votable={ votable } 
                 totalVotes={ total_votes } 
                 totalComments={ total_comments } />
+              <div className="sidebar-divider"></div>
+              <h3>{ I18n.t("proposals.show.follow") }</h3>
+              <ProposalFollowButton /> 
               <div className="sidebar-divider"></div>
               <h3>{ I18n.t("proposals.show.share") }</h3>
               <SocialShareButtons 

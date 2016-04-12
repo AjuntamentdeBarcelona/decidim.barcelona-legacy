@@ -14,6 +14,8 @@ export const HIDE_PROPOSAL          = 'HIDE_PROPOSAL';
 export const HIDE_PROPOSAL_AUTHOR   = 'HIDE_PROPOSAL_AUTHOR';
 export const FLAG_PROPOSAL          = 'FLAG_PROPOSAL';
 export const UNFLAG_PROPOSAL        = 'UNFLAG_PROPOSAL';
+export const FOLLOW_PROPOSAL        = 'FOLLOW_PROPOSAL';
+export const UNFOLLOW_PROPOSAL      = 'UNFOLLOW_PROPOSAL';
 
 export function fetchProposals(options) {
   return {
@@ -127,6 +129,12 @@ export function unFlagProposal(proposalId) {
     type: UNFLAG_PROPOSAL,
     payload: request
   };
+}
+
+export function followProposal(proposalId) {
+}
+
+export function unFollowProposal(proposalId) {
 }
 
 function buildProposalsRequest(options = {}) {

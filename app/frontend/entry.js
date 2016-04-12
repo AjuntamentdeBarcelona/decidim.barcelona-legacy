@@ -5,7 +5,7 @@ import SocialShareButtons         from './application/social_share_buttons.compo
 import AutocompleteInputAddress   from './location/autocomplete_input_address.component';
 import CategoryPicker             from './categories/category_picker.component';
 import MeetingProposalsSelector   from './meetings/meeting_proposals_selector.component';
-import DebateInfoBox              from './javascripts/debates/debate_info_box.component';
+import DebateInfoBox              from './debates/debate_info_box.component';
 
 import StaticMap                  from './location/static_map.component';
 import MeetingsApp                from './meetings/meetings_app.component';
