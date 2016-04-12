@@ -28,3 +28,6 @@ testsContext.keys().forEach(testsContext);
 
 testsContext = require.context('./proposals/', true, /\.test\.js$/);
 testsContext.keys().forEach(testsContext);
+
+testsContext = require.context('./follows/', true, /\.test\.js$/);
+testsContext.keys().forEach(testsContext);

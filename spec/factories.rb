@@ -1,4 +1,4 @@
-FactoryGirl.define do  
+FactoryGirl.define do
   sequence(:document_number) { |n| "#{n.to_s.rjust(8, '0')}X" }
 
   factory :user do

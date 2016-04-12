@@ -42,6 +42,8 @@ module Abilities
 
       can :comment, Debate
 
+      can :manage, Follow, follower_id: user.id
+
       unless user.organization?
         can :vote, Debate
         can :vote, Comment
