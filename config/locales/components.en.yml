@@ -46,11 +46,11 @@ en:
       unfollow: Unfollow
     infinite_pagination:
       loading_more: Loading more results...
-    meeting_proposals_autocomplete_input:
+    proposals_autocomplete_input:
       loading: Loading...
       no_results: No results.
       search: Search
-    meeting_proposals_table:
+    proposals_table:
       actions: Actions
       remove: Delete
       title: Title

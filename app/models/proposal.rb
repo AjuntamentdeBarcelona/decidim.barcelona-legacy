@@ -23,6 +23,8 @@ class Proposal < ActiveRecord::Base
   has_many :recommendations
   has_one  :answer, class_name: ProposalAnswer
 
+  has_and_belongs_to_many :action_plans
+
   validates :title, presence: true
   validates :title, :summary, style: true, on: :create
   validates :summary, presence: true, length: { maximum: 1000 }

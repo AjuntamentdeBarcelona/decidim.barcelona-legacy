@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-export default class MeetingProposalsAutocompleteInput extends Component {
+export default class ProposalsAutocompleteInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,9 +30,9 @@ export default class MeetingProposalsAutocompleteInput extends Component {
         <input 
           id="proposal_search_input" 
           ref="searchInput" 
-          placeholder={ I18n.t("components.meeting_proposals_autocomplete_input.search") } />
-        <p ref="loading">{ I18n.t("components.meeting_proposals_autocomplete_input.loading") }</p>
-        <p ref="noResults">{ I18n.t("components.meeting_proposals_autocomplete_input.no_results") }</p>
+          placeholder={ I18n.t("components.proposals_autocomplete_input.search") } />
+        <p ref="loading">{ I18n.t("components.proposals_autocomplete_input.loading") }</p>
+        <p ref="noResults">{ I18n.t("components.proposals_autocomplete_input.no_results") }</p>
         <ul className="dropdown" ref="dropdown">
           {
             this.state.proposals.map((proposal) => {

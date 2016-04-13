@@ -37,6 +37,9 @@ ca:
     new:
       form:
         submit_button: "Crear actuació"
+    edit:
+      form:
+        submit_button: "Editar actuació"
   application:
     close: Tancar
   categories:

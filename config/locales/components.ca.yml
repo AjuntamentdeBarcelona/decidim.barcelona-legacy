@@ -46,11 +46,11 @@ ca:
       unfollow: Deixar de seguir
     infinite_pagination:
       loading_more: Carregant més resultats...
-    meeting_proposals_autocomplete_input:
+    proposals_autocomplete_input:
       loading: Carregant...
       no_results: No s'han trobat resultats.
       search: Buscar
-    meeting_proposals_table:
+    proposals_table:
       actions: Accions
       remove: Eliminar
       title: Títol

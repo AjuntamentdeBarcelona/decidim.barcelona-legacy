@@ -28,6 +28,18 @@ es:
       verified_account: Cuenta verificada
       verify_my_account: Verificar mi cuenta
       weekly_summary: Recibir un email con un resumen semanal de actividad
+  action_plans:
+    form:
+      title: Título
+      description: Descripción
+    index:
+      new: Nueva actuación
+    new:
+      form:
+        submit_button: "Crear actuación"
+    edit:
+      form:
+        submit_button: "Editar actuación"
   application:
     close: Cerrar
   categories:

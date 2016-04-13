@@ -40,7 +40,7 @@
 
     <div class="small-12 column">
       <label><%= t("meetings.form.meeting_proposal_ids")%></label>
-      <%= meeting_proposals_selector proposals: @meeting.proposals %>
+      <%= proposals_selector resource_name: "meeting", proposals: @meeting.proposals %>
     </div>
 
     <%= render 'shared/forms/district_fields', f: f, i18n_namespace: 'meetings.form.meeting' %>

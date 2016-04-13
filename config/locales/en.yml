@@ -28,6 +28,18 @@ en:
       verified_account: Account verified
       verify_my_account: Verify my account
       weekly_summary: Receive an email with a weekly summary of activity
+  action_plans:
+    form:
+      title: Title
+      description: Description
+    index:
+      new: New action plan
+    new:
+      form:
+        submit_button: "Create action plan"
+    edit:
+      form:
+        submit_button: "Update action plan"
   application:
     close: Close
   categories:

@@ -27,7 +27,7 @@
   <% @resources.each do |action| %>
     <tr id="<%= dom_id(action) %>">
       <td>
-        <%= link_to action.title, action, target: "_blank" %>
+        <%= link_to action.title, edit_moderation_action_plan_path(action) %>
         <div class="action-description">
           <%= action.description %>
         </div>
