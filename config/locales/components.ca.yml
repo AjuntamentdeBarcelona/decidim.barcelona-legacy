@@ -46,14 +46,6 @@ ca:
       unfollow: Deixar de seguir
     infinite_pagination:
       loading_more: Carregant més resultats...
-    proposals_autocomplete_input:
-      loading: Carregant...
-      no_results: No s'han trobat resultats.
-      search: Buscar
-    proposals_table:
-      actions: Accions
-      remove: Eliminar
-      title: Títol
     meetings_filters:
       clean_filters: Netejar filtre
     proposal_answer_box:
@@ -68,5 +60,13 @@ ca:
       clean_filters: Netejar filtre
     proposals:
       count: Mostrant %{count} propostes
+    proposals_autocomplete_input:
+      loading: Carregant...
+      no_results: No s'han trobat resultats.
+      search: Buscar
+    proposals_table:
+      actions: Accions
+      remove: Eliminar
+      title: Títol
     search_filter:
       search_input_placeholder: Cercar

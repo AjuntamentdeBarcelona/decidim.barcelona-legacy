@@ -29,17 +29,17 @@ es:
       verify_my_account: Verificar mi cuenta
       weekly_summary: Recibir un email con un resumen semanal de actividad
   action_plans:
+    edit:
+      form:
+        submit_button: Editar actuación
     form:
-      title: Título
       description: Descripción
+      title: Título
     index:
       new: Nueva actuación
     new:
       form:
-        submit_button: "Crear actuación"
-    edit:
-      form:
-        submit_button: "Editar actuación"
+        submit_button: Crear actuación
   application:
     close: Cerrar
   categories:
@@ -277,6 +277,15 @@ es:
       share: Comparte
   menu:
     mobile-menu: Menú
+  moderation:
+    action_plans:
+      index:
+        headers:
+          action: Acció
+        order: Ordre
+        title: Títol
+    menu:
+      actions: Actions
   notifications:
     index:
       comments_on:

@@ -124,6 +124,8 @@ ignore_unused:
   - 'admin.comments.index.hidden_*'
   - 'moderation.comments.index.filter*'
   - 'moderation.comments.index.order*'
+  - 'moderation.action_plans.index.filter*'
+  - 'moderation.action_plans.index.order*'
   - 'moderation.debates.index.filter*'
   - 'moderation.proposals.index.filter*'
   - 'moderation.proposals.index.order*'

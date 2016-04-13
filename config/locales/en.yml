@@ -29,17 +29,17 @@ en:
       verify_my_account: Verify my account
       weekly_summary: Receive an email with a weekly summary of activity
   action_plans:
+    edit:
+      form:
+        submit_button: Update action plan
     form:
-      title: Title
       description: Description
+      title: Title
     index:
       new: New action plan
     new:
       form:
-        submit_button: "Create action plan"
-    edit:
-      form:
-        submit_button: "Update action plan"
+        submit_button: Create action plan
   application:
     close: Close
   categories:
@@ -277,6 +277,15 @@ en:
       share: Share
   menu:
     mobile-menu: Menu
+  moderation:
+    action_plans:
+      index:
+        headers:
+          action: Acció
+        order: Ordre
+        title: Títol
+    menu:
+      actions: Actions
   notifications:
     index:
       comments_on:

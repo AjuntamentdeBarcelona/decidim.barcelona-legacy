@@ -46,14 +46,6 @@ en:
       unfollow: Unfollow
     infinite_pagination:
       loading_more: Loading more results...
-    proposals_autocomplete_input:
-      loading: Loading...
-      no_results: No results.
-      search: Search
-    proposals_table:
-      actions: Actions
-      remove: Delete
-      title: Title
     meetings_filters:
       clean_filters: Clean filter
     proposal_answer_box:
@@ -68,5 +60,13 @@ en:
       clean_filters: Clean filter
     proposals:
       count: Showing %{count} proposals
+    proposals_autocomplete_input:
+      loading: Loading...
+      no_results: No results.
+      search: Search
+    proposals_table:
+      actions: Actions
+      remove: Delete
+      title: Title
     search_filter:
       search_input_placeholder: Search
