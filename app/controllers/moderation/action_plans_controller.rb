@@ -8,6 +8,13 @@ class Moderation::ActionPlansController < Moderation::BaseController
 
   load_and_authorize_resource
 
+  def index
+    @resources = @resources.send(@current_filter)
+    @resources = @resources.search(params[:search]) if params[:search].present?
+    @resources = @resources.page(params[:page]).per(50)
+    set_resources_instance
+  end
+
   def new
     @resource = resource_model.new
     set_resource_instance

@@ -1,6 +1,17 @@
 ---
 ca:
   moderation:
+    action_plans:
+      index:
+        headers:
+          action: Acció
+        order: Ordre
+        title: Títol
+        search_form:
+          button: Cercar
+          placeholder: Cercar
+    menu:
+      actions: Actions
     comments:
       index:
         block_authors: Bloqueja autors

@@ -280,15 +280,6 @@ en:
       share: Share
   menu:
     mobile-menu: Menu
-  moderation:
-    action_plans:
-      index:
-        headers:
-          action: Acció
-        order: Ordre
-        title: Títol
-    menu:
-      actions: Actions
   notifications:
     index:
       comments_on:

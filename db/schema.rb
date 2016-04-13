@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160413081929) do
+ActiveRecord::Schema.define(version: 20160413100332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,10 @@ ActiveRecord::Schema.define(version: 20160413081929) do
     t.integer  "subcategory_id", null: false
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.tsvector "tsv"
   end
+
+  add_index "action_plans", ["tsv"], name: "index_action_plans_on_tsv", using: :gin
 
   create_table "action_plans_proposals", id: false, force: :cascade do |t|
     t.integer "action_plan_id"
