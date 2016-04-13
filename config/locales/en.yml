@@ -40,6 +40,9 @@ en:
     new:
       form:
         submit_button: Create action plan
+    create_from_proposal:
+      form:
+        submit_button: Create action plan
   application:
     close: Close
   categories:

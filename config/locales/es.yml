@@ -40,6 +40,9 @@ es:
     new:
       form:
         submit_button: Crear actuación
+    create_from_proposal:
+      form:
+        submit_button: Crear actuación
   application:
     close: Cerrar
   categories:

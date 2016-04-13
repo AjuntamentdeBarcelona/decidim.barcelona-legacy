@@ -40,6 +40,9 @@ ca:
     new:
       form:
         submit_button: Crear actuació
+    create_from_proposal:
+      form:
+        submit_button: Crear actuació
   application:
     close: Tancar
   categories:

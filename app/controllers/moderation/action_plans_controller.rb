@@ -13,6 +13,18 @@ class Moderation::ActionPlansController < Moderation::BaseController
     set_resource_instance
   end
 
+  def create_from_proposal
+    @proposal = Proposal.find(params[:proposal_id])
+    @references = Reference.references_for(@proposal)
+    @resource = resource_model.new({
+      proposal_ids: @references.collect(&:id) + [@proposal.id],
+      title: @proposal.title,
+      description: @proposal.summary
+    })
+    set_resource_instance
+    render :new
+  end
+
   def create
     @resource = resource_model.new(strong_params)
 

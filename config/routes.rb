@@ -206,7 +206,11 @@ Rails.application.routes.draw do
       resources :pictures, controller: 'meetings/pictures'
     end
 
-    resources :action_plans, except: [:show]
+    resources :action_plans, except: [:show] do
+      collection do
+        get :create_from_proposal
+      end
+    end
   end
 
   namespace :revision do
