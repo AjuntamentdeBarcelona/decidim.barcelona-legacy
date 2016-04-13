@@ -1,5 +1,5 @@
 class ResourceFilter
-  IGNORE_FILTER_PARAMS = ["source", "other", "date", "reviewer_status"]
+  IGNORE_FILTER_PARAMS = ["source", "other", "date", "reviewer_status", "interaction"]
   attr_reader :search_filter, :tag_filter, :params
 
   def initialize(params={}, options = {})
@@ -95,6 +95,10 @@ class ResourceFilter
       collection = collection.where(official: false)
     end
 
+    if @params["interaction"]
+      collection = build_interaction(collection, @params["interaction"])
+    end
+
     if @params["reviewer_status"]
       if params["reviewer_status"].include? "reviewed"
         collection = collection.reviewed
@@ -104,5 +108,33 @@ class ResourceFilter
     end
 
     collection
+  end
+
+  private
+
+  def build_interaction(collection, interactions)
+    return collection unless @options[:user]
+    user = @options[:user]
+    result = []
+
+    if interactions.include?("voted")
+      result << Proposal.arel_table[:id].in(user.get_voted(Proposal).pluck(:id))
+    end
+
+    if interactions.include?("created")
+      result << Proposal.arel_table[:id].in(user.proposals.pluck(:id))
+    end
+
+    if interactions.include?("commented")
+      comments = user.comments.where(commentable_type: 'Proposal')
+      result << Proposal.arel_table[:id].in(comments.pluck(:commentable_id))
+    end
+
+    if interactions.include?("followed")
+      follows = Follow.where(follower: user).where(following_type: "Proposal")
+      result << Proposal.arel_table[:id].in(follows.pluck(:following_id))
+    end
+
+    collection.where(result.inject(&:or))
   end
 end

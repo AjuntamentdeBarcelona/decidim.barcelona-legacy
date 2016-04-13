@@ -399,4 +399,8 @@ FactoryGirl.define do
     referenced_id 1
   end
 
+  factory :follow do
+    following{ create(:proposal, :debate).sample }
+    follower{ create(:user) }
+  end
 end
