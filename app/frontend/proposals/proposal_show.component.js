@@ -11,6 +11,8 @@ import {
 import Loading                         from '../application/loading.component';
 import SocialShareButtons              from '../application/social_share_buttons.component';
 
+import FollowButton                    from '../follows/follow_button.component';
+
 import ProposalReviewer                from './proposal_reviewer.component';
 import ProposalBadge                   from './proposal_badge.component';
 import ProposalInfoExtended            from './proposal_info_extended.component';
@@ -78,7 +80,8 @@ class ProposalShow extends Component {
         hidden,
         can_hide,
         can_hide_author,
-        flagged
+        flagged,
+        follow
       } = proposal;
 
       return (
@@ -147,6 +150,9 @@ class ProposalShow extends Component {
                 votable={ votable } 
                 totalVotes={ total_votes } 
                 totalComments={ total_comments } />
+              <FollowButton 
+                followingId={id}
+                followingType={'Proposal'} />
               <div className="sidebar-divider"></div>
               <h3>{ I18n.t("proposals.show.share") }</h3>
               <SocialShareButtons 

@@ -1,0 +1,25 @@
+.follow-component{
+  width: rem-calc(140px);
+  margin: rem-calc(20px) auto;
+  margin-bottom: rem-calc(10px);
+
+  button{
+    position: relative;
+    .icon{
+      position: absolute;
+      left: rem-calc(12px);
+      top: 52%;
+      transform: translateY(-50%);
+    }
+    width: 100%;
+    @include button($padding: $button-tny, $radius: rem-calc(5));
+
+    &.unfollow{
+      @include button(
+        $padding: $button-tny,
+        $bg: $highlight,
+        $radius: rem-calc(5)
+      );
+    }
+  }
+}

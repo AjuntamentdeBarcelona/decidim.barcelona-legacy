@@ -1,7 +1,7 @@
 class Api::ProposalsController < Api::ApplicationController
   include HasOrders
 
-  before_action :authenticate_user!, only: [:update, :flag, :unflag]
+  before_action :authenticate_user!, only: [:update, :hide, :flag, :unflag]
 
   load_resource
   authorize_resource except: [:update, :references]

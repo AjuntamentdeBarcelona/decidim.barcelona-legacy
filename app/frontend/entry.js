@@ -5,7 +5,7 @@ import SocialShareButtons         from './application/social_share_buttons.compo
 import AutocompleteInputAddress   from './location/autocomplete_input_address.component';
 import CategoryPicker             from './categories/category_picker.component';
 import MeetingProposalsSelector   from './meetings/meeting_proposals_selector.component';
-import DebateInfoBox              from './javascripts/debates/debate_info_box.component';
+import DebateInfoBox              from './debates/debate_info_box.component';
 
 import StaticMap                  from './location/static_map.component';
 import MeetingsApp                from './meetings/meetings_app.component';
@@ -15,8 +15,6 @@ import MeetingsMap                from './meetings/meetings_map.component';
 import ProposalsApp               from './proposals/proposals_app.component';
 import ProposalApp                from './proposals/proposal_app.component';
 import ProposalsCarousel          from './proposals/proposals_carousel.component';
-
-import Votes                      from './proposals/votes.component'; // Deprecated
 
 window.CookiesWarning             = CookiesWarning;
 window.EmailNotificationsReminder = EmailNotificationsReminder;
@@ -35,8 +33,6 @@ window.MeetingsMap                = MeetingsMap;
 window.ProposalsApp               = ProposalsApp;
 window.ProposalApp                = ProposalApp;
 window.ProposalsCarousel          = ProposalsCarousel;
-
-window.Votes                      = Votes; // Depcrecated
 
 require('quill/dist/quill.snow');
 require('expose?autoLink!autolink-js');

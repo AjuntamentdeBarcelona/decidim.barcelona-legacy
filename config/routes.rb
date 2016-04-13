@@ -282,6 +282,7 @@ Rails.application.routes.draw do
       end
     end
     resources :meetings, only: [:index]
+    resources :follows, only: [:index, :create, :destroy]
   end
 
   if Rails.env.development?

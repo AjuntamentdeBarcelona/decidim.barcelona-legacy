@@ -10,8 +10,10 @@ import {
   HIDE_PROPOSAL,
   HIDE_PROPOSAL_AUTHOR,
   FLAG_PROPOSAL,
-  UNFLAG_PROPOSAL
+  UNFLAG_PROPOSAL,
 } from './proposals.actions';
+
+import { FOLLOW, UNFOLLOW, FETCH_FOLLOW } from '../follows/follows.actions';
 
 export const proposals = function (state = [], action) {
   switch (action.type) {
@@ -29,6 +31,8 @@ export const proposals = function (state = [], action) {
 }
 
 export const proposal = function (state = {}, action) {
+  let follow = null;
+
   switch (action.type) {
     case FETCH_PROPOSAL:
     case UPDATE_PROPOSAL:
@@ -42,6 +46,39 @@ export const proposal = function (state = {}, action) {
         meetings: state.meetings,
         references: state.references
       }
+    case FOLLOW:
+      follow = action.payload.data.follow;
+
+      if (follow.following_type === "Proposal" && follow.following_id === state.id) {
+        return {
+          ...state,
+          follow
+        };
+      }
+
+      return state;
+    case FETCH_FOLLOW:
+      [follow] = action.payload.data.follows;
+
+      if (follow && follow.following_type === "Proposal" && follow.following_id === state.id) {
+        return {
+          ...state,
+          follow
+        };
+      }
+
+      return state;
+    case UNFOLLOW:
+      follow = action.payload.data.follow;
+
+      if (follow.following_type === "Proposal" && follow.following_id === state.id) {
+        return {
+          ...state,
+          follow: null
+        };
+      }
+
+      return state;
     case HIDE_PROPOSAL_AUTHOR:
       let author = action.payload.data.user;
 

@@ -2,6 +2,7 @@ import { Component }          from 'react';
 import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
 
+import SmartButton            from '../application/smart_button.component';
 import SocialShareButtons     from '../application/social_share_buttons.component';
 
 import { voteProposal }       from './proposals.actions';
@@ -52,13 +53,13 @@ class ProposalVoteBox extends Component {
         return <SocialShareButtons title={title} url={url} />
       } else {
         return (
-          <button 
+          <SmartButton 
             className="button button-support tiny radius expand" 
             title={I18n.t('proposals.proposal.support_title')}
             onClick={() => { this.props.voteProposal(this.props.proposalId) }}
             onMouseEnter={() => { this.setState({ showCantVoteOverlay: true }) }}>
             {I18n.t("proposals.proposal.support")}
-          </button>
+          </SmartButton>
         )
       }
     }
