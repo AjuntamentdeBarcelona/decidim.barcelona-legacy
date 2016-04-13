@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160413100332) do
+ActiveRecord::Schema.define(version: 20160413123108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,9 +19,19 @@ ActiveRecord::Schema.define(version: 20160413100332) do
   enable_extension "pg_trgm"
   enable_extension "unaccent"
 
+  create_table "action_plan_revisions", force: :cascade do |t|
+    t.integer  "action_plan_id"
+    t.integer  "author_id"
+    t.text     "title"
+    t.text     "description"
+    t.tsvector "tsv"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "action_plan_revisions", ["tsv"], name: "index_action_plan_revisions_on_tsv", using: :gin
+
   create_table "action_plans", force: :cascade do |t|
-    t.text     "title",          null: false
-    t.text     "description",    null: false
     t.integer  "category_id",    null: false
     t.integer  "subcategory_id", null: false
     t.datetime "created_at",     null: false

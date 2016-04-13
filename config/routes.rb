@@ -207,8 +207,9 @@ Rails.application.routes.draw do
     end
 
     resources :action_plans, except: [:show] do
+      resources :revisions, except: [:show, :delete], controller: 'action_plans/revisions'
       collection do
-        get :create_from_proposal
+        get :build_from_proposal
       end
     end
   end

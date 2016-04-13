@@ -134,7 +134,7 @@ class ProposalShow extends Component {
               <div className="js-moderator-proposal-actions margin">
                 {this.renderHideButton(id, can_hide)}
                 {this.renderHideAuthorButton(id, can_hide_author)}
-                {this.renderCreateActionPlanButton(id)}
+                {this.renderBuildActionPlanButton(id)}
               </div>
 
               <ProposalReviewer />
@@ -212,15 +212,15 @@ class ProposalShow extends Component {
     return null;
   }
 
-  renderCreateActionPlanButton(id) {
+  renderBuildActionPlanButton(id) {
     const { session } = this.props;
 
     if (session.can_create_action_plan) {
       return (
         <span>
           <span>&nbsp;|&nbsp;</span>
-          <DangerLink href={`/moderation/action_plans/create_from_proposal?proposal_id=${id}`}>
-            { I18n.t('admin.actions.create_action_plan') }
+          <DangerLink href={`/moderation/action_plans/build_from_proposal?proposal_id=${id}`}>
+            { I18n.t('admin.actions.build_action_plan') }
           </DangerLink>
         </span>
       );

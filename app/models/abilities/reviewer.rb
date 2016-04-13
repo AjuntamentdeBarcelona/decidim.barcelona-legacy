@@ -13,6 +13,7 @@ module Abilities
 
       can [:read, :create, :update], [ProposalAnswer]
       can :manage, ActionPlan
+      can :manage, ActionPlanRevision
     end
   end
 end

@@ -1,19 +1,28 @@
 <%= form_for(@action_plan, url: form_url) do |f| %>
   <%= render 'shared/errors', resource: @action_plan %>
 
+  <% unless @action_plan.new_record? %>
+    <div class="alert-box warning radius margin-top">
+      <span>You are editing an action plan so you cannot modify title and description. Visit action plan </span>
+      <%= link_to 'revisions', moderation_action_plan_revisions_path(@action_plan) %>
+      <span> to add a new revision.</span>
+    </div>
+  <% end %>
+
   <div class="row">
     <div class="small-12 column">
       <label><%= t("meetings.form.meeting_proposal_ids")%></label>
       <%= proposals_selector resource_name: "action_plan", proposals: @action_plan.proposals %>
     </div>
+
     <div class="small-12 column">
       <%= f.label :title, t("action_plans.form.title") %>
-      <%= f.text_field :title, label: false %>
+      <%= f.text_field :title, label: false, disabled: !@action_plan.new_record? %>
     </div>
 
     <div class="small-12 column">
       <%= f.label :description, t("action_plans.form.description") %>
-      <%= f.text_area :description, label: false %>
+      <%= f.text_area :description, label: false, disabled: !@action_plan.new_record? %>
     </div>
 
     <div class="small-12 column">

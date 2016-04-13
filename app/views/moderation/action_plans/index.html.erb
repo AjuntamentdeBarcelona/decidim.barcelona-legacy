@@ -21,7 +21,17 @@
     <tr id="<%= dom_id(action) %>">
       <td>
         <%= link_to action.title, edit_moderation_action_plan_path(action) %>
-        <div class="action-description">
+        <br />
+
+        <div class="right">
+          <%= link_to t("action_plans.index.revisions"), moderation_action_plan_revisions_path(action), class: 'button radius tiny secondary' %>
+          <%= link_to t("action_plans.index.edit"), edit_moderation_action_plan_path(action), class: 'button radius tiny secondary' %>
+          <%= link_to t('action_plans.index.delete'), moderation_action_plan_path(action), method: :delete,  class: "button tiny radius alert", data: { confirm: t('admin.actions.confirm') } %>
+        </div>
+
+        <br />
+
+        <div>
           <%= action.description %>
         </div>
       </td>

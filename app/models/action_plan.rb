@@ -1,39 +1,24 @@
 class ActionPlan < ActiveRecord::Base
-  include PgSearch
-  include SearchCache
-
   belongs_to :category
   belongs_to :subcategory
 
-  has_and_belongs_to_many :proposals
+  has_many :revisions, class_name: ActionPlanRevision, dependent: :destroy
 
-  validates :title, :description, :category, :subcategory, presence: true
+  has_and_belongs_to_many :proposals, dependent: :destroy
 
-  pg_search_scope :pg_search, {
-    against: {
-      title:       'A',
-      description: 'B'
-    },
-    using: {
-      tsearch: { dictionary: "spanish", tsvector_column: 'tsv' }
-    },
-    ignoring: :accents,
-    ranked_by: '(:tsearch)'
-  }
+  validates :category, :subcategory, presence: true
 
-  def searchable_values
-    values = {
-      title       => 'A',
-      description => 'B'
-    }
-    values
-  end
-
-  def self.search(terms)
-    self.pg_search(terms)
-  end
+  delegate :title, :description, to: :current_revision, allow_nil: true
 
   def self.sort_by_created_at
     order('created_at desc')
+  end
+
+  def self.search(terms)
+    ActionPlanRevision.pg_search(terms)
+  end
+
+  def current_revision
+    revisions.first
   end
 end

@@ -6,7 +6,7 @@ en:
       confirm_hide: Confirm
       hide: Hide
       hide_author: Block author
-      create_action_plan: Create action plan
+      build_action_plan: Create action plan
       restore: Restore
     activity:
       show:

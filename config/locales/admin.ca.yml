@@ -6,7 +6,7 @@ ca:
       confirm_hide: Confirma
       hide: Amaga
       hide_author: Bloqueja l'autor
-      create_action_plan: Crea pla d'actuació
+      build_action_plan: Crea pla d'actuació
       restore: Torna a mostrar
     activity:
       show:
