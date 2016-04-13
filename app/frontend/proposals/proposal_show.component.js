@@ -10,6 +10,7 @@ import {
 
 import Loading                         from '../application/loading.component';
 import SocialShareButtons              from '../application/social_share_buttons.component';
+import DangerLink                      from '../application/danger_link.component';
 
 import FollowButton                    from '../follows/follow_button.component';
 
@@ -52,7 +53,7 @@ class ProposalShow extends Component {
   }
 
   renderProposal() {
-    const { proposal, hideProposal, hideProposalAuthor } = this.props;
+    const { proposal } = this.props;
 
     if (proposal.id) {
       const { 
@@ -182,24 +183,28 @@ class ProposalShow extends Component {
   }
 
   renderHideButton(id, hasPermission) {
+    const { hideProposal } = this.props;
+
     if (hasPermission) {
       return (
-        <a onClick={() => hideProposal(id)}>
+        <DangerLink onClick={() => hideProposal(id)}>
           { I18n.t('admin.actions.hide') }
-        </a>
+        </DangerLink>
       );
     }
     return null;
   }
 
   renderHideAuthorButton(id, hasPermission) {
+    const { hideProposalAuthor } = this.props;
+
     if (hasPermission) {
       return (
         <span>
           <span>&nbsp;|&nbsp;</span>
-          <a onClick={() => hideProposalAuthor(id)}>
+          <DangerLink onClick={() => hideProposalAuthor(id)}>
             { I18n.t('admin.actions.hide_author') }
-          </a>
+          </DangerLink>
         </span>
       );
     }
