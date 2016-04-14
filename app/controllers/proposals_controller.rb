@@ -21,7 +21,7 @@ class ProposalsController < ApplicationController
 
       if can?(:download_report, Proposal)
         format.xls do
-          @filter = ResourceFilter.new(params)
+          @filter = ResourceFilter.new(params, user: current_user)
           proposals = @current_order == "recommended" ? Recommender.new(current_user).proposals : Proposal.all
 
           proposals = @filter.filter_collection(proposals.includes(:category, :subcategory, :author => [:organization]))
