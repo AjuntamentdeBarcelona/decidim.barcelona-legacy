@@ -10,5 +10,14 @@
         <%= t("revision.menu.proposals") %>
       <% end %>
     </li>
+
+    <% if can? :manage, ActionPlan %>
+      <li <%= "class=active" if controller_name == "actions" %>>
+        <%= link_to revision_action_plans_path do %>
+          <i class="icon-document"></i>
+          <%= t("revision.menu.actions") %>
+        <% end %>
+      </li>
+    <% end %>
   </ul>
 </nav>

@@ -219,7 +219,7 @@ class ProposalShow extends Component {
       return (
         <span>
           <span>&nbsp;|&nbsp;</span>
-          <DangerLink href={`/moderation/action_plans/build_from_proposal?proposal_id=${id}`}>
+          <DangerLink href={`/revision/action_plans/build_from_proposal?proposal_id=${id}`}>
             { I18n.t('admin.actions.build_action_plan') }
           </DangerLink>
         </span>

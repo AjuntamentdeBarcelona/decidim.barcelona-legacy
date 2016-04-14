@@ -6,4 +6,13 @@ en:
         title: Revision
     menu:
       proposals: Proposals
-
+      actions: Action plans
+    action_plans:
+      index:
+        headers:
+          action: Acció
+        order: Ordre
+        title: Títol
+        search_form:
+          button: Search
+          placeholder: Search

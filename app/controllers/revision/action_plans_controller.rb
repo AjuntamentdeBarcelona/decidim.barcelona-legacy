@@ -1,4 +1,4 @@
-class Moderation::ActionPlansController < Moderation::BaseController
+class Revision::ActionPlansController < Revision::BaseController
   include ModerateActions
 
   has_filters %w{all}, only: :index
@@ -23,8 +23,19 @@ class Moderation::ActionPlansController < Moderation::BaseController
   def build_from_proposal
     @proposal = Proposal.find(params[:proposal_id])
     @references = Reference.references_for(@proposal)
-    @resource = resource_model.new(proposal_ids: @references.collect(&:id) + [@proposal.id])
-    @resource.revisions.build(title: @proposal.title, description: @proposal.summary)
+
+    @resource = resource_model.new({
+      proposal_ids: @references.collect(&:id) + [@proposal.id],
+      scope: @proposal.scope,
+      district: @proposal.district,
+      category_id: @proposal.category_id,
+      subcategory_id: @proposal.subcategory_id
+    })
+    @resource.revisions.build({
+      title: @proposal.title, 
+      description: @proposal.summary
+    })
+
     set_resource_instance
     render :new
   end
@@ -40,7 +51,7 @@ class Moderation::ActionPlansController < Moderation::BaseController
 
     if @resource.save
       @resource.revisions.create(params.require(:action_plan_revision).permit(:title, :description, :author_id))
-      redirect_to moderation_action_plans_url, notice: t('flash.actions.create.notice', resource_name: "#{resource_name.capitalize}")
+      redirect_to revision_action_plans_url, notice: t('flash.actions.create.notice', resource_name: "#{resource_name.capitalize}")
     else
       set_resource_instance
       render :new
@@ -53,7 +64,7 @@ class Moderation::ActionPlansController < Moderation::BaseController
   def update
     resource.assign_attributes(strong_params)
     if resource.save
-      redirect_to moderation_action_plans_url, notice: t('flash.actions.update.notice', resource_name: "#{resource_name.capitalize}")
+      redirect_to revision_action_plans_url, notice: t('flash.actions.update.notice', resource_name: "#{resource_name.capitalize}")
     else
       set_resource_instance
       render :edit
@@ -62,7 +73,7 @@ class Moderation::ActionPlansController < Moderation::BaseController
 
   def destroy
     resource.destroy
-    redirect_to moderation_action_plans_url, notice: t('flash.actions.destroy.notice', resource_name: "#{resource_name.capitalize}")
+    redirect_to revision_action_plans_url, notice: t('flash.actions.destroy.notice', resource_name: "#{resource_name.capitalize}")
   end
 
   private

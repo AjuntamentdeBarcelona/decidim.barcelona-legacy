@@ -1,17 +1,6 @@
 ---
 en:
   moderation:
-    action_plans:
-      index:
-        headers:
-          action: Acció
-        order: Ordre
-        title: Títol
-        search_form:
-          button: Search
-          placeholder: Search
-    menu:
-      actions: Actions
     comments:
       index:
         block_authors: Block authors

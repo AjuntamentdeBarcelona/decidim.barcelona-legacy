@@ -6,4 +6,13 @@ es:
         title: Revisión
     menu:
       proposals: Propuestas
-
+      actions: Actuaciones
+    action_plans:
+      index:
+        headers:
+          action: Acció
+        order: Ordre
+        title: Títol
+        search_form:
+          button: Buscar
+          placeholder: Buscar

@@ -1,5 +1,5 @@
-module Moderation::ActionPlans
-  class RevisionsController < Moderation::BaseController
+module Revision::ActionPlans
+  class RevisionsController < Revision::BaseController
     include ModerateActions
 
     has_filters %w{all}, only: :index
@@ -18,7 +18,7 @@ module Moderation::ActionPlans
     end
 
     def new
-      @resource = resource_model.new
+      @resource = resource_model.new(title: @action_plan.title, description: @action_plan.description)
       set_resource_instance
     end
 
@@ -28,7 +28,7 @@ module Moderation::ActionPlans
       @resource.author = current_user
 
       if @resource.save
-        redirect_to moderation_action_plan_revisions_url(@action_plan), notice: t('flash.actions.create.notice', resource_name: "#{resource_name.capitalize}")
+        redirect_to revision_action_plan_revisions_url(@action_plan), notice: t('flash.actions.create.notice', resource_name: "#{resource_name.capitalize}")
       else
         set_resource_instance
         render :new
