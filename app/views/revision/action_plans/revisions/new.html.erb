@@ -4,17 +4,17 @@
       <%= render 'shared/errors', resource: @resource %>
 
         <div class="small-12 column">
-          <%= f.label :title, t("action_plans.form.title") %>
+          <%= f.label :title, t("action_plan_revisions.form.title") %>
           <%= f.text_field :title, label: false %>
         </div>
 
         <div class="small-12 column">
-          <%= f.label :description, t("action_plans.form.description") %>
+          <%= f.label :description, t("action_plan_revisions.form.description") %>
           <%= f.rich_editor :description, label: false %>
         </div>
 
         <div class="actions small-12 column">
-          <%= f.submit(class: "button radius", value: t("action_plans.#{action_name}.form.submit_button")) %>
+          <%= f.submit(class: "button radius", value: t("action_plan_revisions.#{action_name}.form.submit_button")) %>
         </div>
       </div>
     <% end %>

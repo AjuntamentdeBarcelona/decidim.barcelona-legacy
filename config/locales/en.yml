@@ -28,6 +28,12 @@ en:
       verified_account: Account verified
       verify_my_account: Verify my account
       weekly_summary: Receive an email with a weekly summary of activity
+  action_plan_revisions:
+    form:
+      description: Description
+      title: Title
+    index:
+      new: Add revision
   action_plans:
     build_from_proposal:
       form:

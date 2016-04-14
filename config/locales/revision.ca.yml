@@ -1,6 +1,14 @@
 ---
 ca:
   revision:
+    action_plan_revisions:
+      index:
+        headers:
+          revision: Revisió
+        search_form:
+          button: Cercar
+          placeholder: Cercar
+        title: Revisions
     action_plans:
       index:
         headers:

@@ -28,6 +28,12 @@ ca:
       verified_account: Compte verificat
       verify_my_account: Verificar el meu compte
       weekly_summary: Rebre un email amb un resum setmanal d'activitat
+  action_plan_revisions:
+    form:
+      description: Descripció
+      title: Títol
+    index:
+      new: Nova revisió
   action_plans:
     build_from_proposal:
       form:

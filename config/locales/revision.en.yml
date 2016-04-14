@@ -1,6 +1,14 @@
 ---
 en:
   revision:
+    action_plan_revisions:
+      index:
+        headers:
+          revision: Revision
+        search_form:
+          button: Search
+          placeholder: Search
+        title: Revisions
     action_plans:
       index:
         headers:

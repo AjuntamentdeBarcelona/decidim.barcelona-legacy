@@ -28,6 +28,12 @@ es:
       verified_account: Cuenta verificada
       verify_my_account: Verificar mi cuenta
       weekly_summary: Recibir un email con un resumen semanal de actividad
+  action_plan_revisions:
+    form:
+      description: Descripción
+      title: Título
+    index:
+      new: Nueva revisión
   action_plans:
     build_from_proposal:
       form:
