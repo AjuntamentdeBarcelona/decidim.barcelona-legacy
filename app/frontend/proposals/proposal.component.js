@@ -5,6 +5,7 @@ import ProposalMeta    from './proposal_meta.component';
 
 export default ({
   id,
+  code,
   title,
   url,
   summary,
@@ -31,6 +32,7 @@ export default ({
           <span className="label-proposal">{ I18n.t('proposals.proposal.proposal') }</span>
           <h3><a href={url}>{ title }</a></h3>
           <ProposalInfo 
+            code={ code }
             created_at={ created_at }
             official={ official }
             from_meeting={ from_meeting }

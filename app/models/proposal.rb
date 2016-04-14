@@ -75,6 +75,7 @@ class Proposal < ActiveRecord::Base
 
   def searchable_values
     values = {
+      code       => 'A',
       title       => 'A',
       question    => 'B',
       summary     => 'C',

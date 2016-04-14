@@ -1,6 +1,7 @@
 import ProposalAuthor from './proposal_author.component';
 
 export default function ({
+  code,
   created_at,
   official,
   from_meeting,
@@ -8,6 +9,8 @@ export default function ({
 }) {
   return (
     <p className="proposal-info">
+      <span>{ code }</span>
+      <span className="bullet">&nbsp;&bull;&nbsp;</span>
       <span>{ created_at }</span>
       <span className="bullet">&nbsp;&bull;&nbsp;</span>
       <ProposalAuthor 

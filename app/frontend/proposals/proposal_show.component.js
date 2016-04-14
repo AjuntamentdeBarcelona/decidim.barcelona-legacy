@@ -58,6 +58,7 @@ class ProposalShow extends Component {
     if (proposal.id) {
       const { 
         id,
+        code,
         url, 
         title, 
         source, 
@@ -109,6 +110,7 @@ class ProposalShow extends Component {
 
               <ProposalInfoExtended
                 id={ id }
+                code={ code }
                 created_at={ created_at }
                 official={ official }
                 from_meeting={ from_meeting }

@@ -10,6 +10,7 @@ import AuthorAvatar                     from '../application/author_avatar.compo
 class ProposalInfoExtended extends Component {
   render() {
     const {
+      code,
       created_at,
       official,
       fromMeeting,
@@ -25,6 +26,8 @@ class ProposalInfoExtended extends Component {
           official={ official }
           fromMeeting={ fromMeeting }
           author={ author } />
+        <span className="bullet">&nbsp;&bull;&nbsp;</span>
+        <span>{ code }</span>
         <span className="bullet">&nbsp;&bull;&nbsp;</span>
         <span>{ created_at }</span>
         <span className="bullet">&nbsp;&bull;&nbsp;</span>
