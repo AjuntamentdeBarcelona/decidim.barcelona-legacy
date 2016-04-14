@@ -1,13 +1,13 @@
 import { Component } from 'react';
 
-export default class MeetingProposalsTable extends Component {
+export default class ProposalsTable extends Component {
   render() {
     return (
       <table>
         <thead>
           <tr>
-            <th>{I18n.t("components.meeting_proposals_table.title")}</th>
-            <th>{I18n.t("components.meeting_proposals_table.actions")}</th>
+            <th>{I18n.t("components.proposals_table.title")}</th>
+            <th>{I18n.t("components.proposals_table.actions")}</th>
           </tr>
         </thead>
         <tbody>
@@ -18,7 +18,7 @@ export default class MeetingProposalsTable extends Component {
                   <td>{proposal.title}</td>
                   <td>
                     <button onClick={(event) => this.props.onRemoveProposal(proposal) }>
-                      {I18n.t("components.meeting_proposals_table.remove")}
+                      {I18n.t("components.proposals_table.remove")}
                     </button>
                   </td>
                 </tr>

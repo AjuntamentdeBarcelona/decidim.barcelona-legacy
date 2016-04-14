@@ -1,0 +1,22 @@
+<div class="meeting-new row">
+  <div class="small-12 medium-9 column">
+    <%= form_for(@resource, url: revision_action_plan_revisions_path(@action_plan)) do |f| %>
+      <%= render 'shared/errors', resource: @resource %>
+
+        <div class="small-12 column">
+          <%= f.label :title, t("action_plan_revisions.form.title") %>
+          <%= f.text_field :title, label: false %>
+        </div>
+
+        <div class="small-12 column">
+          <%= f.label :description, t("action_plan_revisions.form.description") %>
+          <%= f.rich_editor :description, label: false %>
+        </div>
+
+        <div class="actions small-12 column">
+          <%= f.submit(class: "button radius", value: t("action_plan_revisions.#{action_name}.form.submit_button")) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

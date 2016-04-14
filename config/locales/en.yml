@@ -28,6 +28,34 @@ en:
       verified_account: Account verified
       verify_my_account: Verify my account
       weekly_summary: Receive an email with a weekly summary of activity
+  action_plan_revisions:
+    form:
+      description: Description
+      title: Title
+    index:
+      new: Add revision
+  action_plans:
+    build_from_proposal:
+      form:
+        submit_button: Create action plan
+    edit:
+      form:
+        submit_button: Update action plan
+    form:
+      action_plan_scope: Scope
+      action_plan_scope_city: Whole city
+      action_plan_scope_district: Districts
+      action_plan_scope_note: Is it a measure for the whole city or just for one district?
+      description: Description
+      title: Title
+    index:
+      delete: Delete
+      edit: Edit
+      new: New action plan
+      revisions: Revisions
+    new:
+      form:
+        submit_button: Create action plan
   application:
     close: Close
   categories:

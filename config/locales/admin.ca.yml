@@ -2,6 +2,7 @@
 ca:
   admin:
     actions:
+      build_action_plan: Crea actuació
       confirm: N'estàs segur?
       confirm_hide: Confirma
       hide: Amaga

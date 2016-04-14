@@ -5,15 +5,17 @@ export default class DangerLink extends Component {
     return (
       <a
         {...this.props}
-        onClick={() => this.onClick()}>
+        onClick={(event) => this.onClick(event)}>
         {this.props.children}
       </a>
     );
   }
 
-  onClick() {
+  onClick(event) {
     if (confirm(I18n.t('admin.actions.confirm'))) {
       this.props.onClick();
+    } else {
+      event.preventDefault();
     }
   }
 }

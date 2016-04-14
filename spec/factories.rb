@@ -403,4 +403,9 @@ FactoryGirl.define do
     following{ create(:proposal, :debate).sample }
     follower{ create(:user) }
   end
+
+  factory :action_plan do
+    category
+    subcategory
+  end
 end

@@ -8,7 +8,8 @@ module ComponentsHelper
         },
         is_organization: current_user && current_user.organization?,
         is_reviewer: current_user && current_user.reviewer?,
-        can_create_new_proposals: can?(:create, Proposal)
+        can_create_new_proposals: can?(:create, Proposal),
+        can_create_action_plan: can?(:create, ActionPlan)
       }
     })
     react_component("#{name}App", props)

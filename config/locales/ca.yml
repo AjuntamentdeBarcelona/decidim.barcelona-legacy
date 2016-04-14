@@ -28,6 +28,34 @@ ca:
       verified_account: Compte verificat
       verify_my_account: Verificar el meu compte
       weekly_summary: Rebre un email amb un resum setmanal d'activitat
+  action_plan_revisions:
+    form:
+      description: Descripció
+      title: Títol
+    index:
+      new: Nova revisió
+  action_plans:
+    build_from_proposal:
+      form:
+        submit_button: Crear actuació
+    edit:
+      form:
+        submit_button: Editar actuació
+    form:
+      action_plan_scope: "Àmbit"
+      action_plan_scope_city: Tota la ciutat
+      action_plan_scope_district: Districtes
+      action_plan_scope_note: Es una mesura per a tota la ciutat o només per a un districte?
+      description: Descripció
+      title: Títol
+    index:
+      delete: Esborrar
+      edit: Editar
+      new: Nova actuació
+      revisions: Revisions
+    new:
+      form:
+        submit_button: Crear actuació
   application:
     close: Tancar
   categories:

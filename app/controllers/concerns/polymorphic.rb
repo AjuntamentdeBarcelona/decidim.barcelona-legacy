@@ -6,7 +6,7 @@ module Polymorphic
     end
 
     def resource_name
-      @resource_name ||= resource_model.to_s.downcase
+      @resource_name ||= resource_model.to_s.underscore
     end
 
     def set_resource_instance

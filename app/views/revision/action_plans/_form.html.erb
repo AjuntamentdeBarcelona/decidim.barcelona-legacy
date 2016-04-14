@@ -1,0 +1,38 @@
+<%= form_for(@action_plan, url: form_url) do |f| %>
+  <%= render 'shared/errors', resource: @action_plan %>
+
+  <div class="row" style="overflow: hidden;">
+    <% unless @action_plan.new_record? %>
+      <div class="alert-box warning radius margin-top">
+        <span>You are editing an action plan so you cannot modify title and description. Visit action plan </span>
+        <%= link_to 'revisions', revision_action_plan_revisions_path(@action_plan) %>
+        <span> to add a new revision.</span>
+      </div>
+    <% end %>
+
+    <div class="small-12 column">
+      <%= f.label :title, t("action_plans.form.title") %>
+      <%= f.text_field :title, label: false, disabled: !@action_plan.new_record? %>
+    </div>
+
+    <div class="small-12 column">
+      <%= f.label :description, t("action_plans.form.description") %>
+      <%= f.rich_editor :description, label: false, disabled: !@action_plan.new_record? %>
+    </div>
+
+    <%= render 'shared/forms/district_fields', f: f, i18n_namespace: 'action_plans.form.action_plan' %>
+
+    <div class="small-12 column">
+      <%= category_picker(@action_plan) %>
+    </div>
+
+    <div class="small-12 column">
+      <label><%= t("meetings.form.meeting_proposal_ids")%></label>
+      <%= proposals_selector resource_name: "action_plan", proposals: @action_plan.proposals %>
+    </div>
+
+    <div class="actions small-12 column">
+      <%= f.submit(class: "button radius", value: t("action_plans.#{action_name}.form.submit_button")) %>
+    </div>
+  </div>
+<% end %>

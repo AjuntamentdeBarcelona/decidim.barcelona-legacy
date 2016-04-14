@@ -8,7 +8,8 @@ module RichEditor
           id: "#{object_name}_#{method}", 
           name: "#{object_name}[#{method}]", 
           value: options[:object].send(method), 
-          maxlength: options[:maxlength]
+          maxlength: options[:maxlength],
+          disabled: options[:disabled]
         }
       end
     end

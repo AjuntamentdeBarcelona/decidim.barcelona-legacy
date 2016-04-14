@@ -58,6 +58,7 @@ class ProposalShow extends Component {
     if (proposal.id) {
       const { 
         id,
+        code,
         url, 
         title, 
         source, 
@@ -109,6 +110,7 @@ class ProposalShow extends Component {
 
               <ProposalInfoExtended
                 id={ id }
+                code={ code }
                 created_at={ created_at }
                 official={ official }
                 from_meeting={ from_meeting }
@@ -134,6 +136,7 @@ class ProposalShow extends Component {
               <div className="js-moderator-proposal-actions margin">
                 {this.renderHideButton(id, can_hide)}
                 {this.renderHideAuthorButton(id, can_hide_author)}
+                {this.renderBuildActionPlanButton(id)}
               </div>
 
               <ProposalReviewer />
@@ -210,6 +213,23 @@ class ProposalShow extends Component {
     }
     return null;
   }
+
+  renderBuildActionPlanButton(id) {
+    const { session } = this.props;
+
+    if (session.can_create_action_plan) {
+      return (
+        <span>
+          <span>&nbsp;|&nbsp;</span>
+          <a href={`/revision/action_plans/build_from_proposal?proposal_id=${id}`}>
+            { I18n.t('admin.actions.build_action_plan') }
+          </a>
+        </span>
+      );
+    }
+    return null;
+  }
+
   renderConflictiveWarning(isConflictive) {
     if (isConflictive) {
       return (

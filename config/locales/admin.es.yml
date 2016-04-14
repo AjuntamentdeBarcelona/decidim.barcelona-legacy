@@ -2,6 +2,7 @@
 es:
   admin:
     actions:
+      build_action_plan: Crea actuación
       confirm: "¿Estás seguro?"
       confirm_hide: Confirmar
       hide: Ocultar

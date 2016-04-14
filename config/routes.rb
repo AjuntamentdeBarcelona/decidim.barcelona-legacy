@@ -211,6 +211,13 @@ Rails.application.routes.draw do
     root to: "proposals#index"
 
     resources :proposals, only: [:index, :show]
+
+    resources :action_plans, except: [:show] do
+      resources :revisions, except: [:show, :delete], controller: 'action_plans/revisions'
+      collection do
+        get :build_from_proposal
+      end
+    end
   end
 
   # Example of regular route:

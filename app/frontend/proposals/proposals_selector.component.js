@@ -1,9 +1,9 @@
 import { Component }                     from 'react';
 
-import MeetingProposalsAutocompleteInput from './meeting_proposals_autocomplete_input.component';
-import MeetingProposalsTable             from './meeting_proposals_table.component';
+import ProposalsAutocompleteInput from './proposals_autocomplete_input.component';
+import ProposalsTable             from './proposals_table.component';
 
-export default class MeetingProposalsSelector extends Component {
+export default class ProposalsSelector extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,20 +12,20 @@ export default class MeetingProposalsSelector extends Component {
   }
   render() {
     return (
-      <div className="meeting_proposals_selector">
-        <input type="hidden" name="meeting[proposal_ids][]" value="" />
+      <div className="proposals_selector">
+        <input type="hidden" name={`${this.props.resource_name}[proposal_ids][]`} value="" />
         {
           this.state.proposals.map((proposal) => {
             return (
-              <input key={proposal.id} type="hidden" name="meeting[proposal_ids][]" value={proposal.id} />
+              <input key={proposal.id} type="hidden" name={`${this.props.resource_name}[proposal_ids][]`} value={proposal.id} />
             )
           })
         }
-        <MeetingProposalsAutocompleteInput 
+        <ProposalsAutocompleteInput 
           proposalsApiUrl={this.props.proposals_api_url}
           excludeIds={this.state.proposals.map((proposal) => proposal.id).toArray()}
           onAddProposal={(proposal) => this.addProposal(proposal)} />
-        <MeetingProposalsTable 
+        <ProposalsTable 
           proposals={this.state.proposals} 
           onRemoveProposal={(proposal) => this.removeProposal(proposal)} />
       </div>
