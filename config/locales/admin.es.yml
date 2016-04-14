@@ -2,11 +2,11 @@
 es:
   admin:
     actions:
+      build_action_plan: Crea actuación
       confirm: "¿Estás seguro?"
       confirm_hide: Confirmar
       hide: Ocultar
       hide_author: Bloquear al autor
-      build_action_plan: Crea plan de actuación
       restore: Volver a mostrar
     activity:
       show:

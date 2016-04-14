@@ -29,22 +29,25 @@ es:
       verify_my_account: Verificar mi cuenta
       weekly_summary: Recibir un email con un resumen semanal de actividad
   action_plans:
+    build_from_proposal:
+      form:
+        submit_button: Crear actuación
     edit:
       form:
         submit_button: Editar actuación
     form:
-      description: Descripción
-      title: Título
       action_plan_scope: "Ámbito"
       action_plan_scope_city: Toda la ciudad
       action_plan_scope_district: Distritos
       action_plan_scope_note: "¿Es una medida para toda la ciudad o solo para un distrito?"
+      description: Descripción
+      title: Título
     index:
+      delete: Borrar
+      edit: Editar
       new: Nueva actuación
+      revisions: Revisiones
     new:
-      form:
-        submit_button: Crear actuación
-    build_from_proposal:
       form:
         submit_button: Crear actuación
   application:

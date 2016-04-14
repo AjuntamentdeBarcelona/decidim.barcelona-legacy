@@ -1,18 +1,18 @@
 ---
 ca:
   revision:
+    action_plans:
+      index:
+        headers:
+          action: Actuació
+        order: Ordre
+        search_form:
+          button: Cercar
+          placeholder: Cercar
+        title: Actuacions
     dashboard:
       index:
         title: Revisió
     menu:
-      proposals: Propostes
       actions: Actuacions
-    action_plans:
-      index:
-        headers:
-          action: Acció
-        order: Ordre
-        title: Títol
-        search_form:
-          button: Cercar
-          placeholder: Cercar
+      proposals: Propostes
