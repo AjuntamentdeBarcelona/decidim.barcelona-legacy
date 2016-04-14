@@ -35,12 +35,16 @@ en:
     form:
       description: Description
       title: Title
+      action_plan_scope: Scope
+      action_plan_scope_city: Whole city
+      action_plan_scope_district: Districts
+      action_plan_scope_note: Is it a measure for the whole city or just for one district?
     index:
       new: New action plan
     new:
       form:
         submit_button: Create action plan
-    create_from_proposal:
+    build_from_proposal:
       form:
         submit_button: Create action plan
   application:

@@ -11,11 +11,6 @@
 
   <div class="row">
     <div class="small-12 column">
-      <label><%= t("meetings.form.meeting_proposal_ids")%></label>
-      <%= proposals_selector resource_name: "action_plan", proposals: @action_plan.proposals %>
-    </div>
-
-    <div class="small-12 column">
       <%= f.label :title, t("action_plans.form.title") %>
       <%= f.text_field :title, label: false, disabled: !@action_plan.new_record? %>
     </div>
@@ -25,8 +20,15 @@
       <%= f.text_area :description, label: false, disabled: !@action_plan.new_record? %>
     </div>
 
+    <%= render 'shared/forms/district_fields', f: f, i18n_namespace: 'action_plans.form.action_plan' %>
+
     <div class="small-12 column">
       <%= category_picker(@action_plan) %>
+    </div>
+
+    <div class="small-12 column">
+      <label><%= t("meetings.form.meeting_proposal_ids")%></label>
+      <%= proposals_selector resource_name: "action_plan", proposals: @action_plan.proposals %>
     </div>
 
     <div class="actions small-12 column">

@@ -7,6 +7,8 @@ class ActionPlan < ActiveRecord::Base
   has_and_belongs_to_many :proposals, dependent: :destroy
 
   validates :category, :subcategory, presence: true
+  validates :scope, inclusion: { in: %w(city district) }
+  validates :district, inclusion: { in: District.all.map(&:id), allow_nil: true }
 
   delegate :title, :description, to: :current_revision, allow_nil: true
 

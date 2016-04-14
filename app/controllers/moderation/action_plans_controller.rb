@@ -68,7 +68,7 @@ class Moderation::ActionPlansController < Moderation::BaseController
   private
 
   def action_plan_params
-    params.require(:action_plan).permit(:category_id, :subcategory_id, :proposal_ids => [])
+    params.require(:action_plan).permit(:category_id, :subcategory_id, :scope, :district, :proposal_ids => [])
   end
 
   def resource_model
