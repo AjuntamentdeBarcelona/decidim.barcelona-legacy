@@ -8,7 +8,8 @@ module RichEditor
           id: options[:id],
           name: name, 
           value: content, 
-          maxlength: options[:maxlength]
+          maxlength: options[:maxlength],
+          disabled: options[:disabled]
         }
       end
     end

@@ -23,6 +23,13 @@
         <%= link_to action.title, edit_moderation_action_plan_path(action) %>
         <br />
 
+        <span class="date"><%= action.current_revision.created_at %></span>
+        <span class="bullet">&nbsp;&bull;&nbsp;</span>
+        <%= action.current_revision.author.username %>
+
+        <br />
+        <br />
+
         <div class="right">
           <%= link_to t("action_plans.index.revisions"), moderation_action_plan_revisions_path(action), class: 'button radius tiny secondary' %>
           <%= link_to t("action_plans.index.edit"), edit_moderation_action_plan_path(action), class: 'button radius tiny secondary' %>
@@ -32,7 +39,7 @@
         <br />
 
         <div>
-          <%= action.description %>
+          <%= action.description.html_safe %>
         </div>
       </td>
     </tr>

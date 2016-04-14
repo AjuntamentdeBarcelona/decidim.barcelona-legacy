@@ -49,7 +49,8 @@ export default class RichEditor extends Component {
         <ReactQuill
           theme="snow"
           value={this.state.value}
-          onChange={(value) => this.onTextChange(value)}>
+          onChange={(value) => this.onTextChange(value)}
+          readOnly={this.props.disabled}>
           <ReactQuill.Toolbar key="toolbar"
             ref="toolbar"
             items={this.toolbarItems} />
