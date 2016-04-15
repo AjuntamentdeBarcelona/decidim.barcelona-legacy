@@ -275,6 +275,7 @@ Rails.application.routes.draw do
     resources :proposals, only: [:show, :index, :update] do
       member do
         get :references
+        get :action_plans
         patch :hide
         patch :flag
         patch :unflag

@@ -20,6 +20,7 @@ import ProposalInfoExtended            from './proposal_info_extended.component'
 import ProposalMeta                    from './proposal_meta.component';
 import ProposalVoteBox                 from './proposal_vote_box.component';
 import ProposalReferences              from './proposal_references.component';
+import ProposalActionPlans             from './proposal_action_plans.component';
 import ProposalMeetings                from './proposal_meetings.component';
 
 class ProposalShow extends Component {
@@ -138,6 +139,8 @@ class ProposalShow extends Component {
                 {this.renderHideAuthorButton(id, can_hide_author)}
                 {this.renderBuildActionPlanButton(id)}
               </div>
+
+              <ProposalActionPlans />
 
               <ProposalReviewer />
             </div>

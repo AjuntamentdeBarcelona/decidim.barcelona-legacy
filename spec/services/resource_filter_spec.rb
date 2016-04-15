@@ -108,6 +108,28 @@ describe ResourceFilter do
           expect(collection).to_not include(@proposal2)
         end
       end
+
+      describe "associated action plans" do
+        before do
+          create(:action_plan, proposals: [@proposal2])
+        end
+
+        it "filters resources with associated action plans" do
+          filter = ResourceFilter.new({ filter: 'action_plan=with_action_plan' })
+          collection = filter.filter_collection(Proposal.all)
+
+          expect(collection).to include(@proposal2)
+          expect(collection).to_not include(@proposal1, @proposal3)
+        end
+
+        it "filters resources without associated action plans" do
+          filter = ResourceFilter.new({ filter: 'action_plan=without_action_plan' })
+          collection = filter.filter_collection(Proposal.all)
+
+          expect(collection).to_not include(@proposal2)
+          expect(collection).to include(@proposal1, @proposal3)
+        end
+      end
     end
   end
 end

@@ -1,6 +1,8 @@
 ---
 en:
   components:
+    action_plans:
+      title: Related action plans
     category_picker:
       category:
         label: Axis
@@ -31,7 +33,10 @@ en:
       reviewed: Reviewed
       upcoming: Upcoming
       voted: Voted
+      with_action_plan: With action plan
+      without_action_plan: Without action plan
     filter_option_group:
+      action_plan: Action Plan
       category_id: Axis
       date: Date
       district: District

@@ -4,7 +4,7 @@ class Api::ProposalsController < Api::ApplicationController
   before_action :authenticate_user!, only: [:update, :hide, :flag, :unflag]
 
   load_resource
-  authorize_resource except: [:update, :references]
+  authorize_resource except: [:update, :references, :action_plans]
 
   has_orders %w{random hot_score confidence_score created_at}, only: :index
 
@@ -48,6 +48,13 @@ class Api::ProposalsController < Api::ApplicationController
     @references = Reference.references_for(@proposal)
     authorize! :read, @proposal
     render json: @references
+  end
+
+  def action_plans
+    authorize! :read, ActionPlan
+    render json: @proposal.action_plans, root: "action_plans"
+  rescue CanCan::AccessDenied
+    render json: []
   end
 
   def hide

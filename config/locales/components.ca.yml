@@ -1,6 +1,8 @@
 ---
 ca:
   components:
+    action_plans:
+      title: Actuacions relacionades
     category_picker:
       category:
         label: Eix
@@ -31,7 +33,10 @@ ca:
       reviewed: Revisades
       upcoming: Properes
       voted: Votades
+      with_action_plan: Amb actuació
+      without_action_plan: Sense actuació
     filter_option_group:
+      action_plan: Actuació
       category_id: Eix
       date: Data
       district: Districte

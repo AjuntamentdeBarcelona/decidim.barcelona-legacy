@@ -11,14 +11,25 @@ class ReviewerFilter extends Component {
   render() {
     if (this.props.session.is_reviewer) {
       return (
-        <FilterOptionGroup 
-          isExclusive={true}
-          filterGroupName="reviewer_status" 
-          filterGroupValue={this.props.filters.filter["reviewer_status"]}
-          onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
-          <FilterOption filterName="reviewed" />
-          <FilterOption filterName="not_reviewed" />
-        </FilterOptionGroup>
+        <div>
+          <FilterOptionGroup 
+            isExclusive={true}
+            filterGroupName="reviewer_status" 
+            filterGroupValue={this.props.filters.filter["reviewer_status"]}
+            onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
+            <FilterOption filterName="reviewed" />
+            <FilterOption filterName="not_reviewed" />
+          </FilterOptionGroup>
+
+          <FilterOptionGroup 
+            isExclusive={true}
+            filterGroupName="action_plan"
+            filterGroupValue={this.props.filters.filter["action_plan"]}
+            onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
+            <FilterOption filterName="with_action_plan" />
+            <FilterOption filterName="without_action_plan" />
+          </FilterOptionGroup>
+        </div>
       );
     }
     return null;
