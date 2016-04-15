@@ -25,12 +25,13 @@ class Revision::ActionPlansController < Revision::BaseController
     @references = Reference.references_for(@proposal)
 
     @resource = resource_model.new({
-      proposal_ids: @references.collect(&:id) + [@proposal.id],
+      proposal_ids: @references.where(referenced_type: 'proposal').collect(&:id) + [@proposal.id],
       scope: @proposal.scope,
       district: @proposal.district,
       category_id: @proposal.category_id,
       subcategory_id: @proposal.subcategory_id
     })
+
     @resource.revisions.build({
       title: @proposal.title, 
       description: @proposal.summary
