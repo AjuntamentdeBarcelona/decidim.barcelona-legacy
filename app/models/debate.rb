@@ -158,4 +158,8 @@ class Debate < ActiveRecord::Base
     false
   end
 
+  def self.title_max_length
+    250
+  end
+
 end
