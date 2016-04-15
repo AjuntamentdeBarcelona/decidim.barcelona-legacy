@@ -17,7 +17,7 @@ class ActionPlan < ActiveRecord::Base
   end
 
   def self.search(terms)
-    ActionPlanRevision.pg_search(terms)
+    where(id: ActionPlanRevision.pg_search(terms).pluck(:id))
   end
 
   def current_revision
