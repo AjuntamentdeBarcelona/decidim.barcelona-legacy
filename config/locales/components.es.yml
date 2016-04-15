@@ -1,6 +1,8 @@
 ---
 es:
   components:
+    action_plans:
+      title: Actuaciones relacionadas
     category_picker:
       category:
         label: Eje
@@ -31,7 +33,10 @@ es:
       reviewed: Revisadas
       upcoming: Próximas
       voted: Votadas
+      with_action_plan: Con actuación
+      without_action_plan: Sin actuación
     filter_option_group:
+      action_plan: Actuación
       category_id: Eje
       date: Fecha
       district: Distrito

@@ -1,6 +1,8 @@
 ---
 ca:
   components:
+    action_plans:
+      title: Actuacions relacionades
     category_picker:
       category:
         label: Eix
@@ -14,8 +16,6 @@ ca:
       close: No, no vull rebre les notificacions.
       enable: Sí, vull rebre les notificacions.
       text: No tens les notificacions per correu electrònic activades. No rebràs un correu cada vop que algú faci un comentari a les teves propostes, ni un resum setmanal d'activitat. Pots canviar això en qualsevol moment de del teu perfil d'usuari (el meu compte). Vols que activem les notificacions per tu?
-    action_plans:
-      title: "Actuacions relacionades"
     filter_option:
       all: Totes
       citizenship: Ciutadania
@@ -26,8 +26,6 @@ ca:
       followed: Seguides
       from_meetings: Cites presencials
       meetings: Debatudes a cites presencials
-      with_action_plan: "Amb actuació"
-      without_action_plan: "Sense actuació"
       not_reviewed: No revisades
       official: Ajuntament
       organization: Organitzacions
@@ -35,9 +33,11 @@ ca:
       reviewed: Revisades
       upcoming: Properes
       voted: Votades
+      with_action_plan: Amb actuació
+      without_action_plan: Sense actuació
     filter_option_group:
+      action_plan: Actuació
       category_id: Eix
-      action_plan: "Actuació"
       date: Data
       district: Districte
       interaction: La teva activitat
