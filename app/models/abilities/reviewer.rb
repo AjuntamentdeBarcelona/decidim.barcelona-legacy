@@ -10,6 +10,7 @@ module Abilities
       can :moderate, Proposal
       can :review, Proposal
       can :comment, Proposal
+      can :read, ActionPlan
 
       can [:read, :create, :update], [ProposalAnswer]
       can :manage, ActionPlan

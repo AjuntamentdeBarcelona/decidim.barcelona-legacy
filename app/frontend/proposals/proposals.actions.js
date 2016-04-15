@@ -10,6 +10,7 @@ export const SET_ORDER              = 'SET_ORDER';
 export const UPDATE_ANSWER          = 'UPDATE_ANSWER';
 export const FETCH_RELATED_MEETINGS = 'FETCH_RELATED_MEETINGS';
 export const FETCH_REFERENCES       = 'FETCH_REFERENCES';
+export const FETCH_ACTION_PLANS     = 'FETCH_ACTION_PLANS';
 export const HIDE_PROPOSAL          = 'HIDE_PROPOSAL';
 export const HIDE_PROPOSAL_AUTHOR   = 'HIDE_PROPOSAL_AUTHOR';
 export const FLAG_PROPOSAL          = 'FLAG_PROPOSAL';
@@ -89,6 +90,15 @@ export function fetchReferences(proposalId) {
 
   return {
     type: FETCH_REFERENCES,
+    payload: request
+  };
+}
+
+export function fetchActionPlans(proposalId) {
+  const request = axios.get(`${API_BASE_URL}/proposals/${proposalId}/action_plans.json`);
+
+  return {
+    type: FETCH_ACTION_PLANS,
     payload: request
   };
 }

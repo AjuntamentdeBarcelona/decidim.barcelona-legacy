@@ -7,6 +7,7 @@ import {
   UPDATE_ANSWER,
   FETCH_RELATED_MEETINGS,
   FETCH_REFERENCES,
+  FETCH_ACTION_PLANS,
   HIDE_PROPOSAL,
   HIDE_PROPOSAL_AUTHOR,
   FLAG_PROPOSAL,
@@ -100,6 +101,13 @@ export const proposal = function (state = {}, action) {
         ...state,
         references
       };
+  case FETCH_ACTION_PLANS:
+    let actionPlans = action.payload.data.action_plans;
+
+    return {
+        ...state,
+      actionPlans
+    };
     case UPDATE_ANSWER:
       let answer = action.payload.data.proposal_answer;
 

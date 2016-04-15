@@ -1,5 +1,6 @@
 class ResourceFilter
-  IGNORE_FILTER_PARAMS = ["source", "other", "date", "reviewer_status", "interaction"]
+  IGNORE_FILTER_PARAMS = ["source", "other", "date", "reviewer_status",
+                          "interaction", "action_plan"]
   attr_reader :search_filter, :tag_filter, :params
 
   def initialize(params={}, options = {})
@@ -97,6 +98,14 @@ class ResourceFilter
 
     if @params["interaction"]
       collection = build_interaction(collection, @params["interaction"])
+    end
+
+    if @params["action_plan"] && params["action_plan"].include?("with_action_plan")
+      collection = collection.includes(:action_plans).where.not(action_plans: { id: nil })
+    end
+
+    if @params["action_plan"] && params["action_plan"].include?("without_action_plan")
+      collection = collection.includes(:action_plans).where(action_plans: { id: nil })
     end
 
     if @params["reviewer_status"]
