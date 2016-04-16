@@ -11,7 +11,7 @@ class Referrer
 
   def references(content)
     TYPES.flat_map do |type, model|
-      matches = content.scan(/https?:\/\/\S+\/#{type}\/([A-z\-]+)\/?/)
+      matches = content.scan(/https?:\/\/\S+\/#{type}\/([^\s\/\.]+)\/?/)
       next unless matches.any?
 
       matches.map do |match|
