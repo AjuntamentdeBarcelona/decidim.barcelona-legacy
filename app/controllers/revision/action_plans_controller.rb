@@ -25,7 +25,7 @@ class Revision::ActionPlansController < Revision::BaseController
     @references = Reference.references_for(@proposal)
 
     @resource = resource_model.new({
-      proposal_ids: @references.where(referenced_type: 'proposal').collect(&:id) + [@proposal.id],
+      proposals: @references.select{ |r| r.class == Proposal } + [@proposal],
       scope: @proposal.scope,
       district: @proposal.district,
       category_id: @proposal.category_id,
