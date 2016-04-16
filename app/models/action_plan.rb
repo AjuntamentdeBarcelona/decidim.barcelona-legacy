@@ -4,7 +4,7 @@ class ActionPlan < ActiveRecord::Base
 
   has_many :revisions, class_name: ActionPlanRevision, dependent: :destroy
 
-  has_and_belongs_to_many :proposals, dependent: :destroy
+  has_and_belongs_to_many :proposals
 
   validates :category, :subcategory, presence: true
   validates :scope, inclusion: { in: %w(city district) }
