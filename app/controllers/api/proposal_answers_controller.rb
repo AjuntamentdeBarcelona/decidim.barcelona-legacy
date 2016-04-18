@@ -19,7 +19,7 @@ class Api::ProposalAnswersController < Api::ApplicationController
   private
 
   def strong_params
-    permitted_params = [:message, :status]
+    permitted_params = [:message, :status, :official]
     params.require(:answer).permit(permitted_params)
   end
 

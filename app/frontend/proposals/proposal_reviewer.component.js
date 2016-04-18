@@ -27,8 +27,7 @@ class ProposalReviewer extends Component {
           <ScopePicker />
           <CategoryPicker />
           <ProposalAnswerBox 
-            answerMessage={answer && answer.message}
-            answerStatus={answer && answer.status}
+            answer={answer}
             onButtonClick={(answerParams) => updateAnswer(proposal.id, answer, answerParams)} 
           />
         </div>

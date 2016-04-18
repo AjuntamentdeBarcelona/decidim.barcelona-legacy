@@ -5,17 +5,11 @@ export default class ProposalAnswerBox extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      message: this.props.answerMessage,
-      status: this.props.answerStatus
-    };
+    this.state = { ...this.props.answer };
   }
 
-  componentWillReceiveProps({ answerMessage, answerStatus }) {
-    this.setState({ 
-      message: answerMessage,
-      status: answerStatus
-    });
+  componentWillReceiveProps({ answer }) {
+    this.setState({ ...answer });
   }
 
   render() {
@@ -28,6 +22,13 @@ export default class ProposalAnswerBox extends Component {
           onTextChange={(answerMessage) => this.setState({ message: answerMessage, status: null })}
           value={this.state.message} />
 
+        <label>
+          <input type="checkbox" checked={this.state.official} onChange={e => {
+            this.setState({ official: e.target.checked, status: null })
+          }}/>
+          { I18n.t("components.proposal_answer_box.official_label")}
+        </label>
+
         {this.renderButton("accept", "accepted", this.state.status)}
         {this.renderButton("reject", "rejected", this.state.status)}
       </div>
@@ -35,7 +36,6 @@ export default class ProposalAnswerBox extends Component {
   }
 
   renderButton(action, status, currentStatus) {
-    const { onButtonClick } = this.props;
     var classes = [action];
 
     if (status === currentStatus) {
@@ -45,9 +45,16 @@ export default class ProposalAnswerBox extends Component {
     return (
       <button 
         className={classes.join(" ")}
-        onClick={(event) => onButtonClick({ message: this.state.message, status })}>
+        onClick={(event) => this.save(status)}>
         {I18n.t(`components.proposal_answer_box.${action}`)}
       </button>
     );
+  }
+
+  save(status){
+    const { onButtonClick } = this.props;
+    const { message, official } = this.state;
+
+    onButtonClick({ status, message, official });
   }
 }
