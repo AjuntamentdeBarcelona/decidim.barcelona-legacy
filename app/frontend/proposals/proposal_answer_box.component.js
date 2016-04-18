@@ -26,7 +26,7 @@ export default class ProposalAnswerBox extends Component {
           <input type="checkbox" checked={this.state.official} onChange={e => {
             this.setState({ official: e.target.checked, status: null })
           }}/>
-          { I18n.t("components.proposal_answer_box.official_label")}
+          { I18n.t("components.proposal_answer_box.official")}
         </label>
 
         {this.renderButton("accept", "accepted", this.state.status)}
