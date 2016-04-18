@@ -35,7 +35,7 @@ class Api::ActionPlansController < Api::ApplicationController
 
   def proposals
     @proposals = @action_plan.proposals
-    render json: { proposals: @proposals }
+    render json: @proposals, root: 'proposals'
   end
 
   private
