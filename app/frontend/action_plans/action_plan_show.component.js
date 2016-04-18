@@ -7,8 +7,8 @@ import {
 } from './action_plans.actions';
 
 import Loading              from '../application/loading.component';
-
 import FilterMeta           from '../filters/filter_meta.component';
+import ActionPlanProposals  from './action_plan_proposals.component';
 
 class ActionPlanShow extends Component {
   constructor(props) {
@@ -33,7 +33,7 @@ class ActionPlanShow extends Component {
 
   render() {
     return (
-      <div className="proposal-show component">
+      <div className="action-plan-show component">
         <Loading show={this.state.loading} />
         {this.renderActionPlan()}
       </div>
@@ -97,6 +97,8 @@ class ActionPlanShow extends Component {
                 subcategory={ subcategory } 
                 namespace="action_plans"
                 useServerLinks={ true }/>
+
+              <ActionPlanProposals actionPlan={actionPlan} />
             </div>
           </div>
         </div>

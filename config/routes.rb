@@ -291,7 +291,11 @@ Rails.application.routes.draw do
         end
       end
     end
-    resources :action_plans, only: [:index, :show]
+    resources :action_plans, only: [:index, :show] do
+      member do
+        get :proposals
+      end
+    end
     resources :meetings, only: [:index]
     resources :follows, only: [:index, :create, :destroy]
   end

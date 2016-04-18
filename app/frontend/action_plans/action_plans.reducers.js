@@ -1,6 +1,7 @@
 import { 
   FETCH_ACTION_PLANS, 
   FETCH_ACTION_PLAN,
+  FETCH_ACTION_PLAN_PROPOSALS,
   APPEND_ACTION_PLANS_PAGE, 
 } from './action_plans.actions';
 
@@ -21,7 +22,17 @@ export const actionPlan = function (state = {}, action) {
   switch (action.type) {
     case FETCH_ACTION_PLAN:
       let actionPlan = action.payload.data.action_plan;
-      return actionPlan;
+      return {
+        ...actionPlan,
+        proposals: state.proposals
+      };
+    case FETCH_ACTION_PLAN_PROPOSALS:
+      let proposals = action.payload.data.proposals;
+
+      return {
+        ...state,
+        proposals
+      };
   }
   return state;
 }

@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-export const API_BASE_URL             = '/api';
-export const FETCH_ACTION_PLANS       = 'FETCH_ACTION_PLANS';
-export const FETCH_ACTION_PLAN        = 'FETCH_ACTION_PLAN';
-export const APPEND_ACTION_PLANS_PAGE = 'APPEND_ACTION_PLANS_PAGE';
+export const API_BASE_URL                = '/api';
+export const FETCH_ACTION_PLANS          = 'FETCH_ACTION_PLANS';
+export const FETCH_ACTION_PLAN           = 'FETCH_ACTION_PLAN';
+export const FETCH_ACTION_PLAN_PROPOSALS = 'FETCH_ACTION_PLAN_PROPOSALS';
+export const APPEND_ACTION_PLANS_PAGE    = 'APPEND_ACTION_PLANS_PAGE';
 
 export function fetchActionPlans(options) {
   return {
@@ -25,6 +26,15 @@ export function appendActionPlansPage(options) {
   return {
     type: APPEND_ACTION_PLANS_PAGE,
     payload: buildActionPlansRequest(options)
+  };
+}
+
+export function fetchActionPlanProposals(actionPlanId) {
+  const request = axios.get(`${API_BASE_URL}/action_plans/${actionPlanId}/proposals.json`);
+
+  return {
+    type: FETCH_ACTION_PLAN_PROPOSALS,
+    payload: request
   };
 }
 

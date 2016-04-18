@@ -33,6 +33,11 @@ class Api::ActionPlansController < Api::ApplicationController
     render json: @action_plan
   end
 
+  def proposals
+    @proposals = @action_plan.proposals
+    render json: { proposals: @proposals }
+  end
+
   private
 
   def set_seed

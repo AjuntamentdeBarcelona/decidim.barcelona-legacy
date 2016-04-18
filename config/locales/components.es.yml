@@ -87,3 +87,4 @@ es:
     action_plan_show:
       edit: Editar
       new_revision: Nueva revisión
+      references: "Parece que esta actuación está relacionada con:"

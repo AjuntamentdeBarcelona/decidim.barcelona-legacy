@@ -87,3 +87,4 @@ ca:
     action_plan_show:
       edit: Editar
       new_revision: Nova revisió
+      references: "Sembla que aquesta actuació està relacionada amb:"

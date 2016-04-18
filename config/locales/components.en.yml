@@ -87,3 +87,4 @@ en:
     action_plan_show:
       edit: Edit
       new_revision: New revision
+      references: 'It seems that this action plan is related to:'
