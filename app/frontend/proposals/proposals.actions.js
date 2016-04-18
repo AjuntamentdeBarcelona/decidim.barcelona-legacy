@@ -6,7 +6,6 @@ export const FETCH_PROPOSAL         = 'FETCH_PROPOSAL';
 export const UPDATE_PROPOSAL        = 'UPDATE_PROPOSAL';
 export const APPEND_PROPOSALS_PAGE  = 'APPEND_PROPOSALS_PAGE';
 export const VOTE_PROPOSAL          = 'VOTE_PROPOSAL';
-export const SET_ORDER              = 'SET_ORDER';
 export const UPDATE_ANSWER          = 'UPDATE_ANSWER';
 export const FETCH_RELATED_MEETINGS = 'FETCH_RELATED_MEETINGS';
 export const FETCH_REFERENCES       = 'FETCH_REFERENCES';
@@ -54,13 +53,6 @@ export function voteProposal(proposalId) {
   return {
     type: VOTE_PROPOSAL,
     payload: request
-  };
-}
-
-export function setOrder(order) {
-  return {
-    type: SET_ORDER,
-    order
   };
 }
 

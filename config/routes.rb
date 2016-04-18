@@ -55,6 +55,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :action_plans, only: [:index]
+
   resources :meetings, only: [:index, :show]
 
   resources :comments, only: [:create, :show], shallow: true do

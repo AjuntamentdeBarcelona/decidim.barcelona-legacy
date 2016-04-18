@@ -15,13 +15,13 @@ if (process.env.NODE_ENV === 'development') {
   middlewares.push(logger);
 }
 
-import Proposals         from './proposals.component';
+import Proposals         from '../proposals/proposals.component';
 
 import {
   FETCH_PROPOSALS,
-  APPEND_PROPOSALS_PAGE
-}                        from './proposals.actions';
-import { proposals }     from './proposals.reducers';
+  APPEND_PROPOSALS_PAGE,
+}                        from '../proposals/proposals.actions';
+import { proposals }     from '../proposals/proposals.reducers';
 import districts         from '../districts/districts.reducers';
 import categories        from '../categories/categories.reducers';
 import filters           from '../filters/filters.reducers';
@@ -101,7 +101,7 @@ function createReducers(sessionState) {
   });
 }
 
-export default class ProposalsApp extends Component {
+export default class ActionPlansApp extends Component {
   render() {
     return (
       <Provider 

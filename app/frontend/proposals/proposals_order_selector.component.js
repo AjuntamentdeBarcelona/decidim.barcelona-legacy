@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
 
-import { setOrder       }     from './proposals.actions';
+import { setOrder       }     from '../order/order.actions';
 
 const ProposalsOrderSelector = ({ 
   order,

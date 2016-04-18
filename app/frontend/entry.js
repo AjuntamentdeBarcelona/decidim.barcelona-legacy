@@ -16,6 +16,8 @@ import ProposalApp                from './proposals/proposal_app.component';
 import ProposalsCarousel          from './proposals/proposals_carousel.component';
 import ProposalsSelector          from './proposals/proposals_selector.component';
 
+import ActionPlansApp             from './action_plans/action_plans_app.component';
+
 window.CookiesWarning             = CookiesWarning;
 window.EmailNotificationsReminder = EmailNotificationsReminder;
 window.RichEditor                 = RichEditor;
@@ -33,6 +35,8 @@ window.ProposalsApp               = ProposalsApp;
 window.ProposalApp                = ProposalApp;
 window.ProposalsCarousel          = ProposalsCarousel;
 window.ProposalsSelector          = ProposalsSelector;
+
+window.ActionPlansApp             = ActionPlansApp;
 
 require('quill/dist/quill.snow');
 require('expose?autoLink!autolink-js');

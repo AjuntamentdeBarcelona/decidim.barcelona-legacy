@@ -10,6 +10,9 @@
       <% end %>
 
       <%= link_to t("layouts.header.proposals"), proposals_path, class: ("active" if  controller_name == "proposals") %>
+      <% if can? :read, ActionPlan %>
+        <%= link_to t("layouts.header.action_plans"), action_plans_path, class: ("active" if  controller_name == "action_plans") %>
+      <% end %>
       <%= link_to t("layouts.header.meetings"), meetings_path, class: ("active" if current_page?(controller: "/meetings")) %>
       <% if feature?(:debates) %>
         <%= link_to t("layouts.header.debates"), debates_path, class: ("active" if controller_name == "debates") %>
