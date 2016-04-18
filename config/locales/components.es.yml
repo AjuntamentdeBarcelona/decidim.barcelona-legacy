@@ -24,6 +24,7 @@ es:
       enable: Si, quiero recibir las notificaciones.
       text: No tienes las notificaciones por correo electronico activadas. No recibirás un correo cada vez que alguien haga un comentario en tus propuestas, ni un resumen semanal de actividad. Puedes cambiarlo en cualquier momento desde tu perfil de usuario (mi cuenta). ¿Quieres que activemos las notifiaciones por tí?
     filter_option:
+      accepted: validado
       all: Todas
       citizenship: Ciudadania
       city: Toda la ciudad
@@ -38,6 +39,7 @@ es:
       official: Ayuntamiento
       organization: Organizaciones
       past: Pasadas
+      rejected: rechazado
       reviewed: Revisadas
       upcoming: Próximas
       validated: validadas oficialmente
@@ -51,6 +53,7 @@ es:
       district: Distrito
       interaction: Tu actividad
       other: Otros
+      review_status: Resultado de la revisión
       review_validation: Validación oficial
       reviewer_status: Estado de la revisión
       scope: "Ámbito"
