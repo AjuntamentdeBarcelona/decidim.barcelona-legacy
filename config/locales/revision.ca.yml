@@ -10,6 +10,8 @@ ca:
           placeholder: Cercar
         title: Revisions
     action_plans:
+      form:
+        warning: Estàs editant una actuació existent així que no es pot editar ni el títol ni la descripció. Accedeix a la pàgina de <a href=%{url}>revisions</a> per a crear una nova revisió.
       index:
         headers:
           action: Actuació
@@ -18,8 +20,6 @@ ca:
           button: Cercar
           placeholder: Cercar
         title: Actuacions
-      form:
-        warning: Estàs editant una actuació existent així que no es pot editar ni el títol ni la descripció. Accedeix a la pàgina de <a href=%{url}>revisions</a> per a crear una nova revisió.
     dashboard:
       index:
         title: Revisió

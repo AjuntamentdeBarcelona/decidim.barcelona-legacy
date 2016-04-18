@@ -1,7 +1,14 @@
 ---
 ca:
   components:
+    action_plan:
+      label: Actuació
+    action_plan_show:
+      edit: Editar
+      new_revision: Nova revisió
+      references: 'Sembla que aquesta actuació està relacionada amb:'
     action_plans:
+      count: Mostrant %{count} actuacions
       title: Actuacions relacionades
     category_picker:
       category:
@@ -53,6 +60,11 @@ ca:
       loading_more: Carregant més resultats...
     meetings_filters:
       clean_filters: Netejar filtre
+    order_selector:
+      confidence_score: amb més suport
+      created_at: més noves
+      hot_score: més actives avui
+      random: aleatòries
     proposal_answer_box:
       accept: Validar
       message_label: Nota / motiu
@@ -75,16 +87,3 @@ ca:
       title: Títol
     search_filter:
       search_input_placeholder: Cercar
-    order_selector:
-      random: aleatòries
-      hot_score: més actives avui
-      confidence_score: amb més suport
-      created_at: més noves
-    action_plans:
-      count: Mostrant %{count} actuacions
-    action_plan:
-      label: Actuació
-    action_plan_show:
-      edit: Editar
-      new_revision: Nova revisió
-      references: "Sembla que aquesta actuació està relacionada amb:"

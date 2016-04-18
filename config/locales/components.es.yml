@@ -1,7 +1,14 @@
 ---
 es:
   components:
+    action_plan:
+      label: Actuación
+    action_plan_show:
+      edit: Editar
+      new_revision: Nueva revisión
+      references: 'Parece que esta actuación está relacionada con:'
     action_plans:
+      count: Mostrando %{count} actuaciones
       title: Actuaciones relacionadas
     category_picker:
       category:
@@ -53,6 +60,11 @@ es:
       loading_more: Cargando más resultados...
     meetings_filters:
       clean_filters: Limpiar filtro
+    order_selector:
+      confidence_score: Mejor valorados
+      created_at: Nuevos
+      hot_score: Más activos hoy
+      random: aleatorio
     proposal_answer_box:
       accept: Validar
       message_label: Nota / motivo
@@ -75,16 +87,3 @@ es:
       title: Título
     search_filter:
       search_input_placeholder: Buscar
-    order_selector:
-      random: aleatorio
-      hot_score: Más activos hoy
-      confidence_score: Mejor valorados
-      created_at: Nuevos
-    action_plans:
-      count: Mostrando %{count} actuaciones
-      action_plan:
-      label: Actuación
-    action_plan_show:
-      edit: Editar
-      new_revision: Nueva revisión
-      references: "Parece que esta actuación está relacionada con:"
