@@ -1,4 +1,7 @@
+import truncate   from 'html-truncate';
 import FilterMeta from '../filters/filter_meta.component';
+
+const DESCRIPTION_MAX_CHARACTERS = 300;
 
 export default ({
   id,
@@ -19,9 +22,13 @@ export default ({
 
           <h3><a href={url}>{ title }</a></h3>
 
+          <p className="proposal-info">
+            <span>{ created_at }</span>
+          </p>
+
           <div 
             className="proposal-description"
-            dangerouslySetInnerHTML={{ __html: description.autoLink() }} />
+            dangerouslySetInnerHTML={{ __html: truncate(description.autoLink(), DESCRIPTION_MAX_CHARACTERS) }} />
 
           <div className="bottom-bar">
             <FilterMeta 

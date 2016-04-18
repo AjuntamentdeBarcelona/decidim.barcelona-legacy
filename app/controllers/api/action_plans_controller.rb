@@ -4,8 +4,6 @@ class Api::ActionPlansController < Api::ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
 
-  has_orders %w{random hot_score confidence_score created_at}, only: :index
-
   def index
     set_seed
 
@@ -13,7 +11,7 @@ class Api::ActionPlansController < Api::ApplicationController
 
     @action_plans = ResourceFilter.new(params, user: current_user)
       .filter_collection(action_plans.includes(:category, :subcategory))
-      .send("sort_by_#{@current_order}")
+      .send("sort_by_created_at")
       .page(params[:page])
       .per(15)
 
@@ -29,6 +27,10 @@ class Api::ActionPlansController < Api::ApplicationController
         }
       }
     end
+  end
+
+  def show
+    render json: @action_plan
   end
 
   private

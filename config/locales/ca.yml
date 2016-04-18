@@ -34,6 +34,9 @@ ca:
       title: Títol
     index:
       new: Nova revisió
+    new:
+      form:
+        submit_button: Crear revisió
   action_plans:
     build_from_proposal:
       form:

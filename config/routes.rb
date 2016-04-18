@@ -55,7 +55,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :action_plans, only: [:index]
+  resources :action_plans, only: [:index, :show]
 
   resources :meetings, only: [:index, :show]
 
@@ -291,7 +291,7 @@ Rails.application.routes.draw do
         end
       end
     end
-    resources :action_plans, only: [:index]
+    resources :action_plans, only: [:index, :show]
     resources :meetings, only: [:index]
     resources :follows, only: [:index, :create, :destroy]
   end

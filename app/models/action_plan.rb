@@ -10,10 +10,7 @@ class ActionPlan < ActiveRecord::Base
   validates :scope, inclusion: { in: %w(city district) }
   validates :district, inclusion: { in: District.all.map(&:id), allow_nil: true }
 
-  scope :sort_by_hot_score ,       -> { reorder(hot_score: :desc) }
-  scope :sort_by_confidence_score, -> { reorder(confidence_score: :desc) }
-  scope :sort_by_created_at,       -> { reorder(created_at: :desc) }
-  scope :sort_by_random,           -> { reorder("RANDOM()") }
+  scope :sort_by_created_at, -> { reorder(:created_at) }
 
   delegate :title, :description, to: :current_revision, allow_nil: true
 

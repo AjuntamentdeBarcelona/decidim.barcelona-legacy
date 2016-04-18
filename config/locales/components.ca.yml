@@ -84,3 +84,6 @@ ca:
       count: Mostrant %{count} actuacions
     action_plan:
       label: Actuació
+    action_plan_show:
+      edit: Editar
+      new_revision: Nova revisió

@@ -84,3 +84,6 @@ en:
       count: Showing %{count} action plans
     action_plan:
       label: Action plan
+    action_plan_show:
+      edit: Edit
+      new_revision: New revision

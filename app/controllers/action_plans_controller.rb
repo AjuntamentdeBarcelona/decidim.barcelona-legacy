@@ -4,4 +4,8 @@ class ActionPlansController < ApplicationController
 
   def index
   end
+
+  def show
+    @action_plan_id = params[:id]
+  end
 end

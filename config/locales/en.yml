@@ -34,6 +34,9 @@ en:
       title: Title
     index:
       new: Add revision
+    new:
+      form:
+        submit_button: Create revision
   action_plans:
     build_from_proposal:
       form:

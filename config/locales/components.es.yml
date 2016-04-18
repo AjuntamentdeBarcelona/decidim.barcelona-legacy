@@ -84,3 +84,6 @@ es:
       count: Mostrando %{count} actuaciones
       action_plan:
       label: Actuación
+    action_plan_show:
+      edit: Editar
+      new_revision: Nueva revisión

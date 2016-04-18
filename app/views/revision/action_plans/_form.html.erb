@@ -4,9 +4,7 @@
   <div class="row" style="overflow: hidden;">
     <% unless @action_plan.new_record? %>
       <div class="alert-box warning radius margin-top">
-        <span>You are editing an action plan so you cannot modify title and description. Visit action plan </span>
-        <%= link_to 'revisions', revision_action_plan_revisions_path(@action_plan) %>
-        <span> to add a new revision.</span>
+        <span><%= t('revision.action_plans.form.warning', url: revision_action_plan_revisions_path(@action_plan)).html_safe %></span>
       </div>
     <% end %>
 
