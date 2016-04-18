@@ -68,6 +68,7 @@ en:
     proposal_answer_box:
       accept: Validate
       message_label: Note / reason
+      official: Official
       reject: Reject
       title: Proposal answer
     proposal_carousel:

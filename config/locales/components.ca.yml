@@ -68,6 +68,7 @@ ca:
     proposal_answer_box:
       accept: Validar
       message_label: Nota / motiu
+      official: Validada oficialment
       reject: Rebutjar
       title: Resposta de la proposta
     proposal_carousel:

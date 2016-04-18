@@ -36,12 +36,9 @@ ActiveRecord::Schema.define(version: 20160418140426) do
     t.integer  "subcategory_id",                  null: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
-    t.tsvector "tsv"
     t.string   "scope",          default: "city"
     t.integer  "district",       default: 1
   end
-
-  add_index "action_plans", ["tsv"], name: "index_action_plans_on_tsv", using: :gin
 
   create_table "action_plans_proposals", id: false, force: :cascade do |t|
     t.integer "action_plan_id"
