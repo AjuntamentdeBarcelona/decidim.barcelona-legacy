@@ -291,6 +291,7 @@ Rails.application.routes.draw do
         end
       end
     end
+    resources :action_plans, only: [:index]
     resources :meetings, only: [:index]
     resources :follows, only: [:index, :create, :destroy]
   end

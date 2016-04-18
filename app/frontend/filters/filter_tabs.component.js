@@ -7,11 +7,11 @@ import { setFilterGroup }     from '../filters/filters.actions';
 import FilterOptionGroup      from '../filters/filter_option_group.component';
 import FilterOption           from '../filters/filter_option.component';
 
-const ProposalFilterTabs = ({ 
+const FilterTabs = ({ 
   filters,
   setFilterGroup
 }) => (
-  <div className="proposal-filter-tabs">
+  <div className="filter-tabs">
     <FilterOptionGroup 
       renderAs="tabs"
       filterGroupName="source" 
@@ -36,4 +36,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ setFilterGroup }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProposalFilterTabs);
+export default connect(mapStateToProps, mapDispatchToProps)(FilterTabs);

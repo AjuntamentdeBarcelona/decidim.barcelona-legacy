@@ -75,3 +75,12 @@ ca:
       title: Títol
     search_filter:
       search_input_placeholder: Cercar
+    order_selector:
+      random: aleatòries
+      hot_score: més actives avui
+      confidence_score: amb més suport
+      created_at: més noves
+    action_plans:
+      count: Mostrant %{count} actuacions
+    action_plan:
+      label: Actuació

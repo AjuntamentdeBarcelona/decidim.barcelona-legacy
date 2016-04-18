@@ -75,3 +75,12 @@ es:
       title: Título
     search_filter:
       search_input_placeholder: Buscar
+    order_selector:
+      random: aleatorio
+      hot_score: Más activos hoy
+      confidence_score: Mejor valorados
+      created_at: Nuevos
+    action_plans:
+      count: Mostrando %{count} actuaciones
+      action_plan:
+      label: Actuación

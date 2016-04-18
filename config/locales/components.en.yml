@@ -75,3 +75,12 @@ en:
       title: Title
     search_filter:
       search_input_placeholder: Search
+    order_selector:
+      random: random
+      hot_score: most active
+      confidence_score: highest rated
+      created_at: newest
+    action_plans:
+      count: Showing %{count} action plans
+    action_plan:
+      label: Action plan

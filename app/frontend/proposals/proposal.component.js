@@ -1,7 +1,8 @@
+import FilterMeta      from '../filters/filter_meta.component';
+
 import ProposalVoteBox from './proposal_vote_box.component';
 import ProposalBadge   from './proposal_badge.component';
 import ProposalInfo    from './proposal_info.component';
-import ProposalMeta    from './proposal_meta.component';
 
 export default ({
   id,
@@ -42,7 +43,7 @@ export default ({
             <div className="truncate"></div>
           </div>
           <div className="bottom-bar">
-            <ProposalMeta 
+            <FilterMeta 
               scope={ scope_ }
               district={ district }
               category={ category }

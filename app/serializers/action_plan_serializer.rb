@@ -1,7 +1,23 @@
 class ActionPlanSerializer < ActiveModel::Serializer
-  attributes :id, :title, :url
+  attributes :id, :title, :description, :created_at, :url, :scope_, :district
+
+  has_one :category
+  has_one :subcategory
+
+  # Name collision with serialization `scope`
+  def scope_
+    object.scope
+  end
 
   def url
-    edit_revision_action_plan_path(object)
+    action_plan_path(object)
+  end
+
+  def created_at
+    I18n.l object.created_at.to_date
+  end
+
+  def district
+    District.find(object.district)
   end
 end

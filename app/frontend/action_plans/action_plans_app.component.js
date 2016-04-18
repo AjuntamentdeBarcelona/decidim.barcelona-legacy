@@ -15,13 +15,13 @@ if (process.env.NODE_ENV === 'development') {
   middlewares.push(logger);
 }
 
-import Proposals         from '../proposals/proposals.component';
+import ActionPlans       from '../action_plans/action_plans.component';
 
 import {
-  FETCH_PROPOSALS,
-  APPEND_PROPOSALS_PAGE,
-}                        from '../proposals/proposals.actions';
-import { proposals }     from '../proposals/proposals.reducers';
+  FETCH_ACTION_PLANS,
+  APPEND_ACTION_PLANS_PAGE,
+}                        from '../action_plans/action_plans.actions';
+import { actionPlans }   from '../action_plans/action_plans.reducers';
 import districts         from '../districts/districts.reducers';
 import categories        from '../categories/categories.reducers';
 import filters           from '../filters/filters.reducers';
@@ -32,17 +32,16 @@ const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
 const seed = function (state = getInitialSeedState(), action) {
   switch (action.type) {
-    case FETCH_PROPOSALS:
-    case APPEND_PROPOSALS_PAGE:
+    case FETCH_ACTION_PLANS:
+    case APPEND_ACTION_PLANS_PAGE:
       return action.payload.data.meta.seed;
   }
   return state;
 }
 
-
 const count = function (state = 0, action) {
   switch (action.type) {
-  case FETCH_PROPOSALS:
+  case FETCH_ACTION_PLANS:
     return action.payload.data.meta.total_count;
   }
   return state;
@@ -70,7 +69,7 @@ function createReducers(sessionState) {
     session,
     districts,
     categories,
-    proposals,
+    actionPlans,
     filters,
     order,
     pagination,
@@ -84,7 +83,7 @@ export default class ActionPlansApp extends Component {
     return (
       <Provider 
         store={createStoreWithMiddleware(createReducers(this.props.session))}>
-        <Proposals />
+        <ActionPlans />
       </Provider>
     );
   }

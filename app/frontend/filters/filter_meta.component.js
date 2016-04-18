@@ -1,9 +1,9 @@
 import { Component }    from 'react';
 
-import FilterLink       from '../filters/filter_link.component';
-import FilterServerLink from '../filters/filter_server_link.component';
+import FilterLink       from './filter_link.component';
+import FilterServerLink from './filter_server_link.component';
 
-export default class ProposalMeta extends Component {
+export default class FilterMeta extends Component {
   render() {
     return (
       <div className="item-meta">
