@@ -34,11 +34,13 @@ en:
       from_meetings: Meetings
       meetings: Meetings
       not_reviewed: Not reviewed
+      not_validated: Not officially validated
       official: Town Hall
       organization: Organizations
       past: Past
       reviewed: Reviewed
       upcoming: Upcoming
+      validated: officially validated
       voted: Voted
       with_action_plan: With action plan
       without_action_plan: Without action plan
@@ -49,6 +51,7 @@ en:
       district: District
       interaction: Your activity
       other: Other
+      review_validation: Validation official
       reviewer_status: Revision status
       scope: Scope
       source: Source

@@ -34,11 +34,13 @@ ca:
       from_meetings: Cites presencials
       meetings: Debatudes a cites presencials
       not_reviewed: No revisades
+      not_validated: No validades oficialment
       official: Ajuntament
       organization: Organitzacions
       past: Passades
       reviewed: Revisades
       upcoming: Properes
+      validated: Validades oficialment
       voted: Votades
       with_action_plan: Amb actuació
       without_action_plan: Sense actuació
@@ -49,6 +51,7 @@ ca:
       district: Districte
       interaction: La teva activitat
       other: Altres
+      review_validation: Validació oficial
       reviewer_status: Estat de la revisió
       scope: "Àmbit"
       source: Origen

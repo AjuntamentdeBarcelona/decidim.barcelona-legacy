@@ -34,11 +34,13 @@ es:
       from_meetings: Citas presenciales
       meetings: Debatidas en citas presenciales
       not_reviewed: No revisadas
+      not_validated: No validadas oficialmente
       official: Ayuntamiento
       organization: Organizaciones
       past: Pasadas
       reviewed: Revisadas
       upcoming: Próximas
+      validated: validadas oficialmente
       voted: Votadas
       with_action_plan: Con actuación
       without_action_plan: Sin actuación
@@ -49,6 +51,7 @@ es:
       district: Distrito
       interaction: Tu actividad
       other: Otros
+      review_validation: Validación oficial
       reviewer_status: Estado de la revisión
       scope: "Ámbito"
       source: Origen

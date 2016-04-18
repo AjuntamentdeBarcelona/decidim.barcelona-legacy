@@ -1,6 +1,6 @@
 class ResourceFilter
   IGNORE_FILTER_PARAMS = ["source", "other", "date", "reviewer_status",
-                          "interaction", "action_plan"]
+                          "interaction", "action_plan", "review_validation"]
   attr_reader :search_filter, :tag_filter, :params
 
   def initialize(params={}, options = {})
@@ -106,6 +106,14 @@ class ResourceFilter
 
     if @params["action_plan"] && params["action_plan"].include?("without_action_plan")
       collection = collection.includes(:action_plans).where(action_plans: { id: nil })
+    end
+
+    if @params["review_validation"]
+      if params["review_validation"].include?("validated")
+        collection = collection.includes(:answer).where(proposal_answers: { official: true })
+      elsif params["review_validation"].include?("not_validated")
+        collection = collection.includes(:answer). where(proposal_answers: { official: false })
+      end
     end
 
     if @params["reviewer_status"]

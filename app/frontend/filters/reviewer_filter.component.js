@@ -23,6 +23,15 @@ class ReviewerFilter extends Component {
 
           <FilterOptionGroup 
             isExclusive={true}
+            filterGroupName="review_validation"
+            filterGroupValue={this.props.filters.filter["review_validation"]}
+            onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
+            <FilterOption filterName="validated" />
+            <FilterOption filterName="not_validated" />
+          </FilterOptionGroup>
+
+          <FilterOptionGroup 
+            isExclusive={true}
             filterGroupName="action_plan"
             filterGroupValue={this.props.filters.filter["action_plan"]}
             onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
