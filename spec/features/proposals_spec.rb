@@ -430,7 +430,7 @@ feature 'Proposals' do
 
       visit proposals_path
 
-      find('.proposal-filter-tabs a', text: 'Town Hall').click
+      find('.filter-tabs a', text: 'Town Hall').click
 
       within '#proposals' do
         expect(page).to_not have_content("Proposal no oficial 1")

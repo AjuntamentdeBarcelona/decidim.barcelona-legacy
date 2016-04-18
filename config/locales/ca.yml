@@ -34,6 +34,9 @@ ca:
       title: Títol
     index:
       new: Nova revisió
+    new:
+      form:
+        submit_button: Crear revisió
   action_plans:
     build_from_proposal:
       form:
@@ -212,6 +215,7 @@ ca:
       free_software: software lliure
       more_info: Informació
     header:
+      action_plans: Actuacions
       administration: Administrar
       debates: Debats
       external_link_blog: Notícies

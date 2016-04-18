@@ -10,6 +10,8 @@ class ActionPlan < ActiveRecord::Base
   validates :scope, inclusion: { in: %w(city district) }
   validates :district, inclusion: { in: District.all.map(&:id), allow_nil: true }
 
+  scope :sort_by_created_at, -> { reorder(:created_at) }
+
   delegate :title, :description, to: :current_revision, allow_nil: true
 
   def self.sort_by_created_at

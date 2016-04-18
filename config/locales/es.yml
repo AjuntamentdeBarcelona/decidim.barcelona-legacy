@@ -34,6 +34,9 @@ es:
       title: Título
     index:
       new: Nueva revisión
+    new:
+      form:
+        submit_button: Crear revisión
   action_plans:
     build_from_proposal:
       form:
@@ -212,6 +215,7 @@ es:
       free_software: software libre
       more_info: Infórmate
     header:
+      action_plans: Actuaciones
       administration: Administrar
       debates: Debates
       external_link_blog: Noticias

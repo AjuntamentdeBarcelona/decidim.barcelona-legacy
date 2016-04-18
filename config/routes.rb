@@ -55,6 +55,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :action_plans, only: [:index, :show]
+
   resources :meetings, only: [:index, :show]
 
   resources :comments, only: [:create, :show], shallow: true do
@@ -287,6 +289,11 @@ Rails.application.routes.draw do
         member do
           patch :hide
         end
+      end
+    end
+    resources :action_plans, only: [:index, :show] do
+      member do
+        get :proposals
       end
     end
     resources :meetings, only: [:index]

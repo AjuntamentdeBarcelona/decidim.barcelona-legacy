@@ -1,9 +1,9 @@
 import { Component }    from 'react';
 
-import FilterLink       from '../filters/filter_link.component';
-import FilterServerLink from '../filters/filter_server_link.component';
+import FilterLink       from './filter_link.component';
+import FilterServerLink from './filter_server_link.component';
 
-export default class ProposalMeta extends Component {
+export default class FilterMeta extends Component {
   render() {
     return (
       <div className="item-meta">
@@ -14,12 +14,12 @@ export default class ProposalMeta extends Component {
   }
 
   renderMetaScope() {
-    const { scope, district, useServerLinks } = this.props;
+    const { scope, district, useServerLinks, namespace } = this.props;
 
     if (scope === "city") {
       if (useServerLinks) {
         return (
-          <FilterServerLink name="scope" value="city" cssClass="bcn-icon-localitzacio bcn-icon" label={I18n.t("components.filter_option.city")} />
+          <FilterServerLink name="scope" value="city" cssClass="bcn-icon-localitzacio bcn-icon" label={I18n.t("components.filter_option.city")} namespace={namespace} />
         );
       } else {
         return (
@@ -30,7 +30,7 @@ export default class ProposalMeta extends Component {
 
     if (useServerLinks && district) {
       return (
-        <FilterServerLink name="district" value={district.id} cssClass="bcn-icon-localitzacio bcn-icon" label={district.name} />
+        <FilterServerLink name="district" value={district.id} cssClass="bcn-icon-localitzacio bcn-icon" label={district.name} namespace={namespace} />
       );
     } else if (district) {
       return (
@@ -42,13 +42,13 @@ export default class ProposalMeta extends Component {
   }
 
   renderMetaCategories() {
-    const { category, subcategory, useServerLinks } = this.props;
+    const { category, subcategory, useServerLinks, namespace } = this.props;
     let links = [];
 
     if (useServerLinks) {
       links = [
-        <FilterServerLink key="category_id" name="category_id" value={category.id} label={` ${category.name}`} cssClass={`category-icon category-icon-${category.id}`} />,
-        <FilterServerLink key="subcategory_id" name="subcategory_id" value={subcategory.id} label={subcategory.name} />
+        <FilterServerLink key="category_id" name="category_id" value={category.id} label={` ${category.name}`} cssClass={`category-icon category-icon-${category.id}`}  namespace={namespace} />,
+        <FilterServerLink key="subcategory_id" name="subcategory_id" value={subcategory.id} label={subcategory.name} namespace={namespace} />
       ];
     } else {
       links = [

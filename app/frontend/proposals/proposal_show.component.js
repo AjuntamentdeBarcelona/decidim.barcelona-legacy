@@ -1,6 +1,6 @@
-import { Component }                   from 'react';
-import { connect }                     from 'react-redux';
-import { bindActionCreators }          from 'redux';
+import { Component }          from 'react';
+import { connect }            from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import { 
   fetchProposal, 
@@ -8,20 +8,21 @@ import {
   hideProposalAuthor
 } from './proposals.actions';
 
-import Loading                         from '../application/loading.component';
-import SocialShareButtons              from '../application/social_share_buttons.component';
-import DangerLink                      from '../application/danger_link.component';
+import Loading              from '../application/loading.component';
+import SocialShareButtons   from '../application/social_share_buttons.component';
+import DangerLink           from '../application/danger_link.component';
 
-import FollowButton                    from '../follows/follow_button.component';
+import FilterMeta           from '../filters/filter_meta.component';
 
-import ProposalReviewer                from './proposal_reviewer.component';
-import ProposalBadge                   from './proposal_badge.component';
-import ProposalInfoExtended            from './proposal_info_extended.component';
-import ProposalMeta                    from './proposal_meta.component';
-import ProposalVoteBox                 from './proposal_vote_box.component';
-import ProposalReferences              from './proposal_references.component';
-import ProposalActionPlans             from './proposal_action_plans.component';
-import ProposalMeetings                from './proposal_meetings.component';
+import FollowButton         from '../follows/follow_button.component';
+
+import ProposalReviewer     from './proposal_reviewer.component';
+import ProposalBadge        from './proposal_badge.component';
+import ProposalInfoExtended from './proposal_info_extended.component';
+import ProposalVoteBox      from './proposal_vote_box.component';
+import ProposalReferences   from './proposal_references.component';
+import ProposalActionPlans  from './proposal_action_plans.component';
+import ProposalMeetings     from './proposal_meetings.component';
 
 class ProposalShow extends Component {
   constructor(props) {
@@ -125,7 +126,7 @@ class ProposalShow extends Component {
 
               {this.renderExternalUrl(external_url)}
 
-              <ProposalMeta 
+              <FilterMeta 
                 scope={ scope_ }
                 district={ district }
                 category={ category }

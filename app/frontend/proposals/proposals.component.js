@@ -1,15 +1,16 @@
-import { Component }                           from 'react';
-import { bindActionCreators }                  from 'redux';
-import { connect }                             from 'react-redux';
+import { Component }          from 'react';
+import { bindActionCreators } from 'redux';
+import { connect }            from 'react-redux';
 
-import Loading                                 from '../application/loading.component';
-import InfinitePagination                      from '../application/infinite_pagination.component';
-import ProposalsHeader                         from './proposals_header.component';
-import ProposalsFilterTabs                     from './proposals_filter_tabs.component';
-import ProposalsSidebar                        from './proposals_sidebar.component';
-import ProposalsOrderSelector                  from './proposals_order_selector.component';
-import NewProposalButton                       from './new_proposal_button.component';
-import ProposalsList                           from './proposals_list.component';
+import Loading                from '../application/loading.component';
+import InfinitePagination     from '../pagination/infinite_pagination.component';
+import FilterTabs             from '../filters/filter_tabs.component';
+import OrderSelector          from '../order/order_selector.component';
+
+import ProposalsHeader        from './proposals_header.component';
+import ProposalsSidebar       from './proposals_sidebar.component';
+import NewProposalButton      from './new_proposal_button.component';
+import ProposalsList          from './proposals_list.component';
 
 import { fetchProposals, appendProposalsPage } from './proposals.actions';
 
@@ -49,7 +50,7 @@ class Proposals extends Component {
         <ProposalsHeader />
 
         <div className="wrap row">
-          <ProposalsFilterTabs />
+          <FilterTabs />
         </div>
 
         <div className="wrap row">
@@ -58,7 +59,7 @@ class Proposals extends Component {
           </div>
 
           <div className="small-12 medium-9 column">
-            <ProposalsOrderSelector />
+            <OrderSelector />
             <div className="show-for-small-only">
               <NewProposalButton />
             </div>

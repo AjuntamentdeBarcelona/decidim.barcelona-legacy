@@ -10,6 +10,8 @@ es:
           placeholder: Buscar
         title: Revisiones
     action_plans:
+      form:
+        warning: Estas editando una actuación existente así que no es posible editar ni el título ni la descripción. Accede a la página de <a href=%{url}>revisiones</a> para crear una nueva revisión.
       index:
         headers:
           action: Actuación

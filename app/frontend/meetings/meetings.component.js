@@ -3,7 +3,7 @@ import { bindActionCreators }                from 'redux';
 import { connect }                           from 'react-redux';
 
 import Loading                               from '../application/loading.component';
-import InfinitePagination                    from '../application/infinite_pagination.component';
+import InfinitePagination                    from '../pagination/infinite_pagination.component';
 import MeetingsMap                           from './meetings_map.component';
 import MeetingsFilters                       from './meetings_filters.component';
 import MeetingsList                          from './meetings_list.component';
