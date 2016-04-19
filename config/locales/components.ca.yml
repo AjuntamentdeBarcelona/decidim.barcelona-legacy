@@ -5,7 +5,7 @@ ca:
       label: Actuació
     action_plan_proposals:
       comments: 'Comentaris: %{comments}'
-      title: Propostes
+      title: Propostes relacionades
       votes: 'Suports: %{votes}'
     action_plan_show:
       approve: Aprovar
