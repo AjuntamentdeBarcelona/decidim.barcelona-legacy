@@ -6,12 +6,31 @@ export const FETCH_ACTION_PLAN           = 'FETCH_ACTION_PLAN';
 export const FETCH_ACTION_PLAN_PROPOSALS = 'FETCH_ACTION_PLAN_PROPOSALS';
 export const APPEND_ACTION_PLANS_PAGE    = 'APPEND_ACTION_PLANS_PAGE';
 export const DELETE_ACTION_PLAN          = 'DELETE_ACTION_PLAN';
+export const UPDATE_ACTION_PLAN          = 'UPDATE_ACTION_PLAN';
 
 export function deleteActionPlan(id){
   const request = axios.delete(`${API_BASE_URL}/action_plans/${id}.json`);
 
   return {
     type: DELETE_ACTION_PLAN,
+    payload: request
+  };
+}
+
+export function approveActionPlan(id){
+  alert("APPROVE");
+  return updateActionPlan(id, { approved: true});
+}
+
+export function updateActionPlan(id, attributes) {
+  const request = axios.put(`${API_BASE_URL}/action_plans/${id}.json`, {
+    data: {
+      action_plan: attributes
+    }
+  });
+
+  return {
+    type: UPDATE_ACTION_PLAN,
     payload: request
   };
 }
