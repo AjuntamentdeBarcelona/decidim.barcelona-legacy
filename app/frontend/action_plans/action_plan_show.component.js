@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux';
 
 import { 
   fetchActionPlan,
-  deleteActionPlan
+  deleteActionPlan,
+  approveActionPlan
 } from './action_plans.actions';
 
 import Loading              from '../application/loading.component';
@@ -124,6 +125,19 @@ class ActionPlanShow extends Component {
       )
     }
   }
+<<<<<<< HEAD
+=======
+
+  renderApproveButton() {
+    return (
+      <DangerLink onClick={() => this.props.approveActionPlan(this.props.actionPlan.id)}
+        className="approve-proposal button tiny radius right">
+        <i className="icon-edit"></i>
+        { I18n.t("components.action_plan_show.approve") }
+      </DangerLink>
+    )
+  }
+>>>>>>> e321e47... WIP
 }
 
 

@@ -29,6 +29,13 @@ class Api::ActionPlansController < Api::ApplicationController
     end
   end
 
+  def update
+    @action_plan = ActionPlan.find(params[:id])
+    @action_plan.assign_attributes(strong_params)
+    @action_plan.save!
+    render json: @action_plan
+  end
+
   def destroy
     @action_plan = ActionPlan.find(params[:id])
     @action_plan.destroy!
@@ -45,6 +52,12 @@ class Api::ActionPlansController < Api::ApplicationController
   end
 
   private
+
+  def strong_params
+    permitted_params = []
+    permitted_params += [:official] if can?(:approve, ActionPlan)
+    params.require(:action_plan).permit(permitted_params)
+  end
 
   def set_seed
     @random_seed = params[:random_seed] ? params[:random_seed].to_f : (rand * 2 - 1)
