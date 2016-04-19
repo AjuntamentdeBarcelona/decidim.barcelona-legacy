@@ -4,6 +4,8 @@ es:
     action_plan:
       label: Actuación
     action_plan_show:
+      delete: eliminar
+      deleted: Esta actuación ha sido eliminada
       edit: Editar
       new_revision: Nueva revisión
       references: 'Parece que esta actuación está relacionada con:'
