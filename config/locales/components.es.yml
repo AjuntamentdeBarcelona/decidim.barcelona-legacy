@@ -73,9 +73,13 @@ es:
       random: aleatorio
     proposal_answer_box:
       accept: Validar
+      approve: aprobar
       message_label: Nota / motivo
       official: Validada oficialmente
+      pending_save: Pendiente de guardar
       reject: Rebutjar
+      select_template: Selecciona una respuesta por defecto
+      templates: respuesta predeterminada
       title: Resposta de la proposta
     proposal_carousel:
       see_more: Ver más

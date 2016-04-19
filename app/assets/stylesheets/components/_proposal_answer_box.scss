@@ -27,4 +27,18 @@
   button.reject.selected{
     background-color: $delete;
   }
+
+  button.approve{
+    background-color: $highlight;
+    border-color: #008CCF;
+    color: #008CCF;
+    float: right;
+  }
+
+  &.official{
+    button.approve{
+      background-color: #008CCF;
+      color: $text-inverse;
+    }
+  }
 }

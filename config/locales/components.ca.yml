@@ -73,9 +73,13 @@ ca:
       random: aleatòries
     proposal_answer_box:
       accept: Validar
+      approve: Aprovar
       message_label: Nota / motiu
       official: Validada oficialment
+      pending_save: Pendent de desar
       reject: Rebutjar
+      select_template: Selecciona una resposta per defecte
+      templates: Resposta predeterminada
       title: Resposta de la proposta
     proposal_carousel:
       see_more: Veure més
