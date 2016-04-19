@@ -22,8 +22,8 @@ export default class ProposalAnswerBox extends Component {
           <option>--- {I18n.t("components.proposal_answer_box.select_template")} ---</option>
           <option>No hi ha competències i l’Ajuntament no disposa de la capacitat d’influir.</option>
           <option>El govern municipal no està treballant en aquesta línia.</option>
-          <option>La proposta és massa genèrica</option>
-          <option>L'Ajuntament no disposa dels recursos necessaris i està prioritzant altres actuacions</option>
+          <option>La proposta és massa genèrica.</option>
+          <option>L'Ajuntament no disposa dels recursos necessaris i està prioritzant altres actuacions.</option>
           <option>No podem comprometre’ns a desenvolupar aquesta proposta al nivell de concreció que es proposa, però serà tinguda en compte en el moment de la planificació corresponent.</option>
         </select>
 
