@@ -3,10 +3,12 @@ import { connect }            from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { 
-  fetchActionPlan
+  fetchActionPlan,
+  deleteActionPlan
 } from './action_plans.actions';
 
 import Loading              from '../application/loading.component';
+import DangerLink           from '../application/danger_link.component';
 import FilterMeta           from '../filters/filter_meta.component';
 import ActionPlanProposals  from './action_plan_proposals.component';
 
@@ -48,6 +50,7 @@ class ActionPlanShow extends Component {
         id,
         url,
         edit_url,
+        deleted,
         new_revision_url,
         title, 
         description,
@@ -68,6 +71,13 @@ class ActionPlanShow extends Component {
                 {I18n.t('proposals.show.back_link')}
               </a>
 
+              {this.renderApproveButton}
+
+              <DangerLink className="delete-proposal button danger tiny radius right" onClick={ () => this.props.deleteActionPlan(this.props.actionPlan.id) }>
+                <i className="icon-cross"></i>
+                { I18n.t("components.action_plan_show.delete") }
+              </DangerLink>
+
               <a href={edit_url} className="edit-proposal button success tiny radius right">
                 <i className="icon-edit"></i>
                 { I18n.t("components.action_plan_show.edit") }
@@ -77,6 +87,8 @@ class ActionPlanShow extends Component {
                 <i className="icon-edit"></i>
                 { I18n.t("components.action_plan_show.new_revision") }
               </a>
+
+              { this.renderNotice() }
 
               <h2>
                 <a href={url}>{title}</a>
@@ -106,7 +118,25 @@ class ActionPlanShow extends Component {
     }
     return null;
   }
+
+  renderNotice(){
+    if(this.props.actionPlan && this.props.actionPlan.deleted){
+      return (
+        <div className="alert-box warning">{I18n.t("components.action_plan_show.deleted")}</div>
+      )
+    }
+  }
+
+  renderApproveButton() {
+    return (
+      <a onClick={this.approveActionPlan(this.props.actionPlan.id)} className="approve-proposal button success tiny radius right">
+        <i className="icon-edit"></i>
+        { I18n.t("components.action_plan_show.approve") }
+      </a>
+    )
+  }
 }
+
 
 function mapStateToProps({ session, actionPlan }) {
   return { session, actionPlan };
@@ -114,7 +144,9 @@ function mapStateToProps({ session, actionPlan }) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ 
-    fetchActionPlan, 
+    fetchActionPlan,
+    deleteActionPlan,
+    approveActionPlan
   }, dispatch);
 }
 

@@ -2,7 +2,8 @@ import {
   FETCH_ACTION_PLANS, 
   FETCH_ACTION_PLAN,
   FETCH_ACTION_PLAN_PROPOSALS,
-  APPEND_ACTION_PLANS_PAGE, 
+  APPEND_ACTION_PLANS_PAGE,
+  DELETE_ACTION_PLAN
 } from './action_plans.actions';
 
 export const actionPlans = function (state = [], action) {
@@ -32,6 +33,11 @@ export const actionPlan = function (state = {}, action) {
       return {
         ...state,
         proposals
+      };
+    case DELETE_ACTION_PLAN:
+      return {
+        ...state,
+        deleted: true
       };
   }
   return state;

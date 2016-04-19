@@ -5,6 +5,8 @@ ca:
       label: Actuació
     action_plan_show:
       edit: Editar
+      delete: Eliminar
+      deleted: Aquesta actuació ha estat eliminada
       new_revision: Nova revisió
       references: 'Sembla que aquesta actuació està relacionada amb:'
     action_plans:

@@ -29,6 +29,12 @@ class Api::ActionPlansController < Api::ApplicationController
     end
   end
 
+  def destroy
+    @action_plan = ActionPlan.find(params[:id])
+    @action_plan.destroy!
+    render nothing: true
+  end
+
   def show
     render json: @action_plan
   end
