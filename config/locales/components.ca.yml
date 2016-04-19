@@ -4,6 +4,8 @@ ca:
     action_plan:
       label: Actuació
     action_plan_show:
+      approve: Aprovar
+      approved: Aprovada
       delete: Eliminar
       deleted: Aquesta actuació ha estat eliminada
       edit: Editar
@@ -28,6 +30,7 @@ ca:
     filter_option:
       accepted: Validat
       all: Totes
+      approved: Aprovades
       citizenship: Ciutadania
       city: Tota la ciutat
       commented: Comentades
@@ -36,6 +39,7 @@ ca:
       followed: Seguides
       from_meetings: Cites presencials
       meetings: Debatudes a cites presencials
+      not_approved: No aprovades
       not_reviewed: No revisades
       not_validated: No validades oficialment
       official: Ajuntament
@@ -50,6 +54,8 @@ ca:
       without_action_plan: Sense actuació
     filter_option_group:
       action_plan: Actuació
+      action_plan_approval: Aprovació
+      action_plan_source: Origen
       category_id: Eix
       date: Data
       district: Districte

@@ -18,15 +18,12 @@ export function deleteActionPlan(id){
 }
 
 export function approveActionPlan(id){
-  alert("APPROVE");
   return updateActionPlan(id, { approved: true});
 }
 
 export function updateActionPlan(id, attributes) {
   const request = axios.put(`${API_BASE_URL}/action_plans/${id}.json`, {
-    data: {
-      action_plan: attributes
-    }
+    action_plan: attributes
   });
 
   return {

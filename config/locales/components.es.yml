@@ -4,6 +4,8 @@ es:
     action_plan:
       label: Actuación
     action_plan_show:
+      approve: aprobar
+      approved: aprobada
       delete: eliminar
       deleted: Esta actuación ha sido eliminada
       edit: Editar
@@ -28,6 +30,7 @@ es:
     filter_option:
       accepted: validado
       all: Todas
+      approved: aprobadas
       citizenship: Ciudadania
       city: Toda la ciudad
       commented: Comentadas
@@ -36,6 +39,7 @@ es:
       followed: Seguidas
       from_meetings: Citas presenciales
       meetings: Debatidas en citas presenciales
+      not_approved: no aprobadas
       not_reviewed: No revisadas
       not_validated: No validadas oficialmente
       official: Ayuntamiento
@@ -50,6 +54,8 @@ es:
       without_action_plan: Sin actuación
     filter_option_group:
       action_plan: Actuación
+      action_plan_approval: aprobación
+      action_plan_source: origen
       category_id: Eje
       date: Fecha
       district: Distrito

@@ -1,6 +1,6 @@
 class ActionPlanSerializer < ActiveModel::Serializer
   attributes :id, :title, :description, :created_at, :url, :scope_, :district,
-    :edit_url, :new_revision_url
+    :edit_url, :new_revision_url, :approved
 
   has_one :category
   has_one :subcategory

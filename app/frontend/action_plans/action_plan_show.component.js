@@ -87,6 +87,8 @@ class ActionPlanShow extends Component {
                 { I18n.t("components.action_plan_show.new_revision") }
               </a>
 
+              { this.renderApproveButton() }
+
               { this.renderNotice() }
 
               <h2>
@@ -127,13 +129,19 @@ class ActionPlanShow extends Component {
   }
 
   renderApproveButton() {
-    return (
-      <DangerLink onClick={() => this.props.approveActionPlan(this.props.actionPlan.id)}
-        className="approve-proposal button tiny radius right">
-        <i className="icon-edit"></i>
-        { I18n.t("components.action_plan_show.approve") }
-      </DangerLink>
-    )
+    if(this.props.actionPlan && this.props.actionPlan.approved){
+      return (<span className="right">
+              {I18n.t("components.action_plan_show.approved")}
+              </span>);
+    } else {
+      return (
+          <DangerLink onClick={() => this.props.approveActionPlan(this.props.actionPlan.id)}
+        className="approve-proposal button default tiny radius right">
+          <i className="icon-edit"></i>
+          { I18n.t("components.action_plan_show.approve") }
+        </DangerLink>
+      )
+    }
   }
 }
 
@@ -145,7 +153,8 @@ function mapStateToProps({ session, actionPlan }) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ 
     fetchActionPlan,
-    deleteActionPlan
+    deleteActionPlan,
+    approveActionPlan
   }, dispatch);
 }
 

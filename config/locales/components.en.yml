@@ -4,6 +4,8 @@ en:
     action_plan:
       label: Action plan
     action_plan_show:
+      approve: approve
+      approved: adopted
       delete: remove
       deleted: This action has been removed
       edit: Edit
@@ -28,6 +30,7 @@ en:
     filter_option:
       accepted: Validated
       all: All
+      approved: approved
       citizenship: Citizenship
       city: Whole city
       commented: Commented
@@ -36,6 +39,7 @@ en:
       followed: Followed
       from_meetings: Meetings
       meetings: Meetings
+      not_approved: not approved
       not_reviewed: Not reviewed
       not_validated: Not officially validated
       official: Town Hall
@@ -50,6 +54,8 @@ en:
       without_action_plan: Without action plan
     filter_option_group:
       action_plan: Action Plan
+      action_plan_approval: approval
+      action_plan_source: Source
       category_id: Axis
       date: Date
       district: District
