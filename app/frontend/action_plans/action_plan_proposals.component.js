@@ -31,6 +31,7 @@ class ActionPlanProposals extends Component {
                     </td>
                     <td>
                       <a href={proposal.url}>{proposal.title}</a>
+                      <div>{proposal.summary}</div>
                     </td>
                     <td>{I18n.t("components.action_plan_proposals.votes", { votes: proposal.total_votes})}</td>
                     <td>{I18n.t("components.action_plan_proposals.comments", { comments: proposal.total_votes})}</td>
