@@ -4,7 +4,7 @@
   <div class="row" style="overflow: hidden;">
     <% unless @action_plan.new_record? %>
       <div class="alert-box warning radius margin-top">
-        <span><%= t('revision.action_plans.form.warning', url: revision_action_plan_revisions_path(@action_plan)).html_safe %></span>
+        <span><%= t('revision.action_plans.form.warning').html_safe %></span>
       </div>
     <% end %>
 

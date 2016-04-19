@@ -11,7 +11,7 @@ en:
         title: Revisions
     action_plans:
       form:
-        warning: You are editing an action plan so you cannot modify title and description. Visit action plan <a href=%{url}>revisions</a> to add a new revision.
+        warning: You are editing an action plan so you cannot modify title and description.
       index:
         headers:
           action: Action plan
