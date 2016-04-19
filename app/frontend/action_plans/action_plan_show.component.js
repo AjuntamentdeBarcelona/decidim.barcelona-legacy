@@ -71,8 +71,6 @@ class ActionPlanShow extends Component {
                 {I18n.t('proposals.show.back_link')}
               </a>
 
-              {this.renderApproveButton}
-
               <DangerLink className="delete-proposal button danger tiny radius right" onClick={ () => this.props.deleteActionPlan(this.props.actionPlan.id) }>
                 <i className="icon-cross"></i>
                 { I18n.t("components.action_plan_show.delete") }
@@ -126,15 +124,6 @@ class ActionPlanShow extends Component {
       )
     }
   }
-
-  renderApproveButton() {
-    return (
-      <a onClick={this.approveActionPlan(this.props.actionPlan.id)} className="approve-proposal button success tiny radius right">
-        <i className="icon-edit"></i>
-        { I18n.t("components.action_plan_show.approve") }
-      </a>
-    )
-  }
 }
 
 
@@ -145,8 +134,7 @@ function mapStateToProps({ session, actionPlan }) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ 
     fetchActionPlan,
-    deleteActionPlan,
-    approveActionPlan
+    deleteActionPlan
   }, dispatch);
 }
 
