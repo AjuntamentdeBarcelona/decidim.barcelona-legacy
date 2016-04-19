@@ -125,8 +125,6 @@ class ActionPlanShow extends Component {
       )
     }
   }
-<<<<<<< HEAD
-=======
 
   renderApproveButton() {
     return (
@@ -137,7 +135,6 @@ class ActionPlanShow extends Component {
       </DangerLink>
     )
   }
->>>>>>> e321e47... WIP
 }
 
 
