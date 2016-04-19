@@ -4,63 +4,43 @@ import ProposalVoteBox from './proposal_vote_box.component';
 import ProposalBadge   from './proposal_badge.component';
 import ProposalInfo    from './proposal_info.component';
 
-export default ({
-  id,
-  code,
-  title,
-  url,
-  summary,
-  created_at,
-  category,
-  subcategory,
-  scope_,
-  district,
-  source,
-  total_votes,
-  total_comments,
-  voted,
-  closed,
-  votable,
-  official,
-  from_meeting,
-  author
-}) => (
-  <div id={`proposal_${id}`} className="proposal clear">
+export default (proposal) => (
+  <div id={`proposal_${proposal.id}`} className="proposal clear">
     <div className="row">
       <div className="small-12 medium-9 column">
         <div className="proposal-content">
-          <ProposalBadge source={source} />
+          <ProposalBadge proposal={proposal} />
           <span className="label-proposal">{ I18n.t('proposals.proposal.proposal') }</span>
-          <h3><a href={url}>{ title }</a></h3>
+          <h3><a href={proposal.url}>{ proposal.title }</a></h3>
           <ProposalInfo 
-            code={ code }
-            created_at={ created_at }
-            official={ official }
-            from_meeting={ from_meeting }
-            author={ author }/>
+            code={ proposal.code }
+            created_at={ proposal.created_at }
+            official={ proposal.official }
+            from_meeting={ proposal.from_meeting }
+            author={ proposal.author }/>
           <div className="proposal-description">
-            <p>{ summary }</p>
+            <p>{ proposal.summary }</p>
             <div className="truncate"></div>
           </div>
           <div className="bottom-bar">
             <FilterMeta 
-              scope={ scope_ }
-              district={ district }
-              category={ category }
-              subcategory={ subcategory } />
+              scope={ proposal.scope_ }
+              district={ proposal.district }
+              category={ proposal.category }
+              subcategory={ proposal.subcategory } />
           </div>
         </div>
       </div>
-      <aside id={`proposal_${id}_votes`} className="small-12 medium-3 column">
+      <aside id={`proposal_${proposal.id}_votes`} className="small-12 medium-3 column">
         <ProposalVoteBox 
-          hideButton={ closed }
-          proposalId={ id } 
-          proposalTitle={ title } 
-          proposalUrl={ url } 
-          voted={ voted } 
-          votable={ votable } 
-          totalVotes={ total_votes } 
-          totalComments={ total_comments } />
+          hideButton={ proposal.closed }
+          proposalId={ proposal.id } 
+          proposalTitle={ proposal.title } 
+          proposalUrl={ proposal.url } 
+          voted={ proposal.voted } 
+          votable={ proposal.votable } 
+          totalVotes={ proposal.total_votes } 
+          totalComments={ proposal.total_comments } />
       </aside>
     </div>
   </div>

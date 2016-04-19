@@ -3,10 +3,14 @@ es:
   components:
     action_plan:
       label: Actuación
+    action_plan_proposals:
+      comments: 'Comentarios: %{comments}'
+      title: Propuestas
+      votes: 'Votos: %{votes}'
     action_plan_show:
-      approve: aprobar
-      approved: aprobada
-      delete: eliminar
+      approve: Aprobar
+      approved: Aprobada
+      delete: Eliminar
       deleted: Esta actuación ha sido eliminada
       edit: Editar
       new_revision: Nueva revisión

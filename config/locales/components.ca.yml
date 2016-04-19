@@ -3,6 +3,10 @@ ca:
   components:
     action_plan:
       label: Actuació
+    action_plan_proposals:
+      comments: 'Comentaris: %{comments}'
+      title: Propostes
+      votes: 'Vots: %{votes}'
     action_plan_show:
       approve: Aprovar
       approved: Aprovada

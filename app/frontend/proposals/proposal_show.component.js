@@ -101,7 +101,7 @@ class ProposalShow extends Component {
               {this.renderEditButton(editable, url)}
 
               <h2>
-                <a href={url}>{title}<ProposalBadge source={source} /></a>
+                <a href={url}>{title}<ProposalBadge proposal={proposal} /></a>
               </h2>
 
               <div className="alert-box info radius margin-top">

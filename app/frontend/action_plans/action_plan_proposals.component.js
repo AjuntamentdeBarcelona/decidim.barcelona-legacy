@@ -3,6 +3,8 @@ import { bindActionCreators }       from 'redux';
 import { connect }                  from 'react-redux';
 
 import { fetchActionPlanProposals } from './action_plans.actions';
+import ProposalBadge                from '../proposals/proposal_badge.component';
+
 
 class ActionPlanProposals extends Component {
   componentDidMount() {
@@ -17,15 +19,26 @@ class ActionPlanProposals extends Component {
 
     if (proposals.length > 0) {
       return (
-        <div className="references">
-          <p>{ I18n.t('components.action_plan_show.references') }</p>
-          <ul className="references-list">
-            {
-              proposals.map(proposal => 
-                <li key={proposal.id}><a href={proposal.url}>{proposal.title}</a></li>
-              )
-            }
-          </ul>
+        <div>
+          <h4>{I18n.t("components.action_plan_proposals.title")}</h4>
+          <table>
+            <tbody>
+              {
+                proposals.map(proposal =>
+                  <tr key={proposal.id}>
+                    <td>
+                      <ProposalBadge proposal={proposal} />
+                    </td>
+                    <td>
+                      <a href={proposal.url}>{proposal.title}</a>
+                    </td>
+                    <td>{I18n.t("components.action_plan_proposals.votes", { votes: proposal.total_votes})}</td>
+                    <td>{I18n.t("components.action_plan_proposals.comments", { comments: proposal.total_votes})}</td>
+                  </tr>
+                )
+              }
+            </tbody>
+          </table>
         </div>
       );
     }

@@ -1,5 +1,3 @@
-export default ({
-  source
-}) => (
-  <span className={`proposal-badge ${source}-badge`}></span>
+export default ({ proposal }) => (
+  <span className={`proposal-badge ${proposal.source}-badge`}></span>
 );
