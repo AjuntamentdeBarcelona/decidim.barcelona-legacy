@@ -106,7 +106,7 @@ ca:
       search: Buscar
     proposals_table:
       actions: Accions
-      remove: Eliminar
+      remove: Desvincular
       title: Títol
     search_filter:
       search_input_placeholder: Cercar
