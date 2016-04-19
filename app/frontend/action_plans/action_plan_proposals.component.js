@@ -24,7 +24,7 @@ class ActionPlanProposals extends Component {
           <table>
             <tbody>
               {
-                proposals.map(proposal =>
+                proposals.sort((a, b) => b.total_votes - a.total_votes).map(proposal =>
                   <tr key={proposal.id}>
                     <td>
                       <ProposalBadge proposal={proposal} />
@@ -34,7 +34,7 @@ class ActionPlanProposals extends Component {
                       <div>{proposal.summary}</div>
                     </td>
                     <td>{I18n.t("components.action_plan_proposals.votes", { votes: proposal.total_votes})}</td>
-                    <td>{I18n.t("components.action_plan_proposals.comments", { comments: proposal.total_votes})}</td>
+                    <td>{I18n.t("components.action_plan_proposals.comments", { comments: proposal.total_comments})}</td>
                   </tr>
                 )
               }
