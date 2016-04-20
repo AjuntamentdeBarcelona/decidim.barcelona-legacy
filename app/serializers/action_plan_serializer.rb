@@ -15,11 +15,11 @@ class ActionPlanSerializer < ActiveModel::Serializer
   end
 
   def edit_url
-    edit_revision_action_plan_path(object)
+    edit_action_plan_path(object)
   end
 
   def new_revision_url
-    new_revision_action_plan_revision_path(object)
+    new_action_plan_revision_path(object)
   end
 
   def created_at
