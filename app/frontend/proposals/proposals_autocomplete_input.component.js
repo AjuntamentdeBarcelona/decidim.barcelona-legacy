@@ -45,10 +45,10 @@ export default class ProposalsAutocompleteInput extends Component {
         ref="autocomplete"
         value={this.state.value}
         items={this.state.proposals}
-        getItemValue={(item) => item.name}
+        getItemValue={(item) => item.title}
         onSelect={(value, item) => {
           this.props.onAddProposal(item);
-          this.setState({ value, proposals: [] })
+          this.setState({ value: '', proposals: [] })
         }}
         onChange={(event, value) => {
           this.setState({ value, loading: true })

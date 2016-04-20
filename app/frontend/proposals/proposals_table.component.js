@@ -16,7 +16,7 @@ export default class ProposalsTable extends Component {
                   <ProposalBadge proposal={proposal} />
                 </td>
                 <td>
-                  <a href={proposal.url}>{proposal.title}</a>
+                  <a href={proposal.url} target="_blank">{proposal.title}</a>
                   <div>{proposal.summary}</div>
                 </td>
                 <td>{I18n.t("components.action_plan_proposals.votes", { votes: proposal.total_votes})}</td>

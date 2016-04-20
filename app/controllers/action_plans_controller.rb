@@ -48,7 +48,7 @@ class ActionPlansController < ApplicationController
 
     if @resource.save
       @resource.revisions.create(params.require(:action_plan_revision).permit(:title, :description, :author_id))
-      redirect_to action_plans_url, notice: t('flash.actions.create.notice', resource_name: "#{resource_name.capitalize}")
+      redirect_to action_plan_url(@resource), notice: t('flash.actions.create.notice', resource_name: "#{resource_name.capitalize}")
     else
       set_resource_instance
       render :new
