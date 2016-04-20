@@ -55,7 +55,7 @@ class Api::ActionPlansController < Api::ApplicationController
 
   def strong_params
     permitted_params = []
-    permitted_params += [:official] if can?(:approve, ActionPlan)
+    permitted_params += [:approved] if can?(:approve, ActionPlan)
     params.require(:action_plan).permit(permitted_params)
   end
 
