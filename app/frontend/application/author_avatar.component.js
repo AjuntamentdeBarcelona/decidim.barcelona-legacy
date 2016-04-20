@@ -4,6 +4,6 @@ export default ({
   const firstLetter = author.name[0].toUpperCase();
   
   return (
-    <span className="author-avatar">{firstLetter}</span>
+    <span className="author-avatar left">{firstLetter}</span>
   );
 }

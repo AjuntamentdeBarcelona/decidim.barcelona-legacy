@@ -16,6 +16,8 @@ import {
 
 import { FOLLOW, UNFOLLOW, FETCH_FOLLOW } from '../follows/follows.actions';
 
+import { FETCH_COMMENTS } from '../comments/comments.actions';
+
 export const proposals = function (state = [], action) {
   switch (action.type) {
     case FETCH_PROPOSALS:
@@ -44,8 +46,11 @@ export const proposal = function (state = {}, action) {
 
       return {
         ...proposal,
+        follow: state.follow,
+        answer: state.answer,
         meetings: state.meetings,
-        references: state.references
+        references: state.references,
+        comments: state.comments
       }
     case FOLLOW:
       follow = action.payload.data.follow;
@@ -80,6 +85,13 @@ export const proposal = function (state = {}, action) {
       }
 
       return state;
+    case FETCH_COMMENTS:
+      let comments = action.payload.data.comments;
+
+      return {
+        ...state,
+        comments
+      };
     case HIDE_PROPOSAL_AUTHOR:
       let author = action.payload.data.user;
 

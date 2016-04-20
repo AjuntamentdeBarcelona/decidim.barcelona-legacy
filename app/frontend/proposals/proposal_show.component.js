@@ -11,10 +11,9 @@ import {
 import Loading              from '../application/loading.component';
 import SocialShareButtons   from '../application/social_share_buttons.component';
 import DangerLink           from '../application/danger_link.component';
-
 import FilterMeta           from '../filters/filter_meta.component';
-
 import FollowButton         from '../follows/follow_button.component';
+import Comments             from '../comments/comments.component';
 
 import ProposalReviewer     from './proposal_reviewer.component';
 import ProposalBadge        from './proposal_badge.component';
@@ -170,6 +169,10 @@ class ProposalShow extends Component {
           </div>
 
           <ProposalMeetings useServerLinks={ true } />
+
+          <Comments
+            commentableId={id}
+            commentableType={'Proposal'} />
         </div>
       );
     }
