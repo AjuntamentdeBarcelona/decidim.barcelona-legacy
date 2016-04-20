@@ -61,7 +61,7 @@ export default class ProposalsAutocompleteInput extends Component {
           <div
             style={isHighlighted ? styles.highlightedItem : styles.item}
             key={item.id}
-            id={item.id}
+            id={`autocomplete_result_${item.id}`}
           >{item.code} - {item.title}</div>
         )}
         renderMenu={(items, value, style) => {
