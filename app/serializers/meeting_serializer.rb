@@ -2,7 +2,7 @@ class MeetingSerializer < ActiveModel::Serializer
   attributes :id, :slug, :title, :description, :address, :address_latitude, :url,
              :address_longitude, :held_at, :start_at, :end_at, :category,
              :subcategory, :closed, :district, :address_details, :organizations,
-             :close_report, :closed_at
+             :close_report
 
 
   def held_at
