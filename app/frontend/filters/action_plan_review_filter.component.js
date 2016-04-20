@@ -13,10 +13,12 @@ class ActionPlanReviewFilter extends Component {
       return (
         <div>
           <FilterOptionGroup
+            isExclusive={true}
             filterGroupName="action_plan_source"
             filterGroupValue={this.props.filters.filter["action_plan_source"]}
             onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
-              <FilterOption filterName="official" />
+            <FilterOption filterName="official" />
+            <FilterOption filterName="citizenship" />
           </FilterOptionGroup>
 
           <FilterOptionGroup

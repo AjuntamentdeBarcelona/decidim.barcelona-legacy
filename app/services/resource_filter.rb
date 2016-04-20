@@ -142,6 +142,10 @@ class ResourceFilter
       if params["action_plan_source"].include? "official"
         collection = collection.where(official: true)
       end
+
+      if params["action_plan_source"].include? "citizenship"
+        collection = collection.where(official: false)
+      end
     end
 
     collection
