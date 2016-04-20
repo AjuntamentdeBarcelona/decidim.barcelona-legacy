@@ -43,7 +43,7 @@ es:
         submit_button: Crear actuación
     edit:
       form:
-        submit_button: Editar actuación
+        submit_button: Guardar actuación
     form:
       action_plan_scope: "Ámbito"
       action_plan_scope_city: Toda la ciudad

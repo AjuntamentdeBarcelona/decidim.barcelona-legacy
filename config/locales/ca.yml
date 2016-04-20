@@ -43,7 +43,7 @@ ca:
         submit_button: Crear actuació
     edit:
       form:
-        submit_button: Editar actuació
+        submit_button: Desar actuació
     form:
       action_plan_scope: "Àmbit"
       action_plan_scope_city: Tota la ciutat
