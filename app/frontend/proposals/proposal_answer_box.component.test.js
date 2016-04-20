@@ -8,8 +8,7 @@ describe("Proposal answer box component", function () {
   it("should render a rich editor for the message", function () {
     const wrapper = shallow(
       <ProposalAnswerBox 
-        answerMessage="Just a simple message" 
-        answerStatus="" />
+        answer={{message: "Just a simple message", status: ""}} />
     );
     expect(wrapper).to.have.descendants(RichEditor);
   });
@@ -20,14 +19,14 @@ describe("Proposal answer box component", function () {
       const wrapper = mount(
         <ProposalAnswerBox 
           onButtonClick={onButtonClick}
-          answerMessage="I accept this proposal because it looks great" 
-          answerStatus="" />
+          answer={{message: "I accept this proposal because it looks great", status: ""}} /> 
       );
 
       wrapper.find('button.accept').simulate('click');
 
       expect(onButtonClick).to.have.been.calledWith({ 
         message: "<div>I accept this proposal because it looks great</div>",
+        official: false,
         status: "accepted"
       });
     });
@@ -39,14 +38,14 @@ describe("Proposal answer box component", function () {
       const wrapper = mount(
         <ProposalAnswerBox 
           onButtonClick={onButtonClick}
-          answerMessage="This is unacceptable!" 
-          answerStatus="" />
+          answer={{message: "This is unacceptable!" , status: ""}} />
       );
 
       wrapper.find('button.reject').simulate('click');
 
       expect(onButtonClick).to.have.been.calledWith({ 
         message: "<div>This is unacceptable!</div>",
+        official: false,
         status: "rejected"
       });
     });

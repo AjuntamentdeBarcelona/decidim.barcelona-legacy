@@ -159,15 +159,18 @@ feature 'Moderate meetings' do
     admin = create(:administrator)
     login_as(admin)
 
-    create(:proposal, title: "My proposal")
+    my_proposal = create(:proposal, title: "My proposal")
     create(:meeting, title: "My meeting")
 
     visit moderation_meetings_path
 
     click_link 'Edit'
 
-    fill_in 'proposal_search_input', with: "My proposal"
-    page.find('a', text: "My proposal").click
+    page.find("#autocomplete-1").send_keys("My proposal")
+
+    expect(page).to have_selector("#autocomplete_result_#{my_proposal.id}")
+
+    page.find("#autocomplete_result_#{my_proposal.id}").click
 
     click_button "Update meeting"
 

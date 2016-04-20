@@ -14,7 +14,6 @@ es:
       deleted: Esta actuación ha sido eliminada
       edit: Editar
       new_revision: Nueva revisión
-      references: 'Parece que esta actuación está relacionada con:'
     action_plans:
       count: Mostrando %{count} actuaciones
       title: Actuaciones relacionadas
@@ -105,8 +104,6 @@ es:
       no_results: No se han encontrado resultados.
       search: Buscar
     proposals_table:
-      actions: Acciones
       remove: Desvincular
-      title: Título
     search_filter:
       search_input_placeholder: Buscar

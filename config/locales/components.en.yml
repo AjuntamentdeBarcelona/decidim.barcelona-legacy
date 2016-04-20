@@ -14,7 +14,6 @@ en:
       deleted: This action has been removed
       edit: Edit
       new_revision: New revision
-      references: 'It seems that this action plan is related to:'
     action_plans:
       count: Showing %{count} action plans
       title: Related action plans
@@ -105,8 +104,6 @@ en:
       no_results: No results.
       search: Search
     proposals_table:
-      actions: Actions
       remove: Delete
-      title: Title
     search_filter:
       search_input_placeholder: Search

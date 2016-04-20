@@ -1,28 +1,11 @@
 ---
 es:
   revision:
-    action_plan_revisions:
-      index:
-        headers:
-          revision: Revisión
-        search_form:
-          button: Buscar
-          placeholder: Buscar
-        title: Revisiones
     action_plans:
       form:
         warning: Estas editando una actuación existente así que no es posible editar ni el título ni la descripción.
-      index:
-        headers:
-          action: Actuación
-        order: Ordre
-        search_form:
-          button: Buscar
-          placeholder: Buscar
-        title: Actuaciones
     dashboard:
       index:
         title: Revisión
     menu:
-      actions: Actuaciones
       proposals: Propuestas

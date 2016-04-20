@@ -32,8 +32,6 @@ ca:
     form:
       description: Descripció
       title: Títol
-    index:
-      new: Nova revisió
     new:
       form:
         submit_button: Crear revisió
@@ -43,7 +41,7 @@ ca:
         submit_button: Crear actuació
     edit:
       form:
-        submit_button: Editar actuació
+        submit_button: Desar actuació
     form:
       action_plan_scope: "Àmbit"
       action_plan_scope_city: Tota la ciutat
@@ -52,10 +50,7 @@ ca:
       description: Descripció
       title: Títol
     index:
-      delete: Esborrar
-      edit: Editar
       new: Nova actuació
-      revisions: Revisions
     new:
       form:
         submit_button: Crear actuació

@@ -1,90 +1,126 @@
 import { Component } from 'react';
 
+import Autocomplete  from 'react-autocomplete';
+
 export default class ProposalsAutocompleteInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      proposals: []
+      value: '',
+      proposals: [],
+      loading: false
     };
   }
 
-  componentDidMount() {
-    this.$searchInput = $(this.refs.searchInput);
-    this.$searchInput.on('keyup', (event) => { this.onInputChanged(event.currentTarget.value) });
-    this.$loading = $(this.refs.loading);
-    this.$noResults = $(this.refs.noResults);
-    this.$dropdown = $(this.refs.dropdown);
-
-    this.$loading.hide();
-    this.$noResults.hide();
-    this.$dropdown.hide();
-  }
-
-  componentWillUnmount() {
-    this.$searchInput.off('keyup');
-  }
-
   render() {
+    let styles = {
+      item: {
+        padding: '2px 6px',
+        cursor: 'default'
+      },
+
+      highlightedItem: {
+        color: 'white',
+        background: 'hsl(200, 50%, 50%)',
+        padding: '2px 6px',
+        cursor: 'default'
+      },
+
+      menu: {
+        border: 'solid 1px #ccc',
+        maxHeight: '200px',
+        overflowY: 'scroll'
+      }
+    };
+    
     return (
-      <div>
-        <input 
-          id="proposal_search_input" 
-          ref="searchInput" 
-          placeholder={ I18n.t("components.proposals_autocomplete_input.search") } />
-        <p ref="loading">{ I18n.t("components.proposals_autocomplete_input.loading") }</p>
-        <p ref="noResults">{ I18n.t("components.proposals_autocomplete_input.no_results") }</p>
-        <ul className="dropdown" ref="dropdown">
-          {
-            this.state.proposals.map((proposal) => {
-              return (
-                <li key={proposal.id}><a onClick={(event) => this.onClickProposal(proposal)}>{proposal.title}</a></li>
-              );
-            })
+      <Autocomplete
+        inputProps={{
+          autoComplete: 'off',
+          placeholder: I18n.t("components.proposals_autocomplete_input.search")
+        }}
+        wrapperStyle={{
+          display: 'block'
+        }}
+        ref="autocomplete"
+        value={this.state.value}
+        items={this.state.proposals}
+        getItemValue={(item) => item.title}
+        onSelect={(value, item) => {
+          this.props.onAddProposal(item);
+          this.setState({ value: '', proposals: [] })
+        }}
+        onChange={(event, value) => {
+          this.setState({ value, loading: true })
+
+          this.search(value, (proposals) => {
+            this.setState({ proposals, loading: false })
+          })
+        }}
+        renderItem={(item, isHighlighted) => (
+          <div
+            style={isHighlighted ? styles.highlightedItem : styles.item}
+            key={item.id}
+            id={`autocomplete_result_${item.id}`}
+          >{item.code} - {item.title}</div>
+        )}
+        renderMenu={(items, value, style) => {
+          if (value === '') {
+            return <div></div>;
+          } else {
+            return (
+              <div style={{...styles.menu, ...style}}>
+              { this.state.loading ? (
+              <div style={{padding: 6}}>{ I18n.t("components.proposals_autocomplete_input.loading") }</div>
+              ) : items.length === 0 ? (
+              <div style={{padding: 6}}>{ I18n.t("components.proposals_autocomplete_input.no_results") }</div>
+              ) : this.renderItems(items)}
+              </div>
+            );
           }
-        </ul>
-      </div>
+        }}
+      />
     );
   }
 
-  onInputChanged (text) {
+  renderItems (items) {
+    //console.log(items)
+      return items.map((item, index) => {
+        return item;
+        //var text = item.props.children
+        //if (index === 0 || items[index - 1].props.children.charAt(0) !== text.charAt(0)) {
+        //  var style = {
+        //    background: '#eee',
+        //     color: '#454545',
+        //     padding: '2px 6px',
+        //     fontWeight: 'bold'
+        //  }
+        //  return [<div style={style}>{text.charAt(0)}</div>, item]
+        //}
+        //else {
+        //  return item
+        //}
+      })
+  }
+
+  search(text, cb) {
     if (this.searchTimeoutId) {
       clearTimeout(this.searchTimeoutId);
     }
 
     this.searchTimeoutId = setTimeout(() => {
-      this.search(text);
+      if (text.length > 0) {
+        $.ajax({
+          url: this.props.proposalsApiUrl,
+          method: 'GET',
+          data: {
+            search: text,
+            exclude_ids: this.props.excludeIds
+          }
+        }).then(({ proposals } ) => {
+          cb(proposals);
+        });
+      }
     }, 300);
-  }
-
-  search(text) {
-    this.$noResults.hide();
-    if (text.length > 0) {
-      this.$loading.show();
-      this.$dropdown.hide();
-
-      $.ajax({
-        url: this.props.proposalsApiUrl,
-        method: 'GET',
-        data: {
-          search: text,
-          exclude_ids: this.props.excludeIds
-        }
-      }).then(({ proposals } ) => {
-        this.$loading.hide();
-        if (proposals.length > 0) {
-          this.$dropdown.show();
-          this.setState({ proposals })
-        } else {
-          this.$noResults.show();
-        }
-      });
-    }
-  }
-
-  onClickProposal(proposal) {
-    this.$searchInput.val('');
-    this.$searchInput.focus();
-    this.$dropdown.hide();
-    this.props.onAddProposal(proposal);
   }
 }

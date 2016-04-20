@@ -225,7 +225,7 @@ class ProposalShow extends Component {
       return (
         <span>
           <span>&nbsp;|&nbsp;</span>
-          <a href={`/revision/action_plans/build_from_proposal?proposal_id=${id}`}>
+          <a href={`/action_plans/build_from_proposal?proposal_id=${id}`}>
             { I18n.t('admin.actions.build_action_plan') }
           </a>
         </span>

@@ -32,8 +32,6 @@ en:
     form:
       description: Description
       title: Title
-    index:
-      new: Add revision
     new:
       form:
         submit_button: Create revision
@@ -52,10 +50,7 @@ en:
       description: Description
       title: Title
     index:
-      delete: Delete
-      edit: Edit
       new: New action plan
-      revisions: Revisions
     new:
       form:
         submit_button: Create action plan
