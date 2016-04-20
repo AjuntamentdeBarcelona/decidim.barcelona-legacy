@@ -6,6 +6,7 @@ import ProposalsTable             from './proposals_table.component';
 export default class ProposalsSelector extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       proposals: Immutable.Set(this.props.proposals)
     };
