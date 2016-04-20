@@ -2,11 +2,23 @@ class MeetingSerializer < ActiveModel::Serializer
   attributes :id, :slug, :title, :description, :address, :address_latitude, :url,
              :address_longitude, :held_at, :start_at, :end_at, :category,
              :subcategory, :closed, :district, :address_details, :organizations,
-             :close_report
-
+             :close_report, :tags, :attendee_count, :interventions,
+             :proposal_ids, :pictures
 
   def held_at
     I18n.l(object.held_at)
+  end
+
+  def pictures
+    object.pictures.map{ |p| p.file.url }
+  end
+
+  def proposal_ids
+    object.proposals.map(&:id)
+  end
+
+  def tags
+    object.tags.map(&:name)
   end
 
   def district

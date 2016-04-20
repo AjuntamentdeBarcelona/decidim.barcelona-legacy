@@ -4,11 +4,11 @@ class Api::MeetingsController < Api::ApplicationController
   def index
     if params[:proposal_id]
       proposal = Proposal.find(params[:proposal_id])
-      @meetings = proposal.meetings
+      @meetings = proposal.meetings.includes(:tags, :proposals, :pictures)
 
       render json: @meetings
     else
-      meetings = Meeting.all
+      meetings = Meeting.includes(:tags, :proposals, :pictures)
       filter = ResourceFilter.new(params, filter_date: true)
 
       @meetings = filter.filter_collection(meetings.includes(:category, :subcategory))
