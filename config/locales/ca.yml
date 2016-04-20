@@ -32,8 +32,6 @@ ca:
     form:
       description: Descripció
       title: Títol
-    index:
-      new: Nova revisió
     new:
       form:
         submit_button: Crear revisió
@@ -52,10 +50,7 @@ ca:
       description: Descripció
       title: Títol
     index:
-      delete: Esborrar
-      edit: Editar
       new: Nova actuació
-      revisions: Revisions
     new:
       form:
         submit_button: Crear actuació

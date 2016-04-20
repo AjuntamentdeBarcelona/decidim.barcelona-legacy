@@ -32,8 +32,6 @@ es:
     form:
       description: Descripción
       title: Título
-    index:
-      new: Nueva revisión
     new:
       form:
         submit_button: Crear revisión
@@ -52,10 +50,7 @@ es:
       description: Descripción
       title: Título
     index:
-      delete: Borrar
-      edit: Editar
       new: Nueva actuación
-      revisions: Revisiones
     new:
       form:
         submit_button: Crear actuación

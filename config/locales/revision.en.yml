@@ -1,28 +1,11 @@
 ---
 en:
   revision:
-    action_plan_revisions:
-      index:
-        headers:
-          revision: Revision
-        search_form:
-          button: Search
-          placeholder: Search
-        title: Revisions
     action_plans:
       form:
         warning: You are editing an action plan so you cannot modify title and description.
-      index:
-        headers:
-          action: Action plan
-        order: Ordre
-        search_form:
-          button: Search
-          placeholder: Search
-        title: Action plans
     dashboard:
       index:
         title: Revision
     menu:
-      actions: Action plans
       proposals: Proposals
