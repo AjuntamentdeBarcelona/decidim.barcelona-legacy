@@ -12,7 +12,6 @@ en:
       approved: adopted
       delete: remove
       deleted: This action has been removed
-      edit: Edit
       new_revision: New revision
     action_plans:
       count: Showing %{count} action plans

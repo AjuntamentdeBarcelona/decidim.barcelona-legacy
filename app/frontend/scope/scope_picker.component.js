@@ -2,11 +2,9 @@ import { Component }          from 'react';
 import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
 
-import { updateProposal }     from './proposals.actions';
-
 class ScopePicker extends Component {
   render() {
-    const { proposal } = this.props;
+    const { scope } = this.props;
 
     return (
       <div>
@@ -19,7 +17,7 @@ class ScopePicker extends Component {
               type="radio" 
               value="district" 
               onChange={() => this.selectScope('district')}
-              checked={proposal.scope_ === 'district'}/>
+              checked={scope === 'district'}/>
             <label htmlFor="proposal_scope_district">{I18n.t('proposals.form.proposal_scope_district')}</label>
           </div>
           <div className="small-3 end column">
@@ -28,7 +26,7 @@ class ScopePicker extends Component {
               type="radio" 
               value="city" 
               onChange={() => this.selectScope('city')}
-              checked={proposal.scope_ === 'city'}/>
+              checked={scope === 'city'}/>
             <label htmlFor="proposal_scope_city">{I18n.t('proposals.form.proposal_scope_city')}</label>
           </div>
         </div>
@@ -39,12 +37,12 @@ class ScopePicker extends Component {
   }
 
   renderDistrictPicker() {
-    const { proposal, districts } = this.props;
+    const { scope, district, districts } = this.props;
 
-    if (proposal.scope_ === 'district') {
+    if (scope === 'district') {
       return (
         <div className="small-12 column">
-          <select onChange={(event) => this.selectDistrict(event.target.value)} value={proposal.district && String(proposal.district.id)}>
+          <select onChange={(event) => this.selectDistrict(event.target.value)} value={district && String(district.id)}>
             {
               districts.map((district) => 
                 <option key={district[1]} value={district[1]}>
@@ -60,28 +58,16 @@ class ScopePicker extends Component {
   }
 
   selectScope(scope) {
-    const { proposal } = this.props;
-
-    this.props.updateProposal(proposal.id, {
-      scope
-    });
+    this.props.onScopeSelected(scope);
   }
 
-  selectDistrict(district) {
-    const { proposal } = this.props;
-
-    this.props.updateProposal(proposal.id, {
-      district
-    });
+  selectDistrict(districtId) {
+    this.props.onDistrictSelected(districtId);
   }
 }
 
-function mapStateToProps({ proposal, districts }) {
-  return { proposal, districts };
+function mapStateToProps({ districts }) {
+  return { districts };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ updateProposal }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ScopePicker);
+export default connect(mapStateToProps)(ScopePicker);

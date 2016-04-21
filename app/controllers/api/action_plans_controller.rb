@@ -46,16 +46,12 @@ class Api::ActionPlansController < Api::ApplicationController
     render json: @action_plan
   end
 
-  def proposals
-    @proposals = @action_plan.proposals
-    render json: @proposals, root: 'proposals'
-  end
-
   private
 
   def strong_params
     permitted_params = []
     permitted_params += [:approved] if can?(:approve, ActionPlan)
+    permitted_params += [:scope, :district, :category_id, :subcategory_id] if can?(:manage, ActionPlan)
     params.require(:action_plan).permit(permitted_params)
   end
 

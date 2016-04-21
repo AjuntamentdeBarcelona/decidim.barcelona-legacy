@@ -2,21 +2,21 @@ import { Component }          from 'react';
 import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
 
-class SubcategoryPicker extends Component {
+export default class SubcategoryPicker extends Component {
   subcategories () {
-    const { subcategories, proposal } = this.props;
+    const { subcategories, subcategory } = this.props;
 
-    return subcategories.map(subcategory => {
-      var selected = proposal.subcategory && subcategory.id === proposal.subcategory.id;
+    return subcategories.map(sc => {
+      var selected = subcategory && sc.id === subcategory.id;
 
-      var classNames = ['subcategory-' + subcategory.id];
+      var classNames = ['subcategory-' + sc.id];
       if(selected){ classNames.push('selected'); }
 
       return (
         <li className={classNames.join(' ')}
-            key={subcategory.id}
-            onClick={() => this.select(subcategory)}>
-          <span className="name">{subcategory.name} <a href={`/categories#subcategory_${subcategory.id}`} target="_blank"> <i className="fa fa-info-circle"></i></a></span>
+            key={sc.id}
+            onClick={() => this.select(sc)}>
+          <span className="name">{sc.name} <a href={`/categories#subcategory_${sc.id}`} target="_blank"> <i className="fa fa-info-circle"></i></a></span>
         </li>
       );
     });
@@ -39,13 +39,3 @@ class SubcategoryPicker extends Component {
     }
   }
 }
-
-function mapStateToProps({ proposal }) {
-  return { proposal };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SubcategoryPicker);

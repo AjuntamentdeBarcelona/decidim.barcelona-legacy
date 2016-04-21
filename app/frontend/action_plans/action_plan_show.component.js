@@ -8,10 +8,12 @@ import {
   approveActionPlan
 } from './action_plans.actions';
 
-import Loading              from '../application/loading.component';
-import DangerLink           from '../application/danger_link.component';
-import FilterMeta           from '../filters/filter_meta.component';
-import ActionPlanProposals  from './action_plan_proposals.component';
+import Loading            from '../application/loading.component';
+import DangerLink         from '../application/danger_link.component';
+import FilterMeta         from '../filters/filter_meta.component';
+
+import ActionPlanReviewer from './action_plan_reviewer.component';
+
 
 class ActionPlanShow extends Component {
   constructor(props) {
@@ -50,7 +52,6 @@ class ActionPlanShow extends Component {
       const { 
         id,
         url,
-        edit_url,
         deleted,
         new_revision_url,
         title, 
@@ -76,11 +77,6 @@ class ActionPlanShow extends Component {
                 <i className="icon-cross"></i>
                 { I18n.t("components.action_plan_show.delete") }
               </DangerLink>
-
-              <a href={edit_url} className="edit-proposal button success tiny radius right">
-                <i className="icon-edit"></i>
-                { I18n.t("components.action_plan_show.edit") }
-              </a>
 
               <a href={new_revision_url} className="edit-proposal button success tiny radius right">
                 <i className="icon-edit"></i>
@@ -111,7 +107,7 @@ class ActionPlanShow extends Component {
                 namespace="action_plans"
                 useServerLinks={ true }/>
 
-              <ActionPlanProposals actionPlan={actionPlan} />
+              <ActionPlanReviewer />
             </div>
           </div>
         </div>

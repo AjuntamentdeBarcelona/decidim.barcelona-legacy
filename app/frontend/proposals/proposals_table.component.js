@@ -1,5 +1,6 @@
 import { Component } from 'react';
 
+import DangerLink    from '../application/danger_link.component';
 import ProposalBadge from './proposal_badge.component';
 
 export default class ProposalsTable extends Component {
@@ -34,9 +35,9 @@ export default class ProposalsTable extends Component {
     if (this.props.onRemoveProposal) {
       return (
         <td>
-          <button onClick={(event) => this.props.onRemoveProposal(proposal) }>
+          <DangerLink onClick={(event) => this.props.onRemoveProposal(proposal) }>
             {I18n.t("components.proposals_table.remove")}
-          </button>
+          </DangerLink>
         </td>
       );
     }
