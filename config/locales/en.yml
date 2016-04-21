@@ -40,6 +40,7 @@ en:
       form:
         submit_button: Create action plan
     edit:
+      editing: Edit action plan
       form:
         submit_button: Update action plan
     form:

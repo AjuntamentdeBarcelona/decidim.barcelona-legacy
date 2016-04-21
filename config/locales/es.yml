@@ -40,6 +40,7 @@ es:
       form:
         submit_button: Crear actuación
     edit:
+      editing: Editar actuación
       form:
         submit_button: Guardar actuación
     form:

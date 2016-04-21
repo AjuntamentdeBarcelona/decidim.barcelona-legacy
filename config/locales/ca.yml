@@ -40,6 +40,7 @@ ca:
       form:
         submit_button: Crear actuació
     edit:
+      editing: Edita actuació
       form:
         submit_button: Desar actuació
     form:

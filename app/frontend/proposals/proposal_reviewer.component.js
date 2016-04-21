@@ -18,7 +18,7 @@ class ProposalReviewer extends Component {
 
   render() {
     const { session, proposal, updateAnswer, updateProposal } = this.props;
-    const { id, answer, scope_, district } = proposal;
+    const { id, answer, scope_, district, category, subcategory } = proposal;
 
     if (session.is_reviewer) {
       return (
@@ -29,7 +29,12 @@ class ProposalReviewer extends Component {
             onScopeSelected={scope => updateProposal(id, { scope })}
             district={district}
             onDistrictSelected={districtId => updateProposal(id, { district: districtId })} />
-          <CategoryPicker />
+          <CategoryPicker 
+            category={category}
+            subcategory={subcategory}
+            onCategorySelected={({categoryId, subcategoryId}) => updateProposal(id, { category_id: categoryId, subcategory_id: subcategoryId })}
+            onSubcategorySelected={subcategoryId => updateProposal(id, {subcategory_id: subcategoryId})}
+          />
           <ProposalAnswerBox 
             answer={answer}
             onButtonClick={(answerParams) => updateAnswer(proposal.id, answer, answerParams)} 
