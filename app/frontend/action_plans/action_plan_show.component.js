@@ -8,10 +8,12 @@ import {
   approveActionPlan
 } from './action_plans.actions';
 
-import Loading              from '../application/loading.component';
-import DangerLink           from '../application/danger_link.component';
-import FilterMeta           from '../filters/filter_meta.component';
-import ActionPlanProposals  from './action_plan_proposals.component';
+import Loading            from '../application/loading.component';
+import DangerLink         from '../application/danger_link.component';
+import FilterMeta         from '../filters/filter_meta.component';
+
+import ActionPlanReviewer from './action_plan_reviewer.component';
+
 
 class ActionPlanShow extends Component {
   constructor(props) {
@@ -111,7 +113,7 @@ class ActionPlanShow extends Component {
                 namespace="action_plans"
                 useServerLinks={ true }/>
 
-              <ActionPlanProposals actionPlan={actionPlan} />
+              <ActionPlanReviewer />
             </div>
           </div>
         </div>

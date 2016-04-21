@@ -1,14 +1,14 @@
-import { Component }          from 'react';
-import { connect }            from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { Component }                    from 'react';
+import { connect }                      from 'react-redux';
+import { bindActionCreators }           from 'redux';
 
-import ScopePicker            from './scope_picker.component';
-import CategoryPicker         from '../categories/new_category_picker.component';
-import ProposalAnswerBox      from './proposal_answer_box.component';
+import ScopePicker                      from '../scope/scope_picker.component';
+import CategoryPicker                   from '../categories/new_category_picker.component';
+import ProposalAnswerBox                from './proposal_answer_box.component';
 
-import { fetchDistricts }     from '../districts/districts.actions';
-import { fetchCategories }    from '../categories/categories.actions';
-import { updateAnswer }       from './proposals.actions';
+import { fetchDistricts }               from '../districts/districts.actions';
+import { fetchCategories }              from '../categories/categories.actions';
+import { updateAnswer, updateProposal } from './proposals.actions';
 
 class ProposalReviewer extends Component {
   componentDidMount() {
@@ -17,14 +17,18 @@ class ProposalReviewer extends Component {
   }
 
   render() {
-    const { session, proposal, updateAnswer } = this.props;
-    const { id, answer } = proposal;
+    const { session, proposal, updateAnswer, updateProposal } = this.props;
+    const { id, answer, scope_, district } = proposal;
 
     if (session.is_reviewer) {
       return (
         <div>
           <h2>{I18n.t('proposals.edit.editing')}</h2>
-          <ScopePicker />
+          <ScopePicker 
+            scope={scope_} 
+            onScopeSelected={scope => updateProposal(id, { scope })}
+            district={district}
+            onDistrictSelected={districtId => updateProposal(id, { district: districtId })} />
           <CategoryPicker />
           <ProposalAnswerBox 
             answer={answer}
@@ -46,7 +50,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ 
     fetchDistricts,
     fetchCategories, 
-    updateAnswer
+    updateAnswer,
+    updateProposal
   }, dispatch);
 }
 
