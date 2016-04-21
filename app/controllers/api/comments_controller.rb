@@ -10,6 +10,13 @@ class Api::CommentsController < Api::ApplicationController
     .page(params[:page])
     .per(15)
 
+    child_comments = []
+    comments.each do |comment|
+      child_comments << Comment.descendants_of(comment)
+    end
+
+    comments = (comments + child_comments).flatten
+
     render json: comments
   end
 end
