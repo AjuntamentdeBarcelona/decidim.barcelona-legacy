@@ -44,8 +44,8 @@ class ActionPlanReviewer extends Component {
   }
 }
 
-function mapStateToProps({ session, actionPlan }) {
-  return { session, actionPlan };
+function mapStateToProps({ session }) {
+  return { session };
 }
 
 function mapDispatchToProps(dispatch) {

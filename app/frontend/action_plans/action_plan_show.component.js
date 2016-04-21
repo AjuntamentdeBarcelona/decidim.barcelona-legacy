@@ -22,14 +22,17 @@ class ActionPlanShow extends Component {
     super(props);
 
     this.state = {
-      loading: true
+      loading: false
     }
   }
 
   componentDidMount() {
-    const { session } = this.props;
+    const { session, actionPlan } = this.props;
 
-    this.props.fetchActionPlan(this.props.params.id);
+    if (actionPlan === undefined) {
+      this.setState({ loading: true });
+      this.props.fetchActionPlan(this.props.params.id);
+    }
   }
 
   componentWillReceiveProps(newProps) {
@@ -111,7 +114,7 @@ class ActionPlanShow extends Component {
                 namespace="action_plans"
                 useServerLinks={ true }/>
 
-              <ActionPlanReviewer />
+              <ActionPlanReviewer actionPlan={actionPlan} />
             </div>
           </div>
         </div>
@@ -146,8 +149,13 @@ class ActionPlanShow extends Component {
 }
 
 
-function mapStateToProps({ session, actionPlan }) {
-  return { session, actionPlan };
+function mapStateToProps({ session, actionPlans }, ownProps) {
+  let actionPlan = actionPlans.filter(ap => ap.id === parseInt(ownProps.params.id, 10))[0];
+
+  return { 
+    session, 
+    actionPlan 
+  };
 }
 
 function mapDispatchToProps(dispatch) {

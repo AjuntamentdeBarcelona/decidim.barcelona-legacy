@@ -60,6 +60,7 @@ Rails.application.routes.draw do
     collection do
       get :build_from_proposal
     end
+    get "(*)", to: 'action_plans#index'
   end
 
   resources :meetings, only: [:index, :show]

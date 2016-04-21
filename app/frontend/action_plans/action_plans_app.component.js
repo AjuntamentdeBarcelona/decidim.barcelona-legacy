@@ -26,7 +26,6 @@ import {
   APPEND_ACTION_PLANS_PAGE,
 }                        from './action_plans.actions';
 import { actionPlans }   from './action_plans.reducers';
-import { actionPlan }    from './action_plans.reducers';
 import districts         from '../districts/districts.reducers';
 import categories        from '../categories/categories.reducers';
 import filters           from '../filters/filters.reducers';
@@ -75,7 +74,6 @@ function createReducers(sessionState) {
     districts,
     categories,
     actionPlans,
-    actionPlan,
     filters,
     order,
     pagination,

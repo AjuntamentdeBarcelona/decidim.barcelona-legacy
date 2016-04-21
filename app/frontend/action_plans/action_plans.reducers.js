@@ -18,6 +18,13 @@ export const actionPlans = function (state = [], action) {
         ...state,
         ...action.payload.data.action_plans
       ];
+    case FETCH_ACTION_PLAN:
+      let actionPlan = action.payload.data.action_plan;
+
+      return [
+        ...state,
+        actionPlan
+      ];
   }
   return state;
 }
@@ -28,12 +35,6 @@ export const actionPlan = function (state = {}, action) {
       return {
           ...state,
         ...action.payload.data.action_plan
-      };
-    case FETCH_ACTION_PLAN:
-      let actionPlan = action.payload.data.action_plan;
-      return {
-        ...actionPlan,
-        proposals: state.proposals
       };
     case FETCH_ACTION_PLAN_PROPOSALS:
     case ADD_ACTION_PLAN_PROPOSAL:
