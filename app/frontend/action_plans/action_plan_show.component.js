@@ -2,17 +2,19 @@ import { Component }          from 'react';
 import { connect }            from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { 
+import {
   fetchActionPlan,
   deleteActionPlan,
   approveActionPlan
-} from './action_plans.actions';
+}                             from './action_plans.actions';
 
-import Loading            from '../application/loading.component';
-import DangerLink         from '../application/danger_link.component';
-import FilterMeta         from '../filters/filter_meta.component';
+import { Link }               from 'react-router';
 
-import ActionPlanReviewer from './action_plan_reviewer.component';
+import Loading                from '../application/loading.component';
+import DangerLink             from '../application/danger_link.component';
+import FilterMeta             from '../filters/filter_meta.component';
+
+import ActionPlanReviewer     from './action_plan_reviewer.component';
 
 
 class ActionPlanShow extends Component {
@@ -27,7 +29,7 @@ class ActionPlanShow extends Component {
   componentDidMount() {
     const { session } = this.props;
 
-    this.props.fetchActionPlan(this.props.actionPlanId);
+    this.props.fetchActionPlan(this.props.params.id);
   }
 
   componentWillReceiveProps(newProps) {
@@ -38,17 +40,19 @@ class ActionPlanShow extends Component {
 
   render() {
     return (
-      <div className="action-plan-show component">
-        <Loading show={this.state.loading} />
-        {this.renderActionPlan()}
-      </div>
+      <section className="action-plan-show">
+        <div className="action-plan-show component">
+          <Loading show={this.state.loading} />
+          {this.renderActionPlan()}
+        </div>
+      </section>
     );
   }
 
   renderActionPlan() {
     const { actionPlan } = this.props;
 
-    if (actionPlan.id) {
+    if (actionPlan && actionPlan.id) {
       const { 
         id,
         url,
@@ -69,9 +73,9 @@ class ActionPlanShow extends Component {
             <div className="small-12 medium-12 column">
               <i className="icon-angle-left left"></i>&nbsp;
 
-              <a className="left back" href="/action_plans">
+              <Link className="left back" to="/action_plans">
                 {I18n.t('proposals.show.back_link')}
-              </a>
+              </Link>
 
               <DangerLink className="delete-proposal button danger tiny radius right" onClick={ () => this.props.deleteActionPlan(this.props.actionPlan.id) }>
                 <i className="icon-cross"></i>
@@ -88,7 +92,7 @@ class ActionPlanShow extends Component {
               { this.renderNotice() }
 
               <h2>
-                <a href={url}>{title}</a>
+                <Link to={`/action_plans/${id}`}>{ title }</Link>
               </h2>
 
               <p className="proposal-info">

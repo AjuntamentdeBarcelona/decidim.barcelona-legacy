@@ -1,6 +1,8 @@
 import truncate   from 'html-truncate';
 import FilterMeta from '../filters/filter_meta.component';
 
+import { Link } from 'react-router';
+
 const DESCRIPTION_MAX_CHARACTERS = 300;
 
 export default ({
@@ -20,7 +22,7 @@ export default ({
         <div className="proposal-content">
           <span className="label-proposal">{ I18n.t('components.action_plan.label') }</span>
 
-          <h3><a href={url}>{ title }</a></h3>
+          <h3><Link to={`/action_plans/${id}`}>{ title }</Link></h3>
 
           <p className="proposal-info">
             <span>{ created_at }</span>

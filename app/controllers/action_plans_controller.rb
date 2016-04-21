@@ -7,10 +7,6 @@ class ActionPlansController < ApplicationController
   def index
   end
 
-  def show
-    @action_plan_id = params[:id]
-  end
-
   def new
     @resource = resource_model.new
     set_resource_instance
