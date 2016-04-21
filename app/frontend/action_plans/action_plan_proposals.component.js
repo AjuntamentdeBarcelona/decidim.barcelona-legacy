@@ -1,10 +1,15 @@
-import { Component }                from 'react';
-import { bindActionCreators }       from 'redux';
-import { connect }                  from 'react-redux';
+import { Component }              from 'react';
+import { bindActionCreators }     from 'redux';
+import { connect }                from 'react-redux';
 
-import ProposalsTable               from '../proposals/proposals_table.component';
+import ProposalsAutocompleteInput from '../proposals/proposals_autocomplete_input.component';
+import ProposalsTable             from '../proposals/proposals_table.component';
 
-import { fetchActionPlanProposals } from './action_plans.actions';
+import { 
+  addActionPlanProposal,
+  removeActionPlanProposal,
+  fetchActionPlanProposals 
+} from './action_plans.actions';
 
 
 class ActionPlanProposals extends Component {
@@ -15,23 +20,31 @@ class ActionPlanProposals extends Component {
   }
 
   render() {
-    const { actionPlan } = this.props;
+    const { actionPlan, addActionPlanProposal, removeActionPlanProposal } = this.props;
+    const { id } = actionPlan;
     const proposals = actionPlan.proposals || [];
 
-    if (proposals.length > 0) {
-      return (
-        <div>
-          <h4>{I18n.t("components.action_plan_proposals.title")}</h4>
-          <ProposalsTable proposals={proposals} />
-        </div>
-      );
-    }
-    return null;
+    return (
+      <div>
+        <h4>{I18n.t("components.action_plan_proposals.title")}</h4>
+        <ProposalsAutocompleteInput 
+          proposalsApiUrl="/api/proposals"
+          excludeIds={proposals.map(proposal => proposal.id)}
+          onAddProposal={proposal => addActionPlanProposal(id, proposal)} />
+        <ProposalsTable 
+          proposals={proposals}
+          onRemoveProposal={proposal => removeActionPlanProposal(id, proposal)} />
+      </div>
+    );
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchActionPlanProposals }, dispatch);
+  return bindActionCreators({ 
+    addActionPlanProposal,
+    removeActionPlanProposal,
+    fetchActionPlanProposals 
+  }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(ActionPlanProposals);

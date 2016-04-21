@@ -4,7 +4,9 @@ import {
   FETCH_ACTION_PLAN_PROPOSALS,
   APPEND_ACTION_PLANS_PAGE,
   DELETE_ACTION_PLAN,
-  UPDATE_ACTION_PLAN
+  UPDATE_ACTION_PLAN,
+  ADD_ACTION_PLAN_PROPOSAL,
+  REMOVE_ACTION_PLAN_PROPOSAL
 } from './action_plans.actions';
 
 export const actionPlans = function (state = [], action) {
@@ -34,6 +36,8 @@ export const actionPlan = function (state = {}, action) {
         proposals: state.proposals
       };
     case FETCH_ACTION_PLAN_PROPOSALS:
+    case ADD_ACTION_PLAN_PROPOSAL:
+    case REMOVE_ACTION_PLAN_PROPOSAL:
       let proposals = action.payload.data.proposals;
 
       return {

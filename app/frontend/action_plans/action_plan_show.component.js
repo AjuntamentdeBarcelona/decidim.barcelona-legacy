@@ -52,7 +52,6 @@ class ActionPlanShow extends Component {
       const { 
         id,
         url,
-        edit_url,
         deleted,
         new_revision_url,
         title, 
@@ -78,11 +77,6 @@ class ActionPlanShow extends Component {
                 <i className="icon-cross"></i>
                 { I18n.t("components.action_plan_show.delete") }
               </DangerLink>
-
-              <a href={edit_url} className="edit-proposal button success tiny radius right">
-                <i className="icon-edit"></i>
-                { I18n.t("components.action_plan_show.edit") }
-              </a>
 
               <a href={new_revision_url} className="edit-proposal button success tiny radius right">
                 <i className="icon-edit"></i>
