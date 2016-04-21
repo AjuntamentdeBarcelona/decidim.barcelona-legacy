@@ -12,7 +12,6 @@ ca:
       approved: Aprovada
       delete: Eliminar
       deleted: Aquesta actuació ha estat eliminada
-      edit: Editar
       new_revision: Nova revisió
     action_plans:
       count: Mostrant %{count} actuacions

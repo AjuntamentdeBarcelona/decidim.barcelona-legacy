@@ -12,7 +12,6 @@ es:
       approved: Aprobada
       delete: Eliminar
       deleted: Esta actuación ha sido eliminada
-      edit: Editar
       new_revision: Nueva revisión
     action_plans:
       count: Mostrando %{count} actuaciones
