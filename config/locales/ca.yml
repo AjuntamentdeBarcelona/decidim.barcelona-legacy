@@ -192,6 +192,7 @@ ca:
     not_saved: 'impedir guardar %{resource}:'
     policy: Política de privacitat
     proposal: la proposta
+    action_plan: "l'actuació"
     spending_proposal: la proposta de despesa
     user: el compte
     verification::letter: la verificació

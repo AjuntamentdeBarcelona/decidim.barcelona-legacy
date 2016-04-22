@@ -13,6 +13,7 @@ class ActionPlansController < ApplicationController
 
   def new
     @resource = resource_model.new
+    @resource.revisions.build
     set_resource_instance
   end
 
@@ -45,9 +46,9 @@ class ActionPlansController < ApplicationController
     }
 
     @resource = resource_model.new(strong_params)
+    @resource.revisions.new(params.require(:action_plan_revision).permit(:title, :description, :author_id))
 
     if @resource.save
-      @resource.revisions.create(params.require(:action_plan_revision).permit(:title, :description, :author_id))
       redirect_to action_plan_url(@resource), notice: t('flash.actions.create.notice', resource_name: "#{resource_name.capitalize}")
     else
       set_resource_instance
