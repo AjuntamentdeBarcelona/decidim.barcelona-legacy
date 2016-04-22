@@ -19,12 +19,14 @@ export const actionPlans = function (state = [], action) {
         ...action.payload.data.action_plans
       ];
     case FETCH_ACTION_PLAN:
-      let actionPlan = action.payload.data.action_plan;
-
       return [
         ...state,
-        actionPlan
+        action.payload.data.action_plan
       ];
+    case FETCH_ACTION_PLAN_PROPOSALS:
+    case ADD_ACTION_PLAN_PROPOSAL:
+    case REMOVE_ACTION_PLAN_PROPOSAL:
+      return state.map(ap => actionPlan(ap, action));
   }
   return state;
 }
@@ -33,18 +35,23 @@ export const actionPlan = function (state = {}, action) {
   switch (action.type) {
     case UPDATE_ACTION_PLAN:
       return {
-          ...state,
+        ...state,
         ...action.payload.data.action_plan
       };
     case FETCH_ACTION_PLAN_PROPOSALS:
     case ADD_ACTION_PLAN_PROPOSAL:
     case REMOVE_ACTION_PLAN_PROPOSAL:
-      let proposals = action.payload.data.proposals;
+      console.log(action.actionPlanId);
+      console.log(state.id);
+      if (action.actionPlanId !== state.id) {
+        let proposals = action.payload.data.proposals;
 
-      return {
-        ...state,
-        proposals
-      };
+        return {
+          ...state,
+          proposals: []
+        };
+      }
+      return state;
     case DELETE_ACTION_PLAN:
       return {
         ...state,

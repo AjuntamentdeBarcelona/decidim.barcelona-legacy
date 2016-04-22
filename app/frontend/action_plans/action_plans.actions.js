@@ -62,7 +62,8 @@ export function fetchActionPlanProposals(actionPlanId) {
 
   return {
     type: FETCH_ACTION_PLAN_PROPOSALS,
-    payload: request
+    payload: request,
+    actionPlanId
   };
 }
 
