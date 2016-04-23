@@ -1,6 +1,4 @@
 class ActionPlan < ActiveRecord::Base
-  include Sanitizable
-  
   belongs_to :category
   belongs_to :subcategory
 

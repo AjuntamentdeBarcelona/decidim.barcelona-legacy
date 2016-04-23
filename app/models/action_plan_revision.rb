@@ -1,6 +1,7 @@
 class ActionPlanRevision < ActiveRecord::Base
   include PgSearch
   include SearchCache
+  include Sanitizable
 
   default_scope { order('created_at desc') } 
 
