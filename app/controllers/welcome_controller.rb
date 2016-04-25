@@ -8,7 +8,6 @@ class WelcomeController < ApplicationController
 
   def index
     @categories = Category.order(:position).decorate
-    @meetings = Meeting.all
   end
 
   def welcome

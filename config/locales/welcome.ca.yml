@@ -13,7 +13,7 @@ ca:
       title: Els cinc eixos del Pla municipal
     description:
       text1: "<strong>decidim.barcelona</strong> és la plataforma de participació digital de l'Ajuntament de Barcelona. Volser un espai de referència per construir una ciutat democràtica, oberta i transparent que potenciï la participació de la ciutadania en la construcció i definició de les polítiques de la ciutat."
-      text2: "Inicialment s'hi desenvolupa el procés de participació per a l’elaboració del Pla d'actuació municipal 2016-2019 i pretén incloure nous processos de participació un cop aquest acabi. El <strong>Pla d'actuació municipal</strong> s’elabora a l’inici de cada mandat i estableix les línies prioritàries, els objectius i les actuacions que el Govern de la ciutat desenvoluparà en els propers quatre anys. Actualment el procés es troba en la fase d'estudi de les propostes de la ciutadania. Pots navegar per les propostes i pots participar en els diferents debats d'avaluació del procés."
+      text2: Inicialment s'hi desenvolupa el procés de participació per a l’elaboració del Pla d'actuació municipal 2016-2019 i pretén incloure nous processos de participació un cop aquest acabi. El <strong>Pla d'actuació municipal</strong> s’elabora a l’inici de cada mandat i estableix les línies prioritàries, els objectius i les actuacions que el Govern de la ciutat desenvoluparà en els propers quatre anys. Actualment el procés es troba en la fase d'estudi de les propostes de la ciutadania. Pots navegar per les propostes i pots participar en els diferents debats d'avaluació del procés.
     download:
       links:
         epub: Baixa el Pla municipal
@@ -22,12 +22,6 @@ ca:
       title: 73 barris, una Barcelona. Cap a la ciutat dels drets i les oportunitats
     header-motto:
       link: Entra i participa
-    meetings:
-      title: Cites presencials
-    notifications:
-      debate:
-        now: 'Ara mateix: %{title}'
-        upcoming: "%{title} - %{time}"
     tutorial:
       step-1:
         description: Navega per les propostes de l'Ajuntament de Barcelona, comenta-les i dóna-hi suport.
