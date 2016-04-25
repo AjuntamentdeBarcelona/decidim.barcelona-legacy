@@ -411,5 +411,14 @@ FactoryGirl.define do
   factory :action_plan do
     category
     subcategory
+
+    after :build do |action_plan|
+      action_plan.revisions << create(:action_plan_revision)
+    end
+  end
+
+  factory :action_plan_revision do
+    sequence(:title)       { |n| "Revision #{n} title" }
+    sequence(:description) { |n| "Revision #{n} description" }
   end
 end

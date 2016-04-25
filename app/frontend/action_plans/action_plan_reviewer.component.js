@@ -26,6 +26,7 @@ class ActionPlanReviewer extends Component {
           <ActionPlanProposals actionPlan={actionPlan} />
           <h2>{I18n.t('action_plans.edit.editing')}</h2>
           <ScopePicker 
+            namespace="action_plan"
             scope={scope_} 
             onScopeSelected={scope => updateActionPlan(id, { scope })}
             district={district}
