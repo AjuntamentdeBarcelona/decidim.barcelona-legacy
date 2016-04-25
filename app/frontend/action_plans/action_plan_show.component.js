@@ -73,7 +73,7 @@ class ActionPlanShow extends Component {
                 {I18n.t('proposals.show.back_link')}
               </a>
 
-              <DangerLink className="delete-proposal button danger tiny radius right" onClick={ () => this.props.deleteActionPlan(this.props.actionPlan.id) }>
+              <DangerLink className="delete-action-plan button danger tiny radius right" onClick={ () => this.props.deleteActionPlan(this.props.actionPlan.id) }>
                 <i className="icon-cross"></i>
                 { I18n.t("components.action_plan_show.delete") }
               </DangerLink>

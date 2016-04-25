@@ -100,4 +100,15 @@ feature 'Action plans', :js do
     expect(page).to have_content('A good action plan')
     expect(page).not_to have_content('A bad action plan')
   end
+
+  scenario 'Delete an action plan' do
+    action_plan = create(:action_plan)
+
+    visit action_plans_path
+    click_link action_plan.title
+    page.find('a', text: 'remove').click
+    visit action_plans_path
+
+    expect(page).not_to have_content(action_plan.title)
+  end
 end
