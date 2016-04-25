@@ -62,4 +62,18 @@ feature 'Action plans', :js do
 
     expect(page).to have_content("Ciutat Vella")
   end
+
+  scenario 'Create a new revision for an action plan' do
+    action_plan = create(:action_plan)
+
+    visit action_plans_path
+    click_link action_plan.title
+    click_link "New revision"
+    fill_in "action_plan_revision_title", with: "My title revision"
+    fill_in_editor "action_plan_revision_description", with: "My description revision"
+    click_button "Create revision"
+
+    expect(page).to have_content("My title revision")
+    expect(page).to have_content("My description revision")
+  end
 end
