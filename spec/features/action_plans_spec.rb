@@ -87,4 +87,17 @@ feature 'Action plans', :js do
     expect(page).to have_content(target_action_plan.title)
     expect(page).not_to have_content(another_action_plan.title)
   end
+
+  scenario 'Filter action plans by search' do
+    action_plan = create(:action_plan)
+    action_plan.revisions << create(:action_plan_revision, title: 'A good action plan')
+    action_plan = create(:action_plan)
+    action_plan.revisions << create(:action_plan_revision, title: 'A bad action plan')
+
+    visit action_plans_path
+    find('.search-filter').send_keys("good")
+
+    expect(page).to have_content('A good action plan')
+    expect(page).not_to have_content('A bad action plan')
+  end
 end
