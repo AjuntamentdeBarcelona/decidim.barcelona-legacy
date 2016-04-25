@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import { fetchComments}       from './comments.actions';
 
-import AuthorAvatar           from '../application/author_avatar.component';
+import Comment                from './comment.component';
 
 export class Comments extends Component {
   componentDidMount() {
@@ -14,7 +14,7 @@ export class Comments extends Component {
   }
 
   render() {
-    const { comments } = this.props;
+    const comments = this.flattenComments(this.props.comments);
 
     if (comments && comments.length > 0) {
       return (
@@ -24,21 +24,7 @@ export class Comments extends Component {
               <h2>TODO</h2>
               {
                 comments.map(comment => (
-                  <div key={comment.id} className="row">
-                    <div id={`comment_${comment.id}`} className="comment small-12 column">
-                      <AuthorAvatar author={{name: "David"}} />
-                      <div className="comment-body">
-                        <div className="comment-info">
-                          <span className="user-name">David</span>
-                          &nbsp;&bull;&nbsp;
-                          <time>{comment.created_at}</time>
-                        </div>
-                        <div className="comment-user">
-                          { comment.body }
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <Comment key={comment.id} comment={comment} />
                 ))
               }
             </div>
@@ -47,6 +33,34 @@ export class Comments extends Component {
       );
     }
     return null;
+  }
+
+  flattenComments(comments) {
+    if (comments) {
+      let rootComments = comments.filter(c => c.ancestry === null),
+          childComments = comments.filter(c => c.ancestry !== null);
+
+      childComments.forEach(c => {
+        let ancestry = c.ancestry.split("/"),
+            comment;
+
+        if(ancestry.length > 1) {
+          ancestry = ancestry.pop();
+          comment = childComments.filter(c => c.id === parseInt(ancestry))[0];
+        } else {
+          ancestry = ancestry[0];
+          comment = rootComments.filter(c => c.id === parseInt(ancestry))[0];
+        }
+
+        if (!comment.children) {
+          comment.children = [];
+        }
+
+        comment.children.push(c);
+      });
+
+      return rootComments;
+    }
   }
 }
 
