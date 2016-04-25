@@ -9,11 +9,11 @@ import ReduxPromise      from 'redux-promise';
 
 const middlewares = [ReduxPromise];
 
-if (process.env.NODE_ENV === 'development') {
-  const createLogger = require('redux-logger');
-  const logger = createLogger();
-  middlewares.push(logger);
-}
+//if (process.env.NODE_ENV === 'development') {
+//  const createLogger = require('redux-logger');
+//  const logger = createLogger();
+//  middlewares.push(logger);
+//}
 
 import ActionPlans       from '../action_plans/action_plans.component';
 

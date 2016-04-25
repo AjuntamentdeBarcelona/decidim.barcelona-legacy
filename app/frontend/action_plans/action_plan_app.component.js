@@ -16,11 +16,11 @@ import ActionPlanShow      from './action_plan_show.component';
 
 const middlewares = [ReduxPromise];
 
-if (process.env.NODE_ENV === 'development') {
-  const createLogger = require('redux-logger');
-  const logger = createLogger();
-  middlewares.push(logger);
-}
+//if (process.env.NODE_ENV === 'development') {
+//  const createLogger = require('redux-logger');
+//  const logger = createLogger();
+//  middlewares.push(logger);
+//}
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
 function createReducers(sessionState) {
