@@ -76,4 +76,15 @@ feature 'Action plans', :js do
     expect(page).to have_content("My title revision")
     expect(page).to have_content("My description revision")
   end
+
+  scenario 'Filter action plans by category' do
+    target_action_plan = create(:action_plan, category: category)
+    another_action_plan = create(:action_plan)
+
+    visit action_plans_path
+    choose "filter_category_id_#{category.id}"
+
+    expect(page).to have_content(target_action_plan.title)
+    expect(page).not_to have_content(another_action_plan.title)
+  end
 end
