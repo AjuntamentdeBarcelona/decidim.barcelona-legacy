@@ -184,6 +184,7 @@ en:
         submit_button: Save changes
   form:
     accept_terms: I agree to the %{conditions}
+    action_plan: Action Plan
     conditions: Terms and conditions of use
     debate: Debate
     error: error
@@ -192,7 +193,6 @@ en:
     not_saved: 'prevented this %{resource} from being saved:'
     policy: Privacy Policy
     proposal: Proposal
-    action_plan: Action Plan
     spending_proposal: Spending proposal
     user: Account
     verification::letter: the verification

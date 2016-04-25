@@ -184,6 +184,7 @@ es:
         submit_button: Guardar cambios
   form:
     accept_terms: Acepto las %{conditions}
+    action_plan: la actuación
     conditions: Condiciones de uso
     debate: el debate
     error: error
@@ -192,7 +193,6 @@ es:
     not_saved: 'impidieron guardar %{resource}:'
     policy: Política de privacidad
     proposal: la propuesta
-    action_plan: "la actuación"
     spending_proposal: la propuesta de gasto
     user: la cuenta
     verification::letter: la verificación

@@ -184,6 +184,7 @@ ca:
         submit_button: Desa els canvis
   form:
     accept_terms: Accepto les %{conditions}
+    action_plan: l'actuació
     conditions: Condicions d'ús
     debate: el debat
     error: error
@@ -192,7 +193,6 @@ ca:
     not_saved: 'impedir guardar %{resource}:'
     policy: Política de privacitat
     proposal: la proposta
-    action_plan: "l'actuació"
     spending_proposal: la proposta de despesa
     user: el compte
     verification::letter: la verificació
