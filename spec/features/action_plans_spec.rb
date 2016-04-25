@@ -111,4 +111,18 @@ feature 'Action plans', :js do
 
     expect(page).not_to have_content(action_plan.title)
   end
+
+  scenario 'Approve an action plan' do 
+    approved_action_plan = create(:action_plan)
+    non_approved_action_plan = create(:action_plan)
+
+    visit action_plans_path
+    click_link approved_action_plan.title
+    page.find('a', text: 'approve').click
+    visit action_plans_path
+    choose 'filter_action_plan_approval_approved'
+
+    expect(page).to have_content(approved_action_plan.title)
+    expect(page).not_to have_content(non_approved_action_plan.title)
+  end
 end
