@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 const MAX_COLORS = 26;
 const COLORS = Please.make_color({
+  base_color: '#c60c30',
   colors_returned: MAX_COLORS
 });
 const FIRST_LETTER_CHAR_CODE = 'A'.charCodeAt();

@@ -1,4 +1,7 @@
 class Api::CommentsController < Api::ApplicationController
+  before_action :load_commentable, only: :create
+  before_action :build_comment, only: :create
+
   load_and_authorize_resource
 
   def index
@@ -29,5 +32,42 @@ class Api::CommentsController < Api::ApplicationController
         }
       }
     end
+  end
+
+  def create
+    @comment.save
+    render json: @comment
+    #if can?(:comment, @commentable) && @comment.save
+    #  CommentNotifier.new(comment: @comment).process
+    #  CommentReferencesWorker.perform_async(@comment.id)
+    #  add_notification @comment
+    #else
+    #  render :new
+    #end
+  end
+
+  private
+
+  def load_commentable
+    @commentable = Comment.find_commentable(params[:commentable][:type], params[:commentable][:id])
+  end
+  
+  def build_comment
+    @comment = Comment.build(@commentable, current_user, comment_params)
+    #check_for_special_comments
+  end
+
+  #def check_for_special_comments
+  #  if administrator_comment?
+  #    @comment.administrator_id = current_user.id
+  #  elsif moderator_comment?
+  #    @comment.moderator_id = current_user.id
+  #  end
+  #end
+
+  def comment_params
+    permits = [:parent_id, :body, :as_moderator, :as_administrator]
+    permits << :alignment if @commentable.arguable? && params[:comment][:parent_id].blank?
+    params.require(:comment).permit(*permits)
   end
 end

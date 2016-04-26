@@ -1,11 +1,32 @@
-import { Component } from 'react';
-import classNames    from 'classnames';
+import { Component }          from 'react';
+import { connect }            from 'react-redux';
+import { bindActionCreators } from 'redux';
+import classNames             from 'classnames';
 
-import UserAvatar    from '../application/user_avatar.component';
+import { addNewComment }      from './comments.actions';
 
-export default class Comment extends Component {
+import UserAvatar             from '../application/user_avatar.component';
+import ChildrenComments       from './children_comments.component';
+
+class Comment extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showReplyForm: false,
+      newComentBody: ''
+    };
+  }
+
   render() {
-    const { comment, commentableAuthorId } = this.props;
+    const { 
+      comment, 
+      commentableId, 
+      commentableType, 
+      commentableAuthorId, 
+      commentableArguable 
+    } = this.props;
+
     const { alignment, author, as } = comment;
 
     const cssClasses = classNames(
@@ -49,9 +70,18 @@ export default class Comment extends Component {
                 </span>
               </span>
               {I18n.t("comments.comment.responses", { count: comment.children ? comment.children.length : 0 })}
+              <span className="divider">&nbsp;|&nbsp;</span>
+              <a onClick={() => this.setState({showReplyForm: !this.state.showReplyForm })}>{I18n.t("comments_helper.reply_link")}</a>
+              {this.renderNewCommentForm()}
             </div>
           </div>
-          {this.renderChildren()}
+          <ChildrenComments 
+            comment={comment} 
+            commentableId={commentableId}
+            commentableType={commentableType}
+            commentableArguable={commentableArguable}
+            commentableAuthorId={commentableAuthorId}
+          />
         </div>
       </div>
     );
@@ -104,25 +134,49 @@ export default class Comment extends Component {
     return null;
   }
 
-  renderChildren() {
-    const { comment, commentableAuthorId, commentableArguable } = this.props;
+  renderNewCommentForm() {
+    const { comment } = this.props;
+    const { showReplyForm } = this.state;
 
-    if (comment.children) {
+    if (showReplyForm) {
       return (
-        <div className="comment-children">
-          {
-            comment.children.map(comment => (
-              <Comment 
-                key={comment.id} 
-                comment={comment} 
-                commentableArguable={commentableArguable}
-                commentableAuthorId={commentableAuthorId} />
-            ))
-          }
+        <div>
+          <form onSubmit={(event) => this.onSubmitNewComment(event)}>
+            <label 
+              forHtml={`comment-body-${comment && comment.id}`}>
+              Deixa el teu comentari
+            </label>
+            <textarea 
+              id={`comment-body-${comment && comment.id}`}
+              onChange={(event) => this.setState({ newComentBody: event.target.value })}>
+            </textarea>
+            <input type="submit" value="Publica resposta" className="button radius small inline-block" />
+          </form>
         </div>
       );
     }
 
     return null;
   }
+
+  onSubmitNewComment(event) {
+    const { commentableId, commentableType, comment, addNewComment } = this.props;
+
+    event.preventDefault();
+
+    addNewComment({ 
+      commentableId, 
+      commentableType, 
+      comment, 
+      body: this.state.newComentBody 
+    });
+
+    this.setState({ showReplyForm: false, newComentBody: '' });
+  }
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ addNewComment }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(Comment);

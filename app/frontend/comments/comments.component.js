@@ -7,7 +7,7 @@ import { fetchComments, appendCommentsPage } from './comments.actions';
 import InfinitePagination                    from '../pagination/infinite_pagination.component';
 import Comment                               from './comment.component';
 
-export class Comments extends Component {
+class Comments extends Component {
   constructor(props) {
     super(props);
 
@@ -32,7 +32,12 @@ export class Comments extends Component {
   }
 
   render() {
-    const { commentableAuthorId, commentableArguable } = this.props;
+    const { 
+      commentableId,
+      commentableType,
+      commentableAuthorId, 
+      commentableArguable 
+    } = this.props;
     const comments = this.flattenComments(this.props.comments);
 
     if (comments && comments.length > 0) {
@@ -46,6 +51,8 @@ export class Comments extends Component {
                   <Comment 
                     key={comment.id} 
                     comment={comment} 
+                    commentableId={commentableId}
+                    commentableType={commentableType}
                     commentableArguable={commentableArguable}
                     commentableAuthorId={commentableAuthorId} />
                 ))

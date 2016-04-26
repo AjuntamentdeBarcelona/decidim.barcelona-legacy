@@ -14,9 +14,17 @@ import {
   UNFLAG_PROPOSAL,
 } from './proposals.actions';
 
-import { FOLLOW, UNFOLLOW, FETCH_FOLLOW } from '../follows/follows.actions';
+import { 
+  FOLLOW, 
+  UNFOLLOW, 
+  FETCH_FOLLOW 
+} from '../follows/follows.actions';
 
-import { FETCH_COMMENTS, APPEND_COMMENTS_PAGE } from '../comments/comments.actions';
+import { 
+  FETCH_COMMENTS, 
+  APPEND_COMMENTS_PAGE, 
+  ADD_NEW_COMMENT 
+} from '../comments/comments.actions';
 
 export const proposals = function (state = [], action) {
   switch (action.type) {
@@ -96,6 +104,14 @@ export const proposal = function (state = {}, action) {
         comments: [
           ...state.comments,
           ...action.payload.data.comments
+        ]
+      };
+    case ADD_NEW_COMMENT:
+      return {
+        ...state,
+        comments: [
+          action.payload.data.comment,
+          ...state.comments
         ]
       };
     case HIDE_PROPOSAL_AUTHOR:

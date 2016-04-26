@@ -294,7 +294,7 @@ Rails.application.routes.draw do
     end
     resources :meetings, only: [:index]
     resources :follows, only: [:index, :create, :destroy]
-    resources :comments, only: [:index]
+    resources :comments, only: [:index, :create]
   end
 
   if Rails.env.development?
