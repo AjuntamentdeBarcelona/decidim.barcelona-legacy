@@ -7,6 +7,7 @@ class Api::CommentsController < Api::ApplicationController
       commentable_id: params[:commentable][:id],
       commentable_type: params[:commentable][:type]
     })
+    .sort_by_most_voted
     .page(params[:page])
     .per(15)
 

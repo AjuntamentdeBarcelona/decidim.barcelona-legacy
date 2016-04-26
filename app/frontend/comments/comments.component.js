@@ -8,12 +8,18 @@ import Comment                from './comment.component';
 
 export class Comments extends Component {
   componentDidMount() {
-    const { commentableId, commentableType, fetchComments } = this.props;
+    const { 
+      commentableId, 
+      commentableType, 
+      commentableAuthorId,
+      fetchComments
+    } = this.props;
 
     fetchComments({ commentableId, commentableType });
   }
 
   render() {
+    const { commentableAuthorId } = this.props;
     const comments = this.flattenComments(this.props.comments);
 
     if (comments && comments.length > 0) {
@@ -21,10 +27,13 @@ export class Comments extends Component {
         <section className="row-full comments">
           <div className="row">
             <div id="comments" className="small-12 column">
-              <h2>TODO</h2>
+              <h2>{I18n.t("proposals.show.comments_title")}</h2>
               {
                 comments.map(comment => (
-                  <Comment key={comment.id} comment={comment} />
+                  <Comment 
+                    key={comment.id} 
+                    comment={comment} 
+                    commentableAuthorId={commentableAuthorId} />
                 ))
               }
             </div>
@@ -32,6 +41,7 @@ export class Comments extends Component {
         </section>
       );
     }
+
     return null;
   }
 
@@ -78,9 +88,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Comments);
-//  <div class="row">
-//  	<div id="<%= dom_id(comment) %>" class="comment small-12 column <%= comment_class_names comment, comment.commentable.author %>" data-timestamp="<%= comment.created_at.to_i%>">
-//
 //      <% if comment.hidden? || comment.user.hidden? %>
 //        <% if comment.children.size > 0 %>
 //          <div class="is-deleted">
@@ -162,31 +169,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(Comments);
 //            <%= simple_format text_with_links comment.body %>
 //          </div>
 //
-//          <div id="<%= dom_id(comment) %>_reply" class="reply">
-//            <span id="<%= dom_id(comment) %>_votes" class="comment-votes right">
-//              <%= render 'comments/votes', comment: comment %>
-//            </span>
-//
-//            <%= t("comments.comment.responses", count: comment.children.size) %>
-//
-//            <% if user_signed_in? %>
-//              <span class="divider">&nbsp;|&nbsp;</span>
-//              <%= link_to(comment_link_text(comment), "",
-//                          class: "js-add-comment-link", data: {'id': dom_id(comment)}) %>
-//
-//              <%= render 'comments/actions', comment: comment %>
-//
-//              <%= render 'comments/form', {commentable: comment.commentable, parent_id: comment.id, toggeable: true} %>
-//            <% end %>
-//          </div>
 //        </div>
 //      <% end %>
-//
-//      <div class="comment-children">
-//        <% child_comments_of(comment).each do |child| %>
-//          <%= render 'comments/comment', comment: child %>
-//        <% end %>
-//      </div>
 //    </div>
 //  </div>
 //<% end %>

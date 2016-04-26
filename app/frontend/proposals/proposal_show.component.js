@@ -172,7 +172,8 @@ class ProposalShow extends Component {
 
           <Comments
             commentableId={id}
-            commentableType={'Proposal'} />
+            commentableType={'Proposal'} 
+            commentableAuthorId={author.id} />
         </div>
       );
     }
