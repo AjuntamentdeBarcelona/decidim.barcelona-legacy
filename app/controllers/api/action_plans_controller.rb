@@ -1,3 +1,4 @@
+# coding: utf-8
 class Api::ActionPlansController < Api::ApplicationController
   include HasOrders
   include ActionView::Helpers::SanitizeHelper
@@ -71,22 +72,62 @@ class Api::ActionPlansController < Api::ApplicationController
   def report(action_plans)
     package = Axlsx::Package.new do |p|
       p.workbook.add_worksheet(:name => "Action Plans") do |sheet|
-        action_plans.each do |action_plan|
-          sheet.add_row [
-            action_plan.id,
-            action_plan.official ? 'Ajuntament' : 'Ciutadania',
-            action_plan.approved ? 'approved' : nil,
-            District.find(action_plan.district).try(:name),
-            action_plan.category.name[I18n.default_locale.to_s],
-            action_plan.subcategory.name[I18n.default_locale.to_s],
-            action_plan.title,
-            strip_tags(action_plan.description),
-            url_for(action_plan)
-          ]
+        sheet.add_row [
+          "ID",
+          "Origen",
+          "Aprovació",
+          "Districte",
+          "Categoria",
+          "Subcategoria",
+          "Títol",
+          "Descripció",
+          "URL",
+          "Codi Proposta",
+          "Autor",
+          "Origen",
+          "Districte",
+          "Categoria",
+          "Subcategoria",
+          "Títol",
+          "Descripció",
+          "URL",
+        ]
+        action_plans.includes(:proposals => [:author, :category, :subcategory]).each do |action_plan|
+          action_plan.proposals.each do |proposal| 
+            sheet.add_row [
+              action_plan.id,
+              action_plan.official ? 'Ajuntament' : 'Ciutadania',
+              action_plan.approved ? 'aprovat' : nil,
+              District.find(action_plan.district).try(:name),
+              action_plan.category.name[I18n.default_locale.to_s],
+              action_plan.subcategory.name[I18n.default_locale.to_s],
+              action_plan.title,
+              strip_tags(action_plan.description),
+              url_for(action_plan),
+              proposal.code,
+              proposal.author.try(:name),
+              translate_source(proposal.source),
+              District.find(proposal.district).try(:name),
+              proposal.category.name[I18n.default_locale.to_s],
+              proposal.subcategory.name[I18n.default_locale.to_s],
+              proposal.title,
+              proposal.summary,
+              url_for(proposal)
+            ]
+          end
         end
       end
     end
 
     package.to_stream.read
+  end
+
+  def translate_source(source)
+    case source
+    when "meeting" "Cita presencial"
+    when "official" "Ajuntament"
+    when "organization" "Organització"
+    when "citizen" "Ciutadania"
+    end
   end
 end
