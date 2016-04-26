@@ -88,8 +88,10 @@ class Api::ActionPlansController < Api::ApplicationController
           "Districte",
           "Categoria",
           "Subcategoria",
-          "Títol",
-          "Descripció",
+          "Títol proposta",
+          "Descripció proposta",
+          "Vots",
+          "Comentaris",
           "URL",
         ]
         action_plans.includes(:proposals => [:author, :category, :subcategory]).each do |action_plan|
@@ -112,6 +114,8 @@ class Api::ActionPlansController < Api::ApplicationController
               proposal.subcategory.name[I18n.default_locale.to_s],
               proposal.title,
               proposal.summary,
+              proposal.total_votes,
+              proposal.comments_count,
               url_for(proposal)
             ]
           end
