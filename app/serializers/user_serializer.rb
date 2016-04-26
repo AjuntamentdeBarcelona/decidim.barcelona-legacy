@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :hidden?, :erased?, :name, :official_level, 
+  attributes :id, :hidden?, :erased?, :name, :official?, :official_level, 
     :verified_organization?, :role, :avatar_image
 
   def role

@@ -26,7 +26,9 @@ export default class Comment extends Component {
           <UserAvatar user={author} as={as} />
           <div className="comment-body">
             <div className="comment-info">
-              <span className="user-name">{comment.author.name}</span>
+              <span className="user-name"><a href={`/users/${author.id}`}>{author.name}</a></span>
+              {this.renderAuthorOfficialBadge()}
+              {this.renderAlignmentBadge()}
               &nbsp;&bull;&nbsp;
               <time>{comment.created_at}</time>
             </div>
@@ -55,8 +57,55 @@ export default class Comment extends Component {
     );
   }
 
+  renderAuthorOfficialBadge() {
+    const { author } = this.props.comment;
+    const { official, official_level } = author;
+
+    if (official) {
+      return (
+        <span>
+          &nbsp;&bull;&nbsp;
+          <span className={`label round level-${official_level}`}>
+            {I18n.t(`officials.level_${official_level}`)}
+          </span>
+        </span>
+      );
+    }
+
+    return null;
+  }
+
+  renderAlignmentBadge() {
+    const { comment, commentableArguable } = this.props;
+    const { alignment } = comment;
+
+    if (commentableArguable && alignment !== null) {
+      const cssClasses = classNames(
+        'round',
+        'label',
+        {
+          success: alignment > 0,
+          alert: alignment < 0,
+          secondary: alignment === 0
+        }
+      );
+      const text = 
+        alignment > 0 ? I18n.t('comments.form.alignment.positive') :
+        alignment < 0 ? I18n.t('comments.form.alignment.negative') :
+        I18n.t('comments.form.alignment.neutral');
+
+      return (
+        <span>
+          &nbsp;&bull;&nbsp;
+          <span className={cssClasses}>{text}</span>
+        </span>
+      );
+    }
+    return null;
+  }
+
   renderChildren() {
-    const { comment, commentableAuthorId } = this.props;
+    const { comment, commentableAuthorId, commentableArguable } = this.props;
 
     if (comment.children) {
       return (
@@ -66,6 +115,7 @@ export default class Comment extends Component {
               <Comment 
                 key={comment.id} 
                 comment={comment} 
+                commentableArguable={commentableArguable}
                 commentableAuthorId={commentableAuthorId} />
             ))
           }
@@ -76,43 +126,3 @@ export default class Comment extends Component {
     return null;
   }
 }
-//<span>
-//  <%= t('comments.comment.votes', count: comment.total_votes) %>
-//</span>
-//&nbsp;|&nbsp;
-//<span class="in_favor">
-//  <% if can?(:vote, comment) %>
-//    <%= link_to vote_comment_path(comment, value: 'yes'),
-//        method: "post", remote: true do %>
-//        <i class="icon-angle-up"></i>
-//    <% end %>
-//  <% else %>
-//    <i class="icon-angle-up"></i>
-//  <% end %>
-//  <%= comment.total_likes %>
-//</span>
-//
-//<span class="against">
-//  <% if can?(:vote, comment) %>
-//    <%= link_to vote_comment_path(comment, value: 'no'),
-//        method: "post", remote: true do %>
-//        <i class="icon-angle-down"></i>
-//    <% end %>
-//  <% else %>
-//    <i class="icon-angle-down"></i>
-//  <% end %>
-//  <%= comment.total_dislikes %>
-//</span>
-//
-//            <%= t("comments.comment.responses", count: comment.children.size) %>
-//
-//            <% if user_signed_in? %>
-//              <span class="divider">&nbsp;|&nbsp;</span>
-//              <%= link_to(comment_link_text(comment), "",
-//                          class: "js-add-comment-link", data: {'id': dom_id(comment)}) %>
-//
-//              <%= render 'comments/actions', comment: comment %>
-//
-//              <%= render 'comments/form', {commentable: comment.commentable, parent_id: comment.id, toggeable: true} %>
-//            <% end %>
-//          </div>

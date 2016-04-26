@@ -4,7 +4,6 @@ import { bindActionCreators }                from 'redux';
 
 import { fetchComments, appendCommentsPage } from './comments.actions';
 
-import Loading                               from '../application/loading.component';
 import InfinitePagination                    from '../pagination/infinite_pagination.component';
 import Comment                               from './comment.component';
 
@@ -33,14 +32,13 @@ export class Comments extends Component {
   }
 
   render() {
-    const { commentableAuthorId } = this.props;
+    const { commentableAuthorId, commentableArguable } = this.props;
     const comments = this.flattenComments(this.props.comments);
 
     if (comments && comments.length > 0) {
       return (
         <section className="row-full comments">
           <div className="row">
-            <Loading show={this.state.loading} />
             <div id="comments" className="small-12 column">
               <h2>{I18n.t("proposals.show.comments_title")}</h2>
               {
@@ -48,11 +46,12 @@ export class Comments extends Component {
                   <Comment 
                     key={comment.id} 
                     comment={comment} 
+                    commentableArguable={commentableArguable}
                     commentableAuthorId={commentableAuthorId} />
                 ))
               }
+              {this.renderInfinitePagination()}
             </div>
-            {this.renderInfinitePagination()}
           </div>
         </section>
       );

@@ -84,7 +84,8 @@ class ProposalShow extends Component {
         can_hide,
         can_hide_author,
         flagged,
-        follow
+        follow,
+        arguable
       } = proposal;
 
       return (
@@ -173,6 +174,7 @@ class ProposalShow extends Component {
           <Comments
             commentableId={id}
             commentableType={'Proposal'} 
+            commentableArguable={arguable} 
             commentableAuthorId={author.id} />
         </div>
       );
