@@ -86,7 +86,7 @@ export function removeActionPlanProposal(actionPlanId, proposal) {
   };
 }
 
-function buildActionPlansRequest(options = {}) {
+export function buildActionPlansRequestParams(options = {}){
   let filterString = [], 
       filters,
       filter,
@@ -113,13 +113,17 @@ function buildActionPlansRequest(options = {}) {
     filterString = filterString.join(':');
   }
 
-  params = {
+  return {
     search: filters.text,
     filter: filterString,
     page: page,
     order: order,
     random_seed: seed
   };
+}
+
+function buildActionPlansRequest(options = {}) {
+  let params = buildActionPlansRequestParams(options);
 
   replaceUrl(params);
 

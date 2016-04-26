@@ -1,5 +1,6 @@
 class Api::ActionPlansController < Api::ApplicationController
   include HasOrders
+  include ActionView::Helpers::SanitizeHelper
 
   before_action :authenticate_user!
   load_and_authorize_resource
@@ -11,21 +12,27 @@ class Api::ActionPlansController < Api::ApplicationController
 
     @action_plans = ResourceFilter.new(params, user: current_user)
       .filter_collection(action_plans.includes(:category, :subcategory))
-      .send("sort_by_created_at")
-      .page(params[:page])
-      .per(15)
 
     respond_to do |format|
       format.json { 
-        render json: @action_plans, meta: {
+        action_plans = @action_plans
+          .send("sort_by_created_at")
+          .page(params[:page])
+          .per(15)
+
+        render json: action_plans, meta: {
           seed: @random_seed,
-          current_page: @action_plans.current_page,
-          next_page: @action_plans.next_page,
-          prev_page: @action_plans.prev_page,
-          total_pages: @action_plans.total_pages,
-          total_count: @action_plans.total_count
+          current_page: action_plans.current_page,
+          next_page: action_plans.next_page,
+          prev_page: action_plans.prev_page,
+          total_pages: action_plans.total_pages,
+          total_count: action_plans.total_count
         }
       }
+
+      format.xls do
+        send_data report(@action_plans), disposition: 'inline', filename: 'action_plans.xls'
+      end
     end
   end
 
@@ -58,5 +65,27 @@ class Api::ActionPlansController < Api::ApplicationController
   def set_seed
     @random_seed = params[:random_seed] ? params[:random_seed].to_f : (rand * 2 - 1)
     ActionPlan.connection.execute "select setseed(#{@random_seed})"
+  end
+
+
+  def report(action_plans)
+    package = Axlsx::Package.new do |p|
+      p.workbook.add_worksheet(:name => "Action Plans") do |sheet|
+        action_plans.each do |action_plan|
+          sheet.add_row [
+            action_plan.id,
+            action_plan.approved ? 'approved' : nil,
+            District.find(action_plan.district).try(:name),
+            action_plan.category.name[I18n.default_locale.to_s],
+            action_plan.subcategory.name[I18n.default_locale.to_s],
+            action_plan.title,
+            strip_tags(action_plan.description),
+            url_for(action_plan)
+          ]
+        end
+      end
+    end
+
+    package.to_stream.read
   end
 end
