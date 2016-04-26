@@ -5,7 +5,7 @@ import { bindActionCreators }           from 'redux';
 import { flagProposal, unFlagProposal } from './proposals.actions';
 
 import ProposalAuthor                   from './proposal_author.component';
-import AuthorAvatar                     from '../application/author_avatar.component';
+import UserAvatar                       from '../application/user_avatar.component';
 
 class ProposalInfoExtended extends Component {
   render() {
@@ -20,7 +20,7 @@ class ProposalInfoExtended extends Component {
 
     return (
       <p className="proposal-info extended">
-        <AuthorAvatar author={ author } />
+        <UserAvatar user={author} />
         <span className="bullet">&nbsp;&bull;&nbsp;</span>
         <ProposalAuthor 
           official={ official }

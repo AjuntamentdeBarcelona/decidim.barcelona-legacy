@@ -1,12 +1,12 @@
 import { Component } from 'react';
 import classNames    from 'classnames';
 
-import AuthorAvatar  from '../application/author_avatar.component';
+import UserAvatar    from '../application/user_avatar.component';
 
 export default class Comment extends Component {
   render() {
     const { comment, commentableAuthorId } = this.props;
-    const { alignment, user_id } = comment;
+    const { alignment, author, as } = comment;
 
     const cssClasses = classNames(
       'comment',
@@ -16,17 +16,17 @@ export default class Comment extends Component {
         negative: alignment < 0,
         neutral: alignment === 0,
         positive: alignment > 0,
-        'comment-author': user_id === commentableAuthorId
+        'comment-author': author.id === commentableAuthorId
       }
     );
 
     return (
       <div className="row">
         <div id={`comment_${comment.id}`} className={cssClasses}>
-          <AuthorAvatar author={{name: comment.author_name}} />
+          <UserAvatar user={author} as={as} />
           <div className="comment-body">
             <div className="comment-info">
-              <span className="user-name">{comment.author_name}</span>
+              <span className="user-name">{comment.author.name}</span>
               &nbsp;&bull;&nbsp;
               <time>{comment.created_at}</time>
             </div>

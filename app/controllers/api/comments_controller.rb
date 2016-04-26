@@ -2,14 +2,14 @@ class Api::CommentsController < Api::ApplicationController
   load_and_authorize_resource
 
   def index
-    @root_comments = Comment.where({
+    @root_comments = Comment.includes(:user).where({
       ancestry: nil,
       commentable_id: params[:commentable][:id],
       commentable_type: params[:commentable][:type]
     })
     .sort_by_most_voted
     .page(params[:page])
-    .per(5)
+    .per(20)
 
     child_comments = []
     @root_comments.each do |comment|

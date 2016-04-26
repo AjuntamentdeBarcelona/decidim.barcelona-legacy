@@ -1,8 +1,12 @@
 class CommentSerializer < ActiveModel::Serializer
-  attributes :id, :commentable_id, :commentable_type, :body, :user_id, :author_name, :ancestry,
-    :created_at, :alignment, :total_votes, :total_likes, :total_dislikes
+  attributes :id, :commentable_id, :commentable_type, :body, :ancestry,
+    :created_at, :alignment, :total_votes, :total_likes, :total_dislikes,
+    :as
 
-  def author_name
-    object.author.name
+  has_one :author
+
+  def as
+    return 'administrator' if object.as_administrator?
+    return 'moderator'     if object.as_moderator?
   end
 end
