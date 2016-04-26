@@ -74,6 +74,7 @@ class Api::ActionPlansController < Api::ApplicationController
         action_plans.each do |action_plan|
           sheet.add_row [
             action_plan.id,
+            action_plan.official ? 'Ajuntament' : 'Ciutadania',
             action_plan.approved ? 'approved' : nil,
             District.find(action_plan.district).try(:name),
             action_plan.category.name[I18n.default_locale.to_s],
