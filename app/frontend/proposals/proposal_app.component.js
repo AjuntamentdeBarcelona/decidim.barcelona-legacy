@@ -14,6 +14,8 @@ import filters           from '../filters/filters.reducers';
 
 import ProposalShow      from './proposal_show.component';
 
+import pagination        from '../pagination/pagination.reducers';
+
 const middlewares = [ReduxPromise];
 
 //if (process.env.NODE_ENV === 'development') {
@@ -33,6 +35,7 @@ function createReducers(sessionState) {
     proposal,
     categories,
     districts,
+    pagination,
     filters
   });
 }

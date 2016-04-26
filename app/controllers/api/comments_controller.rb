@@ -2,22 +2,32 @@ class Api::CommentsController < Api::ApplicationController
   load_and_authorize_resource
 
   def index
-    comments = Comment.where({
+    @root_comments = Comment.where({
       ancestry: nil,
       commentable_id: params[:commentable][:id],
       commentable_type: params[:commentable][:type]
     })
     .sort_by_most_voted
     .page(params[:page])
-    .per(15)
+    .per(5)
 
     child_comments = []
-    comments.each do |comment|
+    @root_comments.each do |comment|
       child_comments << Comment.descendants_of(comment)
     end
 
-    comments = (comments + child_comments).flatten
+    comments = (@root_comments + child_comments).flatten
 
-    render json: comments
+    respond_to do |format|
+      format.json { 
+        render json: comments, meta: {
+          current_page: @root_comments.current_page,
+          next_page: @root_comments.next_page,
+          prev_page: @root_comments.prev_page,
+          total_pages: @root_comments.total_pages,
+          total_count: @root_comments.total_count
+        }
+      }
+    end
   end
 end
