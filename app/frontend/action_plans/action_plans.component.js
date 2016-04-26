@@ -7,6 +7,7 @@ import InfinitePagination     from '../pagination/infinite_pagination.component'
 
 import ActionPlansSidebar     from './action_plans_sidebar.component';
 import ActionPlansList        from './action_plans_list.component';
+import DownloadButton         from './download_button.component';
 
 import { fetchActionPlans, appendActionPlansPage } from './action_plans.actions';
 
@@ -54,6 +55,7 @@ class ActionPlans extends Component {
               <h3 className="proposals-count">
                 { I18n.t('components.action_plans.count', { count: this.props.count }) }
               </h3>
+              <DownloadButton filters={this.props.filters} order={this.props.order} seed={this.props.seed}/>
               <ActionPlansList actionPlans={this.props.actionPlans} />
               {this.renderInfinitePagination()}
             </div>
