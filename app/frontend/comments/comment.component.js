@@ -32,9 +32,9 @@ export default class Comment extends Component {
               &nbsp;&bull;&nbsp;
               <time>{comment.created_at}</time>
             </div>
-            <div className="comment-user">
-              { comment.body }
-            </div>
+            <div 
+              className="comment-user"
+              dangerouslySetInnerHTML={{ __html: comment.body }} />
             <div id={`comment_${comment.id}_reply`} className="reply">
               <span id={`comment_${comment.id}_votes`} className="comment-votes right">
                 <span>{I18n.t('comments.comment.votes', { count: comment.total_votes })}</span>

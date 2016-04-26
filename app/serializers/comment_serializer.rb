@@ -12,4 +12,8 @@ class CommentSerializer < ActiveModel::Serializer
     return 'administrator' if object.as_administrator?
     return 'moderator'     if object.as_moderator?
   end
+
+  def body
+    scope && scope.simple_format(scope.text_with_links(object.body))
+  end
 end

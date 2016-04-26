@@ -23,7 +23,7 @@ export default ({
     );
 
     return (
-      <img src={user.avatar_image} width="32" height="32" className="admin-avatar left" />
+      <img src={user.avatar_image} width="32" height="32" className={cssClasses} />
     );
   } else if (user.name) {
     const firstLetter = user.name[0].toUpperCase();
