@@ -1,11 +1,18 @@
-import { Component }          from 'react';
-import classNames             from 'classnames';
+import { Component }                  from 'react';
+import { connect }                    from 'react-redux';
+import { bindActionCreators }         from 'redux';
 
-import UserAvatar             from '../application/user_avatar.component';
-import ChildrenComments       from './children_comments.component';
-import NewCommentForm         from './new_comment_form.component';
+import classNames                     from 'classnames';
 
-export default class Comment extends Component {
+import UserAvatar                     from '../application/user_avatar.component';
+import FlagActions                    from '../application/flag_actions.component';
+
+import ChildrenComments               from './children_comments.component';
+import NewCommentForm                 from './new_comment_form.component';
+
+import { flagComment, unFlagComment } from './comments.actions';
+
+class Comment extends Component {
   constructor(props) {
     super(props);
 
@@ -15,7 +22,7 @@ export default class Comment extends Component {
   }
 
   render() {
-    const { comment, commentable } = this.props;
+    const { comment, commentable, flagComment, unFlagComment } = this.props;
     const { alignment, author, as } = comment;
 
     const cssClasses = classNames(
@@ -61,6 +68,12 @@ export default class Comment extends Component {
               {I18n.t("comments.comment.responses", { count: comment.children ? comment.children.length : 0 })}
               <span className="divider">&nbsp;|&nbsp;</span>
               <a onClick={() => this.setState({showReplyForm: !this.state.showReplyForm })}>{I18n.t("comments_helper.reply_link")}</a>
+              <span className="divider">&nbsp;|&nbsp;</span>
+              <FlagActions 
+                flaggeable={comment}
+                flagAction={flagComment}
+                unFlagAction={unFlagComment}
+              />
               <NewCommentForm 
                 commentable={commentable}
                 visible={this.state.showReplyForm} 
@@ -120,3 +133,9 @@ export default class Comment extends Component {
     return null;
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ flagComment, unFlagComment }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(Comment);

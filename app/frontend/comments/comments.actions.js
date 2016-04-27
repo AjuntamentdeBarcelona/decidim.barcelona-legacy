@@ -4,6 +4,8 @@ export const API_BASE_URL         = '/api';
 export const FETCH_COMMENTS       = 'FETCH_COMMENTS';
 export const APPEND_COMMENTS_PAGE = 'APPEND_COMMENTS_PAGE';
 export const ADD_NEW_COMMENT      = 'ADD_NEW_COMMENT';
+export const FLAG_COMMENT         = 'FLAG_COMMENT';
+export const UNFLAG_COMMENT       = 'UNFLAG_COMMENT';
 
 export function fetchComments({ id, type }) {
   const request = 
@@ -37,6 +39,24 @@ export function addNewComment({ id, type }, { parent, newComment }) {
 
   return {
     type: ADD_NEW_COMMENT,
+    payload: request
+  };
+}
+
+export function flagComment(commentId) {
+  const request = axios.patch(`${API_BASE_URL}/comments/${commentId}/flag.json`);
+
+  return {
+    type: FLAG_COMMENT,
+    payload: request
+  };
+}
+
+export function unFlagComment(commentId) {
+  const request = axios.patch(`${API_BASE_URL}/comments/${commentId}/unflag.json`);
+
+  return {
+    type: UNFLAG_COMMENT,
     payload: request
   };
 }

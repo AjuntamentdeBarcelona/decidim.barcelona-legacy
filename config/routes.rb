@@ -294,7 +294,12 @@ Rails.application.routes.draw do
     end
     resources :meetings, only: [:index]
     resources :follows, only: [:index, :create, :destroy]
-    resources :comments, only: [:index, :create]
+    resources :comments, only: [:index, :create] do
+      member do
+        patch :flag
+        patch :unflag
+      end
+    end
   end
 
   if Rails.env.development?

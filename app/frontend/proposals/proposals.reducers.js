@@ -23,8 +23,12 @@ import {
 import { 
   FETCH_COMMENTS, 
   APPEND_COMMENTS_PAGE, 
-  ADD_NEW_COMMENT 
+  ADD_NEW_COMMENT,
+  FLAG_COMMENT,
+  UNFLAG_COMMENT
 } from '../comments/comments.actions';
+
+import { comments } from  '../comments/comments.reducers';
 
 export const proposals = function (state = [], action) {
   switch (action.type) {
@@ -94,25 +98,13 @@ export const proposal = function (state = {}, action) {
 
       return state;
     case FETCH_COMMENTS:
-      return {
-        ...state,
-        comments: action.payload.data.comments
-      };
     case APPEND_COMMENTS_PAGE:
-      return {
-        ...state,
-        comments: [
-          ...state.comments,
-          ...action.payload.data.comments
-        ]
-      };
     case ADD_NEW_COMMENT:
+    case FLAG_COMMENT:
+    case UNFLAG_COMMENT:
       return {
         ...state,
-        comments: [
-          action.payload.data.comment,
-          ...state.comments
-        ]
+        comments: comments(state.comments, action)
       };
     case HIDE_PROPOSAL_AUTHOR:
       let author = action.payload.data.user;

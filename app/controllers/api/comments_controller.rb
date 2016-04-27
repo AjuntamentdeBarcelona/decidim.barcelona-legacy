@@ -46,6 +46,18 @@ class Api::CommentsController < Api::ApplicationController
     #end
   end
 
+  def flag
+    Flag.flag(current_user, @comment)
+    #set_comment_flags(@comment)
+    render json: @comment
+  end
+
+  def unflag
+    Flag.unflag(current_user, @comment)
+    #set_comment_flags(@comment)
+    render json: @comment
+  end
+
   private
 
   def load_commentable
@@ -70,4 +82,8 @@ class Api::CommentsController < Api::ApplicationController
     permits << :alignment if @commentable.arguable? && params[:comment][:parent_id].blank?
     params.require(:comment).permit(*permits)
   end
+
+  #def set_comment_flags(comments)
+  #  @comment_flags = current_user ? current_user.comment_flags(comments) : {}
+  #end
 end

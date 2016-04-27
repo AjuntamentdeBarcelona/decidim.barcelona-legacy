@@ -1,6 +1,6 @@
 class CommentSerializer < ActiveModel::Serializer
   attributes :id, :commentable_id, :commentable_type, :body, :ancestry, :created_at, 
-    :alignment, :total_votes, :total_likes, :total_dislikes, :as
+    :alignment, :total_votes, :total_likes, :total_dislikes, :as, :flagged
 
   has_one :author
 
@@ -15,5 +15,9 @@ class CommentSerializer < ActiveModel::Serializer
 
   def body
     scope && scope.simple_format(scope.text_with_links(object.body))
+  end
+
+  def flagged
+    scope && Flag.flagged?(scope.current_user, object)
   end
 end
