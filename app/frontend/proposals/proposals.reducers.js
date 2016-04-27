@@ -25,7 +25,9 @@ import {
   APPEND_COMMENTS_PAGE, 
   ADD_NEW_COMMENT,
   FLAG_COMMENT,
-  UNFLAG_COMMENT
+  UNFLAG_COMMENT,
+  UPVOTE_COMMENT,
+  DOWNVOTE_COMMENT
 } from '../comments/comments.actions';
 
 import { comments } from  '../comments/comments.reducers';
@@ -102,6 +104,8 @@ export const proposal = function (state = {}, action) {
     case ADD_NEW_COMMENT:
     case FLAG_COMMENT:
     case UNFLAG_COMMENT:
+    case UPVOTE_COMMENT:
+    case DOWNVOTE_COMMENT:
       return {
         ...state,
         comments: comments(state.comments, action)

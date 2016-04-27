@@ -3,7 +3,9 @@ import {
   APPEND_COMMENTS_PAGE, 
   ADD_NEW_COMMENT,
   FLAG_COMMENT,
-  UNFLAG_COMMENT
+  UNFLAG_COMMENT,
+  UPVOTE_COMMENT,
+  DOWNVOTE_COMMENT
 } from '../comments/comments.actions';
 
 export const comments = function (state = [], action) {
@@ -22,6 +24,8 @@ export const comments = function (state = [], action) {
       ];
     case FLAG_COMMENT:
     case UNFLAG_COMMENT:
+    case UPVOTE_COMMENT:
+    case DOWNVOTE_COMMENT:
       return state.map(c => comment(c, action));
     default:
       return state;
@@ -32,15 +36,18 @@ export const comment = function (state = {}, action) {
   switch (action.type) {
     case FLAG_COMMENT:
     case UNFLAG_COMMENT:
+    case UPVOTE_COMMENT:
+    case DOWNVOTE_COMMENT:
       let comment = action.payload.data.comment;
 
       if (comment.id === state.id) {
         return {
           ...state,
-          flagged: comment.flagged
+          flagged: comment.flagged,
+          total_likes: comment.total_likes,
+          total_dislikes: comment.total_dislikes
         };
       }
-
       return state;
     default:
       return state;

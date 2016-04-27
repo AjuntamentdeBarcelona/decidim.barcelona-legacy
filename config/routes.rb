@@ -298,6 +298,8 @@ Rails.application.routes.draw do
       member do
         patch :flag
         patch :unflag
+        patch :upvote
+        patch :downvote
       end
     end
   end

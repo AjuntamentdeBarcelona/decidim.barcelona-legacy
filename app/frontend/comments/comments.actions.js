@@ -6,6 +6,8 @@ export const APPEND_COMMENTS_PAGE = 'APPEND_COMMENTS_PAGE';
 export const ADD_NEW_COMMENT      = 'ADD_NEW_COMMENT';
 export const FLAG_COMMENT         = 'FLAG_COMMENT';
 export const UNFLAG_COMMENT       = 'UNFLAG_COMMENT';
+export const UPVOTE_COMMENT       = 'UPVOTE_COMMENT';
+export const DOWNVOTE_COMMENT     = 'DOWNVOTE_COMMENT';
 
 export function fetchComments({ id, type }) {
   const request = 
@@ -60,6 +62,25 @@ export function unFlagComment(commentId) {
     payload: request
   };
 }
+
+export function upVoteComment(commentId) {
+  const request = axios.patch(`${API_BASE_URL}/comments/${commentId}/upvote.json`);
+
+  return {
+    type: UPVOTE_COMMENT,
+    payload: request
+  };
+}
+
+export function downVoteComment(commentId) {
+  const request = axios.patch(`${API_BASE_URL}/comments/${commentId}/downvote.json`);
+
+  return {
+    type: DOWNVOTE_COMMENT,
+    payload: request
+  };
+}
+
 
 function baseCommentableUrl({ id, type }) {
   return `${API_BASE_URL}/comments.json?commentable[id]=${id}&commentable[type]=${type}`

@@ -1,8 +1,10 @@
 class Api::CommentsController < Api::ApplicationController
+  before_action :authenticate_user!, except: [:index]
   before_action :load_commentable, only: :create
   before_action :build_comment, only: :create
 
-  load_and_authorize_resource
+  load_resource
+  authorize_resource except: [:upvote, :downvote]
 
   def index
     @root_comments = Comment.includes(:user).where({
@@ -55,6 +57,18 @@ class Api::CommentsController < Api::ApplicationController
   def unflag
     Flag.unflag(current_user, @comment)
     #set_comment_flags(@comment)
+    render json: @comment
+  end
+
+  def upvote
+    authorize! :vote, @comment
+    @comment.vote_by(voter: current_user, vote: 'yes')
+    render json: @comment
+  end
+
+  def downvote
+    authorize! :vote, @comment
+    @comment.vote_by(voter: current_user, vote: 'no')
     render json: @comment
   end
 

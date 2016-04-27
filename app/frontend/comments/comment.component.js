@@ -10,7 +10,12 @@ import FlagActions                    from '../application/flag_actions.componen
 import ChildrenComments               from './children_comments.component';
 import NewCommentForm                 from './new_comment_form.component';
 
-import { flagComment, unFlagComment } from './comments.actions';
+import { 
+  flagComment, 
+  unFlagComment,
+  upVoteComment,
+  downVoteComment
+} from './comments.actions';
 
 class Comment extends Component {
   constructor(props) {
@@ -22,7 +27,15 @@ class Comment extends Component {
   }
 
   render() {
-    const { comment, commentable, flagComment, unFlagComment } = this.props;
+    const { 
+      comment, 
+      commentable, 
+      flagComment, 
+      unFlagComment, 
+      upVoteComment, 
+      downVoteComment 
+    } = this.props;
+
     const { alignment, author, as } = comment;
 
     const cssClasses = classNames(
@@ -57,11 +70,11 @@ class Comment extends Component {
                 <span>{I18n.t('comments.comment.votes', { count: comment.total_votes })}</span>
                 &nbsp;|&nbsp;
                 <span className="in_favor">
-                  <i className="icon-angle-up"></i>
+                  <a onClick={() => upVoteComment(comment.id)}><i className="icon-angle-up"></i></a>
                   {comment.total_likes}
                 </span>
                 <span className="against">
-                  <i className="icon-angle-down"></i>
+                  <a onClick={() => downVoteComment(comment.id)}><i className="icon-angle-down"></i></a>
                   {comment.total_dislikes}
                 </span>
               </span>
@@ -135,7 +148,12 @@ class Comment extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ flagComment, unFlagComment }, dispatch);
+  return bindActionCreators({ 
+    flagComment, 
+    unFlagComment,
+    upVoteComment,
+    downVoteComment
+  }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(Comment);
