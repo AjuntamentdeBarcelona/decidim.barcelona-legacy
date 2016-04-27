@@ -4,6 +4,7 @@ import { bindActionCreators }                from 'redux';
 
 import { fetchComments, appendCommentsPage } from './comments.actions';
 
+import Loading                               from '../application/loading.component';
 import InfinitePagination                    from '../pagination/infinite_pagination.component';
 import Comment                               from './comment.component';
 import NewCommentForm                        from './new_comment_form.component';
@@ -19,11 +20,10 @@ class Comments extends Component {
   
   componentDidMount() {
     const { commentable, fetchComments } = this.props;
-    fetchComments(commentable);
-  }
 
-  componentWillReceiveProps() {
-    this.setState({ loading: false });
+    fetchComments(commentable).then(() => {
+      this.setState({ loading: false });
+    });
   }
 
   render() {
@@ -37,7 +37,10 @@ class Comments extends Component {
             <NewCommentForm 
               commentable={commentable}
               visible={commentable.permissions.comment} />
-            {this.renderComments()}
+            <div className="comments_list">
+              <Loading show={this.state.loading} />
+              {this.renderComments()}
+            </div>
           </div>
         </div>
       </section>

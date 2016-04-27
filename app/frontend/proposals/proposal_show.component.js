@@ -33,15 +33,11 @@ class ProposalShow extends Component {
   }
 
   componentDidMount() {
-    const { session } = this.props;
+    const { session, fetchProposal } = this.props;
 
-    this.props.fetchProposal(this.props.proposalId);
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (newProps.proposal.id) {
+    fetchProposal(this.props.proposalId).then(() => {
       this.setState({ loading: false });
-    }
+    });
   }
 
   render() {
