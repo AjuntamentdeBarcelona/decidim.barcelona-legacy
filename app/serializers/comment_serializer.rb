@@ -1,6 +1,6 @@
 class CommentSerializer < ActiveModel::Serializer
   attributes :id, :commentable_id, :commentable_type, :body, :ancestry, :created_at, 
-    :alignment, :total_votes, :total_likes, :total_dislikes, :as, :flagged
+    :alignment, :total_votes, :total_likes, :total_dislikes, :as, :flagged, :permissions
 
   has_one :author
 
@@ -19,5 +19,11 @@ class CommentSerializer < ActiveModel::Serializer
 
   def flagged
     scope && Flag.flagged?(scope.current_user, object)
+  end
+
+  def permissions
+    {
+      vote: scope && scope.can?(:vote, object)
+    }
   end
 end

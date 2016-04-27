@@ -28,29 +28,39 @@ class Comments extends Component {
 
   render() {
     const { commentable } = this.props;
+
+    return (
+      <section className="row-full comments">
+        <div className="row">
+          <div id="comments" className="small-12 column">
+            <h2>{I18n.t("proposals.show.comments_title")}</h2>
+            <NewCommentForm 
+              commentable={commentable}
+              visible={commentable.permissions.comment} />
+            {this.renderComments()}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  renderComments() {
+    const { commentable } = this.props;
     const comments = this.flattenComments(this.props.comments);
 
     if (comments && comments.length > 0) {
       return (
-        <section className="row-full comments">
-          <div className="row">
-            <div id="comments" className="small-12 column">
-              <h2>{I18n.t("proposals.show.comments_title")}</h2>
-              <NewCommentForm 
-                commentable={commentable}
-                visible={true} />
-              {
-                comments.map(comment => (
-                  <Comment 
-                    key={comment.id} 
-                    comment={comment} 
-                    commentable={commentable} />
-                ))
-              }
-              {this.renderInfinitePagination()}
-            </div>
-          </div>
-        </section>
+        <div>
+          {
+            comments.map(comment => (
+              <Comment 
+                key={comment.id} 
+                comment={comment} 
+                commentable={commentable} />
+            ))
+          }
+          {this.renderInfinitePagination()}
+        </div>
       );
     }
 

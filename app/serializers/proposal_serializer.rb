@@ -2,7 +2,7 @@ class ProposalSerializer < ActiveModel::Serializer
   attributes :id, :title, :url, :summary, :created_at, :scope_, :district, :source, 
     :total_votes, :total_comments, :voted, :votable, :closed, :official, :from_meeting,
     :editable, :conflictive?, :external_url, :hidden?, :can_hide, :can_hide_author,
-    :flagged, :code, :arguable?
+    :flagged, :code, :arguable?, :permissions
 
   has_one :category
   has_one :subcategory
@@ -58,5 +58,11 @@ class ProposalSerializer < ActiveModel::Serializer
 
   def district
     District.find(object.district)
+  end
+
+  def permissions
+    {
+      comment: scope && scope.can?(:comment, object)
+    }
   end
 end

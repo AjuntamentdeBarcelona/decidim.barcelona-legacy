@@ -32,8 +32,6 @@ class Comment extends Component {
       commentable, 
       flagComment, 
       unFlagComment, 
-      upVoteComment, 
-      downVoteComment 
     } = this.props;
 
     const { alignment, author, as } = comment;
@@ -69,19 +67,10 @@ class Comment extends Component {
               <span id={`comment_${comment.id}_votes`} className="comment-votes right">
                 <span>{I18n.t('comments.comment.votes', { count: comment.total_votes })}</span>
                 &nbsp;|&nbsp;
-                <span className="in_favor">
-                  <a onClick={() => upVoteComment(comment.id)}><i className="icon-angle-up"></i></a>
-                  {comment.total_likes}
-                </span>
-                <span className="against">
-                  <a onClick={() => downVoteComment(comment.id)}><i className="icon-angle-down"></i></a>
-                  {comment.total_dislikes}
-                </span>
+                {this.renderVoteActionLinks()}
               </span>
               {I18n.t("comments.comment.responses", { count: comment.children ? comment.children.length : 0 })}
-              <span className="divider">&nbsp;|&nbsp;</span>
-              <a onClick={() => this.setState({showReplyForm: !this.state.showReplyForm })}>{I18n.t("comments_helper.reply_link")}</a>
-              <span className="divider">&nbsp;|&nbsp;</span>
+              {this.renderReplyAction()}
               <FlagActions 
                 flaggeable={comment}
                 flagAction={flagComment}
@@ -96,6 +85,54 @@ class Comment extends Component {
           <ChildrenComments comment={comment} commentable={commentable} />
         </div>
       </div>
+    );
+  }
+
+  renderReplyAction() {
+    const { commentable } = this.props;
+
+    if (commentable.permissions.comment) {
+      return (
+        <span>
+          <span className="divider">&nbsp;|&nbsp;</span>
+          <a onClick={() => this.setState({showReplyForm: !this.state.showReplyForm })}>{I18n.t("comments_helper.reply_link")}</a>
+          <span className="divider">&nbsp;|&nbsp;</span>
+        </span>
+      );
+    }
+
+    return null;
+  }
+
+  renderVoteActionLinks() {
+    const { comment, upVoteComment, downVoteComment } = this.props;
+
+    if (comment.permissions.vote) {
+      return (
+        <span>
+          <span className="in_favor">
+            <a onClick={() => upVoteComment(comment.id)}><i className="icon-angle-up"></i></a>
+            {comment.total_likes}
+          </span>
+          <span className="against">
+            <a onClick={() => downVoteComment(comment.id)}><i className="icon-angle-down"></i></a>
+            {comment.total_dislikes}
+          </span>
+        </span>
+      );
+    }
+
+    return (
+      <span>
+        <span className="in_favor">
+          <i className="icon-angle-up"></i>
+          {comment.total_likes}
+        </span>
+        <span className="against">
+          <i className="icon-angle-down"></i>
+          {comment.total_dislikes}
+        </span>
+      </span>
     );
   }
 

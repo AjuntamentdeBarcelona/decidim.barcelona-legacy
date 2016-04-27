@@ -20,7 +20,7 @@ export const comments = function (state = [], action) {
     case ADD_NEW_COMMENT:
       return [
           action.payload.data.comment,
-          ...state.comments
+          ...state
       ];
     case FLAG_COMMENT:
     case UNFLAG_COMMENT:
@@ -45,7 +45,8 @@ export const comment = function (state = {}, action) {
           ...state,
           flagged: comment.flagged,
           total_likes: comment.total_likes,
-          total_dislikes: comment.total_dislikes
+          total_dislikes: comment.total_dislikes,
+          total_votes: comment.total_votes
         };
       }
       return state;
