@@ -2,6 +2,8 @@ import { Component }          from 'react';
 import { connect }            from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import Loading                from '../application/loading.component';
+
 import { addNewComment }      from './comments.actions';
 
 class NewCommentForm extends Component {
@@ -9,6 +11,8 @@ class NewCommentForm extends Component {
     super(props);
 
     this.state = {
+      visible: this.props.visible,
+      loading: false,
       newComment: {
         body: '',
         alignment: "0"
@@ -16,15 +20,20 @@ class NewCommentForm extends Component {
     };
   }
 
-  render() {
-    const { visible, parent } = this.props;
+  componentWillReceiveProps(newProps) {
+    this.setState({ visible: newProps.visible });
+  }
 
-    if (visible) {
+  render() {
+    const { parent } = this.props;
+
+    if (this.state.visible) {
       let textAreaId = `comment-body-${parent && parent.id}`;
 
       return (
         <div>
           <form className="new_comment" onSubmit={(e) => this.onSubmitNewComment(e)}>
+            <Loading show={this.state.loading} />
             <label 
               forHtml={textAreaId}>
               Deixa el teu comentari
@@ -32,6 +41,7 @@ class NewCommentForm extends Component {
             <textarea id={textAreaId} value={this.state.newComment.body} onChange={e => this.setBody(e.target.value)}></textarea>
             {this.renderAlignmentRadioButtons()}
             <input 
+              disabled={this.state.newComment.body === ''}
               type="submit" 
               value="Publica resposta" 
               className="button radius small inline-block" />
@@ -98,9 +108,14 @@ class NewCommentForm extends Component {
     addNewComment(commentable, {
       parent, 
       newComment: this.state.newComment 
+    }).then(() => {
+      this.setState({ loading: false });
+      if (this.props.onCommentCreated) {
+        this.props.onCommentCreated();
+      }
     });
 
-    this.setState({ newComment: { body: '', alignment: "0" } })
+    this.setState({ loading: true, newComment: { body: '', alignment: "0" } })
   }
 }
 

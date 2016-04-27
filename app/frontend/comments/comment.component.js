@@ -79,6 +79,7 @@ class Comment extends Component {
               <NewCommentForm 
                 commentable={commentable}
                 visible={this.state.showReplyForm} 
+                onCommentCreated={() => this.setState({ showReplyForm: false })}
                 parent={comment} />
             </div>
           </div>

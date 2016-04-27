@@ -6,19 +6,17 @@
   left: 0;
   bottom: 0;
   right: 0;
-  min-height: rem-calc(500);
   font-size: rem-calc(80);
 
   span{
     position: absolute;
     left: 50%;
     @include transform(translateX(-50%));
-    top: rem-calc(200);
+    top: 30%;
     color: $brand;
   }
 
   &.votes{
-    min-height: 100%;
     font-size: rem-calc(40);
     span {
       top: 40%;
