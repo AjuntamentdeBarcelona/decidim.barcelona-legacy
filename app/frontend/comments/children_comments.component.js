@@ -4,13 +4,7 @@ import Comment from './comment.component';
 
 export default class ChildrenComments extends Component {
   render() {
-    const { 
-      comment, 
-      commentableId, 
-      commentableType, 
-      commentableAuthorId, 
-      commentableArguable 
-    } = this.props;
+    const { comment, commentable, } = this.props;
 
     if (comment.children) {
       return (
@@ -20,10 +14,7 @@ export default class ChildrenComments extends Component {
               <Comment 
                 key={comment.id} 
                 comment={comment} 
-                commentableId={commentableId}
-                commentableType={commentableType}
-                commentableArguable={commentableArguable}
-                commentableAuthorId={commentableAuthorId} />
+                commentable={commentable} />
             ))
           }
         </div>

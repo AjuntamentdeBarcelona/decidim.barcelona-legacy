@@ -171,11 +171,7 @@ class ProposalShow extends Component {
 
           <ProposalMeetings useServerLinks={ true } />
 
-          <Comments
-            commentableId={id}
-            commentableType={'Proposal'} 
-            commentableArguable={arguable} 
-            commentableAuthorId={author.id} />
+          <Comments commentable={{...proposal, type: 'Proposal'}} />
         </div>
       );
     }

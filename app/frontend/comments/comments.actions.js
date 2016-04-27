@@ -5,9 +5,9 @@ export const FETCH_COMMENTS       = 'FETCH_COMMENTS';
 export const APPEND_COMMENTS_PAGE = 'APPEND_COMMENTS_PAGE';
 export const ADD_NEW_COMMENT      = 'ADD_NEW_COMMENT';
 
-export function fetchComments({ commentableId, commentableType }) {
+export function fetchComments({ id, type }) {
   const request = 
-    axios.get(baseCommentableUrl({ commentableId, commentableType }));
+    axios.get(baseCommentableUrl({ id, type }));
 
   return {
     type: FETCH_COMMENTS,
@@ -15,9 +15,9 @@ export function fetchComments({ commentableId, commentableType }) {
   };
 }
 
-export function appendCommentsPage({ commentableId, commentableType, page }) {
+export function appendCommentsPage({ id, type }, { page }) {
   const request = 
-    axios.get(`${baseCommentableUrl({ commentableId, commentableType })}&page=${page}`);
+    axios.get(`${baseCommentableUrl({ id, type })}&page=${page}`);
 
   return {
     type: APPEND_COMMENTS_PAGE,
@@ -25,12 +25,12 @@ export function appendCommentsPage({ commentableId, commentableType, page }) {
   };
 }
 
-export function addNewComment({ commentableId, commentableType, comment, body }) {
+export function addNewComment({ id, type }, { parent, body }) {
   const request = 
-    axios.post(baseCommentableUrl({ commentableId, commentableType }), {
+    axios.post(baseCommentableUrl({ id, type }), {
       comment: {
         body,
-        parent_id: comment && comment.id
+        parent_id: parent && parent.id
       }
     });
 
@@ -40,6 +40,6 @@ export function addNewComment({ commentableId, commentableType, comment, body })
   };
 }
 
-function baseCommentableUrl({ commentableId, commentableType }) {
-  return `${API_BASE_URL}/comments.json?commentable[id]=${commentableId}&commentable[type]=${commentableType}`
+function baseCommentableUrl({ id, type }) {
+  return `${API_BASE_URL}/comments.json?commentable[id]=${id}&commentable[type]=${type}`
 }

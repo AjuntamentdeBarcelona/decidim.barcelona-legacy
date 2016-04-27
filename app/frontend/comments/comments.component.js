@@ -6,6 +6,7 @@ import { fetchComments, appendCommentsPage } from './comments.actions';
 
 import InfinitePagination                    from '../pagination/infinite_pagination.component';
 import Comment                               from './comment.component';
+import NewCommentForm                        from './new_comment_form.component';
 
 class Comments extends Component {
   constructor(props) {
@@ -17,14 +18,8 @@ class Comments extends Component {
   }
   
   componentDidMount() {
-    const { 
-      commentableId, 
-      commentableType, 
-      commentableAuthorId,
-      fetchComments
-    } = this.props;
-
-    fetchComments({ commentableId, commentableType });
+    const { commentable, fetchComments } = this.props;
+    fetchComments(commentable);
   }
 
   componentWillReceiveProps() {
@@ -32,12 +27,7 @@ class Comments extends Component {
   }
 
   render() {
-    const { 
-      commentableId,
-      commentableType,
-      commentableAuthorId, 
-      commentableArguable 
-    } = this.props;
+    const { commentable } = this.props;
     const comments = this.flattenComments(this.props.comments);
 
     if (comments && comments.length > 0) {
@@ -46,15 +36,15 @@ class Comments extends Component {
           <div className="row">
             <div id="comments" className="small-12 column">
               <h2>{I18n.t("proposals.show.comments_title")}</h2>
+              <NewCommentForm 
+                commentable={commentable}
+                visible={true} />
               {
                 comments.map(comment => (
                   <Comment 
                     key={comment.id} 
                     comment={comment} 
-                    commentableId={commentableId}
-                    commentableType={commentableType}
-                    commentableArguable={commentableArguable}
-                    commentableAuthorId={commentableAuthorId} />
+                    commentable={commentable} />
                 ))
               }
               {this.renderInfinitePagination()}
@@ -96,21 +86,14 @@ class Comments extends Component {
   }
 
   renderInfinitePagination() {
-    const { 
-      commentableId, 
-      commentableType, 
-      pagination,
-      appendCommentsPage
-    } = this.props;
+    const { commentable, pagination, appendCommentsPage } = this.props;
 
     let infinitePaginationActive = !this.state.loading && pagination.current_page < pagination.total_pages;
 
     if (infinitePaginationActive) {
       return (
         <InfinitePagination 
-          onVisible={() => appendCommentsPage({ 
-            commentableId,
-            commentableType,
+          onVisible={() => appendCommentsPage(commentable, { 
             page: pagination.current_page + 1
           })} /> 
       );
@@ -120,8 +103,8 @@ class Comments extends Component {
   }
 }
 
-function mapStateToProps(state, { commentableType }) {
-  const resource = state[commentableType.toLowerCase()];
+function mapStateToProps(state, { commentable }) {
+  const resource = state[commentable.type.toLowerCase()];
   const comments = resource && resource.comments;
 
   return { 
