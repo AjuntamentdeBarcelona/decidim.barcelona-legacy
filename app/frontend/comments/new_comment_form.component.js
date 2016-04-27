@@ -9,7 +9,10 @@ class NewCommentForm extends Component {
     super(props);
 
     this.state = {
-      newCommentBody: ''
+      newComment: {
+        body: '',
+        alignment: "0"
+      }
     };
   }
 
@@ -21,16 +24,13 @@ class NewCommentForm extends Component {
 
       return (
         <div>
-          <form onSubmit={(e) => this.onSubmitNewComment(e)}>
+          <form className="new_comment" onSubmit={(e) => this.onSubmitNewComment(e)}>
             <label 
               forHtml={textAreaId}>
               Deixa el teu comentari
             </label>
-            <textarea 
-              id={textAreaId}
-              value={this.state.newCommentBody}
-              onChange={(e) => this.setState({ newCommentBody: e.target.value })}>
-            </textarea>
+            <textarea id={textAreaId} value={this.state.newComment.body} onChange={e => this.setBody(e.target.value)}></textarea>
+            {this.renderAlignmentRadioButtons()}
             <input 
               type="submit" 
               value="Publica resposta" 
@@ -43,6 +43,53 @@ class NewCommentForm extends Component {
     return null;
   }
 
+  renderAlignmentRadioButtons() {
+    const { commentable, parent } = this.props;
+
+    if (commentable.arguable && !parent) {
+      let positiveId = `comment-body-${parent && parent.id}-positive-alignment`,
+          neutralId  = `comment-body-${parent && parent.id}-neutral-alignment`,
+          negativeId = `comment-body-${parent && parent.id}-negative-alignment`;
+
+      return (
+        <div className="alignment">
+          <span className="alignment-input">
+            <input id={positiveId} type="radio" value="1" checked={this.state.newComment.alignment === "1"} onChange={e => this.setAlignment(e.target.value)} />
+            <label htmlFor={positiveId}>{I18n.t('comments.form.alignment.positive')}</label>
+          </span>
+          <span className="alignment-input">
+            <input id={neutralId} type="radio" value="0" checked={this.state.newComment.alignment === "0"} onChange={e => this.setAlignment(e.target.value)} />
+            <label htmlFor={neutralId}>{I18n.t('comments.form.alignment.neutral')}</label>
+          </span>
+          <span className="alignment-input">
+            <input id={negativeId} type="radio" value="-1" checked={this.state.newComment.alignment === "-1"} onChange={e => this.setAlignment(e.target.value)} />
+            <label htmlFor={negativeId}>{I18n.t('comments.form.alignment.negative')}</label>
+          </span>
+        </div>
+      );
+    }
+
+    return null;
+  }
+
+  setBody(body) {
+    this.setState({ 
+      newComment: { 
+        ...this.state.newComment, 
+        body
+      }
+    });
+  }
+
+  setAlignment(alignment) {
+    this.setState({ 
+      newComment: { 
+        ...this.state.newComment, 
+        alignment
+      }
+    });
+  }
+
   onSubmitNewComment(event) {
     const { commentable, parent, addNewComment } = this.props;
 
@@ -50,10 +97,10 @@ class NewCommentForm extends Component {
 
     addNewComment(commentable, {
       parent, 
-      body: this.state.newCommentBody 
+      newComment: this.state.newComment 
     });
 
-    this.setState({ newCommentBody: '' });
+    this.setState({ newComment: { body: '', alignment: "0" } })
   }
 }
 

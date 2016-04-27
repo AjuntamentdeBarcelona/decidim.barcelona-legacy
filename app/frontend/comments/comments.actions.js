@@ -25,11 +25,12 @@ export function appendCommentsPage({ id, type }, { page }) {
   };
 }
 
-export function addNewComment({ id, type }, { parent, body }) {
+export function addNewComment({ id, type }, { parent, newComment }) {
   const request = 
     axios.post(baseCommentableUrl({ id, type }), {
       comment: {
-        body,
+        body: newComment.body,
+        alignment: newComment.alignment,
         parent_id: parent && parent.id
       }
     });
