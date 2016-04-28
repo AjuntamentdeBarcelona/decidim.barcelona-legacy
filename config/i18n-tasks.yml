@@ -158,6 +158,7 @@ ignore_unused:
   - 'components.filter_option_group.*'
   - 'recaptcha.*'
   - 'components.proposal_answer_box.*'
+  - 'components.proposal_level_selector.level_*'
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'
