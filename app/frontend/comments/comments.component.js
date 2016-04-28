@@ -44,6 +44,7 @@ class Comments extends Component {
               </h2>
               <CommentsOrderSelector />
             </div>
+            {this.renderSignInWarning()}
             <NewCommentForm 
               commentable={commentable}
               visible={commentable.permissions.comment} />
@@ -55,6 +56,23 @@ class Comments extends Component {
         </div>
       </section>
     );
+  }
+
+  renderSignInWarning() {
+    const { session } = this.props;
+
+    if (!session.signed_in) {
+      return (
+        <div 
+          className="alert-box radius info"
+          dangerouslySetInnerHTML={{ __html: I18n.t('proposals.show.login_to_comment', {
+            signin: `<a href="/users/sign_in">${I18n.t("votes.signin")}</a>`,
+            signup: `<a href="/users/sign_up">${I18n.t("votes.signup")}</a>`
+          })}} />
+      );
+    }
+
+    return null;
   }
 
   renderSummary() {
@@ -163,6 +181,7 @@ function mapStateToProps(state, { commentable }) {
   const comments = resource && resource.comments;
 
   return { 
+    session: state.session,
     pagination: state.pagination,
     order: state.order,
     comments
