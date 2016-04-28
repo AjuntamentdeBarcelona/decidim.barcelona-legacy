@@ -101,13 +101,26 @@ export const proposal = function (state = {}, action) {
       return state;
     case FETCH_COMMENTS:
     case APPEND_COMMENTS_PAGE:
-    case ADD_NEW_COMMENT:
     case FLAG_COMMENT:
     case UNFLAG_COMMENT:
     case UPVOTE_COMMENT:
     case DOWNVOTE_COMMENT:
       return {
         ...state,
+        comments: comments(state.comments, action)
+      };
+    case ADD_NEW_COMMENT:
+      let comment = action.payload.data.comment;
+
+      return {
+        ...state,
+        total_comments: state.total_comments + 1,
+        total_positive_comments: comment.alignment > 0 ? 
+          state.total_positive_comments + 1 : state.total_positive_comments,
+        total_negative_comments: comment.alignment < 0 ? 
+          state.total_negative_comments + 1 : state.total_negative_comments,
+        total_neutral_comments: comment.alignment === 0 ? 
+          state.total_neutral_comments + 1 : state.total_neutral_comments,
         comments: comments(state.comments, action)
       };
     case HIDE_PROPOSAL_AUTHOR:

@@ -33,7 +33,10 @@ class Comments extends Component {
       <section className="row-full comments">
         <div className="row">
           <div id="comments" className="small-12 column">
-            <h2>{I18n.t("proposals.show.comments_title")}</h2>
+            <h2>
+              {I18n.t("proposals.show.comments_title")}
+              ({this.renderSummary()})
+            </h2>
             <NewCommentForm 
               commentable={commentable}
               visible={commentable.permissions.comment} />
@@ -45,6 +48,33 @@ class Comments extends Component {
         </div>
       </section>
     );
+  }
+
+  renderSummary() {
+    const { commentable } = this.props;
+
+    if (commentable.arguable) {
+      return (
+        <span>
+          {I18n.t('comments.form.alignment.positive')}:
+          <span className="js-comments-count positive">
+          {` ${commentable.total_positive_comments}`}
+          </span>,
+          {` ${I18n.t('comments.form.alignment.negative')}`}: 
+          <span className="js-comments-count negative">
+          {` ${commentable.total_negative_comments}`}
+          </span>,
+          {` ${I18n.t('comments.form.alignment.neutral')}`}: 
+          <span className="js-comments-count neutral">
+          {` ${commentable.total_neutral_comments}`}
+          </span>
+        </span>
+      );
+    } else {
+      return (
+        <span>{commentable.total_comments}</span>
+      );
+    }
   }
 
   renderComments() {
@@ -72,8 +102,12 @@ class Comments extends Component {
 
   flattenComments(comments) {
     if (comments) {
-      let rootComments = comments.filter(c => c.ancestry === null).map(c => Object.assign({}, c)),
-          childComments = comments.filter(c => c.ancestry !== null).map(c => Object.assign({}, c));
+      let rootComments = comments
+            .filter(c => c.ancestry === null)
+            .map(c => { return { ...c }}),
+          childComments = comments
+            .filter(c => c.ancestry !== null)
+            .map(c => { return { ...c }});
 
       childComments.forEach(c => {
         let ancestry = c.ancestry.split("/"),

@@ -28,7 +28,8 @@ class NewCommentForm extends Component {
     const { parent } = this.props;
 
     if (this.state.visible) {
-      let textAreaId = `comment-body-${parent && parent.id}`;
+      let textAreaId = `comment-body-${parent ? parent.id : 'root'}`,
+          submitButtonText = parent ? I18n.t("comments_helper.reply_button") : I18n.t("comments_helper.comment_button");
 
       return (
         <div>
@@ -43,7 +44,7 @@ class NewCommentForm extends Component {
             <input 
               disabled={this.state.newComment.body === ''}
               type="submit" 
-              value="Publica resposta" 
+              value={submitButtonText} 
               className="button radius small inline-block" />
           </form>
         </div>
@@ -57,9 +58,9 @@ class NewCommentForm extends Component {
     const { commentable, parent } = this.props;
 
     if (commentable.arguable && !parent) {
-      let positiveId = `comment-body-${parent && parent.id}-positive-alignment`,
-          neutralId  = `comment-body-${parent && parent.id}-neutral-alignment`,
-          negativeId = `comment-body-${parent && parent.id}-negative-alignment`;
+      let positiveId = `comment-body-${parent ? parent.id : 'root'}-positive-alignment`,
+          neutralId  = `comment-body-${parent ? parent.id : 'root'}-neutral-alignment`,
+          negativeId = `comment-body-${parent ? parent.id : 'root'}-negative-alignment`;
 
       return (
         <div className="alignment">

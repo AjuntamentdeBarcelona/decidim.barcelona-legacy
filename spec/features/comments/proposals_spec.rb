@@ -1,7 +1,7 @@
 require 'rails_helper'
 include ActionView::Helpers::DateHelper
 
-feature 'Commenting proposals' do
+feature 'Commenting proposals', :js do
   let(:user)   { create :user }
   let(:proposal) { create :proposal }
 
@@ -133,11 +133,11 @@ feature 'Commenting proposals' do
     end
   end
 
-  scenario 'Create a neutral comment', :js do
+  scenario 'Create a neutral comment' do
     login_as(user)
     visit proposal_path(proposal)
 
-    fill_in "comment-body-proposal_#{proposal.id}", with: 'Have you thought about...?'
+    fill_in "comment-body-root", with: 'Have you thought about...?'
     click_button 'Publish comment'
 
     within "#comments" do
@@ -146,7 +146,7 @@ feature 'Commenting proposals' do
     end
   end
 
-  scenario 'Create a comment in favor', :js do
+  scenario 'Create a comment in favor' do
     login_as(user)
     visit proposal_path(proposal)
 
@@ -160,7 +160,7 @@ feature 'Commenting proposals' do
     end
   end
 
-  scenario 'Create a comment against', :js do
+  scenario 'Create a comment against' do
     login_as(user)
     visit proposal_path(proposal)
 
@@ -174,7 +174,7 @@ feature 'Commenting proposals' do
     end
   end
 
-  scenario 'Errors on create', :js do
+  scenario 'Errors on create' do
     login_as(user)
     visit proposal_path(proposal)
 
@@ -183,7 +183,7 @@ feature 'Commenting proposals' do
     expect(page).to have_content "Can't be blank"
   end
 
-  scenario 'Reply', :js do
+  scenario 'Reply' do
     citizen = create(:user, username: 'Ana')
     manuela = create(:user, username: 'Manuela')
     comment = create(:comment, commentable: proposal, user: citizen)
@@ -205,7 +205,7 @@ feature 'Commenting proposals' do
     expect(page).to_not have_selector("#js-comment-form-comment_#{comment.id}", visible: true)
   end
 
-  scenario 'Errors on reply', :js do
+  scenario 'Errors on reply' do
     comment = create(:comment, commentable: proposal, user: user)
 
     login_as(user)
@@ -220,7 +220,7 @@ feature 'Commenting proposals' do
 
   end
 
-  scenario "N replies", :js do
+  scenario "N replies" do
     parent = create(:comment, commentable: proposal)
 
     7.times do
@@ -229,10 +229,11 @@ feature 'Commenting proposals' do
     end
 
     visit proposal_path(proposal)
-    expect(page).to have_css(".comment.comment.comment.comment.comment.comment.comment.comment")
+    expect(page).not_to have_css('.loading-component')
+    expect(page).to have_css('.comments_list .comment', count: 8)
   end
 
-  scenario "Flagging as inappropriate", :js do
+  scenario "Flagging as inappropriate" do
     comment = create(:comment, commentable: proposal)
 
     login_as(user)
@@ -248,7 +249,7 @@ feature 'Commenting proposals' do
     expect(Flag.flagged?(user, comment)).to be
   end
 
-  scenario "Undoing flagging as inappropriate", :js do
+  scenario "Undoing flagging as inappropriate" do
     comment = create(:comment, commentable: proposal)
     Flag.flag(user, comment)
 
@@ -265,7 +266,7 @@ feature 'Commenting proposals' do
     expect(Flag.flagged?(user, comment)).to_not be
   end
 
-  scenario "Flagging turbolinks sanity check", :js do
+  scenario "Flagging turbolinks sanity check" do
     proposal = create(:proposal, title: "Should we change the world?")
     comment = create(:comment, commentable: proposal)
 
@@ -292,7 +293,7 @@ feature 'Commenting proposals' do
   end
 
   feature "Moderators" do
-    scenario "can create comment as a moderator", :js do
+    scenario "can create comment as a moderator" do
       moderator = create(:moderator)
 
       login_as(moderator)
@@ -309,7 +310,7 @@ feature 'Commenting proposals' do
       end
     end
 
-    scenario "can create reply as a moderator", :js do
+    scenario "can create reply as a moderator" do
       citizen = create(:user, username: "Ana")
       moderator = create(:moderator, username: "Manuela")
       comment = create(:comment, commentable: proposal, user: citizen)
@@ -345,7 +346,7 @@ feature 'Commenting proposals' do
   end
 
   feature "Administrators" do
-    scenario "can create comment as an administrator", :js do
+    scenario "can create comment as an administrator" do
       admin = create(:administrator)
 
       login_as(admin)
@@ -362,7 +363,7 @@ feature 'Commenting proposals' do
       end
     end
 
-    scenario "can create reply as an administrator", :js do
+    scenario "can create reply as an administrator" do
       citizen = create(:user, username: "Ana")
       admin = create(:administrator, username: "Manuela")
       comment = create(:comment, commentable: proposal, user: citizen)
@@ -427,7 +428,7 @@ feature 'Commenting proposals' do
       end
     end
 
-    scenario 'Create', :js do
+    scenario 'Create' do
       visit proposal_path(@proposal)
 
       within("#comment_#{@comment.id}_votes") do
@@ -445,7 +446,7 @@ feature 'Commenting proposals' do
       end
     end
 
-    scenario 'Update', :js do
+    scenario 'Update' do
       visit proposal_path(@proposal)
 
       within("#comment_#{@comment.id}_votes") do
@@ -464,7 +465,7 @@ feature 'Commenting proposals' do
       end
     end
 
-    scenario 'Trying to vote multiple times', :js do
+    scenario 'Trying to vote multiple times' do
       visit proposal_path(@proposal)
 
       within("#comment_#{@comment.id}_votes") do
