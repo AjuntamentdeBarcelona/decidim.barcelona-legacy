@@ -19,7 +19,7 @@ class Api::CommentsController < Api::ApplicationController
 
     child_comments = []
     @root_comments.each do |comment|
-      child_comments << Comment.descendants_of(comment)
+      child_comments << Comment.descendants_of(comment).send("sort_by_#{@current_order}")
     end
 
     comments = (@root_comments + child_comments).flatten

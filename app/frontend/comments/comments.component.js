@@ -88,7 +88,7 @@ class Comments extends Component {
     const { commentable } = this.props;
     const comments = this.flattenComments(this.props.comments);
 
-    if (comments && comments.length > 0) {
+    if (!this.state.loading && comments && comments.length > 0) {
       return (
         <div>
           {

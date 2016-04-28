@@ -22,7 +22,7 @@ class CommentsOrderSelector extends Component {
             </label>
           </div>
           <div className="small-12 medium-8 left">
-            <select value={order} onChange={e => setOrder(e.target.value)}>
+            <select id="comments-order-selector" value={order} onChange={e => setOrder(e.target.value)}>
               <option value="most_voted">{I18n.t("comments.orders.most_voted")}</option>
               <option value="newest">{I18n.t("comments.orders.newest")}</option>
               <option value="oldest">{I18n.t("comments.orders.oldest")}</option>

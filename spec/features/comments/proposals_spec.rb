@@ -40,17 +40,21 @@ feature 'Commenting proposals', :js do
     c2 = create(:comment, :with_confidence_score, commentable: proposal, cached_votes_up: 10, cached_votes_total: 12, created_at: Time.now - 1)
     c3 = create(:comment, :with_confidence_score, commentable: proposal, cached_votes_up: 1, cached_votes_total: 2, created_at: Time.now)
 
-    visit proposal_path(proposal, order: :most_voted)
+    visit proposal_path(proposal)
+
+    expect(page).to have_css(".comment", count: 3)
 
     expect(c1.body).to appear_before(c2.body)
     expect(c2.body).to appear_before(c3.body)
 
-    visit proposal_path(proposal, order: :newest)
+    select 'Newest first', from: 'comments-order-selector'
+    expect(page).to have_css(".comment", count: 3)
 
     expect(c3.body).to appear_before(c2.body)
     expect(c2.body).to appear_before(c1.body)
 
-    visit proposal_path(proposal, order: :oldest)
+    select 'Oldest first', from: 'comments-order-selector'
+    expect(page).to have_css(".comment", count: 3)
 
     expect(c1.body).to appear_before(c2.body)
     expect(c2.body).to appear_before(c3.body)
@@ -62,17 +66,21 @@ feature 'Commenting proposals', :js do
    old_child = create(:comment, commentable: proposal, parent_id: new_root.id, created_at: Time.now - 10)
    new_child = create(:comment, commentable: proposal, parent_id: new_root.id, created_at: Time.now)
 
-   visit proposal_path(proposal, order: :most_voted)
+   visit proposal_path(proposal)
 
-   expect(new_root.body).to appear_before(old_root.body)
-   expect(old_child.body).to appear_before(new_child.body)
-
-   visit proposal_path(proposal, order: :newest)
+   expect(page).to have_css(".comment", count: 4)
 
    expect(new_root.body).to appear_before(old_root.body)
    expect(new_child.body).to appear_before(old_child.body)
 
-   visit proposal_path(proposal, order: :oldest)
+   select 'Newest first', from: 'comments-order-selector'
+   expect(page).to have_css(".comment", count: 4)
+
+   expect(new_root.body).to appear_before(old_root.body)
+   expect(new_child.body).to appear_before(old_child.body)
+
+   select 'Oldest first', from: 'comments-order-selector'
+   expect(page).to have_css(".comment", count: 4)
 
    expect(old_root.body).to appear_before(new_root.body)
    expect(old_child.body).to appear_before(new_child.body)
