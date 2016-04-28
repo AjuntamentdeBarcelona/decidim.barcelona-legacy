@@ -9,6 +9,5 @@ export default ({ onChangeLevel, selectedValue }) => (
     <option value={null}>{ I18n.t('components.proposal_level_selector.default' )}</option>
     { renderOption(1) }
     { renderOption(2) }
-    { renderOption(3) }
   </select>
 )

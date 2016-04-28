@@ -100,7 +100,6 @@ es:
       default: Sin determinar
       level_1: Total
       level_2: Parcial
-      level_3: Tangencial
     proposals:
       count: Mostrando %{count} propuestas
     proposals_autocomplete_input:
