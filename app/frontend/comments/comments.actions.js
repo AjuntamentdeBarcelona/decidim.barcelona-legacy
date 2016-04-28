@@ -9,9 +9,9 @@ export const UNFLAG_COMMENT       = 'UNFLAG_COMMENT';
 export const UPVOTE_COMMENT       = 'UPVOTE_COMMENT';
 export const DOWNVOTE_COMMENT     = 'DOWNVOTE_COMMENT';
 
-export function fetchComments({ id, type }) {
+export function fetchComments({ id, type }, { order }) {
   const request = 
-    axios.get(baseCommentableUrl({ id, type }));
+    axios.get(`${baseCommentableUrl({ id, type })}&order=${order}`);
 
   return {
     type: FETCH_COMMENTS,
@@ -19,9 +19,9 @@ export function fetchComments({ id, type }) {
   };
 }
 
-export function appendCommentsPage({ id, type }, { page }) {
+export function appendCommentsPage({ id, type }, { order, page }) {
   const request = 
-    axios.get(`${baseCommentableUrl({ id, type })}&page=${page}`);
+    axios.get(`${baseCommentableUrl({ id, type })}&order=${order}&page=${page}`);
 
   return {
     type: APPEND_COMMENTS_PAGE,

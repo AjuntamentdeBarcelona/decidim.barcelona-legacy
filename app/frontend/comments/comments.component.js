@@ -6,6 +6,7 @@ import { fetchComments, appendCommentsPage } from './comments.actions';
 
 import Loading                               from '../application/loading.component';
 import InfinitePagination                    from '../pagination/infinite_pagination.component';
+import CommentsOrderSelector                 from './comments_order_selector.component';
 import Comment                               from './comment.component';
 import NewCommentForm                        from './new_comment_form.component';
 
@@ -17,13 +18,16 @@ class Comments extends Component {
       loading: true
     }
   }
-  
-  componentDidMount() {
-    const { commentable, fetchComments } = this.props;
 
-    fetchComments(commentable).then(() => {
-      this.setState({ loading: false });
-    });
+  componentWillReceiveProps(newProps) {
+    const { order, commentable, fetchComments } = this.props;
+
+    if (order !== newProps.order) {
+      this.setState({ loading: true });
+      fetchComments(commentable, { order: newProps.order } ).then(() => {
+        this.setState({ loading: false });
+      });
+    }
   }
 
   render() {
@@ -33,10 +37,13 @@ class Comments extends Component {
       <section className="row-full comments">
         <div className="row">
           <div id="comments" className="small-12 column">
-            <h2>
-              {I18n.t("proposals.show.comments_title")}
-              ({this.renderSummary()})
-            </h2>
+            <div className="row">
+              <h2 className="small-12 medium-8 column">
+                {`${I18n.t("proposals.show.comments_title")} `}
+                ({this.renderSummary()})
+              </h2>
+              <CommentsOrderSelector />
+            </div>
             <NewCommentForm 
               commentable={commentable}
               visible={commentable.permissions.comment} />
@@ -133,7 +140,7 @@ class Comments extends Component {
   }
 
   renderInfinitePagination() {
-    const { commentable, pagination, appendCommentsPage } = this.props;
+    const { commentable, order, pagination, appendCommentsPage } = this.props;
 
     let infinitePaginationActive = !this.state.loading && pagination.current_page < pagination.total_pages;
 
@@ -141,7 +148,8 @@ class Comments extends Component {
       return (
         <InfinitePagination 
           onVisible={() => appendCommentsPage(commentable, { 
-            page: pagination.current_page + 1
+            page: pagination.current_page + 1,
+            order
           })} /> 
       );
     }
@@ -156,6 +164,7 @@ function mapStateToProps(state, { commentable }) {
 
   return { 
     pagination: state.pagination,
+    order: state.order,
     comments
   };
 }

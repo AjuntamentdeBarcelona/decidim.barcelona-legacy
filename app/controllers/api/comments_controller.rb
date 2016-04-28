@@ -7,12 +7,13 @@ class Api::CommentsController < Api::ApplicationController
   authorize_resource except: [:upvote, :downvote]
 
   def index
+    @current_order = params[:order] || 'most_voted'
     @root_comments = Comment.includes(:user).where({
       ancestry: nil,
       commentable_id: params[:commentable][:id],
       commentable_type: params[:commentable][:type]
     })
-    .sort_by_most_voted
+    .send("sort_by_#{@current_order}")
     .page(params[:page])
     .per(20)
 
