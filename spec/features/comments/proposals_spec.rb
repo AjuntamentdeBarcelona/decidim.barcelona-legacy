@@ -257,8 +257,8 @@ feature 'Commenting proposals', :js do
       login_as(moderator)
       visit proposal_path(proposal)
 
-      fill_in "comment-body-proposal_#{proposal.id}", with: "I am moderating!"
-      check "comment-as-moderator-proposal_#{proposal.id}"
+      fill_in "comment-body-root", with: "I am moderating!"
+      check "comment-as-moderator-root"
       click_button "Publish comment"
 
       within "#comments" do
@@ -279,9 +279,9 @@ feature 'Commenting proposals', :js do
       expect(page).to have_css("#comment_#{comment.id}")
       page.find('a.reply').click
 
-      within "#js-comment-form-comment_#{comment.id}" do
-        fill_in "comment-body-comment_#{comment.id}", with: "I am moderating!"
-        check "comment-as-moderator-comment_#{comment.id}"
+      within "#comment_#{comment.id}" do
+        fill_in "comment-body-#{comment.id}", with: "I am moderating!"
+        check "comment-as-moderator-#{comment.id}"
         click_button 'Publish reply'
       end
 
@@ -291,7 +291,7 @@ feature 'Commenting proposals', :js do
         expect(page).to have_css "img.moderator-avatar"
       end
 
-      expect(page).to_not have_selector("#js-comment-form-comment_#{comment.id}", visible: true)
+      expect(page).to_not have_selector("#comment_#{comment.id} .new_comment")
     end
 
     scenario "can not comment as an administrator" do
@@ -311,11 +311,11 @@ feature 'Commenting proposals', :js do
       login_as(admin)
       visit proposal_path(proposal)
 
-      fill_in "comment-body-proposal_#{proposal.id}", with: "I am your Admin!"
-      check "comment-as-administrator-proposal_#{proposal.id}"
+      fill_in "comment-body-root", with: "I am your Admin!"
+      check "comment-as-administrator-root"
       click_button "Publish comment"
 
-      within "#comments" do
+      within ".comments_list" do
         expect(page).to have_content "I am your Admin!"
         expect(page).to have_content "Administrator ##{admin.id}"
         expect(page).to have_css "img.admin-avatar"
@@ -330,11 +330,12 @@ feature 'Commenting proposals', :js do
       login_as(admin)
       visit proposal_path(proposal)
 
-      click_link "Reply"
+      expect(page).to have_css("#comment_#{comment.id}")
+      page.find('a.reply').click
 
-      within "#js-comment-form-comment_#{comment.id}" do
-        fill_in "comment-body-comment_#{comment.id}", with: "Top of the world!"
-        check "comment-as-administrator-comment_#{comment.id}"
+      within "#comment_#{comment.id}" do
+        fill_in "comment-body-#{comment.id}", with: "Top of the world!"
+        check "comment-as-administrator-#{comment.id}"
         click_button 'Publish reply'
       end
 
