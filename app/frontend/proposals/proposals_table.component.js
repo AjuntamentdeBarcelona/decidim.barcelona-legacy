@@ -2,42 +2,29 @@ import { Component } from 'react';
 
 import DangerLink    from '../application/danger_link.component';
 import ProposalBadge from './proposal_badge.component';
-import ProposalLevelSelector from '../action_plans/proposal_level_selector.component';
 
 export default class ProposalsTable extends Component {
   render() {
-    const { actionPlansProposals } = this.props;
+    const { proposals } = this.props;
 
     return (
-      <table className="proposals-table">
+      <table>
         <tbody>
           {
-            actionPlansProposals.sort((a, b) => b.proposal.total_votes - a.proposal.total_votes).map(actionPlansProposal => {
-              let proposal = actionPlansProposal.proposal;
-              return (
-                <tr key={proposal.id}>
+            proposals.sort((a, b) => b.total_votes - a.total_votes).map(proposal =>
+              <tr key={proposal.id}>
                 <td>
-                    <ProposalBadge proposal={proposal} />
+                  <ProposalBadge proposal={proposal} />
                 </td>
                 <td>
-                    {proposal.code} - <a href={proposal.url} target="_blank">{proposal.title}</a>
-                    <div>{proposal.summary}</div>
+                  {proposal.code} - <a href={proposal.url} target="_blank">{proposal.title}</a>
+                  <div>{proposal.summary}</div>
                 </td>
-                <td className="selector">
-                  <ProposalLevelSelector
-                    onChangeLevel={ (level) => this.props.onChangeLevel(proposal, level) }
-                    selectedValue={ actionPlansProposal.level }
-                  />
-                </td>
-                <td className="proposal-stats">
-                    {I18n.t("components.action_plan_proposals.votes", { votes: proposal.total_votes})}
-                    <br />
-                    {I18n.t("components.action_plan_proposals.comments", { comments: proposal.total_comments})}
-                </td>
+                <td>{I18n.t("components.action_plan_proposals.votes", { votes: proposal.total_votes})}</td>
+                <td>{I18n.t("components.action_plan_proposals.comments", { comments: proposal.total_comments})}</td>
                 {this.renderRemoveButton(proposal)}
-                </tr>
-              )
-              })
+              </tr>
+            )
           }
         </tbody>
       </table>

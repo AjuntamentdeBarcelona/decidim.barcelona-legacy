@@ -3,7 +3,7 @@ import { bindActionCreators }     from 'redux';
 import { connect }                from 'react-redux';
 
 import ProposalsAutocompleteInput from '../proposals/proposals_autocomplete_input.component';
-import ProposalsTable             from '../proposals/proposals_table.component';
+import ProposalsTable             from './proposals_table.component';
 
 import { 
   addActionPlanProposal,
