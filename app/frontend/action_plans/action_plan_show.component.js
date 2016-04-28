@@ -69,7 +69,7 @@ class ActionPlanShow extends Component {
             <div className="small-12 medium-12 column">
               <i className="icon-angle-left left"></i>&nbsp;
 
-              <a className="left back" href="/action_plans">
+              <a className="left back" href="/action_plans" onClick={() => window.history.back()}>
                 {I18n.t('proposals.show.back_link')}
               </a>
 

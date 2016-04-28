@@ -87,7 +87,7 @@ function getInitialFiltersState() {
 
       values = values.split(",");
 
-      if (name === "district_id" || name === "category_id" || name === "subcategory_id"){
+      if (name === "district" || name === "category_id" || name === "subcategory_id"){
         values = values.map((x) => parseInt(x, 10));
       }
 
