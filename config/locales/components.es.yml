@@ -96,6 +96,11 @@ es:
       votes: "%{votes} soportes"
     proposal_filters:
       clean_filters: Limpiar filtro
+    proposal_level_selector:
+      default: Sin determinar
+      level_1: Total
+      level_2: Parcial
+      level_3: Tangencial
     proposals:
       count: Mostrando %{count} propuestas
     proposals_autocomplete_input:

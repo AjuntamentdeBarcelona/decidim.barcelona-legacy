@@ -86,6 +86,17 @@ export function removeActionPlanProposal(actionPlanId, proposal) {
   };
 }
 
+export function changeActionPlansProposalLevel(actionPlan, proposal, level) {
+  const request = axios.put(`${API_BASE_URL}/action_plans/${actionPlan.id}/proposals/${proposal.id}.json`, {
+    level: parseInt(level)
+  });
+
+  return {
+    type: REMOVE_ACTION_PLAN_PROPOSAL,
+    payload: request
+  };
+}
+
 export function buildActionPlansRequestParams(options = {}){
   let filterString = [], 
       filters,

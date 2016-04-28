@@ -38,11 +38,11 @@ export const actionPlan = function (state = {}, action) {
     case FETCH_ACTION_PLAN_PROPOSALS:
     case ADD_ACTION_PLAN_PROPOSAL:
     case REMOVE_ACTION_PLAN_PROPOSAL:
-      let proposals = action.payload.data.proposals;
+      let actionPlansProposals = action.payload.data.action_plans_proposals;
 
       return {
         ...state,
-        proposals
+        actionPlansProposals
       };
     case DELETE_ACTION_PLAN:
       return {

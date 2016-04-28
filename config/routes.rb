@@ -290,7 +290,7 @@ Rails.application.routes.draw do
       end
     end
     resources :action_plans do
-      resources :proposals, only: [:index, :create, :destroy], controller: 'action_plans/proposals'
+      resources :proposals, controller: 'action_plans/proposals'
     end
     resources :meetings, only: [:index]
     resources :follows, only: [:index, :create, :destroy]

@@ -96,6 +96,11 @@ ca:
       votes: "%{votes} suports"
     proposal_filters:
       clean_filters: Netejar filtre
+    proposal_level_selector:
+      default: Sense determinar
+      level_1: Total
+      level_2: Parcial
+      level_3: Tangencial
     proposals:
       count: Mostrant %{count} propostes
     proposals_autocomplete_input:
