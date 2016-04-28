@@ -38,15 +38,12 @@ class Api::CommentsController < Api::ApplicationController
   end
 
   def create
-    @comment.save
-    render json: @comment
-    #if can?(:comment, @commentable) && @comment.save
-    #  CommentNotifier.new(comment: @comment).process
-    #  CommentReferencesWorker.perform_async(@comment.id)
-    #  add_notification @comment
-    #else
-    #  render :new
-    #end
+    if can?(:comment, @commentable) && @comment.save
+      CommentNotifier.new(comment: @comment).process
+      CommentReferencesWorker.perform_async(@comment.id)
+      add_notification @comment
+      render json: @comment
+    end
   end
 
   def flag
@@ -100,7 +97,12 @@ class Api::CommentsController < Api::ApplicationController
     params.require(:comment).permit(*permits)
   end
 
-  #def set_comment_flags(comments)
-  #  @comment_flags = current_user ? current_user.comment_flags(comments) : {}
-  #end
+  def add_notification(comment)
+    if comment.reply?
+      notifiable = comment.parent
+    else
+      notifiable = comment.commentable
+    end
+    Notification.add(notifiable.author_id, notifiable) unless comment.author_id == notifiable.author_id
+ end
 end

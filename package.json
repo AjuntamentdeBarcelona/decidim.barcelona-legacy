@@ -24,6 +24,7 @@
     "react-addons-test-utils": "^0.14.6",
     "react-autocomplete": "^1.0.0-rc2",
     "react-dom": "^0.14.6",
+    "react-helmet": "^3.1.0",
     "react-quill": "^0.4.1",
     "react-redux": "^4.0.0",
     "react-share": "^1.4.1",

@@ -3,7 +3,8 @@ class ProposalSerializer < ActiveModel::Serializer
     :total_votes, :voted, :votable, :closed, :official, :from_meeting,
     :editable, :conflictive?, :external_url, :hidden?, :can_hide, :can_hide_author,
     :flagged, :code, :arguable?, :permissions,
-    :total_comments, :total_positive_comments, :total_negative_comments, :total_neutral_comments
+    :total_comments, :total_positive_comments, :total_negative_comments, :total_neutral_comments,
+    :social_media_image_url
 
   has_one :category
   has_one :subcategory
@@ -71,6 +72,10 @@ class ProposalSerializer < ActiveModel::Serializer
 
   def district
     District.find(object.district)
+  end
+
+  def social_media_image_url
+    scope && scope.asset_url('social-media-icon.png')
   end
 
   def permissions

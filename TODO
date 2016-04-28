@@ -1,1 +1,8 @@
-rspec ./spec/features/comments/proposals_spec.rb:111 # Commenting proposals Not logged user can not see comments forms
+rspec ./spec/features/proposals_spec.rb:82 # Proposals Social Media Cards
+rspec ./spec/features/proposals_spec.rb:64 # Proposals Show
+rspec ./spec/features/proposals_spec.rb:525 # Proposals Flagging
+rspec ./spec/features/proposals_spec.rb:539 # Proposals Unflagging
+rspec ./spec/features/notifications_spec.rb:33 # Notifications Multiple comments on my proposal
+rspec ./spec/features/debates_spec.rb:120 # Debates JS injection is prevented but safe html is respected
+rspec ./spec/features/admin/activity_spec.rb:11 # Admin activity Proposals Shows moderation activity on proposals
+

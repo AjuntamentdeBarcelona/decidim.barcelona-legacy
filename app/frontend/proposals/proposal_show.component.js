@@ -8,6 +8,8 @@ import {
   hideProposalAuthor
 } from './proposals.actions';
 
+import Helmet               from "react-helmet";
+
 import Loading              from '../application/loading.component';
 import SocialShareButtons   from '../application/social_share_buttons.component';
 import DangerLink           from '../application/danger_link.component';
@@ -81,11 +83,30 @@ class ProposalShow extends Component {
         can_hide_author,
         flagged,
         follow,
-        arguable
+        arguable,
+        social_media_image_url
       } = proposal;
 
       return (
         <div>
+          <Helmet
+            title={title}
+            meta={[
+              { name: "twitter:card", content: "summary" },
+              { name: "twitter:site", content: "bcn_ajuntament" },
+              { name: "twitter:title", content: title },
+              { name: "twitter:description", content: summary },
+              { name: "twitter:image", content: social_media_image_url },
+              { id: "ogtitle", property: "og:title", content: title },
+              { property: "article:publisher", content: "https://decidim.barcelona"},
+              { property: "article:author", content: "https://www.facebook.com/bcn.cat"},
+              { property: "og:type", content: "article" },
+              { id: "ogimage", property: "og:image", content: social_media_image_url },
+              { property: "og:site_name", content: "decidim.barcelona" },
+              { id: "ogdescription", property: "og:description", content: summary },
+              { property: "fb:app_id", content: "929041747208547"}
+            ]}
+          />
           <div className={(hidden || author.hidden) ? 'row faded' : 'row'} id={`proposal_${proposal.id}`}>
             <div className="small-12 medium-9 column">
               <i className="icon-angle-left left"></i>&nbsp;
