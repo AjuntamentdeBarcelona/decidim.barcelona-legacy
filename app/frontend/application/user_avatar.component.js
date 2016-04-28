@@ -10,10 +10,9 @@ const FIRST_LETTER_CHAR_CODE = 'A'.charCodeAt();
 
 export default ({
   user,
-  as
+  role
 }) => {
-  if (user.avatar_image) {
-    const role = as || user.role;
+  if (role && user.avatar_image) {
     const cssClasses = classNames(
       'left',
       {

@@ -10,13 +10,15 @@ class NewCommentForm extends Component {
   constructor(props) {
     super(props);
 
+    this.newCommentTemplate = {
+      body: '',
+      alignment: "0"
+    };
+
     this.state = {
       visible: this.props.visible,
       loading: false,
-      newComment: {
-        body: '',
-        alignment: "0"
-      }
+      newComment: { ...this.newCommentTemplate }
     };
   }
 
@@ -36,11 +38,15 @@ class NewCommentForm extends Component {
           <form className="new_comment" onSubmit={(e) => this.onSubmitNewComment(e)}>
             <Loading show={this.state.loading} />
             <label 
-              forHtml={textAreaId}>
+              htmlFor={textAreaId}>
               Deixa el teu comentari
             </label>
             <textarea id={textAreaId} value={this.state.newComment.body} onChange={e => this.setBody(e.target.value)}></textarea>
             {this.renderAlignmentRadioButtons()}
+            {this.renderCommentAsModerator()}
+            <span className="right">&nbsp;&nbsp;</span>
+            {this.renderCommentAsAdministrator()}
+            <span className="right">&nbsp;&nbsp;</span>
             <input 
               disabled={this.state.newComment.body === ''}
               type="submit" 
@@ -101,6 +107,66 @@ class NewCommentForm extends Component {
     });
   }
 
+  renderCommentAsModerator() {
+    const { commentable, parent } = this.props;
+
+    if (commentable.permissions.comment_as_moderator) {
+      let checkboxId = `comment-as-moderator-${parent ? parent.id : 'root'}`;
+
+      return (
+        <div className="right">
+          <input 
+            type="checkbox" 
+            id={checkboxId} 
+            checked={this.state.newComment.as_moderator} 
+            onChange={e => this.setCommentAsModerator(e.target.checked)} />
+          <label className="checkbox" htmlFor={checkboxId}>{I18n.t("comments.form.comment_as_moderator")}</label>
+        </div>
+      );
+    }
+
+    return null;
+  }
+
+  setCommentAsModerator(as_moderator) {
+    this.setState({ 
+      newComment: { 
+        ...this.state.newComment, 
+        as_moderator
+      }
+    });
+  }
+
+  renderCommentAsAdministrator() {
+    const { commentable, parent } = this.props;
+
+    if (commentable.permissions.comment_as_administrator) {
+      let checkboxId = `comment-as-administrator-${parent ? parent.id : 'root'}`;
+
+      return (
+        <div className="right">
+          <input 
+            type="checkbox" 
+            id={checkboxId} 
+            checked={this.state.newComment.as_administrator} 
+            onChange={e => this.setCommentAsAdministrator(e.target.checked)} />
+          <label className="checkbox" htmlFor={checkboxId}>{I18n.t("comments.form.comment_as_admin")}</label>
+        </div>
+      );
+    }
+
+    return null;
+  }
+
+  setCommentAsAdministrator(as_administrator) {
+    this.setState({ 
+      newComment: { 
+        ...this.state.newComment, 
+        as_administrator
+      }
+    });
+  }
+
   onSubmitNewComment(event) {
     const { commentable, parent, addNewComment } = this.props;
 
@@ -116,7 +182,7 @@ class NewCommentForm extends Component {
       }
     });
 
-    this.setState({ loading: true, newComment: { body: '', alignment: "0" } })
+    this.setState({ loading: true, newComment: { ...this.newCommentTemplate }})
   }
 }
 
@@ -125,3 +191,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(null, mapDispatchToProps)(NewCommentForm);
+//<% if can? :comment_as_administrator, commentable %>
+//  <div class="right">
+//    <%= f.check_box :as_administrator, id: "comment-as-administrator-#{css_id}",label: false %>
+//    <%= label_tag "comment-as-administrator-#{css_id}", t("comments.form.comment_as_admin"), class: "checkbox" %>
+//  </div>
+//<% end %>

@@ -33,8 +33,7 @@ export function addNewComment({ id, type }, { parent, newComment }) {
   const request = 
     axios.post(baseCommentableUrl({ id, type }), {
       comment: {
-        body: newComment.body,
-        alignment: newComment.alignment,
+        ...newComment,
         parent_id: parent && parent.id
       }
     });

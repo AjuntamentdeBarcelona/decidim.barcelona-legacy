@@ -80,19 +80,21 @@ class Api::CommentsController < Api::ApplicationController
   
   def build_comment
     @comment = Comment.build(@commentable, current_user, comment_params)
-    #check_for_special_comments
+    check_for_special_comments
   end
 
-  #def check_for_special_comments
-  #  if administrator_comment?
-  #    @comment.administrator_id = current_user.id
-  #  elsif moderator_comment?
-  #    @comment.moderator_id = current_user.id
-  #  end
-  #end
+  def check_for_special_comments
+    if comment_params[:as_administrator]
+      @comment.administrator_id = current_user.id
+    elsif comment_params[:as_moderator]
+      @comment.moderator_id = current_user.id
+    end
+  end
 
   def comment_params
-    permits = [:parent_id, :body, :as_moderator, :as_administrator]
+    permits = [:parent_id, :body]
+    permits << :as_moderator if can? :comment_as_moderator, @commentable
+    permits << :as_administrator if can? :comment_as_administrator, @commentable
     permits << :alignment if @commentable.arguable? && params[:comment][:parent_id].blank?
     params.require(:comment).permit(*permits)
   end

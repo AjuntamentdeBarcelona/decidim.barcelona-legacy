@@ -51,7 +51,7 @@ class Comment extends Component {
     return (
       <div className="row">
         <div id={`comment_${comment.id}`} className={cssClasses}>
-          <UserAvatar user={author} as={as} />
+          <UserAvatar user={author} role={as} />
           <div className="comment-body">
             <div className="comment-info">
               {this.renderAuthorName()}
@@ -90,16 +90,26 @@ class Comment extends Component {
   }
 
   renderAuthorName() {
-    const { author } = this.props.comment;
+    const { author, as, administrator_id, moderator_id } = this.props.comment;
 
     if (author.hidden || author.erased) {
       return (
         <span className="user-name">{I18n.t("comments.comment.user_deleted")}</span>
       );
     } else {
-      return (
-        <span className="user-name"><a href={`/users/${author.id}`}>{author.name}</a></span>
-      );
+      if (as === 'administrator') {
+        return (
+          <span className="user-name">{`${I18n.t("comments.comment.admin")} #`}{administrator_id}</span>
+        );
+      } else if (as === 'moderator') {
+        return (
+          <span className="user-name">{`${I18n.t("comments.comment.moderator")} #`}{moderator_id}</span>
+        );
+      } else {
+        return (
+          <span className="user-name"><a href={`/users/${author.id}`}>{author.name}</a></span>
+        );
+      }
     }
   }
 
