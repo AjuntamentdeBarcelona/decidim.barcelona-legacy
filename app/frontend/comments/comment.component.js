@@ -54,7 +54,7 @@ class Comment extends Component {
           <UserAvatar user={author} as={as} />
           <div className="comment-body">
             <div className="comment-info">
-              <span className="user-name"><a href={`/users/${author.id}`}>{author.name}</a></span>
+              {this.renderAuthorName()}
               {this.renderAuthorOfficialBadge()}
               {this.renderAlignmentBadge()}
               &nbsp;&bull;&nbsp;
@@ -89,6 +89,20 @@ class Comment extends Component {
     );
   }
 
+  renderAuthorName() {
+    const { author } = this.props.comment;
+
+    if (author.hidden || author.erased) {
+      return (
+        <span className="user-name">{I18n.t("comments.comment.user_deleted")}</span>
+      );
+    } else {
+      return (
+        <span className="user-name"><a href={`/users/${author.id}`}>{author.name}</a></span>
+      );
+    }
+  }
+
   renderReplyAction() {
     const { commentable } = this.props;
 
@@ -96,7 +110,7 @@ class Comment extends Component {
       return (
         <span>
           <span className="divider">&nbsp;|&nbsp;</span>
-          <a onClick={() => this.setState({showReplyForm: !this.state.showReplyForm })}>{I18n.t("comments_helper.reply_link")}</a>
+          <a className="reply" onClick={() => this.setState({showReplyForm: !this.state.showReplyForm })}>{I18n.t("comments_helper.reply_link")}</a>
           <span className="divider">&nbsp;|&nbsp;</span>
         </span>
       );

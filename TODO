@@ -1,0 +1,9 @@
+rspec ./spec/features/comments/proposals_spec.rb:38 # Commenting proposals Comment order
+rspec ./spec/features/comments/proposals_spec.rb:81 # Commenting proposals Turns links into html links
+rspec ./spec/features/comments/proposals_spec.rb:59 # Commenting proposals Creation date works differently in roots and in child comments, when sorting by confidence_score
+rspec ./spec/features/comments/proposals_spec.rb:109 # Commenting proposals Not logged user can not see comments forms
+rspec ./spec/features/comments/proposals_spec.rb:269 # Commenting proposals Moderators can create reply as a moderator
+rspec ./spec/features/comments/proposals_spec.rb:252 # Commenting proposals Moderators can create comment as a moderator
+rspec ./spec/features/comments/proposals_spec.rb:306 # Commenting proposals Administrators can create comment as an administrator
+rspec ./spec/features/comments/proposals_spec.rb:323 # Commenting proposals Administrators can create reply as an administrator
+
