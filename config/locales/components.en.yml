@@ -7,6 +7,7 @@ en:
       comments: 'Comments: %{comments}'
       title: Motions
       votes: 'Votes: %{votes}'
+      acceptation_grade: Acceptation grade
     action_plan_show:
       approve: approve
       approved: adopted
@@ -83,7 +84,7 @@ en:
       random: random
     proposal_answer_box:
       accept: Validate
-      approve: approve
+      approve: Approve answer
       message_label: Note / reason
       official: Official
       pending_save: During saved

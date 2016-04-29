@@ -7,6 +7,7 @@ ca:
       comments: 'Comentaris: %{comments}'
       title: Propostes relacionades
       votes: 'Suports: %{votes}'
+      acceptation_grade: Grau d'acceptació
     action_plan_show:
       approve: Aprovar
       approved: Aprovada
@@ -83,7 +84,7 @@ ca:
       random: aleatòries
     proposal_answer_box:
       accept: Validar
-      approve: Aprovar
+      approve: Aprovar resposta
       message_label: Nota / motiu
       official: Validada oficialment
       pending_save: Pendent de desar
