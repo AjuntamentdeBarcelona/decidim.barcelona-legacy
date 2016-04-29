@@ -31,7 +31,7 @@ en:
       enable: Yes, I want to receive notifications.
       text: You don't have email notifications enabled. You will not receive an email every time someone comments on your proposals, or a weekly summary of activity. You can change this at any time in your user profile (my account). Do you want us to enable notifications for you?
     filter_option:
-      accepted: Validated
+      accepted: Accepted
       all: All
       approved: approved
       citizenship: Citizenship
@@ -48,7 +48,7 @@ en:
       official: Town Hall
       organization: Organizations
       past: Past
-      rejected: rejected
+      rejected: Rejected
       reviewed: Reviewed
       upcoming: Upcoming
       validated: officially validated
@@ -83,7 +83,7 @@ en:
       hot_score: most active
       random: random
     proposal_answer_box:
-      accept: Validate
+      accept: Accept
       approve: Approve answer
       message_label: Note / reason
       official: Official
