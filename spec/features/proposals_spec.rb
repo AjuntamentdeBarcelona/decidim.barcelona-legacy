@@ -205,7 +205,6 @@ feature 'Proposals' do
     expect(page).to have_content 'Testing an attack'
     expect(page.html).to include 'This is alert("an attack");'
     expect(page.html).to_not include '<script>alert("an attack");</script>'
-    expect(page.html).to_not include '&lt;p&gt;This is'
   end
 
   scenario 'Autolinking is applied to summary', :js do
