@@ -96,6 +96,10 @@ en:
       votes: "%{votes} supports"
     proposal_filters:
       clean_filters: Clean filter
+    proposal_level_selector:
+      default: undetermined
+      level_1: total
+      level_2: partial
     proposals:
       count: Showing %{count} proposals
     proposals_autocomplete_input:

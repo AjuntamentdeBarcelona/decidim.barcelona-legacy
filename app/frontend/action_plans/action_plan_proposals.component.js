@@ -3,11 +3,12 @@ import { bindActionCreators }     from 'redux';
 import { connect }                from 'react-redux';
 
 import ProposalsAutocompleteInput from '../proposals/proposals_autocomplete_input.component';
-import ProposalsTable             from '../proposals/proposals_table.component';
+import ProposalsTable             from './proposals_table.component';
 
 import { 
   addActionPlanProposal,
   removeActionPlanProposal,
+  changeActionPlansProposalLevel,
   fetchActionPlanProposals 
 } from './action_plans.actions';
 
@@ -22,17 +23,18 @@ class ActionPlanProposals extends Component {
   render() {
     const { actionPlan, addActionPlanProposal, removeActionPlanProposal } = this.props;
     const { id } = actionPlan;
-    const proposals = actionPlan.proposals || [];
+    const actionPlansProposals = actionPlan.actionPlansProposals || [];
 
     return (
       <div>
         <h4>{I18n.t("components.action_plan_proposals.title")}</h4>
         <ProposalsAutocompleteInput 
           proposalsApiUrl="/api/proposals"
-          excludeIds={proposals.map(proposal => proposal.id)}
+          excludeIds={actionPlansProposals.map(a => a.proposal.id)}
           onAddProposal={proposal => addActionPlanProposal(id, proposal)} />
         <ProposalsTable 
-          proposals={proposals}
+          actionPlansProposals={ actionPlansProposals }
+          onChangeLevel={ (proposal, level) => changeActionPlansProposalLevel(actionPlan, proposal, level) }
           onRemoveProposal={proposal => removeActionPlanProposal(id, proposal)} />
       </div>
     );
@@ -42,6 +44,7 @@ class ActionPlanProposals extends Component {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ 
     addActionPlanProposal,
+    changeActionPlansProposalLevel,
     removeActionPlanProposal,
     fetchActionPlanProposals 
   }, dispatch);
