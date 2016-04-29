@@ -14,7 +14,6 @@ export default class ActionPlanProposalsTable extends Component {
           <tr>
             <td></td>
             <td></td>
-            <td>{I18n.t("components.action_plan_proposals.acceptation_grade")}</td>
             <td></td>
             <td></td>
           </tr>
@@ -31,12 +30,6 @@ export default class ActionPlanProposalsTable extends Component {
                 <td>
                     {proposal.code} - <a href={proposal.url} target="_blank">{proposal.title}</a>
                     <div>{proposal.summary}</div>
-                </td>
-                <td className="selector">
-                  <ProposalLevelSelector
-                    onChangeLevel={ (level) => this.props.onChangeLevel(proposal, level) }
-                    selectedValue={ actionPlansProposal.level }
-                  />
                 </td>
                 <td className="proposal-stats">
                     {I18n.t("components.action_plan_proposals.votes", { votes: proposal.total_votes})}
