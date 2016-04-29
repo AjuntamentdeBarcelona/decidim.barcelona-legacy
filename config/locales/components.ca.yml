@@ -7,7 +7,6 @@ ca:
       comments: 'Comentaris: %{comments}'
       title: Propostes relacionades
       votes: 'Suports: %{votes}'
-      acceptation_grade: Grau d'acceptació
     action_plan_show:
       approve: Aprovar
       approved: Aprovada
