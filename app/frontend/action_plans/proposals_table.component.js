@@ -10,6 +10,15 @@ export default class ActionPlanProposalsTable extends Component {
 
     return (
       <table className="proposals-table">
+        <thead>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>{I18n.t("components.action_plan_proposals.acceptation_grade")}</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </thead>
         <tbody>
           {
             actionPlansProposals.sort((a, b) => b.proposal.total_votes - a.proposal.total_votes).map(actionPlansProposal => {
