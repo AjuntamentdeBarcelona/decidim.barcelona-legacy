@@ -44,14 +44,14 @@ ca:
       meetings: Debatudes a cites presencials
       not_approved: No aprovades
       not_reviewed: No revisades
-      not_validated: No validades oficialment
+      not_validated: Amb resposta sense aprovar
       official: Ajuntament
       organization: Organitzacions
       past: Passades
       rejected: Rebutjades
       reviewed: Revisades
       upcoming: Properes
-      validated: Validades oficialment
+      validated: Amb resposta aprovada
       voted: Votades
       with_action_plan: Amb actuació
       without_action_plan: Sense actuació

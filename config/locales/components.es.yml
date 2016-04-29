@@ -44,14 +44,14 @@ es:
       meetings: Debatidas en citas presenciales
       not_approved: no aprobadas
       not_reviewed: No revisadas
-      not_validated: No validadas oficialmente
+      not_validated: Con respuesta sin aprobar
       official: Ayuntamiento
       organization: Organizaciones
       past: Pasadas
       rejected: Rechazadas
       reviewed: Revisadas
       upcoming: Próximas
-      validated: validadas oficialmente
+      validated: Con respuesta aprobada
       voted: Votadas
       with_action_plan: Con actuación
       without_action_plan: Sin actuación
