@@ -309,6 +309,7 @@ Rails.application.routes.draw do
         end
       end
     end
+    resources :debates, only: [:show]
   end
 
   if Rails.env.development?
