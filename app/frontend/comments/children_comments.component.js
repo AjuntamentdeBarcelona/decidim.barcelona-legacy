@@ -10,7 +10,7 @@ export default class ChildrenComments extends Component {
       return (
         <div className="comment-children">
           {
-            comment.children.map(comment => (
+            comment.children.filter(c => !c.hidden).map(comment => (
               <Comment 
                 key={comment.id} 
                 comment={comment} 

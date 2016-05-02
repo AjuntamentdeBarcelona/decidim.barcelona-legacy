@@ -70,6 +70,12 @@ class Api::CommentsController < Api::ApplicationController
     render json: @comment
   end
 
+  def hide
+    @comment.hide
+    Activity.log(current_user, :hide, @comment)
+    render json: @comment
+  end
+
   private
 
   def load_commentable

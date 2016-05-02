@@ -27,7 +27,9 @@ import {
   FLAG_COMMENT,
   UNFLAG_COMMENT,
   UPVOTE_COMMENT,
-  DOWNVOTE_COMMENT
+  DOWNVOTE_COMMENT,
+  HIDE_COMMENT,
+  HIDE_COMMENT_AUTHOR
 } from '../comments/comments.actions';
 
 import { comments } from  '../comments/comments.reducers';
@@ -105,6 +107,8 @@ export const proposal = function (state = {}, action) {
     case UNFLAG_COMMENT:
     case UPVOTE_COMMENT:
     case DOWNVOTE_COMMENT:
+    case HIDE_COMMENT:
+    case HIDE_COMMENT_AUTHOR:
       return {
         ...state,
         comments: comments(state.comments, action)

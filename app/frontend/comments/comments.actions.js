@@ -8,6 +8,8 @@ export const FLAG_COMMENT         = 'FLAG_COMMENT';
 export const UNFLAG_COMMENT       = 'UNFLAG_COMMENT';
 export const UPVOTE_COMMENT       = 'UPVOTE_COMMENT';
 export const DOWNVOTE_COMMENT     = 'DOWNVOTE_COMMENT';
+export const HIDE_COMMENT         = 'HIDE_COMMENT';
+export const HIDE_COMMENT_AUTHOR  = 'HIDE_COMMENT_AUTHOR';
 
 export function fetchComments({ id, type }, { order }) {
   const request = 
@@ -76,6 +78,24 @@ export function downVoteComment(commentId) {
 
   return {
     type: DOWNVOTE_COMMENT,
+    payload: request
+  };
+}
+
+export function hideComment(commentId) {
+  const request = axios.patch(`${API_BASE_URL}/comments/${commentId}/hide.json`);
+
+  return {
+    type: HIDE_COMMENT,
+    payload: request
+  };
+}
+
+export function hideCommentAuthor(commentId) {
+  const request = axios.patch(`${API_BASE_URL}/comments/${commentId}/author/hide.json`);
+
+  return {
+    type: HIDE_COMMENT_AUTHOR,
     payload: request
   };
 }

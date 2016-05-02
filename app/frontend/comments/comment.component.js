@@ -1,20 +1,23 @@
-import { Component }                  from 'react';
-import { connect }                    from 'react-redux';
-import { bindActionCreators }         from 'redux';
+import { Component }          from 'react';
+import { connect }            from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import classNames                     from 'classnames';
+import classNames             from 'classnames';
 
-import UserAvatar                     from '../application/user_avatar.component';
-import FlagActions                    from '../application/flag_actions.component';
+import UserAvatar             from '../application/user_avatar.component';
+import FlagActions            from '../application/flag_actions.component';
+import DangerLink             from '../application/danger_link.component';
 
-import ChildrenComments               from './children_comments.component';
-import NewCommentForm                 from './new_comment_form.component';
+import ChildrenComments       from './children_comments.component';
+import NewCommentForm         from './new_comment_form.component';
 
 import { 
   flagComment, 
   unFlagComment,
   upVoteComment,
-  downVoteComment
+  downVoteComment,
+  hideComment,
+  hideCommentAuthor
 } from './comments.actions';
 
 class Comment extends Component {
@@ -76,6 +79,8 @@ class Comment extends Component {
                 flagAction={flagComment}
                 unFlagAction={unFlagComment}
               />
+              {this.renderHideButton()}
+              {this.renderHideAuthorButton()}
               <NewCommentForm 
                 commentable={commentable}
                 visible={this.state.showReplyForm} 
@@ -207,6 +212,40 @@ class Comment extends Component {
     }
     return null;
   }
+
+  renderHideButton() {
+    const { comment, hideComment } = this.props;
+    const { id, permissions } = comment;
+
+    if (permissions.hide) {
+      return (
+        <span>
+          <span className="divider">&nbsp;|&nbsp;</span>
+          <DangerLink onClick={() => hideComment(id)}>
+            { I18n.t('admin.actions.hide') }
+          </DangerLink>
+        </span>
+      );
+    }
+    return null;
+  }
+
+  renderHideAuthorButton() {
+    const { comment, hideCommentAuthor } = this.props;
+    const { id, permissions } = comment;
+
+    if (permissions.hide_author) {
+      return (
+        <span>
+          <span className="divider">&nbsp;|&nbsp;</span>
+          <DangerLink onClick={() => hideCommentAuthor(id)}>
+            { I18n.t('admin.actions.hide_author') }
+          </DangerLink>
+        </span>
+      );
+    }
+    return null;
+  }
 }
 
 function mapDispatchToProps(dispatch) {
@@ -214,7 +253,9 @@ function mapDispatchToProps(dispatch) {
     flagComment, 
     unFlagComment,
     upVoteComment,
-    downVoteComment
+    downVoteComment,
+    hideComment,
+    hideCommentAuthor
   }, dispatch);
 }
 

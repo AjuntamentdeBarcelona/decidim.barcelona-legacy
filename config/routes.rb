@@ -283,7 +283,7 @@ Rails.application.routes.draw do
       resources :votes, only: [:create]
       resource :answers, only: [:create, :update], controller: :proposal_answers
       resources :meetings, only: [:index]
-      resource :author, only: [], controller: 'author' do
+      resource :author, only: [], controller: 'proposals/author' do
         member do
           patch :hide
         end
@@ -300,6 +300,13 @@ Rails.application.routes.draw do
         patch :unflag
         patch :upvote
         patch :downvote
+        patch :hide
+      end
+
+      resource :author, only: [], controller: 'comments/author' do
+        member do
+          patch :hide
+        end
       end
     end
   end

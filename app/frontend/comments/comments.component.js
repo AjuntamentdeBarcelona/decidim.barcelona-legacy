@@ -110,7 +110,7 @@ class Comments extends Component {
       return (
         <div>
           {
-            comments.map(comment => (
+            comments.filter(c => !c.hidden).map(comment => (
               <Comment 
                 key={comment.id} 
                 comment={comment} 

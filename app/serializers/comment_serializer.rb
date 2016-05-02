@@ -1,7 +1,7 @@
 class CommentSerializer < ActiveModel::Serializer
   attributes :id, :commentable_id, :commentable_type, :body, :ancestry, :created_at, 
     :alignment, :total_votes, :total_likes, :total_dislikes, :as, :flagged, :permissions,
-    :moderator_id, :administrator_id
+    :moderator_id, :administrator_id, :hidden?
 
   has_one :author
 
@@ -25,7 +25,9 @@ class CommentSerializer < ActiveModel::Serializer
 
   def permissions
     {
-      vote: scope && scope.can?(:vote, object)
+      vote: scope && scope.can?(:vote, object),
+      hide: scope && scope.can?(:hide, object),
+      hide_author: scope && scope.can?(:hide, object.user)
     }
   end
 end
