@@ -242,7 +242,7 @@ feature 'Commenting proposals', :js do
 
     within "#comment_#{comment.id}" do
       page.find("#flag-action-#{comment.id}").click
-      expect(page).to have_selector("#unflag-action-#{proposal.id}")
+      expect(page).to have_selector("#unflag-action-#{comment.id}")
     end
   end
 
