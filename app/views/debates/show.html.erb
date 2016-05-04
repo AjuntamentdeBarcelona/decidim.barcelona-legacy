@@ -72,4 +72,6 @@
   </section>
 <% end %>
 
-<%= render "comments" %>
+<div class="debate-show-component" style="position: relative;">
+  <%= react_app 'Debate', debateId: @debate.id %>
+</div>

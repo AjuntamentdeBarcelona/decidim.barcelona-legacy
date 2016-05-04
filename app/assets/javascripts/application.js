@@ -28,7 +28,6 @@
 //= require initial
 //= require ahoy
 //= require check_all_none
-//= require comments
 //= require dropdown
 //= require ie_alert
 //= require location_changer
@@ -57,7 +56,6 @@
 //= require bundle
 
 var initialize_modules = function() {
-  App.Comments.initialize();
   App.Users.initialize();
   App.Tags.initialize();
   App.Dropdown.initialize();
