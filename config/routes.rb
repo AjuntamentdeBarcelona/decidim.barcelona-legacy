@@ -64,14 +64,6 @@ Rails.application.routes.draw do
 
   resources :meetings, only: [:index, :show]
 
-  resources :comments, only: [:create, :show], shallow: true do
-    member do
-      post :vote
-      put :flag
-      put :unflag
-    end
-  end
-
   resources :spending_proposals, only: [:index, :new, :create]
 
   resource :email_notifications_reminder, only: [:create, :destroy]
