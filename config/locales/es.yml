@@ -97,7 +97,6 @@ es:
     select_order: Ordenar por
   comments_helper:
     comment_button: Publicar comentario
-    comment_link: Comentar
     reply_button: Publicar respuesta
     reply_link: Responder
   debates:

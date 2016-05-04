@@ -97,7 +97,6 @@ ca:
     select_order: Ordenar per
   comments_helper:
     comment_button: Afegeix un comentari
-    comment_link: Comentar
     reply_button: Publica resposta
     reply_link: Respondre
   debates:

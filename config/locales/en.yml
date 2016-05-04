@@ -97,7 +97,6 @@ en:
     select_order: Sort by
   comments_helper:
     comment_button: Publish comment
-    comment_link: Comment
     reply_button: Publish reply
     reply_link: Reply
   debates:
