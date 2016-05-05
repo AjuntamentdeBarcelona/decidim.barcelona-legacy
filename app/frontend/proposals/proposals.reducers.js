@@ -55,7 +55,6 @@ export const proposal = function (state = {}, action) {
       return {
         ...proposal,
         follow: state.follow,
-        answer: state.answer,
         meetings: state.meetings,
         references: state.references,
         comments: state.comments
