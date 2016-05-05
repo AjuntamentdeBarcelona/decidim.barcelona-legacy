@@ -34,7 +34,7 @@ feature "Notifications" do
     login_as user
     visit proposal_path proposal
 
-    fill_in "comment-body-proposal_#{proposal.id}", with: "I agree"
+    fill_in "comment-body-root", with: "I agree"
     click_button "Publish comment"
     within "#comments" do
       expect(page).to have_content "I agree"
@@ -44,7 +44,7 @@ feature "Notifications" do
     login_as create(:user)
     visit proposal_path proposal
 
-    fill_in "comment-body-proposal_#{proposal.id}", with: "I disagree"
+    fill_in "comment-body-root", with: "I disagree"
     click_button "Publish comment"
     within "#comments" do
       expect(page).to have_content "I disagree"

@@ -11,8 +11,11 @@ import { proposal }      from './proposals.reducers';
 import categories        from '../categories/categories.reducers';
 import districts         from '../districts/districts.reducers';
 import filters           from '../filters/filters.reducers';
+import order             from '../order/order.reducers';
 
 import ProposalShow      from './proposal_show.component';
+
+import pagination        from '../pagination/pagination.reducers';
 
 const middlewares = [ReduxPromise];
 
@@ -33,7 +36,9 @@ function createReducers(sessionState) {
     proposal,
     categories,
     districts,
-    filters
+    pagination,
+    filters,
+    order
   });
 }
 

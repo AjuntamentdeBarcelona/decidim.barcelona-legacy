@@ -1,15 +1,3 @@
-<% provide :title do %><%= @proposal.title %><% end %>
-<% provide :social_media_meta_tags do %>
-<%= render "shared/social_media_meta_tags",
-            social_url: proposal_url(@proposal),
-            social_title: @proposal.title,
-            social_media_image: asset_url('social-media-icon.png'),
-            social_description: text_with_links(@proposal.summary) %>
-<% end %>
-
-
-<section class="proposal-show" data-timestamp="<%= @proposal.created_at.to_i %>">
-  <%= react_app 'Proposal', proposalId: @proposal.id %>
+<section class="proposal-show">
+  <%= react_app 'Proposal', proposalId: @proposal_id %>
 </section>
-
-<%= render "proposals/comments" %>
