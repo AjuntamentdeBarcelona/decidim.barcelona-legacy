@@ -6,7 +6,7 @@ export default ({
   loading
 }) => (
   <div>
-    <Loading show={loading} list={true} />
+    <Loading show={loading} />
     <ul className="meetings-list-items">
       {
         meetings.map((meeting) => (

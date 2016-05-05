@@ -44,10 +44,6 @@ class ProposalsController < ApplicationController
     end
   end
 
-  def show
-    @proposal_id = params[:id]
-  end
-
   def vote
     @proposal.register_vote(current_user, 'yes')
     set_proposal_votes(@proposal)

@@ -79,12 +79,10 @@ feature 'Proposals' do
     end
   end
 
-  scenario 'Social Media Cards', :js do
-    pending "not sure how to test meta injected by js"
+  scenario 'Social Media Cards' do
     proposal = create(:proposal)
 
     visit proposal_path(proposal)
-    expect(page).to have_css("#proposal_#{proposal.id}")
     expect(page.html).to include "<meta name=\"twitter:title\" content=\"#{proposal.title}\" />"
     expect(page.html).to include "<meta id=\"ogtitle\" property=\"og:title\" content=\"#{proposal.title}\"/>"
   end
@@ -205,6 +203,7 @@ feature 'Proposals' do
     expect(page).to have_content 'Testing an attack'
     expect(page.html).to include 'This is alert("an attack");'
     expect(page.html).to_not include '<script>alert("an attack");</script>'
+    expect(page.html).to_not include '&lt;p&gt;This is'
   end
 
   scenario 'Autolinking is applied to summary', :js do
@@ -531,8 +530,8 @@ feature 'Proposals' do
     visit proposal_path(proposal)
 
     expect(page).to have_selector("#proposal_#{proposal.id}")
-    page.find("#flag-action-#{proposal.id}").click
-    expect(page).to have_selector("#unflag-action-#{proposal.id}")
+    page.find("#flag-proposal-#{proposal.id}").click
+    expect(page).to have_selector("#unflag-proposal-#{proposal.id}")
 
     expect(Flag.flagged?(user, proposal)).to be
   end
@@ -546,9 +545,9 @@ feature 'Proposals' do
     visit proposal_path(proposal)
 
     expect(page).to have_selector("#proposal_#{proposal.id}")
-    page.find("#unflag-action-#{proposal.id}").click
+    page.find("#unflag-proposal-#{proposal.id}").click
 
-    expect(page).to have_css("#flag-action-#{proposal.id}")
+    expect(page).to have_css("#flag-proposal-#{proposal.id}")
 
     expect(Flag.flagged?(user, proposal)).to_not be
   end

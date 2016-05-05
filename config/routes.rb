@@ -283,7 +283,7 @@ Rails.application.routes.draw do
       resources :votes, only: [:create]
       resource :answers, only: [:create, :update], controller: :proposal_answers
       resources :meetings, only: [:index]
-      resource :author, only: [], controller: 'proposals/author' do
+      resource :author, only: [], controller: 'author' do
         member do
           patch :hide
         end
@@ -294,21 +294,6 @@ Rails.application.routes.draw do
     end
     resources :meetings, only: [:index]
     resources :follows, only: [:index, :create, :destroy]
-    resources :comments, only: [:index, :create] do
-      member do
-        patch :flag
-        patch :unflag
-        patch :upvote
-        patch :downvote
-        patch :hide
-      end
-
-      resource :author, only: [], controller: 'comments/author' do
-        member do
-          patch :hide
-        end
-      end
-    end
   end
 
   if Rails.env.development?

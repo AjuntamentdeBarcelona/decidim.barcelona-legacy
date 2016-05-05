@@ -1,4 +1,4 @@
-class Api::Proposals::AuthorController < Api::ApplicationController
+class Api::AuthorController < Api::ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource :proposal
   load_and_authorize_resource :author, :through => :proposal, :singleton => true

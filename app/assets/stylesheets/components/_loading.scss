@@ -6,23 +6,15 @@
   left: 0;
   bottom: 0;
   right: 0;
+  min-height: rem-calc(500);
   font-size: rem-calc(80);
-  overflow: hidden;
-  min-height: rem-calc(150);
 
   span{
     position: absolute;
     left: 50%;
-    top: 30%;
     @include transform(translateX(-50%));
+    top: rem-calc(200);
     color: $brand;
-  }
-
-  &.list {
-    min-height: rem-calc(500);
-    span {
-      top: rem-calc(200);
-    }
   }
 
   &.votes{
