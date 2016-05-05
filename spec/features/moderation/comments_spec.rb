@@ -1,27 +1,23 @@
 require 'rails_helper'
 
-feature 'Moderate comments' do
+feature 'Moderate comments', :js do
 
-  scenario 'Hide', :js do
+  scenario 'Hide' do
     citizen = create(:user)
     moderator = create(:moderator)
-
     comment = create(:comment)
 
     login_as(moderator)
     visit debate_path(comment.commentable)
 
-    within("#comment_#{comment.id}") do
-      click_link 'Hide'
-      expect(page).to have_css('.comment .faded')
-    end
+    expect(page).to have_css("#comment_#{comment.id}")
+
+    page.find("#comment_#{comment.id} a", text: 'Hide').click
 
     login_as(citizen)
     visit debate_path(comment.commentable)
 
-    expect(page).to have_css('.comment', count: 1)
-    expect(page).to_not have_content('This comment has been deleted')
-    expect(page).to_not have_content('SPAM')
+    expect(page).not_to have_css('.comment', count: 1)
   end
 
   scenario 'Can not hide own comment' do
@@ -83,7 +79,7 @@ feature 'Moderate comments' do
         end
       end
 
-      scenario "select all/none", :js do
+      scenario "select all/none" do
         create_list(:comment, 2)
 
         visit moderation_comments_path

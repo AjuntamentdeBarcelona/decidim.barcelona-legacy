@@ -10,7 +10,7 @@ feature 'Admin comments' do
   scenario "Do not show comments from blocked users", :js do
     comment = create(:comment, :hidden, body: "SPAM from SPAMMER")
     proposal = create(:proposal, author: comment.author)
-    create(:comment, commentable: proposal, user: comment.author, body: "Good Proposal!")
+    other_comment = create(:comment, commentable: proposal, user: comment.author, body: "Good Proposal!")
 
     visit admin_comments_path
     expect(page).to have_content("SPAM from SPAMMER")
@@ -18,8 +18,8 @@ feature 'Admin comments' do
 
     visit proposal_path(proposal)
 
-    expect(page).to have_selector("#proposal_#{proposal.id}")
-    find("#proposal_#{proposal.id} a", text: 'Block author').click
+    expect(page).to have_css("#comment_#{other_comment.id}")
+    find("#comment_#{other_comment.id} a", text: 'Block author').click
 
     visit admin_comments_path
     expect(page).to_not have_content("SPAM from SPAMMER")
