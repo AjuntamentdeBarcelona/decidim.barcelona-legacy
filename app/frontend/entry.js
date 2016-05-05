@@ -19,8 +19,6 @@ import ProposalsSelector          from './proposals/proposals_selector.component
 import ActionPlansApp             from './action_plans/action_plans_app.component';
 import ActionPlanApp              from './action_plans/action_plan_app.component';
 
-import DebateApp                  from './debates/debate_app.component';
-
 window.CookiesWarning             = CookiesWarning;
 window.EmailNotificationsReminder = EmailNotificationsReminder;
 window.RichEditor                 = RichEditor;
@@ -41,8 +39,6 @@ window.ProposalsSelector          = ProposalsSelector;
 
 window.ActionPlansApp             = ActionPlansApp;
 window.ActionPlanApp              = ActionPlanApp;
-
-window.DebateApp                  = DebateApp;
 
 require('quill/dist/quill.snow');
 require('expose?autoLink!autolink-js');

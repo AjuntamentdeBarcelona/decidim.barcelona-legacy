@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Moderate users', :js do
+feature 'Moderate users' do
 
   scenario 'Hide' do
     citizen = create(:user)

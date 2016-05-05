@@ -16,8 +16,6 @@ feature 'Admin activity' do
       expect(page).to have_selector("#proposal_#{proposal.id}")
       find("#proposal_#{proposal.id} a", text: 'Hide').click
 
-      expect(page).to have_selector("#proposal_#{proposal.id}.faded")
-
       visit admin_activity_path
 
       within("#activity_#{Activity.last.id}") do
@@ -139,8 +137,9 @@ feature 'Admin activity' do
 
       visit debate_path(debate)
 
-      expect(page).to have_css("#comment_#{comment.id}")
-      page.find("#comment_#{comment.id} a", text: "Hide").click
+      within("#comment_#{comment.id}") do
+        click_link 'Hide'
+      end
 
       visit admin_activity_path
 
@@ -202,8 +201,6 @@ feature 'Admin activity' do
 
       expect(page).to have_selector("#proposal_#{proposal.id}")
       find("#proposal_#{proposal.id} a", text: 'Block author').click
-
-      expect(page).to have_selector("#proposal_#{proposal.id}.faded")
 
       visit admin_activity_path
 

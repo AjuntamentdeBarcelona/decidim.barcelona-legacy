@@ -10,7 +10,7 @@ feature "Notifications" do
     login_as user
     visit debate_path debate
 
-    fill_in "comment-body-root", with: "I commented on your debate"
+    fill_in "comment-body-debate_#{debate.id}", with: "I commented on your debate"
     click_button "Publish comment"
     within "#comments" do
       expect(page).to have_content "I commented on your debate"
@@ -69,12 +69,9 @@ feature "Notifications" do
     login_as user
     visit debate_path debate
 
-    expect(page).to have_css("#comment_#{comment.id}")
-
-    page.find('a.reply').click
-
-    within "#comment_#{comment.id}" do
-      fill_in "comment-body-#{comment.id}", with: "I replied to your comment"
+    click_link "Reply"
+    within "#js-comment-form-comment_#{comment.id}" do
+      fill_in "comment-body-comment_#{comment.id}", with: "I replied to your comment"
       click_button "Publish reply"
     end
 
@@ -101,10 +98,9 @@ feature "Notifications" do
       login_as create(:user)
       visit debate_path debate
 
-      page.find("#comment_#{comment.id} a.reply", match: :first).click
-
-      within "#comment_#{comment.id}" do
-        fill_in "comment-body-#{comment.id}", with: "Reply number #{n}"
+      within("#comment_#{comment.id}_reply") { click_link "Reply" }
+      within "#js-comment-form-comment_#{comment.id}" do
+        fill_in "comment-body-comment_#{comment.id}", with: "Reply number #{n}"
         click_button "Publish reply"
       end
 
@@ -130,7 +126,7 @@ feature "Notifications" do
     login_as author
     visit debate_path debate
 
-    fill_in "comment-body-root", with: "I commented on my own debate"
+    fill_in "comment-body-debate_#{debate.id}", with: "I commented on my own debate"
     click_button "Publish comment"
     within "#comments" do
       expect(page).to have_content "I commented on my own debate"
@@ -145,12 +141,9 @@ feature "Notifications" do
     login_as author
     visit debate_path debate
 
-    expect(page).to have_css("#comment_#{comment.id}")
-
-    page.find('a.reply').click
-
-    within "#comment_#{comment.id}" do
-      fill_in "comment-body-#{comment.id}", with: "I replied to my own comment"
+    click_link "Reply"
+    within "#js-comment-form-comment_#{comment.id}" do
+      fill_in "comment-body-comment_#{comment.id}", with: "I replied to my own comment"
       click_button "Publish reply"
     end
 

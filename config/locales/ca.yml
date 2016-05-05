@@ -73,6 +73,8 @@ ca:
   comments:
     comment:
       admin: Administrador
+      author: Autor/a
+      deleted: Aquest comentari ha estat eliminat
       moderator: Moderador
       responses:
         one: 1 resposta
@@ -90,13 +92,17 @@ ca:
         positive: A favor
       comment_as_admin: Comentar com a administrador
       comment_as_moderator: Comentar com a moderador
+      leave_comment: Deixa el teu comentari
     orders:
       most_voted: Més votats
       newest: Més nous primer
       oldest: Més antics primer
     select_order: Ordenar per
+    show:
+      return_to_commentable: Tornar a
   comments_helper:
     comment_button: Afegeix un comentari
+    comment_link: Comentar
     reply_button: Publica resposta
     reply_link: Respondre
   debates:
@@ -168,8 +174,10 @@ ca:
         one: 1 Comentari
         other: "%{count} Comentaris"
         zero: Sense comentaris
+      comments_title: Comentaris
       edit_debate_link: Edita debat
       flag: Aquest debat ha estat marcat com inapropiat per diversos usuaris.
+      login_to_comment: Necessites %{signin} o %{signup} per fer comentaris.
       share: Compartir
     update:
       form:

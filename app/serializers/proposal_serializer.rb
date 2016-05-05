@@ -16,6 +16,12 @@ class ProposalSerializer < ActiveModel::Serializer
     object.scope
   end
 
+  def author_name
+    unless object.official? || object.from_meeting?
+      object.author.name
+    end
+  end
+
   def total_comments
     object.comments.count
   end

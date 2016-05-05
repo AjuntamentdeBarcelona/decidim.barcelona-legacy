@@ -73,6 +73,8 @@ en:
   comments:
     comment:
       admin: Administrator
+      author: Author
+      deleted: This comment has been deleted
       moderator: Moderator
       responses:
         one: 1 response
@@ -90,13 +92,17 @@ en:
         positive: In favor
       comment_as_admin: Comment as admin
       comment_as_moderator: Comment as moderator
+      leave_comment: Leave your comment
     orders:
       most_voted: Most voted
       newest: Newest first
       oldest: Oldest first
     select_order: Sort by
+    show:
+      return_to_commentable: 'Go back to '
   comments_helper:
     comment_button: Publish comment
+    comment_link: Comment
     reply_button: Publish reply
     reply_link: Reply
   debates:
@@ -168,8 +174,10 @@ en:
         one: 1 comment
         other: "%{count} comments"
         zero: No comments
+      comments_title: Comments
       edit_debate_link: Edit
       flag: This debate has been flagged as inappropriate by several users.
+      login_to_comment: You must %{signin} or %{signup} to leave a comment.
       share: Share
     update:
       form:
