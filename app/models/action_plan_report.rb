@@ -1,4 +1,6 @@
 class ActionPlanReport < ActiveRecord::Base
+  mount_uploader :file, ReportUploader
+
   def self.generated
     where(pending: false)
   end
@@ -13,10 +15,5 @@ class ActionPlanReport < ActiveRecord::Base
 
   def generated?
     !pending?
-  end
-
-  def generate
-    raise "Already generated" unless pending?
-    update(pending: false)
   end
 end

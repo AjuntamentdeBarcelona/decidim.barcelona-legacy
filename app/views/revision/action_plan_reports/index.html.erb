@@ -18,13 +18,13 @@
   <% @action_plan_reports.each do |report| %>
     <tr id="report_<%= report.id %>">
       <td>
-        <%= l report.created_at %>
+        <%= l report.created_at, format: :long %>
       </td>
       <td>
         <% if report.pending? %>
           Pending
         <% else %>
-          <%= link_to "Download", ['review', report] %>
+          <%= link_to "Download", report.file.url, download: true %>
         <% end %>
       </td>
     </tr>

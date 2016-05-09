@@ -4,4 +4,6 @@ class Subcategory < ActiveRecord::Base
   serialize :description, JSON
 
   validates :name, :category, presence: true
+  has_many :action_plans
+  has_many :proposals
 end

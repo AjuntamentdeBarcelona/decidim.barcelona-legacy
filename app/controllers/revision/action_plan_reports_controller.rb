@@ -15,6 +15,11 @@ class Revision::ActionPlanReportsController < Revision::BaseController
     redirect_to :back, notice: "Blah"
   end
 
+  def show
+    report_generator = ActionPlanReportGenerator.new
+    render text: report_generator.report
+  end
+
   private
 
   def resource_model

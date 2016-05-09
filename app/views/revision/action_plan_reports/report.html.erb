@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <h1>PAM</h1>
+    <%= render partial: 'revision/action_plan_reports/report/action_plans', locals: { action_plans: city_action_plans } %>
+
+    <h1>PAD</h1>
+    <% District.all.each do |district| %>
+      <%= render partial: 'revision/action_plan_reports/report/action_plans', locals: { action_plans: district_action_plans(district) } %>
+    <% end %>
+  </body>
+</html>
