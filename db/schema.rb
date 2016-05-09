@@ -11,13 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160509082240) do
+ActiveRecord::Schema.define(version: 20160509101511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pg_stat_statements"
   enable_extension "pg_trgm"
   enable_extension "unaccent"
+
+  create_table "action_plan_reports", force: :cascade do |t|
+    t.string   "file"
+    t.boolean  "pending",    default: true, null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
   create_table "action_plan_revisions", force: :cascade do |t|
     t.integer  "action_plan_id"

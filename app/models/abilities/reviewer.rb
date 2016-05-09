@@ -14,6 +14,7 @@ module Abilities
       can :approve, ActionPlan
 
       can [:read, :create, :update], [ProposalAnswer]
+      can :manage, ActionPlanReport
       can :manage, ActionPlan
       can :manage, ActionPlanRevision
     end

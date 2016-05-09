@@ -10,5 +10,12 @@
         <%= t("revision.menu.proposals") %>
       <% end %>
     </li>
+
+    <li <%= "class=active" if controller_name == "action_plan_reports" %>>
+      <%= link_to revision_action_plan_reports_path do %>
+        <i class="icon-print"></i>
+        <%= t("revision.action_plan_reports.index.title") %>
+      <% end %>
+    </li>
   </ul>
 </nav>
