@@ -25,6 +25,9 @@ defaults: &defaults
   # Prefix for the Proposal codes
   proposal_code_prefix: 'BCN'
 
+  # Prefix for the Proposal codes
+  meeting_code_prefix: 'BCN-M'
+
   # Number of votes needed for proposal success
   votes_for_proposal_success: 100
 

@@ -1,6 +1,9 @@
 ---
 en:
   revision:
+    action_plan_reports:
+      index:
+        title: Reports of activities
     action_plans:
       form:
         warning: You are editing an action plan so you cannot modify title and description.

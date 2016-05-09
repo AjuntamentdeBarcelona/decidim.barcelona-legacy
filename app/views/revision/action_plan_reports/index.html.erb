@@ -1,0 +1,34 @@
+<h2><%= t("moderation.action_plan_reports.index.title") %></h2>
+
+<%= render 'shared/filter_subnav', i18n_namespace: "moderation.action_plan_reports.index" %>
+
+<div class="row">
+  <%= link_to t('.generate'), revision_action_plan_reports_path, method: 'create', class: 'button right' %>
+  <h3 class="small-8 large-8 columns"><%= page_entries_info @action_plan_reports%></h3>
+</div>
+
+<table class="clear">
+  <tr>
+    <th>
+      <%= t("moderation.action_plan_reports.index.headers.title") %>
+    </th>
+    <th>
+    </th>
+  </tr>
+  <% @action_plan_reports.each do |report| %>
+    <tr id="report_<%= report.id %>">
+      <td>
+        <%= l report.created_at, format: :long %>
+      </td>
+      <td>
+        <% if report.pending? %>
+          Pending
+        <% else %>
+          <%= link_to "Download", report.file.url %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= paginate @action_plan_reports %>

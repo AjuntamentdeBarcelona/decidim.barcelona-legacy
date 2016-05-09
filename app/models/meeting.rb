@@ -52,6 +52,10 @@ class Meeting < ActiveRecord::Base
 
   friendly_id :title, use: [:slugged, :finders]
 
+  def code
+    "#{Setting["meeting_code_prefix"]}-#{created_at.strftime('%Y-%m')}-#{id}"
+  end
+
   def searchable_values
     values = {
       title       => 'A',

@@ -1,6 +1,11 @@
 ---
 es:
   moderation:
+    action_plan_reports:
+      index:
+        headers:
+          title: Fecha de generación
+        title: Informes de actuaciones
     comments:
       index:
         block_authors: Bloquear autores
