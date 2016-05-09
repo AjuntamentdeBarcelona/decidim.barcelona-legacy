@@ -15,11 +15,11 @@ class ActionPlanReportGenerator < ActionView::Base
   end
 
   def city_action_plans
-    scope.where(scope: 'city').limit(10)
+    scope.where(scope: 'city')
   end
 
   def district_action_plans(district)
-    scope.where(scope: 'district', district: district.id).limit(10)
+    scope.where(scope: 'district', district: district.id)
   end
 
   def from_subcategory(action_plans, district)
@@ -31,7 +31,7 @@ class ActionPlanReportGenerator < ActionView::Base
   private
 
   def scope
-    ActionPlan.all
+    @scope ||= ActionPlan.order('weight desc').includes(:proposals)
   end
 
   def decorate(action_plans)
@@ -45,7 +45,7 @@ class ActionPlanReportGenerator < ActionView::Base
 
     def authors
       object.
-        proposals.order('cached_votes_up desc').
+        proposals.to_a.sort{ |a, b| b.cached_votes_up <=> a.cached_votes_up }.
         map(&:author).map(&:name).join(", ")
     end
 
@@ -54,11 +54,11 @@ class ActionPlanReportGenerator < ActionView::Base
     end
 
     def total_votes
-      object.proposals.to_a.sum(&:cached_votes_up)
+      @total_votes ||= object.proposals.to_a.sum(&:cached_votes_up)
     end
 
     def meetings
-      object.proposals.flat_map(&:meetings)
+      @meetings ||= object.proposals.flat_map(&:meetings)
     end
 
     def meeting_participants

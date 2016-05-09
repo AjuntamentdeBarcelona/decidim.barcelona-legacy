@@ -1,6 +1,11 @@
 ---
 en:
   moderation:
+    action_plan_reports:
+      index:
+        headers:
+          title: Data generation
+        title: Reports of activities
     comments:
       index:
         block_authors: Block authors

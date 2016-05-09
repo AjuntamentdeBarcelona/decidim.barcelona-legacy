@@ -1,6 +1,9 @@
 ---
 es:
   revision:
+    action_plan_reports:
+      index:
+        title: Informes de actuaciones
     action_plans:
       form:
         warning: Estas editando una actuación existente así que no es posible editar ni el título ni la descripción.

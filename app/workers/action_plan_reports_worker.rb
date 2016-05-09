@@ -13,8 +13,8 @@ class ActionPlanReportsWorker
     tempfile.rewind
 
     file = ActionDispatch::Http::UploadedFile.new(tempfile: tempfile,
-                                                  content_type: 'text/html',
-                                                  filename: "action_plan_report.html")
+                                                  content_type: 'application/msword',
+                                                  filename: "action_plan_report.doc")
 
     report.file = file
     report.pending = false

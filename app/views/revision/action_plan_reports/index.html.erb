@@ -3,7 +3,7 @@
 <%= render 'shared/filter_subnav', i18n_namespace: "moderation.action_plan_reports.index" %>
 
 <div class="row">
-  <%= link_to "Create", revision_action_plan_reports_path, method: 'create', class: 'button' %>
+  <%= link_to t('.generate'), revision_action_plan_reports_path, method: 'create', class: 'button right' %>
   <h3 class="small-8 large-8 columns"><%= page_entries_info @action_plan_reports%></h3>
 </div>
 
@@ -24,7 +24,7 @@
         <% if report.pending? %>
           Pending
         <% else %>
-          <%= link_to "Download", report.file.url, download: true %>
+          <%= link_to "Download", report.file.url %>
         <% end %>
       </td>
     </tr>
