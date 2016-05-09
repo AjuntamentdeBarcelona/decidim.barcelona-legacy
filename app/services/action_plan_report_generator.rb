@@ -7,7 +7,24 @@ class ActionPlanReportGenerator < ActionView::Base
   end
 
   def report
-    render(file: 'revision/action_plan_reports/report.html.erb')
+    files = {}
+
+    files["pam"] = render(
+      file: 'revision/action_plan_reports/report.html.erb',
+      locals: {action_plans: city_action_plans, title: "PAM"}
+    )
+
+    District.all.each do |district|
+      files["pad-#{district.id}"] = render(
+        file: 'revision/action_plan_reports/report.html.erb',
+        locals: {
+          action_plans: district_action_plans(district),
+          title: "PAD #{district.name}"
+        }
+      )
+    end
+
+    files
   end
 
   def categories
@@ -46,7 +63,7 @@ class ActionPlanReportGenerator < ActionView::Base
     def authors
       object.
         proposals.to_a.sort{ |a, b| b.cached_votes_up <=> a.cached_votes_up }.
-        map(&:author).map(&:name).join(", ")
+        map(&:author).map(&:name).uniq.join(", ")
     end
 
     def proposal_codes
@@ -58,11 +75,11 @@ class ActionPlanReportGenerator < ActionView::Base
     end
 
     def meetings
-      @meetings ||= object.proposals.flat_map(&:meetings)
+      @meetings ||= object.proposals.flat_map(&:meetings).uniq
     end
 
     def meeting_participants
-      meetings.map(&:organizations).map(&:strip).reject(&:blank?).join(", ")
+      meetings.map(&:organizations).split(",").flatten.map(&:strip).reject(&:blank?).uniq.join(", ")
     end
   end
 end

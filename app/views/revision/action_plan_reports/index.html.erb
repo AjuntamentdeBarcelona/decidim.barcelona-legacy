@@ -24,7 +24,7 @@
         <% if report.pending? %>
           Pending
         <% else %>
-          <%= link_to "Download", report.file.url, download: "action_plan_report.doc", type: "application/octet-stream" %>
+          <%= link_to "Download", report.file.url, download: "action_plan_report-#{report.id}.zip", type: "application/zip" %>
         <% end %>
       </td>
     </tr>

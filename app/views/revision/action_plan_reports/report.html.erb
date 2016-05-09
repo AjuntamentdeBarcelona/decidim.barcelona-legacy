@@ -3,12 +3,7 @@
     <meta charset="UTF-8">
   </head>
   <body>
-    <h1>PAM</h1>
-    <%= render partial: 'revision/action_plan_reports/report/action_plans', locals: { action_plans: city_action_plans } %>
-
-    <% District.all.each do |district| %>
-      <h1>PAD de <%= district.name %></h1>
-      <%= render partial: 'revision/action_plan_reports/report/action_plans', locals: { action_plans: district_action_plans(district) } %>
-    <% end %>
+    <h1><%= title %></h1>
+    <%= render partial: 'revision/action_plan_reports/report/action_plans', locals: { action_plans: action_plans } %>
   </body>
 </html>

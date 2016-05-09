@@ -20,11 +20,8 @@
 </p>
 
 <p>
-  <strong>Cites presencials on aquesta actuació ha estat debatuda: </strong>
-  <%= action_plan.meetings.count %>
-  (<% action_plan.meetings.each do |meeting| %>
-    <%= meeting.code %> <%= link_to meeting_url(meeting, host: "decidim.barcelona"), meeting_url(meeting, host: "decidim.barcelona") %> ;
-  <% end %>)
+  <strong>Cites presencials on aquesta actuació ha estat debatuda: </strong> <%= action_plan.meetings.count %>
+  <div>(<%= action_plan.meetings.map(&:code).join(", ") %>)</div>
 </p>
 
 

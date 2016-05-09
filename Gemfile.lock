@@ -777,6 +777,7 @@ DEPENDENCIES
   roo
   rspec-rails (~> 3.3)
   rspec-repeat
+  rubyzip
   sassc-rails
   savon
   settingslogic

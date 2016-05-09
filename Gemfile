@@ -79,6 +79,7 @@ gem 'rails-i18n'
 gem 'active_model_serializers', github: 'rails-api/active_model_serializers', branch: '0-9-stable'
 gem 'friendly_id', '~> 5.1.0'
 gem 'momentjs-rails'
+gem 'rubyzip'
 
 # React gems
 gem 'react-rails'
