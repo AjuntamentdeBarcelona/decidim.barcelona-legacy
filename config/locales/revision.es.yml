@@ -2,6 +2,8 @@
 es:
   revision:
     action_plan_reports:
+      generate:
+        notice: Tu informe se está generando y estará disponible en unos minutos.
       index:
         title: Informes de actuaciones
     action_plans:

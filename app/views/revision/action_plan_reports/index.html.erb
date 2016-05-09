@@ -24,7 +24,7 @@
         <% if report.pending? %>
           Pending
         <% else %>
-          <%= link_to "Download", report.file.url %>
+          <%= link_to "Download", report.file.url, download: "action_plan_report.doc" %>
         <% end %>
       </td>
     </tr>

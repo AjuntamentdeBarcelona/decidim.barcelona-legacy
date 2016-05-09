@@ -12,7 +12,7 @@ class Revision::ActionPlanReportsController < Revision::BaseController
     report = ActionPlanReport.create!
 
     ActionPlanReportsWorker.perform_async(report.id)
-    redirect_to :back, notice: "Blah"
+    redirect_to :back, notice: I18n.t("revision.action_plan_reports.generate.notice")
   end
 
   def show
