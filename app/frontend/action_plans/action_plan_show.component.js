@@ -5,7 +5,8 @@ import { bindActionCreators } from 'redux';
 import { 
   fetchActionPlan,
   deleteActionPlan,
-  approveActionPlan
+  approveActionPlan,
+  changeWeight
 } from './action_plans.actions';
 
 import Loading            from '../application/loading.component';
@@ -13,6 +14,7 @@ import DangerLink         from '../application/danger_link.component';
 import FilterMeta         from '../filters/filter_meta.component';
 
 import ActionPlanReviewer from './action_plan_reviewer.component';
+import WeightControl from './weight_control.component';
 
 
 class ActionPlanShow extends Component {
@@ -60,7 +62,8 @@ class ActionPlanShow extends Component {
         scope_,
         category,
         subcategory,
-        district
+        district,
+        weight
       } = actionPlan;
 
       return (
@@ -84,6 +87,12 @@ class ActionPlanShow extends Component {
               </a>
 
               { this.renderApproveButton() }
+
+              <span className="right">
+                <WeightControl
+                  weight={ weight }
+                  onUpdateWeight={ (weight) => this.props.changeWeight(id, weight)} />
+              </span>
 
               { this.renderNotice() }
 
@@ -150,7 +159,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ 
     fetchActionPlan,
     deleteActionPlan,
-    approveActionPlan
+    approveActionPlan,
+    changeWeight
   }, dispatch);
 }
 

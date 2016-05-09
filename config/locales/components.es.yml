@@ -110,3 +110,5 @@ es:
       remove: Desvincular
     search_filter:
       search_input_placeholder: Buscar
+    weight_control:
+      label: Peso

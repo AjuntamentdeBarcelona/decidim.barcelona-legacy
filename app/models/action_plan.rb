@@ -12,6 +12,7 @@ class ActionPlan < ActiveRecord::Base
   validates :district, inclusion: { in: District.all.map(&:id), allow_nil: true }
 
   scope :sort_by_created_at, -> { reorder(:created_at) }
+  scope :sort_by_weight, -> { reorder(:weight) }
 
   delegate :title, :description, to: :current_revision, allow_nil: true
 
