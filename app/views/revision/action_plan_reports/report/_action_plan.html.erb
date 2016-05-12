@@ -1,36 +1,44 @@
-<h2><%= index %>. <%= action_plan.title %></h2>
-<%= action_plan.description.html_safe %>
+<h4><%= index %>. <%= action_plan.title %></h4>
+<div class="item-content">
+  <%= action_plan.description.html_safe %>
 
-<p>
-  <strong>Enllaç:</strong>
-  <%= link_to action_plan_url(action_plan, host: "decidim.barcelona"), action_plan_url(action_plan, host: "decidim.barcelona") %>
-</p>
+  <div class="item-meta">
+    <p>
+      <strong>Enllaç:</strong>
+      <%= link_to action_plan_url(action_plan, host: "decidim.barcelona"), action_plan_url(action_plan, host: "decidim.barcelona") %>
+    </p>
 
-<p>
-  <strong>Autoria: </strong><%= action_plan.authors %>
-</p>
+    <p>
+      <strong>Autoria: </strong><%= action_plan.authors %>
+    </p>
 
-<p>
-  <strong>Propostes que agrupa: </strong><%= action_plan.proposals.count %>
-  <div>(<%= action_plan.proposal_codes %>)</div>
-</p>
+    <p>
+      <strong>Propostes que agrupa: </strong><%= action_plan.proposals.count %>
+      (<%= action_plan.proposal_codes %>)
+    </p>
 
-<p>
-  <strong>Suports totals: </strong><%= action_plan.total_votes %>
-</p>
+    <p>
+      <strong>Suports totals: </strong><%= action_plan.total_votes %>
+    </p>
 
-<p>
-  <strong>Cites presencials on aquesta actuació ha estat debatuda: </strong> <%= action_plan.meetings.count %>
-  <div>(<%= action_plan.meetings.map(&:code).join(", ") %>)</div>
-</p>
+    <p>
+      <strong>Cites presencials on aquesta actuació ha estat debatuda: </strong> <%= action_plan.meetings.count %>
+      (<%= action_plan.meetings.map(&:code).join(", ") %>)
+    </p>
 
 
-<p>
-  <strong>Número de participants a les cites:</strong>
-  <%= action_plan.meetings.to_a.map(&:attendee_count).compact.sum %>
-</p>
+    <p>
+      <strong>Número de participants a les cites:</strong>
+      <%= action_plan.meetings.to_a.map(&:attendee_count).compact.sum %>
+    </p>
 
-<p>
-  <strong>Organitzacions participants a les cites:</strong>
-  <%= action_plan.meeting_participants %>
-</p>
+      <p>
+        <strong>Organitzacions participants a les cites:</strong>
+        <% if !action_plan.meeting_participants.blank? %>
+          <%= action_plan.meeting_participants %>
+        <% else %>
+          Cap
+        <% end %>
+      </p>
+  </div>
+</div>
