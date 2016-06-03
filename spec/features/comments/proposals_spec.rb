@@ -1,7 +1,7 @@
 require 'rails_helper'
 include ActionView::Helpers::DateHelper
 
-feature 'Commenting proposals' do
+feature 'Commenting proposals', :js do
   let(:user)   { create :user }
   let(:proposal) { create :proposal }
 
@@ -20,37 +20,26 @@ feature 'Commenting proposals' do
     end
   end
 
-  scenario 'Show' do
-    parent_comment = create(:comment, commentable: proposal)
-    first_child    = create(:comment, commentable: proposal, parent: parent_comment)
-    second_child   = create(:comment, commentable: proposal, parent: parent_comment)
-
-    visit comment_path(parent_comment)
-
-    expect(page).to have_css(".comment", count: 3)
-    expect(page).to have_content parent_comment.body
-    expect(page).to have_content first_child.body
-    expect(page).to have_content second_child.body
-
-    expect(page).to have_link "Go back to #{proposal.title}", proposal_path(proposal)
-  end
-
   scenario 'Comment order' do
     c1 = create(:comment, :with_confidence_score, commentable: proposal, cached_votes_up: 100, cached_votes_total: 120, created_at: Time.now - 2)
     c2 = create(:comment, :with_confidence_score, commentable: proposal, cached_votes_up: 10, cached_votes_total: 12, created_at: Time.now - 1)
     c3 = create(:comment, :with_confidence_score, commentable: proposal, cached_votes_up: 1, cached_votes_total: 2, created_at: Time.now)
 
-    visit proposal_path(proposal, order: :most_voted)
+    visit proposal_path(proposal)
+
+    expect(page).to have_css(".comment", count: 3)
 
     expect(c1.body).to appear_before(c2.body)
     expect(c2.body).to appear_before(c3.body)
 
-    visit proposal_path(proposal, order: :newest)
+    select 'Newest first', from: 'comments-order-selector'
+    expect(page).to have_css(".comment", count: 3)
 
     expect(c3.body).to appear_before(c2.body)
     expect(c2.body).to appear_before(c1.body)
 
-    visit proposal_path(proposal, order: :oldest)
+    select 'Oldest first', from: 'comments-order-selector'
+    expect(page).to have_css(".comment", count: 3)
 
     expect(c1.body).to appear_before(c2.body)
     expect(c2.body).to appear_before(c3.body)
@@ -62,26 +51,32 @@ feature 'Commenting proposals' do
    old_child = create(:comment, commentable: proposal, parent_id: new_root.id, created_at: Time.now - 10)
    new_child = create(:comment, commentable: proposal, parent_id: new_root.id, created_at: Time.now)
 
-   visit proposal_path(proposal, order: :most_voted)
+   visit proposal_path(proposal)
 
-   expect(new_root.body).to appear_before(old_root.body)
-   expect(old_child.body).to appear_before(new_child.body)
-
-   visit proposal_path(proposal, order: :newest)
+   expect(page).to have_css(".comment", count: 4)
 
    expect(new_root.body).to appear_before(old_root.body)
    expect(new_child.body).to appear_before(old_child.body)
 
-   visit proposal_path(proposal, order: :oldest)
+   select 'Newest first', from: 'comments-order-selector'
+   expect(page).to have_css(".comment", count: 4)
+
+   expect(new_root.body).to appear_before(old_root.body)
+   expect(new_child.body).to appear_before(old_child.body)
+
+   select 'Oldest first', from: 'comments-order-selector'
+   expect(page).to have_css(".comment", count: 4)
 
    expect(old_root.body).to appear_before(new_root.body)
    expect(old_child.body).to appear_before(new_child.body)
   end
 
   scenario 'Turns links into html links' do
-    create :comment, commentable: proposal, body: 'Built with http://rubyonrails.org/'
+    comment = create :comment, commentable: proposal, body: 'Built with http://rubyonrails.org/'
 
     visit proposal_path(proposal)
+
+    expect(page).to have_css("#comment_#{comment.id}")
 
     within first('.comment') do
       expect(page).to have_content 'Built with http://rubyonrails.org/'
@@ -92,32 +87,17 @@ feature 'Commenting proposals' do
   end
 
   scenario 'Sanitizes comment body for security' do
-    create :comment, commentable: proposal, body: "<script>alert('hola')</script> <a href=\"javascript:alert('sorpresa!')\">click me<a/> http://madrid.es"
+    comment = create :comment, commentable: proposal, body: "<script>alert('hola')</script> <a href=\"javascript:alert('sorpresa!')\">click me<a/> http://madrid.es"
 
     visit proposal_path(proposal)
+
+    expect(page).to have_css("#comment_#{comment.id}")
 
     within first('.comment') do
       expect(page).to have_content "click me http://madrid.es"
       expect(page).to have_link('http://madrid.es', href: 'http://madrid.es')
       expect(page).not_to have_link('click me')
     end
-  end
-
-  scenario 'Paginated comments' do
-    per_page = 10
-    (per_page + 2).times { create(:comment, commentable: proposal)}
-
-    visit proposal_path(proposal)
-
-    expect(page).to have_css('.comment', count: per_page)
-    within("ul.pagination") do
-      expect(page).to have_content("1")
-      expect(page).to have_content("2")
-      expect(page).to_not have_content("3")
-      click_link "Next", exact: false
-    end
-
-    expect(page).to have_css('.comment', count: 2)
   end
 
   feature 'Not logged user' do
@@ -133,11 +113,11 @@ feature 'Commenting proposals' do
     end
   end
 
-  scenario 'Create a neutral comment', :js do
+  scenario 'Create a neutral comment' do
     login_as(user)
     visit proposal_path(proposal)
 
-    fill_in "comment-body-proposal_#{proposal.id}", with: 'Have you thought about...?'
+    fill_in "comment-body-root", with: 'Have you thought about...?'
     click_button 'Publish comment'
 
     within "#comments" do
@@ -146,11 +126,11 @@ feature 'Commenting proposals' do
     end
   end
 
-  scenario 'Create a comment in favor', :js do
+  scenario 'Create a comment in favor' do
     login_as(user)
     visit proposal_path(proposal)
 
-    fill_in "comment-body-proposal_#{proposal.id}", with: 'Have you thought about...?'
+    fill_in "comment-body-root", with: 'Have you thought about...?'
     choose "In favor"
     click_button 'Publish comment'
 
@@ -160,11 +140,11 @@ feature 'Commenting proposals' do
     end
   end
 
-  scenario 'Create a comment against', :js do
+  scenario 'Create a comment against' do
     login_as(user)
     visit proposal_path(proposal)
 
-    fill_in "comment-body-proposal_#{proposal.id}", with: 'Have you thought about...?'
+    fill_in "comment-body-root", with: 'Have you thought about...?'
     choose "Against"
     click_button 'Publish comment'
 
@@ -174,16 +154,7 @@ feature 'Commenting proposals' do
     end
   end
 
-  scenario 'Errors on create', :js do
-    login_as(user)
-    visit proposal_path(proposal)
-
-    click_button 'Publish comment'
-
-    expect(page).to have_content "Can't be blank"
-  end
-
-  scenario 'Reply', :js do
+  scenario 'Reply' do
     citizen = create(:user, username: 'Ana')
     manuela = create(:user, username: 'Manuela')
     comment = create(:comment, commentable: proposal, user: citizen)
@@ -191,36 +162,20 @@ feature 'Commenting proposals' do
     login_as(manuela)
     visit proposal_path(proposal)
 
-    click_link "Reply"
+    expect(page).not_to have_css('.comments_list .loading-component')
 
-    within "#js-comment-form-comment_#{comment.id}" do
-      fill_in "comment-body-comment_#{comment.id}", with: 'It will be done next week.'
-      click_button 'Publish reply'
-    end
+    page.find('a.reply').click
 
     within "#comment_#{comment.id}" do
+      fill_in "comment-body-#{comment.id}", with: 'It will be done next week.'
+      click_button 'Publish reply'
       expect(page).to have_content 'It will be done next week.'
     end
 
-    expect(page).to_not have_selector("#js-comment-form-comment_#{comment.id}", visible: true)
+    expect(page).to_not have_selector("#comment_#{comment.id} .new_comment")
   end
 
-  scenario 'Errors on reply', :js do
-    comment = create(:comment, commentable: proposal, user: user)
-
-    login_as(user)
-    visit proposal_path(proposal)
-
-    click_link "Reply"
-
-    within "#js-comment-form-comment_#{comment.id}" do
-      click_button 'Publish reply'
-      expect(page).to have_content "Can't be blank"
-    end
-
-  end
-
-  scenario "N replies", :js do
+  scenario "N replies" do
     parent = create(:comment, commentable: proposal)
 
     7.times do
@@ -229,26 +184,25 @@ feature 'Commenting proposals' do
     end
 
     visit proposal_path(proposal)
-    expect(page).to have_css(".comment.comment.comment.comment.comment.comment.comment.comment")
+    expect(page).not_to have_css('.loading-component')
+    expect(page).to have_css('.comments_list .comment', count: 8)
   end
 
-  scenario "Flagging as inappropriate", :js do
+  scenario "Flagging as inappropriate" do
     comment = create(:comment, commentable: proposal)
 
     login_as(user)
     visit proposal_path(proposal)
 
     within "#comment_#{comment.id}" do
-      page.find("#flag-expand-comment-#{comment.id}").click
-      page.find("#flag-comment-#{comment.id}").click
-
-      expect(page).to have_css("#unflag-expand-comment-#{comment.id}")
+      page.find("#flag-action-#{comment.id}").click
+      expect(page).to have_css("#unflag-action-#{comment.id}")
     end
 
     expect(Flag.flagged?(user, comment)).to be
   end
 
-  scenario "Undoing flagging as inappropriate", :js do
+  scenario "Undoing flagging as inappropriate" do
     comment = create(:comment, commentable: proposal)
     Flag.flag(user, comment)
 
@@ -256,16 +210,14 @@ feature 'Commenting proposals' do
     visit proposal_path(proposal)
 
     within "#comment_#{comment.id}" do
-      page.find("#unflag-expand-comment-#{comment.id}").click
-      page.find("#unflag-comment-#{comment.id}").click
-
-      expect(page).to have_css("#flag-expand-comment-#{comment.id}")
+      page.find("#unflag-action-#{comment.id}").click
+      expect(page).to have_css("#flag-action-#{comment.id}")
     end
 
     expect(Flag.flagged?(user, comment)).to_not be
   end
 
-  scenario "Flagging turbolinks sanity check", :js do
+  scenario "Flagging turbolinks sanity check" do
     proposal = create(:proposal, title: "Should we change the world?")
     comment = create(:comment, commentable: proposal)
 
@@ -274,8 +226,8 @@ feature 'Commenting proposals' do
     click_link "Should we change the world?", match: :first
 
     within "#comment_#{comment.id}" do
-      page.find("#flag-expand-comment-#{comment.id}").click
-      expect(page).to have_selector("#flag-comment-#{comment.id}")
+      page.find("#flag-action-#{comment.id}").click
+      expect(page).to have_selector("#unflag-action-#{comment.id}")
     end
   end
 
@@ -292,14 +244,14 @@ feature 'Commenting proposals' do
   end
 
   feature "Moderators" do
-    scenario "can create comment as a moderator", :js do
+    scenario "can create comment as a moderator" do
       moderator = create(:moderator)
 
       login_as(moderator)
       visit proposal_path(proposal)
 
-      fill_in "comment-body-proposal_#{proposal.id}", with: "I am moderating!"
-      check "comment-as-moderator-proposal_#{proposal.id}"
+      fill_in "comment-body-root", with: "I am moderating!"
+      check "comment-as-moderator-root"
       click_button "Publish comment"
 
       within "#comments" do
@@ -309,7 +261,7 @@ feature 'Commenting proposals' do
       end
     end
 
-    scenario "can create reply as a moderator", :js do
+    scenario "can create reply as a moderator" do
       citizen = create(:user, username: "Ana")
       moderator = create(:moderator, username: "Manuela")
       comment = create(:comment, commentable: proposal, user: citizen)
@@ -317,11 +269,12 @@ feature 'Commenting proposals' do
       login_as(moderator)
       visit proposal_path(proposal)
 
-      click_link "Reply"
+      expect(page).to have_css("#comment_#{comment.id}")
+      page.find('a.reply').click
 
-      within "#js-comment-form-comment_#{comment.id}" do
-        fill_in "comment-body-comment_#{comment.id}", with: "I am moderating!"
-        check "comment-as-moderator-comment_#{comment.id}"
+      within "#comment_#{comment.id}" do
+        fill_in "comment-body-#{comment.id}", with: "I am moderating!"
+        check "comment-as-moderator-#{comment.id}"
         click_button 'Publish reply'
       end
 
@@ -331,7 +284,7 @@ feature 'Commenting proposals' do
         expect(page).to have_css "img.moderator-avatar"
       end
 
-      expect(page).to_not have_selector("#js-comment-form-comment_#{comment.id}", visible: true)
+      expect(page).to_not have_selector("#comment_#{comment.id} .new_comment")
     end
 
     scenario "can not comment as an administrator" do
@@ -345,24 +298,24 @@ feature 'Commenting proposals' do
   end
 
   feature "Administrators" do
-    scenario "can create comment as an administrator", :js do
+    scenario "can create comment as an administrator" do
       admin = create(:administrator)
 
       login_as(admin)
       visit proposal_path(proposal)
 
-      fill_in "comment-body-proposal_#{proposal.id}", with: "I am your Admin!"
-      check "comment-as-administrator-proposal_#{proposal.id}"
+      fill_in "comment-body-root", with: "I am your Admin!"
+      check "comment-as-administrator-root"
       click_button "Publish comment"
 
-      within "#comments" do
+      within ".comments_list" do
         expect(page).to have_content "I am your Admin!"
         expect(page).to have_content "Administrator ##{admin.id}"
         expect(page).to have_css "img.admin-avatar"
       end
     end
 
-    scenario "can create reply as an administrator", :js do
+    scenario "can create reply as an administrator" do
       citizen = create(:user, username: "Ana")
       admin = create(:administrator, username: "Manuela")
       comment = create(:comment, commentable: proposal, user: citizen)
@@ -370,11 +323,12 @@ feature 'Commenting proposals' do
       login_as(admin)
       visit proposal_path(proposal)
 
-      click_link "Reply"
+      expect(page).to have_css("#comment_#{comment.id}")
+      page.find('a.reply').click
 
-      within "#js-comment-form-comment_#{comment.id}" do
-        fill_in "comment-body-comment_#{comment.id}", with: "Top of the world!"
-        check "comment-as-administrator-comment_#{comment.id}"
+      within "#comment_#{comment.id}" do
+        fill_in "comment-body-#{comment.id}", with: "Top of the world!"
+        check "comment-as-administrator-#{comment.id}"
         click_button 'Publish reply'
       end
 
@@ -427,7 +381,7 @@ feature 'Commenting proposals' do
       end
     end
 
-    scenario 'Create', :js do
+    scenario 'Create' do
       visit proposal_path(@proposal)
 
       within("#comment_#{@comment.id}_votes") do
@@ -445,7 +399,7 @@ feature 'Commenting proposals' do
       end
     end
 
-    scenario 'Update', :js do
+    scenario 'Update' do
       visit proposal_path(@proposal)
 
       within("#comment_#{@comment.id}_votes") do
@@ -464,7 +418,7 @@ feature 'Commenting proposals' do
       end
     end
 
-    scenario 'Trying to vote multiple times', :js do
+    scenario 'Trying to vote multiple times' do
       visit proposal_path(@proposal)
 
       within("#comment_#{@comment.id}_votes") do

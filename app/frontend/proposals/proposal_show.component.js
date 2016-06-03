@@ -8,13 +8,14 @@ import {
   hideProposalAuthor
 } from './proposals.actions';
 
+import Helmet               from "react-helmet";
+
 import Loading              from '../application/loading.component';
 import SocialShareButtons   from '../application/social_share_buttons.component';
 import DangerLink           from '../application/danger_link.component';
-
 import FilterMeta           from '../filters/filter_meta.component';
-
 import FollowButton         from '../follows/follow_button.component';
+import Comments             from '../comments/comments.component';
 
 import ProposalReviewer     from './proposal_reviewer.component';
 import ProposalBadge        from './proposal_badge.component';
@@ -34,15 +35,11 @@ class ProposalShow extends Component {
   }
 
   componentDidMount() {
-    const { session } = this.props;
+    const { session, fetchProposal } = this.props;
 
-    this.props.fetchProposal(this.props.proposalId);
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (newProps.proposal.id) {
+    fetchProposal(this.props.proposalId).then(() => {
       this.setState({ loading: false });
-    }
+    });
   }
 
   render() {
@@ -85,11 +82,31 @@ class ProposalShow extends Component {
         can_hide,
         can_hide_author,
         flagged,
-        follow
+        follow,
+        arguable,
+        social_media_image_url
       } = proposal;
 
       return (
         <div>
+          <Helmet
+            title={title}
+            meta={[
+              { name: "twitter:card", content: "summary" },
+              { name: "twitter:site", content: "bcn_ajuntament" },
+              { name: "twitter:title", content: title },
+              { name: "twitter:description", content: summary },
+              { name: "twitter:image", content: social_media_image_url },
+              { id: "ogtitle", property: "og:title", content: title },
+              { property: "article:publisher", content: "https://decidim.barcelona"},
+              { property: "article:author", content: "https://www.facebook.com/bcn.cat"},
+              { property: "og:type", content: "article" },
+              { id: "ogimage", property: "og:image", content: social_media_image_url },
+              { property: "og:site_name", content: "decidim.barcelona" },
+              { id: "ogdescription", property: "og:description", content: summary },
+              { property: "fb:app_id", content: "929041747208547"}
+            ]}
+          />
           <div className={(hidden || author.hidden) ? 'row faded' : 'row'} id={`proposal_${proposal.id}`}>
             <div className="small-12 medium-9 column">
               <i className="icon-angle-left left"></i>&nbsp;
@@ -170,6 +187,8 @@ class ProposalShow extends Component {
           </div>
 
           <ProposalMeetings useServerLinks={ true } />
+
+          <Comments commentable={{...proposal, type: 'Proposal'}} />
         </div>
       );
     }

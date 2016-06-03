@@ -63,7 +63,7 @@ class Proposals extends Component {
             <div className="show-for-small-only">
               <NewProposalButton />
             </div>
-            <Loading show={this.state.loading} />
+            <Loading show={this.state.loading} list={true} />
             <h3 className="proposals-count">
               { I18n.t('components.proposals.count', { count: this.props.count }) }
             </h3>

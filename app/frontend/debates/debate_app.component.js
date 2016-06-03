@@ -7,13 +7,10 @@ import {
 import { Provider }      from 'react-redux';
 import ReduxPromise      from 'redux-promise';
 
-import { proposal }      from './proposals.reducers';
-import categories        from '../categories/categories.reducers';
-import districts         from '../districts/districts.reducers';
-import filters           from '../filters/filters.reducers';
+import { debate   }      from './debates.reducers';
 import order             from '../order/order.reducers';
 
-import ProposalShow      from './proposal_show.component';
+import DebateShow        from './debate_show.component';
 
 import pagination        from '../pagination/pagination.reducers';
 
@@ -33,21 +30,18 @@ function createReducers(sessionState) {
 
   return combineReducers({
     session,
-    proposal,
-    categories,
-    districts,
+    debate,
     pagination,
-    filters,
     order
   });
 }
 
-export default class ProposalApp extends Component {
+export default class DebateApp extends Component {
   render() {
     return (
       <Provider 
         store={createStoreWithMiddleware(createReducers(this.props.session))}>
-        <ProposalShow proposalId={this.props.proposalId} />
+        <DebateShow debateId={this.props.debateId} />
       </Provider>
     );
   }

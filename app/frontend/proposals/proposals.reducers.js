@@ -1,3 +1,5 @@
+import { combineReducers } from 'redux';
+
 import { 
   FETCH_PROPOSALS, 
   FETCH_PROPOSAL, 
@@ -14,7 +16,15 @@ import {
   UNFLAG_PROPOSAL,
 } from './proposals.actions';
 
-import { FOLLOW, UNFOLLOW, FETCH_FOLLOW } from '../follows/follows.actions';
+import { ADD_NEW_COMMENT } from '../comments/comments.actions';
+
+import { 
+  FOLLOW, 
+  UNFOLLOW, 
+  FETCH_FOLLOW 
+} from '../follows/follows.actions';
+
+import { comments } from  '../comments/comments.reducers';
 
 export const proposals = function (state = [], action) {
   switch (action.type) {
@@ -44,8 +54,10 @@ export const proposal = function (state = {}, action) {
 
       return {
         ...proposal,
+        follow: state.follow,
         meetings: state.meetings,
-        references: state.references
+        references: state.references,
+        comments: state.comments
       }
     case FOLLOW:
       follow = action.payload.data.follow;
@@ -129,6 +141,28 @@ export const proposal = function (state = {}, action) {
         };
       }
       return state;
+    case ADD_NEW_COMMENT:
+      let comment = action.payload.data.comment;
+
+      return {
+        ...state,
+        total_comments: state.total_comments + 1,
+        total_positive_comments: comment.alignment > 0 ? 
+          state.total_positive_comments + 1 : state.total_positive_comments,
+        total_negative_comments: comment.alignment < 0 ? 
+          state.total_negative_comments + 1 : state.total_negative_comments,
+        total_neutral_comments: comment.alignment === 0 ? 
+          state.total_neutral_comments + 1 : state.total_neutral_comments,
+        comments: comments(state.comments, action)
+      };
+    default:
+      return {
+        ...state,
+        ...combineReducers({ 
+          comments 
+        })({ 
+          comments: state.comments 
+        }, action)
+      };
   }
-  return state;
 }

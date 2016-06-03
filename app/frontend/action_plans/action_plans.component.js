@@ -51,7 +51,7 @@ class ActionPlans extends Component {
             </div>
 
             <div className="small-12 medium-9 column">
-              <Loading show={this.state.loading} />
+              <Loading show={this.state.loading} list={true} />
               <h3 className="proposals-count">
                 { I18n.t('components.action_plans.count', { count: this.props.count }) }
               </h3>
