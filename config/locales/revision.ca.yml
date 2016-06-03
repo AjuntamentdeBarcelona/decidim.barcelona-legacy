@@ -4,6 +4,11 @@ ca:
     action_plans:
       form:
         warning: Estàs editant una actuació existent així que no es pot editar ni el títol ni la descripció.
+    action_plan_reports:
+      generate:
+        notice: "El teu informe s'està generant i estarà disponible d'aquí uns minuts."
+      index:
+        title: "Informes d'actuacions"
     dashboard:
       index:
         title: Revisió

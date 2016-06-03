@@ -110,3 +110,5 @@ en:
       remove: Delete
     search_filter:
       search_input_placeholder: Search
+    weight_control:
+      label: Order

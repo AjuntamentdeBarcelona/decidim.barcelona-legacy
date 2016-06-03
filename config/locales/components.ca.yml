@@ -110,3 +110,5 @@ ca:
       remove: Desvincular
     search_filter:
       search_input_placeholder: Cercar
+    weight_control:
+      label: Ordre

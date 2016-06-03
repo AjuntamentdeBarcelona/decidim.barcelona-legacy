@@ -1,6 +1,11 @@
 ---
 en:
   revision:
+    action_plan_reports:
+      generate:
+        notice: Your report is being generated and will be available in a few minutes.
+      index:
+        title: Reports of activities
     action_plans:
       form:
         warning: You are editing an action plan so you cannot modify title and description.

@@ -19,6 +19,17 @@ export function deleteActionPlan(id){
   };
 }
 
+export function changeWeight(id, weight){
+  const request = axios.put(`${API_BASE_URL}/action_plans/${id}.json`, {
+    action_plan: { weight }
+  });
+
+  return {
+    type: UPDATE_ACTION_PLAN,
+    payload: request
+  };
+}
+
 export function approveActionPlan(id){
   return updateActionPlan(id, { approved: true});
 }

@@ -9,7 +9,7 @@ class Api::ActionPlansController < Api::ApplicationController
   def index
     set_seed
 
-    action_plans = @current_order == "recommended" ? Recommender.new(current_user).action_plans : ActionPlan.all
+    action_plans = ActionPlan.sort_by_weight
 
     @action_plans = ResourceFilter.new(params, user: current_user)
       .filter_collection(action_plans.includes(:category, :subcategory))
@@ -59,7 +59,7 @@ class Api::ActionPlansController < Api::ApplicationController
   def strong_params
     permitted_params = []
     permitted_params += [:approved] if can?(:approve, ActionPlan)
-    permitted_params += [:scope, :district, :category_id, :subcategory_id] if can?(:manage, ActionPlan)
+    permitted_params += [:scope, :district, :category_id, :subcategory_id, :weight] if can?(:manage, ActionPlan)
     params.require(:action_plan).permit(permitted_params)
   end
 

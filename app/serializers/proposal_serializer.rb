@@ -1,10 +1,11 @@
 class ProposalSerializer < ActiveModel::Serializer
-  attributes :id, :title, :url, :summary, :created_at, :scope_, :district, :source, 
-    :total_votes, :voted, :votable, :closed, :official, :from_meeting,
-    :editable, :conflictive?, :external_url, :hidden?, :can_hide, :can_hide_author,
-    :flagged, :code, :arguable?, :permissions,
-    :total_comments, :total_positive_comments, :total_negative_comments, :total_neutral_comments,
-    :social_media_image_url
+attributes :id, :title, :url, :summary, :created_at, :scope_, :district, :source,
+           :total_votes, :voted, :votable, :closed, :official, :from_meeting,
+           :editable, :conflictive?, :external_url, :hidden?, :can_hide, :can_hide_author,
+           :flagged, :code, :arguable?, :permissions, :total_positive_comments,
+           :total_negative_comments, :total_neutral_comments, :total_comments,
+           :total_positive_comments, :total_negative_comments, :total_neutral_comments,
+           :social_media_image_url
 
   has_one :category
   has_one :subcategory

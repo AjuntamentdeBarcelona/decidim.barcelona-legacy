@@ -1,0 +1,9 @@
+<% categories.each_with_index do |category, index| %>
+  <h2><%= index + 1%>. <%= category.name["ca"] %></h2>
+  <% category.subcategories.each_with_index do |subcategory, subindex| %>
+    <h3><%= index + 1%>.<%= subindex + 1 %>. <%= subcategory.name["ca"] %></h3>
+    <% from_subcategory(action_plans, subcategory).each_with_index do |action_plan, subsubindex| %>
+      <%= render partial: 'revision/action_plan_reports/report/action_plan', locals: { action_plan: action_plan, index: "#{index + 1}.#{subindex + 1 }.#{subsubindex + 1}" } %>
+    <% end %>
+  <% end %>
+<% end %>

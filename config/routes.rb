@@ -210,6 +210,7 @@ Rails.application.routes.draw do
     root to: "proposals#index"
 
     resources :proposals, only: [:index, :show]
+    resources :action_plan_reports, only: [:index, :create, :show]
   end
 
   # Example of regular route:
