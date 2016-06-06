@@ -61,7 +61,7 @@ class ActionPlans extends Component {
               </h3>
               <DownloadButton filters={this.props.filters} order={this.props.order} seed={this.props.seed}/>
               <OrderSelector 
-                orderLinks={["weight", "random"]} />
+                orderLinks={["weight", "random", "confidence_score", "participants"]} />
               <ActionPlansList actionPlans={this.props.actionPlans} />
               {this.renderInfinitePagination()}
             </div>

@@ -87,6 +87,7 @@ ca:
       confidence_score: amb més suport
       created_at: més noves
       hot_score: més actives avui
+      participants: més participades
       random: aleatòries
       weight: pesos
     proposal_answer_box:

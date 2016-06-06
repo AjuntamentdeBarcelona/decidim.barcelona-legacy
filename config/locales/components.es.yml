@@ -87,6 +87,7 @@ es:
       confidence_score: Mejor valorados
       created_at: Nuevos
       hot_score: Más activos hoy
+      participants: más participadas
       random: aleatorio
       weight: pesos
     proposal_answer_box:

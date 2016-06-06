@@ -87,6 +87,7 @@ en:
       confidence_score: highest rated
       created_at: newest
       hot_score: most active
+      participants: more participation
       random: random
       weight: weights
     proposal_answer_box:
