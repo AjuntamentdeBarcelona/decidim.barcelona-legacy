@@ -3,9 +3,9 @@ ca:
   moderation:
     action_plan_reports:
       index:
-        title: "Informes d'actuacions"
         headers:
-          title: "Data de generació"
+          title: Data de generació
+        title: Informes d'actuacions
     comments:
       index:
         block_authors: Bloqueja autors
