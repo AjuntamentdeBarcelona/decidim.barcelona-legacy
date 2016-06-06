@@ -1,4 +1,5 @@
-FactoryGirl.define do  factory :action_plan_report do
+FactoryGirl.define do 
+  factory :action_plan_report do
     file "MyString"
   end
 

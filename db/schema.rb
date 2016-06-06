@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160509101511) do
+ActiveRecord::Schema.define(version: 20160606123217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,18 @@ ActiveRecord::Schema.define(version: 20160509101511) do
   end
 
   add_index "action_plan_revisions", ["tsv"], name: "index_action_plan_revisions_on_tsv", using: :gin
+
+  create_table "action_plan_statistics", force: :cascade do |t|
+    t.integer  "action_plan_id"
+    t.integer  "related_proposals_count",     default: 0
+    t.integer  "supports_count",              default: 0
+    t.integer  "comments_count",              default: 0
+    t.integer  "participants_count",          default: 0
+    t.integer  "meeting_interventions_count", default: 0
+    t.integer  "interventions_count",         default: 0
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
 
   create_table "action_plans", force: :cascade do |t|
     t.integer  "category_id",                     null: false

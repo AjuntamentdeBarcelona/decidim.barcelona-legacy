@@ -1,4 +1,6 @@
 class ActionPlan < ActiveRecord::Base
+  include Statistics
+
   belongs_to :category
   belongs_to :subcategory
 

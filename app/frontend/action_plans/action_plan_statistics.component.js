@@ -1,16 +1,29 @@
-import {Component} from 'react';
-
-export default class ActionPlanStatistics extends Component {
-  render() {
-    return (
-      <ul>
-        <li><span>30</span> Propostes relacionades</li>
-        <li><span>25</span> Suma de suports</li>
-        <li><span>15</span> Suma de comentaris</li>
-        <li><span>25</span> Suma de participants presencials</li>
-        <li><span>30</span> Intervencions en cites</li>
-        <li><span>60</span> Intervencions totals</li>
-      </ul>
-    );
-  }
-}
+export default ({
+  statistics
+}) => (
+  <ul>
+    <li>
+      <span>{statistics.related_proposals_count}</span>
+      Propostes relacionades
+    </li>
+    <li>
+      <span>{statistics.supports_count}</span>
+      Suma de suports
+    </li>
+    <li>
+      <span>{statistics.comments_count}</span>
+      Suma de comentaris
+    </li>
+    <li>
+      <span>{statistics.participants_count}</span>
+      Suma de participants presencials</li>
+    <li>
+      <span>{statistics.meeting_interventions_count}</span>
+      Intervencions en cites
+    </li>
+    <li>
+      <span>{statistics.interventions_count}</span>
+      Intervencions totals
+    </li>
+  </ul>
+);
