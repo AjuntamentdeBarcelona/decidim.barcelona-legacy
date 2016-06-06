@@ -6,10 +6,12 @@ class Api::ActionPlansController < Api::ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
 
+  has_orders %w{weight random}, only: :index
+
   def index
     set_seed
 
-    action_plans = ActionPlan.sort_by_weight
+    action_plans = ActionPlan.all
 
     @action_plans = ResourceFilter.new(params, user: current_user)
       .filter_collection(action_plans.includes(:category, :subcategory))
@@ -17,7 +19,7 @@ class Api::ActionPlansController < Api::ApplicationController
     respond_to do |format|
       format.json { 
         action_plans = @action_plans
-          .send("sort_by_created_at")
+          .send("sort_by_#{@current_order}")
           .page(params[:page])
           .per(15)
 

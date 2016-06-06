@@ -59,7 +59,6 @@ class Proposals extends Component {
           </div>
 
           <div className="small-12 medium-9 column">
-            <OrderSelector />
             <div className="show-for-small-only">
               <NewProposalButton />
             </div>
@@ -67,6 +66,8 @@ class Proposals extends Component {
             <h3 className="proposals-count">
               { I18n.t('components.proposals.count', { count: this.props.count }) }
             </h3>
+            <OrderSelector
+              orderLinks={["random", "hot_score", "confidence_score", "created_at"]} />
             <ProposalsList proposals={this.props.proposals} />
             {this.renderInfinitePagination()}
           </div>

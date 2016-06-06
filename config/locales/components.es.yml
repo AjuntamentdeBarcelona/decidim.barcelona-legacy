@@ -77,6 +77,7 @@ es:
     meetings_filters:
       clean_filters: Limpiar filtro
     order_selector:
+      weight: pesos
       confidence_score: Mejor valorados
       created_at: Nuevos
       hot_score: Más activos hoy
