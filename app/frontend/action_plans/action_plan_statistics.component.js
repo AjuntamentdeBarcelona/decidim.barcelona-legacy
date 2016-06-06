@@ -3,26 +3,26 @@ export default ({
 }) => (
   <ul>
     <li>
-      <span>{statistics.related_proposals_count}</span>
+      <span className="number">{statistics.related_proposals_count}</span>
       Propostes relacionades
     </li>
     <li>
-      <span>{statistics.supports_count}</span>
+      <span className="number">{statistics.supports_count}</span>
       Suma de suports
     </li>
     <li>
-      <span>{statistics.comments_count}</span>
+      <span className="number">{statistics.comments_count}</span>
       Suma de comentaris
     </li>
     <li>
-      <span>{statistics.participants_count}</span>
+      <span className="number">{statistics.participants_count}</span>
       Suma de participants presencials</li>
     <li>
-      <span>{statistics.meeting_interventions_count}</span>
+      <span className="number">{statistics.meeting_interventions_count}</span>
       Intervencions en cites
     </li>
     <li>
-      <span>{statistics.interventions_count}</span>
+      <span className="number">{statistics.interventions_count}</span>
       Intervencions totals
     </li>
   </ul>

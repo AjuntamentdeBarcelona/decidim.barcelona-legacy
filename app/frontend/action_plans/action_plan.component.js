@@ -20,7 +20,7 @@ export default ({
 }) => (
   <div id={`action_plan_${id}`} className="proposal clear">
     <div className="row">
-      <div className="small-12 medium-9 column">
+      <div className="small-12 medium-8 column">
         <div className="proposal-content">
           <span className="label-proposal">{ I18n.t('components.action_plan.label') }</span>
 
@@ -43,7 +43,7 @@ export default ({
           </div>
         </div>
       </div>
-      <aside id={`action_plan_${id}_statistics`} className="small-12 medium-3 column">
+      <aside id={`action_plan_${id}_statistics`} className="actionplan-statistics small-12 medium-4 column">
         <ActionPlanStatistics statistics={statistics}></ActionPlanStatistics>
         <hr></hr>
         <SocialShareButtons title={title} url={url} />

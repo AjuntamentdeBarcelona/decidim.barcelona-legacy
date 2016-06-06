@@ -44,7 +44,7 @@ class ActionPlan < ActiveRecord::Base
       end
 
       def compute_comments_count
-        self.proposals.map(&:comments).sum
+        self.proposals.map(&:comments).flatten.length
       end
 
       def compute_participants_count

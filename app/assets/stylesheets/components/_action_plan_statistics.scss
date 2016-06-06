@@ -1,0 +1,22 @@
+.actionplan-statistics {
+  text-align: center;
+  background: #fff;
+
+  ul {
+    list-style: none;
+    text-align: left;
+
+    li {
+      display: block;
+
+      span.number {
+        width: 50px;
+        display: inline-block;
+        text-align: center;
+        font-size: 1.4em;
+        margin-right: 0.1em;
+        color: #999;
+      }
+    }
+  }
+}
