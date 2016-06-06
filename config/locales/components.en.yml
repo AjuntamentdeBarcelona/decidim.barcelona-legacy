@@ -13,6 +13,13 @@ en:
       delete: remove
       deleted: This action has been removed
       new_revision: New revision
+    action_plan_statistics:
+      comments_count: Comments
+      interventions_count: Interventions
+      meeting_interventions_count: Meeting interventions
+      participants_count: Presencial participations
+      related_proposals_count: Related proposals
+      supports_count: Supports
     action_plans:
       count: Showing %{count} action plans
       title: Related action plans
@@ -77,11 +84,11 @@ en:
     meetings_filters:
       clean_filters: Clean filter
     order_selector:
-      weight: weights
       confidence_score: highest rated
       created_at: newest
       hot_score: most active
       random: random
+      weight: weights
     proposal_answer_box:
       accept: Accept
       approve: Approve answer

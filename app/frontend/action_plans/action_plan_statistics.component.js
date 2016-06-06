@@ -4,26 +4,27 @@ export default ({
   <ul>
     <li>
       <span className="number">{statistics.related_proposals_count}</span>
-      Propostes relacionades
+      {I18n.t('components.action_plan_statistics.related_proposals_count')}
     </li>
     <li>
       <span className="number">{statistics.supports_count}</span>
-      Suma de suports
+      {I18n.t('components.action_plan_statistics.supports_count')}
     </li>
     <li>
       <span className="number">{statistics.comments_count}</span>
-      Suma de comentaris
+      {I18n.t('components.action_plan_statistics.comments_count')}
     </li>
     <li>
       <span className="number">{statistics.participants_count}</span>
-      Suma de participants presencials</li>
+      {I18n.t('components.action_plan_statistics.participants_count')}
+    </li>
     <li>
       <span className="number">{statistics.meeting_interventions_count}</span>
-      Intervencions en cites
+      {I18n.t('components.action_plan_statistics.meeting_interventions_count')}
     </li>
     <li>
       <span className="number">{statistics.interventions_count}</span>
-      Intervencions totals
+      {I18n.t('components.action_plan_statistics.interventions_count')}
     </li>
   </ul>
 );
