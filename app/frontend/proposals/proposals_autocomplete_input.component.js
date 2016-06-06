@@ -36,6 +36,7 @@ export default class ProposalsAutocompleteInput extends Component {
     return (
       <Autocomplete
         inputProps={{
+          id: 'autocomplete-1',
           autoComplete: 'off',
           placeholder: I18n.t("components.proposals_autocomplete_input.search")
         }}

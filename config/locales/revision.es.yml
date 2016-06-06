@@ -5,6 +5,7 @@ es:
       generate:
         notice: Tu informe se está generando y estará disponible en unos minutos.
       index:
+        generate: Generar
         title: Informes de actuaciones
     action_plans:
       form:

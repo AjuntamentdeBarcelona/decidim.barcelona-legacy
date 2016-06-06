@@ -5,6 +5,7 @@ en:
       generate:
         notice: Your report is being generated and will be available in a few minutes.
       index:
+        generate: Generate
         title: Reports of activities
     action_plans:
       form:
