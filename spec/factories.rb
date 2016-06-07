@@ -1,4 +1,5 @@
-FactoryGirl.define do  factory :action_plan_report do
+FactoryGirl.define do 
+  factory :action_plan_report do
     file "MyString"
   end
 
@@ -423,5 +424,15 @@ FactoryGirl.define do  factory :action_plan_report do
   factory :action_plan_revision do
     sequence(:title)       { |n| "Revision #{n} title" }
     sequence(:description) { |n| "Revision #{n} description" }
+  end
+
+  factory :action_plan_statistics do
+    action_plan
+    related_proposals_count 1
+    supports_count 1
+    comments_count 1
+    participants_count 1
+    meeting_interventions_count 1
+    interventions_count 1
   end
 end

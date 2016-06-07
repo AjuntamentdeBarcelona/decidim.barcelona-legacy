@@ -13,6 +13,13 @@ ca:
       delete: Eliminar
       deleted: Aquesta actuació ha estat eliminada
       new_revision: Nova revisió
+    action_plan_statistics:
+      comments_count: Comentaris
+      interventions_count: Intervencions totals
+      meeting_interventions_count: Intervencions en cites
+      participants_count: Participacions presencials
+      related_proposals_count: Propostes relacionades
+      supports_count: Suports
     action_plans:
       count: Mostrant %{count} actuacions
       title: Actuacions relacionades
@@ -80,7 +87,9 @@ ca:
       confidence_score: amb més suport
       created_at: més noves
       hot_score: més actives avui
+      participants: més participades
       random: aleatòries
+      weight: pesos
     proposal_answer_box:
       accept: Acceptar
       approve: Aprovar resposta

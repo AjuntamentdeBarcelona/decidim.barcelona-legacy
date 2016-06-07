@@ -13,6 +13,13 @@ es:
       delete: Eliminar
       deleted: Esta actuación ha sido eliminada
       new_revision: Nueva revisión
+    action_plan_statistics:
+      comments_count: Comentarios
+      interventions_count: Intervenciones totales
+      meeting_interventions_count: Intervenciones en citas
+      participants_count: Participaciones presenciales
+      related_proposals_count: Propuestas relacionadas
+      supports_count: Soportes
     action_plans:
       count: Mostrando %{count} actuaciones
       title: Actuaciones relacionadas
@@ -80,7 +87,9 @@ es:
       confidence_score: Mejor valorados
       created_at: Nuevos
       hot_score: Más activos hoy
+      participants: más participadas
       random: aleatorio
+      weight: pesos
     proposal_answer_box:
       accept: Aceptar
       approve: Aprobar respuesta

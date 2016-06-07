@@ -11,6 +11,7 @@ class Api::ActionPlans::ProposalsController < Api::ApplicationController
     @proposal = Proposal.find(params[:proposal_id])
     @action_plan.proposals << @proposal
     @action_plan.save
+    ActionPlanStatisticsWorker.perform_async(@action_plan.id)
     render json: @action_plan.action_plans_proposals, root: 'action_plans_proposals'
   end
 
@@ -27,6 +28,7 @@ class Api::ActionPlans::ProposalsController < Api::ApplicationController
   def destroy
     @proposal = @action_plan.proposals.find(params[:id])
     @action_plan.proposals.delete(@proposal)
+    ActionPlanStatisticsWorker.perform_async(@action_plan.id)
     render json: @action_plan.action_plans_proposals, root: 'action_plans_proposals'
   end
 end

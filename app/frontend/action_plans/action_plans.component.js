@@ -4,6 +4,7 @@ import { connect }            from 'react-redux';
 
 import Loading                from '../application/loading.component';
 import InfinitePagination     from '../pagination/infinite_pagination.component';
+import OrderSelector          from '../order/order_selector.component';
 
 import ActionPlansSidebar     from './action_plans_sidebar.component';
 import ActionPlansList        from './action_plans_list.component';
@@ -56,6 +57,8 @@ class ActionPlans extends Component {
                 { I18n.t('components.action_plans.count', { count: this.props.count }) }
               </h3>
               <DownloadButton filters={this.props.filters} order={this.props.order} seed={this.props.seed}/>
+              <OrderSelector 
+                orderLinks={["weight", "random", "confidence_score", "participants"]} />
               <ActionPlansList actionPlans={this.props.actionPlans} />
               {this.renderInfinitePagination()}
             </div>

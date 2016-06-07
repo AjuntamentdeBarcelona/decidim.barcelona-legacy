@@ -1,5 +1,8 @@
-import truncate   from 'html-truncate';
-import FilterMeta from '../filters/filter_meta.component';
+import ellipsis             from 'html-ellipsis';
+
+import ActionPlanStatistics from './action_plan_statistics.component';
+import SocialShareButtons   from '../application/social_share_buttons.component';
+import FilterMeta           from '../filters/filter_meta.component';
 
 const DESCRIPTION_MAX_CHARACTERS = 300;
 
@@ -12,11 +15,12 @@ export default ({
   category,
   subcategory,
   scope_,
-  district
+  district,
+  statistics
 }) => (
   <div id={`action_plan_${id}`} className="proposal clear">
     <div className="row">
-      <div className="small-12 medium-12 column">
+      <div className="small-12 medium-8 column">
         <div className="proposal-content">
           <span className="label-proposal">{ I18n.t('components.action_plan.label') }</span>
 
@@ -28,7 +32,7 @@ export default ({
 
           <div 
             className="proposal-description"
-            dangerouslySetInnerHTML={{ __html: truncate(description.autoLink(), DESCRIPTION_MAX_CHARACTERS) }} />
+            dangerouslySetInnerHTML={{ __html: ellipsis(description.autoLink(), DESCRIPTION_MAX_CHARACTERS) }} />
 
           <div className="bottom-bar">
             <FilterMeta 
@@ -39,6 +43,13 @@ export default ({
           </div>
         </div>
       </div>
+      <aside id={`action_plan_${id}_statistics`} className="actionplan-statistics small-12 medium-4 column">
+        <div className="action-plan-statistics-inner">
+          <ActionPlanStatistics statistics={statistics}></ActionPlanStatistics>
+          <hr></hr>
+          <SocialShareButtons title={title} url={url} />
+        </div>
+      </aside>
     </div>
   </div>
 );
