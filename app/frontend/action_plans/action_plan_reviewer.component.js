@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 
 import ScopePicker            from '../scope/scope_picker.component';
 import CategoryPicker         from '../categories/new_category_picker.component';
-import ActionPlanProposals    from './action_plan_proposals.component';
 
 import { fetchDistricts }     from '../districts/districts.actions';
 import { fetchCategories }    from '../categories/categories.actions';
@@ -23,7 +22,6 @@ class ActionPlanReviewer extends Component {
     if (session.is_reviewer) {
       return (
         <div>
-          <ActionPlanProposals actionPlan={actionPlan} />
           <h2>{I18n.t('action_plans.edit.editing')}</h2>
           <ScopePicker 
             namespace="action_plan"

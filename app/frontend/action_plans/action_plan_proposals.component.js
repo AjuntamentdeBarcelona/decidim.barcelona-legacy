@@ -27,7 +27,7 @@ class ActionPlanProposals extends Component {
 
     return (
       <div>
-        <h4>{I18n.t("components.action_plan_proposals.title")}</h4>
+        <h2>{I18n.t("components.action_plan_proposals.title")}</h2>
         <ProposalsAutocompleteInput 
           proposalsApiUrl="/api/proposals"
           excludeIds={actionPlansProposals.map(a => a.proposal.id)}
