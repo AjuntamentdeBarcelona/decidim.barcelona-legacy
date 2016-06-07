@@ -27,45 +27,6 @@ class ActionPlan < ActiveRecord::Base
           interventions_count: interventions_count
         }
       end
-
-      def compute_statistics
-        statistics = ActionPlanStatistics.find_or_create_by(action_plan_id: self.id)
-
-        statistics.related_proposals_count     = compute_related_proposals_count
-        statistics.supports_count              = compute_supports_count
-        statistics.comments_count              = compute_comments_count
-        statistics.participants_count          = compute_participants_count
-        statistics.meeting_interventions_count = compute_meeting_interventions_count
-        statistics.interventions_count         = compute_interventions_count
-
-        statistics.save
-      end
-
-      private
-
-      def compute_related_proposals_count
-        self.proposals.count
-      end
-
-      def compute_supports_count
-        self.proposals.map(&:total_votes).sum
-      end
-
-      def compute_comments_count
-        self.proposals.map(&:comments).flatten.length
-      end
-
-      def compute_participants_count
-        self.proposals.map(&:meetings).flatten.map(&:attendee_count).compact.sum
-      end
-
-      def compute_meeting_interventions_count
-        self.proposals.map(&:meetings).flatten.map(&:interventions).compact.sum
-      end
-
-      def compute_interventions_count
-        0
-      end
     end
   end
 end

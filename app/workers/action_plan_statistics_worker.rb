@@ -3,6 +3,6 @@ class ActionPlanStatisticsWorker
 
   def perform(action_plan_id)
     action_plan = ActionPlan.find(action_plan_id)
-    action_plan.compute_statistics
+    ActionPlanStatisticsCalculator.compute_statistics_for(action_plan)
   end
 end
