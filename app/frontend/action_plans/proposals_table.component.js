@@ -39,10 +39,12 @@ export default class ActionPlanProposalsTable extends Component {
   }
 
   renderRemoveButton(proposal) {
-    if (this.props.onRemoveProposal) {
+    const {onRemoveProposal, editable} = this.props;
+
+    if (editable && onRemoveProposal) {
       return (
         <td>
-          <DangerLink onClick={(event) => this.props.onRemoveProposal(proposal) }>
+          <DangerLink onClick={(event) => onRemoveProposal(proposal) }>
             {I18n.t("components.proposals_table.remove")}
           </DangerLink>
         </td>

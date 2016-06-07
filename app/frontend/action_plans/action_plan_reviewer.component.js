@@ -16,10 +16,10 @@ class ActionPlanReviewer extends Component {
   }
 
   render() {
-    const { session, actionPlan, updateActionPlan } = this.props;
+    const { visible, actionPlan, updateActionPlan } = this.props;
     const { id, scope_, district, category, subcategory } = actionPlan;
 
-    if (session.is_reviewer) {
+    if (visible) {
       return (
         <div>
           <h2>{I18n.t('action_plans.edit.editing')}</h2>
@@ -43,8 +43,8 @@ class ActionPlanReviewer extends Component {
   }
 }
 
-function mapStateToProps({ session, actionPlan }) {
-  return { session, actionPlan };
+function mapStateToProps({ actionPlan }) {
+  return { actionPlan };
 }
 
 function mapDispatchToProps(dispatch) {

@@ -33,24 +33,37 @@ class ActionPlanProposals extends Component {
   }
 
   render() {
-    const { actionPlan, addActionPlanProposal, removeActionPlanProposal } = this.props;
+    const { editable, actionPlan, addActionPlanProposal, removeActionPlanProposal } = this.props;
     const { id } = actionPlan;
     const actionPlansProposals = actionPlan.actionPlansProposals || [];
 
     return (
       <div className="action-plan-proposals-component">
         <h2>{I18n.t("components.action_plan_proposals.title")}</h2>
-        <ProposalsAutocompleteInput 
-          proposalsApiUrl="/api/proposals"
-          excludeIds={actionPlansProposals.map(a => a.proposal.id)}
-          onAddProposal={proposal => addActionPlanProposal(id, proposal)} />
+        {this.renderSearchProposalsInput(id, actionPlansProposals)}
         <Loading show={this.state.loading} />
         <ProposalsTable 
           actionPlansProposals={ actionPlansProposals }
           onChangeLevel={ (proposal, level) => changeActionPlansProposalLevel(actionPlan, proposal, level) }
-          onRemoveProposal={proposal => removeActionPlanProposal(id, proposal)} />
+          onRemoveProposal={proposal => removeActionPlanProposal(id, proposal)} 
+          editable={editable} />
       </div>
     );
+  }
+
+  renderSearchProposalsInput(id, actionPlansProposals) {
+    const {editable} = this.props;
+
+    if (editable) {
+      return (
+        <ProposalsAutocompleteInput 
+          proposalsApiUrl="/api/proposals"
+          excludeIds={actionPlansProposals.map(a => a.proposal.id)}
+          onAddProposal={proposal => addActionPlanProposal(id, proposal)} />
+      );
+    }
+
+    return null;
   }
 }
 

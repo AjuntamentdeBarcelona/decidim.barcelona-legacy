@@ -25,20 +25,19 @@ class ActionPlanShow extends Component {
     super(props);
 
     this.state = {
-      loading: true
+      loading: true,
+      editable: false
     }
   }
 
   componentDidMount() {
-    const { session } = this.props;
+    const { session, fetchActionPlan } = this.props;
 
-    this.props.fetchActionPlan(this.props.actionPlanId);
-  }
+    this.setState({ editable: session.is_reviewer });
 
-  componentWillReceiveProps(newProps) {
-    if (newProps.actionPlan.id) {
+    fetchActionPlan(this.props.actionPlanId).then(() => {
       this.setState({ loading: false });
-    }
+    });
   }
 
   render() {
@@ -58,7 +57,6 @@ class ActionPlanShow extends Component {
         id,
         url,
         deleted,
-        new_revision_url,
         title, 
         description,
         created_at,
@@ -66,7 +64,6 @@ class ActionPlanShow extends Component {
         category,
         subcategory,
         district,
-        weight,
         statistics
       } = actionPlan;
 
@@ -80,25 +77,8 @@ class ActionPlanShow extends Component {
                 {I18n.t('proposals.show.back_link')}
               </a>
 
-              <DangerLink className="delete-action-plan button danger tiny radius right" onClick={ () => this.props.deleteActionPlan(this.props.actionPlan.id) }>
-                <i className="icon-cross"></i>
-                { I18n.t("components.action_plan_show.delete") }
-              </DangerLink>
-
-              <a href={new_revision_url} className="edit-proposal button success tiny radius right">
-                <i className="icon-edit"></i>
-                { I18n.t("components.action_plan_show.new_revision") }
-              </a>
-
-              { this.renderApproveButton() }
-
-              <span className="right">
-                <WeightControl
-                  weight={ weight }
-                  onUpdateWeight={ (weight) => this.props.changeWeight(id, weight)} />
-              </span>
-
-              { this.renderNotice() }
+              {this.renderReviewerActions()}
+              {this.renderNotice()}
 
               <h2><a href={url}>{title}</a></h2>
 
@@ -116,15 +96,16 @@ class ActionPlanShow extends Component {
                 namespace="action_plans"
                 useServerLinks={ true }/>
 
+              <ActionPlanReviewer visible={this.state.editable} />
+
               <h2>Estat de l'actuacio</h2>
               <p>TODO</p>
 
               <h2>Alegacions relacionades</h2>
               <p>TODO</p>
 
-              <ActionPlanProposals actionPlan={actionPlan} />
-
-              <ActionPlanMeetings />
+              <ActionPlanProposals actionPlan={actionPlan} editable={this.state.editable} />
+              <ActionPlanMeetings useServerLinks={true} />
             </div>
 
             <aside className="small-12 medium-3 column">
@@ -144,12 +125,6 @@ class ActionPlanShow extends Component {
                 <h3>Seguiment</h3>
               </div>
             </aside>
-          </div>
-
-          <div className="row">
-            <div className="small-12 medium-12 column">
-              <ActionPlanReviewer />
-            </div>
           </div>
         </div>
       );
@@ -178,6 +153,35 @@ class ActionPlanShow extends Component {
           { I18n.t("components.action_plan_show.approve") }
         </DangerLink>
       )
+    }
+  }
+
+  renderReviewerActions() {
+    const { actionPlan, deleteActionPlan, changeWeight } = this.props;
+    const { id, weight, new_revision_url } = actionPlan;
+
+    if (this.state.editable) {
+      return (
+        <span>
+          <DangerLink className="delete-action-plan button danger tiny radius right" onClick={() => deleteActionPlan(id) }>
+            <i className="icon-cross"></i>
+            { I18n.t("components.action_plan_show.delete") }
+          </DangerLink>
+
+          <a href={new_revision_url} className="edit-proposal button success tiny radius right">
+            <i className="icon-edit"></i>
+            { I18n.t("components.action_plan_show.new_revision") }
+          </a>
+
+          { this.renderApproveButton() }
+
+          <span className="right">
+            <WeightControl
+              weight={ weight }
+              onUpdateWeight={ (weight) => changeWeight(id, weight)} />
+          </span>
+        </span>
+      );
     }
   }
 }
