@@ -16,6 +16,7 @@ import FilterMeta           from '../filters/filter_meta.component';
 
 import ActionPlanStatistics from './action_plan_statistics.component';
 import ActionPlanProposals  from './action_plan_proposals.component';
+import ActionPlanMeetings   from './action_plan_meetings.component';
 import ActionPlanReviewer   from './action_plan_reviewer.component';
 import WeightControl        from './weight_control.component';
 
@@ -123,7 +124,7 @@ class ActionPlanShow extends Component {
 
               <ActionPlanProposals actionPlan={actionPlan} />
 
-              <ActionPlanReviewer />
+              <ActionPlanMeetings />
             </div>
 
             <aside className="small-12 medium-3 column">
@@ -143,10 +144,11 @@ class ActionPlanShow extends Component {
                 <h3>Seguiment</h3>
               </div>
             </aside>
+          </div>
 
+          <div className="row">
             <div className="small-12 medium-12 column">
-              <h2>Actuacio construida a partir de les seguents cites presencials</h2>
-              <p>TODO</p>
+              <ActionPlanReviewer />
             </div>
           </div>
         </div>
