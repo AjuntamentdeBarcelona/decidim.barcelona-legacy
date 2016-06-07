@@ -14,12 +14,12 @@ ca:
       deleted: Aquesta actuació ha estat eliminada
       new_revision: Nova revisió
     action_plan_statistics:
-      comments_count: Suma de comentaris
+      comments_count: Comentaris
       interventions_count: Intervencions totals
       meeting_interventions_count: Intervencions en cites
-      participants_count: Suma de participacions presencials
+      participants_count: Participacions presencials
       related_proposals_count: Propostes relacionades
-      supports_count: Suma de suports
+      supports_count: Suports
     action_plans:
       count: Mostrant %{count} actuacions
       title: Actuacions relacionades

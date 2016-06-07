@@ -44,9 +44,11 @@ export default ({
         </div>
       </div>
       <aside id={`action_plan_${id}_statistics`} className="actionplan-statistics small-12 medium-4 column">
-        <ActionPlanStatistics statistics={statistics}></ActionPlanStatistics>
-        <hr></hr>
-        <SocialShareButtons title={title} url={url} />
+        <div className="action-plan-statistics-inner">
+          <ActionPlanStatistics statistics={statistics}></ActionPlanStatistics>
+          <hr></hr>
+          <SocialShareButtons title={title} url={url} />
+        </div>
       </aside>
     </div>
   </div>
