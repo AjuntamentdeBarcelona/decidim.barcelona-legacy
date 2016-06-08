@@ -11,9 +11,7 @@ class Api::ActionPlansController < Api::ApplicationController
   def index
     set_seed
 
-    action_plans = ActionPlan
-    .includes(:revisions)
-    .includes(:action_plan_statistics)
+    action_plans = ActionPlan.includes(:revisions, :action_plan_statistics)
 
     @action_plans = ResourceFilter.new(params, user: current_user)
       .filter_collection(action_plans.includes(:category, :subcategory))
