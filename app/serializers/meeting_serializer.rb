@@ -1,24 +1,14 @@
 class MeetingSerializer < ActiveModel::Serializer
   attributes :id, :slug, :title, :description, :address, :address_latitude, :url,
-             :address_longitude, :held_at, :start_at, :end_at, :category,
-             :subcategory, :closed, :district, :address_details, :organizations,
-             :close_report, :tags, :attendee_count, :interventions,
-             :proposal_ids, :pictures
+             :address_longitude, :held_at, :start_at, :end_at, :category_id,
+             :subcategory_id, :closed, :district, :address_details, :organizations,
+             :close_report, :attendee_count, :interventions
+
+  has_one :category
+  has_one :subcategory
 
   def held_at
     I18n.l(object.held_at)
-  end
-
-  def pictures
-    object.pictures.map{ |p| p.file.url }
-  end
-
-  def proposal_ids
-    object.proposals.map(&:id)
-  end
-
-  def tags
-    object.tags.map(&:name)
   end
 
   def district
@@ -40,20 +30,6 @@ class MeetingSerializer < ActiveModel::Serializer
 
   def end_at
     object.end_at.present? ? I18n.l(object.end_at) : nil
-  end
-
-  def category
-    {
-      id: object.category.id,
-      name: object.category.decorate.name
-    }
-  end
-
-  def subcategory
-    {
-      id: object.subcategory.id,
-      name: object.subcategory.decorate.name
-    }
   end
 
   def url

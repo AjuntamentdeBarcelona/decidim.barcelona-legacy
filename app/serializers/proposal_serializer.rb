@@ -1,16 +1,14 @@
 class ProposalSerializer < ActiveModel::Serializer
-attributes :id, :title, :url, :summary, :created_at, :scope_, :district, :source,
-           :total_votes, :voted, :votable, :closed, :official, :from_meeting,
-           :editable, :conflictive?, :external_url, :hidden?, :can_hide, :can_hide_author,
-           :flagged, :code, :arguable?, :permissions, :total_positive_comments,
-           :total_negative_comments, :total_neutral_comments, :total_comments,
-           :total_positive_comments, :total_negative_comments, :total_neutral_comments,
-           :social_media_image_url
-
+  attributes :id, :title, :url, :summary, :created_at, :scope_, :district, :source,
+             :total_votes, :voted, :votable, :closed, :official, :from_meeting,
+             :editable, :conflictive?, :external_url, :hidden?, :can_hide, :can_hide_author,
+             :flagged, :code, :arguable?, :permissions, :total_positive_comments,
+             :total_negative_comments, :total_neutral_comments, :total_comments,
+             :social_media_image_url, :author_id
+  
   has_one :category
   has_one :subcategory
   has_one :author
-  has_one :answer
 
   # Name collision with serialization `scope`
   def scope_
@@ -18,23 +16,25 @@ attributes :id, :title, :url, :summary, :created_at, :scope_, :district, :source
   end
 
   def total_comments
-    object.comments.count
+    object.comments.length
   end
 
   def total_positive_comments
-    object.comments.positive.count
+    object.comments.select { |c| c.alignment && c.alignment > 0 }.count
   end
 
   def total_negative_comments
-    object.comments.negative.count
+    object.comments.select { |c| c.alignment && c.alignment < 0 }.count
   end
 
   def total_neutral_comments
-    object.comments.neutral.count
+    object.comments.select { |c| c.alignment && c.alignment == 0 }.count
   end
 
   def voted
-    scope && scope.current_user && scope.current_user.voted_up_on?(object)
+    scope && scope.current_user && object.votes_for.detect do |v| 
+      v.voter_type == 'User' && v.voter_id == scope.current_user.id && v.vote_flag
+    end.present?
   end
 
   def votable
@@ -54,11 +54,13 @@ attributes :id, :title, :url, :summary, :created_at, :scope_, :district, :source
   end
 
   def flagged
-    scope && Flag.flagged?(scope.current_user, object)
+    scope && scope.current_user && object.flags.detect do |flag| 
+      flag.user_id == scope.current_user.id
+    end.present?
   end
 
   def url
-    scope && scope.proposal_url(object)
+   scope && scope.proposal_url(object)
   end
 
   def created_at

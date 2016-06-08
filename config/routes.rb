@@ -265,6 +265,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :districts, only: [:index]
     resources :categories, only: [:index]
+    resources :subcategories, only: [:index]
     resources :proposals, only: [:show, :index, :update] do
       member do
         get :references
