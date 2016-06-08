@@ -1,5 +1,4 @@
 import { Component }              from 'react';
-import { bindActionCreators }     from 'redux';
 import { connect }                from 'react-redux';
 
 import Loading                    from '../application/loading.component';
@@ -67,13 +66,12 @@ class ActionPlanProposals extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ 
+export default connect(
+  null,
+  {
     addActionPlanProposal,
     changeActionPlansProposalLevel,
     removeActionPlanProposal,
     fetchActionPlanProposals 
-  }, dispatch);
-}
-
-export default connect(null, mapDispatchToProps)(ActionPlanProposals);
+  }
+)(ActionPlanProposals);

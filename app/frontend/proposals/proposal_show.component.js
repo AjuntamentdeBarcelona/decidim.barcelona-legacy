@@ -1,6 +1,5 @@
 import { Component }          from 'react';
 import { connect }            from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import { 
   fetchProposal, 
@@ -278,16 +277,11 @@ class ProposalShow extends Component {
   }
 }
 
-function mapStateToProps({ session, proposal }) {
-  return { session, proposal };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ 
+export default connect(
+  ({ session, proposal }) => ({ session, proposal }),
+  {
     fetchProposal, 
     hideProposal,
     hideProposalAuthor
-  }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProposalShow);
+  }
+)(ProposalShow);

@@ -1,5 +1,4 @@
 import { Component }                    from 'react';
-import { bindActionCreators }           from 'redux';
 import { connect }                      from 'react-redux';
 
 import { setFilterGroup, clearFilters } from '../filters/filters.actions';
@@ -46,26 +45,10 @@ class ProposalsFilters extends Component {
   }
 }
 
-function mapStateToProps({ filters }) {
-  return {
-    filters
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ setFilterGroup, clearFilters }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProposalsFilters);
-
-//renderTagCloudFilter() {
-//  //if (this.props.tagsEnabled) {
-//  //  return (
-//  //    <TagCloudFilter 
-//  //      currentTags={this.state.tags} 
-//  //      tagCloud={this.props.tagCloud} 
-//  //      onSetFilterTags={(tags) => this.onSetFilterTags(tags)} />
-//  //  )
-//  //}
-//  return null;
-//}
+export default connect(
+  ({ filters }) => ({ filters }),
+  {
+    setFilterGroup,
+    clearFilters
+  }
+)(ProposalsFilters);

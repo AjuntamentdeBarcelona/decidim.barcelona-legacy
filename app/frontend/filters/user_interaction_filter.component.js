@@ -1,5 +1,4 @@
 import { Component }          from 'react';
-import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
 
 import FilterOptionGroup      from './filter_option_group.component';
@@ -26,12 +25,7 @@ class ReviewerFilter extends Component {
   }
 }
 
-function mapStateToProps({ filters, session }) {
-  return { filters, session };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ setFilterGroup }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ReviewerFilter);
+export default connect(
+  ({ filters, session }) => ({ filters, session }),
+  { setFilterGroup }
+)(ReviewerFilter);

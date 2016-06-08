@@ -1,5 +1,4 @@
 import { Component }                         from 'react';
-import { bindActionCreators }                from 'redux';
 import { connect }                           from 'react-redux';
 
 import Loading                               from '../application/loading.component';
@@ -76,12 +75,11 @@ class Meetings extends Component {
   }
 }
 
-function mapStateToProps({ meetings, filters, pagination }) {
-  return { meetings, filters, pagination };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchMeetings, appendMeetingsPage, setFilterGroup }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Meetings);
+export default connect(
+  ({ meetings, filters, pagination }) => ({ meetings, filters, pagination }),
+  {
+    fetchMeetings,
+    appendMeetingsPage,
+    setFilterGroup
+  }
+)(Meetings);

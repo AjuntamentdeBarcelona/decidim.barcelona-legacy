@@ -14,8 +14,6 @@ class NewProposalButton extends Component {
   }
 }
 
-function mapStateToProps({ session }) {
-  return { session };
-}
-
-export default connect(mapStateToProps)(NewProposalButton);
+export default connect(
+  ({ session }) => ({ session })
+)(NewProposalButton);

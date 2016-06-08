@@ -1,5 +1,4 @@
 import { Component }            from 'react';
-import { bindActionCreators }   from 'redux';
 import { connect }              from 'react-redux';
 
 import Loading                  from '../application/loading.component';
@@ -64,12 +63,7 @@ class ActionPlanMeetings extends Component {
   }
 }
 
-function mapStateToProps({ actionPlan }) {
-  return { actionPlan };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchRelatedMeetings }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ActionPlanMeetings);
+export default connect(
+  ({ actionPlan }) => ({ actionPlan }),
+  { fetchRelatedMeetings }
+)(ActionPlanMeetings);

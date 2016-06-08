@@ -1,5 +1,4 @@
 import { Component }          from 'react';
-import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
 
 import Loading                from '../application/loading.component';
@@ -96,12 +95,12 @@ class Proposals extends Component {
   }
 }
 
-function mapStateToProps({ proposals, filters, order, pagination, seed, count }) {
-  return { proposals, filters, order, pagination, seed, count };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchProposals, appendProposalsPage }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Proposals);
+export default connect(
+  ({ proposals, filters, order, pagination, seed, count }) => ({
+    proposals, filters, order, pagination, seed, count
+  }),
+  {
+    fetchProposals,
+    appendProposalsPage
+  }
+)(Proposals);

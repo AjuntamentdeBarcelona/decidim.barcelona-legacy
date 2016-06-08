@@ -1,6 +1,5 @@
 import { Component }          from 'react';
 import { connect }            from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import classNames             from 'classnames';
 
@@ -248,15 +247,14 @@ class Comment extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ 
+export default connect(
+  null,
+  {
     flagComment, 
     unFlagComment,
     upVoteComment,
     downVoteComment,
     hideComment,
     hideCommentAuthor
-  }, dispatch);
-}
-
-export default connect(null, mapDispatchToProps)(Comment);
+  }
+)(Comment);

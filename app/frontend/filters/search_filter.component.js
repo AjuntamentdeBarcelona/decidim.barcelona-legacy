@@ -1,5 +1,4 @@
 import { Component }          from 'react';
-import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
 
 import { setFilterText }      from './filters.actions';
@@ -53,8 +52,7 @@ class SearchFilter extends Component {
 
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ setFilterText }, dispatch);
-}
-
-export default connect(null, mapDispatchToProps)(SearchFilter);
+export default connect(
+  null,
+  { setFilterText }
+)(SearchFilter);

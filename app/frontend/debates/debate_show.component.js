@@ -1,6 +1,5 @@
 import { Component }          from 'react';
 import { connect }            from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import { 
   fetchDebate, 
@@ -47,14 +46,7 @@ class DebateShow extends Component {
   }
 }
 
-function mapStateToProps({ session, debate }) {
-  return { session, debate };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ 
-    fetchDebate 
-  }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(DebateShow);
+export default connect(
+  ({ session, debate }) => ({ session, debate }),
+  { fetchDebate }
+)(DebateShow);

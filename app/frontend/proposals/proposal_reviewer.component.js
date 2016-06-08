@@ -1,6 +1,5 @@
 import { Component }                    from 'react';
 import { connect }                      from 'react-redux';
-import { bindActionCreators }           from 'redux';
 
 import ScopePicker                      from '../scope/scope_picker.component';
 import CategoryPicker                   from '../categories/new_category_picker.component';
@@ -47,17 +46,12 @@ class ProposalReviewer extends Component {
   }
 }
 
-function mapStateToProps({ session, proposal }) {
-  return { session, proposal };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ 
+export default connect(
+  ({ session, proposal }) => ({ session, proposal }),
+  {
     fetchDistricts,
     fetchCategories, 
     updateAnswer,
     updateProposal
-  }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProposalReviewer);
+  }
+)(ProposalReviewer);

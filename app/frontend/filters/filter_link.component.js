@@ -1,5 +1,4 @@
 import { Component }          from 'react';
-import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
 
 import { setFilterGroup }     from './filters.actions';
@@ -35,15 +34,7 @@ class FilterLink extends Component {
   }
 }
 
-function mapStateToProps({ categories, filters }) {
-  return {
-    filters,
-    categories
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ setFilterGroup }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(FilterLink);
+export default connect(
+  ({ categories, filters }) => ({ filters, categories }),
+  { setFilterGroup }
+)(FilterLink);

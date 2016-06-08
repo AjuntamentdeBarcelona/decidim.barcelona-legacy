@@ -1,6 +1,5 @@
 import { Component }                         from 'react';
 import { connect }                           from 'react-redux';
-import { bindActionCreators }                from 'redux';
 
 import { fetchComments, appendCommentsPage } from './comments.actions';
 
@@ -188,8 +187,10 @@ function mapStateToProps(state, { commentable }) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchComments, appendCommentsPage }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Comments);
+export default connect(
+  mapStateToProps,
+  {
+    fetchComments,
+    appendCommentsPage
+  }
+)(Comments);

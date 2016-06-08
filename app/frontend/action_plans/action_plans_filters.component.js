@@ -1,5 +1,4 @@
 import { Component }                    from 'react';
-import { bindActionCreators }           from 'redux';
 import { connect }                      from 'react-redux';
 
 import { setFilterGroup, clearFilters } from '../filters/filters.actions';
@@ -39,14 +38,10 @@ class ActionPlansFilters extends Component {
   }
 }
 
-function mapStateToProps({ filters }) {
-  return {
-    filters
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ setFilterGroup, clearFilters }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ActionPlansFilters);
+export default connect(
+  ({ filters }) => ({ filters }),
+  {
+    setFilterGroup,
+    clearFilters
+  }
+)(ActionPlansFilters);

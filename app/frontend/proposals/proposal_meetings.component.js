@@ -1,5 +1,4 @@
 import { Component }            from 'react';
-import { bindActionCreators }   from 'redux';
 import { connect }              from 'react-redux';
 
 import Meeting                  from '../meetings/meeting.component';
@@ -51,12 +50,7 @@ class ProposalMeetings extends Component {
   }
 }
 
-function mapStateToProps({ proposal }) {
-  return { proposal };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchRelatedMeetings }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProposalMeetings);
+export default connect(
+  ({ proposal }) => ({ proposal }),
+  { fetchRelatedMeetings }
+)(ProposalMeetings);

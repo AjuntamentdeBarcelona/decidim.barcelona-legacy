@@ -1,6 +1,5 @@
 import { Component }          from 'react';
 import { connect }            from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import ScopePicker            from '../scope/scope_picker.component';
 import CategoryPicker         from '../categories/new_category_picker.component';
@@ -43,16 +42,11 @@ class ActionPlanReviewer extends Component {
   }
 }
 
-function mapStateToProps({ actionPlan }) {
-  return { actionPlan };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ 
+export default connect(
+  ({ actionPlan }) => ({ actionPlan }),
+  {
     fetchDistricts,
     fetchCategories,
     updateActionPlan
-  }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ActionPlanReviewer);
+  }
+)(ActionPlanReviewer);

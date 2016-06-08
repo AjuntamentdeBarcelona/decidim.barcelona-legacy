@@ -1,6 +1,5 @@
 import { Component }          from 'react';
 import { connect }            from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import { 
   fetchActionPlan,
@@ -186,18 +185,12 @@ class ActionPlanShow extends Component {
   }
 }
 
-
-function mapStateToProps({ session, actionPlan }) {
-  return { session, actionPlan };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ 
+export default connect(
+  ({ session, actionPlan }) => ({ session, actionPlan }),
+  {
     fetchActionPlan,
     deleteActionPlan,
     approveActionPlan,
     changeWeight
-  }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ActionPlanShow);
+  }
+)(ActionPlanShow);

@@ -1,5 +1,4 @@
 import { Component }          from 'react';
-import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
 
 import SmartButton            from '../application/smart_button.component';
@@ -110,12 +109,7 @@ class ProposalVoteBox extends Component {
   }
 }
 
-function mapStateToProps({ session }) {
-  return { session };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ voteProposal }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProposalVoteBox);
+export default connect(
+  ({ session }) => ({ session }),
+  { voteProposal }
+)(ProposalVoteBox);

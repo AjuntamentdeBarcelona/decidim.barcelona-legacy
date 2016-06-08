@@ -1,5 +1,4 @@
 import { Component }          from 'react';
-import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
 
 import Loading                from '../application/loading.component';
@@ -89,12 +88,9 @@ class ActionPlans extends Component {
   }
 }
 
-function mapStateToProps({ actionPlans, filters, order, pagination, seed, count }) {
-  return { actionPlans, filters, order, pagination, seed, count };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchActionPlans, appendActionPlansPage }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ActionPlans);
+export default connect(
+  ({ actionPlans, filters, order, pagination, seed, count }) => (
+    { actionPlans, filters, order, pagination, seed, count }
+  ),
+  { fetchActionPlans, appendActionPlansPage }
+)(ActionPlans);

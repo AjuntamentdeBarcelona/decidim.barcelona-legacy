@@ -1,5 +1,4 @@
 import { Component }          from 'react';
-import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
 
 import { setOrder       }     from '../order/order.actions';
@@ -24,15 +23,7 @@ class OrderSelector extends Component {
   }
 }
 
-function mapStateToProps({ order }) {
-  return {
-    order
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ setOrder }, dispatch);
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(OrderSelector);
+export default connect(
+  ({ order }) => ({ order }),
+  { setOrder }
+)(OrderSelector);

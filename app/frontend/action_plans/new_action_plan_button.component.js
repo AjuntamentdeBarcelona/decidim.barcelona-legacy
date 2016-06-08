@@ -14,8 +14,6 @@ class NewActionPlanButton extends Component {
   }
 }
 
-function mapStateToProps({ session }) {
-  return { session };
-}
-
-export default connect(mapStateToProps)(NewActionPlanButton);
+export default connect(
+  ({ session }) => ({ session })
+)(NewActionPlanButton);
