@@ -8,6 +8,7 @@ class ProposalSerializer < ActiveModel::Serializer
   
   has_one :category
   has_one :subcategory
+  has_one :author
 
   # Name collision with serialization `scope`
   def scope_
