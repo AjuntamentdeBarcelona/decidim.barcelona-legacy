@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 
 import ScopePicker            from '../scope/scope_picker.component';
 import CategoryPicker         from '../categories/new_category_picker.component';
-import ActionPlanProposals    from './action_plan_proposals.component';
 
 import { fetchDistricts }     from '../districts/districts.actions';
 import { fetchCategories }    from '../categories/categories.actions';
@@ -17,13 +16,12 @@ class ActionPlanReviewer extends Component {
   }
 
   render() {
-    const { session, actionPlan, updateActionPlan } = this.props;
+    const { visible, actionPlan, updateActionPlan } = this.props;
     const { id, scope_, district, category, subcategory } = actionPlan;
 
-    if (session.is_reviewer) {
+    if (visible) {
       return (
         <div>
-          <ActionPlanProposals actionPlan={actionPlan} />
           <h2>{I18n.t('action_plans.edit.editing')}</h2>
           <ScopePicker 
             namespace="action_plan"
@@ -45,8 +43,8 @@ class ActionPlanReviewer extends Component {
   }
 }
 
-function mapStateToProps({ session, actionPlan }) {
-  return { session, actionPlan };
+function mapStateToProps({ actionPlan }) {
+  return { actionPlan };
 }
 
 function mapDispatchToProps(dispatch) {

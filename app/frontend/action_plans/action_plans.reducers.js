@@ -2,6 +2,7 @@ import {
   FETCH_ACTION_PLANS, 
   FETCH_ACTION_PLAN,
   FETCH_ACTION_PLAN_PROPOSALS,
+  FETCH_RELATED_MEETINGS,
   APPEND_ACTION_PLANS_PAGE,
   DELETE_ACTION_PLAN,
   UPDATE_ACTION_PLAN,
@@ -44,6 +45,13 @@ export const actionPlan = function (state = {}, action) {
         ...state,
         actionPlansProposals
       };
+    case FETCH_RELATED_MEETINGS:
+      let meetings = action.payload.data.meetings;
+
+      return {
+        ...state,
+        meetings
+      }
     case DELETE_ACTION_PLAN:
       return {
         ...state,

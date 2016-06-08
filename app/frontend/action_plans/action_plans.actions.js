@@ -9,6 +9,7 @@ export const DELETE_ACTION_PLAN          = 'DELETE_ACTION_PLAN';
 export const UPDATE_ACTION_PLAN          = 'UPDATE_ACTION_PLAN';
 export const ADD_ACTION_PLAN_PROPOSAL    = 'ADD_ACTION_PLAN_PROPOSAL';
 export const REMOVE_ACTION_PLAN_PROPOSAL = 'REMOVE_ACTION_PLAN_PROPOSAL';
+export const FETCH_RELATED_MEETINGS      = 'FETCH_RELATED_MEETINGS';
 
 export function deleteActionPlan(id){
   const request = axios.delete(`${API_BASE_URL}/action_plans/${id}.json`);
@@ -73,6 +74,15 @@ export function fetchActionPlanProposals(actionPlanId) {
 
   return {
     type: FETCH_ACTION_PLAN_PROPOSALS,
+    payload: request
+  };
+}
+
+export function fetchRelatedMeetings(actionPlanId) {
+  const request = axios.get(`${API_BASE_URL}/action_plans/${actionPlanId}/meetings.json`);
+
+  return {
+    type: FETCH_RELATED_MEETINGS,
     payload: request
   };
 }

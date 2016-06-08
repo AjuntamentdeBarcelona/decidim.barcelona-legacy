@@ -57,8 +57,14 @@ module.exports = {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract("style-loader", "css-loader")
       },
-      { test: require.resolve("react"), loader: "expose?React" },
-      { test: require.resolve("react-dom"), loader: "expose?ReactDOM" }
+      { 
+        test: require.resolve("react"),
+        loader: "expose?React" 
+      },
+      { 
+        test: require.resolve("react-dom"),
+        loader: "expose?ReactDOM"
+      }
     ]
   }
 };
