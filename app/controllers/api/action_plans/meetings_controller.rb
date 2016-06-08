@@ -3,9 +3,9 @@ class Api::ActionPlans::MeetingsController < Api::ApplicationController
 
   def index
     meeting_ids = @action_plan.proposals
-    .includes(:meetings)
-    .collect(&:meeting_ids)
-    .flatten
+      .includes(:meetings)
+      .collect(&:meeting_ids)
+      .flatten
 
     @meetings = Meeting.includes(:category, :subcategory).where(id: meeting_ids)
 

@@ -4,14 +4,14 @@ class Api::ActionPlans::ProposalsController < Api::ApplicationController
 
   def index
     @action_plans_proposals = @action_plan.action_plans_proposals
-    .includes(:proposal => [
-      {:author => :organization},
-      :category,
-      :subcategory,
-      :comments,
-      :flags,
-      :votes_for
-    ])
+      .includes(:proposal => [
+        { author: :organization },
+        :category,
+        :subcategory,
+        :comments,
+        :flags,
+        :votes_for
+      ])
 
     render json: @action_plans_proposals, root: 'action_plans_proposals'
   end
