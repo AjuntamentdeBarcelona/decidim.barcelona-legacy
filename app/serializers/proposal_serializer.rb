@@ -32,7 +32,7 @@ class ProposalSerializer < ActiveModel::Serializer
   end
 
   def voted
-    object.votes_for.detect do |v| 
+    scope && scope.current_user && object.votes_for.detect do |v| 
       v.voter_type == 'User' && v.voter_id == scope.current_user.id && v.vote_flag
     end.present?
   end
@@ -54,7 +54,9 @@ class ProposalSerializer < ActiveModel::Serializer
   end
 
   def flagged
-    scope && object.flags.detect { |flag| flag.user_id == scope.current_user.id }.present?
+    scope && scope.current_user && object.flags.detect do |flag| 
+      flag.user_id == scope.current_user.id
+    end.present?
   end
 
   def url
