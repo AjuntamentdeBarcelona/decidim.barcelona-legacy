@@ -5,13 +5,13 @@ build:
   commands:
     - bundle install --without production --path=vendor/bundle
     - npm install
-    - bundle exec rake db:test:prepare
+    - bundle exec rake db:create db:test:prepare
     - bundle exec rake spec
     - bundle exec rake assets:precompile
     - bundle exec rake
     - npm test
   environment:
-    - DATABASE_URL=postgres://postgres:mysecretpassword@localhost:5432/empresaula
+    - DATABASE_URL=postgres://postgres:mysecretpassword@localhost:5432/decidimbcn
 compose:
   database:
     image: postgres
