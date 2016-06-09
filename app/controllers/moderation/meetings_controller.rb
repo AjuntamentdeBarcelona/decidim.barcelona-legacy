@@ -22,12 +22,23 @@ class Moderation::MeetingsController < Moderation::BaseController
       format.xls do
         package = Axlsx::Package.new do |p|
           p.workbook.add_worksheet(:name => "Meetings") do |sheet|
+            row = []
+            row.push "Data"
+            row.push "Nom"
+            row.push "Adreça"
+            row.push "Assistents"
+            row.push "Organizations"
+            row.push "Àmbit"
+            row.push "Eix"
+            row.push "Línia d'acció"
+            sheet.add_row row
             @resources.each do |meeting|
               row = []
               row.push meeting.held_at
               row.push meeting.title
               row.push meeting.address
               row.push meeting.attendee_count
+              row.push meeting.organization_count
               row.push meeting.scope == 'city' ? I18n.t('action_plans.form.action_plan_scope_city') : District.find(meeting.district).try(:name)
               row.push meeting.category.try(:decorate).try(:name)
               row.push meeting.subcategory.try(:decorate).try(:name)

@@ -69,4 +69,8 @@ class Meeting < ActiveRecord::Base
   def self.search(terms)
     self.pg_search(terms)
   end
+
+  def organization_count
+    organizations.split(",").select {|o| !o.blank? }.count
+  end
 end
