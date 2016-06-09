@@ -1,9 +1,9 @@
-import { Component }            from 'react';
-import { connect }              from 'react-redux';
+import { Component } from 'react';
+import { connect }   from 'react-redux';
 
-import Meeting                  from '../meetings/meeting.component';
+import Meeting       from '../meetings/meeting.component';
 
-import { fetchRelatedMeetings } from './proposals.actions';
+import * as actions  from './proposals.actions';
 
 class ProposalMeetings extends Component {
   componentDidMount() {
@@ -52,5 +52,5 @@ class ProposalMeetings extends Component {
 
 export default connect(
   ({ proposal }) => ({ proposal }),
-  { fetchRelatedMeetings }
+  actions
 )(ProposalMeetings);

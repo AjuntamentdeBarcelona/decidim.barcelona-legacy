@@ -1,7 +1,7 @@
-import { Component }          from 'react';
-import { connect }            from 'react-redux';
+import { Component } from 'react';
+import { connect }   from 'react-redux';
 
-import { setOrder       }     from '../order/order.actions';
+import * as actions  from '../order/order.actions';
 
 class OrderSelector extends Component {
   render() {
@@ -25,5 +25,5 @@ class OrderSelector extends Component {
 
 export default connect(
   ({ order }) => ({ order }),
-  { setOrder }
+  actions
 )(OrderSelector);

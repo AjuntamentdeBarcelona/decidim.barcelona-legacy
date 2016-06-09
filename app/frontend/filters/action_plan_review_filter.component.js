@@ -1,10 +1,10 @@
-import { Component }          from 'react';
-import { connect }            from 'react-redux';
+import { Component }     from 'react';
+import { connect }       from 'react-redux';
 
-import FilterOptionGroup      from './filter_option_group.component';
-import FilterOption           from './filter_option.component';
+import FilterOptionGroup from './filter_option_group.component';
+import FilterOption      from './filter_option.component';
 
-import { setFilterGroup }     from './filters.actions';
+import * as actions      from './filters.actions';
 
 class ActionPlanReviewFilter extends Component {
   render() {
@@ -37,5 +37,5 @@ class ActionPlanReviewFilter extends Component {
 
 export default connect(
   ({ filters, session }) => ({filters, session }),
-  { setFilterGroup }
+  actions
 )(ActionPlanReviewFilter);

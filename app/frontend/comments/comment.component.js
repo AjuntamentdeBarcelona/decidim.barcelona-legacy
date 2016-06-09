@@ -10,14 +10,7 @@ import DangerLink             from '../application/danger_link.component';
 import ChildrenComments       from './children_comments.component';
 import NewCommentForm         from './new_comment_form.component';
 
-import { 
-  flagComment, 
-  unFlagComment,
-  upVoteComment,
-  downVoteComment,
-  hideComment,
-  hideCommentAuthor
-} from './comments.actions';
+import * as actions from './comments.actions';
 
 class Comment extends Component {
   constructor(props) {
@@ -247,14 +240,4 @@ class Comment extends Component {
   }
 }
 
-export default connect(
-  null,
-  {
-    flagComment, 
-    unFlagComment,
-    upVoteComment,
-    downVoteComment,
-    hideComment,
-    hideCommentAuthor
-  }
-)(Comment);
+export default connect(null, actions)(Comment);

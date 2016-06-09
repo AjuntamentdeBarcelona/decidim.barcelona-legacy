@@ -1,10 +1,10 @@
-import { Component }                     from 'react';
-import { connect }                       from 'react-redux';
+import { Component } from 'react';
+import { connect }   from 'react-redux';
 
-import SmartButton                       from '../application/smart_button.component';
-import Icon                              from '../application/icon.component';
+import SmartButton   from '../application/smart_button.component';
+import Icon          from '../application/icon.component';
 
-import { follow, unFollow, fetchFollow } from './follows.actions';
+import * as actions  from './follows.actions';
 
 export class FollowButton extends Component {
   componentDidMount() {
@@ -73,11 +73,4 @@ function mapStateToProps(state, { followingType }) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-  {
-    follow,
-    unFollow,
-    fetchFollow
-  }
-)(FollowButton);
+export default connect(mapStateToProps, actions)(FollowButton);

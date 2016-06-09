@@ -1,12 +1,10 @@
-import { Component }          from 'react';
-import { connect }            from 'react-redux';
+import { Component } from 'react';
+import { connect }   from 'react-redux';
 
-import { 
-  fetchDebate, 
-} from './debates.actions';
+import * as actions  from './debates.actions';
 
-import Loading              from '../application/loading.component';
-import Comments             from '../comments/comments.component';
+import Loading       from '../application/loading.component';
+import Comments      from '../comments/comments.component';
 
 class DebateShow extends Component {
   constructor(props) {
@@ -48,5 +46,5 @@ class DebateShow extends Component {
 
 export default connect(
   ({ session, debate }) => ({ session, debate }),
-  { fetchDebate }
+  actions
 )(DebateShow);

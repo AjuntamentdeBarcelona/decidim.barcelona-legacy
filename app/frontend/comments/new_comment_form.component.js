@@ -1,9 +1,9 @@
-import { Component }          from 'react';
-import { connect }            from 'react-redux';
+import { Component } from 'react';
+import { connect }   from 'react-redux';
 
-import Loading                from '../application/loading.component';
+import Loading       from '../application/loading.component';
 
-import { addNewComment }      from './comments.actions';
+import * as actions  from './comments.actions';
 
 class NewCommentForm extends Component {
   constructor(props) {
@@ -185,7 +185,4 @@ class NewCommentForm extends Component {
   }
 }
 
-export default connect(
-  null,
-  { addNewComment }
-)(NewCommentForm);
+export default connect(null, actions)(NewCommentForm);

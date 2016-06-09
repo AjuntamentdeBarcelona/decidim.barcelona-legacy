@@ -6,12 +6,7 @@ import Loading                    from '../application/loading.component';
 import ProposalsAutocompleteInput from '../proposals/proposals_autocomplete_input.component';
 import ProposalsTable             from './proposals_table.component';
 
-import { 
-  addActionPlanProposal,
-  removeActionPlanProposal,
-  changeActionPlansProposalLevel,
-  fetchActionPlanProposals 
-} from './action_plans.actions';
+import * as actions               from './action_plans.actions';
 
 
 class ActionPlanProposals extends Component {
@@ -66,12 +61,4 @@ class ActionPlanProposals extends Component {
   }
 }
 
-export default connect(
-  null,
-  {
-    addActionPlanProposal,
-    changeActionPlansProposalLevel,
-    removeActionPlanProposal,
-    fetchActionPlanProposals 
-  }
-)(ActionPlanProposals);
+export default connect(null, actions)(ActionPlanProposals);

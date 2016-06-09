@@ -1,7 +1,7 @@
-import { Component }            from 'react';
-import { connect }              from 'react-redux';
+import { Component } from 'react';
+import { connect }   from 'react-redux';
 
-import { fetchReferences }      from './proposals.actions';
+import * as actions  from './proposals.actions';
 
 class ProposalReferences extends Component {
   componentDidMount() {
@@ -34,5 +34,5 @@ class ProposalReferences extends Component {
 
 export default connect(
   ({ proposal }) => ({ proposal }),
-  { fetchReferences }
+  actions
 )(ProposalReferences);

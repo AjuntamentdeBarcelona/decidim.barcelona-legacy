@@ -41,5 +41,8 @@ class ScopeFilterOptionGroup extends Component {
 
 export default connect(
   ({ filters, districts }) => ({ filters, districts }),
-  { fetchDistricts, setFilterGroup }
+  {
+    fetchDistricts,
+    setFilterGroup
+  }
 )(ScopeFilterOptionGroup);

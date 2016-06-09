@@ -1,7 +1,7 @@
-import { Component }          from 'react';
-import { connect }            from 'react-redux';
+import { Component } from 'react';
+import { connect }   from 'react-redux';
 
-import { setFilterText }      from './filters.actions';
+import * as actions  from './filters.actions';
 
 class SearchFilter extends Component {
   constructor(props) {
@@ -52,7 +52,4 @@ class SearchFilter extends Component {
 
 }
 
-export default connect(
-  null,
-  { setFilterText }
-)(SearchFilter);
+export default connect(null, actions)(SearchFilter);

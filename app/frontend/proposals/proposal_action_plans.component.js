@@ -1,7 +1,7 @@
-import { Component }            from 'react';
-import { connect }              from 'react-redux';
+import { Component } from 'react';
+import { connect }   from 'react-redux';
 
-import { fetchActionPlans }      from './proposals.actions';
+import * as actions  from './proposals.actions';
 
 class ProposalActionPlans extends Component {
   componentDidMount() {
@@ -36,5 +36,5 @@ class ProposalActionPlans extends Component {
 
 export default connect(
   ({ proposal }) => ({ proposal }),
-  { fetchActionPlans }
+  actions
 )(ProposalActionPlans);

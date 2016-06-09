@@ -1,12 +1,12 @@
-import { Component }                    from 'react';
-import { connect }                      from 'react-redux';
+import { Component }  from 'react';
+import { connect }    from 'react-redux';
 
-import FlagActions                      from '../application/flag_actions.component';
-import UserAvatar                       from '../application/user_avatar.component';
+import FlagActions    from '../application/flag_actions.component';
+import UserAvatar     from '../application/user_avatar.component';
 
-import ProposalAuthor                   from './proposal_author.component';
+import ProposalAuthor from './proposal_author.component';
 
-import { flagProposal, unFlagProposal } from './proposals.actions';
+import * as actions   from './proposals.actions';
 
 class ProposalInfoExtended extends Component {
   render() {
@@ -51,8 +51,5 @@ class ProposalInfoExtended extends Component {
 
 export default connect(
   ({ session }) => ({ session }),
-  {
-    flagProposal,
-    unFlagProposal
-  }
+  actions
 )(ProposalInfoExtended);

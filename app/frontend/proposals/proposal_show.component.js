@@ -1,11 +1,7 @@
-import { Component }          from 'react';
-import { connect }            from 'react-redux';
+import { Component }        from 'react';
+import { connect }          from 'react-redux';
 
-import { 
-  fetchProposal, 
-  hideProposal,
-  hideProposalAuthor
-} from './proposals.actions';
+import * as actions         from './proposals.actions';
 
 import Helmet               from "react-helmet";
 
@@ -279,9 +275,5 @@ class ProposalShow extends Component {
 
 export default connect(
   ({ session, proposal }) => ({ session, proposal }),
-  {
-    fetchProposal, 
-    hideProposal,
-    hideProposalAuthor
-  }
+  actions
 )(ProposalShow);

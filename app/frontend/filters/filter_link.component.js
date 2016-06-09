@@ -1,7 +1,7 @@
-import { Component }          from 'react';
-import { connect }            from 'react-redux';
+import { Component } from 'react';
+import { connect }   from 'react-redux';
 
-import { setFilterGroup }     from './filters.actions';
+import * as actions  from './filters.actions';
 
 class FilterLink extends Component {
   render() {
@@ -36,5 +36,5 @@ class FilterLink extends Component {
 
 export default connect(
   ({ categories, filters }) => ({ filters, categories }),
-  { setFilterGroup }
+  actions
 )(FilterLink);

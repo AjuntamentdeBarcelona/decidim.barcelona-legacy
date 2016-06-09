@@ -1,7 +1,7 @@
-import { Component }          from 'react';
-import { connect }            from 'react-redux';
+import { Component } from 'react';
+import { connect }   from 'react-redux';
 
-import { toggleTag }          from './filters.actions';
+import * as actions  from './filters.actions';
 
 class TagCloudFilter extends Component {
   render() {
@@ -39,5 +39,5 @@ class TagCloudFilter extends Component {
 
 export default connect(
   ({ filters, tags }) => ({ filters, tags }),
-  { toggleTag }
+  actions
 )(TagCloudFilter);

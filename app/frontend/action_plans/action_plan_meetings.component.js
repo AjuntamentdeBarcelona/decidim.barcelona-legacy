@@ -1,11 +1,11 @@
-import { Component }            from 'react';
-import { connect }              from 'react-redux';
+import { Component } from 'react';
+import { connect }   from 'react-redux';
 
-import Loading                  from '../application/loading.component';
+import Loading       from '../application/loading.component';
 
-import Meeting                  from '../meetings/meeting.component';
+import Meeting       from '../meetings/meeting.component';
 
-import { fetchRelatedMeetings } from './action_plans.actions';
+import * as actions  from './action_plans.actions';
 
 class ActionPlanMeetings extends Component {
   constructor(props) {
@@ -65,5 +65,5 @@ class ActionPlanMeetings extends Component {
 
 export default connect(
   ({ actionPlan }) => ({ actionPlan }),
-  { fetchRelatedMeetings }
+  actions
 )(ActionPlanMeetings);
