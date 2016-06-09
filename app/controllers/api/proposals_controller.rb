@@ -13,7 +13,7 @@ class Api::ProposalsController < Api::ApplicationController
 
     proposals = @current_order == "recommended" ? Recommender.new(current_user).proposals : Proposal.all
 
-    proposals = proposals.includes(:comments, :flags, :votes_for)
+    proposals = proposals.includes(:flags, :comments)
 
     @proposals = ResourceFilter.new(params, user: current_user)
       .filter_collection(proposals.includes(:category, :subcategory, :author => [:organization]))

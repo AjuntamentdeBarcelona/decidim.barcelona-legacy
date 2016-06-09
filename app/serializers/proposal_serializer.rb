@@ -32,9 +32,7 @@ class ProposalSerializer < ActiveModel::Serializer
   end
 
   def voted
-    scope && scope.current_user && object.votes_for.detect do |v| 
-      v.voter_type == 'User' && v.voter_id == scope.current_user.id && v.vote_flag
-    end.present?
+    scope && scope.current_user && object.votes_for.where(voter_type: "User", voter_id: scope.current_user.id, vote_flag: true).any?
   end
 
   def votable
