@@ -1,0 +1,27 @@
+build:
+  image: codegram/ruby-node-phantomjs
+  environment:
+    - RAILS_ENV=test
+  commands:
+    - bundle install --deployment --without production
+    - npm install
+    - bundle exec rake db:setup
+    - bundle exec rake spec
+    - bundle exec rake assets:precompile
+    - bundle exec rake
+    - npm test
+  environment:
+    - DATABASE_URL=postgres://postgres:mysecretpassword@localhost:5432/empresaula
+compose:
+  database:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword
+  redis:
+    image: redis
+cache:
+  mount:
+    - vendor/bundle
+    - public/assets
+    - node_modules
