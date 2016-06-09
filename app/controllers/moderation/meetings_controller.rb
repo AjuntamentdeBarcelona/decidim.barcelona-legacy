@@ -9,8 +9,9 @@ class Moderation::MeetingsController < Moderation::BaseController
   load_and_authorize_resource
 
   def index
+    @search    = params[:search]
     @resources = @resources.send(@current_filter)
-    @resources = @resources.search(params[:search]) if params[:search].present?
+    @resources = @resources.search(@search) if @search.present?
 
     respond_to do |format|
       format.html do
