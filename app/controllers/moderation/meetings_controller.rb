@@ -24,18 +24,13 @@ class Moderation::MeetingsController < Moderation::BaseController
           p.workbook.add_worksheet(:name => "Meetings") do |sheet|
             @resources.each do |meeting|
               row = []
-              row.push meeting.title
-              row.push meeting.author.name
               row.push meeting.held_at
-              row.push meeting.start_at.try(:strftime, "%H:%M")
-              row.push meeting.end_at.try(:strftime, "%H:%M")
+              row.push meeting.title
               row.push meeting.address
+              row.push meeting.attendee_count
+              row.push meeting.scope == 'city' ? I18n.t('action_plans.form.action_plan_scope_city') : District.find(meeting.district).try(:name)
               row.push meeting.category.try(:decorate).try(:name)
               row.push meeting.subcategory.try(:decorate).try(:name)
-              row.push District.find(meeting.district).try(:name)
-              row.push meeting.closed_at ? "CLOSED" : nil
-              row.push meeting.description
-
               sheet.add_row row
             end
           end
