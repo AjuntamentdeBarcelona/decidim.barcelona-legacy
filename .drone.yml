@@ -5,7 +5,7 @@ build:
   commands:
     - bundle install --deployment --without production
     - npm install
-    - bundle exec rake db:setup
+    - bundle exec rake db:test:prepare
     - bundle exec rake spec
     - bundle exec rake assets:precompile
     - bundle exec rake
