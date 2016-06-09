@@ -3,7 +3,7 @@ build:
   environment:
     - RAILS_ENV=test
   commands:
-    - bundle install --deployment --without production
+    - bundle install --without production --path=vendor/bundle
     - npm install
     - bundle exec rake db:test:prepare
     - bundle exec rake spec
