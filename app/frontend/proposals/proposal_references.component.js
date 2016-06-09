@@ -1,8 +1,7 @@
-import { Component }            from 'react';
-import { bindActionCreators }   from 'redux';
-import { connect }              from 'react-redux';
+import { Component } from 'react';
+import { connect }   from 'react-redux';
 
-import { fetchReferences }      from './proposals.actions';
+import * as actions  from './proposals.actions';
 
 class ProposalReferences extends Component {
   componentDidMount() {
@@ -33,12 +32,7 @@ class ProposalReferences extends Component {
   }
 }
 
-function mapStateToProps({ proposal }) {
-  return { proposal };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchReferences }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProposalReferences);
+export default connect(
+  ({ proposal }) => ({ proposal }),
+  actions
+)(ProposalReferences);

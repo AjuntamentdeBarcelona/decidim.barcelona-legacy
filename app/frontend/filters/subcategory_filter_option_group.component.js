@@ -1,11 +1,10 @@
-import { Component }          from 'react';
-import { bindActionCreators } from 'redux';
-import { connect }            from 'react-redux';
+import { Component }     from 'react';
+import { connect }       from 'react-redux';
 
-import { setFilterGroup }     from './filters.actions';
+import * as actions      from './filters.actions';
 
-import FilterOptionGroup      from './filter_option_group.component';
-import FilterOption           from './filter_option.component';
+import FilterOptionGroup from './filter_option_group.component';
+import FilterOption      from './filter_option.component';
 
 class SubcategoryFilterOptionGroup extends Component {
   render() {
@@ -33,15 +32,7 @@ class SubcategoryFilterOptionGroup extends Component {
   }
 }
 
-function mapStateToProps({ categories, filters }) {
-  return {
-    categories,
-    filters
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ setFilterGroup }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SubcategoryFilterOptionGroup);
+export default connect(
+  ({ categories, filters }) => ({ categories, filters }),
+  actions
+)(SubcategoryFilterOptionGroup);

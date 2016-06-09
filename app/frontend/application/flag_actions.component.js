@@ -1,6 +1,5 @@
 import { Component }          from 'react';
 import { connect }            from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 class FlagActions extends Component {
   render() {
@@ -52,8 +51,6 @@ class FlagActions extends Component {
   }
 }
 
-function mapStateToProps({ session }) {
-  return { session };
-}
-
-export default connect(mapStateToProps)(FlagActions);
+export default connect(
+  ({ session }) => ({ session })
+)(FlagActions);

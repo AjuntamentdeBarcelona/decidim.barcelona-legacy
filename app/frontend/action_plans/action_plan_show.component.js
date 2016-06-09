@@ -1,13 +1,7 @@
-import { Component }          from 'react';
-import { connect }            from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { Component }        from 'react';
+import { connect }          from 'react-redux';
 
-import { 
-  fetchActionPlan,
-  deleteActionPlan,
-  approveActionPlan,
-  changeWeight
-} from './action_plans.actions';
+import * as actions         from './action_plans.actions';
 
 import Loading              from '../application/loading.component';
 import SocialShareButtons   from '../application/social_share_buttons.component';
@@ -186,18 +180,7 @@ class ActionPlanShow extends Component {
   }
 }
 
-
-function mapStateToProps({ session, actionPlan }) {
-  return { session, actionPlan };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ 
-    fetchActionPlan,
-    deleteActionPlan,
-    approveActionPlan,
-    changeWeight
-  }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ActionPlanShow);
+export default connect(
+  ({ session, actionPlan }) => ({ session, actionPlan }),
+  actions
+)(ActionPlanShow);

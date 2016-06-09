@@ -1,11 +1,10 @@
-import { Component }          from 'react';
-import { bindActionCreators } from 'redux';
-import { connect }            from 'react-redux';
+import { Component }     from 'react';
+import { connect }       from 'react-redux';
 
-import { setFilterGroup }     from '../filters/filters.actions';
+import * as actions      from '../filters/filters.actions';
 
-import FilterOptionGroup      from '../filters/filter_option_group.component';
-import FilterOption           from '../filters/filter_option.component';
+import FilterOptionGroup from '../filters/filter_option_group.component';
+import FilterOption      from '../filters/filter_option.component';
 
 const FilterTabs = ({ 
   filters,
@@ -26,14 +25,7 @@ const FilterTabs = ({
   </div>
 );
 
-function mapStateToProps({ filters }) {
-  return {
-    filters
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ setFilterGroup }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(FilterTabs);
+export default connect(
+  ({ filters }) => ({ filters }),
+  actions
+)(FilterTabs);

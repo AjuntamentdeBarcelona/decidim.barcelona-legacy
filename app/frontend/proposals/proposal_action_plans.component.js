@@ -1,8 +1,7 @@
-import { Component }            from 'react';
-import { bindActionCreators }   from 'redux';
-import { connect }              from 'react-redux';
+import { Component } from 'react';
+import { connect }   from 'react-redux';
 
-import { fetchActionPlans }      from './proposals.actions';
+import * as actions  from './proposals.actions';
 
 class ProposalActionPlans extends Component {
   componentDidMount() {
@@ -35,12 +34,7 @@ class ProposalActionPlans extends Component {
   }
 }
 
-function mapStateToProps({ proposal }) {
-  return { proposal };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchActionPlans }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProposalActionPlans);
+export default connect(
+  ({ proposal }) => ({ proposal }),
+  actions
+)(ProposalActionPlans);

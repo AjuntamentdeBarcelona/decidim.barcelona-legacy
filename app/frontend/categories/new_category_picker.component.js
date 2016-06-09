@@ -1,5 +1,4 @@
 import { Component }          from 'react';
-import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
 
 import SubcategoryPicker      from './new_subcategory_picker.component';
@@ -74,8 +73,6 @@ class CategoryPicker extends Component {
   }
 }
 
-function mapStateToProps({ categories }) {
-  return { categories };
-}
-
-export default connect(mapStateToProps)(CategoryPicker);
+export default connect(
+  ({ categories }) => ({ categories })
+)(CategoryPicker);

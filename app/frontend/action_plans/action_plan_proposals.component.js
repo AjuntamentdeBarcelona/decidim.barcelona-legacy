@@ -1,5 +1,4 @@
 import { Component }              from 'react';
-import { bindActionCreators }     from 'redux';
 import { connect }                from 'react-redux';
 
 import Loading                    from '../application/loading.component';
@@ -7,12 +6,7 @@ import Loading                    from '../application/loading.component';
 import ProposalsAutocompleteInput from '../proposals/proposals_autocomplete_input.component';
 import ProposalsTable             from './proposals_table.component';
 
-import { 
-  addActionPlanProposal,
-  removeActionPlanProposal,
-  changeActionPlansProposalLevel,
-  fetchActionPlanProposals 
-} from './action_plans.actions';
+import * as actions               from './action_plans.actions';
 
 
 class ActionPlanProposals extends Component {
@@ -67,13 +61,4 @@ class ActionPlanProposals extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ 
-    addActionPlanProposal,
-    changeActionPlansProposalLevel,
-    removeActionPlanProposal,
-    fetchActionPlanProposals 
-  }, dispatch);
-}
-
-export default connect(null, mapDispatchToProps)(ActionPlanProposals);
+export default connect(null, actions)(ActionPlanProposals);

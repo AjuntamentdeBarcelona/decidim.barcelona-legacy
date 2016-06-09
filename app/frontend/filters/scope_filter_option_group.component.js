@@ -1,5 +1,4 @@
 import { Component }          from 'react';
-import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
 
 import { fetchDistricts }     from '../districts/districts.actions';
@@ -40,15 +39,10 @@ class ScopeFilterOptionGroup extends Component {
   }
 }
 
-function mapStateToProps({ filters, districts }) {
-  return {
-    filters,
-    districts
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchDistricts, setFilterGroup }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ScopeFilterOptionGroup);
+export default connect(
+  ({ filters, districts }) => ({ filters, districts }),
+  {
+    fetchDistricts,
+    setFilterGroup
+  }
+)(ScopeFilterOptionGroup);

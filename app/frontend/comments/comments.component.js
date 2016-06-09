@@ -1,14 +1,13 @@
-import { Component }                         from 'react';
-import { connect }                           from 'react-redux';
-import { bindActionCreators }                from 'redux';
+import { Component }         from 'react';
+import { connect }           from 'react-redux';
 
-import { fetchComments, appendCommentsPage } from './comments.actions';
+import * as actions          from './comments.actions';
 
-import Loading                               from '../application/loading.component';
-import InfinitePagination                    from '../pagination/infinite_pagination.component';
-import CommentsOrderSelector                 from './comments_order_selector.component';
-import Comment                               from './comment.component';
-import NewCommentForm                        from './new_comment_form.component';
+import Loading               from '../application/loading.component';
+import InfinitePagination    from '../pagination/infinite_pagination.component';
+import CommentsOrderSelector from './comments_order_selector.component';
+import Comment               from './comment.component';
+import NewCommentForm        from './new_comment_form.component';
 
 class Comments extends Component {
   constructor(props) {
@@ -188,8 +187,4 @@ function mapStateToProps(state, { commentable }) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchComments, appendCommentsPage }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Comments);
+export default connect(mapStateToProps, actions)(Comments);

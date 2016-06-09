@@ -1,8 +1,7 @@
-import { Component }          from 'react';
-import { bindActionCreators } from 'redux';
-import { connect }            from 'react-redux';
+import { Component } from 'react';
+import { connect }   from 'react-redux';
 
-import { toggleTag }          from './filters.actions';
+import * as actions  from './filters.actions';
 
 class TagCloudFilter extends Component {
   render() {
@@ -38,15 +37,7 @@ class TagCloudFilter extends Component {
   }
 }
 
-function mapStateToProps({ filters, tags }) {
-  return {
-    filters,
-    tags
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ toggleTag }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(TagCloudFilter);
+export default connect(
+  ({ filters, tags }) => ({ filters, tags }),
+  actions
+)(TagCloudFilter);

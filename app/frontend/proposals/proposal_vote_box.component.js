@@ -1,11 +1,10 @@
-import { Component }          from 'react';
-import { bindActionCreators } from 'redux';
-import { connect }            from 'react-redux';
+import { Component }      from 'react';
+import { connect }        from 'react-redux';
 
-import SmartButton            from '../application/smart_button.component';
-import SocialShareButtons     from '../application/social_share_buttons.component';
+import SmartButton        from '../application/smart_button.component';
+import SocialShareButtons from '../application/social_share_buttons.component';
 
-import { voteProposal }       from './proposals.actions';
+import * as actions       from './proposals.actions';
 
 class ProposalVoteBox extends Component {
   constructor(props) {
@@ -110,12 +109,7 @@ class ProposalVoteBox extends Component {
   }
 }
 
-function mapStateToProps({ session }) {
-  return { session };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ voteProposal }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProposalVoteBox);
+export default connect(
+  ({ session }) => ({ session }),
+  actions
+)(ProposalVoteBox);

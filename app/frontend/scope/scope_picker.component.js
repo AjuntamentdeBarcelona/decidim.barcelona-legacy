@@ -1,5 +1,4 @@
 import { Component }          from 'react';
-import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
 
 class ScopePicker extends Component {
@@ -71,8 +70,6 @@ class ScopePicker extends Component {
   }
 }
 
-function mapStateToProps({ districts }) {
-  return { districts };
-}
-
-export default connect(mapStateToProps)(ScopePicker);
+export default connect(
+  ({ districts }) => ({ districts })
+)(ScopePicker);

@@ -1,12 +1,7 @@
-import { Component }          from 'react';
-import { connect }            from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { Component }        from 'react';
+import { connect }          from 'react-redux';
 
-import { 
-  fetchProposal, 
-  hideProposal,
-  hideProposalAuthor
-} from './proposals.actions';
+import * as actions         from './proposals.actions';
 
 import Helmet               from "react-helmet";
 
@@ -278,16 +273,7 @@ class ProposalShow extends Component {
   }
 }
 
-function mapStateToProps({ session, proposal }) {
-  return { session, proposal };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ 
-    fetchProposal, 
-    hideProposal,
-    hideProposalAuthor
-  }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProposalShow);
+export default connect(
+  ({ session, proposal }) => ({ session, proposal }),
+  actions
+)(ProposalShow);

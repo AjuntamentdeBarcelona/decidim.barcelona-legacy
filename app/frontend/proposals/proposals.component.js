@@ -1,18 +1,17 @@
-import { Component }          from 'react';
-import { bindActionCreators } from 'redux';
-import { connect }            from 'react-redux';
+import { Component }      from 'react';
+import { connect }        from 'react-redux';
 
-import Loading                from '../application/loading.component';
-import InfinitePagination     from '../pagination/infinite_pagination.component';
-import FilterTabs             from '../filters/filter_tabs.component';
-import OrderSelector          from '../order/order_selector.component';
+import Loading            from '../application/loading.component';
+import InfinitePagination from '../pagination/infinite_pagination.component';
+import FilterTabs         from '../filters/filter_tabs.component';
+import OrderSelector      from '../order/order_selector.component';
 
-import ProposalsHeader        from './proposals_header.component';
-import ProposalsSidebar       from './proposals_sidebar.component';
-import NewProposalButton      from './new_proposal_button.component';
-import ProposalsList          from './proposals_list.component';
+import ProposalsHeader    from './proposals_header.component';
+import ProposalsSidebar   from './proposals_sidebar.component';
+import NewProposalButton  from './new_proposal_button.component';
+import ProposalsList      from './proposals_list.component';
 
-import { fetchProposals, appendProposalsPage } from './proposals.actions';
+import * as actions       from './proposals.actions';
 
 class Proposals extends Component {
   constructor(props) {
@@ -96,12 +95,9 @@ class Proposals extends Component {
   }
 }
 
-function mapStateToProps({ proposals, filters, order, pagination, seed, count }) {
-  return { proposals, filters, order, pagination, seed, count };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchProposals, appendProposalsPage }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Proposals);
+export default connect(
+  ({ proposals, filters, order, pagination, seed, count }) => ({
+    proposals, filters, order, pagination, seed, count
+  }),
+  actions
+)(Proposals);
