@@ -12,6 +12,7 @@ import NewProposalButton  from './new_proposal_button.component';
 import ProposalsList      from './proposals_list.component';
 
 import * as actions       from './proposals.actions';
+import {setOrder}         from '../order/order.actions';
 
 class Proposals extends Component {
   constructor(props) {
@@ -23,11 +24,8 @@ class Proposals extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchProposals({
-      filters: this.props.filters,
-      order: this.props.order,
-      seed: this.props.seed
-    });
+    // Set random as default order triggering a fetch proposals action
+    this.props.setOrder('random');
   }
 
   componentWillReceiveProps({ filters, order }) {
@@ -99,5 +97,8 @@ export default connect(
   ({ proposals, filters, order, pagination, seed, count }) => ({
     proposals, filters, order, pagination, seed, count
   }),
-  actions
+  {
+    ...actions,
+    setOrder
+  }
 )(Proposals);

@@ -9,7 +9,7 @@ export default function (state = getInitialOrderState(), action) {
 }
 
 function getInitialOrderState() {
-  let order = "random",
+  let order = "",
       matchData;
 
   matchData = location.search.match(/order=([^&]*)/)
