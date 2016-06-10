@@ -10,6 +10,7 @@ import ActionPlansList    from './action_plans_list.component';
 import DownloadButton     from './download_button.component';
 
 import * as actions       from './action_plans.actions';
+import { setOrder }       from '../order/order.actions';
 
 class ActionPlans extends Component {
   constructor(props) {
@@ -21,11 +22,8 @@ class ActionPlans extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchActionPlans({
-      filters: this.props.filters,
-      order: this.props.order,
-      seed: this.props.seed
-    });
+    // Set weight as default order triggering a fetch action plans action
+    this.props.setOrder('weight');
   }
 
   componentWillReceiveProps({ filters, order }) {
@@ -92,5 +90,8 @@ export default connect(
   ({ actionPlans, filters, order, pagination, seed, count }) => (
     { actionPlans, filters, order, pagination, seed, count }
   ),
-  actions
+  {
+    ...actions,
+    setOrder
+  }
 )(ActionPlans);
