@@ -11,6 +11,7 @@ import DownloadButton     from './download_button.component';
 
 import * as actions       from './action_plans.actions';
 import { setOrder }       from '../order/order.actions';
+import { getOrderByUrl }  from '../order/order.reducers';
 
 class ActionPlans extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class ActionPlans extends Component {
 
   componentDidMount() {
     // Set weight as default order triggering a fetch action plans action
-    this.props.setOrder('weight');
+    this.props.setOrder(getOrderByUrl() || 'weight');
   }
 
   componentWillReceiveProps({ filters, order }) {

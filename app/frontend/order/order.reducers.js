@@ -1,6 +1,6 @@
 import { SET_ORDER } from './order.actions';
 
-export default function (state = getInitialOrderState(), action) {
+export default function (state = '', action) {
   switch (action.type) {
     case SET_ORDER:
       return action.order;
@@ -8,7 +8,7 @@ export default function (state = getInitialOrderState(), action) {
   return state;
 }
 
-function getInitialOrderState() {
+export function getOrderByUrl() {
   let order = "",
       matchData;
 

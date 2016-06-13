@@ -12,7 +12,8 @@ import NewProposalButton  from './new_proposal_button.component';
 import ProposalsList      from './proposals_list.component';
 
 import * as actions       from './proposals.actions';
-import {setOrder}         from '../order/order.actions';
+import { setOrder }       from '../order/order.actions';
+import { getOrderByUrl }  from '../order/order.reducers';
 
 class Proposals extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class Proposals extends Component {
 
   componentDidMount() {
     // Set random as default order triggering a fetch proposals action
-    this.props.setOrder('random');
+    this.props.setOrder(getOrderByUrl() || 'random');
   }
 
   componentWillReceiveProps({ filters, order }) {
