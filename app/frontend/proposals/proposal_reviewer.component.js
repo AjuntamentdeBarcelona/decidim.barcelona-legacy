@@ -1,18 +1,22 @@
-import { Component }                    from 'react';
-import { connect }                      from 'react-redux';
+import { Component }       from 'react';
+import { connect }         from 'react-redux';
 
-import ScopePicker                      from '../scope/scope_picker.component';
-import CategoryPicker                   from '../categories/new_category_picker.component';
-import ProposalAnswerBox                from './proposal_answer_box.component';
+import ScopePicker         from '../scope/scope_picker.component';
+import CategoryPicker      from '../categories/new_category_picker.component';
+import ProposalAnswerBox   from './proposal_answer_box.component';
 
-import { fetchDistricts }               from '../districts/districts.actions';
-import { fetchCategories }              from '../categories/categories.actions';
-import { updateAnswer, updateProposal } from './proposals.actions';
+import { fetchDistricts }  from '../districts/districts.actions';
+import { fetchCategories } from '../categories/categories.actions';
+import * as actions        from './proposals.actions';
 
 class ProposalReviewer extends Component {
   componentDidMount() {
-    this.props.fetchDistricts();
-    this.props.fetchCategories();
+    const { fetchDistricts, fetchCategories, fetchAnswer, proposal } = this.props;
+    const { id } = proposal;
+
+    fetchAnswer(id);
+    fetchDistricts();
+    fetchCategories();
   }
 
   render() {
@@ -49,9 +53,8 @@ class ProposalReviewer extends Component {
 export default connect(
   ({ session, proposal }) => ({ session, proposal }),
   {
+    ...actions,
     fetchDistricts,
     fetchCategories, 
-    updateAnswer,
-    updateProposal
   }
 )(ProposalReviewer);

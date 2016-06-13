@@ -6,6 +6,7 @@ import {
   UPDATE_PROPOSAL,
   APPEND_PROPOSALS_PAGE, 
   VOTE_PROPOSAL,
+  FETCH_ANSWER,
   UPDATE_ANSWER,
   FETCH_RELATED_MEETINGS,
   FETCH_REFERENCES,
@@ -120,6 +121,7 @@ export const proposal = function (state = {}, action) {
         ...state,
       actionPlans
     };
+    case FETCH_ANSWER:
     case UPDATE_ANSWER:
       let answer = action.payload.data.proposal_answer;
 
