@@ -2,6 +2,11 @@ class Api::ProposalAnswersController < Api::ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource :proposal
 
+  def show
+    @answer = @proposal.answer
+    render json: @answer
+  end
+
   def create
     @answer = @proposal.build_answer(strong_params)
     authorize! :create, @answer

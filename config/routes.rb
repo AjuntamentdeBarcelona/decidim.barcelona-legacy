@@ -275,7 +275,7 @@ Rails.application.routes.draw do
         patch :unflag
       end
       resources :votes, only: [:create]
-      resource :answers, only: [:create, :update], controller: :proposal_answers
+      resource :answers, only: [:show, :create, :update], controller: :proposal_answers
       resources :meetings, only: [:index]
       resource :author, only: [], controller: 'proposals/author' do
         member do
