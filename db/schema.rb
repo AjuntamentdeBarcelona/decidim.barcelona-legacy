@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160606123217) do
+ActiveRecord::Schema.define(version: 20160614121826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,9 @@ ActiveRecord::Schema.define(version: 20160606123217) do
     t.integer "proposal_id"
     t.integer "level"
   end
+
+  add_index "action_plans_proposals", ["action_plan_id"], name: "index_action_plans_proposals_on_action_plan_id", using: :btree
+  add_index "action_plans_proposals", ["proposal_id"], name: "index_action_plans_proposals_on_proposal_id", using: :btree
 
   create_table "activities", force: :cascade do |t|
     t.integer  "user_id"
