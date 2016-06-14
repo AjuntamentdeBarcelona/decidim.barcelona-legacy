@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614121826) do
+ActiveRecord::Schema.define(version: 20160614122308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -343,6 +343,8 @@ ActiveRecord::Schema.define(version: 20160614121826) do
     t.datetime "updated_at",                  null: false
     t.boolean  "official",    default: false, null: false
   end
+
+  add_index "proposal_answers", ["proposal_id"], name: "index_proposal_answers_on_proposal_id", using: :btree
 
   create_table "proposals", force: :cascade do |t|
     t.string   "title",             limit: 250
