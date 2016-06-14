@@ -13,6 +13,7 @@ import ActionPlanProposals  from './action_plan_proposals.component';
 import ActionPlanMeetings   from './action_plan_meetings.component';
 import ActionPlanReviewer   from './action_plan_reviewer.component';
 import WeightControl        from './weight_control.component';
+import ActionPlanAuthors from './action_plan_authors.component';
 
 class ActionPlanShow extends Component {
   constructor(props) {
@@ -62,7 +63,7 @@ class ActionPlanShow extends Component {
       } = actionPlan;
 
       return (
-        <div>
+        <div className="action-plan-show">
           <div className="row" id={`action_plan_${actionPlan.id}`}>
             <div className="small-12 medium-9 column">
               <i className="icon-angle-left left"></i>&nbsp;
@@ -75,11 +76,8 @@ class ActionPlanShow extends Component {
               {this.renderNotice()}
 
               <h2><a href={url}>{title}</a></h2>
-
-              <p className="proposal-info"><span>{ created_at }</span></p>
-
               <div 
-                className="proposal-description"
+                className="content-description"
                 dangerouslySetInnerHTML={{ __html: description.autoLink() }} />
 
               <FilterMeta 
@@ -92,31 +90,25 @@ class ActionPlanShow extends Component {
 
               <ActionPlanReviewer visible={this.state.editable} />
 
-              <h2>Estat de l'actuacio</h2>
-              <p>TODO</p>
-
-              <h2>Alegacions relacionades</h2>
-              <p>TODO</p>
-
               <ActionPlanProposals actionPlan={actionPlan} editable={this.state.editable} />
               <ActionPlanMeetings useServerLinks={true} />
             </div>
 
             <aside className="small-12 medium-3 column">
-              <h3>{ I18n.t("proposals.show.share") }</h3>
-              <SocialShareButtons 
-                title={ title }
-                url={ url }/>
-              <div>
-                <h3>Autoria</h3>
-                <p>Ajuntament de Barcelona, Ecologistes en Accio, Joan BCN, Josefina92</p>
+              <div className="action-plan-share-buttons">
+                <h3>{ I18n.t("proposals.show.share") }</h3>
+                <SocialShareButtons 
+                  title={ title }
+                  url={ url }/>
+              </div>
+              <div className="action-plan-info">
+                <ActionPlanAuthors
+                  actionPlan={actionPlan} />
                 <hr />
-                <h3>Dades</h3>
+                <h3>{ I18n.t('components.action_plan_info.title')}</h3>
                 <ActionPlanStatistics 
                   statistics={statistics}>
                 </ActionPlanStatistics>
-                <hr />
-                <h3>Seguiment</h3>
               </div>
             </aside>
           </div>

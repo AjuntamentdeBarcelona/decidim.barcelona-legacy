@@ -1,0 +1,53 @@
+.action-plan-show{
+  @extend %content-show;
+
+  aside{
+    .action-plan-share-buttons{
+      text-align: center;
+      margin-bottom: rem(30);
+
+      h3{
+        font-weight: normal;
+        font-size: 1.2rem;
+      }
+
+      .share-supported{
+        padding: rem(8px) rem(0);
+        background: $highlight;
+        display: block;
+      }
+    }
+  }
+
+  .action-plan-info{
+    border: 1px solid #C6C8C9;
+    background: #fff;
+    padding: rem-calc(30px);
+    font-size: 1.1rem;
+    text-align: center;
+
+    hr{
+      border-style: dotted;
+    }
+
+    h3{
+      color: $brand;
+      text-transform: uppercase;
+      font-size: 1em;
+      font-weight: normal;
+    }
+
+    .action-plan-statistics{
+      ul, li{
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .number{
+        margin-right: 0.3em;
+        font-weight: bold;
+      }
+    }
+  }
+}

@@ -133,7 +133,7 @@ class ProposalShow extends Component {
                 flagged={ flagged } />
 
               <div 
-                className="proposal-description"
+                className="content-description"
                 dangerouslySetInnerHTML={{ __html: summary.autoLink() }} />
 
               {this.renderExternalUrl(external_url)}
