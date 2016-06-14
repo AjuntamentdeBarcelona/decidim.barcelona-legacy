@@ -160,6 +160,8 @@ ignore_unused:
   - 'recaptcha.*'
   - 'components.proposal_answer_box.*'
   - 'components.proposal_level_selector.level_*'
+  - 'components.action_plan_statistics.*'
+  - 'components.order_selector.*'
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'

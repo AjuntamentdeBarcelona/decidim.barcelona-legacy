@@ -1,7 +1,7 @@
 export default ({
   statistics
 }) => (
-  <ul>
+  <ul className="action-plan-statistics">
     {renderStatistics(statistics)}
   </ul>
 );

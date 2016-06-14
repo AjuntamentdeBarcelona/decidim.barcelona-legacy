@@ -3,6 +3,10 @@ ca:
   components:
     action_plan:
       label: Actuació
+    action_plan_authors:
+      title: "Autoria"
+    action_plan_info:
+      title: "Dades"
     action_plan_proposals:
       comments: 'Comentaris: %{comments}'
       title: Propostes relacionades
