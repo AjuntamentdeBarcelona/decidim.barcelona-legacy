@@ -46,7 +46,7 @@ class ActionPlanProposals extends Component {
   }
 
   renderSearchProposalsInput(id, actionPlansProposals) {
-    const {editable} = this.props;
+    const {editable, addActionPlanProposal} = this.props;
 
     if (editable) {
       return (
