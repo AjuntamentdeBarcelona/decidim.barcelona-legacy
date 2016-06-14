@@ -13,6 +13,8 @@ class Api::ProposalsController < Api::ApplicationController
 
     proposals = @current_order == "recommended" ? Recommender.new(current_user).proposals : Proposal.all
 
+    proposals = proposals.includes(:flags, :comments)
+
     @proposals = ResourceFilter.new(params, user: current_user)
       .filter_collection(proposals.includes(:category, :subcategory, :author => [:organization]))
       .send("sort_by_#{@current_order}")
