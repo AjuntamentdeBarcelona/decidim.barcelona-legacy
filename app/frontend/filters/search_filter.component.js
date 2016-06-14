@@ -1,7 +1,7 @@
-import { Component } from 'react';
-import { connect }   from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
-import * as actions  from './filters.actions';
+import * as actions             from './filters.actions';
 
 class SearchFilter extends Component {
   constructor(props) {
@@ -53,3 +53,8 @@ class SearchFilter extends Component {
 }
 
 export default connect(null, actions)(SearchFilter);
+
+SearchFilter.propTypes = {
+  searchText: PropTypes.string,
+  setFilterText: PropTypes.func.isRequired
+};

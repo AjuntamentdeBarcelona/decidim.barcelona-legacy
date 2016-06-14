@@ -1,20 +1,25 @@
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
 
 export default class MeetingTime extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
-
-    let meeting = props.meeting;
+    let meeting = props.meeting,
+        startsAt,
+        endsAt;
 
     if(meeting.start_at){
-      this.state.startsAt = moment(meeting.held_at + " " + meeting.start_at, "DD/MM/YYYY HH:mm");
+      startsAt = moment(meeting.held_at + " " + meeting.start_at, "DD/MM/YYYY HH:mm");
     }
 
     if(meeting.end_at){
-      this.state.endsAt = moment(meeting.held_at + " " + meeting.end_at, "DD/MM/YYYY HH:mm");
+      endsAt = moment(meeting.held_at + " " + meeting.end_at, "DD/MM/YYYY HH:mm");
     }
+
+    this.state = {
+      startsAt,
+      endsAt
+    };
   }
 
   render() {
@@ -56,3 +61,8 @@ export default class MeetingTime extends Component {
     }
   }
 }
+
+MeetingTime.propTypes = {
+  meeting: PropTypes.object.isRequired,
+  relativeTime: PropTypes.bool
+};

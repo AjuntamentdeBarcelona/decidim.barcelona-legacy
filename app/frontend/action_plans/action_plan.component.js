@@ -1,12 +1,15 @@
+import { PropTypes }        from 'react';
 import ellipsis             from 'html-ellipsis';
 
 import ActionPlanStatistics from './action_plan_statistics.component';
 import SocialShareButtons   from '../application/social_share_buttons.component';
 import FilterMeta           from '../filters/filter_meta.component';
 
-const DESCRIPTION_MAX_CHARACTERS = 300;
+import htmlToReact          from '../application/html_to_react';
 
-export default ({
+const DESCRIPTION_MAX_CHARACTERS = 200;
+
+const ActionPlan = ({
   id,
   url,
   title,
@@ -30,9 +33,9 @@ export default ({
             <span>{ created_at }</span>
           </p>
 
-          <div 
-            className="proposal-description"
-            dangerouslySetInnerHTML={{ __html: ellipsis(description.autoLink(), DESCRIPTION_MAX_CHARACTERS) }} />
+          <div className="proposal-description">
+            {htmlToReact(ellipsis(description.autoLink(), DESCRIPTION_MAX_CHARACTERS, true))}
+          </div>
 
           <div className="bottom-bar">
             <FilterMeta 
@@ -53,3 +56,18 @@ export default ({
     </div>
   </div>
 );
+
+ActionPlan.propTypes = {
+  id: PropTypes.number.isRequired,
+  url: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  created_at: PropTypes.string.isRequired,
+  category: PropTypes.object.isRequired,
+  subcategory: PropTypes.object.isRequired,
+  scope_: PropTypes.string.isRequired,
+  district: PropTypes.object,
+  statistics: PropTypes.object
+};
+
+export default ActionPlan;

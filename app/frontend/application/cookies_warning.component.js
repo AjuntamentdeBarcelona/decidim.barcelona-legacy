@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
 
 export default class CookiesWarning extends Component {
   render() {
@@ -23,3 +23,7 @@ export default class CookiesWarning extends Component {
     $(this.refs.warning).slideUp('fast');
   }
 }
+
+CookiesWarning.propTypes = {
+  allowCookiesUrl: PropTypes.string.isRequired
+};

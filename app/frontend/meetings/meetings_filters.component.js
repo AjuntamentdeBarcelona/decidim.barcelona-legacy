@@ -1,4 +1,4 @@
-import { Component }                from 'react';
+import { Component, PropTypes }     from 'react';
 import { connect }                  from 'react-redux';
 
 import * as actions                 from '../filters/filters.actions';
@@ -50,3 +50,9 @@ export default connect(
   ({ filters }) => ({ filters }),
   actions
 )(MeetingsFilters);
+
+MeetingsFilters.propTypes = {
+  filters: PropTypes.object.isRequired,
+  setFilterGroup: PropTypes.func.isRequired,
+  clearFilters: PropTypes.func.isRequired
+};

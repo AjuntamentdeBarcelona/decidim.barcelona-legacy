@@ -110,7 +110,6 @@ es:
     proposal_filters:
       clean_filters: Limpiar filtro
     proposal_level_selector:
-      default: Sin determinar
       level_1: Total
       level_2: Parcial
     proposals:

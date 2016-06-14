@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
 
 import FilterOption  from './filter_option.component';
 
@@ -123,7 +123,21 @@ export default class FilterOptionGroup extends Component {
     );
   }
 }
+
 FilterOptionGroup.defaultProps = { 
   useWrapper: true,
   useTitle: true 
+};
+
+FilterOptionGroup.propTypes = {
+  filterGroupValue: PropTypes.any,
+  filterGroupName: PropTypes.string.isRequired,
+  isExclusive: PropTypes.bool,
+  hideIncludeAll: PropTypes.bool,
+  renderAs: PropTypes.string,
+  labelAllKey: PropTypes.string,
+  children: PropTypes.any,
+  useWrapper: PropTypes.bool,
+  useTitle: PropTypes.bool,
+  onChangeFilterGroup: PropTypes.func.isRequired
 };

@@ -1,8 +1,7 @@
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
 
-import DangerLink    from '../application/danger_link.component';
-import ProposalBadge from '../proposals/proposal_badge.component';
-import ProposalLevelSelector from './proposal_level_selector.component';
+import DangerLink               from '../application/danger_link.component';
+import ProposalBadge            from '../proposals/proposal_badge.component';
 
 export default class ActionPlanProposalsTable extends Component {
   render() {
@@ -44,7 +43,7 @@ export default class ActionPlanProposalsTable extends Component {
     if (editable && onRemoveProposal) {
       return (
         <td>
-          <DangerLink onClick={(event) => onRemoveProposal(proposal) }>
+          <DangerLink onClick={() => onRemoveProposal(proposal) }>
             {I18n.t("components.proposals_table.remove")}
           </DangerLink>
         </td>
@@ -53,3 +52,9 @@ export default class ActionPlanProposalsTable extends Component {
     return null;
   }
 }
+
+ActionPlanProposalsTable.propTypes = {
+  actionPlansProposals: PropTypes.array.isRequired,
+  onRemoveProposal: PropTypes.func,
+  editable: PropTypes.bool
+};

@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
 
 export default class DangerLink extends Component {
   render() {
@@ -19,3 +19,8 @@ export default class DangerLink extends Component {
     }
   }
 }
+
+DangerLink.propTypes = {
+  children: PropTypes.any,
+  onClick: PropTypes.func.isRequired
+};

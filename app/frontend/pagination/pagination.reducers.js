@@ -1,16 +1,16 @@
 import {
   FETCH_PROPOSALS,
-  APPEND_PROPOSALS_PAGE,
+  APPEND_PROPOSALS_PAGE
 } from '../proposals/proposals.actions';
 
 import {
   FETCH_ACTION_PLANS,
-  APPEND_ACTION_PLANS_PAGE,
+  APPEND_ACTION_PLANS_PAGE
 } from '../action_plans/action_plans.actions';
 
 import {
   FETCH_COMMENTS,
-  APPEND_COMMENTS_PAGE,
+  APPEND_COMMENTS_PAGE
 } from '../comments/comments.actions';
 
 export default function (state = {}, action) {

@@ -4,9 +4,9 @@ ca:
     action_plan:
       label: Actuació
     action_plan_authors:
-      title: "Autoria"
+      title: Autoria
     action_plan_info:
-      title: "Dades"
+      title: Dades
     action_plan_proposals:
       comments: 'Comentaris: %{comments}'
       title: Propostes relacionades
@@ -110,7 +110,6 @@ ca:
     proposal_filters:
       clean_filters: Netejar filtre
     proposal_level_selector:
-      default: Sense determinar
       level_1: Total
       level_2: Parcial
     proposals:

@@ -6,16 +6,18 @@ import { ADD_NEW_COMMENT } from '../comments/comments.actions';
 import { comments }        from '../comments/comments.reducers';
 
 export const debate = function (state = {}, action) {
+  let debate, comment;
+
   switch (action.type) {
     case FETCH_DEBATE:
-      let debate = action.payload.data.debate;
+      debate = action.payload.data.debate;
 
       return {
         ...debate,
         comments: state.comments
       }
     case ADD_NEW_COMMENT:
-      let comment = action.payload.data.comment;
+      comment = action.payload.data.comment;
 
       return {
         ...state,

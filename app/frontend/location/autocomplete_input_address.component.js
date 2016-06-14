@@ -1,4 +1,6 @@
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
+
+import StaticMap from './static_map.component';
 
 export default class AutocompleteInputAddress extends Component {
   constructor(props) {
@@ -100,3 +102,13 @@ export default class AutocompleteInputAddress extends Component {
     )
   }
 }
+
+AutocompleteInputAddress.propTypes = {
+  latitude: PropTypes.number,
+  longitude: PropTypes.number,
+  addressInputName: PropTypes.string.isRequired,
+  zoom: PropTypes.number,
+  address: PropTypes.string,
+  latitudeInputName: PropTypes.string.isRequired,
+  longitudeInputName: PropTypes.string.isRequired
+};

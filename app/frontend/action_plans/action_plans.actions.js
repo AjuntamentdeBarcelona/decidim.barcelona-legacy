@@ -124,8 +124,7 @@ export function buildActionPlansRequestParams(options = {}){
       filter,
       order,
       page,
-      seed,
-      params;
+      seed;
 
   filters = options.filters || {};
   page    = options.page || 1;

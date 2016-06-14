@@ -1,12 +1,12 @@
-import { Component }          from 'react';
-import { connect }            from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
-import ScopePicker            from '../scope/scope_picker.component';
-import CategoryPicker         from '../categories/new_category_picker.component';
+import ScopePicker              from '../scope/scope_picker.component';
+import CategoryPicker           from '../categories/new_category_picker.component';
 
-import { fetchDistricts }     from '../districts/districts.actions';
-import { fetchCategories }    from '../categories/categories.actions';
-import { updateActionPlan }   from './action_plans.actions';
+import { fetchDistricts }       from '../districts/districts.actions';
+import { fetchCategories }      from '../categories/categories.actions';
+import { updateActionPlan }     from './action_plans.actions';
 
 class ActionPlanReviewer extends Component {
   componentDidMount() {
@@ -50,3 +50,11 @@ export default connect(
     updateActionPlan
   }
 )(ActionPlanReviewer);
+
+ActionPlanReviewer.propTypes = {
+  fetchDistricts: PropTypes.func.isRequired,
+  fetchCategories: PropTypes.func.isRequired,
+  updateActionPlan: PropTypes.func.isRequired,
+  actionPlan: PropTypes.object,
+  visible: PropTypes.bool
+};

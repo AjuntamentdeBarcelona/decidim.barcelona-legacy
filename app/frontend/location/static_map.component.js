@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
 
 export default class StaticMap extends Component {
   componentDidMount() {
@@ -54,3 +54,10 @@ export default class StaticMap extends Component {
     );
   }
 }
+
+StaticMap.propTypes = {
+  latitude: PropTypes.number.isRequired,
+  longitude: PropTypes.number.isRequired,
+  onMapInit: PropTypes.func,
+  zoom: PropTypes.number.isRequired
+};

@@ -1,5 +1,5 @@
-import { Component } from 'react';
-import Slider        from 'react-slick';
+import { Component, PropTypes } from 'react';
+import Slider                   from 'react-slick';
 
 export default class Carousel extends Component {
   render() {
@@ -13,7 +13,7 @@ export default class Carousel extends Component {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          infinite: true,
+          infinite: true
         }
       }, {
         breakpoint: 600,
@@ -54,3 +54,7 @@ export default class Carousel extends Component {
     }
   }
 }
+
+Carousel.propTypes = {
+  items: PropTypes.array.isRequired
+};

@@ -1,5 +1,5 @@
-import { Component } from 'react';
-import RichEditor    from '../application/rich_editor.component';
+import { Component, PropTypes } from 'react';
+import RichEditor               from '../application/rich_editor.component';
 
 export default class ProposalAnswerBox extends Component {
   constructor(props) {
@@ -92,3 +92,8 @@ export default class ProposalAnswerBox extends Component {
     this.save({ official: true });
   }
 }
+
+ProposalAnswerBox.propTypes = {
+  answer: PropTypes.object,
+  onButtonClick: PropTypes.func.isRequired
+};

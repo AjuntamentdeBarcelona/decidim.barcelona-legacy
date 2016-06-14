@@ -1,4 +1,6 @@
-export default ({
+import { PropTypes } from 'react';
+
+const ActionPlanStatistics = ({
   statistics
 }) => (
   <ul className="action-plan-statistics">
@@ -20,3 +22,9 @@ function renderStatistics (statistics) {
 
   return result;
 }
+
+ActionPlanStatistics.propTypes = {
+  statistics: PropTypes.object.isRequired
+};
+
+export default ActionPlanStatistics;

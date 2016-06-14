@@ -1,5 +1,5 @@
-import { Component } from 'react';
-import { connect } from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
 class NewActionPlanButton extends Component {
   render() {
@@ -17,3 +17,7 @@ class NewActionPlanButton extends Component {
 export default connect(
   ({ session }) => ({ session })
 )(NewActionPlanButton);
+
+NewActionPlanButton.propTypes = {
+  session: PropTypes.object.isRequired
+};

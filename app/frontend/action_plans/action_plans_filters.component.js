@@ -1,4 +1,4 @@
-import { Component }                from 'react';
+import { Component, PropTypes }     from 'react';
 import { connect }                  from 'react-redux';
 
 import * as actions                 from '../filters/filters.actions';
@@ -8,11 +8,6 @@ import ScopeFilterOptionGroup       from '../filters/scope_filter_option_group.c
 import CategoryFilterOptionGroup    from '../filters/category_filter_option_group.component';
 import SubcategoryFilterOptionGroup from '../filters/subcategory_filter_option_group.component';
 import ActionPlanReviewFilter       from '../filters/action_plan_review_filter.component';
-import TagCloudFilter               from '../filters/tag_cloud_filter.component';
-import UserInteractionFilter        from '../filters/user_interaction_filter.component';
-
-import FilterOptionGroup            from '../filters/filter_option_group.component';
-import FilterOption                 from '../filters/filter_option.component';
 
 class ActionPlansFilters extends Component {
   render() {
@@ -42,3 +37,8 @@ export default connect(
   ({ filters }) => ({ filters }),
   actions
 )(ActionPlansFilters);
+
+ActionPlansFilters.propTypes = {
+  filters: PropTypes.object.isRequired,
+  clearFilters: PropTypes.func.isRequired
+};

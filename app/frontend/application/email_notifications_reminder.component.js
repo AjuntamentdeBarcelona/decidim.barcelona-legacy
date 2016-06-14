@@ -61,4 +61,4 @@ export default class EmailNotificationsReminder extends Component {
       );
     }
   }
-};
+}

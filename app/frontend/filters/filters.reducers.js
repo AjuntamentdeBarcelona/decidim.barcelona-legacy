@@ -6,7 +6,7 @@ import {
 } from './filters.actions';
 
 export default function (state = getInitialFiltersState(), action) {
-  var idx;
+  let idx, filter, tags;
 
   switch(action.type) {
     case SET_FILTER_TEXT:
@@ -15,7 +15,7 @@ export default function (state = getInitialFiltersState(), action) {
         text: action.text
       };
     case SET_FILTER_GROUP:
-      let filter = state.filter;
+      filter = state.filter;
 
       filter[action.name] = action.value;
 
@@ -42,8 +42,6 @@ export default function (state = getInitialFiltersState(), action) {
         filter
       };
     case TOGGLE_TAG:
-      let tags;
-
       idx = state.tags.indexOf(action.tag);
 
       if (idx === -1) {

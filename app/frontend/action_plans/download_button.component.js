@@ -14,8 +14,10 @@ function buildUrl(props){
   return `/api/action_plans.xls?${serialize(params)}`;
 }
 
-export default (props) => (
+const DownloadButton = (props) => (
   <a href={buildUrl(props)} className="action-plans-download button small right">
     <i className={`icon fa fa-download`}></i>
   </a>
 )
+
+export default DownloadButton;

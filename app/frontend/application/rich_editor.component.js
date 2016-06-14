@@ -1,4 +1,5 @@
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
+
 import ReactQuill from 'react-quill';
 
 export default class RichEditor extends Component {
@@ -63,3 +64,11 @@ export default class RichEditor extends Component {
     );
   }
 }
+
+RichEditor.propTypes = {
+  value: PropTypes.string,
+  onTextChange: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
+  id: PropTypes.string,
+  name: PropTypes.string
+};

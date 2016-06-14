@@ -1,6 +1,8 @@
-import Proposal   from './proposal.component';
+import { PropTypes } from 'react';
 
-export default ({
+import Proposal      from './proposal.component';
+
+const ProposalsList = ({
   proposals
 }) => (
   <div id="proposals" className="proposals-list">
@@ -13,3 +15,9 @@ export default ({
     }
   </div>
 );
+
+ProposalsList.propTypes = {
+  proposals: PropTypes.array.isRequired
+};
+
+export default ProposalsList;

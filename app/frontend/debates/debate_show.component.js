@@ -1,10 +1,10 @@
-import { Component } from 'react';
-import { connect }   from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
-import * as actions  from './debates.actions';
+import * as actions             from './debates.actions';
 
-import Loading       from '../application/loading.component';
-import Comments      from '../comments/comments.component';
+import Loading                  from '../application/loading.component';
+import Comments                 from '../comments/comments.component';
 
 class DebateShow extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class DebateShow extends Component {
   }
 
   componentDidMount() {
-    const { session, fetchDebate } = this.props;
+    const { fetchDebate } = this.props;
 
     fetchDebate(this.props.debateId).then(() => {
       this.setState({ loading: false });
@@ -45,6 +45,12 @@ class DebateShow extends Component {
 }
 
 export default connect(
-  ({ session, debate }) => ({ session, debate }),
+  ({ debate }) => ({ debate }),
   actions
 )(DebateShow);
+
+DebateShow.propTypes = {
+  fetchDebate: PropTypes.func.isRequired,
+  debateId: PropTypes.number.isRequired,
+  debate: PropTypes.object
+};

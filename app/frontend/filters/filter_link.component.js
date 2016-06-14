@@ -1,7 +1,7 @@
-import { Component } from 'react';
-import { connect }   from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
-import * as actions  from './filters.actions';
+import * as actions             from './filters.actions';
 
 class FilterLink extends Component {
   render() {
@@ -38,3 +38,13 @@ export default connect(
   ({ categories, filters }) => ({ filters, categories }),
   actions
 )(FilterLink);
+
+FilterLink.propTypes = {
+  filters: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.any.isRequired,
+  label: PropTypes.string.isRequired,
+  cssClass: PropTypes.string,
+  setFilterGroup: PropTypes.func.isRequired,
+  categories: PropTypes.array.isRequired
+};

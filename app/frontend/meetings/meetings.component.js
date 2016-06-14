@@ -1,7 +1,6 @@
-import { Component }                         from 'react';
+import { Component, PropTypes }              from 'react';
 import { connect }                           from 'react-redux';
 
-import Loading                               from '../application/loading.component';
 import InfinitePagination                    from '../pagination/infinite_pagination.component';
 import MeetingsMap                           from './meetings_map.component';
 import MeetingsFilters                       from './meetings_filters.component';
@@ -83,3 +82,12 @@ export default connect(
     setFilterGroup
   }
 )(Meetings);
+
+Meetings.propTypes = {
+  filters: PropTypes.object.isRequired,
+  pagination: PropTypes.object.isRequired,
+  meetings: PropTypes.array.isRequired,
+  setFilterGroup: PropTypes.func.isRequired,
+  fetchMeetings: PropTypes.func.isRequired,
+  appendMeetingsPage: PropTypes.func.isRequired
+};

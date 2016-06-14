@@ -1,11 +1,11 @@
-import { Component }          from 'react';
-import { connect }            from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
-import { fetchDistricts }     from '../districts/districts.actions';
-import { setFilterGroup }     from './filters.actions';
+import { fetchDistricts }       from '../districts/districts.actions';
+import { setFilterGroup }       from './filters.actions';
 
-import FilterOptionGroup      from './filter_option_group.component';
-import FilterOption           from './filter_option.component';
+import FilterOptionGroup        from './filter_option_group.component';
+import FilterOption             from './filter_option.component';
 
 class ScopeFilterOptionGroup extends Component {
   componentDidMount() {
@@ -46,3 +46,10 @@ export default connect(
     setFilterGroup
   }
 )(ScopeFilterOptionGroup);
+
+ScopeFilterOptionGroup.propTypes = {
+  fetchDistricts: PropTypes.func.isRequired,
+  filters: PropTypes.object.isRequired,
+  setFilterGroup: PropTypes.func.isRequired,
+  districts: PropTypes.array
+};

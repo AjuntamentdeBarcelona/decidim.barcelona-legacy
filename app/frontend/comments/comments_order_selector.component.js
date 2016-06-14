@@ -1,7 +1,7 @@
-import { Component } from 'react';
-import { connect }   from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
-import * as actions  from '../order/order.actions';
+import * as actions             from '../order/order.actions';
 
 class CommentsOrderSelector extends Component {
   componentDidMount() {
@@ -37,3 +37,8 @@ export default connect(
   ({ order }) => ({ order }),
   actions
 )(CommentsOrderSelector);
+
+CommentsOrderSelector.propTypes = {
+  setOrder: PropTypes.func.isRequired,
+  order: PropTypes.string
+};

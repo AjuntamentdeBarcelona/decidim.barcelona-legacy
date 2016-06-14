@@ -1,13 +1,13 @@
-import { Component }       from 'react';
-import { connect }         from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
-import ScopePicker         from '../scope/scope_picker.component';
-import CategoryPicker      from '../categories/new_category_picker.component';
-import ProposalAnswerBox   from './proposal_answer_box.component';
+import ScopePicker              from '../scope/scope_picker.component';
+import CategoryPicker           from '../categories/new_category_picker.component';
+import ProposalAnswerBox        from './proposal_answer_box.component';
 
-import { fetchDistricts }  from '../districts/districts.actions';
-import { fetchCategories } from '../categories/categories.actions';
-import * as actions        from './proposals.actions';
+import { fetchDistricts }       from '../districts/districts.actions';
+import { fetchCategories }      from '../categories/categories.actions';
+import * as actions             from './proposals.actions';
 
 class ProposalReviewer extends Component {
   componentDidMount() {
@@ -55,6 +55,16 @@ export default connect(
   {
     ...actions,
     fetchDistricts,
-    fetchCategories, 
+    fetchCategories
   }
 )(ProposalReviewer);
+
+ProposalReviewer.propTypes = {
+  proposal: PropTypes.object.isRequired,
+  session: PropTypes.object.isRequired,
+  fetchDistricts: PropTypes.func.isRequired,
+  fetchCategories: PropTypes.func.isRequired,
+  fetchAnswer: PropTypes.func.isRequired,
+  updateAnswer: PropTypes.func.isRequired,
+  updateProposal: PropTypes.func.isRequired
+};

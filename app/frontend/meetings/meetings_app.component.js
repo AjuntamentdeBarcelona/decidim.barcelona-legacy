@@ -1,11 +1,11 @@
-import { Component }       from 'react';
+import { Component, PropTypes }                 from 'react';
 import {
   createStore,
   applyMiddleware,
   combineReducers
-}                          from 'redux';
-import { Provider }        from 'react-redux';
-import ReduxPromise        from 'redux-promise';
+}                                               from 'redux';
+import { Provider }                             from 'react-redux';
+import ReduxPromise                             from 'redux-promise';
 
 const middlewares = [ReduxPromise];
 
@@ -15,17 +15,17 @@ if (process.env.NODE_ENV === 'development') {
   middlewares.push(logger);
 }
 
-import Meetings            from './meetings.component';
+import Meetings                                 from './meetings.component';
 
-import { 
+import {
   FETCH_MEETINGS,
   APPEND_MEETINGS_PAGE
-}  from './meetings.actions';
+}                                               from './meetings.actions';
 
-import meetings            from './meetings.reducers';
-import districts           from '../districts/districts.reducers';
-import categories          from '../categories/categories.reducers';
-import filters             from '../filters/filters.reducers';
+import meetings                                 from './meetings.reducers';
+import districts                                from '../districts/districts.reducers';
+import categories                               from '../categories/categories.reducers';
+import filters                                  from '../filters/filters.reducers';
 
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
@@ -47,7 +47,7 @@ const tags = function (state = [], action) {
 }
 
 function createReducers(sessionState) {
-  let session = function (state = sessionState, action) {
+  let session = function (state = sessionState) {
     return state;
   };
 
@@ -72,3 +72,7 @@ export default class MeetingsApp extends Component {
     );
   }
 }
+
+MeetingsApp.propTypes = {
+  session: PropTypes.object.isRequired
+};

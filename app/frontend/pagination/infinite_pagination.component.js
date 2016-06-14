@@ -1,5 +1,5 @@
-import { Component }    from 'react';
-import VisibilitySensor from 'react-visibility-sensor';
+import { Component, PropTypes } from 'react';
+import VisibilitySensor         from 'react-visibility-sensor';
 
 export default class InfinitePagination extends Component {
   onChange(isVisible) {
@@ -19,3 +19,7 @@ export default class InfinitePagination extends Component {
     );
   }
 }
+
+InfinitePagination.propTypes = {
+  onVisible: PropTypes.func.isRequired
+};

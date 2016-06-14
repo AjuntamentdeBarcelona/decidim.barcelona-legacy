@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
 import { connect }   from 'react-redux';
 
 import * as actions  from '../order/order.actions';
@@ -27,3 +27,9 @@ export default connect(
   ({ order }) => ({ order }),
   actions
 )(OrderSelector);
+
+OrderSelector.propTypes = {
+  order: PropTypes.string.isRequired,
+  orderLinks: PropTypes.array.isRequired,
+  setOrder: PropTypes.func.isRequired
+};

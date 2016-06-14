@@ -1,5 +1,4 @@
-import { Component }          from 'react';
-import { connect }            from 'react-redux';
+import { Component, PropTypes } from 'react';
 
 export default class SubcategoryPicker extends Component {
   subcategories () {
@@ -38,3 +37,9 @@ export default class SubcategoryPicker extends Component {
     }
   }
 }
+
+SubcategoryPicker.propTypes = {
+  subcategory: PropTypes.object,
+  subcategories: PropTypes.array.isRequired,
+  onSelect: PropTypes.func.isRequired
+};

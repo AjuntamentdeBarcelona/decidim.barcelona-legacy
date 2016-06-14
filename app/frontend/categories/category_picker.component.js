@@ -1,6 +1,6 @@
-import { Component }     from 'react';
+import { Component, PropTypes } from 'react';
 
-import SubcategoryPicker from './subcategory_picker.component';
+import SubcategoryPicker        from './subcategory_picker.component';
 
 export default class CategoryPicker extends Component {
   constructor(props) {
@@ -79,3 +79,12 @@ export default class CategoryPicker extends Component {
     this.setState(state);
   }
 }
+
+CategoryPicker.propTypes = {
+  selectedCategoryId: PropTypes.string,
+  selectedSubcategoryId: PropTypes.string,
+  subcategories: PropTypes.array.isRequired,
+  categories: PropTypes.array.isRequired,
+  categoryInputName: PropTypes.string.isRequired,
+  subcategoryInputName: PropTypes.string.isRequired
+};

@@ -1,7 +1,7 @@
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
 
-import DangerLink    from '../application/danger_link.component';
-import ProposalBadge from './proposal_badge.component';
+import DangerLink               from '../application/danger_link.component';
+import ProposalBadge            from './proposal_badge.component';
 
 export default class ProposalsTable extends Component {
   render() {
@@ -35,7 +35,7 @@ export default class ProposalsTable extends Component {
     if (this.props.onRemoveProposal) {
       return (
         <td>
-          <DangerLink onClick={(event) => this.props.onRemoveProposal(proposal) }>
+          <DangerLink onClick={() => this.props.onRemoveProposal(proposal) }>
             {I18n.t("components.proposals_table.remove")}
           </DangerLink>
         </td>
@@ -44,3 +44,8 @@ export default class ProposalsTable extends Component {
     return null;
   }
 }
+
+ProposalsTable.propTypes = {
+  proposals: PropTypes.array.isRequired,
+  onRemoveProposal: PropTypes.func.isRequired
+};

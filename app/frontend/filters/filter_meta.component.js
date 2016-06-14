@@ -1,7 +1,7 @@
-import { Component }    from 'react';
+import { Component, PropTypes } from 'react';
 
-import FilterLink       from './filter_link.component';
-import FilterServerLink from './filter_server_link.component';
+import FilterLink               from './filter_link.component';
+import FilterServerLink         from './filter_server_link.component';
 
 export default class FilterMeta extends Component {
   render() {
@@ -61,3 +61,11 @@ export default class FilterMeta extends Component {
   }
 }
 
+FilterMeta.propTypes = {
+  scope: PropTypes.string.isRequired,
+  district: PropTypes.object,
+  category: PropTypes.object,
+  subcategory: PropTypes.object,
+  useServerLinks: PropTypes.bool,
+  namespace: PropTypes.string
+};

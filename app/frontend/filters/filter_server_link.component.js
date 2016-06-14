@@ -1,4 +1,4 @@
-import { Component }          from 'react';
+import { Component, PropTypes } from 'react';
 
 export default class FilterServerLink extends Component {
   render() {
@@ -13,3 +13,11 @@ export default class FilterServerLink extends Component {
     );
   }
 }
+
+FilterServerLink.propTypes = {
+  namespace: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.any.isRequired,
+  label: PropTypes.string.isRequired,
+  cssClass: PropTypes.string
+};
