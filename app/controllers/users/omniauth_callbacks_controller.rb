@@ -52,7 +52,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
       else
         # If the failure is because something else happens, just present the "new user" form
-        session["devise.#{provider}_data"] = auth
+        session["devise.#{provider}_data"] = auth.except("extra")
         redirect_to new_user_registration_url
       end
     end

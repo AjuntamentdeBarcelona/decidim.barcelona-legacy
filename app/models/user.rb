@@ -68,13 +68,14 @@ class User < ActiveRecord::Base
     oauth_email           = auth.info.email
     oauth_email_confirmed = oauth_email.present? && (auth.info.verified || auth.info.verified_email)
     oauth_user            = User.find_by(email: oauth_email) if oauth_email_confirmed
+    devise_password_token = Devise.friendly_token[0,20]
 
     oauth_user || User.new(
       username:  auth.info.name || auth.uid,
       email: oauth_email,
       oauth_email: oauth_email,
-      password: Devise.friendly_token[0,20],
-      password_confirmation: Devise.friendly_token[0,20],
+      password: devise_password_token,
+      password_confirmation: devise_password_token,
       terms_of_service: '1',
       confirmed_at: oauth_email_confirmed ? DateTime.now : nil,
       notifications_by_default: true,
