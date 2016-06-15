@@ -39,6 +39,7 @@
     "redux": "^3.0.4",
     "redux-logger": "^2.6.1",
     "redux-promise": "^0.5.3",
+    "redux-thunk": "^2.1.0",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.14",
     "whatwg-fetch": "^0.11.0"
