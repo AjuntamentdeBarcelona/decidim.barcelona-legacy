@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
 
 export default class FilterOption extends Component {
   render() {
@@ -34,10 +34,21 @@ export default class FilterOption extends Component {
   renderOptionAsTabs(elemId) {
     return (
       <li id={elemId}>
-        <a className={this.props.checked ? 'active' : ''} onClick={(event) => this.props.onChangeFilter(this.props.filterName, true)}>
+        <a className={this.props.checked ? 'active' : ''} onClick={() => this.props.onChangeFilter(this.props.filterName, true)}>
           {this.props.filterLabel || I18n.t(`components.filter_option.${this.props.filterName}`)}
         </a>
       </li>
     );
   }
 }
+
+FilterOption.propTypes = {
+  filterGroupName: PropTypes.string,
+  filterName: PropTypes.any.isRequired,
+  renderAs: PropTypes.string,
+  isExclusive: PropTypes.bool,
+  checked: PropTypes.bool,
+  onChangeFilter: PropTypes.func,
+  children: PropTypes.element,
+  filterLabel: PropTypes.string
+};

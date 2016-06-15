@@ -1,10 +1,10 @@
-import { Component }     from 'react';
-import { connect }       from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
-import * as actions      from './filters.actions';
+import * as actions             from './filters.actions';
 
-import FilterOptionGroup from './filter_option_group.component';
-import FilterOption      from './filter_option.component';
+import FilterOptionGroup        from './filter_option_group.component';
+import FilterOption             from './filter_option.component';
 
 class SubcategoryFilterOptionGroup extends Component {
   render() {
@@ -36,3 +36,9 @@ export default connect(
   ({ categories, filters }) => ({ categories, filters }),
   actions
 )(SubcategoryFilterOptionGroup);
+
+SubcategoryFilterOptionGroup.propTypes = {
+  filters: PropTypes.object.isRequired,
+  categories: PropTypes.array,
+  setFilterGroup: PropTypes.func.isRequired
+};

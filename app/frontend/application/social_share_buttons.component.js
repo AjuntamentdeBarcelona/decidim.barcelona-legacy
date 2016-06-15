@@ -1,6 +1,7 @@
+import { PropTypes } from 'react';
+
 import { 
   ShareButtons, 
-  ShareCounts, 
   generateShareIcon 
 } from 'react-share';
 
@@ -14,7 +15,7 @@ const FacebookIcon   = generateShareIcon('facebook');
 const TwitterIcon    = generateShareIcon('twitter');
 const GooglePlusIcon = generateShareIcon('google');
 
-export default ({
+const SocialShareButtons = ({
   title,
   url
 }) => (
@@ -32,3 +33,10 @@ export default ({
     </div>
   </div>
 )
+
+SocialShareButtons.propTypes = {
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired
+};
+
+export default SocialShareButtons;

@@ -1,16 +1,18 @@
-import { Component }          from 'react';
-import { connect }            from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
-import classNames             from 'classnames';
+import classNames               from 'classnames';
 
-import UserAvatar             from '../application/user_avatar.component';
-import FlagActions            from '../application/flag_actions.component';
-import DangerLink             from '../application/danger_link.component';
+import UserAvatar               from '../application/user_avatar.component';
+import FlagActions              from '../application/flag_actions.component';
+import DangerLink               from '../application/danger_link.component';
 
-import ChildrenComments       from './children_comments.component';
-import NewCommentForm         from './new_comment_form.component';
+import ChildrenComments         from './children_comments.component';
+import NewCommentForm           from './new_comment_form.component';
 
-import * as actions from './comments.actions';
+import * as actions             from './comments.actions';
+
+import htmlToReact              from '../application/html_to_react';
 
 class Comment extends Component {
   constructor(props) {
@@ -26,7 +28,7 @@ class Comment extends Component {
       comment, 
       commentable, 
       flagComment, 
-      unFlagComment, 
+      unFlagComment
     } = this.props;
 
     const { alignment, author, as } = comment;
@@ -55,9 +57,9 @@ class Comment extends Component {
               &nbsp;&bull;&nbsp;
               <time>{comment.created_at}</time>
             </div>
-            <div 
-              className="comment-user"
-              dangerouslySetInnerHTML={{ __html: comment.body }} />
+            <div className="comment-user">
+              {htmlToReact(comment.body)}
+            </div>
             <div id={`comment_${comment.id}_reply`} className="reply">
               <span id={`comment_${comment.id}_votes`} className="comment-votes right">
                 <span>{I18n.t('comments.comment.votes', { count: comment.total_votes })}</span>
@@ -241,3 +243,14 @@ class Comment extends Component {
 }
 
 export default connect(null, actions)(Comment);
+
+Comment.propTypes = {
+  comment: PropTypes.object.isRequired,
+  commentable: PropTypes.object.isRequired,
+  flagComment: PropTypes.func.isRequired,
+  unFlagComment: PropTypes.func.isRequired,
+  hideComment: PropTypes.func.isRequired,
+  hideCommentAuthor: PropTypes.func.isRequired,
+  upVoteComment: PropTypes.func.isRequired,
+  downVoteComment: PropTypes.func.isRequired
+};

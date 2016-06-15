@@ -1,6 +1,6 @@
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
 
-import classNames    from 'classnames';
+import classNames               from 'classnames';
 
 export default class Loading extends Component {
   render() {
@@ -22,3 +22,9 @@ export default class Loading extends Component {
     return null;
   }
 }
+
+Loading.propTypes = {
+  list: PropTypes.bool,
+  show: PropTypes.bool.isRequired,
+  text: PropTypes.string
+};

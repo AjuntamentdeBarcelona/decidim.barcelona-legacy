@@ -1,6 +1,8 @@
-import ActionPlan from './action_plan.component';
+import { PropTypes } from 'react';
 
-export default ({
+import ActionPlan    from './action_plan.component';
+
+const ActionPlansList = ({
   actionPlans
 }) => (
   <div id="action-plans" className="proposals-list">
@@ -13,3 +15,9 @@ export default ({
     }
   </div>
 );
+
+ActionPlansList.propTypes = {
+  actionPlans: PropTypes.array
+};
+
+export default ActionPlansList;

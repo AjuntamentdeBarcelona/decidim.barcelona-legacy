@@ -1,33 +1,33 @@
-import { Component }     from 'react';
+import { Component, PropTypes }                 from 'react';
 import {
   createStore,
   applyMiddleware,
   combineReducers
-}                        from 'redux';
-import { Provider }      from 'react-redux';
-import ReduxPromise      from 'redux-promise';
+}                                               from 'redux';
+import { Provider }                             from 'react-redux';
+import ReduxPromise                             from 'redux-promise';
 
 const middlewares = [ReduxPromise];
 
-//if (process.env.NODE_ENV === 'development') {
-//  const createLogger = require('redux-logger');
-//  const logger = createLogger();
-//  middlewares.push(logger);
-//}
+if (process.env.NODE_ENV === 'development') {
+  const createLogger = require('redux-logger');
+  const logger = createLogger();
+  middlewares.push(logger);
+}
 
-import Proposals         from './proposals.component';
+import Proposals                                from './proposals.component';
 
 import {
   FETCH_PROPOSALS,
   APPEND_PROPOSALS_PAGE
-}                        from './proposals.actions';
-import { proposals }     from './proposals.reducers';
+}                                               from './proposals.actions';
+import { proposals }                            from './proposals.reducers';
 
-import districts         from '../districts/districts.reducers';
-import categories        from '../categories/categories.reducers';
-import filters           from '../filters/filters.reducers';
-import order             from '../order/order.reducers';
-import pagination        from '../pagination/pagination.reducers';
+import districts                                from '../districts/districts.reducers';
+import categories                               from '../categories/categories.reducers';
+import filters                                  from '../filters/filters.reducers';
+import order                                    from '../order/order.reducers';
+import pagination                               from '../pagination/pagination.reducers';
 
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
@@ -43,9 +43,9 @@ const seed = function (state = getInitialSeedState(), action) {
 
 const count = function (state = 0, action) {
   switch (action.type) {
-  case FETCH_PROPOSALS:
-    return action.payload.data.meta.total_count;
-  }
+    case FETCH_PROPOSALS:
+      return action.payload.data.meta.total_count;
+    }
   return state;
 }
 
@@ -63,7 +63,7 @@ function getInitialSeedState() {
 }
 
 function createReducers(sessionState) {
-  let session = function (state = sessionState, action) {
+  let session = function (state = sessionState) {
     return state;
   };
 
@@ -90,3 +90,7 @@ export default class ProposalsApp extends Component {
     );
   }
 }
+
+ProposalsApp.propTypes = {
+  session: PropTypes.object.isRequired
+};

@@ -1,24 +1,26 @@
-import { Component }        from 'react';
-import { connect }          from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
-import * as actions         from './proposals.actions';
+import * as actions             from './proposals.actions';
 
-import Helmet               from "react-helmet";
+import Helmet                   from "react-helmet";
 
-import Loading              from '../application/loading.component';
-import SocialShareButtons   from '../application/social_share_buttons.component';
-import DangerLink           from '../application/danger_link.component';
-import FilterMeta           from '../filters/filter_meta.component';
-import FollowButton         from '../follows/follow_button.component';
-import Comments             from '../comments/comments.component';
+import Loading                  from '../application/loading.component';
+import SocialShareButtons       from '../application/social_share_buttons.component';
+import DangerLink               from '../application/danger_link.component';
+import FilterMeta               from '../filters/filter_meta.component';
+import FollowButton             from '../follows/follow_button.component';
+import Comments                 from '../comments/comments.component';
 
-import ProposalReviewer     from './proposal_reviewer.component';
-import ProposalBadge        from './proposal_badge.component';
-import ProposalInfoExtended from './proposal_info_extended.component';
-import ProposalVoteBox      from './proposal_vote_box.component';
-import ProposalReferences   from './proposal_references.component';
-import ProposalActionPlans  from './proposal_action_plans.component';
-import ProposalMeetings     from './proposal_meetings.component';
+import ProposalReviewer         from './proposal_reviewer.component';
+import ProposalBadge            from './proposal_badge.component';
+import ProposalInfoExtended     from './proposal_info_extended.component';
+import ProposalVoteBox          from './proposal_vote_box.component';
+import ProposalReferences       from './proposal_references.component';
+import ProposalActionPlans      from './proposal_action_plans.component';
+import ProposalMeetings         from './proposal_meetings.component';
+
+import htmlToReact              from '../application/html_to_react';
 
 class ProposalShow extends Component {
   constructor(props) {
@@ -30,7 +32,7 @@ class ProposalShow extends Component {
   }
 
   componentDidMount() {
-    const { session, fetchProposal } = this.props;
+    const { fetchProposal } = this.props;
 
     fetchProposal(this.props.proposalId).then(() => {
       this.setState({ loading: false });
@@ -55,7 +57,6 @@ class ProposalShow extends Component {
         code,
         url, 
         title, 
-        source, 
         created_at, 
         official, 
         from_meeting, 
@@ -77,8 +78,6 @@ class ProposalShow extends Component {
         can_hide,
         can_hide_author,
         flagged,
-        follow,
-        arguable,
         social_media_image_url
       } = proposal;
 
@@ -132,9 +131,9 @@ class ProposalShow extends Component {
                 totalComments={ total_comments } 
                 flagged={ flagged } />
 
-              <div 
-                className="content-description"
-                dangerouslySetInnerHTML={{ __html: summary.autoLink() }} />
+              <div className="proposal-description">
+                {htmlToReact(summary.autoLink())}
+              </div>
 
               {this.renderExternalUrl(external_url)}
 
@@ -263,9 +262,9 @@ class ProposalShow extends Component {
   renderExternalUrl(externalUrl) {
     if (externalUrl) {
       return (
-        <div 
-          className="document-link" 
-          dangerouslySetInnerHTML={{ __html: externalUrl.autoLink() }} />
+        <div className="document-link">
+          { htmlToReact(externalUrl.autoLink()) }
+        </div>
       );
     }
 
@@ -277,3 +276,12 @@ export default connect(
   ({ session, proposal }) => ({ session, proposal }),
   actions
 )(ProposalShow);
+
+ProposalShow.propTypes = {
+  session: PropTypes.object.isRequired,
+  proposalId: PropTypes.string.isRequired,
+  proposal: PropTypes.object,
+  fetchProposal: PropTypes.func.isRequired,
+  hideProposal: PropTypes.func.isRequired,
+  hideProposalAuthor: PropTypes.func.isRequired
+};

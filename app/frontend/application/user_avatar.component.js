@@ -1,5 +1,6 @@
-import Please     from 'pleasejs';
-import classNames from 'classnames';
+import { PropTypes } from 'react';
+import Please        from 'pleasejs';
+import classNames    from 'classnames';
 
 const MAX_COLORS = 26;
 const COLORS = Please.make_color({
@@ -8,7 +9,7 @@ const COLORS = Please.make_color({
 });
 const FIRST_LETTER_CHAR_CODE = 'A'.charCodeAt();
 
-export default ({
+const UserAvatar = ({
   user,
   role
 }) => {
@@ -40,3 +41,10 @@ export default ({
     );
   }
 }
+
+UserAvatar.propTypes = {
+  user: PropTypes.object.isRequired,
+  role: PropTypes.string
+};
+
+export default UserAvatar;

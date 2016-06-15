@@ -1,12 +1,12 @@
-import { Component }  from 'react';
-import { connect }    from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
-import FlagActions    from '../application/flag_actions.component';
-import UserAvatar     from '../application/user_avatar.component';
+import FlagActions              from '../application/flag_actions.component';
+import UserAvatar               from '../application/user_avatar.component';
 
-import ProposalAuthor from './proposal_author.component';
+import ProposalAuthor           from './proposal_author.component';
 
-import * as actions   from './proposals.actions';
+import * as actions             from './proposals.actions';
 
 class ProposalInfoExtended extends Component {
   render() {
@@ -53,3 +53,16 @@ export default connect(
   ({ session }) => ({ session }),
   actions
 )(ProposalInfoExtended);
+
+ProposalInfoExtended.propTypes = {
+  id: PropTypes.number.isRequired,
+  code: PropTypes.string.isRequired,
+  created_at: PropTypes.string.isRequired,
+  official: PropTypes.bool,
+  fromMeeting: PropTypes.bool,
+  author: PropTypes.object.isRequired,
+  totalComments: PropTypes.number.isRequired,
+  flagged: PropTypes.bool,
+  flagProposal: PropTypes.func.isRequired,
+  unFlagProposal: PropTypes.func.isRequired
+};

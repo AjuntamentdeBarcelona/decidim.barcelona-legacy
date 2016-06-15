@@ -1,5 +1,5 @@
 //TODO: Deprecated when proposals#show use only components
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
 
 import SmartButton        from '../application/smart_button.component';
 import SocialShareButtons from '../application/social_share_buttons.component';
@@ -99,7 +99,7 @@ export default class Votes extends Component {
     $.ajax(this.props.vote_url, {
       method: 'POST',
       dataType: 'json'
-    }).then((data) => {
+    }).then(() => {
       this.setState({ 
         loading: false,
         totalVotes: this.state.totalVotes + 1,
@@ -108,3 +108,11 @@ export default class Votes extends Component {
     });
   }
 }
+
+Votes.propTypes = {
+  total_votes: PropTypes.number.isRequired,
+  already_voted: PropTypes.bool.isRequired,
+  comments_url: PropTypes.string.isRequired,
+  comments_count: PropTypes.number.isRequired,
+  cant_vote: PropTypes.bool.isRequired
+};

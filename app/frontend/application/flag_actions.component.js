@@ -1,5 +1,5 @@
-import { Component }          from 'react';
-import { connect }            from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
 class FlagActions extends Component {
   render() {
@@ -54,3 +54,10 @@ class FlagActions extends Component {
 export default connect(
   ({ session }) => ({ session })
 )(FlagActions);
+
+FlagActions.propTypes = {
+  session: PropTypes.object.isRequired,
+  flaggeable: PropTypes.object.isRequired,
+  flagAction: PropTypes.func.isRequired,
+  unFlagAction: PropTypes.func.isRequired
+};

@@ -1,4 +1,4 @@
-import { Component }              from 'react';
+import { Component, PropTypes }   from 'react';
 import { connect }                from 'react-redux';
 
 import Loading                    from '../application/loading.component';
@@ -7,7 +7,6 @@ import ProposalsAutocompleteInput from '../proposals/proposals_autocomplete_inpu
 import ProposalsTable             from './proposals_table.component';
 
 import * as actions               from './action_plans.actions';
-
 
 class ActionPlanProposals extends Component {
   constructor(props) {
@@ -27,7 +26,7 @@ class ActionPlanProposals extends Component {
   }
 
   render() {
-    const { editable, actionPlan, addActionPlanProposal, removeActionPlanProposal } = this.props;
+    const { editable, actionPlan, removeActionPlanProposal } = this.props;
     const { id } = actionPlan;
     const actionPlansProposals = actionPlan.actionPlansProposals || [];
 
@@ -38,7 +37,6 @@ class ActionPlanProposals extends Component {
         <Loading show={this.state.loading} />
         <ProposalsTable 
           actionPlansProposals={ actionPlansProposals }
-          onChangeLevel={ (proposal, level) => changeActionPlansProposalLevel(actionPlan, proposal, level) }
           onRemoveProposal={proposal => removeActionPlanProposal(id, proposal)} 
           editable={editable} />
       </div>
@@ -62,3 +60,11 @@ class ActionPlanProposals extends Component {
 }
 
 export default connect(null, actions)(ActionPlanProposals);
+
+ActionPlanProposals.propTypes = {
+  actionPlan: PropTypes.object,
+  fetchActionPlanProposals: PropTypes.func.isRequired,
+  editable: PropTypes.bool,
+  removeActionPlanProposal: PropTypes.func.isRequired,
+  addActionPlanProposal: PropTypes.func.isRequired
+};

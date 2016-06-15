@@ -1,9 +1,9 @@
-import { Component } from 'react';
-import { connect }   from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
-import Meeting       from '../meetings/meeting.component';
+import Meeting                  from '../meetings/meeting.component';
 
-import * as actions  from './proposals.actions';
+import * as actions             from './proposals.actions';
 
 class ProposalMeetings extends Component {
   componentDidMount() {
@@ -54,3 +54,9 @@ export default connect(
   ({ proposal }) => ({ proposal }),
   actions
 )(ProposalMeetings);
+
+ProposalMeetings.propTypes = {
+  proposal: PropTypes.object.isRequired,
+  fetchRelatedMeetings: PropTypes.func.isRequired,
+  useServerLinks: PropTypes.bool
+};

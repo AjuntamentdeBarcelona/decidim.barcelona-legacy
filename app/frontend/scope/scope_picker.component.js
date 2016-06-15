@@ -1,5 +1,5 @@
-import { Component }          from 'react';
-import { connect }            from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
 class ScopePicker extends Component {
   render() {
@@ -69,6 +69,15 @@ class ScopePicker extends Component {
     this.props.onDistrictSelected(districtId);
   }
 }
+
+ScopePicker.propTypes = {
+  namespace: PropTypes.string,
+  scope: PropTypes.string.isRequired,
+  district: PropTypes.object,
+  districts: PropTypes.array.isRequired,
+  onScopeSelected: PropTypes.func.isRequired,
+  onDistrictSelected: PropTypes.func.isRequired
+};
 
 export default connect(
   ({ districts }) => ({ districts })

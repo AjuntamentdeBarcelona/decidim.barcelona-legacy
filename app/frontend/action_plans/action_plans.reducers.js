@@ -24,6 +24,8 @@ export const actionPlans = function (state = [], action) {
 }
 
 export const actionPlan = function (state = {}, action) {
+  let actionPlan, actionPlansProposals, meetings;
+
   switch (action.type) {
     case UPDATE_ACTION_PLAN:
       return {
@@ -31,7 +33,8 @@ export const actionPlan = function (state = {}, action) {
         ...action.payload.data.action_plan
       };
     case FETCH_ACTION_PLAN:
-      let actionPlan = action.payload.data.action_plan;
+      actionPlan = action.payload.data.action_plan;
+
       return {
         ...actionPlan,
         proposals: state.proposals
@@ -39,14 +42,14 @@ export const actionPlan = function (state = {}, action) {
     case FETCH_ACTION_PLAN_PROPOSALS:
     case ADD_ACTION_PLAN_PROPOSAL:
     case REMOVE_ACTION_PLAN_PROPOSAL:
-      let actionPlansProposals = action.payload.data.action_plans_proposals;
+      actionPlansProposals = action.payload.data.action_plans_proposals;
 
       return {
         ...state,
         actionPlansProposals
       };
     case FETCH_RELATED_MEETINGS:
-      let meetings = action.payload.data.meetings;
+      meetings = action.payload.data.meetings;
 
       return {
         ...state,

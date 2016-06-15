@@ -1,7 +1,7 @@
-import { Component } from 'react';
-import { connect }   from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
-import * as actions  from './proposals.actions';
+import * as actions             from './proposals.actions';
 
 class ProposalReferences extends Component {
   componentDidMount() {
@@ -36,3 +36,8 @@ export default connect(
   ({ proposal }) => ({ proposal }),
   actions
 )(ProposalReferences);
+
+ProposalReferences.propTypes = {
+  proposal: PropTypes.object.isRequired,
+  fetchReferences: PropTypes.func.isRequired
+};

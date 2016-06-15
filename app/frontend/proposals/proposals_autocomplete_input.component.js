@@ -1,6 +1,6 @@
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
 
-import Autocomplete  from 'react-autocomplete';
+import Autocomplete             from 'react-autocomplete';
 
 export default class ProposalsAutocompleteInput extends Component {
   constructor(props) {
@@ -85,23 +85,7 @@ export default class ProposalsAutocompleteInput extends Component {
   }
 
   renderItems (items) {
-    //console.log(items)
-      return items.map((item, index) => {
-        return item;
-        //var text = item.props.children
-        //if (index === 0 || items[index - 1].props.children.charAt(0) !== text.charAt(0)) {
-        //  var style = {
-        //    background: '#eee',
-        //     color: '#454545',
-        //     padding: '2px 6px',
-        //     fontWeight: 'bold'
-        //  }
-        //  return [<div style={style}>{text.charAt(0)}</div>, item]
-        //}
-        //else {
-        //  return item
-        //}
-      })
+    return items.map(item => item);
   }
 
   search(text, cb) {
@@ -125,3 +109,9 @@ export default class ProposalsAutocompleteInput extends Component {
     }, 300);
   }
 }
+
+ProposalsAutocompleteInput.propTypes = {
+  onAddProposal: PropTypes.func.isRequired,
+  proposalsApiUrl: PropTypes.string.isRequired,
+  excludeIds: PropTypes.array
+};

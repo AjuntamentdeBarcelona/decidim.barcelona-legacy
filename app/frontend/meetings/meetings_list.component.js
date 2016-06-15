@@ -1,7 +1,9 @@
-import Loading from '../application/loading.component';
-import Meeting from './meeting.component';
+import { PropTypes } from 'react';
 
-export default ({
+import Loading       from '../application/loading.component';
+import Meeting       from './meeting.component';
+
+const MeetingsList = ({
   meetings,
   loading
 }) => (
@@ -18,3 +20,10 @@ export default ({
     </ul>
   </div>
 );
+
+MeetingsList.propTypes = {
+  meetings: PropTypes.array,
+  loading: PropTypes.bool
+};
+
+export default MeetingsList;

@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
 
 export default class SubcategoryPicker extends Component {
   subcategories () {
@@ -43,3 +43,10 @@ export default class SubcategoryPicker extends Component {
     }
   }
 }
+
+SubcategoryPicker.propTypes = {
+  categoryId: PropTypes.string.isRequired,
+  subcategories: PropTypes.array.isRequired,
+  selectedId: PropTypes.string,
+  onSelect: PropTypes.func.isRequired
+};

@@ -1,8 +1,8 @@
-import { Component }    from 'react';
+import { Component, PropTypes } from 'react';
 
-import MeetingTime      from './meeting_time.component';
-import FilterLink       from '../filters/filter_link.component';
-import FilterServerLink from '../filters/filter_server_link.component';
+import MeetingTime              from './meeting_time.component';
+import FilterLink               from '../filters/filter_link.component';
+import FilterServerLink         from '../filters/filter_server_link.component';
 
 export default class Meeting extends Component {
   constructor(props) {
@@ -44,7 +44,6 @@ export default class Meeting extends Component {
     let { category, subcategory } = meeting;
 
     if(!meeting.category){ return <div />; }
-    var categoryClassNames = `category-icon category-icon-${ meeting.category.id }`;
 
     if (useServerLinks) {
       return (
@@ -62,4 +61,9 @@ export default class Meeting extends Component {
       );
     }
   }
+}
+
+Meeting.propTypes = {
+  meeting: PropTypes.object.isRequired,
+  useServerLinks: PropTypes.bool
 };

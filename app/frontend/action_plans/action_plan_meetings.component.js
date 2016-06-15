@@ -1,11 +1,11 @@
-import { Component } from 'react';
-import { connect }   from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
-import Loading       from '../application/loading.component';
+import Loading                  from '../application/loading.component';
 
-import Meeting       from '../meetings/meeting.component';
+import Meeting                  from '../meetings/meeting.component';
 
-import * as actions  from './action_plans.actions';
+import * as actions             from './action_plans.actions';
 
 class ActionPlanMeetings extends Component {
   constructor(props) {
@@ -67,3 +67,9 @@ export default connect(
   ({ actionPlan }) => ({ actionPlan }),
   actions
 )(ActionPlanMeetings);
+
+ActionPlanMeetings.propTypes = {
+  actionPlan: PropTypes.object,
+  fetchRelatedMeetings: PropTypes.func.isRequired,
+  useServerLinks: PropTypes.bool
+};

@@ -51,7 +51,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel', // 'babel-loader' is also a legal name to reference
+        loaders: ['babel', 'eslint'], // 'babel-loader' is also a legal name to reference
       },
       {
         test: /\.css$/,
@@ -64,6 +64,9 @@ module.exports = {
       { 
         test: require.resolve("react-dom"),
         loader: "expose?ReactDOM"
+      },
+      {
+        test: /\.json$/, loader: 'json'
       }
     ]
   }

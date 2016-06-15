@@ -1,13 +1,15 @@
-import { Component }         from 'react';
-import { connect }           from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
-import * as actions          from './comments.actions';
+import * as actions             from './comments.actions';
 
-import Loading               from '../application/loading.component';
-import InfinitePagination    from '../pagination/infinite_pagination.component';
-import CommentsOrderSelector from './comments_order_selector.component';
-import Comment               from './comment.component';
-import NewCommentForm        from './new_comment_form.component';
+import Loading                  from '../application/loading.component';
+import InfinitePagination       from '../pagination/infinite_pagination.component';
+import CommentsOrderSelector    from './comments_order_selector.component';
+import Comment                  from './comment.component';
+import NewCommentForm           from './new_comment_form.component';
+
+import htmlToReact              from '../application/html_to_react';
 
 class Comments extends Component {
   constructor(props) {
@@ -62,12 +64,16 @@ class Comments extends Component {
 
     if (!session.signed_in) {
       return (
-        <div 
-          className="alert-box radius info"
-          dangerouslySetInnerHTML={{ __html: I18n.t('proposals.show.login_to_comment', {
-            signin: `<a href="/users/sign_in">${I18n.t("votes.signin")}</a>`,
-            signup: `<a href="/users/sign_up">${I18n.t("votes.signup")}</a>`
-          })}} />
+        <div className="alert-box radius info">
+          {
+            htmlToReact(
+              I18n.t('proposals.show.login_to_comment', {
+                signin: `<a href="/users/sign_in">${I18n.t("votes.signin")}</a>`,
+                signup: `<a href="/users/sign_up">${I18n.t("votes.signup")}</a>`
+              })
+            )
+          }
+        </div>
       );
     }
 
@@ -188,3 +194,13 @@ function mapStateToProps(state, { commentable }) {
 }
 
 export default connect(mapStateToProps, actions)(Comments);
+
+Comments.propTypes = {
+  order: PropTypes.string.isRequired,
+  commentable: PropTypes.object.isRequired,
+  session: PropTypes.object.isRequired,
+  fetchComments: PropTypes.func.isRequired,
+  appendCommentsPage: PropTypes.func.isRequired,
+  comments: PropTypes.array.isRequired,
+  pagination: PropTypes.object.isRequired
+};

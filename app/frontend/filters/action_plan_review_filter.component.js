@@ -1,10 +1,10 @@
-import { Component }     from 'react';
-import { connect }       from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
-import FilterOptionGroup from './filter_option_group.component';
-import FilterOption      from './filter_option.component';
+import FilterOptionGroup        from './filter_option_group.component';
+import FilterOption             from './filter_option.component';
 
-import * as actions      from './filters.actions';
+import * as actions             from './filters.actions';
 
 class ActionPlanReviewFilter extends Component {
   render() {
@@ -39,3 +39,9 @@ export default connect(
   ({ filters, session }) => ({filters, session }),
   actions
 )(ActionPlanReviewFilter);
+
+ActionPlanReviewFilter.propTypes = {
+  session: PropTypes.object.isRequired,
+  filters: PropTypes.object.isRequired,
+  setFilterGroup: PropTypes.func.isRequired
+};

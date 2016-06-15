@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
 
 export default class ProposalAuthor extends Component {
   render() {
@@ -79,3 +79,9 @@ export default class ProposalAuthor extends Component {
     return null;
   }
 }
+
+ProposalAuthor.propTypes = {
+  official: PropTypes.bool,
+  fromMeeting: PropTypes.bool,
+  author: PropTypes.object.isRequired
+};

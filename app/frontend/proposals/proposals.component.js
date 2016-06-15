@@ -1,19 +1,19 @@
-import { Component }      from 'react';
-import { connect }        from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
-import Loading            from '../application/loading.component';
-import InfinitePagination from '../pagination/infinite_pagination.component';
-import FilterTabs         from '../filters/filter_tabs.component';
-import OrderSelector      from '../order/order_selector.component';
+import Loading                  from '../application/loading.component';
+import InfinitePagination       from '../pagination/infinite_pagination.component';
+import FilterTabs               from '../filters/filter_tabs.component';
+import OrderSelector            from '../order/order_selector.component';
 
-import ProposalsHeader    from './proposals_header.component';
-import ProposalsSidebar   from './proposals_sidebar.component';
-import NewProposalButton  from './new_proposal_button.component';
-import ProposalsList      from './proposals_list.component';
+import ProposalsHeader          from './proposals_header.component';
+import ProposalsSidebar         from './proposals_sidebar.component';
+import NewProposalButton        from './new_proposal_button.component';
+import ProposalsList            from './proposals_list.component';
 
-import * as actions       from './proposals.actions';
-import { setOrder }       from '../order/order.actions';
-import { getOrderByUrl }  from '../order/order.reducers';
+import * as actions             from './proposals.actions';
+import { setOrder }             from '../order/order.actions';
+import { getOrderByUrl }        from '../order/order.reducers';
 
 class Proposals extends Component {
   constructor(props) {
@@ -103,3 +103,15 @@ export default connect(
     setOrder
   }
 )(Proposals);
+
+Proposals.propTypes = {
+  filters: PropTypes.object.isRequired,
+  pagination: PropTypes.object.isRequired,
+  proposals: PropTypes.array.isRequired,
+  order: PropTypes.string,
+  seed: PropTypes.any,
+  count: PropTypes.number,
+  setOrder: PropTypes.func.isRequired,
+  fetchProposals: PropTypes.func.isRequired,
+  appendProposalsPage: PropTypes.func.isRequired
+};

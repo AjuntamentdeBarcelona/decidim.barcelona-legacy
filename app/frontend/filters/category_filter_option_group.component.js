@@ -1,11 +1,11 @@
-import { Component }          from 'react';
-import { connect }            from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
-import { fetchCategories }    from '../categories/categories.actions';
-import { setFilterGroup }     from './filters.actions';
+import { fetchCategories }      from '../categories/categories.actions';
+import { setFilterGroup }       from './filters.actions';
 
-import FilterOptionGroup      from './filter_option_group.component';
-import FilterOption           from './filter_option.component';
+import FilterOptionGroup        from './filter_option_group.component';
+import FilterOption             from './filter_option.component';
 
 class CategoryFilterOptionGroup extends Component {
   componentDidMount() {
@@ -38,3 +38,10 @@ export default connect(
     setFilterGroup
   }
 )(CategoryFilterOptionGroup);
+
+CategoryFilterOptionGroup.propTypes = {
+  fetchCategories: PropTypes.func.isRequired,
+  filters: PropTypes.object.isRequired,
+  setFilterGroup: PropTypes.func.isRequired,
+  categories: PropTypes.array
+};

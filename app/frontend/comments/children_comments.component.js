@@ -1,10 +1,10 @@
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
 
 import Comment from './comment.component';
 
 export default class ChildrenComments extends Component {
   render() {
-    const { comment, commentable, } = this.props;
+    const { comment, commentable } = this.props;
 
     if (comment.children) {
       return (
@@ -24,3 +24,8 @@ export default class ChildrenComments extends Component {
     return null;
   }
 }
+
+ChildrenComments.propTypes = {
+  comment: PropTypes.object.isRequired,
+  commentable: PropTypes.object.isRequired
+};

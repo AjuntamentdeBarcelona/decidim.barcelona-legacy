@@ -1,4 +1,4 @@
-import { Component }                     from 'react';
+import { Component, PropTypes }   from 'react';
 
 import ProposalsAutocompleteInput from './proposals_autocomplete_input.component';
 import ProposalsTable             from './proposals_table.component';
@@ -43,3 +43,9 @@ export default class ProposalsSelector extends Component {
     this.setState({ proposals })
   }
 }
+
+ProposalsSelector.propTypes = {
+  proposals: PropTypes.array.isRequired,
+  resource_name: PropTypes.string.isRequired,
+  proposals_api_url: PropTypes.string.isRequired
+};

@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
 
 export default class SmartButton extends Component {
   constructor(props) {
@@ -24,3 +24,8 @@ export default class SmartButton extends Component {
     this.props.onClick();
   }
 }
+
+SmartButton.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  children: PropTypes.any
+};

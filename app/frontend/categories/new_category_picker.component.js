@@ -1,7 +1,7 @@
-import { Component }          from 'react';
-import { connect }            from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
-import SubcategoryPicker      from './new_subcategory_picker.component';
+import SubcategoryPicker        from './new_subcategory_picker.component';
 
 class CategoryPicker extends Component {
   render () {
@@ -76,3 +76,11 @@ class CategoryPicker extends Component {
 export default connect(
   ({ categories }) => ({ categories })
 )(CategoryPicker);
+
+CategoryPicker.propTypes = {
+  categories: PropTypes.array.isRequired,
+  category: PropTypes.object,
+  subcategory: PropTypes.object,
+  onCategorySelected: PropTypes.func.isRequired,
+  onSubcategorySelected: PropTypes.func.isRequired
+};

@@ -1,30 +1,30 @@
-import { Component }     from 'react';
+import { Component, PropTypes } from 'react';
 import {
   createStore,
   applyMiddleware,
   combineReducers
-}                        from 'redux';
-import { Provider }      from 'react-redux';
-import ReduxPromise      from 'redux-promise';
+}                               from 'redux';
+import { Provider }             from 'react-redux';
+import ReduxPromise             from 'redux-promise';
 
-import { actionPlan }    from './action_plans.reducers';
-import categories        from '../categories/categories.reducers';
-import districts         from '../districts/districts.reducers';
-import filters           from '../filters/filters.reducers';
+import { actionPlan }           from './action_plans.reducers';
+import categories               from '../categories/categories.reducers';
+import districts                from '../districts/districts.reducers';
+import filters                  from '../filters/filters.reducers';
 
-import ActionPlanShow      from './action_plan_show.component';
+import ActionPlanShow           from './action_plan_show.component';
 
 const middlewares = [ReduxPromise];
 
-//if (process.env.NODE_ENV === 'development') {
-//  const createLogger = require('redux-logger');
-//  const logger = createLogger();
-//  middlewares.push(logger);
-//}
+if (process.env.NODE_ENV === 'development') {
+  const createLogger = require('redux-logger');
+  const logger = createLogger();
+  middlewares.push(logger);
+}
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
 function createReducers(sessionState) {
-  let session = function (state = sessionState, action) {
+  let session = function (state = sessionState) {
     return state;
   };
 
@@ -47,3 +47,8 @@ export default class ActionPlanApp extends Component {
     );
   }
 }
+
+ActionPlanApp.propTypes = {
+  session: PropTypes.object.isRequired,
+  actionPlanId: PropTypes.string.isRequired
+};

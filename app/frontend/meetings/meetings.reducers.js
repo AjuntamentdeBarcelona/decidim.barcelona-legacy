@@ -1,6 +1,6 @@
 import { 
   FETCH_MEETINGS, 
-  APPEND_MEETINGS_PAGE,
+  APPEND_MEETINGS_PAGE
 } from './meetings.actions';
 
 export default function (state = [], action) {

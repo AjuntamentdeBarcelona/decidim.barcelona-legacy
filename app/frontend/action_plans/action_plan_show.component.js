@@ -1,19 +1,21 @@
-import { Component }        from 'react';
-import { connect }          from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
-import * as actions         from './action_plans.actions';
+import * as actions             from './action_plans.actions';
 
-import Loading              from '../application/loading.component';
-import SocialShareButtons   from '../application/social_share_buttons.component';
-import DangerLink           from '../application/danger_link.component';
-import FilterMeta           from '../filters/filter_meta.component';
+import Loading                  from '../application/loading.component';
+import SocialShareButtons       from '../application/social_share_buttons.component';
+import DangerLink               from '../application/danger_link.component';
+import FilterMeta               from '../filters/filter_meta.component';
 
-import ActionPlanStatistics from './action_plan_statistics.component';
-import ActionPlanProposals  from './action_plan_proposals.component';
-import ActionPlanMeetings   from './action_plan_meetings.component';
-import ActionPlanReviewer   from './action_plan_reviewer.component';
-import WeightControl        from './weight_control.component';
-import ActionPlanAuthors from './action_plan_authors.component';
+import ActionPlanStatistics     from './action_plan_statistics.component';
+import ActionPlanProposals      from './action_plan_proposals.component';
+import ActionPlanMeetings       from './action_plan_meetings.component';
+import ActionPlanReviewer       from './action_plan_reviewer.component';
+import WeightControl            from './weight_control.component';
+import ActionPlanAuthors        from './action_plan_authors.component';
+
+import htmlToReact              from '../application/html_to_react';
 
 class ActionPlanShow extends Component {
   constructor(props) {
@@ -21,14 +23,12 @@ class ActionPlanShow extends Component {
 
     this.state = {
       loading: true,
-      editable: false
+      editable: this.props.session.is_reviewer
     }
   }
 
   componentDidMount() {
-    const { session, fetchActionPlan } = this.props;
-
-    this.setState({ editable: session.is_reviewer });
+    const { fetchActionPlan } = this.props;
 
     fetchActionPlan(this.props.actionPlanId).then(() => {
       this.setState({ loading: false });
@@ -49,9 +49,7 @@ class ActionPlanShow extends Component {
 
     if (actionPlan.id) {
       const { 
-        id,
         url,
-        deleted,
         title, 
         description,
         created_at,
@@ -76,9 +74,12 @@ class ActionPlanShow extends Component {
               {this.renderNotice()}
 
               <h2><a href={url}>{title}</a></h2>
-              <div 
-                className="content-description"
-                dangerouslySetInnerHTML={{ __html: description.autoLink() }} />
+
+              <p className="proposal-info"><span>{ created_at }</span></p>
+
+              <div className="proposal-description">
+                {htmlToReact(description.autoLink())}
+              </div>
 
               <FilterMeta 
                 scope={ scope_ }
@@ -133,8 +134,8 @@ class ActionPlanShow extends Component {
               </span>);
     } else {
       return (
-          <DangerLink onClick={() => this.props.approveActionPlan(this.props.actionPlan.id)}
-        className="approve-proposal button default tiny radius right">
+        <DangerLink onClick={() => this.props.approveActionPlan(this.props.actionPlan.id)}
+          className="approve-proposal button default tiny radius right">
           <i className="icon-edit"></i>
           { I18n.t("components.action_plan_show.approve") }
         </DangerLink>
@@ -176,3 +177,13 @@ export default connect(
   ({ session, actionPlan }) => ({ session, actionPlan }),
   actions
 )(ActionPlanShow);
+
+ActionPlanShow.propTypes = {
+  session: PropTypes.object.isRequired,
+  fetchActionPlan: PropTypes.func.isRequired,
+  actionPlanId: PropTypes.string.isRequired,
+  actionPlan: PropTypes.object,
+  approveActionPlan: PropTypes.func.isRequired,
+  deleteActionPlan: PropTypes.func.isRequired,
+  changeWeight: PropTypes.func.isRequired
+};

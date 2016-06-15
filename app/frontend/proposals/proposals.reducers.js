@@ -14,7 +14,7 @@ import {
   HIDE_PROPOSAL,
   HIDE_PROPOSAL_AUTHOR,
   FLAG_PROPOSAL,
-  UNFLAG_PROPOSAL,
+  UNFLAG_PROPOSAL
 } from './proposals.actions';
 
 import { ADD_NEW_COMMENT } from '../comments/comments.actions';
@@ -43,7 +43,8 @@ export const proposals = function (state = [], action) {
 }
 
 export const proposal = function (state = {}, action) {
-  let follow = null;
+  let follow = null; 
+  let proposal, author, meetings, actionPlans, references, answer, vote, comment;
 
   switch (action.type) {
     case FETCH_PROPOSAL:
@@ -51,7 +52,7 @@ export const proposal = function (state = {}, action) {
     case HIDE_PROPOSAL:
     case FLAG_PROPOSAL:
     case UNFLAG_PROPOSAL:
-      let proposal = action.payload.data.proposal;
+      proposal = action.payload.data.proposal;
 
       return {
         ...proposal,
@@ -94,36 +95,36 @@ export const proposal = function (state = {}, action) {
 
       return state;
     case HIDE_PROPOSAL_AUTHOR:
-      let author = action.payload.data.user;
+      author = action.payload.data.user;
 
       return {
         ...state,
         author
       }
     case FETCH_RELATED_MEETINGS:
-      let meetings = action.payload.data.meetings;
+      meetings = action.payload.data.meetings;
 
       return {
         ...state,
         meetings
       };
     case FETCH_REFERENCES:
-      let references = action.payload.data.proposals;
+      references = action.payload.data.proposals;
 
       return {
         ...state,
         references
       };
-  case FETCH_ACTION_PLANS:
-    let actionPlans = action.payload.data.action_plans;
+    case FETCH_ACTION_PLANS:
+      actionPlans = action.payload.data.action_plans;
 
-    return {
-        ...state,
-      actionPlans
-    };
+      return {
+          ...state,
+        actionPlans
+      };
     case FETCH_ANSWER:
     case UPDATE_ANSWER:
-      let answer = action.payload.data.proposal_answer;
+      answer = action.payload.data.proposal_answer;
 
       if (state.id === answer.proposal_id) {
         return {
@@ -133,7 +134,7 @@ export const proposal = function (state = {}, action) {
       }
       return state;
     case VOTE_PROPOSAL:
-      let vote = action.payload.data.vote;
+      vote = action.payload.data.vote;
 
       if (state.id === vote.votable.id) {
         return {
@@ -144,7 +145,7 @@ export const proposal = function (state = {}, action) {
       }
       return state;
     case ADD_NEW_COMMENT:
-      let comment = action.payload.data.comment;
+      comment = action.payload.data.comment;
 
       return {
         ...state,

@@ -4,7 +4,9 @@ import ProposalVoteBox from './proposal_vote_box.component';
 import ProposalBadge   from './proposal_badge.component';
 import ProposalInfo    from './proposal_info.component';
 
-export default (proposal) => (
+import htmlToReact     from '../application/html_to_react';
+
+const Proposal = (proposal) => (
   <div id={`proposal_${proposal.id}`} className="proposal clear">
     <div className="row">
       <div className="small-12 medium-9 column">
@@ -19,8 +21,7 @@ export default (proposal) => (
             from_meeting={ proposal.from_meeting }
             author={ proposal.author }/>
           <div className="proposal-description">
-            <p>{ proposal.summary }</p>
-            <div className="truncate"></div>
+            {htmlToReact(proposal.summary.autoLink())}
           </div>
           <div className="bottom-bar">
             <FilterMeta 
@@ -45,3 +46,5 @@ export default (proposal) => (
     </div>
   </div>
 );
+
+export default Proposal;

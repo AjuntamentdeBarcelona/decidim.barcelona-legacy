@@ -1,17 +1,17 @@
-import { Component }      from 'react';
-import { connect }        from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
-import Loading            from '../application/loading.component';
-import InfinitePagination from '../pagination/infinite_pagination.component';
-import OrderSelector      from '../order/order_selector.component';
+import Loading                  from '../application/loading.component';
+import InfinitePagination       from '../pagination/infinite_pagination.component';
+import OrderSelector            from '../order/order_selector.component';
 
-import ActionPlansSidebar from './action_plans_sidebar.component';
-import ActionPlansList    from './action_plans_list.component';
-import DownloadButton     from './download_button.component';
+import ActionPlansSidebar       from './action_plans_sidebar.component';
+import ActionPlansList          from './action_plans_list.component';
+import DownloadButton           from './download_button.component';
 
-import * as actions       from './action_plans.actions';
-import { setOrder }       from '../order/order.actions';
-import { getOrderByUrl }  from '../order/order.reducers';
+import * as actions             from './action_plans.actions';
+import { setOrder }             from '../order/order.actions';
+import { getOrderByUrl }        from '../order/order.reducers';
 
 class ActionPlans extends Component {
   constructor(props) {
@@ -96,3 +96,15 @@ export default connect(
     setOrder
   }
 )(ActionPlans);
+
+ActionPlans.propTypes = {
+  filters: PropTypes.object.isRequired,
+  order: PropTypes.string,
+  seed: PropTypes.any,
+  count: PropTypes.number,
+  pagination: PropTypes.object,
+  actionPlans: PropTypes.array,
+  setOrder: PropTypes.func.isRequired,
+  fetchActionPlans: PropTypes.func.isRequired,
+  appendActionPlansPage: PropTypes.func.isRequired
+};

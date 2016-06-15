@@ -1,10 +1,12 @@
-import { Component }      from 'react';
-import { connect }        from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect }              from 'react-redux';
 
-import SmartButton        from '../application/smart_button.component';
-import SocialShareButtons from '../application/social_share_buttons.component';
+import SmartButton              from '../application/smart_button.component';
+import SocialShareButtons       from '../application/social_share_buttons.component';
 
-import * as actions       from './proposals.actions';
+import * as actions             from './proposals.actions';
+
+import htmlToReact              from '../application/html_to_react';
 
 class ProposalVoteBox extends Component {
   constructor(props) {
@@ -89,19 +91,27 @@ class ProposalVoteBox extends Component {
       } else if (session.signed_in && !this.props.votable) {
         return (
           <div className="anonymous-votes">
-            <p dangerouslySetInnerHTML={{ __html: I18n.t('votes.verified_only', {
-              verify_account: `<a href="/verification">${I18n.t("votes.verify_account")}</a>`,
-            })}} />
+            {
+              htmlToReact(
+                I18n.t('votes.verified_only', {
+                  verify_account: `<a href="/verification">${I18n.t("votes.verify_account")}</a>`
+                })
+              )
+            }
           </div>
         );
       } else if (!session.signed_in) {
         return (
-          <div 
-            className="not-logged" 
-            dangerouslySetInnerHTML={{ __html: I18n.t('votes.unauthenticated', {
-              signin: `<a href="/users/sign_in">${I18n.t("votes.signin")}</a>`,
-              signup: `<a href="/users/sign_up">${I18n.t("votes.signup")}</a>`
-            })}} />
+          <div className="not-logged">
+            {
+              htmlToReact(
+                I18n.t('votes.unauthenticated', {
+                  signin: `<a href="/users/sign_in">${I18n.t("votes.signin")}</a>`,
+                  signup: `<a href="/users/sign_up">${I18n.t("votes.signup")}</a>`
+                })
+              )
+            }
+          </div>
         )
       }
     }
@@ -113,3 +123,16 @@ export default connect(
   ({ session }) => ({ session }),
   actions
 )(ProposalVoteBox);
+
+ProposalVoteBox.propTypes = {
+  totalVotes: PropTypes.number.isRequired,
+  proposalUrl: PropTypes.string.isRequired,
+  proposalTitle: PropTypes.string.isRequired,
+  totalComments: PropTypes.number.isRequired,
+  voted: PropTypes.bool,
+  hideButton: PropTypes.bool,
+  session: PropTypes.object.isRequired,
+  votable: PropTypes.bool,
+  voteProposal: PropTypes.func.isRequired,
+  proposalId: PropTypes.number.isRequired
+};
