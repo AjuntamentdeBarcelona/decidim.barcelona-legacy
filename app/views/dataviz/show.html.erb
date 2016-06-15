@@ -1,0 +1,26 @@
+<div class="dataviz row-full more-information">
+  <div class="row">
+    <div class="small-12 column">
+      <ul class="horizontal-menu">
+        <% available_dataviz.each do |dataviz| %>
+          <li class="<%= 'selected' if dataviz == @id %>">
+            <%= link_to({ id: dataviz }) do %><%= t "dataviz.#{dataviz}.title" %><% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="small-12 column">
+      <div class="dataviz-show dataviz-<%= @id %>">
+        <div class="page-title">
+          <h2><%= t "dataviz.#{@id}.title" %></h2>
+          <% if I18n.t("dataviz.#{@id}").keys.include?(:description) %>
+            <h3><%= t "dataviz.#{@id}.description" %></h3>
+          <% end %>
+        </div>
+        <div class="alert-box info mobile-devices-alert"><%= t '.mobile_devices_alert' %></div>
+        <%= render partial: "#{@id}" %>
+      </div>
+    </div>
+  </div>
+</div>
