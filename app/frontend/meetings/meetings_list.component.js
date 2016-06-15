@@ -1,14 +1,10 @@
 import { PropTypes } from 'react';
-
-import Loading       from '../application/loading.component';
 import Meeting       from './meeting.component';
 
 const MeetingsList = ({
-  meetings,
-  loading
+  meetings
 }) => (
   <div>
-    <Loading show={loading} list={true} />
     <ul className="meetings-list-items">
       {
         meetings.map((meeting) => (
@@ -22,8 +18,7 @@ const MeetingsList = ({
 );
 
 MeetingsList.propTypes = {
-  meetings: PropTypes.array,
-  loading: PropTypes.bool
+  meetings: PropTypes.array
 };
 
 export default MeetingsList;

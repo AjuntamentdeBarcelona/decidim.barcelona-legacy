@@ -1,6 +1,7 @@
 import { Component, PropTypes }              from 'react';
 import { connect }                           from 'react-redux';
 
+import Loading                               from '../application/loading.component';
 import InfinitePagination                    from '../pagination/infinite_pagination.component';
 import MeetingsMap                           from './meetings_map.component';
 import MeetingsFilters                       from './meetings_filters.component';
@@ -38,6 +39,7 @@ class Meetings extends Component {
   render () {
     return (
       <div className="meetings-directory">
+        <Loading show={this.state.loading} />
         <MeetingsMap className="meetings-map" meetings={this.props.meetings} />
 
         <div className="meetings-directory-content">
@@ -47,7 +49,7 @@ class Meetings extends Component {
 
           <div className="meetings-list-container">
             <div className="meetings-list">
-              <MeetingsList meetings={this.props.meetings} loading={this.state.loading} />
+              <MeetingsList meetings={this.props.visibleMeetings} />
               {this.renderInfinitePagination()}
             </div>
           </div>
@@ -64,7 +66,6 @@ class Meetings extends Component {
       return (
         <InfinitePagination 
           onVisible={() => this.props.appendMeetingsPage({ 
-            filters: this.props.filters, 
             page: this.props.pagination.current_page + 1
           })} /> 
       );
@@ -75,7 +76,9 @@ class Meetings extends Component {
 }
 
 export default connect(
-  ({ meetings, filters, pagination }) => ({ meetings, filters, pagination }),
+  ({ meetings, visibleMeetings, filters, pagination }) => (
+    { meetings, visibleMeetings, filters, pagination }
+  ),
   {
     fetchMeetings,
     appendMeetingsPage,
@@ -87,6 +90,7 @@ Meetings.propTypes = {
   filters: PropTypes.object.isRequired,
   pagination: PropTypes.object.isRequired,
   meetings: PropTypes.array.isRequired,
+  visibleMeetings: PropTypes.array.isRequired,
   setFilterGroup: PropTypes.func.isRequired,
   fetchMeetings: PropTypes.func.isRequired,
   appendMeetingsPage: PropTypes.func.isRequired
