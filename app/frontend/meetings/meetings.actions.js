@@ -11,11 +11,14 @@ export function fetchMeetings(options) {
   };
 }
 
-export function appendMeetingsPage(options) {
-  return {
+export const appendMeetingsPage = ({ page }) => (dispatch, getState) => {
+  let { meetings } = getState();
+
+  dispatch({
     type: APPEND_MEETINGS_PAGE,
-    payload: buildMeetingsRequest(options)
-  }
+    meetings,
+    page
+  });
 }
 
 
@@ -24,11 +27,9 @@ function buildMeetingsRequest(options = {}) {
       filters,
       filter,
       tags,
-      page,
       params;
 
   filters = options.filters || {};
-  page    = options.page || 1;
 
   // TODO: worst name ever
   filter = filters.filter;
@@ -47,8 +48,7 @@ function buildMeetingsRequest(options = {}) {
   params = {
     search: filters.text,
     tag: tags,
-    filter: filterString,
-    page: page
+    filter: filterString
   }
 
   replaceUrl(params);

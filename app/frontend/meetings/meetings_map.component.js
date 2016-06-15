@@ -70,7 +70,7 @@ export default class MeetingsMap extends Component {
         marker._meeting = meeting;
         marker.addListener('click', () => {
           let infoWindow = new google.maps.InfoWindow({
-            content: ReactDOMServer.renderToString(<Meeting meeting={ meeting } />)
+            content: ReactDOMServer.renderToString(<Meeting meeting={ meeting } useServerLinks={true} />)
           });
           markers.map((marker) => { if(marker.infoWindow) marker.infoWindow.close(); } );
           marker.infoWindow = infoWindow;

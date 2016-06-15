@@ -6,8 +6,9 @@ import {
 }                                               from 'redux';
 import { Provider }                             from 'react-redux';
 import ReduxPromise                             from 'redux-promise';
+import ReduxThunk                               from 'redux-thunk';
 
-const middlewares = [ReduxPromise];
+const middlewares = [ReduxPromise, ReduxThunk];
 
 if (process.env.NODE_ENV === 'development') {
   const createLogger = require('redux-logger');
@@ -22,7 +23,7 @@ import {
   APPEND_MEETINGS_PAGE
 }                                               from './meetings.actions';
 
-import meetings                                 from './meetings.reducers';
+import { meetings, visibleMeetings, PER_PAGE }  from './meetings.reducers';
 import districts                                from '../districts/districts.reducers';
 import categories                               from '../categories/categories.reducers';
 import filters                                  from '../filters/filters.reducers';
@@ -30,10 +31,29 @@ import filters                                  from '../filters/filters.reducer
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
 const pagination = function (state = {}, action) {
+  let meetings, totalPages, nextPage;
+
   switch (action.type) {
     case FETCH_MEETINGS:
+      meetings = action.payload.data.meetings;
+      totalPages = Math.round(meetings.length / PER_PAGE);
+
+      return {
+        current_page: 1,
+        next_page: totalPages > 1 ? 2 : null,
+        prev_page: null,
+        total_pages: totalPages,
+        total_count: meetings.length
+      }
     case APPEND_MEETINGS_PAGE:
-      return action.payload.data.meta
+      nextPage = action.page;
+
+      return {
+        ...state,
+        current_page: nextPage,
+        next_page: nextPage < state.total_pages ? nextPage + 1 : null,
+        prev_page: state.current_page 
+      }
   }
   return state;
 }
@@ -56,6 +76,7 @@ function createReducers(sessionState) {
     districts,
     categories,
     meetings,
+    visibleMeetings,
     filters,
     pagination,
     tags
