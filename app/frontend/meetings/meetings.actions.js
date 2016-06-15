@@ -24,11 +24,11 @@ function buildMeetingsRequest(options = {}) {
       filters,
       filter,
       tags,
-      page,
+      //page,
       params;
 
   filters = options.filters || {};
-  page    = options.page || 1;
+  //page    = options.page || 1;
 
   // TODO: worst name ever
   filter = filters.filter;
@@ -47,8 +47,8 @@ function buildMeetingsRequest(options = {}) {
   params = {
     search: filters.text,
     tag: tags,
-    filter: filterString,
-    page: page
+    filter: filterString
+    //page: page
   }
 
   replaceUrl(params);
