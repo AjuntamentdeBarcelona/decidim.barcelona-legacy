@@ -33,6 +33,6 @@ class MeetingSerializer < ActiveModel::Serializer
   end
 
   def url
-    meeting_path(object)
+    meeting_path(object, participatory_process_id: object.participatory_process.slug)
   end
 end

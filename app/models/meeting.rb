@@ -6,6 +6,7 @@ class Meeting < ActiveRecord::Base
   include Taggable
 
   belongs_to :author, -> { with_hidden }, class_name: 'User', foreign_key: 'author_id'
+  belongs_to :participatory_process
 
   has_many :meeting_proposals, dependent: :destroy
   accepts_nested_attributes_for :meeting_proposals

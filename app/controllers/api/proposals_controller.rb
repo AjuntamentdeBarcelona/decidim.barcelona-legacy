@@ -2,7 +2,7 @@ class Api::ProposalsController < Api::ApplicationController
   include HasOrders
 
   before_action :authenticate_user!, only: [:update, :hide, :flag, :unflag]
-  before_action :load_participation_process
+  before_action :load_participation_process, only: [:index]
 
   load_resource
   authorize_resource except: [:update, :references, :action_plans]
@@ -85,11 +85,5 @@ class Api::ProposalsController < Api::ApplicationController
   def set_seed
     @random_seed = params[:random_seed] ? params[:random_seed].to_f : (rand * 2 - 1)
     Proposal.connection.execute "select setseed(#{@random_seed})"
-  end
-
-  def load_participation_process
-    if params[:participatory_process_id].present?
-      @participatory_process = ParticipatoryProcess.find(params[:participatory_process_id])
-    end
   end
 end

@@ -129,4 +129,13 @@ class ApplicationController < ActionController::Base
 
       $redis.sismember("email_notifications_reminder", current_user.id.to_s)
     end
+
+    def load_participation_process
+      if params[:participatory_process_id].present?
+        @participatory_process_id = params[:participatory_process_id]
+      else
+        default_participatory_process_id = ParticipatoryProcess.first.slug
+        redirect_to url_for(params.merge(participatory_process_id: default_participatory_process_id))
+      end
+    end
 end

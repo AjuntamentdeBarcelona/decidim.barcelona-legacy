@@ -17,4 +17,10 @@ class Api::ApplicationController < ActionController::Base
     locale = params[:locale] || session[:locale] || I18n.default_locale
     I18n.locale = locale
   end
+
+  def load_participation_process
+    if params[:participatory_process_id].present?
+      @participatory_process = ParticipatoryProcess.find(params[:participatory_process_id])
+    end
+  end
 end

@@ -4,11 +4,18 @@ export const API_BASE_URL         = '/api';
 export const FETCH_MEETINGS       = 'FETCH_MEETINGS';
 export const APPEND_MEETINGS_PAGE = 'APPEND_MEETINGS_PAGE';
 
-export function fetchMeetings(options) {
-  return {
+export const fetchMeetings = (options) => (dispatch, getState) => {
+  const { participatoryProcessId } = getState();
+  options['participatoryProcessId'] = participatoryProcessId;
+
+  const request = buildMeetingsRequest(options);
+
+  dispatch({
     type: FETCH_MEETINGS,
-    payload: buildMeetingsRequest(options)
-  };
+    payload: request
+  });
+
+  return request;
 }
 
 export const appendMeetingsPage = ({ page }) => (dispatch, getState) => {
@@ -27,13 +34,15 @@ function buildMeetingsRequest(options = {}) {
       filters,
       filter,
       tags,
+      participatoryProcessId,
       params;
 
   filters = options.filters || {};
 
   // TODO: worst name ever
-  filter = filters.filter;
-  tags = filters.tags;
+  filter                 = filters.filter;
+  tags                   = filters.tags;
+  participatoryProcessId = options.participatoryProcessId;
 
   for (let name in filter) {
     if(filter[name].length > 0) {
@@ -48,7 +57,8 @@ function buildMeetingsRequest(options = {}) {
   params = {
     search: filters.text,
     tag: tags,
-    filter: filterString
+    filter: filterString,
+    participatory_process_id: participatoryProcessId
   }
 
   replaceUrl(params);

@@ -16,7 +16,7 @@ export default class Meeting extends Component {
       <div className="meeting">
         <div className="meeting-inner">
           <div className="meeting-content">
-            <a href={`/meetings/${meeting.slug}`} className="meeting-title" >
+            <a href={meeting.url} className="meeting-title" >
               { meeting.title }
             </a>
             <MeetingTime meeting={ meeting } relativeTime={true} />
