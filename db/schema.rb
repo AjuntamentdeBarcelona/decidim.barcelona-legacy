@@ -120,12 +120,14 @@ ActiveRecord::Schema.define(version: 20160705131323) do
 
   create_table "categories", force: :cascade do |t|
     t.text     "name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.text     "description"
     t.integer  "position"
+    t.integer  "participatory_process_id"
   end
 
+  add_index "categories", ["participatory_process_id"], name: "index_categories_on_participatory_process_id", using: :btree
   add_index "categories", ["position"], name: "index_categories_on_position", using: :btree
 
   create_table "comments", force: :cascade do |t|
@@ -184,6 +186,7 @@ ActiveRecord::Schema.define(version: 20160705131323) do
     t.datetime "starts_at",                                           null: false
     t.datetime "ends_at",                                             null: false
     t.text     "instructions"
+    t.integer  "participatory_process_id"
   end
 
   add_index "debates", ["author_id", "hidden_at"], name: "index_debates_on_author_id_and_hidden_at", using: :btree
@@ -195,6 +198,7 @@ ActiveRecord::Schema.define(version: 20160705131323) do
   add_index "debates", ["confidence_score"], name: "index_debates_on_confidence_score", using: :btree
   add_index "debates", ["hidden_at"], name: "index_debates_on_hidden_at", using: :btree
   add_index "debates", ["hot_score"], name: "index_debates_on_hot_score", using: :btree
+  add_index "debates", ["participatory_process_id"], name: "index_debates_on_participatory_process_id", using: :btree
   add_index "debates", ["slug"], name: "index_debates_on_slug", unique: true, using: :btree
   add_index "debates", ["title"], name: "index_debates_on_title", using: :btree
 
@@ -293,8 +297,8 @@ ActiveRecord::Schema.define(version: 20160705131323) do
     t.time     "start_at"
     t.time     "end_at"
     t.integer  "author_id"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
     t.float    "address_latitude"
     t.float    "address_longitude"
     t.string   "address_details"
@@ -303,15 +307,17 @@ ActiveRecord::Schema.define(version: 20160705131323) do
     t.datetime "closed_at"
     t.integer  "category_id"
     t.integer  "subcategory_id"
-    t.string   "scope",             default: "district"
+    t.string   "scope",                    default: "district"
     t.integer  "district"
     t.string   "slug"
     t.integer  "attendee_count"
     t.text     "organizations"
     t.integer  "interventions"
-    t.integer  "proposals_count",   default: 0,          null: false
+    t.integer  "proposals_count",          default: 0,          null: false
+    t.integer  "participatory_process_id"
   end
 
+  add_index "meetings", ["participatory_process_id"], name: "index_meetings_on_participatory_process_id", using: :btree
   add_index "meetings", ["slug"], name: "index_meetings_on_slug", unique: true, using: :btree
   add_index "meetings", ["tsv"], name: "index_meetings_on_tsv", using: :gin
 
@@ -372,33 +378,34 @@ ActiveRecord::Schema.define(version: 20160705131323) do
   add_index "proposal_answers", ["status"], name: "index_proposal_answers_on_status", using: :btree
 
   create_table "proposals", force: :cascade do |t|
-    t.string   "title",             limit: 250
+    t.string   "title",                    limit: 250
     t.text     "description"
     t.string   "question"
     t.string   "external_url"
     t.integer  "author_id"
     t.datetime "hidden_at"
-    t.integer  "flags_count",                   default: 0
+    t.integer  "flags_count",                          default: 0
     t.datetime "ignored_flag_at"
-    t.integer  "cached_votes_up",               default: 0
-    t.integer  "comments_count",                default: 0
+    t.integer  "cached_votes_up",                      default: 0
+    t.integer  "comments_count",                       default: 0
     t.datetime "confirmed_hide_at"
-    t.integer  "hot_score",         limit: 8,   default: 0
-    t.integer  "confidence_score",              default: 0
-    t.datetime "created_at",                                         null: false
-    t.datetime "updated_at",                                         null: false
-    t.string   "responsible_name",  limit: 60
+    t.integer  "hot_score",                limit: 8,   default: 0
+    t.integer  "confidence_score",                     default: 0
+    t.datetime "created_at",                                                null: false
+    t.datetime "updated_at",                                                null: false
+    t.string   "responsible_name",         limit: 60
     t.text     "summary"
     t.string   "video_url"
-    t.integer  "physical_votes",                default: 0
+    t.integer  "physical_votes",                       default: 0
     t.tsvector "tsv"
     t.integer  "category_id"
     t.integer  "subcategory_id"
-    t.string   "scope",                         default: "district"
+    t.string   "scope",                                default: "district"
     t.integer  "district"
-    t.boolean  "official",                      default: false
+    t.boolean  "official",                             default: false
     t.string   "slug"
     t.boolean  "from_meeting"
+    t.integer  "participatory_process_id"
   end
 
   add_index "proposals", ["author_id", "hidden_at"], name: "index_proposals_on_author_id_and_hidden_at", using: :btree
@@ -410,6 +417,7 @@ ActiveRecord::Schema.define(version: 20160705131323) do
   add_index "proposals", ["hidden_at"], name: "index_proposals_on_hidden_at", using: :btree
   add_index "proposals", ["hot_score"], name: "index_proposals_on_hot_score", using: :btree
   add_index "proposals", ["official"], name: "index_proposals_on_official", using: :btree
+  add_index "proposals", ["participatory_process_id"], name: "index_proposals_on_participatory_process_id", using: :btree
   add_index "proposals", ["question"], name: "index_proposals_on_question", using: :btree
   add_index "proposals", ["slug"], name: "index_proposals_on_slug", unique: true, using: :btree
   add_index "proposals", ["subcategory_id"], name: "index_proposals_on_subcategory_id", using: :btree
@@ -455,12 +463,14 @@ ActiveRecord::Schema.define(version: 20160705131323) do
     t.text     "name"
     t.text     "description"
     t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.integer  "position"
+    t.integer  "participatory_process_id"
   end
 
   add_index "subcategories", ["category_id"], name: "index_subcategories_on_category_id", using: :btree
+  add_index "subcategories", ["participatory_process_id"], name: "index_subcategories_on_participatory_process_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
@@ -632,10 +642,15 @@ ActiveRecord::Schema.define(version: 20160705131323) do
 
   add_foreign_key "annotations", "legislations"
   add_foreign_key "annotations", "users"
+  add_foreign_key "categories", "participatory_processes"
+  add_foreign_key "debates", "participatory_processes"
   add_foreign_key "failed_census_calls", "users"
   add_foreign_key "flags", "users"
   add_foreign_key "identities", "users"
   add_foreign_key "locks", "users"
+  add_foreign_key "meetings", "participatory_processes"
   add_foreign_key "notifications", "users"
   add_foreign_key "organizations", "users"
+  add_foreign_key "proposals", "participatory_processes"
+  add_foreign_key "subcategories", "participatory_processes"
 end
