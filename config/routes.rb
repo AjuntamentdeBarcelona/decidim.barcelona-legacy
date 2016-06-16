@@ -37,15 +37,6 @@ Rails.application.routes.draw do
   get '/cookies/allow', to: 'cookie_policy#allow', as: :allow_cookies
   get '/cookies/deny', to: 'cookie_policy#deny', as: :deny_cookies
 
-
-  resources :debates do
-    member do
-      post :vote
-      put :flag
-      put :unflag
-    end
-  end
-
   resources :action_plans do
     resources :revisions, except: [:show, :delete], controller: 'action_plans/revisions'
     collection do
@@ -311,6 +302,14 @@ Rails.application.routes.draw do
     end
 
     resources :meetings, only: [:index, :show]
+
+    resources :debates do
+      member do
+        post :vote
+        put :flag
+        put :unflag
+      end
+    end
   end
 
   if Rails.env.development?

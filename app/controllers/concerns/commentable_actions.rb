@@ -8,6 +8,7 @@ module CommentableActions
 
     @resources = @resources.tagged_with(@tag_filter) if @tag_filter
     @resources = @resources.page(params[:page]).for_render.send("sort_by_#{@current_order}")
+    @resources = @resources.where(participatory_process_id: @participatory_process.id) if @participatory_process.present?
     index_customization if index_customization.present?
 
     @tag_cloud = tag_cloud

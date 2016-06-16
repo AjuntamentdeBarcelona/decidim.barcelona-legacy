@@ -1,7 +1,7 @@
 <section class="submenu">
   <% valid_orders.each do |order| %>
     <%= link_to t("#{i18n_namespace}.orders.#{order}"),
-                current_path_with_query_params(order: order, page: 1),
+                current_path_with_query_params(order: order, page: 1, participatory_process_id: @participatory_process.try(:slug)),
                 class: order == @current_order ? 'active' : '' %>
   <% end %>
 </section>

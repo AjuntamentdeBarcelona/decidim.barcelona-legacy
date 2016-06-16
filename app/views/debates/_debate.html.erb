@@ -5,10 +5,10 @@
 
         <div class="small-12 medium-9 column">
           <div class="debate-content">
-            <h3><%= link_to debate.title, debate %></h3>
+            <h3><%= link_to debate.title, debate_path(id: debate, participatory_process_id: debate.participatory_process.slug) %></h3>
             <p class="debate-info">
               <i class="icon-comments"></i>&nbsp;
-              <%= link_to t("debates.debate.comments", count: debate.comments_count), debate_path(debate, anchor: "comments") %>
+              <%= link_to t("debates.debate.comments", count: debate.comments_count), debate_path(id: debate, participatory_process_id: debate.participatory_process.slug, anchor: "comments") %>
               <span class="bullet">&nbsp;&bull;&nbsp;</span>
               <%= l debate.created_at.to_date %>
 
@@ -43,7 +43,7 @@
             </div>
             <%= render "shared/tags", taggable: debate, limit: 5 %>
             <div class="actions">
-              <%= link_to t('.read_more'), debate_path(debate), class: 'button small' %>
+              <%= link_to t('.read_more'), debate_path(id: debate, participatory_process_id: debate.participatory_process.slug), class: 'button small' %>
             </div>
           </div>
         </div>
