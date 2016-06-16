@@ -73,10 +73,6 @@ class ProposalSerializer < ActiveModel::Serializer
     scope && scope.asset_url('social-media-icon.png')
   end
 
-  def summary
-    @summary ||= HTMLEntities.new.encode(object.summary)
-  end
-
   def permissions
     {
       comment: scope && scope.can?(:comment, object),

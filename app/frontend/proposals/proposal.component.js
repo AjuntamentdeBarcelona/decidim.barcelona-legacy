@@ -5,6 +5,7 @@ import ProposalBadge   from './proposal_badge.component';
 import ProposalInfo    from './proposal_info.component';
 
 import htmlToReact     from '../application/html_to_react';
+import sanitize        from '../application/sanitize';
 
 const Proposal = (proposal) => (
   <div id={`proposal_${proposal.id}`} className="proposal clear">
@@ -21,7 +22,7 @@ const Proposal = (proposal) => (
             from_meeting={ proposal.from_meeting }
             author={ proposal.author }/>
           <div className="proposal-description">
-            {htmlToReact(proposal.summary.autoLink())}
+          {htmlToReact(sanitize(proposal.summary).autoLink())}
           </div>
           <div className="bottom-bar">
             <FilterMeta 
