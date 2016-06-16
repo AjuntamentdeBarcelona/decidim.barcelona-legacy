@@ -84,5 +84,12 @@
         <%= t("admin.menu.stats") %>
       <% end %>
     </li>
+
+    <li <%= "class=active" if controller_name == "participatory_processes" %>>
+      <%= link_to admin_participatory_processes_path do %>
+        <i class="icon-settings"></i>
+        <%= t("admin.menu.participatory_processes") %>
+      <% end %>
+    </li>
   </ul>
 </nav>
