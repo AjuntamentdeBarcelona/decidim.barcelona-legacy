@@ -161,6 +161,8 @@ Rails.application.routes.draw do
     resources :categories do
       resources :subcategories
     end
+
+    resources :participatory_processes
   end
 
   namespace :moderation do

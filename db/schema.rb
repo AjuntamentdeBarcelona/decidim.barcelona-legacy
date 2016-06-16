@@ -352,6 +352,13 @@ ActiveRecord::Schema.define(version: 20160705131323) do
 
   add_index "organizations", ["user_id"], name: "index_organizations_on_user_id", using: :btree
 
+  create_table "participatory_processes", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "proposal_answers", force: :cascade do |t|
     t.integer  "proposal_id",                 null: false
     t.text     "message"

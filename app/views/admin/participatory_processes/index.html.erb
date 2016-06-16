@@ -1,0 +1,20 @@
+<h2><%= t("admin.participatory_processes.index.title") %></h2>
+<h3><%= page_entries_info @participatory_processes %></h3>
+<ul id="participatory_processes" class="admin-list">
+  <% @participatory_processes.each do |process| %>
+    <li>
+      <span><%= process.name %></span>
+      <span><%= " (/" + process.slug + ")" %></span>
+      <div class="right">
+        <%= link_to t('admin.participatory_processes.index.edit'), edit_admin_participatory_process_path(process), class: "button tiny radius" %>
+        <%= link_to t('admin.participatory_processes.index.delete'), admin_participatory_processes_path(process), method: :delete,  class: "button tiny radius alert", data: { confirm: t('admin.actions.confirm') } %>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+<%= paginate @participatory_processes %>
+
+<div class="right">
+  <%= link_to t('admin.participatory_processes.index.new'), new_admin_participatory_process_path, class: "button radius alert right" %>
+</div>
