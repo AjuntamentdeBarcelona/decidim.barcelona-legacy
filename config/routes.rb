@@ -46,15 +46,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :proposals do
-    member do
-      post :vote
-      post :vote_featured
-      put :flag
-      put :unflag
-    end
-  end
-
   resources :action_plans do
     resources :revisions, except: [:show, :delete], controller: 'action_plans/revisions'
     collection do
@@ -309,6 +300,17 @@ Rails.application.routes.draw do
       end
     end
     resources :debates, only: [:show]
+  end
+
+  scope "(:participatory_process_id)" do
+    resources :proposals do
+      member do
+        post :vote
+        post :vote_featured
+        put :flag
+        put :unflag
+      end
+    end
   end
 
   if Rails.env.development?

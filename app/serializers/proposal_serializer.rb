@@ -66,7 +66,7 @@ class ProposalSerializer < ActiveModel::Serializer
   end
 
   def url
-   scope && scope.proposal_url(object)
+   scope && scope.proposal_url(object, participatory_process_id: object.participatory_process.slug)
   end
 
   def created_at

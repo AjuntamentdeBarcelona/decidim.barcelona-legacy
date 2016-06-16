@@ -16,11 +16,18 @@ export const HIDE_PROPOSAL_AUTHOR   = 'HIDE_PROPOSAL_AUTHOR';
 export const FLAG_PROPOSAL          = 'FLAG_PROPOSAL';
 export const UNFLAG_PROPOSAL        = 'UNFLAG_PROPOSAL';
 
-export function fetchProposals(options) {
-  return {
+export const fetchProposals = (options) => (dispatch, getState) => {
+  const { participatoryProcessId } = getState();
+  options['participatoryProcessId'] = participatoryProcessId;
+
+  const request = buildProposalsRequest(options);
+
+  dispatch({
     type: FETCH_PROPOSALS,
-    payload: buildProposalsRequest(options)
-  };
+    payload: request
+  });
+
+  return request;
 }
 
 export function fetchProposal(proposalId) {
@@ -148,12 +155,14 @@ function buildProposalsRequest(options = {}) {
       order,
       page,
       seed,
+      participatoryProcessId,
       params;
 
-  filters = options.filters || {};
-  page    = options.page || 1;
-  order   = options.order;
-  seed    = options.seed;
+  filters                = options.filters || {};
+  page                   = options.page || 1;
+  order                  = options.order;
+  seed                   = options.seed;
+  participatoryProcessId = options.participatoryProcessId;
 
   // TODO: worst name ever
   filter = filters.filter;
@@ -173,7 +182,8 @@ function buildProposalsRequest(options = {}) {
     filter: filterString,
     page: page,
     order: order,
-    random_seed: seed
+    random_seed: seed,
+    participatory_process_id: participatoryProcessId
   };
 
   replaceUrl(params);

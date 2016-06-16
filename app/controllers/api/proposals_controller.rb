@@ -2,6 +2,7 @@ class Api::ProposalsController < Api::ApplicationController
   include HasOrders
 
   before_action :authenticate_user!, only: [:update, :hide, :flag, :unflag]
+  before_action :load_participation_process
 
   load_resource
   authorize_resource except: [:update, :references, :action_plans]
@@ -12,6 +13,7 @@ class Api::ProposalsController < Api::ApplicationController
     set_seed
 
     proposals = @current_order == "recommended" ? Recommender.new(current_user).proposals : Proposal.all
+    proposals = proposals.where(participatory_process_id: @participatory_process.try(:id))
 
     @proposals = ResourceFilter.new(params, user: current_user)
       .filter_collection(proposals.includes(:category, :subcategory, :author => [:organization]))
@@ -83,5 +85,11 @@ class Api::ProposalsController < Api::ApplicationController
   def set_seed
     @random_seed = params[:random_seed] ? params[:random_seed].to_f : (rand * 2 - 1)
     Proposal.connection.execute "select setseed(#{@random_seed})"
+  end
+
+  def load_participation_process
+    if params[:participatory_process_id].present?
+      @participatory_process = ParticipatoryProcess.find(params[:participatory_process_id])
+    end
   end
 end
