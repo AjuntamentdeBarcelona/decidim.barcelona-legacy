@@ -27,7 +27,9 @@ class Moderation::MeetingsController < Moderation::BaseController
             row.push "Nom"
             row.push "Adreça"
             row.push "Assistents"
+            row.push "Intervencions"
             row.push "Organizations"
+            row.push "Propostes sorgides de la cita"
             row.push "Àmbit"
             row.push "Eix"
             row.push "Línia d'acció"
@@ -38,7 +40,9 @@ class Moderation::MeetingsController < Moderation::BaseController
               row.push meeting.title
               row.push meeting.address
               row.push meeting.attendee_count
+              row.push meeting.interventions
               row.push meeting.organization_count
+              row.push meeting.proposals.count
               row.push meeting.scope == 'city' ? I18n.t('action_plans.form.action_plan_scope_city') : District.find(meeting.district).try(:name)
               row.push meeting.category.try(:decorate).try(:name)
               row.push meeting.subcategory.try(:decorate).try(:name)
