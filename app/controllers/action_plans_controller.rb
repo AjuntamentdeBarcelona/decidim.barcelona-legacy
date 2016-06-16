@@ -9,6 +9,7 @@ class ActionPlansController < ApplicationController
 
   def show
     @action_plan_id = params[:id]
+    @action_plan = ActionPlan.find(@action_plan_id)
   end
 
   def new

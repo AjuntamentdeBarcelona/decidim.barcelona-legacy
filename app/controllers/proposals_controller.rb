@@ -46,6 +46,7 @@ class ProposalsController < ApplicationController
 
   def show
     @proposal_id = params[:id]
+    @proposal = Proposal.find(@proposal_id)
   end
 
   def vote

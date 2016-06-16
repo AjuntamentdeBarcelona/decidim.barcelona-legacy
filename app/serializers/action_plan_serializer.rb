@@ -1,6 +1,7 @@
 class ActionPlanSerializer < ActiveModel::Serializer
   attributes :id, :title, :description, :created_at, :url, :scope_, :district,
-    :edit_url, :new_revision_url, :approved, :weight, :statistics
+    :edit_url, :new_revision_url, :approved, :weight, :social_media_image_url,
+    :statistics
 
   has_one :category
   has_one :subcategory
@@ -28,5 +29,9 @@ class ActionPlanSerializer < ActiveModel::Serializer
 
   def district
     District.find(object.district)
+  end
+
+  def social_media_image_url
+    scope && scope.asset_url('social-media-icon.png')
   end
 end
