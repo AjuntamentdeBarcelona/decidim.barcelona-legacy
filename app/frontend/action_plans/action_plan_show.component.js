@@ -78,7 +78,7 @@ class ActionPlanShow extends Component {
               <p className="proposal-info"><span>{ created_at }</span></p>
 
               <div className="proposal-description">
-                {htmlToReact(description.autoLink())}
+                {htmlToReact(description)}
               </div>
 
               <FilterMeta 
