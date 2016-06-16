@@ -45,4 +45,3 @@ window.ActionPlanApp              = ActionPlanApp;
 window.DebateApp                  = DebateApp;
 
 require('quill/dist/quill.snow');
-require('expose?autoLink!autolink-js');

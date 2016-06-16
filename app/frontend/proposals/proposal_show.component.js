@@ -21,7 +21,7 @@ import ProposalActionPlans      from './proposal_action_plans.component';
 import ProposalMeetings         from './proposal_meetings.component';
 
 import htmlToReact              from '../application/html_to_react';
-import sanitize                 from '../application/sanitize';
+import simpleFormat             from '../application/simple_format';
 
 class ProposalShow extends Component {
   constructor(props) {
@@ -133,7 +133,7 @@ class ProposalShow extends Component {
                 flagged={ flagged } />
 
               <div className="proposal-description">
-                {htmlToReact(sanitize(summary).autoLink())}
+                {htmlToReact(simpleFormat(summary))}
               </div>
 
               {this.renderExternalUrl(external_url)}
@@ -264,7 +264,7 @@ class ProposalShow extends Component {
     if (externalUrl) {
       return (
         <div className="document-link">
-          { htmlToReact(externalUrl.autoLink()) }
+          { htmlToReact(simpleFormat(externalUrl)) }
         </div>
       );
     }

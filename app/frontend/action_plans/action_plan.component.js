@@ -34,7 +34,7 @@ const ActionPlan = ({
           </p>
 
           <div className="proposal-description">
-            {htmlToReact(ellipsis(description.autoLink(), DESCRIPTION_MAX_CHARACTERS, true))}
+            {htmlToReact(ellipsis(description, DESCRIPTION_MAX_CHARACTERS, true))}
           </div>
 
           <div className="bottom-bar">

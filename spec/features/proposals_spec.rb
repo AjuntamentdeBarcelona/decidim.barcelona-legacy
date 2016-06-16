@@ -67,7 +67,7 @@ feature 'Proposals' do
     visit proposal_path(proposal)
 
     expect(page).to have_content proposal.title
-    expect(page).to have_content "http://external_documention.es"
+    expect(page).to have_content "external_documention.es"
     expect(page).to have_content proposal.author.name
     expect(page).to have_content I18n.l(proposal.created_at.to_date)
     expect(page.html).to include "<title>#{proposal.title}</title>"
@@ -111,7 +111,7 @@ feature 'Proposals' do
     expect(page).to have_content 'Proposal created successfully.'
     expect(page).to have_content 'Help refugees'
     expect(page).to have_content 'In summary, what we want is...'
-    expect(page).to have_content 'http://rescue.org/refugees'
+    expect(page).to have_content 'rescue.org/refugees'
     expect(page).to have_content author.name
     expect(page).to have_content I18n.l(Proposal.last.created_at.to_date)
   end
@@ -222,7 +222,7 @@ feature 'Proposals' do
 
     expect(page).to have_content 'Proposal created successfully.'
     expect(page).to have_content 'Testing auto link'
-    expect(page).to have_link('http://www.example.org', href: 'http://www.example.org')
+    expect(page).to have_link('example.org', href: 'http://www.example.org')
   end
 
   context 'Tagging proposals' do
