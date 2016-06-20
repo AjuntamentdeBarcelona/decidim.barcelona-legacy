@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160615065641) do
+ActiveRecord::Schema.define(version: 20160620074831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -308,6 +308,7 @@ ActiveRecord::Schema.define(version: 20160615065641) do
     t.integer  "attendee_count"
     t.text     "organizations"
     t.integer  "interventions"
+    t.integer  "proposals_count",   default: 0,          null: false
   end
 
   add_index "meetings", ["slug"], name: "index_meetings_on_slug", unique: true, using: :btree
