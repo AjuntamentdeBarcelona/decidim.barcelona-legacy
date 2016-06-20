@@ -7,4 +7,6 @@ class ParticipatoryProcess < ActiveRecord::Base
   has_many :proposals
   has_many :meetings
   has_many :debates
+  has_many :categories
+  has_many :subcategories
 end

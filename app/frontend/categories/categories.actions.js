@@ -4,12 +4,13 @@ import { API_BASE_URL } from '../proposals/proposals.actions';
 
 export const FETCH_CATEGORIES = 'FETCH_CATEGORIES';
 
-export function fetchCategories () {
+export const fetchCategories = () => (dispatch, getState) => {
+  const { participatoryProcessId } = getState();
   const promise =  new Promise((resolve, reject) => {
-    axios.get(`${API_BASE_URL}/categories.json`).then(({ data }) => {
+    axios.get(`${API_BASE_URL}/categories.json?participatory_process_id=${participatoryProcessId}`).then(({ data }) => {
       let { categories } = data;
 
-      axios.get(`${API_BASE_URL}/subcategories.json`).then(({ data }) => {
+      axios.get(`${API_BASE_URL}/subcategories.json?participatory_process_id=${participatoryProcessId}`).then(({ data }) => {
         let { subcategories } = data;
 
         categories = categories.map(category => ({
@@ -22,8 +23,10 @@ export function fetchCategories () {
     }, reject);
   });
 
-  return {
+  dispatch({
     type: FETCH_CATEGORIES,
     payload: promise
-  };
+  });
+
+  return promise;
 }
