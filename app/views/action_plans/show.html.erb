@@ -1,3 +1,21 @@
+<% content_for :title do %><%= @action_plan.title %><% end %>
+
+<% content_for :social_media_meta_tags do %>
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="bcn_ajuntament" />
+  <meta name="twitter:title" content="<%= @action_plan.title %>" />
+  <meta name="twitter:description" content="<%= @action_plan.description %>" />
+  <meta name="twitter:image" content="<%= asset_url("social-media-icon.png") %>" />
+  <meta id="ogtitle" property="og:title" content="<%= @action_plan.title %>" />
+  <meta property="article:publisher" content="https://decidim.barcelona" />
+  <meta property="article:author" content="https://www.facebook.com/bcn.cat" />
+  <meta property="og:type" content="article" />
+  <meta id="ogimage" property="og:image" content="<%= asset_url("social-media-icon.png") %>" />
+  <meta property="og:site_name" content="decidim.barcelona" />
+  <meta id="ogdescription" property="og:description" content="<%= @action_plan.description %>" />
+  <meta property="fb:app_id" content="929041747208547" />
+<% end %>
+
 <section class="action-plan-show">
   <%= react_app "ActionPlan", actionPlanId: @action_plan_id %>
 </section>
