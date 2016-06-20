@@ -18,7 +18,7 @@ class Proposal < ActiveRecord::Base
 
   belongs_to :author, -> { with_hidden }, class_name: 'User', foreign_key: 'author_id'
   has_many :comments, as: :commentable
-  has_many :meeting_proposals
+  has_many :meeting_proposals, dependent: :destroy
   has_many :meetings, through: :meeting_proposals
   has_many :recommendations
   has_one  :answer, class_name: ProposalAnswer

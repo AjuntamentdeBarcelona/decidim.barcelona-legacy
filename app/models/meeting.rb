@@ -9,7 +9,7 @@ class Meeting < ActiveRecord::Base
 
   has_many :meeting_proposals, dependent: :destroy
   accepts_nested_attributes_for :meeting_proposals
-  has_many :proposals, through: :meeting_proposals
+  has_many :proposals, through: :meeting_proposals, before_remove: proc { |m, p| MeetingProposal.where(meeting: m, proposal: p).destroy_all }
 
   has_many :pictures, class_name: 'MeetingPicture'
   accepts_nested_attributes_for :pictures, allow_destroy: true,
