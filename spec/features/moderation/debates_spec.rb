@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 feature 'Moderate debates' do
+  let(:participatory_process) { create(:participatory_process) }
 
   scenario 'Disabled with a feature flag' do
     Setting['feature.debates'] = nil
@@ -14,10 +15,10 @@ feature 'Moderate debates' do
     citizen = create(:user)
     moderator = create(:moderator)
 
-    debate = create(:debate)
+    debate = create(:debate, participatory_process: participatory_process)
 
     login_as(moderator)
-    visit debate_path(debate)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
 
     within("#debate_#{debate.id}") do
       click_link 'Hide'
@@ -33,10 +34,10 @@ feature 'Moderate debates' do
 
   scenario 'Can not hide own debate' do
     moderator = create(:moderator)
-    debate = create(:debate, author: moderator)
+    debate = create(:debate, participatory_process: participatory_process, author: moderator)
 
     login_as(moderator)
-    visit debate_path(debate)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
 
     within("#debate_#{debate.id}") do
       expect(page).to_not have_link('Hide')

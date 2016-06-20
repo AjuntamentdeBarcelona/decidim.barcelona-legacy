@@ -66,7 +66,13 @@ module CommonActions
     user ||= create(:user)
 
     login_as(user)
-    commentable_path = commentable.is_a?(Proposal) ? proposal_path(commentable) : debate_path(commentable)
+
+    commentable_path = if commentable.is_a?(Proposal)
+      proposal_path(commentable, participatory_process_id: commentable.participatory_process.slug)
+    else
+      debate_path(commentable, participatory_process_id: commentable.participatory_process.slug)
+    end
+
     visit commentable_path
 
     fill_in "comment-body-root", with: 'Have you thought about...?'

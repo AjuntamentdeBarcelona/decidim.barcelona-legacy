@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe DebatesController do
+  let(:participatory_process) { create(:participatory_process) }
 
   before(:each) do
     Setting['feature.debates'] = true

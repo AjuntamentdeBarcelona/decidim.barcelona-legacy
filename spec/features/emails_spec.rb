@@ -33,7 +33,7 @@ feature 'Emails' do
       email = open_last_email
       expect(email).to have_subject('Someone has commented on your citizen proposal')
       expect(email).to deliver_to(proposal.author)
-      expect(email).to have_body_text(proposal_path(proposal))
+      expect(email).to have_body_text(proposal_path(proposal, participatory_process_id: proposal.participatory_process.slug))
     end
 
     scenario 'Do not send email about own proposal comments', :js do
@@ -62,7 +62,7 @@ feature 'Emails' do
       email = open_last_email
       expect(email).to have_subject('Someone has commented on your debate')
       expect(email).to deliver_to(debate.author)
-      expect(email).to have_body_text(debate_path(debate))
+      expect(email).to have_body_text(debate_path(debate, participatory_process_id: debate.participatory_process.slug))
       expect(email).to have_body_text(I18n.t("mailers.config.manage_email_subscriptions"))
       expect(email).to have_body_text(account_path)
     end

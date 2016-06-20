@@ -33,10 +33,15 @@ module CommentableActions
   def create
     @resource = resource_model.new(strong_params)
     @resource.author = current_user
+    @resource.participatory_process_id = @participatory_process.id if @participatory_process.present?
 
     if verify_recaptcha(model: @resource) && @resource.save
       track_event
-      redirect_path = url_for(controller: controller_name, action: :show, id: @resource)
+      if @resource.participatory_process.present?
+        redirect_path = url_for(controller: controller_name, action: :show, id: @resource, participatory_process_id: @resource.participatory_process.slug)
+      else
+        redirect_path = url_for(controller: controller_name, action: :show, id: @resource)
+      end
       redirect_to redirect_path, notice: t("flash.actions.create.#{resource_name.underscore}")
     else
       load_featured_tags

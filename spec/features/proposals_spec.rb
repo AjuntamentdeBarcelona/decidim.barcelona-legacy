@@ -2,7 +2,8 @@
 require 'rails_helper'
 
 feature 'Proposals' do
-  let!(:subcategory) { create(:subcategory) }
+  let(:participatory_process) { create(:participatory_process) }
+  let!(:subcategory) { create(:subcategory, participatory_process: participatory_process) }
   let(:category) { subcategory.category }
 
   before(:each) do
@@ -11,15 +12,19 @@ feature 'Proposals' do
   end
 
   scenario 'Index', :js do
-    proposals = [create(:proposal), create(:proposal), create(:proposal)]
+    proposals = [
+      create(:proposal, participatory_process: participatory_process),
+      create(:proposal, participatory_process: participatory_process)
+    ]
+    create(:proposal)
 
     visit proposals_path
 
-    expect(page).to have_selector('#proposals .proposal', count: 3)
+    expect(page).to have_selector('#proposals .proposal', count: 2)
     proposals.each do |proposal|
       within('#proposals') do
         expect(page).to have_content proposal.title
-        expect(page).to have_xpath "//a[contains(@href,'#{proposal_path(proposal)}')]"
+        expect(page).to have_xpath "//a[contains(@href,'#{proposal_path(proposal, participatory_process_id: participatory_process.slug)}')]"
       end
     end
   end
@@ -44,9 +49,9 @@ feature 'Proposals' do
 
   scenario 'Filtered Index', :js do
     proposals = [
-      create(:proposal, title: 'Proposal with city scope 1', scope: 'city'),
-      create(:proposal, title: 'Proposal with district scope', district: 1, scope: 'district'),
-      create(:proposal, title: 'Proposal with city scope 2', scope: 'city')
+      create(:proposal, participatory_process: participatory_process, title: 'Proposal with city scope 1', scope: 'city'),
+      create(:proposal, participatory_process: participatory_process, title: 'Proposal with district scope', district: 1, scope: 'district'),
+      create(:proposal, participatory_process: participatory_process, title: 'Proposal with city scope 2', scope: 'city')
     ]
 
     visit proposals_path
@@ -62,9 +67,9 @@ feature 'Proposals' do
   end
 
   scenario 'Show', :js do
-    proposal = create(:proposal)
+    proposal = create(:proposal, participatory_process: participatory_process)
 
-    visit proposal_path(proposal)
+    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process.slug)
 
     expect(page).to have_content proposal.title
     expect(page).to have_content "external_documention.es"
@@ -285,22 +290,22 @@ feature 'Proposals' do
     expect(proposal).to be_editable
     login_as(create(:user))
 
-    visit edit_proposal_path(proposal)
-    expect(current_path).not_to eq(edit_proposal_path(proposal))
+    visit edit_proposal_path(proposal, participatory_process_id: proposal.participatory_process.slug)
+    expect(current_path).not_to eq(edit_proposal_path(proposal, participatory_process_id: proposal.participatory_process.slug))
     expect(page).to have_content 'You do not have permission'
   end
 
   scenario 'Update should not be posible if proposal is not editable' do
-    proposal = create(:proposal)
+    proposal = create(:proposal, participatory_process: participatory_process)
     Setting["max_votes_for_proposal_edit"] = 10
     11.times { create(:vote, votable: proposal) }
 
     expect(proposal).to_not be_editable
 
     login_as(proposal.author)
-    visit edit_proposal_path(proposal)
+    visit edit_proposal_path(proposal, participatory_process_id: proposal.participatory_process.slug)
 
-    expect(current_path).not_to eq(edit_proposal_path(proposal))
+    expect(current_path).not_to eq(edit_proposal_path(proposal, participatory_process_id: participatory_process.slug))
     expect(page).to have_content 'You do not have permission'
   end
 
@@ -308,8 +313,8 @@ feature 'Proposals' do
     proposal = create(:proposal)
     login_as(proposal.author)
 
-    visit edit_proposal_path(proposal)
-    expect(current_path).to eq(edit_proposal_path(proposal))
+    visit edit_proposal_path(proposal, participatory_process_id: proposal.participatory_process.slug)
+    expect(current_path).to eq(edit_proposal_path(proposal, participatory_process_id: proposal.participatory_process.slug))
 
     fill_in 'proposal_title', with: "End child poverty"
     fill_in 'proposal_summary', with: 'Basically...'
@@ -327,7 +332,7 @@ feature 'Proposals' do
     proposal = create(:proposal)
     login_as(proposal.author)
 
-    visit edit_proposal_path(proposal)
+    visit edit_proposal_path(proposal, participatory_process_id: proposal.participatory_process.slug)
     fill_in 'proposal_title', with: ""
     click_button "Save changes"
 
@@ -384,9 +389,9 @@ feature 'Proposals' do
   feature 'Proposal index order filters' do
 
     scenario 'Proposals are ordered by confidence_score', :js do
-      create(:proposal, title: 'Best proposal').update_column(:confidence_score, 10)
-      create(:proposal, title: 'Worst proposal').update_column(:confidence_score, 2)
-      create(:proposal, title: 'Medium proposal').update_column(:confidence_score, 5)
+      create(:proposal, participatory_process: participatory_process, title: 'Best proposal').update_column(:confidence_score, 10)
+      create(:proposal, participatory_process: participatory_process, title: 'Worst proposal').update_column(:confidence_score, 2)
+      create(:proposal, participatory_process: participatory_process, title: 'Medium proposal').update_column(:confidence_score, 5)
 
       visit proposals_path
 
@@ -404,9 +409,9 @@ feature 'Proposals' do
     end
 
     scenario 'Proposals are ordered by newest', :js do
-      create(:proposal, title: 'Best proposal',   created_at: Time.now).update_column(:confidence_score, 1)
-      create(:proposal, title: 'Medium proposal', created_at: Time.now - 1.hour).update_column(:confidence_score, 2)
-      create(:proposal, title: 'Worst proposal',  created_at: Time.now - 1.day).update_column(:confidence_score, 3)
+      create(:proposal, participatory_process: participatory_process, title: 'Best proposal',   created_at: Time.now).update_column(:confidence_score, 1)
+      create(:proposal, participatory_process: participatory_process, title: 'Medium proposal', created_at: Time.now - 1.hour).update_column(:confidence_score, 2)
+      create(:proposal, participatory_process: participatory_process, title: 'Worst proposal',  created_at: Time.now - 1.day).update_column(:confidence_score, 3)
 
       visit proposals_path(order: "confidence_score")
 
@@ -424,10 +429,10 @@ feature 'Proposals' do
     end
 
     scenario 'Proposals source tabs filter', :js do
-      create(:proposal, title: 'Proposal no oficial 1')
-      create(:proposal, title: 'Proposal no oficial 2')
-      create(:proposal, title: 'Proposal oficial 1', official: true)
-      create(:proposal, title: 'Proposal oficial 2', official: true)
+      create(:proposal, participatory_process: participatory_process, title: 'Proposal no oficial 1')
+      create(:proposal, participatory_process: participatory_process, title: 'Proposal no oficial 2')
+      create(:proposal, participatory_process: participatory_process, title: 'Proposal oficial 1', official: true)
+      create(:proposal, participatory_process: participatory_process, title: 'Proposal oficial 2', official: true)
 
       visit proposals_path
 
@@ -447,9 +452,9 @@ feature 'Proposals' do
     context "Basic search" do
 
       scenario 'Search by text', :js do
-        proposal1 = create(:proposal, title: "Get Schwifty")
-        proposal2 = create(:proposal, title: "Schwifty Hello")
-        proposal3 = create(:proposal, title: "Do not show me")
+        proposal1 = create(:proposal, participatory_process: participatory_process, title: "Get Schwifty")
+        proposal2 = create(:proposal, participatory_process: participatory_process, title: "Schwifty Hello")
+        proposal3 = create(:proposal, participatory_process: participatory_process, title: "Do not show me")
 
         visit proposals_path
 
@@ -466,10 +471,10 @@ feature 'Proposals' do
     end
 
     scenario "Reorder results maintaing search", :js do
-      proposal1 = create(:proposal, title: "Show you got",      cached_votes_up: 10,  created_at: 1.week.ago)
-      proposal2 = create(:proposal, title: "Show what you got", cached_votes_up: 1,   created_at: 1.month.ago)
-      proposal3 = create(:proposal, title: "Show you got",      cached_votes_up: 100, created_at: Time.now)
-      proposal4 = create(:proposal, title: "Do not display",    cached_votes_up: 1,   created_at: 1.week.ago)
+      proposal1 = create(:proposal, participatory_process: participatory_process, title: "Show you got",      cached_votes_up: 10,  created_at: 1.week.ago)
+      proposal2 = create(:proposal, participatory_process: participatory_process, title: "Show what you got", cached_votes_up: 1,   created_at: 1.month.ago)
+      proposal3 = create(:proposal, participatory_process: participatory_process, title: "Show you got",      cached_votes_up: 100, created_at: Time.now)
+      proposal4 = create(:proposal, participatory_process: participatory_process, title: "Do not display",    cached_votes_up: 1,   created_at: 1.week.ago)
 
       visit proposals_path
 
@@ -516,10 +521,10 @@ feature 'Proposals' do
     good_proposal = create(:proposal)
     conflictive_proposal = create(:proposal, :conflictive)
 
-    visit proposal_path(conflictive_proposal)
+    visit proposal_path(conflictive_proposal, participatory_process_id: conflictive_proposal.participatory_process.slug)
     expect(page).to have_content "This proposal has been flagged as inappropriate by several users."
 
-    visit proposal_path(good_proposal)
+    visit proposal_path(good_proposal, participatory_process_id: good_proposal.participatory_process.slug)
     expect(page).to_not have_content "This proposal has been flagged as inappropriate by several users."
   end
 
@@ -528,7 +533,7 @@ feature 'Proposals' do
     proposal = create(:proposal)
 
     login_as(user)
-    visit proposal_path(proposal)
+    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process.slug)
 
     expect(page).to have_selector("#proposal_#{proposal.id}")
     page.find("#flag-action-#{proposal.id}").click
@@ -543,7 +548,7 @@ feature 'Proposals' do
     Flag.flag(user, proposal)
 
     login_as(user)
-    visit proposal_path(proposal)
+    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process.slug)
 
     expect(page).to have_selector("#proposal_#{proposal.id}")
     page.find("#unflag-action-#{proposal.id}").click
@@ -557,7 +562,7 @@ feature 'Proposals' do
     user = create(:user)
     proposal = create(:proposal)
     login_as(user)
-    visit proposal_path(proposal)
+    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process.slug)
     expect(page).to have_selector("#proposal_#{proposal.id}")
 
     page.find("button", text: "Follow").click
@@ -570,7 +575,7 @@ feature 'Proposals' do
     proposal = create(:proposal)
     Follow.create({ follower_id: user.id, following_id: proposal.id, following_type: 'Proposal' })
     login_as(user)
-    visit proposal_path(proposal)
+    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process.slug)
     expect(page).to have_selector("#proposal_#{proposal.id}")
 
     page.find("button", text: "Unfollow").click

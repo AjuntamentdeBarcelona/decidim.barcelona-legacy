@@ -6,6 +6,7 @@ import {
 }                               from 'redux';
 import { Provider }             from 'react-redux';
 import ReduxPromise             from 'redux-promise';
+import ReduxThunk               from 'redux-thunk';
 
 import { actionPlan }           from './action_plans.reducers';
 import categories               from '../categories/categories.reducers';
@@ -16,7 +17,7 @@ import pagination               from '../pagination/pagination.reducers';
 
 import ActionPlanShow           from './action_plan_show.component';
 
-const middlewares = [ReduxPromise];
+const middlewares = [ReduxPromise, ReduxThunk];
 
 if (process.env.NODE_ENV === 'development') {
   const createLogger = require('redux-logger');

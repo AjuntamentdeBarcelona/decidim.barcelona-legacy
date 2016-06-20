@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 feature 'Admin comments' do
+  let(:participatory_process) { create(:participatory_process) }
 
   background do
     admin = create(:administrator)
@@ -9,14 +10,14 @@ feature 'Admin comments' do
 
   scenario "Do not show comments from blocked users", :js do
     comment = create(:comment, :hidden, body: "SPAM from SPAMMER")
-    proposal = create(:proposal, author: comment.author)
+    proposal = create(:proposal, participatory_process: participatory_process, author: comment.author)
     other_comment = create(:comment, commentable: proposal, user: comment.author, body: "Good Proposal!")
 
     visit admin_comments_path
     expect(page).to have_content("SPAM from SPAMMER")
     expect(page).not_to have_content("Good Proposal!")
 
-    visit proposal_path(proposal)
+    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process.slug)
 
     expect(page).to have_css("#comment_#{other_comment.id}")
     find("#comment_#{other_comment.id} a", text: 'Block author').click

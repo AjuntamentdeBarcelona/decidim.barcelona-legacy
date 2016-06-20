@@ -2,10 +2,11 @@
 require 'rails_helper'
 
 feature 'Tags' do
+  let(:participatory_process) { create(:participatory_process) }
 
   scenario 'Index' do
-    earth = create(:debate, tag_list: 'Medio Ambiente')
-    money = create(:debate, tag_list: 'Economía')
+    earth = create(:debate, participatory_process: participatory_process, tag_list: 'Medio Ambiente')
+    money = create(:debate, participatory_process: participatory_process, tag_list: 'Economía')
 
     visit debates_path
 
@@ -19,10 +20,10 @@ feature 'Tags' do
   end
 
   scenario 'Filtered' do
-    debate1 = create(:debate, tag_list: 'Salud')
-    debate2 = create(:debate, tag_list: 'salud')
-    debate3 = create(:debate, tag_list: 'Hacienda')
-    debate4 = create(:debate, tag_list: 'Hacienda')
+    debate1 = create(:debate, participatory_process: participatory_process, tag_list: 'Salud')
+    debate2 = create(:debate, participatory_process: participatory_process, tag_list: 'salud')
+    debate3 = create(:debate, participatory_process: participatory_process, tag_list: 'Hacienda')
+    debate4 = create(:debate, participatory_process: participatory_process, tag_list: 'Hacienda')
 
     visit debates_path
     first(:link, 'Salud').click
@@ -47,19 +48,19 @@ feature 'Tags' do
   end
 
   scenario 'Show' do
-    debate = create(:debate, tag_list: 'Hacienda, Economía')
+    debate = create(:debate, participatory_process: participatory_process, tag_list: 'Hacienda, Economía')
 
-    visit debate_path(debate)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
 
     expect(page).to have_content "Economía"
     expect(page).to have_content "Hacienda"
   end
 
   scenario 'Tag Cloud' do
-    1.times  { create(:debate, tag_list: 'Medio Ambiente') }
-    5.times  { create(:debate, tag_list: 'Corrupción') }
-    5.times  { create(:debate, tag_list: 'Educación') }
-    10.times { create(:debate, tag_list: 'Economía') }
+    1.times  { create(:debate, participatory_process: participatory_process, tag_list: 'Medio Ambiente') }
+    5.times  { create(:debate, participatory_process: participatory_process, tag_list: 'Corrupción') }
+    5.times  { create(:debate, participatory_process: participatory_process, tag_list: 'Educación') }
+    10.times { create(:debate, participatory_process: participatory_process, tag_list: 'Economía') }
 
     visit debates_path
 
@@ -75,7 +76,7 @@ feature 'Tags' do
     user = create(:user, :official)
     login_as(user)
 
-    visit new_debate_path
+    visit new_debate_path(participatory_process_id: participatory_process.slug)
     fill_in 'debate_title', with: 'Title'
     fill_in_editor 'debate_description', with: 'Description'
     check 'debate_terms_of_service'
@@ -94,7 +95,7 @@ feature 'Tags' do
     user = create(:user, :official)
     login_as(user)
 
-    visit new_debate_path
+    visit new_debate_path(participatory_process_id: participatory_process.slug)
     fill_in 'debate_title', with: 'Title'
     fill_in_editor 'debate_description', with: 'Description'
     check 'debate_terms_of_service'
@@ -108,10 +109,10 @@ feature 'Tags' do
   end
 
   scenario 'Update' do
-    debate = create(:debate, tag_list: 'Economía')
+    debate = create(:debate, participatory_process: participatory_process, tag_list: 'Economía')
 
     login_as(debate.author)
-    visit edit_debate_path(debate)
+    visit edit_debate_path(debate, participatory_process_id: debate.participatory_process.slug)
 
     expect(page).to have_selector("input[value='Economía']")
 
@@ -126,10 +127,10 @@ feature 'Tags' do
   end
 
   scenario 'Delete' do
-    debate = create(:debate, tag_list: 'Economía')
+    debate = create(:debate, participatory_process: participatory_process, tag_list: 'Economía')
 
     login_as(debate.author)
-    visit edit_debate_path(debate)
+    visit edit_debate_path(debate, participatory_process_id: debate.participatory_process.slug)
 
     fill_in 'debate_tag_list', with: ""
     click_button 'Save changes'

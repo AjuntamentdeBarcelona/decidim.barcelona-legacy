@@ -1,14 +1,15 @@
 require 'rails_helper'
 
 feature 'Moderate users', :js do
+  let(:participatory_process) { create(:participatory_process) }
 
   scenario 'Hide' do
     citizen = create(:user)
     moderator = create(:moderator)
 
-    debate1 = create(:debate, author: citizen)
-    debate2 = create(:debate, author: citizen)
-    debate3 = create(:debate)
+    debate1 = create(:debate, participatory_process: participatory_process, author: citizen)
+    debate2 = create(:debate, participatory_process: participatory_process, author: citizen)
+    debate3 = create(:debate, participatory_process: participatory_process)
     comment3 = create(:comment, user: citizen, commentable: debate3, body: 'SPAMMER')
 
     login_as(moderator)
@@ -18,30 +19,29 @@ feature 'Moderate users', :js do
     expect(page).to have_content(debate2.title)
     expect(page).to have_content(debate3.title)
 
-    visit debate_path(debate3)
+    visit debate_path(debate3, participatory_process_id: debate3.participatory_process.slug)
 
     expect(page).to have_content(comment3.body)
 
-    visit debate_path(debate1)
+    visit debate_path(debate1, participatory_process_id: debate1.participatory_process.slug)
 
     within("#debate_#{debate1.id}") do
       click_link 'Block author'
     end
 
-    expect(current_path).to eq(debates_path)
+    visit debates_path
+
     expect(page).to_not have_content(debate1.title)
     expect(page).to_not have_content(debate2.title)
     expect(page).to have_content(debate3.title)
 
-    visit debate_path(debate3)
+    visit debate_path(debate3, participatory_process_id: debate3.participatory_process.slug)
 
     expect(page).to_not have_content(comment3.body)
 
     click_link("Sign out")
 
-    visit root_path
-
-    click_link 'Sign in'
+    click_link 'Sign in', match: :first
     fill_in 'user_email',    with: citizen.email
     fill_in 'user_password', with: citizen.password
     click_button 'Enter'

@@ -1,0 +1,42 @@
+rspec ./spec/features/action_plans_spec.rb:80 # Action plans Filter action plans by category
+rspec ./spec/features/action_plans_spec.rb:91 # Action plans Filter action plans by search
+rspec ./spec/features/action_plans_spec.rb:54 # Action plans Edit an existing action plan
+rspec ./spec/features/action_plans_spec.rb:115 # Action plans Approve an action plan
+rspec ./spec/features/action_plans_spec.rb:13 # Action plans Create an action plan from scratch
+rspec ./spec/features/action_plans_spec.rb:104 # Action plans Delete an action plan
+rspec ./spec/features/action_plans_spec.rb:36 # Action plans Create an action plan from an existing proposal
+rspec ./spec/features/action_plans_spec.rb:66 # Action plans Create a new revision for an action plan
+rspec ./spec/features/votes_spec.rb:270 # Votes Not logged user trying to vote debates
+rspec ./spec/features/votes_spec.rb:280 # Votes Not logged user trying to vote proposals
+rspec ./spec/features/votes_spec.rb:318 # Votes Anonymous user trying to vote proposals
+rspec ./spec/features/votes_spec.rb:296 # Votes Anonymous user trying to vote debates
+rspec ./spec/features/votes_spec.rb:16 # Votes Debates Index shows user votes on debates
+rspec ./spec/features/votes_spec.rb:88 # Votes Debates Single debate Update
+rspec ./spec/features/votes_spec.rb:143 # Votes Debates Single debate Create from debate show
+rspec ./spec/features/votes_spec.rb:107 # Votes Debates Single debate Trying to vote multiple times
+rspec ./spec/features/votes_spec.rb:161 # Votes Debates Single debate Create in index
+rspec ./spec/features/votes_spec.rb:70 # Votes Debates Single debate Show no votes
+rspec ./spec/features/votes_spec.rb:124 # Votes Debates Single debate Show
+rspec ./spec/features/votes_spec.rb:188 # Votes Proposals Index shows user votes on proposals
+rspec ./spec/features/votes_spec.rb:254 # Votes Proposals Single proposal Create in listed proposal in index
+rspec ./spec/features/votes_spec.rb:243 # Votes Proposals Single proposal Create from proposal show
+rspec ./spec/features/votes_spec.rb:216 # Votes Proposals Single proposal Show no votes
+rspec ./spec/features/votes_spec.rb:232 # Votes Proposals Single proposal Show
+rspec ./spec/features/votes_spec.rb:221 # Votes Proposals Single proposal Trying to vote multiple times
+rspec ./spec/features/moderation/proposals_spec.rb:23 # Moderate proposals Can not hide own proposal
+rspec ./spec/features/moderation/proposals_spec.rb:5 # Moderate proposals Hide
+rspec ./spec/features/moderation/proposals_spec.rb:115 # Moderate proposals /moderation/ screen Current filter is properly highlighted
+rspec ./spec/features/moderation/meetings_spec.rb:158 # Moderate meetings Edit meetings proposals
+rspec ./spec/features/admin/activity_spec.rb:74 # Admin activity Debates Shows moderation activity on debates
+rspec ./spec/features/admin/activity_spec.rb:198 # Admin activity User Shows moderation activity on users
+rspec ./spec/features/admin/activity_spec.rb:11 # Admin activity Proposals Shows moderation activity on proposals
+rspec ./spec/features/admin/activity_spec.rb:136 # Admin activity Comments Shows moderation activity on comments
+rspec ./spec/mailers/mailer_spec.rb:5 # Mailer#comment sends emails in the user's locale
+rspec ./spec/features/notifications_spec.rb:143 # Notifications Author replied to his own comment
+rspec ./spec/features/notifications_spec.rb:129 # Notifications Author commented on his own debate
+rspec ./spec/features/notifications_spec.rb:67 # Notifications User replied to my comment
+rspec ./spec/features/notifications_spec.rb:33 # Notifications Multiple comments on my proposal
+rspec ./spec/features/notifications_spec.rb:9 # Notifications User commented on my debate
+rspec ./spec/features/notifications_spec.rb:200 # Notifications no notifications
+rspec ./spec/features/notifications_spec.rb:98 # Notifications Multiple replies to my comment
+rspec ./spec/features/sessions_spec.rb:5 # Sessions Staying in the same page after doing login/logout
