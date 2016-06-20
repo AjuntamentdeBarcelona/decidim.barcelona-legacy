@@ -1,4 +1,6 @@
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
+
+import htmlToReact from '../application/html_to_react';
 
 export default class Pagination extends Component {
   render () {
@@ -19,15 +21,14 @@ export default class Pagination extends Component {
     if (this.props.currentPage > 1) {
       return [
         <li key="first_page">
-          <a 
-            onClick={(event) => this.props.onSetCurrentPage(1)}
-            dangerouslySetInnerHTML={{__html: I18n.t("views.pagination.first")}}></a>
+          <a onClick={() => this.props.onSetCurrentPage(1)}>
+            {htmlToReact(I18n.t("views.pagination.first"))}
+          </a>
         </li>,
         <li key="prev_page">
-          <a 
-            rel="prev" 
-            onClick={(event) => this.props.onSetCurrentPage(this.props.currentPage - 1)}
-            dangerouslySetInnerHTML={{__html: I18n.t("views.pagination.previous")}}></a>
+          <a rel="prev" onClick={() => this.props.onSetCurrentPage(this.props.currentPage - 1)}>
+            {htmlToReact(I18n.t("views.pagination.previous"))}
+          </a>
         </li>
       ]
     }
@@ -48,7 +49,7 @@ export default class Pagination extends Component {
       for (let i = initialPage; i <= lastPage; i += 1) {
         result.push(
           <li className={this.props.currentPage === i ? 'current': ''} key={`page_${i}`}>
-            <a onClick={(event) => this.props.onSetCurrentPage(i)}>{i}</a>
+            <a onClick={() => this.props.onSetCurrentPage(i)}>{i}</a>
           </li>
         )
       }
@@ -56,7 +57,9 @@ export default class Pagination extends Component {
 
     if (this.props.totalPages > lastPage) {
       result.push(
-        <li key="truncate" dangerouslySetInnerHTML={{__html: I18n.t("views.pagination.truncate")}}></li>
+        <li key="truncate">
+          {htmlToReact(I18n.t("views.pagination.truncate"))}
+        </li>
       )
     }
     
@@ -67,15 +70,14 @@ export default class Pagination extends Component {
     if (this.props.currentPage < this.props.totalPages) {
       return [
         <li key="next_page">
-          <a 
-            rel="next" 
-            onClick={(event) => this.props.onSetCurrentPage(this.props.currentPage + 1)}
-            dangerouslySetInnerHTML={{__html: I18n.t("views.pagination.next")}}></a>
+          <a rel="next" onClick={() => this.props.onSetCurrentPage(this.props.currentPage + 1)}>
+            {htmlToReact(I18n.t("views.pagination.next"))}
+          </a>
         </li>,
         <li key="last_page">
-          <a 
-            onClick={(event) => this.props.onSetCurrentPage(this.props.totalPages)} 
-            dangerouslySetInnerHTML={{__html: I18n.t("views.pagination.last")}}></a>
+          <a onClick={() => this.props.onSetCurrentPage(this.props.totalPages)}>
+            {htmlToReact(I18n.t("views.pagination.last"))}
+          </a>
         </li>
       ]
     }
@@ -84,4 +86,11 @@ export default class Pagination extends Component {
 
 Pagination.defaultProps = { 
   maxPages: 10
+};
+
+Pagination.propTypes = {
+  currentPage: PropTypes.number.isRequired,
+  maxPages: PropTypes.number.isRequired,
+  totalPages: PropTypes.number.isRequired,
+  onSetCurrentPage: PropTypes.func.isRequired
 };
