@@ -2,7 +2,7 @@ module ProposalsSelectorHelper
   def proposals_selector(options = {})
     react_component(
       'ProposalsSelector',
-      proposals_api_url: api_proposals_url(format: :json),
+      proposals_api_url: api_proposals_url(format: :json, participatory_process_id: @participatory_process.id),
       resource_name: options[:resource_name],
       proposals: serialized_proposals_for_selector(options[:proposals])
     )

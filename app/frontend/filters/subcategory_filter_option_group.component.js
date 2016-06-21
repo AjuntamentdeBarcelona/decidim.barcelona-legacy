@@ -10,23 +10,28 @@ class SubcategoryFilterOptionGroup extends Component {
   render() {
     let categoryId = this.props.filters.filter["category_id"] && this.props.filters.filter["category_id"][0];
 
-    if (this.props.categories.length > 0 && categoryId) {
-      let subcategories = this.props.categories.filter((category) => categoryId === category.id)[0].subcategories;
+    if (this.props.categories && this.props.categories.length > 0 && categoryId) {
+      let selectedCategory = this.props.categories.filter((category) => categoryId === category.id),
+          subcategories;
+      
+      if (selectedCategory.length > 0) {
+        subcategories = selectedCategory[0].subcategories;
 
-      return (
-        <FilterOptionGroup 
-          filterGroupName="subcategory_id" 
-          filterGroupValue={this.props.filters.filter["subcategory_id"]}
-          onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
-          {
-            subcategories.map(function (subcategory) {
-              return <FilterOption key={subcategory.id} filterName={subcategory.id} filterLabel={subcategory.name}>
-                <a href={`/categories#subcategory_${subcategory.id}`} target="_blank"><i className="fa fa-info-circle"></i></a>
-              </FilterOption>
-            })
-          }
-        </FilterOptionGroup>
-      )
+        return (
+          <FilterOptionGroup 
+            filterGroupName="subcategory_id" 
+            filterGroupValue={this.props.filters.filter["subcategory_id"]}
+            onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
+            {
+              subcategories.map(function (subcategory) {
+                return <FilterOption key={subcategory.id} filterName={subcategory.id} filterLabel={subcategory.name}>
+                  <a href={`/categories#subcategory_${subcategory.id}`} target="_blank"><i className="fa fa-info-circle"></i></a>
+                </FilterOption>
+              })
+            }
+          </FilterOptionGroup>
+        )
+      }
     }
     return null;
   }

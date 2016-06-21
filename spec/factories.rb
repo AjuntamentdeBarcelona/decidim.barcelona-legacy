@@ -429,6 +429,7 @@ FactoryGirl.define do
   end
 
   factory :action_plan do
+    participatory_process
     category
     subcategory
 

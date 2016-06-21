@@ -23,7 +23,7 @@ class FilterLink extends Component {
     if (this.isActive()) {
       this.props.setFilterGroup(this.props.name, [])
     } else {
-      if (this.props.name === 'subcategory_id') {
+      if (this.props.name === 'subcategory_id' && this.props.categories) {
         let category = this.props.categories.filter((category) => {
           return category.subcategories.map(s => s.id).indexOf(this.props.value) !== -1;
         })[0];

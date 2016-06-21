@@ -1,7 +1,7 @@
 <% voted_classes = css_classes_for_vote(@debate_votes, debate) %>
 <div class="votes">
   <div class="in-favor inline-block">
-    <%= button_to vote_debate_path(debate, value: 'yes'),
+    <%= button_to vote_debate_path(debate, participatory_process_id: debate.participatory_process.slug, value: 'yes'),
         class: "like #{voted_classes[:in_favor]}", title: t('votes.agree'), method: "post", remote: true do %>
       <i class="icon-like"></i>
       <span><%= votes_percentage('likes', debate) %></span>
@@ -11,7 +11,7 @@
   <span class="divider"></span>
 
   <div class="against inline-block">
-    <%= link_to vote_debate_path(debate, value: 'no'), class: "unlike #{voted_classes[:against]}", title: t('votes.disagree'), method: "post", remote: true do %>
+    <%= link_to vote_debate_path(debate, participatory_process_id: debate.participatory_process.slug, value: 'no'), class: "unlike #{voted_classes[:against]}", title: t('votes.disagree'), method: "post", remote: true do %>
       <i class="icon-unlike"></i>
       <span><%= votes_percentage('dislikes', debate) %></span>
     <% end %>

@@ -3,6 +3,9 @@ class Api::ActionPlansController < Api::ApplicationController
   include HasOrders
   include ActionView::Helpers::SanitizeHelper
 
+  before_action :load_participation_process, only: [:index]
+
+  before_action :authenticate_user!
   load_and_authorize_resource
 
   has_orders %w{weight random confidence_score participants}, only: :index
@@ -10,7 +13,9 @@ class Api::ActionPlansController < Api::ApplicationController
   def index
     set_seed
 
-    action_plans = ActionPlan.includes(:revisions, :action_plan_statistics)
+    action_plans = ActionPlan
+      .where(participatory_process_id: @participatory_process.try(:id))
+      .includes(:revisions, :action_plan_statistics)
 
     @action_plans = ResourceFilter.new(params, user: current_user)
       .filter_collection(action_plans.includes(:category, :subcategory))

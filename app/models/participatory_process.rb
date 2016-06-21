@@ -5,6 +5,7 @@ class ParticipatoryProcess < ActiveRecord::Base
   friendly_id :name, use: [:slugged, :finders]
 
   has_many :proposals
+  has_many :action_plans
   has_many :meetings
   has_many :debates
   has_many :categories

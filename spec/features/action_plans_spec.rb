@@ -2,16 +2,17 @@
 require 'rails_helper'
 
 feature 'Action plans', :js do
-  let!(:subcategory) { create(:subcategory) }
-  let(:category) { subcategory.category }
-  let(:reviewer) { create(:user, :reviewer) }
+  let!(:participatory_process) { create(:participatory_process) }
+  let!(:category) { create(:category, participatory_process: participatory_process) }
+  let!(:subcategory) { create(:subcategory, category: category, participatory_process: participatory_process) }
+  let!(:reviewer) { create(:user, :reviewer) }
 
   before :each do
     login_as(reviewer)
   end
 
   scenario 'Create an action plan from scratch' do
-    proposal = create(:proposal, title: "A good looking proposal")
+    proposal = create(:proposal, participatory_process: participatory_process, title: "A good looking proposal")
 
     visit action_plans_path
     click_link "New action plan" 
@@ -35,11 +36,11 @@ feature 'Action plans', :js do
 
   scenario 'Create an action plan from an existing proposal' do
     comment = create(:comment)
-    proposal = create(:proposal, title: "A good looking proposal")
-    related = create(:proposal, title: "A related proposal")
+    proposal = create(:proposal, participatory_process: participatory_process, title: "A good looking proposal")
+    related = create(:proposal, participatory_process: participatory_process, title: "A related proposal")
     Reference.create(source: comment, referrer: proposal, referenced: related)
 
-    visit proposals_path
+    visit proposals_path(participatory_process_id: participatory_process.slug)
     click_link "A good looking proposal"
     click_link "Create action plan"
     click_button "Create action plan"
@@ -52,7 +53,7 @@ feature 'Action plans', :js do
   end
 
   scenario 'Edit an existing action plan' do
-    action_plan = create(:action_plan, scope: 'city')
+    action_plan = create(:action_plan, participatory_process: participatory_process, scope: 'city')
 
     visit action_plans_path
     click_link action_plan.title
@@ -64,9 +65,9 @@ feature 'Action plans', :js do
   end
 
   scenario 'Create a new revision for an action plan' do
-    action_plan = create(:action_plan)
+    action_plan = create(:action_plan, participatory_process: participatory_process)
 
-    visit action_plans_path
+    visit action_plans_path(participatory_process_id: participatory_process.slug)
     click_link action_plan.title
     click_link "New revision"
     fill_in "action_plan_revision_title", with: "My title revision"
@@ -78,8 +79,8 @@ feature 'Action plans', :js do
   end
 
   scenario 'Filter action plans by category' do
-    target_action_plan = create(:action_plan, category: category)
-    another_action_plan = create(:action_plan)
+    target_action_plan = create(:action_plan, participatory_process: participatory_process, category: category)
+    another_action_plan = create(:action_plan, participatory_process: participatory_process)
 
     visit action_plans_path
     choose "filter_category_id_#{category.id}"
@@ -89,9 +90,9 @@ feature 'Action plans', :js do
   end
 
   scenario 'Filter action plans by search' do
-    action_plan = create(:action_plan)
+    action_plan = create(:action_plan, participatory_process: participatory_process)
     action_plan.revisions << create(:action_plan_revision, title: 'A good action plan')
-    action_plan = create(:action_plan)
+    action_plan = create(:action_plan, participatory_process: participatory_process)
     action_plan.revisions << create(:action_plan_revision, title: 'A bad action plan')
 
     visit action_plans_path
@@ -102,7 +103,7 @@ feature 'Action plans', :js do
   end
 
   scenario 'Delete an action plan' do
-    action_plan = create(:action_plan)
+    action_plan = create(:action_plan, participatory_process: participatory_process)
 
     visit action_plans_path
     click_link action_plan.title
@@ -113,8 +114,8 @@ feature 'Action plans', :js do
   end
 
   scenario 'Approve an action plan' do 
-    approved_action_plan = create(:action_plan)
-    non_approved_action_plan = create(:action_plan)
+    approved_action_plan = create(:action_plan, participatory_process: participatory_process)
+    non_approved_action_plan = create(:action_plan, participatory_process: participatory_process)
 
     visit action_plans_path
     click_link approved_action_plan.title

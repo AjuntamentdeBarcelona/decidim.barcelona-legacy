@@ -6,17 +6,17 @@ feature 'Sessions' do
     user = create(:user, sign_in_count: 10)
     debate = create(:debate)
 
-    visit debate_path(debate)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
 
     login_through_form_as(user)
 
     expect(page).to have_content('You have been signed in successfully')
-    expect(current_path).to eq(debate_path(debate))
+    expect(current_path).to eq(debate_path(debate, participatory_process_id: debate.participatory_process.slug))
 
     click_link 'Sign out'
 
     expect(page).to have_content('You have been signed out successfully')
-    expect(current_path).to eq(debate_path(debate))
+    expect(current_path).to eq(debate_path(debate, participatory_process_id: debate.participatory_process.slug))
   end
 
 end

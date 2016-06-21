@@ -2,9 +2,9 @@
 require 'rails_helper'
 
 feature 'Proposals' do
-  let(:participatory_process) { create(:participatory_process) }
-  let!(:subcategory) { create(:subcategory, participatory_process: participatory_process) }
-  let(:category) { subcategory.category }
+  let!(:participatory_process) { create(:participatory_process) }
+  let!(:category) { create(:category, participatory_process: participatory_process) }
+  let!(:subcategory) { create(:subcategory, category: category, participatory_process: participatory_process) }
 
   before(:each) do
     Setting['feature.proposal_tags'] = true

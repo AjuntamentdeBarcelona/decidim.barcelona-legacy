@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 feature 'Admin activity' do
+  let(:participatory_process) { create(:participatory_process) }
 
   background do
     @admin = create(:administrator)
@@ -9,9 +10,9 @@ feature 'Admin activity' do
 
   context "Proposals" do
     scenario "Shows moderation activity on proposals", :js do
-      proposal = create(:proposal)
+      proposal = create(:proposal, participatory_process: participatory_process)
 
-      visit proposal_path(proposal)
+      visit proposal_path(proposal, participatory_process_id: proposal.participatory_process.slug)
 
       expect(page).to have_selector("#proposal_#{proposal.id}")
       find("#proposal_#{proposal.id} a", text: 'Hide').click
@@ -72,9 +73,9 @@ feature 'Admin activity' do
 
   context "Debates" do
     scenario "Shows moderation activity on debates", :js do
-      debate = create(:debate)
+      debate = create(:debate, participatory_process: participatory_process)
 
-      visit debate_path(debate)
+      visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
 
       within("#debate_#{debate.id}") do
         click_link 'Hide'
@@ -134,10 +135,10 @@ feature 'Admin activity' do
 
   context "Comments" do
     scenario "Shows moderation activity on comments", :js do
-      debate = create(:debate)
+      debate = create(:debate, participatory_process: participatory_process)
       comment = create(:comment, commentable: debate)
 
-      visit debate_path(debate)
+      visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
 
       expect(page).to have_css("#comment_#{comment.id}")
       page.find("#comment_#{comment.id} a", text: "Hide").click
@@ -196,9 +197,9 @@ feature 'Admin activity' do
 
   context "User" do
     scenario "Shows moderation activity on users", :js do
-      proposal = create(:proposal)
+      proposal = create(:proposal, participatory_process: participatory_process)
 
-      visit proposal_path(proposal)
+      visit proposal_path(proposal, participatory_process_id: proposal.participatory_process.slug)
 
       expect(page).to have_selector("#proposal_#{proposal.id}")
       find("#proposal_#{proposal.id} a", text: 'Block author').click

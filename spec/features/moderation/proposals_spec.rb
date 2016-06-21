@@ -1,15 +1,16 @@
 require 'rails_helper'
 
 feature 'Moderate proposals' do
+  let(:participatory_process) { create(:participatory_process) }
 
   scenario 'Hide', :js do
     citizen = create(:user)
     moderator = create(:moderator)
 
-    proposal = create(:proposal)
+    proposal = create(:proposal, participatory_process: participatory_process)
 
     login_as(moderator)
-    visit proposal_path(proposal)
+    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process.slug)
 
     expect(page).to have_selector("#proposal_#{proposal.id}")
     find("#proposal_#{proposal.id} a", text: "Hide").click
@@ -22,10 +23,10 @@ feature 'Moderate proposals' do
 
   scenario 'Can not hide own proposal', :js do
     moderator = create(:moderator)
-    proposal = create(:proposal, author: moderator)
+    proposal = create(:proposal, participatory_process: participatory_process, author: moderator)
 
     login_as(moderator)
-    visit proposal_path(proposal)
+    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process.slug)
 
     within("#proposal_#{proposal.id}") do
       expect(page).to_not have_link('Hide')

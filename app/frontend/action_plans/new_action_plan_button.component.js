@@ -3,11 +3,11 @@ import { connect }              from 'react-redux';
 
 class NewActionPlanButton extends Component {
   render() {
-    const { session } = this.props;
+    const { session, participatoryProcessId } = this.props;
 
     if (session.can_create_action_plan) {
       return (
-        <a href="/action_plans/new" className="new-proposal button radius expand">{I18n.t("action_plans.index.new")}</a>
+        <a href={`/action_plans/new?participatory_process_id=${participatoryProcessId}`} className="new-proposal button radius expand">{I18n.t("action_plans.index.new")}</a>
       );
     }
     return null;
@@ -15,7 +15,7 @@ class NewActionPlanButton extends Component {
 }
 
 export default connect(
-  ({ session }) => ({ session })
+  ({ session, participatoryProcessId }) => ({ session, participatoryProcessId })
 )(NewActionPlanButton);
 
 NewActionPlanButton.propTypes = {

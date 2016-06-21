@@ -34,6 +34,7 @@
 //= require moderator_comment
 //= require moderator_debates
 //= require moderator_proposals
+//= require moderator_meetings
 //= require prevent_double_submission
 //= require gettext
 //= require annotator
@@ -72,6 +73,7 @@ var initialize_modules = function() {
   App.Menu.initialize();
   App.Share.initialize();
   App.Votes.initialize();
+  App.ModeratorMeetings.initialize();
   App.Dataviz.initialize();
 };
 

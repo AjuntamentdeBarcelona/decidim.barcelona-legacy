@@ -61,13 +61,18 @@ function getInitialSeedState() {
   return seed;
 }
 
-function createReducers(sessionState) {
+function createReducers(sessionState, participatoryProcessIdState) {
   let session = function (state = sessionState) {
+    return state;
+  };
+
+  let participatoryProcessId = function (state = participatoryProcessIdState) {
     return state;
   };
 
   return combineReducers({
     session,
+    participatoryProcessId,
     districts,
     categories,
     actionPlans,
@@ -83,7 +88,7 @@ export default class ActionPlansApp extends Component {
   render() {
     return (
       <Provider 
-        store={createStoreWithMiddleware(createReducers(this.props.session))}>
+        store={createStoreWithMiddleware(createReducers(this.props.session, this.props.participatory_process_id))}>
         <ActionPlans />
       </Provider>
     );
@@ -91,5 +96,6 @@ export default class ActionPlansApp extends Component {
 }
 
 ActionPlansApp.propTypes = {
-  session: PropTypes.object.isRequired
+  session: PropTypes.object.isRequired,
+  participatory_process_id: PropTypes.string.isRequired
 };

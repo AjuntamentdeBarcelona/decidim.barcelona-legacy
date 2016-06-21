@@ -13,7 +13,7 @@ class ActionPlanSerializer < ActiveModel::Serializer
   end
 
   def url
-    action_plan_path(object)
+    action_plan_path(object, participatory_process_id: object.participatory_process.slug)
   end
 
   def edit_url

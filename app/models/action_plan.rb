@@ -3,6 +3,7 @@ class ActionPlan < ActiveRecord::Base
 
   belongs_to :category
   belongs_to :subcategory
+  belongs_to :participatory_process
 
   has_many :revisions, class_name: ActionPlanRevision, dependent: :destroy
 
