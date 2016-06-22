@@ -12,6 +12,7 @@ class ProposalDecorator < ApplicationDecorator
   private
 
   def district
-    @district ||= District.find(object.district)
+    return nil if object.scope == 'city'
+    district
   end
 end
