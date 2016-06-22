@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160620074831) do
-=======
-ActiveRecord::Schema.define(version: 20160616090940) do
->>>>>>> Add default participatory process and references fields
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -316,11 +312,8 @@ ActiveRecord::Schema.define(version: 20160616090940) do
     t.integer  "attendee_count"
     t.text     "organizations"
     t.integer  "interventions"
-<<<<<<< HEAD
-    t.integer  "proposals_count",   default: 0,          null: false
-=======
+    t.integer  "proposals_count",          default: 0,          null: false
     t.integer  "participatory_process_id"
->>>>>>> Add default participatory process and references fields
   end
 
   add_index "meetings", ["participatory_process_id"], name: "index_meetings_on_participatory_process_id", using: :btree
