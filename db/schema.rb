@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< 9f401389d4b98fbecbd3d583dfd8fd54e2516274
 <<<<<<< af6a05af6b48d321cf4b2829cae3e786f3fe2545
 ActiveRecord::Schema.define(version: 20160705131323) do
 =======
@@ -59,6 +60,9 @@ ActiveRecord::Schema.define(version: 20160621110813) do
 >>>>>>> Use participatory process for action plans
 >>>>>>> Use participatory process for action plans
 >>>>>>> Use participatory process for action plans
+=======
+ActiveRecord::Schema.define(version: 20160621110813) do
+>>>>>>> Update schema
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
