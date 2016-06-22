@@ -19,5 +19,6 @@ export default connect(
 )(NewActionPlanButton);
 
 NewActionPlanButton.propTypes = {
-  session: PropTypes.object.isRequired
+  session: PropTypes.object.isRequired,
+  participatoryProcessId: PropTypes.string.isRequired
 };
