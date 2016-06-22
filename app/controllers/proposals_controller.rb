@@ -75,7 +75,7 @@ class ProposalsController < ApplicationController
     end
 
     def report(proposals)
-      proposals = ProposalDecorator.decorate_collection(proposals))
+      proposals = ProposalDecorator.decorate_collection(proposals)
 
       package = Axlsx::Package.new do |p|
         p.workbook.add_worksheet(:name => "Proposals") do |sheet|
