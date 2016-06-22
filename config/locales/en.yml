@@ -55,6 +55,15 @@ en:
     new:
       form:
         submit_button: Create action plan
+  admin:
+    menu:
+      participatory_processes: Participatory processes
+    participatory_processes:
+      index:
+        delete: Delete
+        edit: Edit
+        new: New
+        title: Title
   application:
     close: Close
   categories:
@@ -316,6 +325,16 @@ en:
     twitter:
       sign_in: Sign in with Twitter
       sign_up: Sign up with Twitter
+  participatory_processes:
+    edit:
+      form:
+        submit_button: Update process
+    form:
+      participatory_process_name: Participatory process name
+      participatory_process_slug: Participatory process slug
+    new:
+      form:
+        submit_button: Create process
   proposals:
     create:
       form:
