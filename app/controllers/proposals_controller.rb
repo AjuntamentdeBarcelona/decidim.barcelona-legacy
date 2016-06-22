@@ -75,12 +75,13 @@ class ProposalsController < ApplicationController
     end
 
     def report(proposals)
-      proposals = ProposalDecorator.decorate_collection(proposals)
+      proposals = ProposalDecorator.decorate_collection(proposals))
 
       package = Axlsx::Package.new do |p|
         p.workbook.add_worksheet(:name => "Proposals") do |sheet|
           sheet.add_row [
             "Proposal ID",
+            "Scope",
             "District",
             "Category",
             "Subcategory",
@@ -97,7 +98,8 @@ class ProposalsController < ApplicationController
           proposals.each do |proposal|
             row = []
             row.push proposal.id
-            row.push proposal.district_object.try(:name)
+            row.push proposal.scope
+            row.push proposal.district_name
             row.push proposal.category.try(:name).try(:[], I18n.locale.to_s)
             row.push proposal.subcategory.try(:name).try(:[], I18n.locale.to_s)
             row.push proposal.title

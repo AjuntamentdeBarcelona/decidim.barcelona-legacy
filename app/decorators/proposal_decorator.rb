@@ -2,17 +2,16 @@ class ProposalDecorator < ApplicationDecorator
   delegate_all
 
   def district_name
-    district.name if district
+    district.try(:name)
   end
 
   def district_id
-    district.id if district
+    district.try(:id)
   end
 
   private
 
   def district
-    return nil if object.scope == 'city'
-    district
+    @district ||= object.scope == 'district' ? District.find(object.district) : nil
   end
 end
