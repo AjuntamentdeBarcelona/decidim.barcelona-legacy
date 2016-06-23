@@ -1,6 +1,6 @@
 <div class="meeting-new row">
   <div class="small-12 medium-9 column">
-    <%= form_for(@resource, url: action_plan_revisions_path(@action_plan)) do |f| %>
+    <%= form_for(@resource, url: action_plan_revisions_path(@action_plan, participatory_process_id: @action_plan.participatory_process)) do |f| %>
       <%= render 'shared/errors', resource: @resource %>
 
         <div class="small-12 column">

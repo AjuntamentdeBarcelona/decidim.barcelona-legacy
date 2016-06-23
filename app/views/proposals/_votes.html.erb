@@ -9,7 +9,7 @@
     </span>
     <div class="proposal-comments">
       <i class="icon-comments"></i>&nbsp;
-      <%= link_to t("proposals.proposal.comments", count: proposal.comments_count), namespaced_proposal_path(proposal, anchor: "comments") %>
+      <%= link_to t("proposals.proposal.comments", count: proposal.comments_count), namespaced_proposal_path(proposal, participatory_process_id: proposal.participatory_process, anchor: "comments") %>
 
     </div>
   </div>

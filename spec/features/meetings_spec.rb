@@ -11,7 +11,7 @@ feature 'Meetings' do
     user = create(:user)
     login_as(user)
 
-    visit meetings_path
+    visit meetings_path(participatory_process_id: participatory_process)
 
     expect(page).to_not have_selector('.meeting-title', text: 'Meeting 1')
     expect(page).to have_selector('.meeting-title', text: 'Meeting 2')
@@ -21,7 +21,7 @@ feature 'Meetings' do
   scenario "Show page doesn't show edit buttons by default", :js do
     meeting = create(:meeting, participatory_process: participatory_process, title: "Meeting 1")
 
-    visit meeting_path(meeting, participatory_process_id: meeting.participatory_process.slug)
+    visit meeting_path(meeting, participatory_process_id: meeting.participatory_process)
 
     expect(page).to have_content(meeting.title)
     expect(page).to have_content(meeting.description)
@@ -36,7 +36,7 @@ feature 'Meetings' do
     meeting = create(:meeting, participatory_process: participatory_process, title: "Meeting 1")
 
     login_as(moderator)
-    visit meeting_path(meeting, participatory_process_id: meeting.participatory_process.slug)
+    visit meeting_path(meeting, participatory_process_id: meeting.participatory_process)
 
     expect(page).to have_content('Edit')
     expect(page).to have_content('Pictures')

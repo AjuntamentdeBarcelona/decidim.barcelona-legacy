@@ -18,7 +18,7 @@
                     search_path: debates_path(page: 1),
                     i18n_namespace: "debates.index.search_form" %>
         <% end %>
-        <%= link_to t("debates.index.start_debate"), new_debate_path, class: 'button radius expand' if can?(:create, Debate) %>
+        <%= link_to t("debates.index.start_debate"), new_debate_path(participatory_process_id: @participatory_process), class: 'button radius expand' if can?(:create, Debate) %>
         <%= render "shared/tag_cloud", taggable: 'debate' %>
       </aside>
     </div>
@@ -50,7 +50,7 @@
       <%= render 'shared/order_links', i18n_namespace: "debates.index" %>
 
       <div class="show-for-small-only">
-        <%= link_to t("debates.index.start_debate"), new_debate_path, class: 'button radius expand' %>
+        <%= link_to t("debates.index.start_debate"), new_debate_path(participatory_process_id: @participatory_process), class: 'button radius expand' %>
       </div>
 
       <%= render @debates %>

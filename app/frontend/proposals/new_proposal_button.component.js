@@ -7,7 +7,7 @@ class NewProposalButton extends Component {
 
     if (session.can_create_new_proposals) {
       return (
-        <a href={`/proposals/new?participatory_process_id=${participatoryProcessId}`} className="new-proposal button radius expand">{I18n.t("proposals.index.start_proposal")}</a>
+        <a href={`/${participatoryProcessId}/proposals/new`} className="new-proposal button radius expand">{I18n.t("proposals.index.start_proposal")}</a>
       );
     }
     return null;

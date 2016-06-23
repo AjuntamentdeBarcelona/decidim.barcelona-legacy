@@ -9,13 +9,13 @@
         <%= fa_icon 'home' %>
       <% end %>
 
-      <%= link_to t("layouts.header.proposals"), proposals_path, class: ("active" if  controller_name == "proposals") %>
+      <%= link_to t("layouts.header.proposals"), proposals_root_path, class: ("active" if  controller_name == "proposals"), data: {'no-turbolink' => true}  %>
       <% if can? :read, ActionPlan %>
-        <%= link_to t("layouts.header.action_plans"), action_plans_path, class: ("active" if  controller_name == "action_plans") %>
+        <%= link_to t("layouts.header.action_plans"), action_plans_root_path, class: ("active" if  controller_name == "action_plans"), data: {'no-turbolink' => true} %>
       <% end %>
-      <%= link_to t("layouts.header.meetings"), meetings_path, class: ("active" if current_page?(controller: "/meetings")) %>
+      <%= link_to t("layouts.header.meetings"), meetings_root_path, class: ("active" if controller_name == 'meetings'), data: {'no-turbolink' => true} %>
       <% if feature?(:debates) %>
-        <%= link_to t("layouts.header.debates"), debates_path, class: ("active" if controller_name == "debates") %>
+        <%= link_to t("layouts.header.debates"), debates_root_path, class: ("active" if controller_name == "debates"), data: {'no-turbolink' => true} %>
       <% end %>
       <% if feature?(:spending_proposals) %>
         <%= link_to t("layouts.header.spending_proposals"), spending_proposals_path, class: ("active" if controller_name == "spending_proposals") %>

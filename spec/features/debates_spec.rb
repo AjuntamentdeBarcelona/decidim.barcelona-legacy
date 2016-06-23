@@ -2,7 +2,7 @@
 require 'rails_helper'
 
 feature 'Debates' do
-  let(:participatory_process) { create(:participatory_process) }
+  let!(:participatory_process) { create(:participatory_process) }
 
   before do
     Setting['feature.debates.search'] = true
@@ -10,7 +10,7 @@ feature 'Debates' do
 
   scenario 'Disabled with a feature flag' do
     Setting['feature.debates'] = nil
-    expect{ visit debates_path(participatory_process_id: participatory_process.slug) }.to raise_exception(FeatureFlags::FeatureDisabled)
+    expect{ visit debates_path(participatory_process_id: participatory_process) }.to raise_exception(FeatureFlags::FeatureDisabled)
   end
 
   scenario 'Index' do
@@ -21,12 +21,12 @@ feature 'Debates' do
 
     create(:debate)
 
-    visit debates_path
+    visit debates_path(participatory_process_id: participatory_process)
 
     expect(page).to have_selector('#debates .debate', count: 2)
     debates.each do |debate|
       within('#debates') do
-        expect(page).to have_css("a[href='#{debate_path(debate, participatory_process_id: debate.participatory_process.slug)}']", text: debate.title)
+        expect(page).to have_css("a[href='#{debate_path(debate, participatory_process_id: debate.participatory_process)}']", text: debate.title)
       end
     end
   end
@@ -35,7 +35,7 @@ feature 'Debates' do
     per_page = Kaminari.config.default_per_page
     (per_page + 2).times { create(:debate, participatory_process: participatory_process) }
 
-    visit debates_path
+    visit debates_path(participatory_process_id: participatory_process)
 
     expect(page).to have_selector('#debates .debate', count: per_page)
 
@@ -52,7 +52,7 @@ feature 'Debates' do
   scenario 'Show' do
     debate = create(:debate)
 
-    visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process)
 
     expect(page).to have_content debate.title
     expect(page).to have_content "Debate description"
@@ -68,20 +68,20 @@ feature 'Debates' do
   end
 
   scenario 'Show: "Back" link directs to previous page', :js do
-    debate = create(:debate, title: 'Test Debate 1')
+    debate = create(:debate, participatory_process: participatory_process, title: 'Test Debate 1')
 
-    visit debates_path(order: :hot_score, page: 1)
+    visit debates_path(participatory_process_id: participatory_process, order: :hot_score, page: 1)
     first(:link, debate.title).click
     link_text = find_link('Go back')[:href]
 
-    expect(link_text).to include(debates_path order: :hot_score, page: 1)
+    expect(link_text).to include(debates_path participatory_process_id: participatory_process, order: :hot_score, page: 1)
   end
 
   scenario 'Create', :js do
     author = create(:user, :official)
     login_as(author)
 
-    visit new_debate_path(participatory_process_id: participatory_process.slug)
+    visit new_debate_path(participatory_process_id: participatory_process)
     fill_in 'debate_title', with: 'A title for a debate'
     fill_in_editor 'debate_description', with: 'This is very important because...'
     check 'debate_terms_of_service'
@@ -100,7 +100,7 @@ feature 'Debates' do
     tag = create(:tag)
     login_as(create(:user, :official))
 
-    visit new_debate_path(participatory_process_id: participatory_process.slug)
+    visit new_debate_path(participatory_process_id: participatory_process)
     fill_in 'debate_title', with: ""
     fill_in_editor 'debate_description', with: 'Very important issue...'
     check 'debate_terms_of_service'
@@ -119,7 +119,7 @@ feature 'Debates' do
     author = create(:user, :official)
     login_as(author)
 
-    visit new_debate_path(participatory_process_id: participatory_process.slug)
+    visit new_debate_path(participatory_process_id: participatory_process)
     click_button 'Start a debate'
     expect(page).to have_content error_message
   end
@@ -128,7 +128,7 @@ feature 'Debates' do
     author = create(:user, :official)
     login_as(author)
 
-    visit new_debate_path(participatory_process_id: participatory_process.slug)
+    visit new_debate_path(participatory_process_id: participatory_process)
     fill_in 'debate_title', with: 'Testing an attack'
     fill_in_editor 'debate_description', with: '<p>This is <script>alert(\"an attack\");</script></p>'
     check 'debate_terms_of_service'
@@ -145,7 +145,7 @@ feature 'Debates' do
     author = create(:user, :official)
     login_as(author)
 
-    visit new_debate_path(participatory_process_id: participatory_process.slug)
+    visit new_debate_path(participatory_process_id: participatory_process)
     fill_in 'debate_title', with: 'Testing auto link'
     fill_in_editor 'debate_description', with: '<p>This is a link www.example.org</p>'
     check 'debate_terms_of_service'
@@ -161,7 +161,7 @@ feature 'Debates' do
     author = create(:user, :official)
     login_as(author)
 
-    visit new_debate_path(participatory_process_id: participatory_process.slug)
+    visit new_debate_path(participatory_process_id: participatory_process)
     fill_in 'debate_title', with: 'Testing auto link'
     fill_in_editor 'debate_description', with: "<script>alert('hey')</script> http://example.org"
     check 'debate_terms_of_service'
@@ -186,7 +186,7 @@ feature 'Debates' do
         create(:tag, :featured, name: tag_name)
       end
 
-      visit new_debate_path(participatory_process_id: participatory_process.slug)
+      visit new_debate_path(participatory_process_id: participatory_process)
 
       fill_in 'debate_title', with: 'A super test'
       fill_in_editor 'debate_description', with: 'A super test'
@@ -205,7 +205,7 @@ feature 'Debates' do
     end
 
     scenario 'using dangerous strings', :js do
-      visit new_debate_path(participatory_process_id: participatory_process.slug)
+      visit new_debate_path(participatory_process_id: participatory_process)
 
       fill_in 'debate_title', with: 'A test of dangerous strings'
       fill_in_editor 'debate_description', with: 'A description suitable for this test'
@@ -228,8 +228,8 @@ feature 'Debates' do
     expect(debate).to be_editable
     login_as(create(:user, :official))
 
-    visit edit_debate_path(debate, participatory_process_id: debate.participatory_process.slug)
-    expect(current_path).not_to eq(edit_debate_path(debate, participatory_process_id: debate.participatory_process.slug))
+    visit edit_debate_path(debate, participatory_process_id: debate.participatory_process)
+    expect(current_path).not_to eq(edit_debate_path(debate, participatory_process_id: debate.participatory_process))
     expect(page).to have_content "You do not have permission to carry out the action 'edit' on debate."
   end
 
@@ -241,9 +241,9 @@ feature 'Debates' do
     expect(debate).to_not be_editable
     login_as(debate.author)
 
-    visit edit_debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+    visit edit_debate_path(debate, participatory_process_id: debate.participatory_process)
 
-    expect(current_path).not_to eq(edit_debate_path(debate, participatory_process_id: debate.participatory_process.slug))
+    expect(current_path).not_to eq(edit_debate_path(debate, participatory_process_id: debate.participatory_process))
     expect(page).to have_content 'You do not have permission to'
   end
 
@@ -251,8 +251,8 @@ feature 'Debates' do
     debate = create(:debate)
     login_as(debate.author)
 
-    visit edit_debate_path(debate, participatory_process_id: debate.participatory_process.slug)
-    expect(current_path).to eq(edit_debate_path(debate, participatory_process_id: debate.participatory_process.slug))
+    visit edit_debate_path(debate, participatory_process_id: debate.participatory_process)
+    expect(current_path).to eq(edit_debate_path(debate, participatory_process_id: debate.participatory_process))
 
     fill_in 'debate_title', with: "End child poverty"
     fill_in_editor 'debate_description', with: "Let's do something to end child poverty"
@@ -268,7 +268,7 @@ feature 'Debates' do
     debate = create(:debate)
     login_as(debate.author)
 
-    visit edit_debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+    visit edit_debate_path(debate, participatory_process_id: debate.participatory_process)
     fill_in 'debate_title', with: ""
     click_button "Save changes"
 
@@ -281,8 +281,8 @@ feature 'Debates' do
     tag = create(:tag)
     login_as(debate.author)
 
-    visit edit_debate_path(debate, participatory_process_id: debate.participatory_process.slug)
-    expect(current_path).to eq(edit_debate_path(debate, participatory_process_id: debate.participatory_process.slug))
+    visit edit_debate_path(debate, participatory_process_id: debate.participatory_process)
+    expect(current_path).to eq(edit_debate_path(debate, participatory_process_id: debate.participatory_process))
 
     fill_in 'debate_title', with: ""
     click_button "Save changes"
@@ -298,9 +298,9 @@ feature 'Debates' do
   describe 'Limiting tags shown' do
     scenario 'Index page shows up to 5 tags per debate' do
       tag_list = ["Hacienda", "Economía", "Medio Ambiente", "Corrupción", "Fiestas populares", "Prensa"]
-      create :debate, tag_list: tag_list
+      create :debate, participatory_process: participatory_process, tag_list: tag_list
 
-      visit debates_path
+      visit debates_path(participatory_process_id: participatory_process)
 
       within('.debate .tags') do
         expect(page).to have_content '1+'
@@ -309,9 +309,9 @@ feature 'Debates' do
 
     scenario 'Index page shows 3 tags with no plus link' do
       tag_list = ["Medio Ambiente", "Corrupción", "Fiestas populares"]
-      create :debate, tag_list: tag_list
+      create :debate, participatory_process: participatory_process, tag_list: tag_list
 
-      visit debates_path
+      visit debates_path(participatory_process_id: participatory_process)
 
       within('.debate .tags') do
         tag_list.each do |tag|
@@ -327,7 +327,7 @@ feature 'Debates' do
     debate = create(:debate)
 
     login_as(user)
-    visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process)
 
     within "#debate_#{debate.id}" do
       page.find("#flag-expand-debate-#{debate.id}").click
@@ -345,7 +345,7 @@ feature 'Debates' do
     Flag.flag(user, debate)
 
     login_as(user)
-    visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process)
 
     within "#debate_#{debate.id}" do
       page.find("#unflag-expand-debate-#{debate.id}").click
@@ -364,7 +364,7 @@ feature 'Debates' do
       create(:debate, participatory_process: participatory_process, title: 'Worst').update_column(:hot_score, 2)
       create(:debate, participatory_process: participatory_process, title: 'Medium').update_column(:hot_score, 5)
 
-      visit debates_path
+      visit debates_path(participatory_process_id: participatory_process)
 
       expect('Best').to appear_before('Medium')
       expect('Medium').to appear_before('Worst')
@@ -375,7 +375,7 @@ feature 'Debates' do
       create(:debate, participatory_process: participatory_process, title: 'Worst').update_column(:confidence_score, 2)
       create(:debate, participatory_process: participatory_process, title: 'Medium').update_column(:confidence_score, 5)
 
-      visit debates_path
+      visit debates_path(participatory_process_id: participatory_process)
       click_link 'highest rated'
 
       expect(page.find('.debate', match: :first)).to have_content('Best')
@@ -394,7 +394,7 @@ feature 'Debates' do
       create(:debate, participatory_process: participatory_process, title: 'Medium', created_at: Time.now - 1.hour).update_column(:confidence_score, 2)
       create(:debate, participatory_process: participatory_process, title: 'Worst',  created_at: Time.now - 1.day).update_column(:confidence_score, 3)
 
-      visit debates_path(order: "confidence_score")
+      visit debates_path(participatory_process_id: participatory_process, order: "confidence_score")
       click_link 'newest'
 
       expect(page.find('.debate', match: :first)).to have_content('Best')
@@ -418,7 +418,7 @@ feature 'Debates' do
         debate2 = create(:debate, participatory_process: participatory_process, title: "Schwifty Hello")
         debate3 = create(:debate, participatory_process: participatory_process, title: "Do not show me")
 
-        visit debates_path
+        visit debates_path(participatory_process_id: participatory_process)
 
         within "#search_form" do
           fill_in "search", with: "Schwifty"
@@ -435,7 +435,7 @@ feature 'Debates' do
       end
 
       scenario "Maintain search criteria" do
-        visit debates_path(participatory_process_id: participatory_process.slug)
+        visit debates_path(participatory_process_id: participatory_process)
 
         within "#search_form" do
           fill_in "search", with: "Schwifty"
@@ -454,7 +454,7 @@ feature 'Debates' do
         debate2 = create(:debate, participatory_process: participatory_process, title: "Schwifty Hello")
         debate3 = create(:debate, participatory_process: participatory_process, title: "Do not show me")
 
-        visit debates_path
+        visit debates_path(participatory_process_id: participatory_process)
 
         click_link "Advanced search"
         fill_in "Write the text", with: "Schwifty"
@@ -479,7 +479,7 @@ feature 'Debates' do
           debate2 = create(:debate, participatory_process: participatory_process, author: ana)
           debate3 = create(:debate, participatory_process: participatory_process, author: john)
 
-          visit debates_path
+          visit debates_path(participatory_process_id: participatory_process)
 
           click_link "Advanced search"
           select "Public employee", from: "advanced_search_official_level"
@@ -502,7 +502,7 @@ feature 'Debates' do
           debate2 = create(:debate, participatory_process: participatory_process, author: ana)
           debate3 = create(:debate, participatory_process: participatory_process, author: john)
 
-          visit debates_path
+          visit debates_path(participatory_process_id: participatory_process)
 
           click_link "Advanced search"
           select "Municipal Organization", from: "advanced_search_official_level"
@@ -525,7 +525,7 @@ feature 'Debates' do
           debate2 = create(:debate, participatory_process: participatory_process, author: ana)
           debate3 = create(:debate, participatory_process: participatory_process, author: john)
 
-          visit debates_path
+          visit debates_path(participatory_process_id: participatory_process)
 
           click_link "Advanced search"
           select "General director", from: "advanced_search_official_level"
@@ -548,7 +548,7 @@ feature 'Debates' do
           debate2 = create(:debate, participatory_process: participatory_process, author: ana)
           debate3 = create(:debate, participatory_process: participatory_process, author: john)
 
-          visit debates_path
+          visit debates_path(participatory_process_id: participatory_process)
 
           click_link "Advanced search"
           select "City councillor", from: "advanced_search_official_level"
@@ -571,7 +571,7 @@ feature 'Debates' do
           debate2 = create(:debate, participatory_process: participatory_process, author: ana)
           debate3 = create(:debate, participatory_process: participatory_process, author: john)
 
-          visit debates_path
+          visit debates_path(participatory_process_id: participatory_process)
 
           click_link "Advanced search"
           select "Mayoress", from: "advanced_search_official_level"
@@ -597,7 +597,7 @@ feature 'Debates' do
             debate2 = create(:debate, participatory_process: participatory_process, created_at: 1.hour.ago)
             debate3 = create(:debate, participatory_process: participatory_process, created_at: 2.days.ago)
 
-            visit debates_path
+            visit debates_path(participatory_process_id: participatory_process)
 
             click_link "Advanced search"
             select "Last 24 hours", from: "js-advanced-search-date-min"
@@ -617,7 +617,7 @@ feature 'Debates' do
             debate2 = create(:debate, participatory_process: participatory_process, created_at: 5.days.ago)
             debate3 = create(:debate, participatory_process: participatory_process, created_at: 8.days.ago)
 
-            visit debates_path
+            visit debates_path(participatory_process_id: participatory_process)
 
             click_link "Advanced search"
             select "Last week", from: "js-advanced-search-date-min"
@@ -637,7 +637,7 @@ feature 'Debates' do
             debate2 = create(:debate, participatory_process: participatory_process, created_at: 20.days.ago)
             debate3 = create(:debate, participatory_process: participatory_process, created_at: 33.days.ago)
 
-            visit debates_path
+            visit debates_path(participatory_process_id: participatory_process)
 
             click_link "Advanced search"
             select "Last month", from: "js-advanced-search-date-min"
@@ -657,7 +657,7 @@ feature 'Debates' do
             debate2 = create(:debate, participatory_process: participatory_process, created_at: 350.days.ago)
             debate3 = create(:debate, participatory_process: participatory_process, created_at: 370.days.ago)
 
-            visit debates_path
+            visit debates_path(participatory_process_id: participatory_process)
 
             click_link "Advanced search"
             select "Last year", from: "js-advanced-search-date-min"
@@ -679,7 +679,7 @@ feature 'Debates' do
           debate2 = create(:debate, participatory_process: participatory_process, created_at: 3.days.ago)
           debate3 = create(:debate, participatory_process: participatory_process, created_at: 9.days.ago)
 
-          visit debates_path
+          visit debates_path(participatory_process_id: participatory_process)
 
           click_link "Advanced search"
           select "Customized", from: "js-advanced-search-date-min"
@@ -700,11 +700,11 @@ feature 'Debates' do
           ana  = create :user, official_level: 1
           john = create :user, official_level: 1
 
-          debate1 = create(:debate, title: "Get Schwifty",   author: ana,  created_at: 1.minute.ago)
-          debate2 = create(:debate, title: "Hello Schwifty", author: john, created_at: 2.days.ago)
-          debate3 = create(:debate, title: "Save the forest")
+          debate1 = create(:debate, participatory_process: participatory_process, title: "Get Schwifty",   author: ana,  created_at: 1.minute.ago)
+          debate2 = create(:debate, participatory_process: participatory_process, title: "Hello Schwifty", author: john, created_at: 2.days.ago)
+          debate3 = create(:debate, participatory_process: participatory_process, title: "Save the forest")
 
-          visit debates_path
+          visit debates_path(participatory_process_id: participatory_process)
 
           click_link "Advanced search"
           fill_in "Write the text", with: "Schwifty"
@@ -721,7 +721,7 @@ feature 'Debates' do
         end
 
         scenario "Maintain advanced search criteria", :js do
-          visit debates_path(participatory_process_id: participatory_process.slug)
+          visit debates_path(participatory_process_id: participatory_process)
           click_link "Advanced search"
 
           fill_in "Write the text", with: "Schwifty"
@@ -738,7 +738,7 @@ feature 'Debates' do
         end
 
         scenario "Maintain custom date search criteria", :js do
-          visit debates_path(participatory_process_id: participatory_process.slug)
+          visit debates_path(participatory_process_id: participatory_process)
           click_link "Advanced search"
 
           select "Customized", from: "js-advanced-search-date-min"
@@ -761,7 +761,7 @@ feature 'Debates' do
       debate2 = create(:debate, title: "Show what you got", cached_votes_up: 1)
       debate3 = create(:debate, title: "Show you got",      cached_votes_up: 100)
 
-      visit debates_path
+      visit debates_path(participatory_process_id: participatory_process)
       fill_in "search", with: "Show what you got"
       click_button "Search"
 
@@ -780,7 +780,7 @@ feature 'Debates' do
       debate3 = create(:debate, title: "Show you got",      cached_votes_up: 100, created_at: Time.now)
       debate4 = create(:debate, title: "Do not display",    cached_votes_up: 1,   created_at: 1.week.ago)
 
-      visit debates_path
+      visit debates_path(participatory_process_id: participatory_process)
       fill_in "search", with: "Show what you got"
       click_button "Search"
       click_link 'newest'
@@ -798,7 +798,7 @@ feature 'Debates' do
       featured_debates = create_featured_debates
       debate = create(:debate, title: "Abcdefghi")
 
-      visit debates_path
+      visit debates_path(participatory_process_id: participatory_process)
       within "#search_form" do
         fill_in "search", with: debate.title
         click_button "Search"
@@ -814,7 +814,7 @@ feature 'Debates' do
     featured_debates = create_featured_debates
     debates = create(:debate, tag_list: "123")
 
-    visit debates_path(tag: "123")
+    visit debates_path(participatory_process_id: participatory_process, tag: "123")
 
     expect(page).to_not have_selector('#debates .debate-featured')
     expect(page).to_not have_selector('#featured-debates')
@@ -824,22 +824,22 @@ feature 'Debates' do
     good_debate = create(:debate)
     conflictive_debate = create(:debate, :conflictive)
 
-    visit debate_path(conflictive_debate, participatory_process_id: conflictive_debate.participatory_process.slug)
+    visit debate_path(conflictive_debate, participatory_process_id: conflictive_debate.participatory_process)
     expect(page).to have_content "This debate has been flagged as inappropriate by several users."
 
-    visit debate_path(good_debate, participatory_process_id: good_debate.participatory_process.slug)
+    visit debate_path(good_debate, participatory_process_id: good_debate.participatory_process)
     expect(page).to_not have_content "This debate has been flagged as inappropriate by several users."
   end
 
   scenario 'Erased author' do
     user = create(:user)
-    debate = create(:debate, author: user)
+    debate = create(:debate, participatory_process: participatory_process, author: user)
     user.erase
 
-    visit debates_path
+    visit debates_path(participatory_process_id: participatory_process)
     expect(page).to have_content('User deleted')
 
-    visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process)
     expect(page).to have_content('User deleted')
   end
 end

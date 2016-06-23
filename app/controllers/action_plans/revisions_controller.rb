@@ -1,4 +1,5 @@
 class ActionPlans::RevisionsController < ApplicationController
+  include HasParticipatoryProcess
   include ModerateActions
 
   has_filters %w{all}, only: :index
@@ -27,7 +28,7 @@ class ActionPlans::RevisionsController < ApplicationController
     @resource.author = current_user
 
     if @resource.save
-      redirect_to action_plan_url(@action_plan), notice: t('flash.actions.create.notice', resource_name: "#{resource_name.capitalize}")
+      redirect_to action_plan_url(@action_plan, participatory_process_id: @action_plan.participatory_process), notice: t('flash.actions.create.notice', resource_name: "#{resource_name.capitalize}")
     else
       set_resource_instance
       render :new

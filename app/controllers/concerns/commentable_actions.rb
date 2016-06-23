@@ -38,7 +38,7 @@ module CommentableActions
     if verify_recaptcha(model: @resource) && @resource.save
       track_event
       if @resource.participatory_process.present?
-        redirect_path = url_for(controller: controller_name, action: :show, id: @resource, participatory_process_id: @resource.participatory_process.slug)
+        redirect_path = url_for(controller: controller_name, action: :show, id: @resource, participatory_process_id: @resource.participatory_process)
       else
         redirect_path = url_for(controller: controller_name, action: :show, id: @resource)
       end
@@ -57,7 +57,12 @@ module CommentableActions
   def update
     resource.assign_attributes(strong_params)
     if verify_recaptcha(model: resource) && resource.save
-      redirect_to resource, notice: t("flash.actions.update.#{resource_name.underscore}")
+      if resource.participatory_process.present?
+        redirect_path = url_for(controller: controller_name, action: :show, id: resource, participatory_process_id: resource.participatory_process)
+      else
+        redirect_path = url_for(controller: controller_name, action: :show, id: resource)
+      end
+      redirect_to redirect_path, notice: t("flash.actions.update.#{resource_name.underscore}")
     else
       load_featured_tags
       set_resource_instance

@@ -7,11 +7,11 @@
     <% end %>
 
     <div class="right">
-      <%= link_to t("proposals.edit.show_link"), @proposal %>
+      <%= link_to t("proposals.edit.show_link"), proposal_url(@proposal, participatory_process_id: @proposal.participatory_process) %>
     </div>
 
     <h1><%= t("proposals.edit.editing") %></h1>
 
-    <%= render "form", form_url: proposal_url(@proposal) %>
+    <%= render "form", form_url: proposal_url(@proposal, participatory_process_id: @proposal.participatory_process) %>
   </div>
 </div>

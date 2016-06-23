@@ -16,7 +16,7 @@
     <h3><%= t '.recent_comments_on_own_proposals' %></h3>
 
     <% @summary.recent_comments_on_own_proposals.group_by { |c| c.commentable }.each do |proposal, comments|  %>
-      <h4><%= link_to(proposal.title, proposal_url(proposal, participatory_process_id: proposal.participatory_process.slug)) %></h4>
+      <h4><%= link_to(proposal.title, proposal_url(proposal, participatory_process_id: proposal.participatory_process)) %></h4>
       <%= render partial: 'comments', locals: { comments: comments }%>
     <% end %>
   <% end %>
@@ -25,7 +25,7 @@
     <h3><%= t '.recent_comments_on_voted_proposals' %></h3>
 
     <% @summary.recent_comments_on_voted_proposals.group_by { |c| c.commentable }.each do |proposal, comments|  %>
-      <h4><%= link_to(proposal.title, proposal_url(proposal, participatory_process_id: proposal.participatory_process.slug)) %></h4>
+      <h4><%= link_to(proposal.title, proposal_url(proposal, participatory_process_id: proposal.participatory_process)) %></h4>
       <%= render partial: 'comments', locals: { comments: comments }%>
     <% end %>
   <% end %>
@@ -35,7 +35,7 @@
     <ul>
       <% @official_random_proposals.each do |proposal|  %>
         <li>
-          <%= link_to(proposal.title, proposal_url(proposal, participatory_process_id: proposal.participatory_process.slug)) %>
+          <%= link_to(proposal.title, proposal_url(proposal, participatory_process_id: proposal.participatory_process)) %>
           <br />
           <%= render partial: 'proposal_info', locals: { proposal: proposal } %>
         </li>
@@ -48,7 +48,7 @@
     <ul>
       <% @random_proposals.each do |proposal|  %>
         <li>
-          <%= link_to(proposal.title, proposal_url(proposal, participatory_process_id: proposal.participatory_process.slug)) %>
+          <%= link_to(proposal.title, proposal_url(proposal, participatory_process_id: proposal.participatory_process)) %>
           <br />
           <%= render partial: 'proposal_info', locals: { proposal: proposal } %>
         </li>
@@ -66,7 +66,7 @@
     <ul>
       <% @upcoming_meetings.each do |meeting|  %>
         <li>
-          <%= link_to(meeting.title, meeting_url(meeting, participatory_process_id: meeting.participatory_process.slug)) %>
+          <%= link_to(meeting.title, meeting_url(meeting, participatory_process_id: meeting.participatory_process)) %>
           <% if meeting.held_at %>
             <br />
             <%=l meeting.held_at %><% if meeting.start_at %> - <%= l(meeting.start_at) %><% end %><br />(<%= meeting.address %>)
@@ -84,7 +84,7 @@
     <ul>
       <% Debate.upcoming.each do |debate|  %>
         <li>
-          <%= link_to(debate.title, debate_url(debate, participatory_process_id: debate.participatory_process.slug)) %>
+          <%= link_to(debate.title, debate_url(debate, participatory_process_id: debate.participatory_process)) %>
            (<%= l(debate.starts_at, format: :datetime) %>)
         </li>
       <% end %>

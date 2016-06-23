@@ -1,7 +1,7 @@
 <% provide :title do %><%= @meeting.title %><% end %>
 <% provide :social_media_meta_tags do %>
 <%= render "shared/social_media_meta_tags",
-            social_url: meeting_url(@meeting),
+            social_url: meeting_url(@meeting, participatory_process_id: @meeting.participatory_process),
             social_title: @meeting.title,
             social_media_image: asset_url('social-media-icon.png'),
             social_description: text_with_links(@meeting.description) %>

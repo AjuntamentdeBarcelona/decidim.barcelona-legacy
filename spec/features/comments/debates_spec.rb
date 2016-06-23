@@ -9,7 +9,7 @@ feature 'Commenting debates', :js do
   scenario 'Index' do
     3.times { create(:comment, commentable: debate) }
 
-    visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process)
 
     expect(page).to have_css('.comment', count: 3)
 
@@ -26,7 +26,7 @@ feature 'Commenting debates', :js do
     c2 = create(:comment, :with_confidence_score, commentable: debate, cached_votes_up: 10, cached_votes_total: 12, created_at: Time.now - 1)
     c3 = create(:comment, :with_confidence_score, commentable: debate, cached_votes_up: 1, cached_votes_total: 2, created_at: Time.now)
 
-    visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process)
 
     expect(page).to have_css(".comment", count: 3)
 
@@ -52,7 +52,7 @@ feature 'Commenting debates', :js do
     old_child = create(:comment, commentable: debate, parent_id: new_root.id, created_at: Time.now - 10)
     new_child = create(:comment, commentable: debate, parent_id: new_root.id, created_at: Time.now)
 
-    visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process)
 
     expect(page).to have_css(".comment", count: 4)
 
@@ -75,7 +75,7 @@ feature 'Commenting debates', :js do
   scenario 'Turns links into html links' do
     comment = create :comment, commentable: debate, body: 'Built with http://rubyonrails.org/'
 
-    visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process)
 
     expect(page).to have_css("#comment_#{comment.id}")
 
@@ -90,7 +90,7 @@ feature 'Commenting debates', :js do
   scenario 'Sanitizes comment body for security' do
     comment = create :comment, commentable: debate, body: "<script>alert('hola')</script> <a href=\"javascript:alert('sorpresa!')\">click me<a/> http://madrid.es"
 
-    visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process)
 
     expect(page).to have_css("#comment_#{comment.id}")
 
@@ -104,7 +104,7 @@ feature 'Commenting debates', :js do
   feature 'Not logged user' do
     scenario 'can not see comments forms' do
       create(:comment, commentable: debate)
-      visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+      visit debate_path(debate, participatory_process_id: debate.participatory_process)
 
       expect(page).to have_content 'You must Sign in or Sign up to leave a comment'
       within('#comments') do
@@ -116,7 +116,7 @@ feature 'Commenting debates', :js do
 
   scenario 'Create a comment' do
     login_as(user)
-    visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process)
 
     fill_in "comment-body-root", with: 'Have you thought about...?'
     click_button 'Publish comment'
@@ -132,7 +132,7 @@ feature 'Commenting debates', :js do
     comment = create(:comment, commentable: debate, user: citizen)
 
     login_as(manuela)
-    visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process)
 
     expect(page).not_to have_css('.comments_list .loading-component')
     page.find('a.reply').click
@@ -154,7 +154,7 @@ feature 'Commenting debates', :js do
       parent = parent.children.first
     end
 
-    visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process)
     expect(page).not_to have_css('.loading-component')
     expect(page).to have_css('.comments_list .comment', count: 8)
   end
@@ -163,7 +163,7 @@ feature 'Commenting debates', :js do
     comment = create(:comment, commentable: debate)
 
     login_as(user)
-    visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process)
 
     within "#comment_#{comment.id}" do
       page.find("#flag-action-#{comment.id}").click
@@ -178,7 +178,7 @@ feature 'Commenting debates', :js do
     Flag.flag(user, comment)
 
     login_as(user)
-    visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process)
 
     within "#comment_#{comment.id}" do
       page.find("#unflag-action-#{comment.id}").click
@@ -193,7 +193,7 @@ feature 'Commenting debates', :js do
     comment = create(:comment, commentable: debate)
 
     login_as(user)
-    visit debates_path
+    visit debates_path(participatory_process_id: participatory_process)
     click_link "Should we change the world?"
 
     within "#comment_#{comment.id}" do
@@ -207,7 +207,7 @@ feature 'Commenting debates', :js do
     comment = create(:comment, commentable: debate, body: 'this should be visible')
     comment.user.erase
 
-    visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process)
     within "#comment_#{comment.id}" do
       expect(page).to have_content('User deleted')
       expect(page).to have_content('this should be visible')
@@ -219,7 +219,7 @@ feature 'Commenting debates', :js do
       moderator = create(:moderator)
 
       login_as(moderator)
-      visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+      visit debate_path(debate, participatory_process_id: debate.participatory_process)
 
       fill_in "comment-body-root", with: "I am moderating!"
       check "comment-as-moderator-root"
@@ -237,7 +237,7 @@ feature 'Commenting debates', :js do
       comment = create(:comment, commentable: debate)
 
       login_as(moderator)
-      visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+      visit debate_path(debate, participatory_process_id: debate.participatory_process)
 
       expect(page).to have_css("#comment_#{comment.id}")
       page.find('a.reply').click
@@ -261,7 +261,7 @@ feature 'Commenting debates', :js do
       moderator = create(:moderator)
 
       login_as(moderator)
-      visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+      visit debate_path(debate, participatory_process_id: debate.participatory_process)
 
       expect(page).to_not have_content "Comment as administrator"
     end
@@ -272,7 +272,7 @@ feature 'Commenting debates', :js do
       admin = create(:administrator)
 
       login_as(admin)
-      visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+      visit debate_path(debate, participatory_process_id: debate.participatory_process)
 
       fill_in "comment-body-root", with: "I am your Admin!"
       check "comment-as-administrator-root"
@@ -291,7 +291,7 @@ feature 'Commenting debates', :js do
       comment = create(:comment, commentable: debate, user: citizen)
 
       login_as(admin)
-      visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+      visit debate_path(debate, participatory_process_id: debate.participatory_process)
 
       expect(page).to have_css("#comment_#{comment.id}")
       page.find('a.reply').click
@@ -315,7 +315,7 @@ feature 'Commenting debates', :js do
       admin  = create(:administrator)
 
       login_as(admin)
-      visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+      visit debate_path(debate, participatory_process_id: debate.participatory_process)
 
       expect(page).to_not have_content "Comment as moderator"
     end
@@ -335,7 +335,7 @@ feature 'Commenting debates', :js do
       create(:vote, voter: @manuela, votable: @comment, vote_flag: true)
       create(:vote, voter: @pablo, votable: @comment, vote_flag: false)
 
-      visit debate_path(@debate, participatory_process_id: @debate.participatory_process.slug)
+      visit debate_path(@debate, participatory_process_id: @debate.participatory_process)
 
       within("#comment_#{@comment.id}_votes") do
         find(".in_favor", text: "1")
@@ -346,7 +346,7 @@ feature 'Commenting debates', :js do
     end
 
     scenario 'Create' do
-      visit debate_path(@debate, participatory_process_id: @debate.participatory_process.slug)
+      visit debate_path(@debate, participatory_process_id: @debate.participatory_process)
 
       within("#comment_#{@comment.id}_votes") do
         find(".in_favor a").click
@@ -359,7 +359,7 @@ feature 'Commenting debates', :js do
     end
 
     scenario 'Update' do
-      visit debate_path(@debate, participatory_process_id: @debate.participatory_process.slug)
+      visit debate_path(@debate, participatory_process_id: @debate.participatory_process)
 
       within("#comment_#{@comment.id}_votes") do
         find('.in_favor a').click
@@ -373,7 +373,7 @@ feature 'Commenting debates', :js do
     end
 
     scenario 'Trying to vote multiple times' do
-      visit debate_path(@debate, participatory_process_id: @debate.participatory_process.slug)
+      visit debate_path(@debate, participatory_process_id: @debate.participatory_process)
 
       within("#comment_#{@comment.id}_votes") do
         find('.in_favor a').click

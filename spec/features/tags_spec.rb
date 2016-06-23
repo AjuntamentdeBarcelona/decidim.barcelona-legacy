@@ -8,7 +8,7 @@ feature 'Tags' do
     earth = create(:debate, participatory_process: participatory_process, tag_list: 'Medio Ambiente')
     money = create(:debate, participatory_process: participatory_process, tag_list: 'Economía')
 
-    visit debates_path
+    visit debates_path(participatory_process_id: participatory_process)
 
     within "#debate_#{earth.id}" do
       expect(page).to have_content "Medio Ambiente"
@@ -25,7 +25,7 @@ feature 'Tags' do
     debate3 = create(:debate, participatory_process: participatory_process, tag_list: 'Hacienda')
     debate4 = create(:debate, participatory_process: participatory_process, tag_list: 'Hacienda')
 
-    visit debates_path
+    visit debates_path(participatory_process_id: participatory_process)
     first(:link, 'Salud').click
 
     within("#debates") do
@@ -36,7 +36,7 @@ feature 'Tags' do
       expect(page).to_not have_content(debate4.title)
     end
 
-    visit debates_path(tag: 'salud')
+    visit debates_path(participatory_process_id: participatory_process, tag: 'salud')
 
     within("#debates") do
       expect(page).to have_css('.debate', count: 2)
@@ -50,7 +50,7 @@ feature 'Tags' do
   scenario 'Show' do
     debate = create(:debate, participatory_process: participatory_process, tag_list: 'Hacienda, Economía')
 
-    visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process)
 
     expect(page).to have_content "Economía"
     expect(page).to have_content "Hacienda"
@@ -62,7 +62,7 @@ feature 'Tags' do
     5.times  { create(:debate, participatory_process: participatory_process, tag_list: 'Educación') }
     10.times { create(:debate, participatory_process: participatory_process, tag_list: 'Economía') }
 
-    visit debates_path
+    visit debates_path(participatory_process_id: participatory_process)
 
     within(:css, "#tag-cloud") do
       expect(page.find("a:eq(1)")).to have_content("Economía (10)")
@@ -76,7 +76,7 @@ feature 'Tags' do
     user = create(:user, :official)
     login_as(user)
 
-    visit new_debate_path(participatory_process_id: participatory_process.slug)
+    visit new_debate_path(participatory_process_id: participatory_process)
     fill_in 'debate_title', with: 'Title'
     fill_in_editor 'debate_description', with: 'Description'
     check 'debate_terms_of_service'
@@ -95,7 +95,7 @@ feature 'Tags' do
     user = create(:user, :official)
     login_as(user)
 
-    visit new_debate_path(participatory_process_id: participatory_process.slug)
+    visit new_debate_path(participatory_process_id: participatory_process)
     fill_in 'debate_title', with: 'Title'
     fill_in_editor 'debate_description', with: 'Description'
     check 'debate_terms_of_service'
@@ -112,7 +112,7 @@ feature 'Tags' do
     debate = create(:debate, participatory_process: participatory_process, tag_list: 'Economía')
 
     login_as(debate.author)
-    visit edit_debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+    visit edit_debate_path(debate, participatory_process_id: debate.participatory_process)
 
     expect(page).to have_selector("input[value='Economía']")
 
@@ -130,7 +130,7 @@ feature 'Tags' do
     debate = create(:debate, participatory_process: participatory_process, tag_list: 'Economía')
 
     login_as(debate.author)
-    visit edit_debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+    visit edit_debate_path(debate, participatory_process_id: debate.participatory_process)
 
     fill_in 'debate_tag_list', with: ""
     click_button 'Save changes'

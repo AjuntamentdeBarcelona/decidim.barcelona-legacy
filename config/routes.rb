@@ -284,7 +284,7 @@ Rails.application.routes.draw do
     resources :debates, only: [:show]
   end
 
-  scope "(:participatory_process_id)" do
+  scope ":participatory_process_id" do
     resources :proposals do
       member do
         post :vote
@@ -310,6 +310,17 @@ Rails.application.routes.draw do
         get :build_from_proposal
       end
     end
+  end
+
+  ["proposals", "action_plans", "meetings", "debates"].each do |path|
+    get "/#{path}", as: "#{path}_root" , to: redirect { |_, request|
+      p = ParticipatoryProcess.first
+      if p.present?
+        "/#{p.slug}#{request.path}"
+      else
+        raise ActionController::RoutingError.new('Not Found')
+      end
+    }
   end
 
   if Rails.env.development?

@@ -12,7 +12,7 @@ module ProposalsSelectorHelper
     proposals.map do |proposal|
       {
         id: proposal.id,
-        url: proposal_url(proposal),
+        url: proposal_url(proposal, participatory_process_id: proposal.participatory_process),
         title: proposal.title,
         summary: proposal.summary,
         source: proposal.source,

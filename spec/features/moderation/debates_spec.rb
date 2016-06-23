@@ -18,7 +18,7 @@ feature 'Moderate debates' do
     debate = create(:debate, participatory_process: participatory_process)
 
     login_as(moderator)
-    visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process)
 
     within("#debate_#{debate.id}") do
       click_link 'Hide'
@@ -27,7 +27,7 @@ feature 'Moderate debates' do
     expect(page).to have_css("#debate_#{debate.id}.faded")
 
     login_as(citizen)
-    visit debates_path
+    visit debates_path(participatory_process_id: participatory_process)
 
     expect(page).to have_css('.debate', count: 0)
   end
@@ -37,7 +37,7 @@ feature 'Moderate debates' do
     debate = create(:debate, participatory_process: participatory_process, author: moderator)
 
     login_as(moderator)
-    visit debate_path(debate, participatory_process_id: debate.participatory_process.slug)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process)
 
     within("#debate_#{debate.id}") do
       expect(page).to_not have_link('Hide')

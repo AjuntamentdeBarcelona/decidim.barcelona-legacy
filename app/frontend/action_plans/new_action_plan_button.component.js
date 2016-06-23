@@ -7,7 +7,7 @@ class NewActionPlanButton extends Component {
 
     if (session.can_create_action_plan) {
       return (
-        <a href={`/action_plans/new?participatory_process_id=${participatoryProcessId}`} className="new-proposal button radius expand">{I18n.t("action_plans.index.new")}</a>
+        <a href={`/${participatoryProcessId}/action_plans/new`} className="new-proposal button radius expand">{I18n.t("action_plans.index.new")}</a>
       );
     }
     return null;
