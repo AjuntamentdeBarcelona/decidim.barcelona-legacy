@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Moderate meetings' do
-  let(:participatory_process) { create(:participatory_process) }
+  let!(:participatory_process) { create(:participatory_process) }
 
   before :each do
     @category = create(:category, participatory_process: participatory_process)

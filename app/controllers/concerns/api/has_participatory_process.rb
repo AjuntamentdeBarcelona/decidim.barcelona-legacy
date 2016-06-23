@@ -5,8 +5,12 @@ module Api::HasParticipatoryProcess
     before_filter :participatory_process, only: [:index]
 
     def participatory_process
-      if params[:participatory_process_id].present?
-        @participatory_process = ParticipatoryProcess.find(params[:participatory_process_id])
+      begin
+        if params[:participatory_process_id].present?
+          @participatory_process = ParticipatoryProcess.find(params[:participatory_process_id])
+        end
+      rescue
+        render json: {error: "Not found"}, status: 404
       end
     end
   end

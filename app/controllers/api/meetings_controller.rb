@@ -10,7 +10,7 @@ class Api::MeetingsController < Api::ApplicationController
       render json: @meetings
     else
       meetings = Meeting.all
-      meetings = meetings.where(participatory_process_id: @participatory_process.try(:id))
+      meetings = meetings.where(participatory_process: @participatory_process)
       filter = ResourceFilter.new(params, filter_date: true)
 
       @meetings = filter.filter_collection(meetings.includes(:category, :subcategory))

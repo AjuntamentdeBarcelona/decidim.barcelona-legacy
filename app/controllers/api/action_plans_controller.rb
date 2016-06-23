@@ -13,7 +13,7 @@ class Api::ActionPlansController < Api::ApplicationController
     set_seed
 
     action_plans = ActionPlan
-      .where(participatory_process_id: @participatory_process.try(:id))
+      .where(participatory_process: @participatory_process)
       .includes(:revisions, :action_plan_statistics)
 
     @action_plans = ResourceFilter.new(params, user: current_user)
