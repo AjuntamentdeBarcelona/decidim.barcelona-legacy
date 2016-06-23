@@ -47,7 +47,6 @@
 //= require markerclusterer
 //= require registration_form
 //= require verification_form
-//= require home_animations
 //= require page_navigation
 //= require menu
 //= require share
@@ -67,7 +66,6 @@ var initialize_modules = function() {
   App.Districts.initialize();
   App.AdvancedSearch.initialize();
   App.RegistrationForm.initialize();
-  App.HomeAnimations.initialize();
   App.PageNavigation.initialize();
   App.VerificationForm.initialize();
   App.Menu.initialize();
