@@ -1,11 +1,11 @@
 class ProposalsController < ApplicationController
   FEATURED_PROPOSALS_LIMIT = 3
+  include HasParticipatoryProcess
   include CommentableActions
   include FlagActions
 
   before_action :set_search_order, only: [:index]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :load_participation_process
 
   has_orders %w{random hot_score confidence_score created_at relevance}, only: :index
   has_orders %w{most_voted newest oldest}, only: :show

@@ -1,4 +1,5 @@
 class DebatesController < ApplicationController
+  include HasParticipatoryProcess
   include FeatureFlags
   include CommentableActions
   include FlagActions
@@ -8,7 +9,6 @@ class DebatesController < ApplicationController
   before_action :parse_tag_filter, only: :index
   before_action :set_search_order, only: :index
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :load_participation_process
 
   feature_flag :debates
 

@@ -1,11 +1,11 @@
 class Moderation::MeetingsController < Moderation::BaseController
+  include HasParticipatoryProcess
   include ModerateActions
 
   has_filters %w{pending closed all}, only: :index
 
   before_action :load_resources, only: [:index]
   before_action :load_featured_tags, only: [:new, :create, :edit, :update]
-  before_action :load_participation_process, only: [:new, :create]
 
   load_and_authorize_resource
 
