@@ -81,6 +81,7 @@ class ProposalsController < ApplicationController
         p.workbook.add_worksheet(:name => "Proposals") do |sheet|
           sheet.add_row [
             "Proposal ID",
+            "Origin",
             "Scope",
             "District",
             "Category",
@@ -98,6 +99,7 @@ class ProposalsController < ApplicationController
           proposals.each do |proposal|
             row = []
             row.push proposal.id
+            row.push proposal.origin
             row.push proposal.scope
             row.push proposal.district_name
             row.push proposal.category.try(:name).try(:[], I18n.locale.to_s)
