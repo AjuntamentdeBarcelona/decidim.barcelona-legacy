@@ -1,9 +1,8 @@
 # coding: utf-8
 class Api::ActionPlansController < Api::ApplicationController
+  include Api::HasParticipatoryProcess
   include HasOrders
   include ActionView::Helpers::SanitizeHelper
-
-  before_action :load_participation_process, only: [:index]
 
   before_action :authenticate_user!
   load_and_authorize_resource

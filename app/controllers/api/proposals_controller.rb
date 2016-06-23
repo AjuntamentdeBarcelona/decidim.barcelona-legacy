@@ -1,8 +1,8 @@
 class Api::ProposalsController < Api::ApplicationController
+  include Api::HasParticipatoryProcess
   include HasOrders
 
   before_action :authenticate_user!, only: [:update, :hide, :flag, :unflag]
-  before_action :load_participation_process, only: [:index]
 
   load_resource
   authorize_resource except: [:update, :references, :action_plans]

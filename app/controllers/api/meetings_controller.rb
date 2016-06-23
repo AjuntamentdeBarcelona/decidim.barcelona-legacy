@@ -1,5 +1,5 @@
 class Api::MeetingsController < Api::ApplicationController
-  before_action :load_participation_process, only: [:index]
+  include Api::HasParticipatoryProcess
   load_and_authorize_resource
 
   def index
