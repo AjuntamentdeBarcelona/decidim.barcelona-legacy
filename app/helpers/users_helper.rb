@@ -20,7 +20,16 @@ module UsersHelper
       commentable.title +
       "</abbr>".html_safe
     else
-      link_to(commentable.title, commentable)
+      if commentable.respond_to? :participatory_process
+        link_to(commentable.title, url_for({
+          controller: commentable.class.name.downcase.pluralize,
+          action: 'show',
+          id: commentable.id,
+          participatory_process_id: commentable.participatory_process
+        }))
+      else
+        link_to(commentable.title, commentable)
+      end
     end
   end
 

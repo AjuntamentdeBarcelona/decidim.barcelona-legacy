@@ -11,6 +11,7 @@ class WelcomeController < ApplicationController
   end
 
   def welcome
+    @participatory_process = ParticipatoryProcess.first
   end
 
   def highlights

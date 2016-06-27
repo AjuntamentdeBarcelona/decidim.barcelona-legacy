@@ -22,6 +22,6 @@
     <%= t("welcome.welcome.skip_verification") %>
   </p>
   <p class="text-center">
-    <%= link_to t("welcome.welcome.see_proposals"), proposals_path , class: "button secondary radius" %>
+    <%= link_to t("welcome.welcome.see_proposals"), proposals_path(participatory_process_id: @participatory_process) , class: "button secondary radius" %>
   </p>
 </div>

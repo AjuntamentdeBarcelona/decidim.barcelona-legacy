@@ -219,7 +219,7 @@ feature 'Commenting proposals', :js do
   end
 
   scenario "Flagging turbolinks sanity check" do
-    proposal = create(:proposal, title: "Should we change the world?")
+    proposal = create(:proposal, participatory_process: participatory_process, title: "Should we change the world?")
     comment = create(:comment, commentable: proposal)
 
     login_as(user)

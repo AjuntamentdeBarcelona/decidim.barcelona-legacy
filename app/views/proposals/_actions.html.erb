@@ -5,6 +5,6 @@
 
 <% if can? :hide, proposal.author %>
   &nbsp;|&nbsp;
-  <%= link_to t("admin.actions.hide_author").capitalize, hide_moderation_user_path(proposal.author_id),
+  <%= link_to t("admin.actions.hide_author").capitalize, hide_moderation_user_path(proposal.author_id, participatory_process_id: proposal.participatory_process),
               method: :put, data: { confirm: t('admin.actions.confirm') } %>
 <% end %>

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 feature "Welcome screen" do
+  let!(:participatory_process) { create(:participatory_process) }
 
   scenario 'a regular users sees it the first time he logs in' do
     user = create(:user)

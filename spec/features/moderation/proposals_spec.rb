@@ -16,7 +16,7 @@ feature 'Moderate proposals' do
     find("#proposal_#{proposal.id} a", text: "Hide").click
 
     login_as(citizen)
-    visit proposals_path(participatory_process: participatory_process)
+    visit proposals_path(participatory_process_id: participatory_process)
 
     expect(page).to have_css('.proposal', count: 0)
   end

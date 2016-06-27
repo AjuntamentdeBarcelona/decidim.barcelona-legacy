@@ -211,7 +211,7 @@ feature 'Votes' do
 
     feature 'Single proposal' do
       background do
-        @proposal = create(:proposal)
+        @proposal = create(:proposal, participatory_process: participatory_process)
       end
 
       scenario 'Show no votes', :js do
