@@ -4,10 +4,12 @@ function authors(actionPlan){
   let { actionPlansProposals } = actionPlan;
 
   if (actionPlansProposals) {
-    return actionPlansProposals.map(
+    let authors = actionPlansProposals.map(
       (actionPlanProposal) =>
-        actionPlanProposal.proposal.author.name
+        actionPlanProposal.proposal.author.name.trim()
     );
+
+    return Array.from(new Set(authors));
   } else {
     return [];
   }
