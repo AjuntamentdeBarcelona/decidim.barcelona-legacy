@@ -25,8 +25,9 @@ Docker is the recommended development environment as it guarantees library parit
 
 ```
 docker-compose build
-docker-compose run --rm app db:create           
-docker-compose run --rm app db:setup SEED=true
+docker-compose run --rm app bundle install
+docker-compose run --rm app bundle exec rake db:create           
+docker-compose run --rm app bundle exec rake db:setup SEED=true
 docker-compose up
 ```
 
