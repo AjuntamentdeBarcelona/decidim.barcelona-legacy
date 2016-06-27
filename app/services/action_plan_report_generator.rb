@@ -48,7 +48,7 @@ class ActionPlanReportGenerator < ActionView::Base
   private
 
   def scope
-    @scope ||= ActionPlan.order('weight desc').includes(:proposals)
+    @scope ||= ActionPlan.order('weight asc').includes(:proposals)
   end
 
   def decorate(action_plans)
