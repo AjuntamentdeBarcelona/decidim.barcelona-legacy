@@ -1,9 +1,29 @@
 .proposals-table{
+  td{
+    padding: rem-calc(25);
+  }
+
   td.selector{
     width: rem-calc(150);
   }
 
+  .proposal-summary{
+    margin-top: rem-calc(10);
+  }
+
   td.proposal-stats{
     width: rem-calc(100);
+
+    ul{
+      padding: rem-calc(10);
+      margin: 0;
+      background-color: #fff;
+      width: rem-calc(150);
+      li{
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+    }
   }
 }

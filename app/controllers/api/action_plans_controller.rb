@@ -3,7 +3,6 @@ class Api::ActionPlansController < Api::ApplicationController
   include HasOrders
   include ActionView::Helpers::SanitizeHelper
 
-  before_action :authenticate_user!
   load_and_authorize_resource
 
   has_orders %w{weight random confidence_score participants}, only: :index
