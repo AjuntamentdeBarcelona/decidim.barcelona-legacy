@@ -10,7 +10,7 @@ class Comment < ActiveRecord::Base
 
   validates :body, presence: true
   validates :user, presence: true
-  validates_inclusion_of :commentable_type, in: ["Debate", "Proposal"]
+  validate :commentable_valid?
 
   validates :alignment, inclusion: { in: -1..1 }, unless: :parent_id
   validates :alignment, presence: false, if: :parent_id
@@ -139,5 +139,9 @@ class Comment < ActiveRecord::Base
 
     def dereference
       Referrer.new(self, self.commentable).dereference!
+    end
+
+    def commentable_valid?
+      commentable.try(:arguable?)
     end
 end

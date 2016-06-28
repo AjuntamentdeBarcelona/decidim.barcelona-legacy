@@ -14,6 +14,7 @@ import ActionPlanMeetings       from './action_plan_meetings.component';
 import ActionPlanReviewer       from './action_plan_reviewer.component';
 import WeightControl            from './weight_control.component';
 import ActionPlanAuthors        from './action_plan_authors.component';
+import Comments                 from '../comments/comments.component';
 
 import htmlToReact              from '../application/html_to_react';
 
@@ -113,6 +114,7 @@ class ActionPlanShow extends Component {
               </div>
             </aside>
           </div>
+          <Comments commentable={{...actionPlan, type: 'ActionPlan'}} />
         </div>
       );
     }
