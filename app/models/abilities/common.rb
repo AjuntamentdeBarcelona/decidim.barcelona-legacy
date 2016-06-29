@@ -41,6 +41,7 @@ module Abilities
       end
 
       can :comment, Debate
+      can :comment, ActionPlan
 
       can :manage, Follow, follower_id: user.id
 

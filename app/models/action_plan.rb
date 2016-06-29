@@ -8,6 +8,7 @@ class ActionPlan < ActiveRecord::Base
 
   has_many :action_plans_proposals
   has_and_belongs_to_many :proposals, through: :action_plans_proposals
+  has_many :comments, as: :commentable
 
   validates :category, :subcategory, presence: true
   validates :scope, inclusion: { in: %w(city district) }
@@ -29,5 +30,9 @@ class ActionPlan < ActiveRecord::Base
 
   def current_revision
     revisions.first
+  end
+
+  def arguable?
+    true
   end
 end

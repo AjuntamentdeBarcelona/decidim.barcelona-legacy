@@ -182,7 +182,8 @@ class Comments extends Component {
 }
 
 function mapStateToProps(state, { commentable }) {
-  const resource = state[commentable.type.toLowerCase()];
+  let commentableType = commentable.type.charAt(0).toLowerCase() + commentable.type.slice(1);
+  const resource = state[commentableType]; //actionplan
   const comments = resource && resource.comments;
 
   return { 

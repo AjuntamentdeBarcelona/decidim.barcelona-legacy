@@ -11,6 +11,8 @@ import { actionPlan }           from './action_plans.reducers';
 import categories               from '../categories/categories.reducers';
 import districts                from '../districts/districts.reducers';
 import filters                  from '../filters/filters.reducers';
+import order                    from '../order/order.reducers';
+import pagination               from '../pagination/pagination.reducers';
 
 import ActionPlanShow           from './action_plan_show.component';
 
@@ -30,6 +32,8 @@ function createReducers(sessionState) {
 
   return combineReducers({
     session,
+    order,
+    pagination,
     actionPlan,
     categories,
     districts,

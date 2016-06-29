@@ -109,6 +109,8 @@ class Api::CommentsController < Api::ApplicationController
     else
       notifiable = comment.commentable
     end
-    Notification.add(notifiable.author_id, notifiable) unless comment.author_id == notifiable.author_id
+    if notifiable.try(:author_id)
+      Notification.add(notifiable.author.id, notifiable) unless comment.author == notifiable.author
+    end
  end
 end

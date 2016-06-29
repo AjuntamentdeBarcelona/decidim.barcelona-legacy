@@ -41,7 +41,7 @@ class Comment extends Component {
         negative: alignment < 0,
         neutral: alignment === 0,
         positive: alignment > 0,
-        'comment-author': author.id === commentable.author.id
+        'comment-author': commentable.author && author.id === commentable.author.id
       }
     );
 

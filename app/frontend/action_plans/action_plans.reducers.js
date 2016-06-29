@@ -1,4 +1,6 @@
-import { 
+import { combineReducers } from 'redux';
+
+import {
   FETCH_ACTION_PLANS, 
   FETCH_ACTION_PLAN,
   FETCH_ACTION_PLAN_PROPOSALS,
@@ -9,6 +11,9 @@ import {
   ADD_ACTION_PLAN_PROPOSAL,
   REMOVE_ACTION_PLAN_PROPOSAL
 } from './action_plans.actions';
+
+import { comments } from  '../comments/comments.reducers';
+import { ADD_NEW_COMMENT } from '../comments/comments.actions';
 
 export const actionPlans = function (state = [], action) {
   switch (action.type) {
@@ -24,7 +29,7 @@ export const actionPlans = function (state = [], action) {
 }
 
 export const actionPlan = function (state = {}, action) {
-  let actionPlan, actionPlansProposals, meetings;
+  let actionPlan, actionPlansProposals, meetings, comment;
 
   switch (action.type) {
     case UPDATE_ACTION_PLAN:
@@ -60,6 +65,28 @@ export const actionPlan = function (state = {}, action) {
         ...state,
         deleted: true
       };
+    case ADD_NEW_COMMENT:
+      comment = action.payload.data.comment;
+
+      return {
+        ...state,
+        total_comments: state.total_comments + 1,
+        total_positive_comments: comment.alignment > 0 ? 
+          state.total_positive_comments + 1 : state.total_positive_comments,
+        total_negative_comments: comment.alignment < 0 ? 
+          state.total_negative_comments + 1 : state.total_negative_comments,
+        total_neutral_comments: comment.alignment === 0 ? 
+          state.total_neutral_comments + 1 : state.total_neutral_comments,
+        comments: comments(state.comments, action)
+      };
+    default:
+      return {
+        ...state,
+        ...combineReducers({
+          comments
+        })({
+          comments: state.comments
+        }, action)
+      }
   }
-  return state;
 }
