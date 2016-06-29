@@ -9,6 +9,13 @@ class ProposalDecorator < ApplicationDecorator
     district.try(:id)
   end
 
+  def origin
+    return 'official' if object.official?
+    return 'meeting' if object.from_meeting?
+    return 'organization' if object.author.organization?
+    return 'citizenship'
+  end
+
   private
 
   def district
