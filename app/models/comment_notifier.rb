@@ -20,8 +20,8 @@ class CommentNotifier
   end
 
   def email_on_comment?
-    commentable_author = @comment.commentable.try(:author)
-    commentable_author && commentable_author.email_on_comment?
+    return false if @author == @comment.commentable.author
+    @comment.commentable.try(:author).try(:email_on_comment?)
   end
 
   def email_on_comment_reply?
