@@ -1,4 +1,5 @@
 import { PropTypes } from 'react';
+import unique        from 'array-unique';
 
 function authors(actionPlan){
   let { actionPlansProposals } = actionPlan;
@@ -9,7 +10,7 @@ function authors(actionPlan){
         actionPlanProposal.proposal.author.name.trim()
     );
 
-    return Array.from(new Set(authors));
+    return unique(authors);
   } else {
     return [];
   }
