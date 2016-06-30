@@ -1,5 +1,7 @@
 import { Component, PropTypes } from 'react';
 import { connect }              from 'react-redux';
+import ActionPlanStatistics     from '../action_plans/action_plan_statistics.component';
+import htmlToReact              from '../application/html_to_react';
 
 import * as actions             from './proposals.actions';
 
@@ -17,16 +19,25 @@ class ProposalActionPlans extends Component {
     if (actionPlans.length > 0) {
       return (
         <div className="proposal-action-plans">
-          <h3>{ I18n.t('components.action_plans.title') }</h3>
-          <ul className="related-action-plans">
+          <h2>{ I18n.t('components.action_plans.title') }</h2>
+          <table className="related-action-plans">
             {
               actionPlans.map(actionPlan => 
-                <li key={actionPlan.id}>
-                  <a href={actionPlan.url}>{actionPlan.title}</a>
-                </li>
+                <tr key={actionPlan.id}>
+                  <td className="action-plan-title">
+                    <a href={actionPlan.url}>
+                      {actionPlan.title}
+                    </a>
+                    {htmlToReact(actionPlan.description)}
+                  </td>
+                  <td>
+                    <ActionPlanStatistics
+                    statistics={actionPlan.statistics} />
+                  </td>
+                </tr>
               )
             }
-          </ul>
+          </table>
         </div>
       );
     }

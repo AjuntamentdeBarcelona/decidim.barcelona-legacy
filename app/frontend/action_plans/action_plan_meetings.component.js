@@ -25,6 +25,9 @@ class ActionPlanMeetings extends Component {
   }
 
   render() {
+    let { actionPlan: { meetings } } = this.props;
+    if(!meetings || meetings.length === 0) return null;
+
     return (
       <div className="row action-plan-meetings-component">
         <div className="small-12 medium-12 column">

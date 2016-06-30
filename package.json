@@ -1,6 +1,7 @@
 {
   "name": "decidim.barcelona",
   "dependencies": {
+    "array-unique": "^0.2.1",
     "autolinker": "^0.26.0",
     "axios": "^0.9.1",
     "babel-core": "^6.7.2",

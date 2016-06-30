@@ -15,17 +15,18 @@ export default class ActionPlanProposalsTable extends Component {
               let proposal = actionPlansProposal.proposal;
               return (
                 <tr key={proposal.id}>
-                <td>
+                <td className="proposal-badge-cell">
                     <ProposalBadge proposal={proposal} />
                 </td>
                 <td>
                     {proposal.code} - <a href={proposal.url} target="_blank">{proposal.title}</a>
-                    <div>{proposal.summary}</div>
+                    <div className="proposal-summary">{proposal.summary}</div>
                 </td>
                 <td className="proposal-stats">
-                    {I18n.t("components.action_plan_proposals.votes", { votes: proposal.total_votes})}
-                    <br />
-                    {I18n.t("components.action_plan_proposals.comments", { comments: proposal.total_comments})}
+                  <ul>
+                    <li>{I18n.t("components.action_plan_proposals.votes", { votes: proposal.total_votes})}</li>
+                    <li>{I18n.t("components.action_plan_proposals.comments", { comments: proposal.total_comments})}</li>
+                  </ul>
                 </td>
                 {this.renderRemoveButton(proposal)}
                 </tr>

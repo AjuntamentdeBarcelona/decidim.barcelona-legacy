@@ -1,5 +1,4 @@
 class Api::ActionPlans::ProposalsController < Api::ApplicationController
-  before_action :authenticate_user!
   load_and_authorize_resource :action_plan
 
   def index
