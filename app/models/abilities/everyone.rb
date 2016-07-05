@@ -14,7 +14,6 @@ module Abilities
       can :read, Category
       can :read, Subcategory
       can :read, District
-      can :read, ActionPlan
     end
   end
 end
