@@ -1,4 +1,9 @@
-FactoryGirl.define do 
+FactoryGirl.define do  factory :newsletter do
+    title "MyText"
+body "MyText"
+sent false
+  end
+ 
   factory :action_plan_report do
     file "MyString"
   end

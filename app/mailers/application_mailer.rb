@@ -15,6 +15,7 @@ class ApplicationMailer < ActionMailer::Base
   end
 
   def inline_logo
+    attachments.inline['badge.png'] = File.read(Rails.root.join('app/assets/images/newsletter/badge.png'))
     attachments.inline['logo.png'] = File.read(Rails.root.join('app/assets/images/newsletter/logo.png'))
     attachments.inline['header.jpg'] = File.read(Rails.root.join('app/assets/images/newsletter/header.jpg'))
     true
