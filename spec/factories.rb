@@ -1,9 +1,14 @@
-FactoryGirl.define do  factory :newsletter do
-    title "MyText"
-body "MyText"
-sent false
+FactoryGirl.define do
+  factory :newsletter do
+    title do { I18n.default_locale => "Newsletter subject" } end
+    body do {I18n.default_locale => "Newsletter body" } end
+    sent_at nil
+
+    trait :sent do
+      sent_at Date.yesterday
+    end
   end
- 
+
   factory :action_plan_report do
     file "MyString"
   end

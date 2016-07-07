@@ -10,4 +10,12 @@ class Newsletter < ActiveRecord::Base
   def self.unsent
     where(sent_at: nil)
   end
+
+  def sent?
+    sent_at.present?
+  end
+
+  def unsent?
+    !sent?
+  end
 end

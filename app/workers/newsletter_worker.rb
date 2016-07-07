@@ -2,17 +2,17 @@ class NewsletterWorker
   include Sidekiq::Worker
 
   def perform(newsletter_id)
-    newsletter = Newsletter.unsent.find(newsletter_id)
-    user_scope = User.where(email: 'josepjaume@gmail.com')
+    newsletter = Newsletter.find(newsletter_id)
+    user_scope = User.all
 
     newsletter.with_lock do
-      break if newsletter.sent_at
+      break if newsletter.sent?
 
       user_scope.where.not(email: nil).where(newsletter: true).find_each do |user|
         UserWorker.perform_async(user.id, newsletter.id)
       end
 
-      newsletter.update(sent_at: Time.now)
+      newsletter.update_attributes(sent_at: Time.now)
     end
   end
 
