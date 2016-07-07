@@ -118,4 +118,17 @@
     }
 
   }
+
+  .city-badge-row{
+    .city-badge{
+      display: block;
+      img{
+        display: block;
+        height: rem-calc(44);
+        width: rem-calc(136);
+        margin-left: auto;
+        margin-right: 0;
+      }
+    }
+  }
 }

@@ -43,6 +43,7 @@ RSpec.configure do |config|
   config.before(:each) do |example|
     I18n.locale = :en
     Rails.cache.clear
+    ActionMailer::Base.deliveries = []
     $redis.flushdb
     load "#{Rails.root}/db/seeds.rb"
   end
