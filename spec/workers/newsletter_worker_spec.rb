@@ -10,7 +10,10 @@ describe NewsletterWorker do
     end
 
     let(:body) do
-      { 'ca' => '<p>Cos en català.</p>', 'es' => '<p>Cuerpo en castellano.</p>' }
+      {
+        'ca' => '<p>Hola %{name},</p><p>Cos en català.</p>',
+        'es' => '<p>Hola %{name},</p><p>Cuerpo en castellano.</p>'
+      }
     end
 
     let!(:user1) { create(:user, newsletter: true, locale: 'es') }
@@ -28,10 +31,12 @@ describe NewsletterWorker do
       email1 = deliveries.find { |d| d.to.include?(user1.email) }
       expect(email1.subject).to eq('Título en castellano.')
       expect(mail_content(email1)).to match(%r{<p.*>Cuerpo en castellano.</p>})
+      expect(mail_content(email1)).to include("Hola #{user1.username}")
 
       email2 = deliveries.find { |d| d.to.include?(user2.email) }
       expect(email2.subject).to eq('Títol en català.')
       expect(mail_content(email2)).to match(%r{<p.*>Cos en català.</p>})
+      expect(mail_content(email2)).to include("Hola #{user2.username}")
     end
 
     it 'sets the newsletter as sent' do
