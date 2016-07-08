@@ -5,7 +5,7 @@ class NewsletterMailer < ApplicationMailer
 
     with_user(user) do
       @newsletter = newsletter.decorate
-      @body = @newsletter.body.gsub('%{name}', user.username)
+      @body = @newsletter.body.gsub('%{name}', user.username || '')
       mail(to: user.email, subject: @newsletter.title)
     end
   end
