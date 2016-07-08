@@ -6,3 +6,4 @@ production:
   - [mailer, 1]
   - [mailers, 1]
   - [recommendations, 1]
+  - [newsletters, 5]

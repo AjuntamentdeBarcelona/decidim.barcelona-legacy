@@ -1,5 +1,6 @@
 class NewsletterWorker
   include Sidekiq::Worker
+  sidekiq_options queue: :newsletters
 
   def perform(newsletter_id)
     newsletter = Newsletter.find(newsletter_id)
@@ -18,6 +19,7 @@ class NewsletterWorker
 
   class UserWorker
     include Sidekiq::Worker
+    sidekiq_options queue: :newsletters
 
     def perform(user_id, newsletter_id)
       user = User.find(user_id)
