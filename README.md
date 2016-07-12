@@ -11,7 +11,9 @@ Citizen Participation and Open Government Application
 [![Dependency Status](https://gemnasium.com/AjuntamentdeBarcelona/decidim.barcelona.svg)](https://gemnasium.com/AjuntamentdeBarcelona/decidim.barcelona)
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-This is the opensource code repository for "decidim.barcelona", based on [Consul](https://github.com/consul/consul), developed by the Madrid City government.
+This is the opensource code repository for "decidim.barcelona", based on [Consul](https://github.com/consul/consul), developed by the Madrid City government. We keep collaborating with *Consul's* team in order to improve its codebase and help its community grow.
+
+**Warning**: *decidim.barcelona* isn't meant to be reused; if you want to build your own project on top of it, take a look at [Consul](https://github.com/consul/consul) instead.
 
 ## Tech stack
 
