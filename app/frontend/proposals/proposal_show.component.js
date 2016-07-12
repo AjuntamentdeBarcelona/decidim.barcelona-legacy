@@ -17,6 +17,7 @@ import ProposalVoteBox          from './proposal_vote_box.component';
 import ProposalReferences       from './proposal_references.component';
 import ProposalActionPlans      from './proposal_action_plans.component';
 import ProposalMeetings         from './proposal_meetings.component';
+import ProposalAnswerMessage    from './proposal_answer_message.component';
 
 import htmlToReact              from '../application/html_to_react';
 import simpleFormat             from '../application/simple_format';
@@ -95,10 +96,6 @@ class ProposalShow extends Component {
                 <a href={url}>{title}<ProposalBadge proposal={proposal} /></a>
               </h2>
 
-              <div className="alert-box info radius margin-top">
-                <strong>{ I18n.t("proposals.proposal.closing") }</strong>
-              </div>
-
               {this.renderConflictiveWarning(conflictive)}
 
               <ProposalInfoExtended
@@ -124,17 +121,19 @@ class ProposalShow extends Component {
                 subcategory={ subcategory } 
                 useServerLinks={ true }/>
 
+              <ProposalAnswerMessage answer={proposal.answer} />
+
+              <ProposalActionPlans />
+
               <ProposalReferences />
+
+              <ProposalReviewer />
 
               <div className="js-moderator-proposal-actions margin">
                 {this.renderHideButton(id, can_hide)}
                 {this.renderHideAuthorButton(id, can_hide_author)}
                 {this.renderBuildActionPlanButton(id)}
               </div>
-
-              <ProposalActionPlans />
-
-              <ProposalReviewer />
             </div>
 
             <aside className="small-12 medium-3 column">
