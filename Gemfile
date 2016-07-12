@@ -136,7 +136,7 @@ group :test do
   gem 'email_spec'
   gem "webmock"
   gem 'rspec-repeat'
-  gem "coveralls"
+  gem 'codecov'
   gem 'timecop'
 end
 
