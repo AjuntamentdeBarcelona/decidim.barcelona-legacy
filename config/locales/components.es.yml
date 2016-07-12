@@ -104,6 +104,9 @@ es:
       select_template: Selecciona una respuesta por defecto
       templates: respuesta predeterminada
       title: Resposta de la proposta
+    proposal_answer_message:
+      accepted: Esta propuesta ha sido aceptada y ha quedado incluida en la siguiente actuación.
+      rejected: 'Esta propuesta ha sido rechazada por los siguientes motivos:'
     proposal_carousel:
       see_more: Ver más
       votes: "%{votes} soportes"
