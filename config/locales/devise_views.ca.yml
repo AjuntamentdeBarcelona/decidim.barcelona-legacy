@@ -111,7 +111,7 @@ ca:
           waiting_for: 'S''està esperant confirmació de:'
         new:
           email_label: Adreça electrònica
-          legal_lopd_text: 'D''acord amb la Llei Orgànica 15/1999, de 13 de desembre, de Protecció de Dades de Caràcter Personal, us informem que les vostres dades personals s''incorporaran al fitxer Participació Ciutadana de l''Ajuntament de Barcelona, amb la finalitat de Participar en el procés de definició del nou Pla d’Acció Municipal. Les vostres dades no seran cedides a tercers. Podeu exercitar els drets d''accés, rectificació, cancel·lació i oposició, adreçant-vos per escrit al Registre General de l''Ajuntament: pl. Sant Jaume 1, 08002 Barcelona, indicant clarament en l''assumpte Exercici de Dret LOPD.'
+          legal_lopd_text: 'D''acord amb la Llei Orgànica 15/1999, de 13 de desembre, de Protecció de Dades de Caràcter Personal, us informem que les vostres dades personals s''incorporaran al fitxer Participació Ciutadana de l''Ajuntament de Barcelona, amb la finalitat de Participar en el procés de definició del nou Pla d’Acció Municipal. Les vostres dades no seran cedides a tercers amb l''excepció del nom d''usuari que és públic. Podeu exercitar els drets d''accés, rectificació, cancel·lació i oposició, adreçant-vos per escrit al Registre General de l''Ajuntament: pl. Sant Jaume 1, 08002 Barcelona, indicant clarament en l''assumpte Exercici de Dret LOPD.'
           organization_signup: Representes una organització o col·lectiu? %{signup_link}
           organization_signup_link: Registra't aquí
           password_confirmation_label: Confirma la contrasenya
@@ -123,7 +123,7 @@ ca:
           username_is_available: Nom d'usuari disponible
           username_is_not_available: Nom d'usuari ja existent
           username_label: Nom d'usuari
-          username_note: Nom que apareixerà en les teves publicacions
+          username_note: Nom públic que apareixerà en les teves publicacions. Amb l'objectiu de garantitzar l'anonimat pot ser qualsevol nom.
         success:
           back_to_index: Ho he entès; torna a la pàgina principal
           instructions_1_html: "<b>Revisa el correu electrònic</b>. T'hem enviat un <b>enllaç per confirmar el compte.</b>"
