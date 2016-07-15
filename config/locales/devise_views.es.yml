@@ -110,7 +110,7 @@ es:
           waiting_for: 'Esperando confirmación de:'
         new:
           email_label: Correo electrónico
-          legal_lopd_text: 'De acuerdo con la Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal, le informamos de que sus datos personales se incorporarán al fichero de participación ciudadana del Ayuntamiento de Barcelona, con la finalidad de participar en el proceso de definición del nuevo Programa de Actuación Municipal. Sus datos no serán cedidos a terceros. Puede ejercer los derechos de acceso, de rectificación, de cancelación y de oposición dirigiéndose por escrito al Registro General del Ayuntamiento: plaza de Sant Jaume 1, 08002 Barcelona, indicando claramente en el asunto "Ejercicio de Derecho LOPD"'
+          legal_lopd_text: 'De acuerdo con la Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal, le informamos de que sus datos personales se incorporarán al fichero de participación ciudadana del Ayuntamiento de Barcelona, con la finalidad de participar en el proceso de definición del nuevo Programa de Actuación Municipal. Sus datos no serán cedidos a terceros con la excepción del nombre de usuario que es público. Puede ejercer los derechos de acceso, de rectificación, de cancelación y de oposición dirigiéndose por escrito al Registro General del Ayuntamiento: plaza de Sant Jaume 1, 08002 Barcelona, indicando claramente en el asunto "Ejercicio de Derecho LOPD"'
           organization_signup: "¿Representas a una organización o colectivo? %{signup_link}"
           organization_signup_link: Regístrate aquí
           password_confirmation_label: Confirmar contraseña
@@ -122,7 +122,7 @@ es:
           username_is_available: Nombre de usuario disponible
           username_is_not_available: Nombre de usuario ya existente
           username_label: Nombre de usuario
-          username_note: Nombre público que aparecerá en tus publicaciones
+          username_note: Nombre público que aparecerà en tus publicaciones. Con el objetivo de garantizar el anonimato puede ser cualquier nombre.
         success:
           back_to_index: Lo he entendido; vuelve a la página principal.
           instructions_1_html: Por favor, <b>revisa tu correo electrónico</b>. Te hemos enviado un <b>enlace para confirmar tu cuenta</b>.
