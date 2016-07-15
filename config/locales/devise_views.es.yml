@@ -122,7 +122,7 @@ es:
           username_is_available: Nombre de usuario disponible
           username_is_not_available: Nombre de usuario ya existente
           username_label: Nombre de usuario
-          username_note: Nombre que aparecerá en tus publicaciones
+          username_note: Nombre público que aparecerá en tus publicaciones
         success:
           back_to_index: Lo he entendido; vuelve a la página principal.
           instructions_1_html: Por favor, <b>revisa tu correo electrónico</b>. Te hemos enviado un <b>enlace para confirmar tu cuenta</b>.
