@@ -1,27 +1,38 @@
 ---
 es:
   welcome:
-    carousel:
-      citizenship:
-        title: Propuestas ciudadanas
-      featured:
-        title: Propuestas del Ayuntamiento
-      meetings:
-        title: Citas presenciales
+    calendar:
+      item-1: Elaboración propuesta inicial
+      item-2: Proceso participativo
+      item-3: Estudio de propuestas y retorno
+      item-4: Alegaciones
+      item-5: Aprobación
+      item-6: Seguimiento
+      title: Calendario del Proceso
     categories:
       subtitle: Desde el Ayuntamiento de Barcelona hemos elaborado una primera propuesta de plan para la ciudad y los distritos que incluye diversas actuaciones en diferentes ejes y líneas estratégicas.
       title: Los cinco ejes del Plan Municipal
-    description:
-      text1: "<Strong>decidim.barcelona</strong> es la plataforma de participación digital del Ayuntamiento de Barcelona.Pretende ser un espacio de referencia para construir una ciudad democrática, abierta y transparente que potencie la participación de la ciudadanía en la construcción y definición de las políticas de la ciudad."
-      text2: Inicialmente se desarrolla el proceso de participación para la elaboración del Plan de actuación municipal 2016-2019 y pretende incluir nuevos procesos de participación una vez éste termine. El <strong>Plan de actuación municipal</strong> se elabora al inicio de cada mandato y establece las líneas prioritarias, los objetivos y las actuaciones que el Gobierno de la ciudad desarrollará en los próximos cuatro años. Actualmente el proceso se encuentra en la fase de estudio de las propuestas de la ciudadanía. Puedes navegar por las propuestas y puedes participar en los diferentes debates de evaluación del proceso.
     download:
       links:
         epub: Descárgate el Plan Municipal
         pam: Navega por el Plan Municipal y de los distritos
       subtitle: Consulta el documento inicial que recoge las propuestas que el equipo de gobierno pone sobre la mesa para consensuar con la ciudadanía y con el resto de grupos políticos con representación en el Ayuntamiento.
       title: 73 barrios, una Barcelona. Hacia la ciudad de los derechos y las oportunidades
+    header:
+      links:
+        about: "¿En qué ha consistido el proceso?"
+        meetings: Explora las citas
+        network: Explora la red de interacciones
+        proposals: Explora las propuestas
+      subtitle: Te presentamos de manera gráfica los resultados del proceso participativo para la elaboración del Palo Muncipal
+      title: El Proceso Participativo del Plan Municipal
     header-motto:
       link: Entra y participa
+    index:
+      statistics:
+        months: "<strong>%{count}</strong> meses de trabajo"
+        proposals: "<strong>%{count}</strong> propuestas"
+        supports: "<strong>%{count}</strong> soportes"
     tutorial:
       step-1:
         description: Navega por las propuestas del Ayuntamiento de Barcelona, coméntalas y apóyalas.

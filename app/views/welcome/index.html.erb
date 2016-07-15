@@ -1,7 +1,7 @@
 <% content_for(:header) do %>
   <div class="header wide parallax-window" data-parallax="scroll" data-image-src="<%= asset_url("header/#{(1..9).to_a.sample}.jpg") %>" data-speed="0.4" data-natural-height="435" data-natural-width="1900">
     <div class="row">
-      <div class="small-12 large-12 columns">
+      <div class="small-12 large-12 columns header-expanded">
         <h1 class="title-expanded">
           <%= link_to root_url do %>
             <span class="pla-barcelona">Pla Municipal</span>
@@ -11,6 +11,13 @@
           <% end %>
         </h1>
         <div class="header-motto">
+          <div class="statistics">
+            <ul>
+              <li><%== t ".statistics.months", count: statistics.months %></li>
+              <li><%== t ".statistics.proposals", count: number_with_delimiter(statistics.proposals) %></li>
+              <li><%== t ".statistics.supports", count: number_with_delimiter(statistics.supports) %></li>
+            </ul>
+          </div>
           <%= link_to debates_path, class: 'header-link' do %>
             <%= t 'welcome.header-motto.link' %>
             <%= bcn_icon('dit_assenyala_vermell') %>
@@ -30,8 +37,8 @@
 <% end %>
 
 <div class="home-section">
-  <%= render 'description' %>
-  <%= render 'carousel' %>
+  <%= render 'header' %>
+  <%= render 'calendar' %>
   <%= render 'videos' %>
   <%= render 'download' %>
   <%= render 'categories' %>

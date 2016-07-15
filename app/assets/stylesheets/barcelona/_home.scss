@@ -1,13 +1,16 @@
 .header.wide{
   min-height: 300px;
 
+  .header-expanded{
+    height: rem-calc(300px);
+  }
+
   .title-expanded{
     font-size: $base-font-size;
 
     margin-top: rem-calc(25);
-    a{
-      display: inline-block;
-    }
+
+    a{ display: inline-block; }
 
     .pla-barcelona, .decidim-barcelona{
       display: block;
@@ -34,7 +37,7 @@
   .header-motto{
     position: absolute;
     right: rem-calc(50);
-    top: rem-calc(165);
+    bottom: rem-calc(30);
 
     .header-text{
       margin-bottom: rem-calc(15);
@@ -63,6 +66,24 @@
         }
       }
     }
+
+    .statistics{
+      color: #fff;
+      margin-bottom: rem-calc(20);
+
+      ul, li{
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+      }
+
+      li{
+        line-height: rem-calc(45px);
+        text-align: right;
+        font-size: rem-calc(40px);
+        text-shadow: 0 0 rem-calc(10px) rgba(0,0,0,0.6);
+      }
+    }
   }
 }
 
@@ -70,6 +91,10 @@
   .home-section{
     padding-top: rem-calc(50);
     padding-bottom: rem-calc(50);
+  }
+
+  &.section-calendar{
+    @import "./home/calendar";
   }
 
   .home-tutorial{
@@ -332,6 +357,60 @@
 
       @media #{$large-up}{
         @include block-grid($per-row: 3);
+      }
+    }
+  }
+
+  .section-home-header{
+    margin-top: rem-calc(50);
+    .header-grid{
+      text-align: right;
+      margin-top: rem-calc(50);
+
+      .cell{
+        & > span{
+          @include arrow-box($brand, right);
+          display: inline-block;
+          font-size: rem-calc(20);
+          padding-top: 0;
+          padding-bottom: 0;
+
+          .bcn-icon{
+            top: -1 * rem-calc(5);
+          }
+
+          line-height: rem-calc(40px);
+          height: rem-calc(40px);
+          overflow: hidden;
+        }
+
+        display: block;
+        padding: rem-calc(20px);
+        background: #ddd;
+        margin: rem(20) 0;
+        padding-top: rem-calc(50px);
+        border-radius: rem-calc(10);
+        font-weight: 300;
+
+        &:first-child{
+          margin-top: 0;
+        }
+
+        background-size: cover;
+        background-position: center;
+
+        &.about{
+          @media #{$large-up}{
+            padding-top: rem-calc(318px);
+          }
+          background-image: image-url("home/header-button-about.png");
+        }
+
+        &.proposals{ background-image: image-url("home/header-button-proposals.png"); }
+        &.meetings{ background-image: image-url("home/header-button-meetings.png"); }
+        &.network{ background-image: image-url("home/header-button-network.png"); }
+
+        border: 1px solid #ddd;
       }
     }
   }

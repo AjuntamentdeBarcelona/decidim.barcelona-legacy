@@ -8,12 +8,10 @@ import DebateInfoBox              from './debates/debate_info_box.component';
 
 import StaticMap                  from './location/static_map.component';
 import MeetingsApp                from './meetings/meetings_app.component';
-import MeetingsCarousel           from './meetings/meetings_carousel.component';
 import MeetingsMap                from './meetings/meetings_map.component';
 
 import ProposalsApp               from './proposals/proposals_app.component';
 import ProposalApp                from './proposals/proposal_app.component';
-import ProposalsCarousel          from './proposals/proposals_carousel.component';
 import ProposalsSelector          from './proposals/proposals_selector.component';
 
 import ActionPlansApp             from './action_plans/action_plans_app.component';
@@ -31,12 +29,10 @@ window.DebateInfoBox              = DebateInfoBox;
 
 window.StaticMap                  = StaticMap;
 window.MeetingsApp                = MeetingsApp;
-window.MeetingsCarousel           = MeetingsCarousel;
 window.MeetingsMap                = MeetingsMap;
 
 window.ProposalsApp               = ProposalsApp;
 window.ProposalApp                = ProposalApp;
-window.ProposalsCarousel          = ProposalsCarousel;
 window.ProposalsSelector          = ProposalsSelector;
 
 window.ActionPlansApp             = ActionPlansApp;
