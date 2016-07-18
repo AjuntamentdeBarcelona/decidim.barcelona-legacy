@@ -51,8 +51,8 @@ ca:
         question-8:
           answer: 'Per utilitzar el web necessites un compte d''usuari. Segons el grau de verificació podràs fer més o menys coses:'
           answer-1: 'Si et registres al web amb l''adreça electrònica i no dónes cap dada més (no fem el procés de verificació de residència) podràs:'
-          answer-1-1: Donar suport a propostes.
-          answer-1-2: Comentar i argumentar propostes.
+          answer-1-1: Comentar i argumentar propostes.
+          answer-1-2: Donar suport a propostes.
           answer-2: 'Si després de registrar-te has fet la verificació bàsica, és a dir, has verificat la residència a través del web (+ info a "Com creo i verifico el meu compte?") podràs:'
           answer-part-2: Sempre pots participar de manera presencial i sense autenticar-te a qualsevol dels debats que hi ha per tot Barcelona.
           title: Per a què serveix verificar el meu compte?
