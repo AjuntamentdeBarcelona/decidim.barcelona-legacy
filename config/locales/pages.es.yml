@@ -47,13 +47,13 @@ es:
           title: No me funciona la verificación de residencia
         question-7:
           answer: El apoyo y la votación de propuestas se limitan a la gente empadronada en Barcelona, ya que se trata de tomar decisiones que afectarán al municipio y a las personas que viven en él. Por lo tanto nos parece que son ellos los que tienen que tomar la decisión final. Es cierto que hay personas que no están empadronadas en Barcelona y que, aun así, estas decisiones las pueden afectar, pero el Padrón es el censo más amplio de que disponemos que nos permite que el proceso de participación sea seguro y lleguemos al máximo número de personas posible. Aunque sí que se puede participar a pesar de no estar empadronado. Puedes participar presencialmente en los debates para el proceso del Plan municipal, y también es posible lanzar una propuesta, o comentar las propuestas existentes, sin necesidad de estar empadronado. Solo los apoyos a las propuestas se limitan a las personas empadronadas.
-          title: No estoy empadronado en Barcelona, ​​por qué no puedo participar?
+          title: No estoy empadronado en Barcelona, ¿por qué no puedo participar?
         question-8:
           answer: 'Para utilizar la web necesitas una cuenta de usuario. Según el grado de verificación podrás hacer más o menos cosas:'
-          answer-1: "1.\tSi te registras en la web con la dirección electrónica y no das ningún dato más (no realizamos el proceso de verificación de residencia) podrás:"
-          answer-1-1: Apoyar propuestas.
-          answer-1-2: Comentar y argumentar propuestas.
-          answer-2: 'Si después de registrarte has hecho la verificación básica, es decir, has verificado la residencia a través de la web (+ info en "Cómo creo y verifico mi cuenta?") Podrás:'
+          answer-1: "Si te registras en la web con la dirección electrónica y no das ningún dato más (no realizamos el proceso de verificación de residencia) podrás:"
+          answer-1-1: Comentar y argumentar propuestas.
+          answer-1-2: Apoyar propuestas.
+          answer-2: 'Si después de registrarte has hecho la verificación básica, es decir, has verificado la residencia a través de la web (+ info en "Cómo creo y verifico mi cuenta?") podrás:'
           answer-part-2: Siempre puedes participar de forma presencial y sin autenticarte en cualquiera de los debates que se organizan por toda Barcelona.
           title: "¿Para qué sirve verificar mi cuenta?"
         question-9:
