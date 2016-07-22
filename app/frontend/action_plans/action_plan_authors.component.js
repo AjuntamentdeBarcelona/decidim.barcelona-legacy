@@ -6,9 +6,8 @@ function authors(actionPlan){
 
   if (actionPlansProposals) {
     let authors = actionPlansProposals.map(
-      (actionPlanProposal) =>
-        actionPlanProposal.proposal.author.name.trim()
-    );
+      (actionPlanProposal) => actionPlanProposal.proposal.author.name
+    ).filter(name => name).map(name => name.trim());
 
     return unique(authors);
   } else {
