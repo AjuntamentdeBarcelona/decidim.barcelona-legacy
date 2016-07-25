@@ -441,7 +441,7 @@ es:
     print:
       print_button: Imprimir esta información
     references:
-      description: 'Parece que esta propuesta o debate está relacionada con:'
+      description: 'Otros usuarios han visto que esta propuesta está relacionada con:'
     tags_cloud:
       tags: Tendencias
     unflag: Deshacer denuncia
