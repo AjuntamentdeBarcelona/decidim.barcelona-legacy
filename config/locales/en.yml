@@ -318,6 +318,17 @@ en:
     twitter:
       sign_in: Sign in with Twitter
       sign_up: Sign up with Twitter
+  proposal_results_mailer:
+    proposal:
+      status: State
+      status_accepted: accepted
+      status_rejected: rejected
+      votes: "%{count} media"
+    user_summary:
+      authored_proposals: proposals created
+      followed_proposals: proposals row
+      intro: "<P> Hello %{name} </ p>"
+      subject: Follow-up proposals
   proposals:
     create:
       form:

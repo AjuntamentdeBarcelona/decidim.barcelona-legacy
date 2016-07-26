@@ -318,6 +318,17 @@ es:
     twitter:
       sign_in: Entra con Twitter
       sign_up: Regístrate con Twitter
+  proposal_results_mailer:
+    proposal:
+      status: estado
+      status_accepted: aceptada
+      status_rejected: rechazada
+      votes: "%{count} soportes"
+    user_summary:
+      authored_proposals: propuestas creadas
+      followed_proposals: propuestas seguidas
+      intro: "<P> Hola %{name} </ p>"
+      subject: Seguimiento de las propuestas
   proposals:
     create:
       form:
