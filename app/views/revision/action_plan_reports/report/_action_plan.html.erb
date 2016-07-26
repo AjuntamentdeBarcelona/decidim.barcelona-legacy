@@ -35,7 +35,7 @@
       <p>
         <strong>Organitzacions participants a les cites:</strong>
         <% if !action_plan.meeting_participants.blank? %>
-          <%= action_plan.meeting_participants %>
+          <%= action_plan.meeting_participants.length %>
         <% else %>
           Cap
         <% end %>
