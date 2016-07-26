@@ -19,15 +19,6 @@ GIT
     active_model_serializers (0.9.4)
       activemodel (>= 3.2)
 
-GIT
-  remote: https://github.com/huacnlee/social-share-button.git
-  revision: e46a6a3e82b86023bc43b72c9379d3c6afe36b6b
-  ref: e46a6a3e82b86023bc
-  specs:
-    social-share-button (0.1.9)
-      coffee-rails
-      sass-rails
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -563,8 +554,8 @@ GEM
     rubyzip (1.1.7)
     safe_yaml (1.0.4)
     sass (3.4.21)
-    sass-rails (5.0.4)
-      railties (>= 4.0.0, < 5.0)
+    sass-rails (5.0.5)
+      railties (>= 4.0.0, < 6)
       sass (~> 3.1)
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
@@ -605,6 +596,9 @@ GEM
       tilt (>= 1.3, < 3)
     sitemap_generator (5.1.0)
       builder
+    social-share-button (0.1.10)
+      coffee-rails
+      sass-rails
     spring (1.6.2)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
@@ -771,7 +765,7 @@ DEPENDENCIES
   sidekiq-failures
   sinatra
   sitemap_generator
-  social-share-button!
+  social-share-button (= 0.1.10)
   spring
   spring-commands-rspec
   timecop
