@@ -81,7 +81,7 @@ class ActionPlanReportGenerator < ActionView::Base
     end
 
     def meeting_participants
-      meetings.map(&:organizations).split(",").flatten.map(&:strip).reject(&:blank?).uniq.join(", ")
+      meetings.map(&:organizations).split(",").flatten.map(&:strip).reject(&:blank?).uniq
     end
   end
 end
