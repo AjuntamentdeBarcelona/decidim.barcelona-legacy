@@ -128,11 +128,11 @@ class Api::ActionPlansController < Api::ApplicationController
   end
 
   def translate_source(source)
-    case source
-    when "meeting" "Cita presencial"
-    when "official" "Ajuntament"
-    when "organization" "Organització"
-    when "citizen" "Ciutadania"
-    end
+    {
+      'meeting' => 'Cita presencial',
+      'official' => 'Ajuntament',
+      'organization' => 'Organització',
+      'citizen' => 'Ciutadania'
+    }[source.to_s]
   end
 end
