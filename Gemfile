@@ -44,7 +44,7 @@ gem 'foundation_rails_helper'
 gem 'acts_as_votable'
 gem 'recaptcha', require: "recaptcha/rails"
 gem 'cancancan'
-gem 'social-share-button', git: 'https://github.com/huacnlee/social-share-button.git', ref: 'e46a6a3e82b86023bc'
+gem 'social-share-button', '0.1.10'
 gem 'initialjs-rails', '0.2.0.1'
 gem 'unicorn', '~> 5.0.1'
 gem 'paranoia'
