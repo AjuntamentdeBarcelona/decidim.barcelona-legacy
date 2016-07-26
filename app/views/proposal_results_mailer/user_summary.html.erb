@@ -1,0 +1,21 @@
+<h2><%= t '.subject' %></h2>
+
+<%== t '.intro', name: @user.name %>
+
+<% if @authored_proposals.any? %>
+  <h3><%= t '.authored_proposals' %> (<%= @authored_proposals.length %>)</h3>
+  <ul>
+    <% @authored_proposals.each do |proposal| %>
+      <%= render partial: 'proposal', object: proposal %>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @followed_proposals.any? %>
+  <h3><%= t '.followed_proposals' %> (<%= @followed_proposals.length %>)</h3>
+  <ul>
+    <% @followed_proposals.each do |proposal| %>
+      <%= render partial: 'proposal', object: proposal %>
+    <% end %>
+  </ul>
+<% end %>

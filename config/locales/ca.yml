@@ -1,5 +1,16 @@
 ---
 ca:
+  proposal_results_mailer:
+    user_summary:
+      subject: "Seguiment de les propostes"
+      followed_proposals: "Propostes seguides"
+      authored_proposals: "Propostes creades"
+      intro: "<p>Hola %{name},</p>"
+    proposal:
+      votes: "%{count} suports"
+      status: "Estat"
+      status_rejected: "Rebutjada"
+      status_accepted: "Acceptada"
   account:
     show:
       change_credentials_link: Canviar les meves dades d'accés
