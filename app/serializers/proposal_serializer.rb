@@ -19,6 +19,10 @@ class ProposalSerializer < ActiveModel::Serializer
     object.comments.length
   end
 
+  def author
+    object.author unless object.from_meeting
+  end
+
   def total_positive_comments
     object.comments.select { |c| c.alignment && c.alignment > 0 }.count
   end
