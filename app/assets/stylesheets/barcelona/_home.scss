@@ -68,20 +68,24 @@
     }
 
     .statistics{
-      color: #fff;
-      margin-bottom: rem-calc(20);
+      display: none;
 
-      ul, li{
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-      }
+      @media #{$medium-up}{ 
+        display: block;
+        color: #fff;
+        margin-bottom: rem-calc(20);
+        ul, li{
+          margin: 0;
+          padding: 0;
+          list-style-type: none;
+        }
 
-      li{
-        line-height: rem-calc(45px);
-        text-align: right;
-        font-size: rem-calc(40px);
-        text-shadow: 0 0 rem-calc(10px) rgba(0,0,0,0.6);
+        li{
+          line-height: rem-calc(40px);
+          text-align: right;
+          font-size: rem-calc(35px);
+          text-shadow: 0 0 rem-calc(10px) rgba(0,0,0,0.6);
+        }
       }
     }
   }

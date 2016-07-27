@@ -30,9 +30,10 @@ ca:
       link: Entra i participa
     index:
       statistics:
-        months: "<strong>%{count}</strong> mesos de feina"
         proposals: "<strong>%{count}</strong> propostes"
         supports: "<strong>%{count}</strong> suports"
+        action_plans: "<strong>%{count}</strong> actuacions"
+        included_proposals: "<strong>%{count}</strong> propostes incorporades"
     tutorial:
       step-1:
         description: Navega per les propostes de l'Ajuntament de Barcelona, comenta-les i dóna-hi suport.
