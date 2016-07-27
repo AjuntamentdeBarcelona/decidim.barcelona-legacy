@@ -327,7 +327,7 @@ ca:
       status_rejected: Rebutjada
       votes: "%{count} suports"
     user_summary:
-      authored_proposals: Propostes que has creat
+      authored_proposals: Propostes que has fet
       followed_proposals: Propostes que has seguit
       intro: "<p>Hola %{name}, </p><p>Ja tenim la darrera versió del Pla Municipal com a resultat del procés participatiu que es va iniciar al mes de febrer i que ha tingut més de 39.000 participants. Des que va acabar el procés  fins ara, hem estat treballant en l'estudi i en l'agrupació de les propostes realitzades tant pel conjunt de la ciutadania i les diferents organitzacions, com aquelles que s'han realitzat a les cites presencials. D'aquesta manera hem obtingut una nova versió del Pla Municipal que agrupa més d'un 70% de les propostes ciutadanes fetes durant el procés.</p><p>L'estudi de les més de 9.500 propostes de la ciutadania ha estat realitzada per les persones responsables i tècniques de cada àrea i districte de l'Ajuntament, involucrant a més d'un centenar de persones. El resultat del procés són més de 1.400 actuacions que agrupen prop de 6.900 propostes ciutadanes."
       participants_text: "<p>Et volem agrair la teva participació en el procés i et convidem a consultar les propostes següents:</p>"
