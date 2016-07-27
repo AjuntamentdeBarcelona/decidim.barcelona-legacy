@@ -49,7 +49,7 @@ class Meetings extends Component {
           </aside>
 
           <div className="meetings-list-container">
-            <DownloadButton filters={this.props.filters} order={this.props.order} seed={this.props.seed}/>
+            <DownloadButton filters={this.props.filters} />
 
             <div className="meetings-list">
               <MeetingsList meetings={this.props.visibleMeetings} />
