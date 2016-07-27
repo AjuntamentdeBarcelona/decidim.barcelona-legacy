@@ -7,11 +7,16 @@ ca:
     meetings:
       description: 'Aquest gràfic interactiu et permet visualitzar el total de cites presencials realitzades en el procés participatiu del Pla Municipal. La navegació a  través dels diferents anells permet navegar per la quantitat de cites presencials segons escala (propostes de ciutat o de cadascun dels  districtes), segons eix (bon viure, economia plural, etc...) i segons la  línia estratègica (justícia social, desenvolupament i economia de  proximitat, etc...). '
       title: Cites presencials
-    show:
-      mobile_devices_alert: Aquestes visualitzacions no es mostren correctament en dispositius mòbils.
+    open_data:
+      download-action_plans: Actuacions (.csv)
+      download-meetings: Cites presencials (.csv)
+      download-proposals: Propostes (.csv)
+      title: Dades obertes
     proposals:
       description: Aquest gràfic interactiu et permet visualitzar el total de propostes realitzades en el procés participatiu del Pla Municipal. La navegació a través dels diferents anells permet navegar per la quantitat de propostes segons escala (propostes de ciutat o de cadascun dels districtes), segons eix (bon viure, economia plural, etc...) i segons la línia estratègica (justícia social, desenvolupament i economia de proximitat, etc...).
       title: Propostes
+    show:
+      mobile_devices_alert: Aquestes visualitzacions no es mostren correctament en dispositius mòbils.
     summary:
       title: Resum del procés
     title: Infografies

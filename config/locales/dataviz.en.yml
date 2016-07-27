@@ -7,11 +7,16 @@ en:
     meetings:
       description: This interactive chart allows you to view all appointments made in the face of the Municipal Plan consultation process. Navigating through the different rings to navigate the many events attended by scale (motions each city or district), according axis (good living, plural economy, etc ...) and according to the strategic (social justice , development and local economy, etc ...).
       title: Meetings
-    show:
-      mobile_devices_alert: These data visualizations don't work well on mobile devices.
+    open_data:
+      download-action_plans: Performances (.csv)
+      download-meetings: Dating face (.csv)
+      download-proposals: Proposals (.csv)
+      title: Open Data
     proposals:
       description: This interactive chart allows you to view the total proposals made in the consultation process of the Municipal Plan. Navigating through the different rings to navigate according to the amount of scale proposals (proposals for each city or district), according axis (good living, plural economy, etc ...) and according to the strategic (social justice, and local economic development, etc ...).
       title: Proposals
+    show:
+      mobile_devices_alert: These data visualizations don't work well on mobile devices.
     summary:
       title: Summary
     title: Data visualization

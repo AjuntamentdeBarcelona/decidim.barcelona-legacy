@@ -163,6 +163,7 @@ ignore_unused:
   - 'components.proposal_level_selector.level_*'
   - 'components.action_plan_statistics.*'
   - 'components.order_selector.*'
+  - 'dataviz.open_data.download-*'
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'
