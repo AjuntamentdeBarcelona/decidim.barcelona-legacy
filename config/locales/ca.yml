@@ -441,7 +441,7 @@ ca:
     print:
       print_button: Imprimir aquesta informació
     references:
-      description: 'Sembla que aquesta proposta o debat està relacionada amb:'
+      description: 'Altres usuaris han vist que aquesta proposta està relacionada amb:'
     tags_cloud:
       tags: Tendències
     unflag: Desfer denúncia
