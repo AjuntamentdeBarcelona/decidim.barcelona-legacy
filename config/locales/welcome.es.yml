@@ -27,7 +27,7 @@ es:
       subtitle: Te presentamos de manera gráfica los resultados del proceso participativo para la elaboración del Palo Muncipal
       title: El Proceso Participativo del Plan Municipal
     header-motto:
-      link: Entra y participa
+      link: Navega por las actuaciones
     index:
       statistics:
         action_plans: "<strong>%{count}</strong> actuaciones"

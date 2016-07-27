@@ -27,7 +27,7 @@ ca:
       subtitle: Et presentem de manera gràfica els resultats del procés participatiu per a l’el·laboració del Pla Muncipal
       title: El Procés Participatiu del Pla Municipal
     header-motto:
-      link: Entra i participa
+      link: Navega per les actuacions
     index:
       statistics:
         proposals: "<strong>%{count}</strong> propostes"
