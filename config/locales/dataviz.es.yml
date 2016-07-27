@@ -15,8 +15,6 @@ es:
     proposals:
       description: Este gráfico interactivo te permite visualizar el total de propuestas realizadas en el proceso participativo del Plan Municipal. La navegación a través de los diferentes anillos permite navegar por la cantidad de propuestas según escala (propuestas de ciudad o de cada uno de los distritos), según eje (buen vivir, economía plural,etc ...) y según la línea estratégica (justicia social, desarrollo y economía de proximidad, etc ...).
       title: Propuestas
-    show:
-      mobile_devices_alert: Estas visualizaciones no se muestran correctamente en dispositivos móviles.
     summary:
       title: Resumen del proceso
     title: Infografías
