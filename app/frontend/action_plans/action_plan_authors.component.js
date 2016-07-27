@@ -1,6 +1,8 @@
 import { PropTypes } from 'react';
 import unique        from 'array-unique';
 
+const defaultAuthors = ["Ajuntament de Barcelona"];
+
 function authors(actionPlan){
   let { actionPlansProposals } = actionPlan;
 
@@ -9,9 +11,13 @@ function authors(actionPlan){
       (actionPlanProposal) => actionPlanProposal.proposal.author.name
     ).filter(name => name).map(name => name.trim());
 
-    return unique(authors);
+    if(authors.length > 0) {
+      return unique(authors);
+    } else {
+      return defaultAuthors;
+    }
   } else {
-    return [];
+    return defaultAuthors;
   }
 }
 
