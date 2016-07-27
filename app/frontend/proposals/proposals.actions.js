@@ -141,7 +141,7 @@ export function unFlagProposal(proposalId) {
   };
 }
 
-function buildProposalsRequest(options = {}) {
+export function buildProposalsRequestParams(options = {}) {
   let filterString = [], 
       filters,
       filter,
@@ -178,7 +178,13 @@ function buildProposalsRequest(options = {}) {
 
   replaceUrl(params);
 
-  return axios.get(`${API_BASE_URL}/proposals.json`, { params });
+  return params;
+}
+
+function buildProposalsRequest(options) {
+  return axios.get(`${API_BASE_URL}/proposals.json`, {
+    params: buildProposalsRequestParams(options)
+  });
 }
 
 function replaceUrl(params) {

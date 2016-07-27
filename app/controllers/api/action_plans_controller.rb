@@ -32,8 +32,8 @@ class Api::ActionPlansController < Api::ApplicationController
         }
       }
 
-      format.xls do
-        send_data report(@action_plans), disposition: 'inline', filename: 'action_plans.xls'
+      format.csv do
+        send_data report(@action_plans), disposition: 'inline', filename: 'action_plans.csv'
       end
     end
   end
@@ -71,40 +71,27 @@ class Api::ActionPlansController < Api::ApplicationController
 
 
   def report(action_plans)
-    last_timestamp = ActionPlan.order('updated_at desc').last.updated_at.to_i
+    last_timestamp = action_plans.order('updated_at desc').last.updated_at.to_i
 
     Rails.cache.fetch("action-plans-csv-#{request.fullpath}-#{last_timestamp}") do
-      package = Axlsx::Package.new do |p|
-        p.workbook.add_worksheet(name: 'Action Plans') do |sheet|
-          sheet.add_row %w(ID Origen Aprovació Districte Categoria Subcategoria
-                          Títol Descripció URL)
+      CSV.generate do |csv|
+        csv << %w(ID Origen Aprovació Districte Categoria Subcategoria
+                  Títol Descripció URL)
 
-          action_plans.each do |action_plan|
-            sheet.add_row [
-              action_plan.id,
-              action_plan.official ? 'Ajuntament' : 'Ciutadania',
-              action_plan.approved ? 'aprovat' : nil,
-              action_plan.scope == 'district' ? District.find(action_plan.district).try(:name) : nil,
-              action_plan.category.name[I18n.default_locale.to_s],
-              action_plan.subcategory.name[I18n.default_locale.to_s],
-              action_plan.title,
-              strip_tags(action_plan.description),
-              url_for(action_plan)
-            ]
-          end
+        action_plans.each do |action_plan|
+          csv << [
+            action_plan.id,
+            action_plan.official ? 'Ajuntament' : 'Ciutadania',
+            action_plan.approved ? 'aprovat' : nil,
+            action_plan.scope == 'district' ? District.find(action_plan.district).try(:name) : nil,
+            action_plan.category.name[I18n.default_locale.to_s],
+            action_plan.subcategory.name[I18n.default_locale.to_s],
+            action_plan.title,
+            strip_tags(action_plan.description),
+            url_for(action_plan)
+          ]
         end
       end
-
-      package.to_stream.read
     end
-  end
-
-  def translate_source(source)
-    {
-      'meeting' => 'Cita presencial',
-      'official' => 'Ajuntament',
-      'organization' => 'Organització',
-      'citizen' => 'Ciutadania'
-    }[source.to_s]
   end
 end

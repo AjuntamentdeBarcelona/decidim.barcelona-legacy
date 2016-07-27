@@ -14,6 +14,7 @@ import ProposalsList            from './proposals_list.component';
 import * as actions             from './proposals.actions';
 import { setOrder }             from '../order/order.actions';
 import { getOrderByUrl }        from '../order/order.reducers';
+import DownloadButton           from './download_button.component';
 
 class Proposals extends Component {
   constructor(props) {
@@ -64,6 +65,7 @@ class Proposals extends Component {
             <h3 className="proposals-count">
               { I18n.t('components.proposals.count', { count: this.props.count }) }
             </h3>
+            <DownloadButton filters={this.props.filters} order={this.props.order} seed={this.props.seed}/>
             <OrderSelector
               orderLinks={["random", "hot_score", "confidence_score", "created_at"]} />
             <ProposalsList proposals={this.props.proposals} />
