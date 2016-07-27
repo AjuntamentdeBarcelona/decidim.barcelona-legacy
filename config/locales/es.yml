@@ -324,6 +324,7 @@ es:
       status_accepted: aceptada
       status_rejected: rechazada
       votes: "%{count} soportes"
+    subject: Resultados del PAM
     user_summary:
       authored_proposals: propuestas creadas
       followed_proposals: propuestas seguidas

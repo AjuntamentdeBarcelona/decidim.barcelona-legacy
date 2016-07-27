@@ -1,5 +1,5 @@
 class ProposalResults::ProposalDecorator < ApplicationDecorator
-  delegate :title
+  delegate :title, :action_plans
 
   def message
     answer.message if rejected?

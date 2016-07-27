@@ -7,6 +7,12 @@ class ProposalResults
     authored_proposals.any? || followed_proposals.any?
   end
 
+  def interacted?
+    any? ||
+      @user.comments.where(commentable_type: "Proposal").any? ||
+      @user.votes.where(votable_type: "Proposal").any?
+  end
+
   def authored_proposals
     @authored_proposals ||= @user.proposals.where(
       id: ProposalAnswer.select(:proposal_id)

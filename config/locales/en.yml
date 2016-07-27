@@ -324,6 +324,7 @@ en:
       status_accepted: accepted
       status_rejected: rejected
       votes: "%{count} media"
+    subject: Results PAM
     user_summary:
       authored_proposals: proposals created
       followed_proposals: proposals row
