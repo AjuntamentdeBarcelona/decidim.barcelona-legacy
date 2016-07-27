@@ -72,54 +72,22 @@ class Api::ActionPlansController < Api::ApplicationController
 
   def report(action_plans)
     package = Axlsx::Package.new do |p|
-      p.workbook.add_worksheet(:name => "Action Plans") do |sheet|
-        sheet.add_row [
-          "ID",
-          "Origen",
-          "Aprovació",
-          "Districte",
-          "Categoria",
-          "Subcategoria",
-          "Títol",
-          "Descripció",
-          "URL",
-          "Codi (Proposta)",
-          "Autor (Proposta)",
-          "Origen (Proposta)",
-          "Districte (Proposta)",
-          "Categoria (Proposta)",
-          "Subcategoria (Proposta)",
-          "Títol (Proposta)",
-          "Descripció (Proposta)",
-          "Vots",
-          "Comentaris",
-          "URL (Proposta)",
-        ]
-        action_plans.includes(:proposals => [:author, :category, :subcategory]).each do |action_plan|
-          action_plan.proposals.each do |proposal| 
-            sheet.add_row [
-              action_plan.id,
-              action_plan.official ? 'Ajuntament' : 'Ciutadania',
-              action_plan.approved ? 'aprovat' : nil,
-              action_plan.scope == 'district' ? District.find(action_plan.district).try(:name) : nil,
-              action_plan.category.name[I18n.default_locale.to_s],
-              action_plan.subcategory.name[I18n.default_locale.to_s],
-              action_plan.title,
-              strip_tags(action_plan.description),
-              url_for(action_plan),
-              proposal.code,
-              proposal.author.try(:name),
-              translate_source(proposal.source),
-              proposal.scope == 'district' ? District.find(proposal.district).try(:name) : nil,
-              proposal.category.name[I18n.default_locale.to_s],
-              proposal.subcategory.name[I18n.default_locale.to_s],
-              proposal.title,
-              proposal.summary,
-              proposal.total_votes,
-              proposal.comments_count,
-              url_for(proposal)
-            ]
-          end
+      p.workbook.add_worksheet(name: 'Action Plans') do |sheet|
+        sheet.add_row %w(ID Origen Aprovació Districte Categoria Subcategoria
+                         Títol Descripció URL)
+
+        action_plans.each do |action_plan|
+          sheet.add_row [
+            action_plan.id,
+            action_plan.official ? 'Ajuntament' : 'Ciutadania',
+            action_plan.approved ? 'aprovat' : nil,
+            action_plan.scope == 'district' ? District.find(action_plan.district).try(:name) : nil,
+            action_plan.category.name[I18n.default_locale.to_s],
+            action_plan.subcategory.name[I18n.default_locale.to_s],
+            action_plan.title,
+            strip_tags(action_plan.description),
+            url_for(action_plan)
+          ]
         end
       end
     end
