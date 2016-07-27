@@ -3,12 +3,18 @@ import unique        from 'array-unique';
 
 const defaultAuthors = ["Ajuntament de Barcelona"];
 
+function proposalAuthorName(proposal){
+  if (proposal.author) {
+    return proposal.author.name;
+  }
+}
+
 function authors(actionPlan){
   let { actionPlansProposals } = actionPlan;
 
   if (actionPlansProposals) {
     let authors = actionPlansProposals.map(
-      (actionPlanProposal) => actionPlanProposal.proposal.author.name
+      (actionPlanProposal) => proposalAuthorName(actionPlanProposal.proposal)
     ).filter(name => name).map(name => name.trim());
 
     if(authors.length > 0) {
