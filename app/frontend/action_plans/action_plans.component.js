@@ -8,6 +8,7 @@ import OrderSelector            from '../order/order_selector.component';
 import ActionPlansSidebar       from './action_plans_sidebar.component';
 import ActionPlansList          from './action_plans_list.component';
 import DownloadButton           from './download_button.component';
+import ActionPlansHeader        from './action_plans_header.component';
 
 import * as actions             from './action_plans.actions';
 import { setOrder }             from '../order/order.actions';
@@ -43,6 +44,8 @@ class ActionPlans extends Component {
   render() {
     return (
       <div>
+        <ActionPlansHeader />
+
         <div className="wrap row">
           <div className="wrap row">
             <div className="small-12 medium-3 column">
