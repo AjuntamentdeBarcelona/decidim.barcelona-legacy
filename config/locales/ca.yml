@@ -328,6 +328,7 @@ ca:
       authored_proposals: Propostes creades
       followed_proposals: Propostes seguides
       intro: "<p>Hola %{name},</p>"
+      see_all: Veure totes les propostes creades o seguides
       subject: Seguiment de les propostes
   proposals:
     create:

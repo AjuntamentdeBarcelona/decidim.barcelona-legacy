@@ -328,6 +328,7 @@ en:
       authored_proposals: proposals created
       followed_proposals: proposals row
       intro: "<P> Hello %{name} </ p>"
+      see_all: View all proposals in a row created or
       subject: Follow-up proposals
   proposals:
     create:

@@ -328,6 +328,7 @@ es:
       authored_proposals: propuestas creadas
       followed_proposals: propuestas seguidas
       intro: "<P> Hola %{name} </ p>"
+      see_all: Ver todas las propuestas creadas o seguidas
       subject: Seguimiento de las propuestas
   proposals:
     create:
