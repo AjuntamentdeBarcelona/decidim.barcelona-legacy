@@ -30,7 +30,8 @@ en:
       link: Join and participate
     index:
       statistics:
-        months: "<Strong> %{count} </ strong> months of work"
+        action_plans: "<Strong> %{count} </ strong> actions"
+        included_proposals: "<Strong> %{count} </ strong> included proposals"
         proposals: "<Strong> %{count} </ strong> proposals"
         supports: "<Strong> %{count} </ strong> supports"
     tutorial:

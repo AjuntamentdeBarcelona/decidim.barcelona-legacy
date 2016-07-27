@@ -30,9 +30,10 @@ es:
       link: Entra y participa
     index:
       statistics:
-        months: "<strong>%{count}</strong> meses de trabajo"
+        action_plans: "<strong>%{count}</strong> actuaciones"
+        included_proposals: "<strong>%{count}</strong> propuestas incorporadas"
         proposals: "<strong>%{count}</strong> propuestas"
-        supports: "<strong>%{count}</strong> soportes"
+        supports: "<strong>%{count}</strong> apoyos"
     tutorial:
       step-1:
         description: Navega por las propuestas del Ayuntamiento de Barcelona, coméntalas y apóyalas.
