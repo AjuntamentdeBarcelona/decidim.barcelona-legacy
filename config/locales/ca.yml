@@ -333,9 +333,9 @@ ca:
       participants_text: "<p>Et volem agrair la teva participació en el procés i et convidem a consultar les propostes següents:</p>"
       not_participants_text: "<p>Et volem agrair la teva participació en el procés i et convidem a consultar les propostes.</p>"
       footer_text: "<p>Finalment, pots navegar per les diferents <a href=\"%{dataviz_url}\">visualitzacions que hem creat</a> per tal de facilitar la navegació pel conjunt del procés.</p>"
-      see_all: Veure totes les propostes amb les que has interaccionat*
+      see_all: Veure les propostes amb les que has interaccionat*
       see_action_plans: "Consulta el llistat d'actuacions del Pla Municipal"
-      see_all_explanation: "* inclouen aquelles que has comentat o que hi has donat suport, incloent aquelles creades o seguides."
+      see_all_explanation: "* inclouen aquelles que has comentat o que hi has donat suport, així com aquelles creades o seguides."
       subject: Resultats del procés participatiu del Pla Municipal
   proposals:
     create:
