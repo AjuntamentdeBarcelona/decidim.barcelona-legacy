@@ -71,28 +71,32 @@ class Api::ActionPlansController < Api::ApplicationController
 
 
   def report(action_plans)
-    package = Axlsx::Package.new do |p|
-      p.workbook.add_worksheet(name: 'Action Plans') do |sheet|
-        sheet.add_row %w(ID Origen Aprovació Districte Categoria Subcategoria
-                         Títol Descripció URL)
+    last_timestamp = ActionPlan.order('updated_at desc').last.updated_at.to_i
 
-        action_plans.each do |action_plan|
-          sheet.add_row [
-            action_plan.id,
-            action_plan.official ? 'Ajuntament' : 'Ciutadania',
-            action_plan.approved ? 'aprovat' : nil,
-            action_plan.scope == 'district' ? District.find(action_plan.district).try(:name) : nil,
-            action_plan.category.name[I18n.default_locale.to_s],
-            action_plan.subcategory.name[I18n.default_locale.to_s],
-            action_plan.title,
-            strip_tags(action_plan.description),
-            url_for(action_plan)
-          ]
+    Rails.cache.fetch("action-plans-csv-#{request.fullpath}-#{last_timestamp}") do
+      package = Axlsx::Package.new do |p|
+        p.workbook.add_worksheet(name: 'Action Plans') do |sheet|
+          sheet.add_row %w(ID Origen Aprovació Districte Categoria Subcategoria
+                          Títol Descripció URL)
+
+          action_plans.each do |action_plan|
+            sheet.add_row [
+              action_plan.id,
+              action_plan.official ? 'Ajuntament' : 'Ciutadania',
+              action_plan.approved ? 'aprovat' : nil,
+              action_plan.scope == 'district' ? District.find(action_plan.district).try(:name) : nil,
+              action_plan.category.name[I18n.default_locale.to_s],
+              action_plan.subcategory.name[I18n.default_locale.to_s],
+              action_plan.title,
+              strip_tags(action_plan.description),
+              url_for(action_plan)
+            ]
+          end
         end
       end
-    end
 
-    package.to_stream.read
+      package.to_stream.read
+    end
   end
 
   def translate_source(source)
