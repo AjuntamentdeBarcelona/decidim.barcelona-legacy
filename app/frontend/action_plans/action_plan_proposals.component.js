@@ -30,6 +30,10 @@ class ActionPlanProposals extends Component {
     const { id } = actionPlan;
     const actionPlansProposals = actionPlan.actionPlansProposals || [];
 
+    if(actionPlansProposals.length == 0 && !editable){
+      return null;
+    }
+
     return (
       <div className="action-plan-proposals-component">
         <h2>{I18n.t("components.action_plan_proposals.title")}</h2>
