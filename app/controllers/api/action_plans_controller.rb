@@ -75,19 +75,22 @@ class Api::ActionPlansController < Api::ApplicationController
 
     Rails.cache.fetch("action-plans-csv-#{request.fullpath}-#{last_timestamp}") do
       CSV.generate do |csv|
-        csv << %w(ID Origen Aprovació Districte Categoria Subcategoria
-                  Títol Descripció URL)
+        csv <<
+          %w(ID Districte Categoria Subcategoria Títol Descripció Propostes Suports Comentaris Participants Intervencions URL)
 
         action_plans.each do |action_plan|
           csv << [
             action_plan.id,
-            action_plan.official ? 'Ajuntament' : 'Ciutadania',
-            action_plan.approved ? 'aprovat' : nil,
             action_plan.scope == 'district' ? District.find(action_plan.district).try(:name) : nil,
             action_plan.category.name[I18n.default_locale.to_s],
             action_plan.subcategory.name[I18n.default_locale.to_s],
             action_plan.title,
-            strip_tags(action_plan.description),
+            action_plan.description,
+            action_plan.statistics[:related_proposals_count],
+            action_plan.statistics[:supports_count],
+            action_plan.statistics[:comments_count],
+            action_plan.statistics[:participants_count],
+            action_plan.statistics[:interventions_count],
             url_for(action_plan)
           ]
         end
