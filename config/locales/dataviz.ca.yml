@@ -1,6 +1,8 @@
 ---
 ca:
   dataviz:
+    action_plans:
+      title: Actuacions
     map:
       description: Aquest mapa interactiupermet veure totes les cites presencials que s'han realitzat en el procés participatiu del Pla Municipal. Cada punt indica la localització on s'ha realitzat la cita presencial, permet veurel'eix, el nombre de participants, el nombre de propostes sorgides a la cita i et proporciona un enllaç a la pàgina de la cita per consultar-hi tota la informació relacionada.
       title: Mapa de cites
@@ -21,5 +23,3 @@ ca:
     total_interactions:
       description: Aquest gràfic et permet navegar per la xarxa de interaccions establertes entre usuàries del decidim.barcelona en el procés de participació del Pla Municipal. Cada node és un usuari i els enllaços son comentaris i respostes a comentaris dins de les propostes, mostrant així la relació entre usuàries a través de les propostes.
       title: Xarxa d'interaccions
-    action_plans:
-      title: Actuacions

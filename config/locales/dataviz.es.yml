@@ -1,6 +1,8 @@
 ---
 es:
   dataviz:
+    action_plans:
+      title: actuaciones
     map:
       description: Este mapa interactivo permite ver todas las citas presenciales que se han realizado en el proceso participativo del Plan Municipal. Cada punto indica la localización donde se ha realizado la cita presencial, permite ver el eje, el número de participantes, el número de propuestas surgidas en la cita y te proporciona un enlace a la página de la cita para consultar toda la información relacionada.
       title: Mapa de cites
