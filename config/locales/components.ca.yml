@@ -105,7 +105,7 @@ ca:
       templates: Resposta predeterminada
       title: Resposta de la proposta
     proposal_answer_message:
-      accepted: Aquesta proposta ha estat acceptada i ha quedat inclosa en la següent actuació.
+      accepted: 'Aquesta proposta ha estat acceptada i ha quedat inclosa en la següent actuació:'
       rejected: 'Aquesta proposta ha estat rebutjada pels següents motius:'
     proposal_carousel:
       see_more: Veure més
