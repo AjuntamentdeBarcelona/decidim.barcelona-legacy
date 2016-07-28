@@ -15,7 +15,7 @@
         <div class="page-title">
           <h2><%= t "dataviz.#{@id}.title" %></h2>
           <% if I18n.t("dataviz.#{@id}").keys.include?(:description) %>
-            <h3><%= t "dataviz.#{@id}.description" %></h3>
+            <h3><%== t "dataviz.#{@id}.description" %></h3>
           <% end %>
         </div>
         <%= render partial: "#{@id}" %>
