@@ -18,6 +18,7 @@ const Proposal = (proposal) => (
           <ProposalInfo 
             code={ proposal.code }
             created_at={ proposal.created_at }
+            status={ proposal.status }
             official={ proposal.official }
             from_meeting={ proposal.from_meeting }
             author={ proposal.author }/>

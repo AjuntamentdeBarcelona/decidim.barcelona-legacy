@@ -4,7 +4,7 @@ class ProposalSerializer < ActiveModel::Serializer
              :editable, :conflictive?, :external_url, :hidden?, :can_hide, :can_hide_author,
              :flagged, :code, :arguable?, :permissions, :total_positive_comments,
              :total_negative_comments, :total_neutral_comments, :total_comments,
-             :social_media_image_url, :author_id
+             :social_media_image_url, :author_id, :status
   
   has_one :category
   has_one :subcategory
@@ -79,6 +79,14 @@ class ProposalSerializer < ActiveModel::Serializer
 
   def social_media_image_url
     scope && scope.asset_url('social-media-icon.png')
+  end
+
+  def status
+    answer.try(:status)
+  end
+
+  def answer
+    object.answer if scope.can?(:read, ProposalAnswer)
   end
 
   def permissions
