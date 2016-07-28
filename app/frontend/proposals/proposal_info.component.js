@@ -23,7 +23,7 @@ const ProposalInfoComponent = ({
 ProposalInfoComponent.propTypes = {
   code: PropTypes.string.isRequired,
   created_at: PropTypes.string.isRequired,
-  author: PropTypes.object.isRequired,
+  author: PropTypes.object,
   official: PropTypes.bool,
   from_meeting: PropTypes.bool
 };

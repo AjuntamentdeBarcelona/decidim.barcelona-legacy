@@ -27,17 +27,19 @@ class ProposalInfoExtended extends Component {
       <p className="proposal-info extended">
         {(() => {
           if(author) {
-            <span>
-              <UserAvatar user={author} />
-              <span className="bullet">&nbsp;&bull;&nbsp;</span>
-              <ProposalAuthor 
-                official={ official }
-                fromMeeting={ fromMeeting }
-                author={ author } />
-              <span className="bullet">&nbsp;&bull;&nbsp;</span>
-            </span>
+            return (
+              <span>
+                <UserAvatar user={author} />
+                <span className="bullet">&nbsp;&bull;&nbsp;</span>
+                <ProposalAuthor 
+                  official={ official }
+                  fromMeeting={ fromMeeting }
+                  author={ author } />
+                <span className="bullet">&nbsp;&bull;&nbsp;</span>
+              </span>
+            );
           }
-        })}
+        })()}
         <span>{ code }</span>
         <span className="bullet">&nbsp;&bull;&nbsp;</span>
         <span>{ created_at }</span>
