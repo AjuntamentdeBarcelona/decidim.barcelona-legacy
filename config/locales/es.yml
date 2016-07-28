@@ -324,6 +324,18 @@ es:
       status_accepted: Aceptada
       status_rejected: Rechazada
       votes: "%{count} apoyos"
+    subject: Resultados del PAM
+    user_summary:
+      authored_proposals: Propuestas que has hecho
+      followed_proposals: Propuestas que has seguido
+      footer_text: '<p>Finalmente, puedes navegar por las diferentes <a href="%{dataviz_url}">visualizaciones que hemos creado</a> para facilitar la navegación por el conjunto del proceso.</p><p>Puedes seguir la presentación de los resultados, a cargo de la Regidora Gala Pin y el Regidor Eloi Badia, a través de las redes sociales, en el hashtag #PlaMunicipal</p><p>Desde decidim.barcelona seguiremos informando sobre los próximos pasos del Plan Municipal y de futuros procesos de participación</p><p>Seguimos construyendo la ciudad democrática.</p><p><strong>decidimos.barcelona</strong></p>'
+      intro: "<p>Hola %{name}, </p><p>Ya tenemos la última versión del Plan Municipal. Esta versión es el resultado del proceso participativo iniciado el 1 de febrero. En el proceso hemos participado más de 39.000 personas y 1700 organizaciones, a través de las citas presenciales y de la plataforma decidim.barcelona. Desde que acabó el proceso,hemos estado trabajando en el estudio y en la agrupación de las propuestas. De este modo, hemos obtenido una nueva versión del Plan Municipal que agrupa más de un 72,2% de las propuestas ciudadanas recogidas. </p><p>El estudio de las más de 9.500 propuestas de la ciudadanía ha sido realizado por el personal técnico y responsables de cada área y distrito del Ayuntamiento, involucrando a más de un centenar de personas. El resultado son más de 1.400 actuaciones que agrupan cerca de 6.900 propuestas ciudadanas.</p>"
+      not_participants_text: "<p>Te queremos agradecer tu participación en el proceso y te invitamos a consultar las propuestas.</p>"
+      participants_text: "<p>Queremos agradecer tu participación en el proceso y te invitamos a consultar las siguientes propuestas:</p>"
+      see_action_plans: Consulta el listado de actuaciones del Plan Municipal
+      see_all: Ver las propuestas con las que has interaccionado *
+      see_all_explanation: "* incluyen aquellas que has comentado o que has apoyado, así como aquellas que has creado o seguido."
+      subject: Resultados del proceso participativo del Plan Municipal
   proposals:
     create:
       form:
