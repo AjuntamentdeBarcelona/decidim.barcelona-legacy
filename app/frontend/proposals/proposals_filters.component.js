@@ -19,6 +19,15 @@ class ProposalsFilters extends Component {
       <form className="proposal-filters">
         <SearchFilter searchText={this.props.filters.text} />
         <ReviewerFilter />
+
+        <FilterOptionGroup 
+          isExclusive={true}
+          filterGroupName="review_status"
+          filterGroupValue={this.props.filters.filter["review_status"]}
+          onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
+          <FilterOption filterName="accepted" />
+          <FilterOption filterName="rejected" />
+        </FilterOptionGroup>
         <UserInteractionFilter />
         <ScopeFilterOptionGroup />
         <CategoryFilterOptionGroup />

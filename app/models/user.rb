@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
   include Verification
   include PgSearch
 
+  def ability
+    @ability ||= Ability.new(self)
+  end
+
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :async
 

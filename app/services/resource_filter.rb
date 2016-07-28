@@ -10,6 +10,7 @@ class ResourceFilter
     @search_filter = params[:search] if params[:search].present?
     @tag_filter = params[:tag]
     @options = options
+    @user = options[:user]
   end
 
   def filter_collection(collection)
@@ -109,42 +110,46 @@ class ResourceFilter
       collection = collection.includes(:action_plans).where(action_plans: { id: nil })
     end
 
-    if @params["review_validation"]
-      if params["review_validation"].include?("validated")
-        collection = collection.includes(:answer).where(proposal_answers: { official: true })
-      elsif params["review_validation"].include?("not_validated")
-        collection = collection.includes(:answer). where(proposal_answers: { official: false })
+    if @user && @user.ability.can?(:read, ProposalAnswer)
+      if @params["review_status"]
+        collection = collection.includes(:answer).
+                    where(proposal_answers: { status: @params["review_status"]})
+      end
+
+      if @params["reviewer_status"]
+        if params["reviewer_status"].include? "reviewed"
+          collection = collection.reviewed
+        else
+          collection = collection.not_reviewed
+        end
+      end
+
+      if @params["review_validation"]
+        if params["review_validation"].include?("validated")
+          collection = collection.includes(:answer).where(proposal_answers: { official: true })
+        elsif params["review_validation"].include?("not_validated")
+          collection = collection.includes(:answer). where(proposal_answers: { official: false })
+        end
       end
     end
 
-    if @params["review_status"]
-      collection = collection.includes(:answer).
-                   where(proposal_answers: { status: @params["review_status"]})
-    end
-
-    if @params["reviewer_status"]
-      if params["reviewer_status"].include? "reviewed"
-        collection = collection.reviewed
-      else
-        collection = collection.not_reviewed
-      end
-    end
-
-    if @params["action_plan_approval"]
-      if params["action_plan_approval"].include? "approved"
-        collection = collection.where(approved: true)
-      else
-        collection = collection.where(approved: false)
-      end
-    end
-
-    if @params["action_plan_source"]
-      if params["action_plan_source"].include? "official"
-        collection = collection.where(official: true)
+    if @user && @user.ability.can?(:read, ActionPlan)
+      if @params["action_plan_approval"]
+        if params["action_plan_approval"].include? "approved"
+          collection = collection.where(approved: true)
+        else
+          collection = collection.where(approved: false)
+        end
       end
 
-      if params["action_plan_source"].include? "citizenship"
-        collection = collection.where(official: false)
+      if @params["action_plan_source"]
+        if params["action_plan_source"].include? "official"
+          collection = collection.where(official: true)
+        end
+
+        if params["action_plan_source"].include? "citizenship"
+          collection = collection.where(official: false)
+        end
       end
     end
 
