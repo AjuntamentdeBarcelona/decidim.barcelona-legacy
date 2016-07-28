@@ -19,7 +19,7 @@ es:
       title: Propuestas
     summary:
       title: Resumen del proceso
-    title: Infografías
+    title: Visualizaciones
     total_interactions:
       description: Este gráfico te permite navegar por la red de interacciones establecidas entre usuarias del decidim.barcelona en el proceso de participación del Plan Municipal. Cada nodo es un usuario y los enlaces son comentarios y respuestas a comentarios dentro de las propuestas, mostrando así la relación entre usuàrias a través de las propuestas.
       title: Red de interacciones

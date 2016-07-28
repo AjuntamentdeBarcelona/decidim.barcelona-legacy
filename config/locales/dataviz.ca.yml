@@ -19,7 +19,7 @@ ca:
       title: Propostes
     summary:
       title: Resum del procés
-    title: Infografies
+    title: Visualitzacions
     total_interactions:
       description: Aquest gràfic et permet navegar per la xarxa de interaccions establertes entre usuàries del decidim.barcelona en el procés de participació del Pla Municipal. Cada node és un usuari i els enllaços son comentaris i respostes a comentaris dins de les propostes, mostrant així la relació entre usuàries a través de les propostes.
       title: Xarxa d'interaccions
