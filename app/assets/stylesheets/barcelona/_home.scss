@@ -380,12 +380,23 @@
           padding-bottom: 0;
 
           .bcn-icon{
+            @include transition(transform, 0.2s);
             top: -1 * rem-calc(5);
           }
 
           line-height: rem-calc(40px);
           height: rem-calc(40px);
           overflow: hidden;
+        }
+
+        &.big{
+          padding-top: rem-calc(80px);
+        }
+
+        &:hover{
+          .bcn-icon{
+            @include transform(translateX(10px));
+          }
         }
 
         display: block;
@@ -412,7 +423,11 @@
 
         &.proposals{ background-image: image-url("home/header-button-proposals.png"); }
         &.meetings{ background-image: image-url("home/header-button-meetings.png"); }
+
+
         &.network{ background-image: image-url("home/header-button-network.png"); }
+        &.explore{ background-image: image-url("home/header-button-explore.png"); }
+        &.action_plans{ background-image: image-url("home/header-button-action_plans.jpg"); }
 
         border: 1px solid #ddd;
       }
