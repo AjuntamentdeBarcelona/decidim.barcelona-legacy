@@ -26,7 +26,6 @@ ca:
       supports_count: Suports
     action_plans:
       count: Mostrant %{count} actuacions
-      title: Actuacions relacionades
     category_picker:
       category:
         label: Eix
