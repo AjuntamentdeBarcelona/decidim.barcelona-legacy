@@ -9,7 +9,7 @@
         <thead class="calendar-header">
           <tr class="calendar-years">
             <th class="year-2015" colspan="4">2015</th>
-            <th class="year-2016" colspan="18">2016</th>
+            <th class="year-2016" colspan="14">2016</th>
             <th class="year-2017" colspan="1">2017</th>
             <th class="year-2017" colspan="1">2018</th>
             <th class="year-2017" colspan="1">2019</th>
@@ -17,24 +17,22 @@
           <tr class="calendar-months">
             <th class="month month-11-2015" colspan="2"><%= t('date.month_names')[11] %></th>
             <th class="month month-12-2015" colspan="2"><%= t('date.month_names')[12] %></th>
-            <% (1..9).to_a.each do |month| %>
-              <th class="month month-<%= month %>-2016" colspan="2"><%= t('date.month_names')[month] %></th>
+            <% (1..7).to_a.each do |month| %>
+              <th class="month month-<%= month %>-2016" colspan="2"><%= t('date.month_names')[month].capitalize %></th>
             <% end %>
             <th class="future month-future" colspan="3"></th>
           </tr>
         </thead>
         <tbody>
-          <tr><% 25.times do %><td></td><% end %></tr>
+          <tr><% 21.times do %><td></td><% end %></tr>
           <tr>
             <td colspan="6" class="item item-1"><span><%= t "welcome.calendar.item-1" %></span></td>
             <td colspan="5" class="item item-2"><span><%= t "welcome.calendar.item-2" %></span></td>
             <td colspan="6" class="item item-3"><span><%= t "welcome.calendar.item-3" %></span></td>
-            <td colspan="2" class="item item-4"><span><%= t "welcome.calendar.item-4" %></span></td>
             <td></td>
-            <td colspan="2" class="item item-5"><span><%= t "welcome.calendar.item-5" %></span></td>
             <td colspan="3" class="item item-6"><span><%= t "welcome.calendar.item-6" %></span></td>
           </tr>
-          <tr><% 25.times do %><td></td><% end %></tr>
+          <tr><% 21.times do %><td></td><% end %></tr>
         </tbody>
       </table>
     </div>
