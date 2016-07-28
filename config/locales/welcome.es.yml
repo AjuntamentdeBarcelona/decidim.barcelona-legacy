@@ -28,6 +28,12 @@ es:
       title: El Proceso Participativo del Plan Municipal
     header-motto:
       link: Navega por las actuaciones
+    header_results:
+      links:
+        action_plans: Navega por las actuaciones
+        explore: Explora los resultados
+      subtitle: Durante el proceso se han realizado %{proposals} propuestas de las cuales %{accepted_proposals} han sido aceptadas y agrupadas en %{action_plans} actuaciones
+      title: Los resultados del proceso del Plan Municipal
     index:
       statistics:
         action_plans: "<strong>%{count}</strong> actuaciones"

@@ -28,6 +28,12 @@ en:
       title: The Participatory Process Municipal Plan
     header-motto:
       link: Join and participate
+    header_results:
+      links:
+        action_plans: Browse cars
+        explore: Browse results
+      subtitle: During the process have been made %{proposals} %{accepted_proposals} proposals which have been accepted and grouped %{action_plans} actions
+      title: The results of the process of the Municipal Plan
     index:
       statistics:
         action_plans: "<Strong> %{count} </ strong> actions"

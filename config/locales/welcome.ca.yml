@@ -26,20 +26,20 @@ ca:
         proposals: Explora les propostes
       subtitle: Et presentem de manera gràfica els resultats del procés participatiu per a l’el·laboració del Pla Muncipal
       title: El Procés Participatiu del Pla Municipal
-    header_results:
-      links:
-        explore: Explora els resultats
-        action_plans: Navega per les actuacions
-      subtitle: "Durant el procés s'han realitzat %{proposals} propostes de les quals %{accepted_proposals} han estat acceptades i agrupades en %{action_plans} actuacions"
-      title: Els resultats del procés del Pla Municipal
     header-motto:
       link: Navega per les actuacions
+    header_results:
+      links:
+        action_plans: Navega per les actuacions
+        explore: Explora els resultats
+      subtitle: Durant el procés s'han realitzat %{proposals} propostes de les quals %{accepted_proposals} han estat acceptades i agrupades en %{action_plans} actuacions
+      title: Els resultats del procés del Pla Municipal
     index:
       statistics:
-        proposals: "<strong>%{count}</strong> propostes"
-        supports: "<strong>%{count}</strong> suports"
         action_plans: "<strong>%{count}</strong> actuacions"
         included_proposals: "<strong>%{count}</strong> propostes incorporades"
+        proposals: "<strong>%{count}</strong> propostes"
+        supports: "<strong>%{count}</strong> suports"
     tutorial:
       step-1:
         description: Navega per les propostes de l'Ajuntament de Barcelona, comenta-les i dóna-hi suport.
