@@ -1,5 +1,5 @@
 class Api::ProposalAnswersController < Api::ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
   load_and_authorize_resource :proposal
   authorize_resource :proposal_answer
 
