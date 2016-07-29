@@ -14,6 +14,6 @@ class DatavizController < ApplicationController
   private
 
   def available_dataviz
-    %w(summary total_interactions proposals action_plans meetings map)
+    %w(summary total_interactions proposals action_plans meetings map open_data)
   end
 end
