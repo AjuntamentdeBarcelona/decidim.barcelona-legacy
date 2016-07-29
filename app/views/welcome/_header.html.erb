@@ -6,12 +6,12 @@
     </div>
     <div class="header-grid">
       <div class="explanation small-12 large-6 columns">
-        <%= link_to '#', class: "cell about" do %><span><%= t ".links.about" %> <%= bcn_icon "dit_assenyala" %></span><% end %>
+        <%= link_to dataviz_path('summary'), class: "cell about" do %><span><%= t ".links.about" %> <%= bcn_icon "dit_assenyala" %></span><% end %>
       </div>
       <div class="sections small-12 large-6 columns">
-        <%= link_to '#', class: "cell proposals" do %><span><%= t ".links.proposals" %> <%= bcn_icon "dit_assenyala" %></span><% end %>
-        <%= link_to '#', class: "cell meetings" do %><span><%= t ".links.meetings" %> <%= bcn_icon "dit_assenyala" %></span><% end %>
-        <%= link_to '#', class: "cell network" do %><span><%= t ".links.network" %> <%= bcn_icon "dit_assenyala" %></span><% end %>
+        <%= link_to dataviz_path('proposals'), class: "cell proposals" do %><span><%= t ".links.proposals" %> <%= bcn_icon "dit_assenyala" %></span><% end %>
+        <%= link_to dataviz_path('map'), class: "cell meetings" do %><span><%= t ".links.meetings" %> <%= bcn_icon "dit_assenyala" %></span><% end %>
+        <%= link_to dataviz_path('total_interactions'), class: "cell network" do %><span><%= t ".links.network" %> <%= bcn_icon "dit_assenyala" %></span><% end %>
       </div>
     </div>
   </section>
