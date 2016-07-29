@@ -52,6 +52,7 @@
 //= require share
 //= require tracking
 //= require votes
+//= require dataviz
 //= require bundle
 
 var initialize_modules = function() {
@@ -71,6 +72,7 @@ var initialize_modules = function() {
   App.Menu.initialize();
   App.Share.initialize();
   App.Votes.initialize();
+  App.Dataviz.initialize();
 };
 
 $(function(){

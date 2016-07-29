@@ -1,0 +1,25 @@
+---
+en:
+  dataviz:
+    action_plans:
+      title: actions
+    map:
+      description: This map interactiupermet see all the appointments that have been made in the classroom participatory process of the Municipal Plan. Each point indicates the location where the appointment has been made in person, allows veurel'eix, the number of participants, the number of proposals made to the appointment and provides a link to the event page to view all the information related.
+      title: Meetings map
+    meetings:
+      description: This interactive chart allows you to view all appointments made in the face of the Municipal Plan consultation process. Navigating through the different rings to navigate the many events attended by scale (motions each city or district), according axis (good living, plural economy, etc ...) and according to the strategic (social justice , development and local economy, etc ...).
+      title: Meetings
+    open_data:
+      download-action_plans: Performances (.csv)
+      download-meetings: Dating face (.csv)
+      download-proposals: Proposals (.csv)
+      title: Open Data
+    proposals:
+      description: This interactive chart allows you to view the total proposals made in the consultation process of the Municipal Plan. Navigating through the different rings to navigate according to the amount of scale proposals (proposals for each city or district), according axis (good living, plural economy, etc ...) and according to the strategic (social justice, and local economic development, etc ...).
+      title: Proposals
+    summary:
+      title: Summary
+    title: Data visualization
+    total_interactions:
+      description: This chart allows you to browse the network established interactions between users of decidim.barcelona participation in the process of the Municipal Plan. Each node is a user and links are comments and responses to comments in the proposals, thus demonstrating the relationship between users through the proposals.
+      title: Interaction network

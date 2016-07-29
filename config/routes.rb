@@ -213,6 +213,8 @@ Rails.application.routes.draw do
     resources :action_plan_reports, only: [:index, :create, :show]
   end
 
+  resources :dataviz, only: [:show, :index]
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
