@@ -195,6 +195,11 @@ a.button.new-proposal{
   }
 }
 
+.proposal-status.badge{
+  span.rejected{ @include label($bg: red); }
+  span.accepted{ @include label($bg: green); }
+}
+
 .proposals-header{
   .download-buttons{
     text-align: center;

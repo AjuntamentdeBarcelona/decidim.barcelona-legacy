@@ -422,6 +422,9 @@ en:
       login_to_comment: You must %{signin} or %{signup} to leave a comment.
       meetings_title: Related meetings
       share: Share
+    status:
+      accepted: accepted
+      rejected: rejected
     update:
       form:
         submit_button: Save changes
