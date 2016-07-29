@@ -2,7 +2,6 @@
 en:
   dataviz:
     action_plans:
-      description: This interactive chart allows you to visualize the distribution of original proposals by origin (Hall, attended events, organizations or citizens) and how many have been incorporated into the final lines of the actions of PAM (good living, plural economy, etc ... ) and finally not been approved. Click on the links to see how many proposals have finally been included. You can also browse the full list of <a href="https://decidim.barcelona/action_plans"> actions </a>.
       title: actions
     map:
       description: This map interactiupermet see all the appointments that have been made in the classroom participatory process of the Municipal Plan. Each point indicates the location where the appointment has been made in person, allows veurel'eix, the number of participants, the number of proposals made to the appointment and provides a link to the event page to view all the information related.
