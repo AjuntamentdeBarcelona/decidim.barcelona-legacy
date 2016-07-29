@@ -9,6 +9,8 @@ module Abilities
       can :read, Comment
       can :read, SpendingProposal
       can :read, Legislation
+      can :read, ProposalAnswer
+      can :read, ActionPlan
       can :read, User
       can [:search, :read], Annotation
       can :read, Category
