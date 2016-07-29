@@ -2,7 +2,7 @@
   <section class="section-home-header">
     <div class="home-title">
       <h3><%= t ".title" %></h3>
-      <h4><%= t ".subtitle", proposals: number_with_delimiter(Proposal.count), accepted_proposals: number_with_delimiter(Proposal.accepted.count), action_plans: number_with_delimiter(ActionPlan.count) %></h4>
+      <h4><%= t ".subtitle", proposals: number_with_delimiter(Proposal.count), accepted_proposals: number_with_delimiter(statistics[:included_proposals]), action_plans: number_with_delimiter(ActionPlan.count) %></h4>
     </div>
     <div class="header-grid">
       <div class="explanation small-12 large-6 columns">
