@@ -107,6 +107,7 @@ ignore_missing:
   - 'date.day_names'
   - 'officials.level_*'
   - 'time.*'
+  - 'date.*'
   - 'components.proposal_level_selector.level_*'
 
 ## Consider these keys used:

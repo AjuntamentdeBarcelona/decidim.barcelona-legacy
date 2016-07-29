@@ -1,27 +1,45 @@
 ---
 ca:
   welcome:
-    carousel:
-      citizenship:
-        title: Propostes ciutadanes
-      featured:
-        title: Propostes de l'Ajuntament
-      meetings:
-        title: Cites presencials
+    calendar:
+      item-1: Elaboració proposta inicial
+      item-2: Procés participatiu
+      item-3: Estudi de propostes i retorn
+      item-4: Al·legacions
+      item-5: Aprovació
+      item-6: Seguiment
+      title: Calendari del Procés
     categories:
-      subtitle: Des de l’Ajuntament de Barcelona hem el·laborat una primera proposta de pla per a la ciutat i per als districtes que inclou diferents actuacions en diversos eixos i línies estratègiques
+      subtitle: Des de l’Ajuntament de Barcelona vam el·laborar una primera proposta de pla per a la ciutat i per als districtes que inclou diferents actuacions en diversos eixos i línies estratègiques
       title: Els cinc eixos del Pla municipal
-    description:
-      text1: "<strong>decidim.barcelona</strong> és la plataforma de participació digital de l'Ajuntament de Barcelona. Volser un espai de referència per construir una ciutat democràtica, oberta i transparent que potenciï la participació de la ciutadania en la construcció i definició de les polítiques de la ciutat."
-      text2: Inicialment s'hi desenvolupa el procés de participació per a l’elaboració del Pla d'actuació municipal 2016-2019 i pretén incloure nous processos de participació un cop aquest acabi. El <strong>Pla d'actuació municipal</strong> s’elabora a l’inici de cada mandat i estableix les línies prioritàries, els objectius i les actuacions que el Govern de la ciutat desenvoluparà en els propers quatre anys. Actualment el procés es troba en la fase d'estudi de les propostes de la ciutadania. Pots navegar per les propostes i pots participar en els diferents debats d'avaluació del procés.
     download:
       links:
         epub: Baixa el Pla municipal
-        pam: Navega pel Pla municipal i dels districtes
-      subtitle: Consulta el document inicial que recull les propostes que l’equip de govern posa sobre la taula per consensuar amb la ciutadania i amb la resta de grups polítics amb representació a l’Ajuntament.
+        pam: Navega per les actuacions del Pla Municipal
+      subtitle: Consulta el document inicial que recull les propostes que l’equip de govern va posar sobre la taula per consensuar amb la ciutadania i amb la resta de grups polítics amb representació a l’Ajuntament.
       title: 73 barris, una Barcelona. Cap a la ciutat dels drets i les oportunitats
+    header:
+      links:
+        about: En què ha consistit el procés?
+        meetings: Explora les cites
+        network: Explora la xarxa d'interaccions
+        proposals: Explora les propostes
+      subtitle: Et presentem de manera gràfica els resultats del procés participatiu per a l’el·laboració del Pla Muncipal
+      title: El Procés Participatiu del Pla Municipal
     header-motto:
-      link: Entra i participa
+      link: Navega per les actuacions
+    header_results:
+      links:
+        action_plans: Navega per les actuacions
+        explore: Explora els resultats
+      subtitle: Durant el procés s'han realitzat %{proposals} propostes de les quals %{accepted_proposals} han estat acceptades i agrupades en %{action_plans} actuacions
+      title: Els resultats del procés del Pla Municipal
+    index:
+      statistics:
+        action_plans: "<strong>%{count}</strong> actuacions"
+        included_proposals: "<strong>%{count}</strong> propostes incorporades"
+        proposals: "<strong>%{count}</strong> propostes"
+        supports: "<strong>%{count}</strong> suports"
     tutorial:
       step-1:
         description: Navega per les propostes de l'Ajuntament de Barcelona, comenta-les i dóna-hi suport.

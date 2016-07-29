@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
   skip_authorization_check
 
   helper_method :featured_proposals, :citizenship_proposals, :random_meetings,
-                :videos
+                :videos, :statistics
 
   layout "devise", only: :welcome
 
@@ -57,5 +57,14 @@ class WelcomeController < ApplicationController
 
   def videos
     %w{_RCslt3M6is Gus0e_KJE4Y P8a_MX2p3mI nlpPkrLQBoE K9FKTZgIQsM 6r_Bifc84zE N3OQAbgoMGY pmFI_EqA5A4 Tlyi_zHjmBM pKXB1W44LUc ssH0Md5ejZ0}
+  end
+
+  def statistics
+    OpenStruct.new(
+      proposals: Proposal.count,
+      supports: Vote.where(votable_type: "Proposal").count,
+      action_plans: ActionPlan.count,
+      included_proposals: Proposal.where(official: false).joins(:action_plans).count
+    )
   end
 end

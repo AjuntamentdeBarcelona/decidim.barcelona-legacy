@@ -106,9 +106,6 @@ es:
     proposal_answer_message:
       accepted: Esta propuesta ha sido aceptada y ha quedado incluida en la siguiente actuación.
       rejected: 'Esta propuesta ha sido rechazada por los siguientes motivos:'
-    proposal_carousel:
-      see_more: Ver más
-      votes: "%{votes} soportes"
     proposal_filters:
       clean_filters: Limpiar filtro
     proposal_level_selector:
