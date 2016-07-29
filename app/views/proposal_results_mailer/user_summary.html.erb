@@ -1,4 +1,4 @@
-<h2><%= t '.subject' %></h2>
+<h2><%= t 'proposal_results_mailer.subject' %></h2>
 
 <%== t '.intro', name: h(@user.name) %>
 
@@ -32,11 +32,11 @@
   <%== t ".not_participants_text" %>
 
   <p class="call-to-action">
-    <%= link_to t('.see_all'), proposals_path(filter: 'interaction=created,followed', order: 'confidence_score'), class: 'participate' %>
+    <%= link_to t('.see_all'), proposals_url(filter: 'interaction=created,followed', order: 'confidence_score'), class: 'participate' %>
     <p style="margin: 0 30px; text-align: center">
       <em><%= t '.see_all_explanation' %></em>
     </p>
   </p>
 <% end %>
 
-<%== t '.footer_text', dataviz_url: url_for("/dataviz/summary") %>
+<%== t '.footer_text', dataviz_url: dataviz_url("summary") %>
