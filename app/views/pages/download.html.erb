@@ -7,19 +7,11 @@
       <ul>
         <li>
           <span>
-          <%= link_to download_for(:pam) do %>
+          <%= link_to asset_url('pla_municipal.pdf') do %>
             <%=t '.download-pam'%>
           <% end %>
           </span>
         </li>
-
-        <% District.all.each do |district| %>
-          <li>
-            <span>
-              <%= link_to t('.download-district', district: district.name), download_for(district.id) %>
-            </span>
-          </li>
-        <% end %>
       </ul>
     </div>
   </div>
