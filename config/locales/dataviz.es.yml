@@ -2,8 +2,8 @@
 es:
   dataviz:
     action_plans:
+      description: Este  gráfico interactivo te permite visualizar el reparto de las propuestas  originales según su origen (Ayuntamiento, citas presenciales,  organizaciones o ciudadanía) y cuantas se han incorporado en los ejes de las actuaciones finales del PAM (buen  vivir, economía plural, etc ...)  o finalmente no fueron aprobadas. Haz click en las conexiones para ver  cuantas fueron finalmente incluidas. También puedes navegar la <a href="https://decidim.barcelona/action_plans">lista completa de actuaciones</a>.
       title: Actuaciones
-      description: "Este  gráfico interactivo te permite visualizar el reparto de las propuestas  originales según su origen (Ayuntamiento, citas presenciales,  organizaciones o ciudadanía) y cuantas se han incorporado en los ejes de las actuaciones finales del PAM (buen  vivir, economía plural, etc ...)  o finalmente no fueron aprobadas. Haz click en las conexiones para ver  cuantas fueron finalmente incluidas. También puedes navegar la <a href=\"https://decidim.barcelona/action_plans\">lista completa de actuaciones</a>."
     map:
       description: Este mapa interactivo permite ver todas las citas presenciales que se han realizado en el proceso participativo del Plan Municipal. Cada punto indica la localización donde se ha realizado la cita presencial, permite ver el eje, el número de participantes, el número de propuestas surgidas en la cita y te proporciona un enlace a la página de la cita para consultar toda la información relacionada.
       title: Mapa de cites

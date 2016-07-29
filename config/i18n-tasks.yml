@@ -166,6 +166,7 @@ ignore_unused:
   - 'components.order_selector.*'
   - 'dataviz.open_data.download-*'
   - 'proposal_results_mailer.proposal.status_*'
+  - 'proposals.status.*'
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'
