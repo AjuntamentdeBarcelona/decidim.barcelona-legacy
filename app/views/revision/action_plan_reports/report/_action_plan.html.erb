@@ -14,7 +14,6 @@
 
     <p>
       <strong>Propostes que agrupa: </strong><%= action_plan.proposals.count %>
-      (<%= action_plan.proposal_codes %>)
     </p>
 
     <p>
@@ -23,7 +22,6 @@
 
     <p>
       <strong>Cites presencials on aquesta actuació ha estat debatuda: </strong> <%= action_plan.meetings.count %>
-      (<%= action_plan.meetings.map(&:code).join(", ") %>)
     </p>
 
 

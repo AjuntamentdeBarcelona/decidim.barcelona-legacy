@@ -83,5 +83,5 @@ export default class ProposalAuthor extends Component {
 ProposalAuthor.propTypes = {
   official: PropTypes.bool,
   fromMeeting: PropTypes.bool,
-  author: PropTypes.object.isRequired
+  author: PropTypes.object
 };

@@ -19,7 +19,6 @@ class ProposalActionPlans extends Component {
     if (actionPlans.length > 0) {
       return (
         <div className="proposal-action-plans">
-          <h2>{ I18n.t('components.action_plans.title') }</h2>
           <table className="related-action-plans">
             {
               actionPlans.map(actionPlan => 

@@ -1,17 +1,29 @@
 import { PropTypes } from 'react';
 import unique        from 'array-unique';
 
+const defaultAuthors = ["Ajuntament de Barcelona"];
+
+function proposalAuthorName(proposal){
+  if (proposal.author) {
+    return proposal.author.name;
+  }
+}
+
 function authors(actionPlan){
   let { actionPlansProposals } = actionPlan;
 
   if (actionPlansProposals) {
     let authors = actionPlansProposals.map(
-      (actionPlanProposal) => actionPlanProposal.proposal.author.name
+      (actionPlanProposal) => proposalAuthorName(actionPlanProposal.proposal)
     ).filter(name => name).map(name => name.trim());
 
-    return unique(authors);
+    if(authors.length > 0) {
+      return unique(authors);
+    } else {
+      return defaultAuthors;
+    }
   } else {
-    return [];
+    return defaultAuthors;
   }
 }
 

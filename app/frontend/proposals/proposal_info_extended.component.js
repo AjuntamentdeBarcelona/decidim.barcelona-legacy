@@ -25,13 +25,21 @@ class ProposalInfoExtended extends Component {
 
     return (
       <p className="proposal-info extended">
-        <UserAvatar user={author} />
-        <span className="bullet">&nbsp;&bull;&nbsp;</span>
-        <ProposalAuthor 
-          official={ official }
-          fromMeeting={ fromMeeting }
-          author={ author } />
-        <span className="bullet">&nbsp;&bull;&nbsp;</span>
+        {(() => {
+          if(author) {
+            return (
+              <span>
+                <UserAvatar user={author} />
+                <span className="bullet">&nbsp;&bull;&nbsp;</span>
+                <ProposalAuthor 
+                  official={ official }
+                  fromMeeting={ fromMeeting }
+                  author={ author } />
+                <span className="bullet">&nbsp;&bull;&nbsp;</span>
+              </span>
+            );
+          }
+        })()}
         <span>{ code }</span>
         <span className="bullet">&nbsp;&bull;&nbsp;</span>
         <span>{ created_at }</span>
@@ -60,7 +68,7 @@ ProposalInfoExtended.propTypes = {
   created_at: PropTypes.string.isRequired,
   official: PropTypes.bool,
   fromMeeting: PropTypes.bool,
-  author: PropTypes.object.isRequired,
+  author: PropTypes.object,
   totalComments: PropTypes.number.isRequired,
   flagged: PropTypes.bool,
   flagProposal: PropTypes.func.isRequired,

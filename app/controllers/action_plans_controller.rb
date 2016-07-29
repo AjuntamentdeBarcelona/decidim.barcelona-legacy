@@ -50,6 +50,7 @@ class ActionPlansController < ApplicationController
     @resource.revisions.new(params.require(:action_plan_revision).permit(:title, :description, :author_id))
 
     if @resource.save
+      ActionPlanStatisticsWorker.perform_async(@resource.id)
       redirect_to action_plan_url(@resource), notice: t('flash.actions.create.notice', resource_name: "#{resource_name.capitalize}")
     else
       set_resource_instance
@@ -63,6 +64,7 @@ class ActionPlansController < ApplicationController
   def update
     resource.assign_attributes(strong_params)
     if resource.save
+      ActionPlanStatisticsWorker.perform_async(resource.id)
       redirect_to action_plan_url(resource), notice: t('flash.actions.update.notice', resource_name: "#{resource_name.capitalize}")
     else
       set_resource_instance

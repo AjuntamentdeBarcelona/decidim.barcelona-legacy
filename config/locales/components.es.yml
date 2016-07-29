@@ -26,7 +26,6 @@ es:
       supports_count: Soportes
     action_plans:
       count: Mostrando %{count} actuaciones
-      title: Actuaciones relacionadas
     category_picker:
       category:
         label: Eje

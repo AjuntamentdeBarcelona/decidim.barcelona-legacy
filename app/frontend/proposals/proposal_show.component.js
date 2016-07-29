@@ -82,7 +82,7 @@ class ProposalShow extends Component {
 
       return (
         <div>
-          <div className={(hidden || author.hidden) ? 'row faded' : 'row'} id={`proposal_${proposal.id}`}>
+          <div className={(hidden || (author && author.hidden)) ? 'row faded' : 'row'} id={`proposal_${proposal.id}`}>
             <div className="small-12 medium-9 column">
               <i className="icon-angle-left left"></i>&nbsp;
 

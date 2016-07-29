@@ -1,6 +1,6 @@
 class WYSIWYGSanitizer
 
-  ALLOWED_TAGS = %w(div br p ul ol li strong em u s b i)
+  ALLOWED_TAGS = %w(br p ul ol li strong em u s b i)
   ALLOWED_ATTRIBUTES = []
 
   def sanitize(html)

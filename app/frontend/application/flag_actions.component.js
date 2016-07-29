@@ -5,8 +5,9 @@ class FlagActions extends Component {
   render() {
     const { flaggeable, session } = this.props;
     const { id, flagged, author } = flaggeable;
+    const authorId = author ? author.id : null;
 
-    if (session.signed_in && session.user.id !== author.id) {
+    if (session.signed_in && session.user.id !== authorId) {
       return (
         <span className="js-flag-actions">
           <span className="flag-content">
