@@ -335,7 +335,6 @@ en:
       see_action_plans: See the list of actions the Municipal Plan
       see_all: View all proposals in a row created or
       see_all_explanation: "* Include those discussed or that you have supported, as well as those created or row."
-      subject: Follow-up proposals
   proposals:
     create:
       form:

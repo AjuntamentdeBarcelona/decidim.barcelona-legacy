@@ -324,7 +324,7 @@ ca:
       status_accepted: Acceptada
       status_rejected: Rebutjada
       votes: "%{count} suports"
-    subject: Resultats del PAM
+    subject: Resultats del procés participatiu del Pla Municipal
     user_summary:
       authored_proposals: Propostes que has fet
       followed_proposals: Propostes que has seguit
@@ -335,7 +335,6 @@ ca:
       see_action_plans: Consulta el llistat d'actuacions del Pla Municipal
       see_all: Veure les propostes amb què has interaccionat*
       see_all_explanation: "* inclouen aquelles que has comentat o que hi has donat suport, així com aquelles creades o seguides."
-      subject: Resultats del procés participatiu del Pla Municipal
   proposals:
     create:
       form:
