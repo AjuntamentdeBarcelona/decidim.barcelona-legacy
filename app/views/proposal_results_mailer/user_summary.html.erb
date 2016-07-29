@@ -1,0 +1,42 @@
+<h2><%= t '.subject' %></h2>
+
+<%== t '.intro', name: h(@user.name) %>
+
+<p class="call-to-action">
+  <%= link_to t('.see_action_plans'), action_plans_url %>
+</p>
+
+<% if @authored_proposals.any? || @followed_proposals.any? %>
+  <%== t ".participants_text" %>
+<% end %>
+
+<% if @authored_proposals.any? %>
+  <h3><%= t '.authored_proposals' %> (<%= @authored_proposals.length %>)</h3>
+  <ul>
+    <% @authored_proposals.each do |proposal| %>
+      <%= render partial: 'proposal', object: proposal %>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @followed_proposals.any? %>
+  <h3><%= t '.followed_proposals' %> (<%= @followed_proposals.length %>)</h3>
+  <ul>
+    <% @followed_proposals.each do |proposal| %>
+      <%= render partial: 'proposal', object: proposal %>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @results.interacted? %>
+  <%== t ".not_participants_text" %>
+
+  <p class="call-to-action">
+    <%= link_to t('.see_all'), proposals_path(filter: 'interaction=created,followed', order: 'confidence_score'), class: 'participate' %>
+    <p style="margin: 0 30px; text-align: center">
+      <em><%= t '.see_all_explanation' %></em>
+    </p>
+  </p>
+<% end %>
+
+<%== t '.footer_text', dataviz_url: url_for("/dataviz/summary") %>

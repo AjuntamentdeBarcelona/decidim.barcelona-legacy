@@ -1,0 +1,4 @@
+<li style="margin-bottom: 15px">
+  <%= proposal.linked_title %> (<%= t '.votes', count: proposal.votes %>)
+  <br /><strong><%= t '.status' %></strong>: <%= t ".status_#{proposal.accepted? ? 'accepted' : 'rejected'}" %>
+</li>

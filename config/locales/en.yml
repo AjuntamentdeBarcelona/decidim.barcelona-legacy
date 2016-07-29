@@ -318,6 +318,24 @@ en:
     twitter:
       sign_in: Sign in with Twitter
       sign_up: Sign up with Twitter
+  proposal_results_mailer:
+    proposal:
+      status: State
+      status_accepted: accepted
+      status_rejected: rejected
+      votes: "%{count} media"
+    subject: Results PAM
+    user_summary:
+      authored_proposals: proposals created
+      followed_proposals: proposals row
+      footer_text: '<P> Finally, you can browse through the different views we have created <a href="%{dataviz_url}"> </a> to help navigate the whole process. </ P> <p> You can follow the presentation of results the process of participation by Councillor Councillor Gala Pin Eloi Bay and social networks via hashtag #PlaMunicipal </ p> <p> Since decidim.barcelona keep you informed about the next steps and the Municipal Plan future participation processes. </ p> <p> We build democratic city. <p> <p> <strong> decidim.barcelona </ strong> </ p>'
+      intro: "<P> Hello %{name} </ p>"
+      not_participants_text: "<P> We want to thank your participation in the process and we invite you to consult the proposals. </ P>"
+      participants_text: "<P> We want to thank your participation in the process and we invite you to consult the following proposals: </ p>"
+      see_action_plans: See the list of actions the Municipal Plan
+      see_all: View all proposals in a row created or
+      see_all_explanation: "* Include those discussed or that you have supported, as well as those created or row."
+      subject: Follow-up proposals
   proposals:
     create:
       form:

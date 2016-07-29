@@ -318,6 +318,24 @@ ca:
     twitter:
       sign_in: Entra amb Twitter
       sign_up: Registra't amb Twitter
+  proposal_results_mailer:
+    proposal:
+      status: Estat
+      status_accepted: Acceptada
+      status_rejected: Rebutjada
+      votes: "%{count} suports"
+    subject: Resultats del PAM
+    user_summary:
+      authored_proposals: Propostes que has fet
+      followed_proposals: Propostes que has seguit
+      footer_text: '<p>Finalment, pots navegar per les diferents <a href="%{dataviz_url}">visualitzacions que hem creat</a> per tal de facilitar la navegació pel conjunt del procés.</p><p>Pots seguir la presentació dels resultats del procés de participació, a càrrec de la Regidora Gala Pin i el Regidor Eloi Badia a les xarxes socials a través del hashtag #PlaMunicipal</p><p>Des de decidim.barcelona seguirem informant sobre els propers passos del Pla Municipal i de futurs processos de participació.</p><p>Seguim construint la ciutat democràtica.<p><p><strong>decidim.barcelona</strong></p>'
+      intro: "<p>Hola %{name}, </p><p>Ja tenim la darrera versió del Pla Municipal. Aquesta versió és el resultat del procés participatiu que es va iniciar l'1 de febrer. Hem participat més de 39.000 persones i 1700 associacions i organitzacions, a través les cites presencials i de la plataforma decidim.barcelona. Des que va acabar el procés, hem estat treballant en l'estudi i en l'agrupació de les propostes. D'aquesta manera hem obtingut una nova versió del Pla Municipal que agrupa el 72,2% de les propostes ciutadanes recollides.</p><p>L'estudi de les més de 9.500  propostes de la ciutadania ha estat realitzada per responsables de cada àrea i districte i personal tècnic de l'Ajuntament,  involucrant a més d'un centenar de persones. El resultat són més de 1.400 actuacions que agrupen prop de 6.900  propostes ciutadanes.</p>"
+      not_participants_text: "<p>Et volem agrair la teva participació en el procés i et convidem a consultar les propostes.</p>"
+      participants_text: "<p>Et volem agrair la teva participació en el procés i et convidem a consultar les propostes següents:</p>"
+      see_action_plans: Consulta el llistat d'actuacions del Pla Municipal
+      see_all: Veure les propostes amb què has interaccionat*
+      see_all_explanation: "* inclouen aquelles que has comentat o que hi has donat suport, així com aquelles creades o seguides."
+      subject: Resultats del procés participatiu del Pla Municipal
   proposals:
     create:
       form:
