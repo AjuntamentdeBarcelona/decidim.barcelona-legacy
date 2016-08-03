@@ -80,6 +80,7 @@ search:
   exclude:
     - app/assets/images
     - app/assets/fonts
+    - app/assets/documents
     - app/assets/*.map
 
   ## Alternatively, the only files or `File.fnmatch patterns` to search in `paths`:
@@ -167,6 +168,7 @@ ignore_unused:
   - 'dataviz.open_data.download-*'
   - 'proposal_results_mailer.proposal.status_*'
   - 'proposals.status.*'
+  - 'pages.download.download-district'
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'
