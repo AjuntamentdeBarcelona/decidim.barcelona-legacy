@@ -93,7 +93,8 @@ class ProposalsController < ApplicationController
             "Created at",
             "Votes",
             "Comments",
-            "URL"
+            "URL",
+            "Status"
           ]
 
           proposals.each do |proposal|
@@ -112,6 +113,7 @@ class ProposalsController < ApplicationController
             row.push proposal.cached_votes_up
             row.push proposal.comments_count
             row.push url_for(proposal)
+            row.push proposal.answer.try(:status)
             sheet.add_row row
           end
         end
