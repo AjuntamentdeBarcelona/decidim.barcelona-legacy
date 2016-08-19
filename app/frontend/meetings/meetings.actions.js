@@ -21,8 +21,7 @@ export const appendMeetingsPage = ({ page }) => (dispatch, getState) => {
   });
 }
 
-
-function buildMeetingsRequest(options = {}) {
+export function buildMeetingsRequestParams(options) {
   let filterString = [], 
       filters,
       filter,
@@ -53,7 +52,13 @@ function buildMeetingsRequest(options = {}) {
 
   replaceUrl(params);
 
-  return axios.get(`${API_BASE_URL}/meetings.json`, { params });
+  return params;
+}
+
+function buildMeetingsRequest(options = {}) {
+  return axios.get(`${API_BASE_URL}/meetings.json`, {
+    params: buildMeetingsRequestParams(options)
+  });
 }
 
 function replaceUrl(params) {

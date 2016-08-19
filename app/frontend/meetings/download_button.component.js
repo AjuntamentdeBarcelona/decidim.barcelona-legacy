@@ -1,4 +1,4 @@
-import { buildActionPlansRequestParams} from "./action_plans.actions";
+import { buildMeetingsRequestParams } from "./meetings.actions";
 
 function serialize(obj) {
   var str = [];
@@ -10,14 +10,14 @@ function serialize(obj) {
 }
 
 function buildUrl(props){
-  let params = buildActionPlansRequestParams(props);
-  return `/api/action_plans.csv?${serialize(params)}`;
+  let params = buildMeetingsRequestParams(props);
+  return `/api/meetings.csv?${serialize(params)}`;
 }
 
 const DownloadButton = (props) => (
-  <a href={buildUrl(props)} className="action-plans-download button small right">
+    <a href={buildUrl(props)} className="proposals-download button small right">
     <i className={`icon fa fa-download`}></i>
-  </a>
+    </a>
 )
 
 export default DownloadButton;

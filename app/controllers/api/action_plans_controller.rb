@@ -32,8 +32,8 @@ class Api::ActionPlansController < Api::ApplicationController
         }
       }
 
-      format.xls do
-        send_data report(@action_plans), disposition: 'inline', filename: 'action_plans.xls'
+      format.csv do
+        send_data report(@action_plans), disposition: 'inline', filename: 'action_plans.csv'
       end
     end
   end
@@ -71,68 +71,30 @@ class Api::ActionPlansController < Api::ApplicationController
 
 
   def report(action_plans)
-    package = Axlsx::Package.new do |p|
-      p.workbook.add_worksheet(:name => "Action Plans") do |sheet|
-        sheet.add_row [
-          "ID",
-          "Origen",
-          "Aprovació",
-          "Districte",
-          "Categoria",
-          "Subcategoria",
-          "Títol",
-          "Descripció",
-          "URL",
-          "Codi (Proposta)",
-          "Autor (Proposta)",
-          "Origen (Proposta)",
-          "Districte (Proposta)",
-          "Categoria (Proposta)",
-          "Subcategoria (Proposta)",
-          "Títol (Proposta)",
-          "Descripció (Proposta)",
-          "Vots",
-          "Comentaris",
-          "URL (Proposta)",
-        ]
-        action_plans.includes(:proposals => [:author, :category, :subcategory]).each do |action_plan|
-          action_plan.proposals.each do |proposal| 
-            sheet.add_row [
-              action_plan.id,
-              action_plan.official ? 'Ajuntament' : 'Ciutadania',
-              action_plan.approved ? 'aprovat' : nil,
-              action_plan.scope == 'district' ? District.find(action_plan.district).try(:name) : nil,
-              action_plan.category.name[I18n.default_locale.to_s],
-              action_plan.subcategory.name[I18n.default_locale.to_s],
-              action_plan.title,
-              strip_tags(action_plan.description),
-              url_for(action_plan),
-              proposal.code,
-              proposal.author.try(:name),
-              translate_source(proposal.source),
-              proposal.scope == 'district' ? District.find(proposal.district).try(:name) : nil,
-              proposal.category.name[I18n.default_locale.to_s],
-              proposal.subcategory.name[I18n.default_locale.to_s],
-              proposal.title,
-              proposal.summary,
-              proposal.total_votes,
-              proposal.comments_count,
-              url_for(proposal)
-            ]
-          end
+    last_timestamp = action_plans.order('updated_at desc').last.updated_at.to_i
+
+    Rails.cache.fetch("action-plans-csv-#{request.fullpath}-#{last_timestamp}") do
+      CSV.generate do |csv|
+        csv <<
+          %w(ID Districte Categoria Subcategoria Títol Descripció Propostes Suports Comentaris Participants Intervencions URL)
+
+        action_plans.each do |action_plan|
+          csv << [
+            action_plan.id,
+            action_plan.scope == 'district' ? District.find(action_plan.district).try(:name) : nil,
+            action_plan.category.name[I18n.default_locale.to_s],
+            action_plan.subcategory.name[I18n.default_locale.to_s],
+            action_plan.title,
+            action_plan.description,
+            action_plan.statistics[:related_proposals_count],
+            action_plan.statistics[:supports_count],
+            action_plan.statistics[:comments_count],
+            action_plan.statistics[:participants_count],
+            action_plan.statistics[:interventions_count],
+            url_for(action_plan)
+          ]
         end
       end
     end
-
-    package.to_stream.read
-  end
-
-  def translate_source(source)
-    {
-      'meeting' => 'Cita presencial',
-      'official' => 'Ajuntament',
-      'organization' => 'Organització',
-      'citizen' => 'Ciutadania'
-    }[source.to_s]
   end
 end

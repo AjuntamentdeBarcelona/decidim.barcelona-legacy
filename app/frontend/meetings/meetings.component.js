@@ -9,6 +9,7 @@ import MeetingsList                          from './meetings_list.component';
 
 import { fetchMeetings, appendMeetingsPage } from './meetings.actions';
 import { setFilterGroup }                    from '../filters/filters.actions';
+import DownloadButton           from './download_button.component';
 
 class Meetings extends Component {
   constructor(props) {
@@ -48,6 +49,8 @@ class Meetings extends Component {
           </aside>
 
           <div className="meetings-list-container">
+            <DownloadButton filters={this.props.filters} />
+
             <div className="meetings-list">
               <MeetingsList meetings={this.props.visibleMeetings} />
               {this.renderInfinitePagination()}
