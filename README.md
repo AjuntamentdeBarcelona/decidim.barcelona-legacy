@@ -28,14 +28,14 @@ Docker is the recommended development environment as it guarantees library parit
 ```
 docker-compose build
 docker-compose run --rm app bundle install
-docker-compose run --rm app bundle exec rake db:create           
+docker-compose run --rm app bundle exec rake db:create
 docker-compose run --rm app bundle exec rake db:setup SEED=true
 docker-compose up
 ```
 
 ## Configuration for development and test environments
 
-Prerequisites: install git, ImageMagick, Ruby 2.2.3, bundler gem, redis, ghostscript and PostgreSQL (>=9.4).
+Prerequisites: install git, ImageMagick, Ruby 2.2.3, bundler gem, redis, ghostscript, NodeJS and PostgreSQL (>=9.4).
 
 ```
 git clone https://github.com/AjuntamentdeBarcelona/decidimbcn.git
@@ -47,11 +47,19 @@ rake db:create
 bin/rake db:setup
 bin/rake db:dev_seed
 RAILS_ENV=test bin/rake db:setup
+npm install -g webpack
+npm install
 ```
 
 Run the app locally:
 ```
 bin/rails s
+```
+
+You'll also need to start `webpack` to serve the needed assets:
+
+```
+webpack -w
 ```
 
 Prerequisites for testing: install PhantomJS >= 2.0
