@@ -1,4 +1,6 @@
 class Verification::LetterController < ApplicationController
+  include HasParticipatoryProcess
+
   before_action :authenticate_user!, except: [:edit, :update]
   before_action :login_via_form, only: :update
 
