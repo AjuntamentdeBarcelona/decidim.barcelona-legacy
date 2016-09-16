@@ -35,7 +35,7 @@ feature 'Moderate meetings' do
     end
 
     scenario 'Create a meeting with valid values', :js do
-      visit new_moderation_meeting_path
+      visit new_moderation_meeting_path(participatory_process_id: participatory_process)
 
       fill_in_meeting_form
 
@@ -49,7 +49,7 @@ feature 'Moderate meetings' do
     end
 
     scenario 'Create a meeting with some invalid values', :js do
-      visit new_moderation_meeting_path
+      visit new_moderation_meeting_path(participatory_process_id: participatory_process)
 
       fill_in_meeting_form
 
