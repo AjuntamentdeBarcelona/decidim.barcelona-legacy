@@ -11,58 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< 9f401389d4b98fbecbd3d583dfd8fd54e2516274
-<<<<<<< af6a05af6b48d321cf4b2829cae3e786f3fe2545
 ActiveRecord::Schema.define(version: 20160705131323) do
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20160620074831) do
-=======
-ActiveRecord::Schema.define(version: 20160615065641) do
->>>>>>> Update schema
-=======
-=======
->>>>>>> Use participatory process for categories/subcategories
-=======
->>>>>>> Use participatory process for action plans
-ActiveRecord::Schema.define(version: 20160615065641) do
-=======
-=======
->>>>>>> Use participatory process for categories/subcategories
-=======
->>>>>>> Use participatory process for action plans
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20160620074831) do
-=======
-ActiveRecord::Schema.define(version: 20160616090940) do
->>>>>>> 8584ec8... Add default participatory process and references fields
-<<<<<<< HEAD
->>>>>>> Add default participatory process and references fields
-<<<<<<< HEAD
->>>>>>> Add default participatory process and references fields
-=======
-=======
-=======
-ActiveRecord::Schema.define(version: 20160620074831) do
->>>>>>> 668c9b6... Use participatory process for categories/subcategories
-<<<<<<< HEAD
->>>>>>> Use participatory process for categories/subcategories
-<<<<<<< HEAD
->>>>>>> Use participatory process for categories/subcategories
-=======
-=======
-=======
-ActiveRecord::Schema.define(version: 20160621110813) do
->>>>>>> cfd13c1... Use participatory process for action plans
->>>>>>> Use participatory process for action plans
->>>>>>> Use participatory process for action plans
->>>>>>> Use participatory process for action plans
-=======
-ActiveRecord::Schema.define(version: 20160621110813) do
->>>>>>> Update schema
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,18 +51,6 @@ ActiveRecord::Schema.define(version: 20160621110813) do
   end
 
   create_table "action_plans", force: :cascade do |t|
-<<<<<<< af6a05af6b48d321cf4b2829cae3e786f3fe2545
-    t.integer  "category_id",                     null: false
-    t.integer  "subcategory_id",                  null: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.string   "scope",          default: "city"
-    t.integer  "district",       default: 1
-    t.boolean  "official",       default: false,  null: false
-    t.boolean  "approved",       default: false,  null: false
-    t.integer  "weight",         default: 1,      null: false
-    t.integer  "comments_count", default: 0
-=======
     t.integer  "category_id",                               null: false
     t.integer  "subcategory_id",                            null: false
     t.datetime "created_at",                                null: false
@@ -123,8 +60,8 @@ ActiveRecord::Schema.define(version: 20160621110813) do
     t.boolean  "official",                 default: false,  null: false
     t.boolean  "approved",                 default: false,  null: false
     t.integer  "weight",                   default: 1,      null: false
+    t.integer  "comments_count",           default: 0
     t.integer  "participatory_process_id"
->>>>>>> Use participatory process for action plans
   end
 
   add_index "action_plans", ["participatory_process_id"], name: "index_action_plans_on_participatory_process_id", using: :btree
