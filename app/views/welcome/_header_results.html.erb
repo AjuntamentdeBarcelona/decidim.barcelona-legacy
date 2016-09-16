@@ -9,7 +9,7 @@
         <%= link_to dataviz_path('action_plans'), class: "cell big explore" do %><span><%= t ".links.explore" %> <%= bcn_icon "dit_assenyala" %></span><% end %>
       </div>
       <div class="sections small-12 large-6 columns">
-        <%= link_to action_plans_path, class: "cell big action_plans" do %><span><%= t ".links.action_plans" %> <%= bcn_icon "dit_assenyala" %></span><% end %>
+        <%= link_to action_plans_path(participatory_process_id: @participatory_process.slug), class: "cell big action_plans" do %><span><%= t ".links.action_plans" %> <%= bcn_icon "dit_assenyala" %></span><% end %>
       </div>
     </div>
   </section>

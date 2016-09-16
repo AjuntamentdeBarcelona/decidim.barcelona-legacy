@@ -1,6 +1,8 @@
 class WelcomeController < ApplicationController
   skip_authorization_check
 
+  before_filter :load_participatory_process
+
   helper_method :featured_proposals, :citizenship_proposals, :random_meetings,
                 :videos, :statistics
 
@@ -11,7 +13,6 @@ class WelcomeController < ApplicationController
   end
 
   def welcome
-    @participatory_process = ParticipatoryProcess.first
   end
 
   def highlights
@@ -67,5 +68,9 @@ class WelcomeController < ApplicationController
       action_plans: ActionPlan.count,
       included_proposals: Proposal.where(official: false).joins(:action_plans).count
     )
+  end
+
+  def load_participatory_process
+    @participatory_process = ParticipatoryProcess.first
   end
 end
