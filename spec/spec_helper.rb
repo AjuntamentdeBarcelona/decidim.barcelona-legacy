@@ -59,6 +59,8 @@ RSpec.configure do |config|
   config.before(:each, type: :feature) do
     Bullet.start_request
 
+    ParticipatoryProcess.create(name: "pam")
+
     Setting['feature.debates'] = true
     Setting['feature.spending_proposals'] = true
   end
