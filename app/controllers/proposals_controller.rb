@@ -1,6 +1,5 @@
 class ProposalsController < ApplicationController
   FEATURED_PROPOSALS_LIMIT = 3
-  include HasParticipatoryProcess
   include CommentableActions
   include FlagActions
 

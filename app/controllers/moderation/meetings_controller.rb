@@ -1,5 +1,4 @@
 class Moderation::MeetingsController < Moderation::BaseController
-  include HasParticipatoryProcess
   include ModerateActions
 
   has_filters %w{pending closed all}, only: :index

@@ -1,5 +1,4 @@
 class MeetingsController < ApplicationController
-  include HasParticipatoryProcess
   load_and_authorize_resource
   respond_to :html, :json
 

@@ -1,5 +1,4 @@
 class ActionPlans::RevisionsController < ApplicationController
-  include HasParticipatoryProcess
   include ModerateActions
 
   has_filters %w{all}, only: :index

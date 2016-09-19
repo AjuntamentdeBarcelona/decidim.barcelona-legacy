@@ -1,6 +1,7 @@
 require "application_responder"
 
 class ApplicationController < ActionController::Base
+  include HasParticipatoryProcess
   include HasFilters
   include HasOrders
 

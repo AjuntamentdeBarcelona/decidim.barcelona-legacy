@@ -1,6 +1,4 @@
-class WelcomeController < ApplicationController
-  include HasParticipatoryProcess
-  
+class WelcomeController < ApplicationController  
   skip_authorization_check
 
   helper_method :featured_proposals, :citizenship_proposals, :random_meetings,

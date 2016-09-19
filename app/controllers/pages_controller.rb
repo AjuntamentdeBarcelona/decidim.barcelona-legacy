@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-  include HasParticipatoryProcess
   skip_authorization_check
   helper_method :categories
 
