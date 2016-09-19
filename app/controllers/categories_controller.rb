@@ -1,9 +1,13 @@
 class CategoriesController < ApplicationController
+  include HasParticipatoryProcess
   skip_authorization_check
 
   def index
-    categories = Category.includes(:subcategories)
-    @last_modified = [Category.maximum(:updated_at), Subcategory.maximum(:updated_at)].max
+    categories = @participatory_process.categories.includes(:subcategories)
+    @last_modified = [
+      @participatory_process.categories.maximum(:updated_at),
+      @participatory_process.subcategories.maximum(:updated_at)
+    ].max
     @categories ||= CategoryDecorator.decorate_collection(categories)
   end
 end

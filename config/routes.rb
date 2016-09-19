@@ -61,8 +61,6 @@ Rails.application.routes.draw do
 
   resource :verification, controller: "verification", only: [:show]
 
-  resources :categories, only: [:index]
-
   scope module: :verification do
     resource :residence, controller: "residence", only: [:new, :create]
     resource :sms, controller: "sms", only: [:new, :create, :edit, :update]
@@ -310,9 +308,11 @@ Rails.application.routes.draw do
         get :build_from_proposal
       end
     end
+
+    resources :categories, only: [:index]
   end
 
-  ["proposals", "action_plans", "meetings", "debates"].each do |path|
+  ["proposals", "action_plans", "meetings", "debates", "categories"].each do |path|
     get "/#{path}", as: "#{path}_root" , to: redirect { |_, request|
       p = ParticipatoryProcess.first
       if p.present?
