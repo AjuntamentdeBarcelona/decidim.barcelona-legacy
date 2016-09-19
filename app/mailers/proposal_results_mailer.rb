@@ -3,6 +3,9 @@ class ProposalResultsMailer < ApplicationMailer
     @user = user
     @results = ProposalResults.new(user)
 
+    # TODO: Load based on the user
+    @participatory_process = ParticipatoryProcess.first
+
     @authored_proposals = decorate_proposals(@results.authored_proposals)
     @followed_proposals = decorate_proposals(@results.followed_proposals)
 

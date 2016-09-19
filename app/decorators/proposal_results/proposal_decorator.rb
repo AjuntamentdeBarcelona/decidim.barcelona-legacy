@@ -14,7 +14,7 @@ class ProposalResults::ProposalDecorator < ApplicationDecorator
   end
 
   def linked_title
-    h.link_to(title, object)
+    h.link_to(title, h.proposal_url(id: object.id, participatory_process_id: object.participatory_process))
   end
 
   def votes

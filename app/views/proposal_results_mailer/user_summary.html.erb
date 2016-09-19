@@ -3,7 +3,7 @@
 <%== t '.intro', name: h(@user.name) %>
 
 <p class="call-to-action">
-  <%= link_to t('.see_action_plans'), action_plans_url %>
+  <%= link_to t('.see_action_plans'), action_plans_url(participatory_process_id: @participatory_process.slug) %>
 </p>
 
 <% if @authored_proposals.any? || @followed_proposals.any? %>
@@ -32,7 +32,7 @@
   <%== t ".not_participants_text" %>
 
   <p class="call-to-action">
-    <%= link_to t('.see_all'), proposals_url(filter: 'interaction=created,followed', order: 'confidence_score'), class: 'participate' %>
+    <%= link_to t('.see_all'), proposals_url(participatory_process_id: @participatory_process.slug, filter: 'interaction=created,followed', order: 'confidence_score'), class: 'participate' %>
     <p style="margin: 0 30px; text-align: center">
       <em><%= t '.see_all_explanation' %></em>
     </p>
