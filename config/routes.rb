@@ -310,9 +310,12 @@ Rails.application.routes.draw do
     end
 
     resources :categories, only: [:index]
+
+    # static pages
+    resources :pages, path: '/', only: [:show]
   end
 
-  ["proposals", "action_plans", "meetings", "debates", "categories"].each do |path|
+  ["proposals", "action_plans", "meetings", "debates", "categories", "more_information"].each do |path|
     get "/#{path}", as: "#{path}_root" , to: redirect { |_, request|
       p = ParticipatoryProcess.first
       if p.present?
@@ -338,8 +341,4 @@ Rails.application.routes.draw do
       mount Sidekiq::Web => '/sidekiq'
     end
   end
-
-  # static pages
-
-  resources :pages, path: '/', only: [:show]
 end

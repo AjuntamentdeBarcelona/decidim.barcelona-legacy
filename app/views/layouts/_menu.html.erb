@@ -20,8 +20,8 @@
       <% if feature?(:spending_proposals) %>
         <%= link_to t("layouts.header.spending_proposals"), spending_proposals_path, class: ("active" if controller_name == "spending_proposals") %>
       <% end %>
-      <%= link_to t("categories.title"), categories_path, class: ("active" if current_page?("/categories"))  %>
-      <%= link_to t("layouts.header.more_information"), page_path('more_information'), class: ("active" if current_page?("/more_information"))  %>
+      <%= link_to t("categories.title"), categories_path, class: ("active" if controller_name == "categories") %>
+      <%= link_to t("layouts.header.more_information"), page_path(id: 'more_information', participatory_process_id: @participatory_process), class: ("active" if current_page?(controller: "pages", action: "show", id: "more_information"))  %>
       <%= link_to t("dataviz.title"), dataviz_index_path, class: ("active" if controller_name == "dataviz")  %>
       <% if Setting['blog_url'] %>
         <%= link_to Setting['blog_url'][I18n.locale.to_s], target: "_blank" do %>
