@@ -9,20 +9,20 @@
         <%= fa_icon 'home' %>
       <% end %>
 
-      <%= link_to t("layouts.header.proposals"), proposals_root_path, class: ("active" if  controller_name == "proposals"), data: {'no-turbolink' => true}  %>
+      <%= link_to t("layouts.header.proposals"), proposals_root_path(participatory_process_id: @participatory_process), class: ("active" if  controller_name == "proposals"), data: {'no-turbolink' => true}  %>
       <% if can? :read, ActionPlan %>
-        <%= link_to t("layouts.header.action_plans"), action_plans_root_path, class: ("active" if  controller_name == "action_plans"), data: {'no-turbolink' => true} %>
+        <%= link_to t("layouts.header.action_plans"), action_plans_root_path(participatory_process_id: @participatory_process), class: ("active" if  controller_name == "action_plans"), data: {'no-turbolink' => true} %>
       <% end %>
-      <%= link_to t("layouts.header.meetings"), meetings_root_path, class: ("active" if controller_name == 'meetings'), data: {'no-turbolink' => true} %>
+      <%= link_to t("layouts.header.meetings"), meetings_root_path(participatory_process_id: @participatory_process), class: ("active" if controller_name == 'meetings'), data: {'no-turbolink' => true} %>
       <% if feature?(:debates) %>
-        <%= link_to t("layouts.header.debates"), debates_root_path, class: ("active" if controller_name == "debates"), data: {'no-turbolink' => true} %>
+        <%= link_to t("layouts.header.debates"), debates_root_path(participatory_process_id: @participatory_process), class: ("active" if controller_name == "debates"), data: {'no-turbolink' => true} %>
       <% end %>
       <% if feature?(:spending_proposals) %>
-        <%= link_to t("layouts.header.spending_proposals"), spending_proposals_path, class: ("active" if controller_name == "spending_proposals") %>
+        <%= link_to t("layouts.header.spending_proposals"), spending_proposals_path(participatory_process_id: @participatory_process), class: ("active" if controller_name == "spending_proposals") %>
       <% end %>
-      <%= link_to t("categories.title"), categories_path, class: ("active" if controller_name == "categories") %>
-      <%= link_to t("layouts.header.more_information"), page_path(id: 'more_information', participatory_process_id: @participatory_process), class: ("active" if current_page?(controller: "pages", action: "show", id: "more_information"))  %>
-      <%= link_to t("dataviz.title"), dataviz_index_path, class: ("active" if controller_name == "dataviz")  %>
+      <%= link_to t("categories.title"), categories_path(participatory_process_id: @participatory_process), class: ("active" if controller_name == "categories") %>
+      <%= link_to t("layouts.header.more_information"), page_path(id: 'more_information', participatory_process_id: @participatory_process), class: ("active" if current_page?(controller: "pages", action: "show", id: "more_information", participatory_process_id: @participatory_process))  %>
+      <%= link_to t("dataviz.title"), dataviz_index_path(participatory_process_id: @participatory_process), class: ("active" if controller_name == "dataviz")  %>
       <% if Setting['blog_url'] %>
         <%= link_to Setting['blog_url'][I18n.locale.to_s], target: "_blank" do %>
           <%= t("layouts.header.external_link_blog") %>

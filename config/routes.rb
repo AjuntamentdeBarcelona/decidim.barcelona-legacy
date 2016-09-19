@@ -186,8 +186,6 @@ Rails.application.routes.draw do
     resources :action_plan_reports, only: [:index, :create, :show]
   end
 
-  resources :dataviz, only: [:show, :index]
-
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -311,11 +309,20 @@ Rails.application.routes.draw do
 
     resources :categories, only: [:index]
 
+    resources :dataviz, only: [:show, :index]
+
     # static pages
     resources :pages, path: '/', only: [:show]
   end
 
-  ["proposals", "action_plans", "meetings", "debates", "categories", "more_information"].each do |path|
+  [
+    "proposals",
+    "action_plans",
+    "meetings",
+    "debates",
+    "categories",
+    "more_information"
+  ].each do |path|
     get "/#{path}", as: "#{path}_root" , to: redirect { |_, request|
       p = ParticipatoryProcess.first
       if p.present?
