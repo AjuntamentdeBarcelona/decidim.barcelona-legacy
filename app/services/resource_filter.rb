@@ -110,26 +110,28 @@ class ResourceFilter
       collection = collection.includes(:action_plans).where(action_plans: { id: nil })
     end
 
-    if @user && @user.ability.can?(:read, ProposalAnswer)
-      if @params["review_status"]
-        collection = collection.includes(:answer).
-                    where(proposal_answers: { status: @params["review_status"]})
-      end
+    if @params['review_status']
+      collection = collection.includes(:answer)
+                             .where(proposal_answers: { 
+                               status: @params['review_status']
+                             })
+    end
 
-      if @params["reviewer_status"]
-        if params["reviewer_status"].include? "reviewed"
-          collection = collection.reviewed
-        else
-          collection = collection.not_reviewed
-        end
-      end
+    if @params['reviewer_status']
+      collection = if params['reviewer_status'].include? 'reviewed'
+                     collection.reviewed
+                   else
+                     collection.not_reviewed
+                   end
+    end
 
-      if @params["review_validation"]
-        if params["review_validation"].include?("validated")
-          collection = collection.includes(:answer).where(proposal_answers: { official: true })
-        elsif params["review_validation"].include?("not_validated")
-          collection = collection.includes(:answer). where(proposal_answers: { official: false })
-        end
+    if @params['review_validation']
+      if params['review_validation'].include?('validated')
+        collection = collection.includes(:answer)
+                               .where(proposal_answers: { official: true })
+      elsif params['review_validation'].include?('not_validated')
+        collection = collection.includes(:answer)
+                               .where(proposal_answers: { official: false })
       end
     end
 
