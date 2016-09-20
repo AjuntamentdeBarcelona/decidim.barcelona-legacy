@@ -1,3 +1,5 @@
+import { connect } from 'react-redux';
+
 import { buildActionPlansRequestParams} from "./action_plans.actions";
 
 function serialize(obj) {
@@ -20,4 +22,7 @@ const DownloadButton = (props) => (
   </a>
 )
 
-export default DownloadButton;
+export default connect(
+  ({ participatoryProcessId }) => ({ participatoryProcessId }),
+  null
+)(DownloadButton);

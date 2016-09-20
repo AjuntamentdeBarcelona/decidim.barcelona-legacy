@@ -37,33 +37,6 @@ Rails.application.routes.draw do
   get '/cookies/allow', to: 'cookie_policy#allow', as: :allow_cookies
   get '/cookies/deny', to: 'cookie_policy#deny', as: :deny_cookies
 
-
-  resources :debates do
-    member do
-      post :vote
-      put :flag
-      put :unflag
-    end
-  end
-
-  resources :proposals do
-    member do
-      post :vote
-      post :vote_featured
-      put :flag
-      put :unflag
-    end
-  end
-
-  resources :action_plans do
-    resources :revisions, except: [:show, :delete], controller: 'action_plans/revisions'
-    collection do
-      get :build_from_proposal
-    end
-  end
-
-  resources :meetings, only: [:index, :show]
-
   resources :spending_proposals, only: [:index, :new, :create]
 
   resource :email_notifications_reminder, only: [:create, :destroy]
@@ -87,8 +60,6 @@ Rails.application.routes.draw do
   end
 
   resource :verification, controller: "verification", only: [:show]
-
-  resources :categories, only: [:index]
 
   scope module: :verification do
     resource :residence, controller: "residence", only: [:new, :create]
@@ -161,6 +132,8 @@ Rails.application.routes.draw do
     resources :categories do
       resources :subcategories
     end
+
+    resources :participatory_processes
   end
 
   namespace :moderation do
@@ -212,8 +185,6 @@ Rails.application.routes.draw do
     resources :proposals, only: [:index, :show]
     resources :action_plan_reports, only: [:index, :create, :show]
   end
-
-  resources :dataviz, only: [:show, :index]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -309,6 +280,59 @@ Rails.application.routes.draw do
     resources :debates, only: [:show]
   end
 
+  scope ":participatory_process_id" do
+    resources :proposals do
+      member do
+        post :vote
+        post :vote_featured
+        put :flag
+        put :unflag
+      end
+    end
+
+    resources :meetings, only: [:index, :show]
+
+    resources :debates do
+      member do
+        post :vote
+        put :flag
+        put :unflag
+      end
+    end
+
+    resources :action_plans do
+      resources :revisions, except: [:show, :delete], controller: 'action_plans/revisions'
+      collection do
+        get :build_from_proposal
+      end
+    end
+
+    resources :categories, only: [:index]
+
+    resources :dataviz, only: [:show, :index]
+
+    # static pages
+    resources :pages, path: '/', only: [:show]
+  end
+
+  [
+    "proposals",
+    "action_plans",
+    "meetings",
+    "debates",
+    "categories",
+    "more_information"
+  ].each do |path|
+    get "/#{path}", as: "#{path}_root" , to: redirect { |_, request|
+      p = ParticipatoryProcess.first
+      if p.present?
+        "/#{p.slug}#{request.path}"
+      else
+        raise ActionController::RoutingError.new('Not Found')
+      end
+    }
+  end
+
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
@@ -324,8 +348,4 @@ Rails.application.routes.draw do
       mount Sidekiq::Web => '/sidekiq'
     end
   end
-
-  # static pages
-
-  resources :pages, path: '/', only: [:show]
 end

@@ -1,17 +1,17 @@
 <div class="debate-edit row">
 
   <div class="small-12 column">
-    <%= link_to debates_path, class: "left back clear" do %>
+    <%= link_to debates_path(participatory_process_id: @debate.participatory_process), class: "left back clear" do %>
       <i class="icon-angle-left left"></i>
       <%= t("debates.edit.back_link") %>
     <% end %>
 
     <div class="right">
-      <%= link_to t("debates.edit.show_link"), @debate %>
+      <%= link_to t("debates.edit.show_link"), debate_path(@debate, participatory_process_id: @debate.participatory_process) %>
     </div>
 
     <h1><%= t("debates.edit.editing") %></h1>
 
-    <%= render "form" %>
+    <%= render "form", form_url: debate_url(participatory_process_id: @debate.participatory_process) %>
   </div>
 </div>

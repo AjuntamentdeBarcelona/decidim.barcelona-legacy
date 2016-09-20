@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe DebatesController do
+  let(:participatory_process) { create(:participatory_process) }
 
   before(:each) do
     Setting['feature.debates'] = true
@@ -13,7 +14,7 @@ describe DebatesController do
       sign_in create(:user)
 
       expect do
-        xhr :post, :vote, id: debate.id, value: 'yes'
+        xhr :post, :vote, id: debate.id, participatory_process_id: participatory_process.slug, value: 'yes'
       end.to change { debate.reload.votes_for.size }.by(1)
     end
 
@@ -23,7 +24,7 @@ describe DebatesController do
       sign_in create(:user)
 
       expect do
-        xhr :post, :vote, id: debate.id, value: 'yes'
+        xhr :post, :vote, id: debate.id, participatory_process_id: participatory_process.slug, value: 'yes'
       end.to_not change { debate.reload.votes_for.size }
     end
   end

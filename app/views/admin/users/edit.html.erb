@@ -28,7 +28,7 @@
 <ul class="admin-list">
 <% debates.each do |debate| %>
   <li>
-    <%= link_to debate.title, debate_path(debate) %>
+    <%= link_to debate.title, debate_path(debate, participatory_process_id: debate.participatory_process) %>
   </li>
 <% end %>
 </ul>

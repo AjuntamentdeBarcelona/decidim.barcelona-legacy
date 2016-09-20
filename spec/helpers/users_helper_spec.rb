@@ -33,7 +33,14 @@ describe UsersHelper do
   describe '#comment_commentable_title' do
     it "should return a link to the commentable" do
       comment = create(:comment)
-      expect(comment_commentable_title(comment)).to eq link_to comment.commentable.title, comment.commentable
+      commentable = comment.commentable
+
+      expect(comment_commentable_title(comment)).to eq link_to(commentable.title, url_for({
+        controller: commentable.class.name.downcase.pluralize,
+        action: 'show',
+        id: commentable.id,
+        participatory_process_id: commentable.participatory_process
+      }))
     end
 
     it "should return a hint if the commentable has been deleted" do

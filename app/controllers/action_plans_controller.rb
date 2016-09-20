@@ -23,6 +23,7 @@ class ActionPlansController < ApplicationController
     @references = Reference.references_for(@proposal)
 
     @resource = resource_model.new({
+      participatory_process_id: @proposal.participatory_process_id,
       proposals: @references.select{ |r| r.class == Proposal } + [@proposal],
       scope: @proposal.scope,
       district: @proposal.district,
@@ -47,11 +48,12 @@ class ActionPlansController < ApplicationController
     }
 
     @resource = resource_model.new(strong_params)
+    @resource.participatory_process_id = @participatory_process.id if @participatory_process.present?
     @resource.revisions.new(params.require(:action_plan_revision).permit(:title, :description, :author_id))
 
     if @resource.save
       ActionPlanStatisticsWorker.perform_async(@resource.id)
-      redirect_to action_plan_url(@resource), notice: t('flash.actions.create.notice', resource_name: "#{resource_name.capitalize}")
+      redirect_to action_plan_url(@resource, participatory_process_id: @resource.participatory_process.slug), notice: t('flash.actions.create.notice', resource_name: "#{resource_name.capitalize}")
     else
       set_resource_instance
       render :new

@@ -67,7 +67,7 @@ export default class RichEditor extends Component {
 
 RichEditor.propTypes = {
   value: PropTypes.string,
-  onTextChange: PropTypes.func.isRequired,
+  onTextChange: PropTypes.func,
   disabled: PropTypes.bool,
   id: PropTypes.string,
   name: PropTypes.string

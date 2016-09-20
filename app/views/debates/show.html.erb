@@ -7,7 +7,7 @@
         <%= link_to t("debates.show.back_link"), :back, class: 'left back' %>
 
         <% if current_user && can?(:update, @debate) %>
-          <%= link_to edit_debate_path(@debate), class: 'edit-debate button success tiny radius right' do %>
+          <%= link_to edit_debate_path(@debate, participatory_process_id: @debate.participatory_process), class: 'edit-debate button success tiny radius right' do %>
             <i class="icon-edit"></i>
             <%= t("debates.show.edit_debate_link") %>
           <% end %>

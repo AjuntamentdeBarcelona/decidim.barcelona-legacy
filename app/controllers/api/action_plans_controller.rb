@@ -1,8 +1,10 @@
 # coding: utf-8
 class Api::ActionPlansController < Api::ApplicationController
+  include Api::HasParticipatoryProcess
   include HasOrders
   include ActionView::Helpers::SanitizeHelper
 
+  before_action :authenticate_user!, except: [:index, :show]
   load_and_authorize_resource
 
   has_orders %w{weight random confidence_score participants}, only: :index
@@ -10,7 +12,9 @@ class Api::ActionPlansController < Api::ApplicationController
   def index
     set_seed
 
-    action_plans = ActionPlan.includes(:revisions, :action_plan_statistics)
+    action_plans = ActionPlan
+      .where(participatory_process: @participatory_process)
+      .includes(:revisions, :action_plan_statistics)
 
     @action_plans = ResourceFilter.new(params, user: current_user)
       .filter_collection(action_plans.includes(:category, :subcategory))
@@ -106,7 +110,7 @@ class Api::ActionPlansController < Api::ApplicationController
               action_plan.subcategory.name[I18n.default_locale.to_s],
               action_plan.title,
               strip_tags(action_plan.description),
-              url_for(action_plan),
+              action_plan_url(id: action_plan, participatory_process_id: @participatory_process),
               proposal.code,
               proposal.author.try(:name),
               translate_source(proposal.source),
@@ -117,7 +121,7 @@ class Api::ActionPlansController < Api::ApplicationController
               proposal.summary,
               proposal.total_votes,
               proposal.comments_count,
-              url_for(proposal)
+              proposal_url(id: proposal, participatory_process_id: @participatory_process)
             ]
           end
         end

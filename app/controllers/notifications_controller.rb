@@ -9,7 +9,16 @@ class NotificationsController < ApplicationController
 
   def show
     @notification = current_user.notifications.find(params[:id])
-    redirect_to url_for(@notification.notifiable)
+    if @notification.notifiable.respond_to? :participatory_process
+      redirect_to url_for({
+        controller: @notification.notifiable.class.name.downcase.pluralize,
+        action: 'show',
+        id: @notification.notifiable,
+        participatory_process_id: @notification.notifiable.participatory_process
+      })
+    else
+      redirect_to url_for(@notification.notifiable)
+    end
   end
 
   def mark_all_as_read

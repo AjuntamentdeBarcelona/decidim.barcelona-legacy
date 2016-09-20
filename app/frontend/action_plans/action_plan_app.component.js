@@ -6,6 +6,7 @@ import {
 }                               from 'redux';
 import { Provider }             from 'react-redux';
 import ReduxPromise             from 'redux-promise';
+import ReduxThunk               from 'redux-thunk';
 
 import { actionPlan }           from './action_plans.reducers';
 import categories               from '../categories/categories.reducers';
@@ -16,7 +17,7 @@ import pagination               from '../pagination/pagination.reducers';
 
 import ActionPlanShow           from './action_plan_show.component';
 
-const middlewares = [ReduxPromise];
+const middlewares = [ReduxPromise, ReduxThunk];
 
 if (process.env.NODE_ENV === 'development') {
   const createLogger = require('redux-logger');
@@ -25,8 +26,12 @@ if (process.env.NODE_ENV === 'development') {
 }
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
-function createReducers(sessionState) {
+function createReducers(sessionState, participatoryProcessIdState) {
   let session = function (state = sessionState) {
+    return state;
+  };
+
+  let participatoryProcessId = function (state = participatoryProcessIdState) {
     return state;
   };
 
@@ -34,6 +39,7 @@ function createReducers(sessionState) {
     session,
     order,
     pagination,
+    participatoryProcessId,
     actionPlan,
     categories,
     districts,
@@ -45,7 +51,7 @@ export default class ActionPlanApp extends Component {
   render() {
     return (
       <Provider 
-        store={createStoreWithMiddleware(createReducers(this.props.session))}>
+        store={createStoreWithMiddleware(createReducers(this.props.session, this.props.participatory_process_id))}>
         <ActionPlanShow actionPlanId={this.props.actionPlanId} />
       </Provider>
     );
@@ -54,5 +60,6 @@ export default class ActionPlanApp extends Component {
 
 ActionPlanApp.propTypes = {
   session: PropTypes.object.isRequired,
-  actionPlanId: PropTypes.string.isRequired
+  actionPlanId: PropTypes.string.isRequired,
+  participatory_process_id: PropTypes.string.isRequired
 };

@@ -6,6 +6,7 @@ import {
 }                               from 'redux';
 import { Provider }             from 'react-redux';
 import ReduxPromise             from 'redux-promise';
+import ReduxThunk               from 'redux-thunk';
 
 import { proposal }             from './proposals.reducers';
 import categories               from '../categories/categories.reducers';
@@ -17,7 +18,7 @@ import ProposalShow             from './proposal_show.component';
 
 import pagination               from '../pagination/pagination.reducers';
 
-const middlewares = [ReduxPromise];
+const middlewares = [ReduxPromise, ReduxThunk];
 
 if (process.env.NODE_ENV === 'development') {
   const createLogger = require('redux-logger');
@@ -26,13 +27,18 @@ if (process.env.NODE_ENV === 'development') {
 }
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
-function createReducers(sessionState) {
+function createReducers(sessionState, participatoryProcessIdState) {
   let session = function (state = sessionState) {
+    return state;
+  };
+
+  let participatoryProcessId = function (state = participatoryProcessIdState) {
     return state;
   };
 
   return combineReducers({
     session,
+    participatoryProcessId,
     proposal,
     categories,
     districts,
@@ -46,7 +52,7 @@ export default class ProposalApp extends Component {
   render() {
     return (
       <Provider 
-        store={createStoreWithMiddleware(createReducers(this.props.session))}>
+        store={createStoreWithMiddleware(createReducers(this.props.session, this.props.participatory_process_id))}>
         <ProposalShow proposalId={this.props.proposalId} />
       </Provider>
     );
@@ -55,5 +61,6 @@ export default class ProposalApp extends Component {
 
 ProposalApp.propTypes = {
   session: PropTypes.object.isRequired,
-  proposalId: PropTypes.string.isRequired
+  proposalId: PropTypes.string.isRequired,
+  participatory_process_id: PropTypes.string.isRequired
 };

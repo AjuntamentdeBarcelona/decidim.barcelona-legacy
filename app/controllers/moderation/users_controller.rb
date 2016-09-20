@@ -15,8 +15,9 @@ class Moderation::UsersController < Moderation::BaseController
 
   def hide
     block_user
+    
 
-    redirect_to debates_path
+    redirect_to debates_path(participatory_process_id: params[:participatory_process_id])
   end
 
   private

@@ -8,6 +8,7 @@ module CommentableActions
 
     @resources = @resources.tagged_with(@tag_filter) if @tag_filter
     @resources = @resources.page(params[:page]).for_render.send("sort_by_#{@current_order}")
+    @resources = @resources.where(participatory_process: @participatory_process) if @participatory_process.present?
     index_customization if index_customization.present?
 
     @tag_cloud = tag_cloud
@@ -32,10 +33,15 @@ module CommentableActions
   def create
     @resource = resource_model.new(strong_params)
     @resource.author = current_user
+    @resource.participatory_process_id = @participatory_process.id if @participatory_process.present?
 
     if verify_recaptcha(model: @resource) && @resource.save
       track_event
-      redirect_path = url_for(controller: controller_name, action: :show, id: @resource)
+      if @resource.participatory_process.present?
+        redirect_path = url_for(controller: controller_name, action: :show, id: @resource, participatory_process_id: @resource.participatory_process)
+      else
+        redirect_path = url_for(controller: controller_name, action: :show, id: @resource)
+      end
       redirect_to redirect_path, notice: t("flash.actions.create.#{resource_name.underscore}")
     else
       load_featured_tags
@@ -51,7 +57,12 @@ module CommentableActions
   def update
     resource.assign_attributes(strong_params)
     if verify_recaptcha(model: resource) && resource.save
-      redirect_to resource, notice: t("flash.actions.update.#{resource_name.underscore}")
+      if resource.participatory_process.present?
+        redirect_path = url_for(controller: controller_name, action: :show, id: resource, participatory_process_id: resource.participatory_process)
+      else
+        redirect_path = url_for(controller: controller_name, action: :show, id: resource)
+      end
+      redirect_to redirect_path, notice: t("flash.actions.update.#{resource_name.underscore}")
     else
       load_featured_tags
       set_resource_instance

@@ -30,6 +30,7 @@
     </div>
 
     <div class="actions small-12 column">
+      <%= hidden_field_tag :participatory_process_id, @participatory_process.slug %>
       <%= f.submit(class: "button radius", value: t("action_plans.#{action_name}.form.submit_button")) %>
     </div>
   </div>

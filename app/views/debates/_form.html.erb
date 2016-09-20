@@ -1,4 +1,4 @@
-<%= form_for(@debate, multipart: true) do |f| %>
+<%= form_for(@debate, url: form_url, multipart: true) do |f| %>
   <%= render 'shared/errors', resource: @debate %>
 
   <div class="row">
@@ -57,6 +57,7 @@
     </div>
 
     <div class="actions small-12 column">
+      <%= hidden_field_tag :participatory_process_id, @participatory_process.slug %>
       <%= f.submit(class: "button radius", value: t("debates.#{action_name}.form.submit_button")) %>
     </div>
   </div>

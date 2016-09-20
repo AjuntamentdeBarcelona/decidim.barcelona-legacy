@@ -46,11 +46,18 @@ export function updateActionPlan(id, attributes) {
   };
 }
 
-export function fetchActionPlans(options) {
-  return {
+export const fetchActionPlans = (options) => (dispatch, getState) => {
+  const { participatoryProcessId } = getState();
+  options['participatoryProcessId'] = participatoryProcessId;
+
+  const request = buildActionPlansRequest(options);
+
+  dispatch({
     type: FETCH_ACTION_PLANS,
-    payload: buildActionPlansRequest(options)
-  };
+    payload: request
+  });
+
+  return request;
 }
 
 export function fetchActionPlan(actionPlanId) {
@@ -124,12 +131,14 @@ export function buildActionPlansRequestParams(options = {}){
       filter,
       order,
       page,
+      participatoryProcessId,
       seed;
 
-  filters = options.filters || {};
-  page    = options.page || 1;
-  order   = options.order;
-  seed    = options.seed;
+  filters                = options.filters || {};
+  page                   = options.page || 1;
+  order                  = options.order;
+  seed                   = options.seed;
+  participatoryProcessId = options.participatoryProcessId;
 
   // TODO: worst name ever
   filter = filters.filter;
@@ -149,7 +158,8 @@ export function buildActionPlansRequestParams(options = {}){
     filter: filterString,
     page: page,
     order: order,
-    random_seed: seed
+    random_seed: seed,
+    participatory_process_id: participatoryProcessId
   };
 }
 

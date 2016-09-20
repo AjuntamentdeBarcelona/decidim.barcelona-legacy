@@ -1,13 +1,13 @@
 <div class="proposal-new row">
 
   <div class="small-12 medium-9 column">
-    <%= link_to proposals_path, class: "left back" do %>
+    <%= link_to proposals_path(participatory_process_id: @participatory_process), class: "left back" do %>
       <i class="icon-angle-left left"></i>
       <%= t("proposals.new.back_link") %>
     <% end %>
     <h1><%= t("proposals.new.start_new") %></h1>
     <%= render partial: 'closing_alert' %>
-    <%= render "proposals/form", form_url: proposals_url %>
+    <%= render "proposals/form", form_url: proposals_url(participatory_process_id: @participatory_process) %>
   </div>
 
   <div class="small-12 medium-3 column">

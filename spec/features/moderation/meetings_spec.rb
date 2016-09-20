@@ -1,9 +1,11 @@
 require 'rails_helper'
 
 feature 'Moderate meetings' do
+  let!(:participatory_process) { create(:participatory_process) }
+
   before :each do
-    @category = create(:category)
-    @subcategory = create(:subcategory, category_id: @category.id)
+    @category = create(:category, participatory_process: participatory_process)
+    @subcategory = create(:subcategory, category_id: @category.id, participatory_process: participatory_process)
   end
 
   context 'As a moderator' do
@@ -33,7 +35,7 @@ feature 'Moderate meetings' do
     end
 
     scenario 'Create a meeting with valid values', :js do
-      visit new_moderation_meeting_path
+      visit new_moderation_meeting_path(participatory_process_id: participatory_process)
 
       fill_in_meeting_form
 
@@ -47,7 +49,7 @@ feature 'Moderate meetings' do
     end
 
     scenario 'Create a meeting with some invalid values', :js do
-      visit new_moderation_meeting_path
+      visit new_moderation_meeting_path(participatory_process_id: participatory_process)
 
       fill_in_meeting_form
 
@@ -159,8 +161,8 @@ feature 'Moderate meetings' do
     admin = create(:administrator)
     login_as(admin)
 
-    my_proposal = create(:proposal, title: "My proposal")
-    create(:meeting, title: "My meeting")
+    my_proposal = create(:proposal, participatory_process: participatory_process, title: "My proposal")
+    create(:meeting, participatory_process: participatory_process, title: "My meeting")
 
     visit moderation_meetings_path
 

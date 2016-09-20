@@ -12,7 +12,7 @@ module CategoryPickerHelper
   end
 
   def serialized_categories
-    CategoryDecorator.decorate_collection(Category.all).map do |category|
+    CategoryDecorator.decorate_collection(Category.where(participatory_process_id: @participatory_process.id).all).map do |category|
       {
         id: category.id.to_s,
         name: category.name
@@ -21,7 +21,7 @@ module CategoryPickerHelper
   end
 
   def serialized_subcategories
-    SubcategoryDecorator.decorate_collection(Subcategory.all).map do |subcategory|
+    SubcategoryDecorator.decorate_collection(Subcategory.where(participatory_process_id: @participatory_process.id).all).map do |subcategory|
       {
         id: subcategory.id.to_s,
         name: subcategory.name,

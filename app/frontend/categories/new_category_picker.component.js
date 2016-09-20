@@ -6,12 +6,15 @@ import SubcategoryPicker        from './new_subcategory_picker.component';
 class CategoryPicker extends Component {
   render () {
     const { categories, category, subcategory } = this.props;
-    const subcategories = (categories.length > 0 && category) ? categories
-      .filter(c => {
-        return c.id === category.id
-      })[0]
-      .subcategories : [];
+    let subcategories = [];
 
+    if (categories.length > 0 && category) {
+      let categorySelected = categories.filter(c => c.id === category.id);
+      if (categorySelected.length > 0) {
+        subcategories = categorySelected[0].subcategories;
+      }
+    }
+    
     var categoryList = categories.map(c => this.renderRow(c));
 
     return (

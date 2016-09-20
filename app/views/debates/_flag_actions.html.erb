@@ -5,7 +5,7 @@
     </a>
     <ul id="flag-drop-debate-<%= debate.id %>" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
       <li>
-        <%= link_to t('shared.flag'), flag_debate_path(debate), method: :put, remote: true, id: "flag-debate-#{ debate.id }" %>
+        <%= link_to t('shared.flag'), flag_debate_path(debate, participatory_process_id: debate.participatory_process), method: :put, remote: true, id: "flag-debate-#{ debate.id }" %>
       </li>
     </ul>
   <% end %>
@@ -16,7 +16,7 @@
     </a>
     <ul id="unflag-drop-debate-<%= debate.id %>" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
       <li>
-        <%= link_to t('shared.unflag'), unflag_debate_path(debate), method: :put, remote: true, id: "unflag-debate-#{ debate.id }" %>
+        <%= link_to t('shared.unflag'), unflag_debate_path(debate, participatory_process_id: debate.participatory_process), method: :put, remote: true, id: "unflag-debate-#{ debate.id }" %>
       </li>
     </ul>
   <% end %>

@@ -11,6 +11,6 @@ class PagesController < ApplicationController
   private
 
   def categories
-    @categories ||= Category.order(:position).decorate
+    @categories ||= @participatory_process.categories.order(:position).decorate
   end
 end

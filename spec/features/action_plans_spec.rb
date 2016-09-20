@@ -2,18 +2,19 @@
 require 'rails_helper'
 
 feature 'Action plans', :js do
-  let!(:subcategory) { create(:subcategory) }
-  let(:category) { subcategory.category }
-  let(:reviewer) { create(:user, :reviewer) }
+  let!(:participatory_process) { create(:participatory_process) }
+  let!(:category) { create(:category, participatory_process: participatory_process) }
+  let!(:subcategory) { create(:subcategory, category: category, participatory_process: participatory_process) }
+  let!(:reviewer) { create(:user, :reviewer) }
 
   before :each do
     login_as(reviewer)
   end
 
   scenario 'Create an action plan from scratch' do
-    proposal = create(:proposal, title: "A good looking proposal")
+    proposal = create(:proposal, participatory_process: participatory_process, title: "A good looking proposal")
 
-    visit action_plans_path
+    visit action_plans_path(participatory_process_id: participatory_process)
     click_link "New action plan" 
     fill_in "action_plan_title", with: "My action plan title"
     fill_in_editor "action_plan_description", with: "My action plan description"
@@ -35,11 +36,11 @@ feature 'Action plans', :js do
 
   scenario 'Create an action plan from an existing proposal' do
     comment = create(:comment)
-    proposal = create(:proposal, title: "A good looking proposal")
-    related = create(:proposal, title: "A related proposal")
+    proposal = create(:proposal, participatory_process: participatory_process, title: "A good looking proposal")
+    related = create(:proposal, participatory_process: participatory_process, title: "A related proposal")
     Reference.create(source: comment, referrer: proposal, referenced: related)
 
-    visit proposals_path
+    visit proposals_path(participatory_process_id: participatory_process)
     click_link "A good looking proposal"
     click_link "Create action plan"
     click_button "Create action plan"
@@ -52,21 +53,21 @@ feature 'Action plans', :js do
   end
 
   scenario 'Edit an existing action plan' do
-    action_plan = create(:action_plan, scope: 'city')
+    action_plan = create(:action_plan, participatory_process: participatory_process, scope: 'city')
 
-    visit action_plans_path
+    visit action_plans_path(participatory_process_id: participatory_process)
     click_link action_plan.title
     choose 'action_plan_scope_district'
     select 'Ciutat Vella', from: 'action_plan_district'
-    visit action_plans_path
+    visit action_plans_path(participatory_process_id: participatory_process)
 
     expect(page).to have_content("Ciutat Vella")
   end
 
   scenario 'Create a new revision for an action plan' do
-    action_plan = create(:action_plan)
+    action_plan = create(:action_plan, participatory_process: participatory_process)
 
-    visit action_plans_path
+    visit action_plans_path(participatory_process_id: participatory_process)
     click_link action_plan.title
     click_link "New revision"
     fill_in "action_plan_revision_title", with: "My title revision"
@@ -78,10 +79,10 @@ feature 'Action plans', :js do
   end
 
   scenario 'Filter action plans by category' do
-    target_action_plan = create(:action_plan, category: category)
-    another_action_plan = create(:action_plan)
+    target_action_plan = create(:action_plan, participatory_process: participatory_process, category: category)
+    another_action_plan = create(:action_plan, participatory_process: participatory_process)
 
-    visit action_plans_path
+    visit action_plans_path(participatory_process_id: participatory_process)
     choose "filter_category_id_#{category.id}"
 
     expect(page).to have_content(target_action_plan.title)
@@ -89,12 +90,12 @@ feature 'Action plans', :js do
   end
 
   scenario 'Filter action plans by search' do
-    action_plan = create(:action_plan)
+    action_plan = create(:action_plan, participatory_process: participatory_process)
     action_plan.revisions << create(:action_plan_revision, title: 'A good action plan')
-    action_plan = create(:action_plan)
+    action_plan = create(:action_plan, participatory_process: participatory_process)
     action_plan.revisions << create(:action_plan_revision, title: 'A bad action plan')
 
-    visit action_plans_path
+    visit action_plans_path(participatory_process_id: participatory_process)
     find('.search-filter').send_keys("good")
 
     expect(page).to have_content('A good action plan')
@@ -102,24 +103,24 @@ feature 'Action plans', :js do
   end
 
   scenario 'Delete an action plan' do
-    action_plan = create(:action_plan)
+    action_plan = create(:action_plan, participatory_process: participatory_process)
 
-    visit action_plans_path
+    visit action_plans_path(participatory_process_id: participatory_process)
     click_link action_plan.title
     page.find('a', text: 'remove').click
-    visit action_plans_path
+    visit action_plans_path(participatory_process_id: participatory_process)
 
     expect(page).not_to have_content(action_plan.title)
   end
 
   scenario 'Approve an action plan' do 
-    approved_action_plan = create(:action_plan)
-    non_approved_action_plan = create(:action_plan)
+    approved_action_plan = create(:action_plan, participatory_process: participatory_process)
+    non_approved_action_plan = create(:action_plan, participatory_process: participatory_process)
 
-    visit action_plans_path
+    visit action_plans_path(participatory_process_id: participatory_process)
     click_link approved_action_plan.title
     page.find('a', text: 'approve').click
-    visit action_plans_path
+    visit action_plans_path(participatory_process_id: participatory_process)
     choose 'filter_action_plan_approval_approved'
 
     expect(page).to have_content(approved_action_plan.title)

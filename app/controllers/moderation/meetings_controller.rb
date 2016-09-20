@@ -9,6 +9,7 @@ class Moderation::MeetingsController < Moderation::BaseController
   load_and_authorize_resource
 
   def index
+    @participatory_processes = ParticipatoryProcess.all
     @search    = params[:search]
     @resources = @resources.send(@current_filter)
     @resources = @resources.search(@search) if @search.present?
@@ -66,6 +67,7 @@ class Moderation::MeetingsController < Moderation::BaseController
   def create
     @resource = resource_model.new(strong_params)
     @resource.author = current_user
+    @resource.participatory_process_id = @participatory_process.id if @participatory_process.present?
 
     if @resource.save
       redirect_to moderation_meetings_url, notice: t('flash.actions.create.notice', resource_name: "#{resource_name.capitalize}")
@@ -76,6 +78,7 @@ class Moderation::MeetingsController < Moderation::BaseController
   end
 
   def edit
+    @participatory_process = @meeting.participatory_process
   end
 
   def update
@@ -83,6 +86,7 @@ class Moderation::MeetingsController < Moderation::BaseController
     if resource.save
       redirect_to moderation_meetings_url, notice: t('flash.actions.update.notice', resource_name: "#{resource_name.capitalize}")
     else
+      @participatory_process = resource.participatory_process
       set_resource_instance
       render :edit
     end

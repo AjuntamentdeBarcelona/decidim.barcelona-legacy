@@ -1,7 +1,7 @@
 <% provide :title do %><%= @proposal.title %><% end %>
 <% provide :social_media_meta_tags do %>
 <%= render "shared/social_media_meta_tags",
-            social_url: proposal_url(@proposal),
+            social_url: proposal_url(@proposal, participatory_process_id: @proposal.participatory_process),
             social_title: @proposal.title,
             social_media_image: asset_url('social-media-icon.png'),
             social_description: text_with_links(@proposal.summary) %>
@@ -15,14 +15,14 @@
       <%= link_to t("proposals.show.back_link"), :back, class: 'left back' %>
 
       <% if current_user && @proposal.editable_by?(current_user) %>
-        <%= link_to edit_proposal_path(@proposal), class: 'edit-proposal button success tiny radius right' do %>
+        <%= link_to edit_proposal_path(@proposal, participatory_process_id: @proposal.participatory_process), class: 'edit-proposal button success tiny radius right' do %>
           <i class="icon-edit"></i>
           <%= t("proposals.show.edit_proposal_link") %>
         <% end %>
       <% end %>
 
       <h2>
-        <%= link_to proposal_path(@proposal) do %>
+        <%= link_to proposal_path(@proposal, participatory_process_id: @proposal.participatory_process) do %>
           <%= @proposal.title %>
           <%= proposal_badge(@proposal) %>
         <% end %>

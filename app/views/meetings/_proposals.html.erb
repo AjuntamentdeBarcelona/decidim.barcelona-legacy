@@ -8,7 +8,7 @@
           <% if meeting_proposal.meeting.closed? && meeting_proposal.consensus %>
             <span class="support label round success "><%= t("meetings.close.form.proposals.consensus") %></span>
           <% end %>
-          <%= link_to t('.see_more'), proposal_path(meeting_proposal.proposal), class: 'see-more button tiny round' %>
+          <%= link_to t('.see_more'), proposal_path(meeting_proposal.proposal, participatory_process_id: meeting_proposal.participatory_process), class: 'see-more button tiny round' %>
         </li>
       <% end %>
     </ul>

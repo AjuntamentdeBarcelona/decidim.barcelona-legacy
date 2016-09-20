@@ -20,6 +20,7 @@ class Debate < ActiveRecord::Base
   end
 
   belongs_to :author, -> { with_hidden }, class_name: 'User', foreign_key: 'author_id'
+  belongs_to :participatory_process
   has_many :comments, as: :commentable
 
   validates :title, presence: true

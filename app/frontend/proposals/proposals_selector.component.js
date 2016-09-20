@@ -27,7 +27,7 @@ export default class ProposalsSelector extends Component {
           excludeIds={this.state.proposals.map((proposal) => proposal.id).toArray()}
           onAddProposal={(proposal) => this.addProposal(proposal)} />
         <ProposalsTable 
-          proposals={this.state.proposals} 
+          proposals={this.state.proposals.toArray()}
           onRemoveProposal={(proposal) => this.removeProposal(proposal)} />
       </div>
     );

@@ -77,7 +77,7 @@ export default connect(mapStateToProps, actions)(FollowButton);
 
 FollowButton.propTypes = {
   session: PropTypes.object.isRequired,
-  followId: PropTypes.string,
+  followId: PropTypes.number,
   followingId: PropTypes.number.isRequired,
   followingType: PropTypes.string.isRequired,
   fetchFollow: PropTypes.func.isRequired,

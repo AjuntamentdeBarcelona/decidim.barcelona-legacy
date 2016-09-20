@@ -15,7 +15,7 @@
   <% @proposals.each do |proposal| %>
     <tr id="proposal_<%= proposal.id %>">
       <td>
-        <%= link_to proposal.title, revision_proposal_path(proposal) %>
+        <%= link_to proposal.title, revision_proposal_path(proposal, participatory_process_id: proposal.participatory_process) %>
         <br>
         <span class="date"><%= l proposal.created_at.to_date %></span>
         <span class="bullet">&nbsp;&bull;&nbsp;</span>

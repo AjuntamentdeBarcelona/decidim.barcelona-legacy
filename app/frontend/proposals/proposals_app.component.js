@@ -6,8 +6,9 @@ import {
 }                                               from 'redux';
 import { Provider }                             from 'react-redux';
 import ReduxPromise                             from 'redux-promise';
+import ReduxThunk                               from 'redux-thunk';
 
-const middlewares = [ReduxPromise];
+const middlewares = [ReduxPromise, ReduxThunk];
 
 if (process.env.NODE_ENV === 'development') {
   const createLogger = require('redux-logger');
@@ -62,13 +63,18 @@ function getInitialSeedState() {
   return seed;
 }
 
-function createReducers(sessionState) {
+function createReducers(sessionState, participatoryProcessIdState) {
   let session = function (state = sessionState) {
+    return state;
+  };
+
+  let participatoryProcessId = function (state = participatoryProcessIdState) {
     return state;
   };
 
   return combineReducers({
     session,
+    participatoryProcessId,
     districts,
     categories,
     proposals,
@@ -84,7 +90,7 @@ export default class ProposalsApp extends Component {
   render() {
     return (
       <Provider 
-        store={createStoreWithMiddleware(createReducers(this.props.session))}>
+        store={createStoreWithMiddleware(createReducers(this.props.session, this.props.participatory_process_id))}>
         <Proposals />
       </Provider>
     );
@@ -92,5 +98,6 @@ export default class ProposalsApp extends Component {
 }
 
 ProposalsApp.propTypes = {
-  session: PropTypes.object.isRequired
+  session: PropTypes.object.isRequired,
+  participatory_process_id: PropTypes.string.isRequired
 };
