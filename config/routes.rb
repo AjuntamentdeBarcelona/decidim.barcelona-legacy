@@ -280,6 +280,41 @@ Rails.application.routes.draw do
     resources :debates, only: [:show]
   end
 
+  [
+    "proposals",
+    "action_plans",
+    "meetings",
+    "debates",
+  ].each do |path|
+    get "/#{path}/(:id)", as: "#{path}_root" , to: redirect { |_, request|
+      p = ParticipatoryProcess.first
+      if p.present?
+        "/#{p.slug}#{request.path}"
+      else
+        raise ActionController::RoutingError.new('Not Found')
+      end
+    }
+  end
+
+  get "categories", to: redirect("/pam/categories")
+  get "more_information", to: redirect("/pam/more_information")
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
+  mount Tolk::Engine => '/translate', :as => 'tolk'
+
+  require 'sidekiq/web'
+
+  if Rails.env.development?
+    mount Sidekiq::Web => '/sidekiq'
+  else
+    authenticate :user, lambda { |u| u.administrator? } do
+      mount Sidekiq::Web => '/sidekiq'
+    end
+  end
+
   scope ":participatory_process_id" do
     resources :proposals do
       member do
@@ -313,39 +348,5 @@ Rails.application.routes.draw do
 
     # static pages
     resources :pages, path: '/', only: [:show]
-  end
-
-  [
-    "proposals",
-    "action_plans",
-    "meetings",
-    "debates",
-    "categories",
-    "more_information"
-  ].each do |path|
-    get "/#{path}", as: "#{path}_root" , to: redirect { |_, request|
-      p = ParticipatoryProcess.first
-      if p.present?
-        "/#{p.slug}#{request.path}"
-      else
-        raise ActionController::RoutingError.new('Not Found')
-      end
-    }
-  end
-
-  if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: "/letter_opener"
-  end
-
-  mount Tolk::Engine => '/translate', :as => 'tolk'
-
-  require 'sidekiq/web'
-
-  if Rails.env.development?
-    mount Sidekiq::Web => '/sidekiq'
-  else
-    authenticate :user, lambda { |u| u.administrator? } do
-      mount Sidekiq::Web => '/sidekiq'
-    end
   end
 end
