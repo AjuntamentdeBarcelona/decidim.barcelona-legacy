@@ -14,7 +14,7 @@ class Api::ActionPlansController < Api::ApplicationController
 
     action_plans = ActionPlan
       .where(participatory_process: @participatory_process)
-      .includes(:revisions, :action_plan_statistics)
+      .includes(:revisions, :action_plan_statistics, :participatory_process)
 
     @action_plans = ResourceFilter.new(params, user: current_user)
       .filter_collection(action_plans.includes(:category, :subcategory))
