@@ -286,7 +286,9 @@ Rails.application.routes.draw do
     "meetings",
     "debates",
     "categories",
-    "more_information"
+    "more_information",
+    "download",
+    "dataviz"
   ].each do |path|
     get "/#{path}/(:id)", as: "#{path}_root" , to: redirect { |_, request|
       p = ParticipatoryProcess.first
