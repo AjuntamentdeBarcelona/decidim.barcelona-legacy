@@ -338,6 +338,9 @@ en:
     new:
       form:
         submit_button: Create participatory process
+    edit:
+      form:
+        submit_button: Update participatory process
   proposal_results_mailer:
     proposal:
       status: State

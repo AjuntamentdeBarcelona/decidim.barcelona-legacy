@@ -13,7 +13,7 @@ class Admin::ParticipatoryProcessesController < Admin::BaseController
     @new_participatory_process = ParticipatoryProcess.new(strong_params)
 
     if @new_participatory_process.save
-      redirect_to admin_participatory_processes_url, notice: t('flash.actions.create.notice', resource_name: "ParticipatoryProcess")
+      redirect_to admin_participatory_processes_url, notice: t('flash.actions.create.notice', resource_name: "Participatory process")
     else
       render :new
     end
@@ -27,16 +27,10 @@ class Admin::ParticipatoryProcessesController < Admin::BaseController
     @edit_participatory_process = ParticipatoryProcess.find(params[:id])
     @edit_participatory_process.assign_attributes(strong_params)
     if @edit_participatory_process.save
-      redirect_to admin_participatory_processes_url, notice: t('flash.actions.update.notice', resource_name: "ParticipatoryProcess")
+      redirect_to admin_participatory_processes_url, notice: t('flash.actions.update.notice', resource_name: "Participatory process")
     else
       render :edit
     end
-  end
-
-  def destroy
-    @destroy_participatory_process = ParticipatoryProcess.find(params[:id])
-    @destroy_participatory_process.destroy
-    redirect_to admin_participatory_processes_url, notice: t('flash.actions.destroy.notice', resource_name: "ParticipatoryProcess")
   end
 
   private

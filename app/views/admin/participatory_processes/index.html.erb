@@ -7,7 +7,6 @@
       <span><%= " (/" + process.slug + ")" %></span>
       <div class="right">
         <%= link_to t('admin.participatory_processes.index.edit'), edit_admin_participatory_process_path(process), class: "button tiny radius" %>
-        <%= link_to t('admin.participatory_processes.index.delete'), admin_participatory_process_path(process), method: :delete,  class: "button tiny radius alert", data: { confirm: t('admin.actions.confirm') } %>
       </div>
     </li>
   <% end %>

@@ -41,8 +41,23 @@ feature 'Admin participatory processes' do
 
     click_button "Create participatory process"
 
-    expect(page).to have_content "ParticipatoryProcess created successfully."
+    expect(page).to have_content "Participatory process created successfully."
     expect(page).to have_content "pam"
     expect(page).to have_content "/pam"
-  end 
+  end
+
+  scenario "Edit an existing participatory process", :js do
+    participatory_process = create(:participatory_process, name: "test")
+
+    visit admin_participatory_processes_path
+    within all("li").last do
+      click_link "Edit"
+    end
+    fill_in "participatory_process_name", with: "pam"
+    click_button "Update participatory process"
+
+    expect(page).to have_content "Participatory process updated successfully."
+    expect(page).to have_content "pam"
+    expect(page).to have_content "/test"
+  end
 end
