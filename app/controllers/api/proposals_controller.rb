@@ -13,7 +13,7 @@ class Api::ProposalsController < Api::ApplicationController
     set_seed
 
     proposals = @current_order == "recommended" ? Recommender.new(current_user).proposals : Proposal.all
-    proposals = proposals.where(participatory_process: @participatory_process)
+    proposals = proposals.includes(:participatory_process).where(participatory_process: @participatory_process)
 
     @proposals = ResourceFilter.new(params, user: current_user)
       .filter_collection(proposals.includes(:category, :subcategory, :author => [:organization]))
