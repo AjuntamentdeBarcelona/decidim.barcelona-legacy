@@ -65,6 +65,7 @@ es:
       spending_proposals: Propuestas de gasto
       stats: Estadísticas
       users: Usuarios
+      participatory_processes: Participatory processes
     organizations:
       index:
         filter: Filtro
@@ -169,3 +170,9 @@ es:
         phone_not_given: No ha facilitado su teléfono
         sms_code_not_confirmed: No ha introducido su código de seguridad
         title: Verificaciones incompletas
+    participatory_processes:
+      index:
+        delete: Delete
+        edit: Edit
+        new: New
+        title: Title

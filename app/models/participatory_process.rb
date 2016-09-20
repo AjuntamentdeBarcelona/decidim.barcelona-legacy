@@ -4,6 +4,11 @@ class ParticipatoryProcess < ActiveRecord::Base
   validates :name, presence: true
   friendly_id :name, use: [:slugged, :finders]
 
+  serialize :title, JSON
+  serialize :subtitle, JSON
+  serialize :summary, JSON
+  serialize :description, JSON
+
   has_many :proposals
   has_many :action_plans
   has_many :meetings

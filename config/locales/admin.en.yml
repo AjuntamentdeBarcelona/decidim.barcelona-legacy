@@ -65,6 +65,7 @@ en:
       spending_proposals: Spending proposals
       stats: Statistics
       users: Users
+      participatory_processes: Participatory processes
     organizations:
       index:
         filter: Filter
@@ -169,3 +170,9 @@ en:
         phone_not_given: You have not given your phone number
         sms_code_not_confirmed: You have not entered your security code
         title: Incomplete verifications
+    participatory_processes:
+      index:
+        delete: Delete
+        edit: Edit
+        new: Create participatory process
+        title: Title

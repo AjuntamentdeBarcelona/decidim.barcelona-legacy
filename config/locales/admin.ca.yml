@@ -65,6 +65,7 @@ ca:
       spending_proposals: Propostes de despesa
       stats: Estadístiques
       users: Usuaris
+      participatory_processes: Participatory processes
     organizations:
       index:
         filter: Filtre
@@ -169,3 +170,9 @@ ca:
         phone_not_given: No ha donat el seu telèfon
         sms_code_not_confirmed: No ha introduït el codi de seguretat
         title: Verificacions incompletes
+    participatory_processes:
+      index:
+        delete: Delete
+        edit: Edit
+        new: New
+        title: Title

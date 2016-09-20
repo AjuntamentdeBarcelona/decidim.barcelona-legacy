@@ -57,15 +57,6 @@ es:
     new:
       form:
         submit_button: Crear actuación
-  admin:
-    menu:
-      participatory_processes: Participatory processes
-    participatory_processes:
-      index:
-        delete: Delete
-        edit: Edit
-        new: New
-        title: Title
   application:
     close: Cerrar
   categories:
