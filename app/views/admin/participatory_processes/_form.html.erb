@@ -14,6 +14,61 @@
       </div>
     <% end %>
 
+    <div class="small-12 column">
+      <%= f.label :admin_name, t("participatory_processes.form.participatory_process_admin_name") %>
+      <%= f.text_field :admin_name, placeholder: t("participatory_processes.form.participatory_process_admin_name"), label: false %>
+    </div>
+
+    <div class="small-12 column">
+      <%= f.label :admin_email, t("participatory_processes.form.participatory_process_admin_email") %>
+      <%= f.text_field :admin_email, placeholder: t("participatory_processes.form.participatory_process_admin_email"), label: false %>
+    </div>
+
+    <% I18n.available_locales.map(&:to_s).each do |locale| %>
+      <fieldset>
+        <legend><%= I18n.t "locale", locale: locale %></legend>
+        <div class="small-12 column">
+          <%= label_tag "title_#{locale}", t("participatory_processes.form.participatory_process_title") %>
+          <%= text_field_tag "#{resource_name}[title][#{locale}]", participatory_process.title && participatory_process.title[locale], id: "participatory_process_title_#{locale}", placeholder: t("participatory_processes.form.participatory_process_title"), label: false %>
+        </div>
+
+        <div class="small-12 column">
+          <%= label_tag "subtitle_#{locale}", t("participatory_processes.form.participatory_process_subtitle") %>
+          <%= text_field_tag "#{resource_name}[subtitle][#{locale}]", participatory_process.subtitle && participatory_process.subtitle[locale], id: "participatory_process_subtitle_#{locale}", placeholder: t("participatory_processes.form.participatory_process_subtitle"), label: false %>
+        </div>
+
+        <div class="small-12 column">
+          <%= label_tag "summary_#{locale}", t("participatory_processes.form.participatory_process_summary") %>
+          <%= rich_editor_tag "#{resource_name}[summary][#{locale}]", participatory_process.summary && participatory_process.summary[locale], maxlength: 10 %>
+        </div>
+
+        <div class="small-12 column">
+          <%= label_tag "description_#{locale}", t("participatory_processes.form.participatory_process_description") %>
+          <%= rich_editor_tag "#{resource_name}[description][#{locale}]", participatory_process.description && participatory_process.description[locale], maxlength: 10 %>
+        </div>
+      </fieldset>
+    <% end %>
+
+    <div class="small-12 column">
+      <%= f.label :manager_group, t("participatory_processes.form.participatory_process_manager_group") %>
+      <%= f.text_field :manager_group, placeholder: t("participatory_processes.form.participatory_process_manager_group"), label: false %>
+    </div>
+
+    <div class="small-12 column">
+      <%= f.label :areas, t("participatory_processes.form.participatory_process_areas") %>
+      <%= f.text_field :areas, placeholder: t("participatory_processes.form.participatory_process_areas"), label: false %>
+    </div>
+
+    <div class="small-12 column">
+      <%= f.label :audience, t("participatory_processes.form.participatory_process_audience") %>
+      <%= f.text_field :audience, placeholder: t("participatory_processes.form.participatory_process_audience"), label: false %>
+    </div>
+
+    <div class="small-12 column">
+      <%= f.label :citizenship_scope, t("participatory_processes.form.participatory_process_citizenship_scope") %>
+      <%= f.text_field :citizenship_scope, placeholder: t("participatory_processes.form.participatory_process_citizenship_scope"), label: false %>
+    </div>
+
     <div class="actions small-12 column">
       <%= f.submit(class: "button radius", value: t("#{resource_name.pluralize}.#{action_name}.form.submit_button")) %>
       </div>
