@@ -62,10 +62,10 @@ en:
       hidden_proposals: Hidden proposals
       incomplete_verifications: Incomplete verifications
       organizations: Organisations
+      participatory_processes: Participatory processes
       spending_proposals: Spending proposals
       stats: Statistics
       users: Users
-      participatory_processes: Participatory processes
     organizations:
       index:
         filter: Filter
@@ -86,6 +86,11 @@ en:
         verify: Verify
       search:
         title: Search Organisations
+    participatory_processes:
+      index:
+        edit: Edit
+        new: Create participatory process
+        title: Title
     proposals:
       index:
         filter: Filter
@@ -170,9 +175,3 @@ en:
         phone_not_given: You have not given your phone number
         sms_code_not_confirmed: You have not entered your security code
         title: Incomplete verifications
-    participatory_processes:
-      index:
-        delete: Delete
-        edit: Edit
-        new: Create participatory process
-        title: Title

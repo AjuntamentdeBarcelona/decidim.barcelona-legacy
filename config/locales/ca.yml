@@ -323,8 +323,18 @@ ca:
       form:
         submit_button: Actualitzar proces
     form:
+      participatory_process_admin_email: Admin email
+      participatory_process_admin_name: Admin name
+      participatory_process_areas: Areas
+      participatory_process_audience: Audience
+      participatory_process_citizenship_scope: Citizenship scope
+      participatory_process_description: Participatory process description
+      participatory_process_manager_group: Manager group
       participatory_process_name: Participatory process name
       participatory_process_slug: Participatory process slug
+      participatory_process_subtitle: Subtitle
+      participatory_process_summary: Participatory process summary
+      participatory_process_title: Title
     new:
       form:
         submit_button: Crear proces

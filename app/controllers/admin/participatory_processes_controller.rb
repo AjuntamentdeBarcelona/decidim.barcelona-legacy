@@ -40,6 +40,20 @@ class Admin::ParticipatoryProcessesController < Admin::BaseController
   end
 
   def participatory_process_params
-    params.require(:participatory_process).permit(:name, :slug)
+    params.require(:participatory_process)
+      .permit(
+        :name, 
+        :slug, 
+        :admin_name, 
+        :admin_email, 
+        :audience,
+        :citizenship_scope,
+        :manager_group,
+        :areas,
+        :title => I18n.available_locales.map(&:to_s),
+        :subtitle => I18n.available_locales.map(&:to_s),
+        :summary => I18n.available_locales.map(&:to_s),
+        :description => I18n.available_locales.map(&:to_s)
+      )
   end
 end
