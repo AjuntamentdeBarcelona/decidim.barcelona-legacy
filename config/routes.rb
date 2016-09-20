@@ -285,6 +285,8 @@ Rails.application.routes.draw do
     "action_plans",
     "meetings",
     "debates",
+    "categories",
+    "more_information"
   ].each do |path|
     get "/#{path}/(:id)", as: "#{path}_root" , to: redirect { |_, request|
       p = ParticipatoryProcess.first
@@ -295,9 +297,6 @@ Rails.application.routes.draw do
       end
     }
   end
-
-  get "categories", to: redirect("/pam/categories")
-  get "more_information", to: redirect("/pam/more_information")
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
