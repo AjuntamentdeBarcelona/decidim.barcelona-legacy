@@ -25,6 +25,9 @@
 
   <div class="main-menu-wrapper">
     <%= render partial: 'layouts/main_menu' %>
+    <% if @participatory_process.present? %>
+      <%= render partial: 'layouts/menu' %>
+    <% end %>
   </div>
 
   <% if content_for?(:header_addon) %>

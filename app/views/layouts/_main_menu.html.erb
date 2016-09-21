@@ -10,6 +10,13 @@
       <% end %>
 
       <%= link_to t("layouts.header.participatory_processes"), participatory_processes_path, class: ("active" if  controller_name == "participatory_processes"), data: {'no-turbolink' => true}  %>
+
+      <% if Setting['blog_url'] %>
+        <%= link_to Setting['blog_url'][I18n.locale.to_s], target: "_blank" do %>
+          <%= t("layouts.header.external_link_blog") %>
+          <i class="icon-external"></i>
+        <% end %>
+      <% end %>
     </div>
   </nav>
 </div>
