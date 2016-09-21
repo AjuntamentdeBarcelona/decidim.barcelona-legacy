@@ -152,6 +152,7 @@ ignore_unused:
   - 'proposals.form.proposal_scope*'
   - 'action_plans.form.action_plan_scope*'
   - 'meetings.form.meeting_scope*'
+  - 'participatory_processes.form.participatory_process_scope*'
   - 'moderation.meetings.index.search_form.*'
   - 'notifications.index.comments_on*'
   - 'notifications.index.replies_to*'

@@ -335,6 +335,10 @@ es:
       participatory_process_subtitle: Subtitle
       participatory_process_summary: Participatory process summary
       participatory_process_title: Title
+      participatory_process_scope: "Ámbito"
+      participatory_process_scope_city: Toda la ciudad
+      participatory_process_scope_district: Distritos
+      participatory_process_scope_note: "¿Es una medida para toda la ciudad o solo para un distrito?"
     new:
       form:
         submit_button: Crear proceso

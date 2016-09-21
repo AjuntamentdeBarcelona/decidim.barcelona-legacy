@@ -24,6 +24,8 @@
       <%= f.text_field :admin_email, placeholder: t("participatory_processes.form.participatory_process_admin_email"), label: false %>
     </div>
 
+     <%= render 'shared/forms/district_fields', f: f, i18n_namespace: 'participatory_processes.form.participatory_process' %>
+
     <% I18n.available_locales.map(&:to_s).each do |locale| %>
       <fieldset>
         <legend><%= I18n.t "locale", locale: locale %></legend>

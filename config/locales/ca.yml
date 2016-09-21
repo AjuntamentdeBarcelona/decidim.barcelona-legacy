@@ -335,6 +335,10 @@ ca:
       participatory_process_subtitle: Subtitle
       participatory_process_summary: Participatory process summary
       participatory_process_title: Title
+      participatory_process_scope: "Àmbit"
+      participatory_process_scope_city: Tota la ciutat
+      participatory_process_scope_district: Districtes
+      participatory_process_scope_note: Es una mesura per a tota la ciutat o només per a un districte?
     new:
       form:
         submit_button: Crear proces

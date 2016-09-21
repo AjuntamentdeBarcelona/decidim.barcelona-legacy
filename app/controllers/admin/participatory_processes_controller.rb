@@ -62,6 +62,8 @@ class Admin::ParticipatoryProcessesController < Admin::BaseController
         :citizenship_scope,
         :manager_group,
         :areas,
+        :scope,
+        :district,
         :title => I18n.available_locales.map(&:to_s),
         :subtitle => I18n.available_locales.map(&:to_s),
         :summary => I18n.available_locales.map(&:to_s),

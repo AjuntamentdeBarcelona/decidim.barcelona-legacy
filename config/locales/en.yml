@@ -335,6 +335,10 @@ en:
       participatory_process_subtitle: Subtitle
       participatory_process_summary: Summary
       participatory_process_title: Title
+      participatory_process_scope: Scope
+      participatory_process_scope_city: Whole city
+      participatory_process_scope_district: Districts
+      participatory_process_scope_note: Is it a measure for the whole city or just for one district?
     new:
       form:
         submit_button: Create participatory process
