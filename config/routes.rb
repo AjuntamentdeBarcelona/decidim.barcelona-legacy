@@ -320,6 +320,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :participatory_processes, only: [:index, :show]
+
   scope ":participatory_process_id" do
     resources :proposals do
       member do
