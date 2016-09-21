@@ -88,11 +88,11 @@ en:
         title: Search Organisations
     participatory_processes:
       index:
+        delete: Delete
         edit: Edit
         new: Create participatory process
-        title: Title
-        delete: Delete
         restore: Restore
+        title: Title
     proposals:
       index:
         filter: Filter

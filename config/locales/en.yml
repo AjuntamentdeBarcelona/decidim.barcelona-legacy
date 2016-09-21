@@ -220,6 +220,7 @@ en:
         one: You have a new notification
         other: You have %{count} new notifications
       no_notifications: You don't have new notifications
+      participatory_processes: Participatory processes
       proposals: Proposals
       revision: Review
       spending_proposals: Spending proposals
@@ -331,14 +332,14 @@ en:
       participatory_process_description: Description
       participatory_process_manager_group: Manager group
       participatory_process_name: Name
-      participatory_process_slug: Slug
-      participatory_process_subtitle: Subtitle
-      participatory_process_summary: Summary
-      participatory_process_title: Title
       participatory_process_scope: Scope
       participatory_process_scope_city: Whole city
       participatory_process_scope_district: Districts
       participatory_process_scope_note: Is it a measure for the whole city or just for one district?
+      participatory_process_slug: Slug
+      participatory_process_subtitle: Subtitle
+      participatory_process_summary: Summary
+      participatory_process_title: Title
     new:
       form:
         submit_button: Create participatory process
