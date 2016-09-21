@@ -1,5 +1,7 @@
 class ParticipatoryProcess < ActiveRecord::Base
   extend FriendlyId
+  acts_as_paranoid column: :hidden_at
+  include ActsAsParanoidAliases
 
   validates :name, presence: true
   friendly_id :name, use: [:slugged, :finders]

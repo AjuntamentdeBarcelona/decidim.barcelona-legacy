@@ -91,6 +91,8 @@ en:
         edit: Edit
         new: Create participatory process
         title: Title
+        delete: Delete
+        restore: Restore
     proposals:
       index:
         filter: Filter

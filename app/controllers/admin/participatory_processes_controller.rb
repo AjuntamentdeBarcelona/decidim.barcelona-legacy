@@ -2,7 +2,7 @@ class Admin::ParticipatoryProcessesController < Admin::BaseController
   authorize_resource
 
   def index
-    @participatory_processes = ParticipatoryProcess.page(params[:page])
+    @participatory_processes = ParticipatoryProcess.with_hidden.page(params[:page])
   end
 
   def new
@@ -31,6 +31,18 @@ class Admin::ParticipatoryProcessesController < Admin::BaseController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @destroy_participatory_process = ParticipatoryProcess.find(params[:id])
+    @destroy_participatory_process.destroy
+    redirect_to admin_participatory_processes_url, notice: t('flash.actions.destroy.notice', resource_name: "Participatory process")
+  end
+
+  def restore
+    @restore_participatory_process = ParticipatoryProcess.with_hidden.find(params[:id])
+    @restore_participatory_process.restore
+    redirect_to admin_participatory_processes_url, notice: t('flash.actions.update.notice', resource_name: "Participatory process")
   end
 
   private

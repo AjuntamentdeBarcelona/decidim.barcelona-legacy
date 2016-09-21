@@ -60,4 +60,24 @@ feature 'Admin participatory processes' do
     expect(page).to have_content "pam"
     expect(page).to have_content "/test"
   end
+
+  scenario "Destroy an existing participatory process", :js do
+    participatory_process = create(:participatory_process, name: "test")
+    visit admin_participatory_processes_path
+    within all("li").last do
+      click_link "Delete"
+    end
+
+    expect(page).to have_content "Restore"
+  end
+
+  scenario "Restore a deleted participatory process", :js do
+    participatory_process = create(:participatory_process, name: "test")
+    participatory_process.destroy
+
+    visit admin_participatory_processes_path
+    click_link "Restore"
+
+    expect(page).to_not have_content "Restore"
+  end
 end

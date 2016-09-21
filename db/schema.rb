@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160919132017) do
+ActiveRecord::Schema.define(version: 20160921074116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -378,6 +378,8 @@ ActiveRecord::Schema.define(version: 20160919132017) do
     t.text     "description"
     t.text     "audience"
     t.text     "citizenship_scope"
+    t.datetime "hidden_at"
+    t.datetime "confirmed_hide_at"
   end
 
   create_table "proposal_answers", force: :cascade do |t|

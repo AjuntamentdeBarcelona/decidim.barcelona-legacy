@@ -91,6 +91,8 @@ ca:
         edit: Edit
         new: New
         title: Title
+        delete: Delete
+        restore: Restore
     proposals:
       index:
         filter: Filtre
