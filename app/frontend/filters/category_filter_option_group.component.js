@@ -45,5 +45,6 @@ CategoryFilterOptionGroup.propTypes = {
   fetchCategories: PropTypes.func.isRequired,
   filters: PropTypes.object.isRequired,
   setFilterGroup: PropTypes.func.isRequired,
-  categories: PropTypes.array
+  categories: PropTypes.array,
+  participatoryProcessId: PropTypes.string.isRequired
 };

@@ -42,7 +42,8 @@ class SubcategoryPicker extends Component {
 SubcategoryPicker.propTypes = {
   subcategory: PropTypes.object,
   subcategories: PropTypes.array.isRequired,
-  onSelect: PropTypes.func.isRequired
+  onSelect: PropTypes.func.isRequired,
+  participatoryProcessId: PropTypes.string.isRequired
 };
 
 export default connect(

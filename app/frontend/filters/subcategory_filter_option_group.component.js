@@ -47,5 +47,6 @@ export default connect(
 SubcategoryFilterOptionGroup.propTypes = {
   filters: PropTypes.object.isRequired,
   categories: PropTypes.array,
-  setFilterGroup: PropTypes.func.isRequired
+  setFilterGroup: PropTypes.func.isRequired,
+  participatoryProcessId: PropTypes.string.isRequired
 };
