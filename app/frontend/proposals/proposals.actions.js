@@ -48,11 +48,18 @@ export function updateProposal(proposalId, proposalParams) {
   };
 }
 
-export function appendProposalsPage(options) {
-  return {
+export const appendProposalsPage = (options) => (dispatch, getState) => {
+  const { participatoryProcessId } = getState();
+  options['participatoryProcessId'] = participatoryProcessId;
+
+  const request = buildProposalsRequest(options);
+
+  dispatch({
     type: APPEND_PROPOSALS_PAGE,
-    payload: buildProposalsRequest(options)
-  };
+    payload: request
+  });
+
+  return request;
 }
 
 export function voteProposal(proposalId) {

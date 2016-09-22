@@ -69,11 +69,18 @@ export function fetchActionPlan(actionPlanId) {
   };
 }
 
-export function appendActionPlansPage(options) {
-  return {
+export const appendActionPlansPage = (options) => (dispatch, getState) => {
+  const { participatoryProcessId } = getState();
+  options['participatoryProcessId'] = participatoryProcessId;
+
+  const request = buildActionPlansRequest(options);
+
+  dispatch({
     type: APPEND_ACTION_PLANS_PAGE,
-    payload: buildActionPlansRequest(options)
-  };
+    payload: request
+  });
+
+  return request;
 }
 
 export function fetchActionPlanProposals(actionPlanId) {
