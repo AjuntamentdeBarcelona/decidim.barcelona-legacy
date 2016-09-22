@@ -124,13 +124,15 @@ export const proposal = function (state = {}, action) {
       };
     case FETCH_ANSWER:
     case UPDATE_ANSWER:
-      answer = action.payload.data.proposal_answer;
+      if (action.payload.data) {
+        answer = action.payload.data.proposal_answer;
 
-      if (state.id === answer.proposal_id) {
-        return {
-          ...state,
-          answer
-        };
+        if (state.id === answer.proposal_id) {
+          return {
+            ...state,
+            answer
+          };
+        }
       }
       return state;
     case VOTE_PROPOSAL:
