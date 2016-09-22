@@ -1,8 +1,9 @@
+import { connect }              from 'react-redux';
 import { Component, PropTypes } from 'react';
 
-export default class SubcategoryPicker extends Component {
+class SubcategoryPicker extends Component {
   subcategories () {
-    const { subcategories, subcategory } = this.props;
+    const { subcategories, subcategory, participatoryProcessId } = this.props;
 
     return subcategories.map(sc => {
       var selected = subcategory && sc.id === subcategory.id;
@@ -14,7 +15,7 @@ export default class SubcategoryPicker extends Component {
         <li className={classNames.join(' ')}
             key={sc.id}
             onClick={() => this.select(sc)}>
-          <span className="name">{sc.name} <a href={`/categories#subcategory_${sc.id}`} target="_blank"> <i className="fa fa-info-circle"></i></a></span>
+          <span className="name">{sc.name} <a href={`/${participatoryProcessId}/categories#subcategory_${sc.id}`} target="_blank"> <i className="fa fa-info-circle"></i></a></span>
         </li>
       );
     });
@@ -43,3 +44,8 @@ SubcategoryPicker.propTypes = {
   subcategories: PropTypes.array.isRequired,
   onSelect: PropTypes.func.isRequired
 };
+
+export default connect(
+  ({ participatoryProcessId }) => ({ participatoryProcessId }),
+  null
+)(SubcategoryPicker);

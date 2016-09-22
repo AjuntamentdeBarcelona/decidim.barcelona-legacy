@@ -8,6 +8,8 @@ import FilterOption             from './filter_option.component';
 
 class SubcategoryFilterOptionGroup extends Component {
   render() {
+    const { participatoryProcessId } = this.props;
+
     let categoryId = this.props.filters.filter["category_id"] && this.props.filters.filter["category_id"][0];
 
     if (this.props.categories && this.props.categories.length > 0 && categoryId) {
@@ -25,7 +27,7 @@ class SubcategoryFilterOptionGroup extends Component {
             {
               subcategories.map(function (subcategory) {
                 return <FilterOption key={subcategory.id} filterName={subcategory.id} filterLabel={subcategory.name}>
-                  <a href={`/categories#subcategory_${subcategory.id}`} target="_blank"><i className="fa fa-info-circle"></i></a>
+                  <a href={`/${participatoryProcessId}/categories#subcategory_${subcategory.id}`} target="_blank"><i className="fa fa-info-circle"></i></a>
                 </FilterOption>
               })
             }
@@ -38,7 +40,7 @@ class SubcategoryFilterOptionGroup extends Component {
 }
 
 export default connect(
-  ({ categories, filters }) => ({ categories, filters }),
+  ({ categories, filters, participatoryProcessId }) => ({ categories, filters, participatoryProcessId }),
   actions
 )(SubcategoryFilterOptionGroup);
 

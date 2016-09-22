@@ -2,6 +2,8 @@ import { Component, PropTypes } from 'react';
 
 export default class SubcategoryPicker extends Component {
   subcategories () {
+    const { participatoryProcessId } = this.props;
+
     var categoryId = this.props.categoryId;
     var subcategories = this.props.subcategories.filter( (subcategory) =>
       subcategory.categoryId === categoryId
@@ -20,7 +22,7 @@ export default class SubcategoryPicker extends Component {
         <li className={classNames.join(' ')}
             key={subcategory.id}
             onClick={() => component.select(subcategory)}>
-          <span className="name">{subcategory.name} <a href={`/categories#subcategory_${subcategory.id}`} target="_blank"> <i className="fa fa-info-circle"></i></a></span>
+          <span className="name">{subcategory.name} <a href={`/${participatoryProcessId}/categories#subcategory_${subcategory.id}`} target="_blank"> <i className="fa fa-info-circle"></i></a></span>
         </li>
       );
     });
@@ -48,5 +50,6 @@ SubcategoryPicker.propTypes = {
   categoryId: PropTypes.string.isRequired,
   subcategories: PropTypes.array.isRequired,
   selectedId: PropTypes.string,
-  onSelect: PropTypes.func.isRequired
+  onSelect: PropTypes.func.isRequired,
+  participatoryProcessId: PropTypes.string.isRequired
 };

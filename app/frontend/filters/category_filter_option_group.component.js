@@ -13,6 +13,8 @@ class CategoryFilterOptionGroup extends Component {
   }
 
   render() {
+    const { participatoryProcessId } = this.props;
+
     return (
       <FilterOptionGroup 
         filterGroupName="category_id" 
@@ -22,7 +24,7 @@ class CategoryFilterOptionGroup extends Component {
         {
           this.props.categories.map(function (category) {
             return <FilterOption key={category.id} filterName={category.id} filterLabel={category.name}>
-              <a href={`/categories#category_${category.id}`} target="_blank"><i className="fa fa-info-circle"></i></a>
+              <a href={`/${participatoryProcessId}/categories#category_${category.id}`} target="_blank"><i className="fa fa-info-circle"></i></a>
             </FilterOption>
           })
         }
@@ -32,7 +34,7 @@ class CategoryFilterOptionGroup extends Component {
 }
 
 export default connect(
-  ({ filters, categories }) => ({ filters, categories }),
+  ({ filters, categories, participatoryProcessId }) => ({ filters, categories, participatoryProcessId }),
   {
     fetchCategories,
     setFilterGroup
