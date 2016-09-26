@@ -464,6 +464,7 @@ FactoryGirl.define do
     summary do { :en => "Summary", :es => "Resumen", :ca => "Resum" } end
     description do { :en => "Description", :es => "Descripción", :ca => "Descripció" } end
     audience "Tota la població"
-    citizenship_scope "Només poden opinar." 
+    citizenship_scope "Només poden opinar."
+    flags ParticipatoryProcess::FLAGS.map(&:to_s)
   end
 end

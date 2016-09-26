@@ -323,6 +323,8 @@ en:
     edit:
       form:
         submit_button: Update participatory process
+    flash:
+      feature_disabled_notice: Feature disabled notice
     form:
       participatory_process_admin_email: Admin email
       participatory_process_admin_name: Admin name
