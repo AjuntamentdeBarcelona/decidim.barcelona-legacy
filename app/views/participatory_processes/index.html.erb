@@ -1,0 +1,15 @@
+<section role="main">
+  <div>
+    <div class="wrap row">
+      <div class="small-12 columns">
+        <h1>Participatory processes</h1>
+
+        <ul>
+          <% @participatory_processes.each do |process| %>
+            <li><%= link_to process.name, participatory_process_path(process) %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

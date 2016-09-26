@@ -2,7 +2,7 @@
   <% @proposals.each do |proposal| %>
     <tr id="proposal_<%= proposal.id %>">
       <td>
-        <%= link_to proposal.title, id: proposal, participatory_process_id: proposal.participatory_process.slug %>
+        <%= link_to proposal.title, proposal_path(id: proposal, participatory_process_id: proposal.participatory_process) %>
         <br>
         <%= proposal.summary %>
       </td>

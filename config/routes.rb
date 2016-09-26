@@ -284,25 +284,26 @@ Rails.application.routes.draw do
     resources :debates, only: [:show]
   end
 
-  [
-    "proposals",
-    "action_plans",
-    "meetings",
-    "debates",
-    "categories",
-    "more_information",
-    "download",
-    "dataviz"
-  ].each do |path|
-    get "/#{path}/(:id)", as: "#{path}_root" , to: redirect { |_, request|
-      p = ParticipatoryProcess.first
-      if p.present?
-        "/#{p.slug}#{request.path}"
-      else
-        raise ActionController::RoutingError.new('Not Found')
-      end
-    }
-  end
+  # TODO: I think this can be deprecated on the finale release
+  # [
+  #   "proposals",
+  #   "action_plans",
+  #   "meetings",
+  #   "debates",
+  #   "categories",
+  #   "more_information",
+  #   "download",
+  #   "dataviz"
+  # ].each do |path|
+  #   get "/#{path}/(:id)", as: "#{path}_root" , to: redirect { |_, request|
+  #     p = ParticipatoryProcess.first
+  #     if p.present?
+  #       "/#{p.slug}#{request.path}"
+  #     else
+  #       raise ActionController::RoutingError.new('Not Found')
+  #     end
+  #   }
+  # end
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
@@ -319,6 +320,8 @@ Rails.application.routes.draw do
       mount Sidekiq::Web => '/sidekiq'
     end
   end
+
+  resources :participatory_processes, only: [:index, :show]
 
   scope ":participatory_process_id" do
     resources :proposals do

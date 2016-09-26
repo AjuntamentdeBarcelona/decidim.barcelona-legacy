@@ -7,7 +7,8 @@ module CategoryPickerHelper
       categories: serialized_categories,
       subcategories: serialized_subcategories,
       selectedCategoryId: record.category_id.to_s,
-      selectedSubcategoryId: record.subcategory_id.to_s
+      selectedSubcategoryId: record.subcategory_id.to_s,
+      participatoryProcessId: @participatory_process.slug
     )
   end
 
