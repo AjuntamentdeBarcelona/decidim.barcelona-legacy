@@ -1,7 +1,7 @@
 <ul class="category-list">
   <% categories.each do |category| %>
     <li>
-      <%= link_to categories_path(participatory_process_id: @participatory_process, anchor: dom_id(category)), class: "#{dom_id(category)} category-item" do %>
+      <%= link_to categories_path(participatory_process_id: @main_participatory_process, anchor: dom_id(category)), class: "#{dom_id(category)} category-item" do %>
         <span class="name">
           <%= category.name %>
         </span>

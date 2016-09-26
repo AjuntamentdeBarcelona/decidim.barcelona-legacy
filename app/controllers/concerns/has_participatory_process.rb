@@ -6,10 +6,7 @@ module HasParticipatoryProcess
 
     def participatory_process
       begin
-        if params[:participatory_process_id].blank?
-          # TODO: load from subdomain?
-          @participatory_process = ParticipatoryProcess.first
-        else
+        if params[:participatory_process_id]
           @participatory_process_id = params[:participatory_process_id]
           @participatory_process = ParticipatoryProcess.find(params[:participatory_process_id])
         end

@@ -6,12 +6,12 @@
     </div>
     <div class="header-grid">
       <div class="explanation small-12 large-6 columns">
-        <%= link_to dataviz_path(id: 'summary', participatory_process_id: @participatory_process), class: "cell about" do %><span><%= t ".links.about" %> <%= bcn_icon "dit_assenyala" %></span><% end %>
+        <%= link_to dataviz_path(id: 'summary', participatory_process_id: @main_participatory_process), class: "cell about" do %><span><%= t ".links.about" %> <%= bcn_icon "dit_assenyala" %></span><% end %>
       </div>
       <div class="sections small-12 large-6 columns">
-        <%= link_to dataviz_path(id: 'proposals', participatory_process_id: @participatory_process), class: "cell proposals" do %><span><%= t ".links.proposals" %> <%= bcn_icon "dit_assenyala" %></span><% end %>
-        <%= link_to dataviz_path(id: 'map', participatory_process_id: @participatory_process), class: "cell meetings" do %><span><%= t ".links.meetings" %> <%= bcn_icon "dit_assenyala" %></span><% end %>
-        <%= link_to dataviz_path(id: 'total_interactions', participatory_process_id: @participatory_process), class: "cell network" do %><span><%= t ".links.network" %> <%= bcn_icon "dit_assenyala" %></span><% end %>
+        <%= link_to dataviz_path(id: 'proposals', participatory_process_id: @main_participatory_process), class: "cell proposals" do %><span><%= t ".links.proposals" %> <%= bcn_icon "dit_assenyala" %></span><% end %>
+        <%= link_to dataviz_path(id: 'map', participatory_process_id: @main_participatory_process), class: "cell meetings" do %><span><%= t ".links.meetings" %> <%= bcn_icon "dit_assenyala" %></span><% end %>
+        <%= link_to dataviz_path(id: 'total_interactions', participatory_process_id: @main_participatory_process), class: "cell network" do %><span><%= t ".links.network" %> <%= bcn_icon "dit_assenyala" %></span><% end %>
       </div>
     </div>
   </section>
