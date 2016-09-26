@@ -64,6 +64,7 @@ class Admin::ParticipatoryProcessesController < Admin::BaseController
         :areas,
         :scope,
         :district,
+        :flags => [],
         :title => I18n.available_locales.map(&:to_s),
         :subtitle => I18n.available_locales.map(&:to_s),
         :summary => I18n.available_locales.map(&:to_s),
