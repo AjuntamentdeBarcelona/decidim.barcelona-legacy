@@ -37,13 +37,15 @@ class SitemapMiddleware
       SitemapGenerator::Sitemap.default_host = "#{!ENV["FORCE_SSL"].blank? ? "https" : "http"}://#{ENV["SERVER_NAME"]}"
 
       SitemapGenerator::Sitemap.create(adapter: writer) do
+        default_participatory_process = ParticipatoryProcess.first
+
         # Add meetings pages
-        Meeting.find_each { |meeting| add meeting_path(meeting), lastmod: meeting.updated_at }
+        Meeting.includes(:participatory_process).find_each { |meeting| add meeting_path(id: meeting, participatory_process_id: meeting.participatory_process), lastmod: meeting.updated_at }
         # Add proposals pages
-        Proposal.find_each { |proposal| add proposal_path(proposal), lastmod: proposal.updated_at }
+        Proposal.includes(:participatory_process).find_each { |proposal| add proposal_path(id: proposal, participatory_process_id: proposal.participatory_process), lastmod: proposal.updated_at }
         # Add static pages
-        add categories_path
-        add page_path('more_information')
+        add categories_path(participatory_process_id: default_participatory_process)
+        add page_path(id: 'more_information', participatory_process_id: default_participatory_process)
       end
 
       writer.to_s
