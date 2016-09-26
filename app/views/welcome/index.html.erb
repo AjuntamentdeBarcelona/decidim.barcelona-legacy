@@ -19,7 +19,7 @@
               <li><%== t ".statistics.action_plans", count: number_with_delimiter(statistics.action_plans) %></li>
             </ul>
           </div>
-          <%= link_to action_plans_path(participatory_process_id: @participatory_process.slug), class: 'header-link' do %>
+          <%= link_to action_plans_path(participatory_process_id: @main_participatory_process.slug), class: 'header-link' do %>
             <%= t 'welcome.header-motto.link' %>
             <%= bcn_icon('dit_assenyala_vermell') %>
           <% end %>

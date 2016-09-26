@@ -8,9 +8,11 @@ class WelcomeController < ApplicationController
 
   def index
     @categories = Category.order(:position).decorate
+    @main_participatory_process = ParticipatoryProcess.first
   end
 
   def welcome
+    @main_participatory_process = ParticipatoryProcess.first
   end
 
   def highlights
