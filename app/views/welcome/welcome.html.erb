@@ -1,27 +1,10 @@
-<h2><%= t("welcome.welcome.title") %></h2>
+<p class="text-center">
+  <%= link_to t("welcome.welcome.user_permission_verify_url"), verification_path , class: "button success radius" %>
+</p>
 
-<div class="user-permissions">
-
-  <p><%= t("welcome.welcome.user_permission_info") %></p>
-
-  <ul>
-    <li><i class="icon-check"></i>&nbsp;<%= t("welcome.welcome.user_permission_debates") %></li>
-    <li><i class="icon-check"></i>&nbsp;<%= t("welcome.welcome.user_permission_proposal") %></li>
-    <li><i class="icon-x"></i>&nbsp;<%= t("welcome.welcome.user_permission_support_proposal") %></li>
-  </ul>
-
-  <p>
-    <span><%= t("welcome.welcome.user_permission_verify_info") %></span>
-  </p>
-
-  <p class="text-center">
-    <%= link_to t("welcome.welcome.user_permission_verify_url"), verification_path , class: "button success radius" %>
-  </p>
-
-  <p class="text-center">
-    <%= t("welcome.welcome.skip_verification") %>
-  </p>
-  <p class="text-center">
-    <%= link_to t("welcome.welcome.see_proposals"), proposals_path(participatory_process_id: @main_participatory_process) , class: "button secondary radius" %>
-  </p>
-</div>
+<p class="text-center">
+  <%= t("welcome.welcome.skip_verification") %>
+</p>
+<p class="text-center">
+  <%= link_to t("welcome.welcome.see_proposals"), proposals_path(participatory_process_id: @main_participatory_process) , class: "button secondary radius" %>
+</p>

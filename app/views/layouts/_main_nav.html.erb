@@ -1,0 +1,17 @@
+<div class="show-for-medium" data-set="nav-holder">
+  <nav class="navbar js-append">
+    <div class="row">
+      <ul class="main-nav">
+        <li>
+          <%= link_to root_path, class: "main-nav__link #{'main-nav__link--active' if home_page?} home" do %>
+            Home
+          <% end %>
+        </li>
+
+        <li>
+          <%= link_to t("layouts.header.participatory_processes"), participatory_processes_path,
+          class: "main-nav__link #{('main-nav__link--active' if  controller_name == 'participatory_processes')}", data: {'no-turbolink' => true}  %>
+      </ul>
+    </div>
+  </nav>
+</div>

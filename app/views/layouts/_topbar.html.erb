@@ -1,0 +1,76 @@
+<!-- Topbar -->
+<a target="_blank" href="http://ajuntament.barcelona.cat/"
+   class="logo-cityhall">
+  <%= image_tag "badge-ajuntament-header.svg", alt: "Ajuntament de Barcelona" %>
+</a>
+<div class="topbar title-bar">
+  <div class="row">
+    <div class="columns small-12 medium-4 topbar__dropmenu">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li class="is-dropdown-submenu-parent">
+          <a href="#">Català</a>
+          <ul class="menu is-dropdown-submenu">
+            <li><a href="#">Castellano</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="columns small-6 medium-4 logo-wrapper">
+      <a href="">
+        <span>
+          Decidim<br>
+          Barcelona
+        </span>
+      </a>
+    </div>
+    <div class="columns small-6 medium-4">
+      <div class="hide-for-medium topbar__menu">
+        <button type="button" data-toggle="offCanvas">
+          <svg class="icon" aria-label="Navegación" role="img">
+            <use xlink:href="#icon-menu"></use>
+          </svg>
+        </button>
+      </div>
+      <% if current_user %>
+        <div class="topbar__dropmenu topbar__user__logged">
+          <ul class="dropdown menu" data-dropdown-menu>
+            <li class="is-dropdown-submenu-parent show-for-medium">
+                <a href="#">
+                  <span class="author author--inline">
+                    <span class="author__name">
+                      <span class="author__avatar">
+                        <img src="/images/demo-avatar.jpg" alt="">
+                      </span>
+                      María Martínez
+                    </span>
+                  </span>
+                </a>
+              <ul class="menu is-dropdown-submenu js-append usermenu-off-canvas">
+                <li><a href="#">Notificaciones (35)</a></li>
+                <li><a href="#">Siguiendo (12)</a></li>
+                <li><a href="#">Tu cuenta</a></li>
+                <li><a href="#">Salir</a></li>
+              </ul>
+              <span data-set="nav-login-holder" class="show-for-medium">
+                <!-- Repeated due to dropdown limitations -->
+                <ul class="menu is-dropdown-submenu js-append usermenu-off-canvas">
+                  <li><a href="#">Notificaciones (35)</a></li>
+                  <li><a href="#">Siguiendo (12)</a></li>
+                  <li><a href="#">Tu cuenta</a></li>
+                  <li><a href="#">Salir</a></li>
+                </ul>
+              </span>
+            </li>
+          </ul>
+        </div>
+      <% else %>
+        <div class="topbar__user show-for-medium" data-set="nav-login-holder">
+            <div class="topbar__user__login js-append">
+              <a href="/user-register">Regístrate</a>
+              <a href="/user-login">Entra</a>
+            </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

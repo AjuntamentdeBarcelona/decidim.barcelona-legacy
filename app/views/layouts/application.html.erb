@@ -22,58 +22,35 @@
 
   </head>
   <body>
-    <div class="wrapper">
-
-      <!--[if lte IE 9]>
-      <% if browser.ie? && cookies['ie_alert_closed'] != 'true' %>
-        <div data-alert class="alert-box info ie-alert-box">
-          <a href="#" class="close ie-alert-box-close-js">&times;</a>
-          <h2><%= t("layouts.application.ie_title") %></h2>
-          <p>
-            <%= t("layouts.application.ie",
-            chrome: link_to(
-                    t("layouts.application.chrome"), "https://www.google.com/chrome/browser/desktop/", target: "_blank"),
-            firefox: link_to(
-                     t("layouts.application.firefox"), "https://www.mozilla.org/firefox", target: "_blank")
-            ).html_safe %>
-          </p>
-        </div>
-      <% end %>
-      <![endif]-->
-
-      <%= cookies_warning %>
-      <%= render 'layouts/header' %>
-      <%= render partial: 'layouts/enable_notifications' %>
-
-      <% if notice %>
-      <div class="alert-messages">
-        <div class="row">
-          <div data-alert class="alert-box success radius">
-            <a href="#" class="close" title="<%= t("application.close") %>">&times;</a>
-            <%= notice %>
-          </div>
-        </div>
+  <div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+      <div class="off-canvas position-right" data-position="right"
+           id="offCanvas" data-off-canvas>
+        <!-- Close button -->
+        <button class="close-button"
+                aria-label="Close menu" type="button"
+                data-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <!-- Menu -->
+        <div class="hide-for-medium" data-set="nav-holder"></div>
+        <div class="hide-for-medium usermenu-off-canvas-holder"
+             data-set="nav-login-holder"></div>
       </div>
-      <% end %>
+      <div class="off-canvas-content" data-off-canvas-content>
+        <div class="footer-separator">
+          <!--separates the footer from the rest of the page,
+          creates a sticky footer-->
+          <%= render 'layouts/topbar' %>
+          <%= render 'layouts/main_nav' %>
 
-      <% if alert %>
-      <div class="alert-messages">
-        <div class="row">
-          <div data-alert class="alert-box alert radius">
-            <a href="#" class="close" title="<%= t("application.close") %>">&times;</a>
-            <%= alert %>
-          </div>
-        </div>
-      </div>
-      <% end %>
+          <%= yield %>
 
-      <%= yield %>
-    </div>
-    <div class="footer">
-      <%= render 'layouts/footer' %>
-    </div>
+          </div><!-- /.footer-separator -->
+          <%= render 'layouts/main_footer' %>
+          <%= render 'layouts/mini_footer' %>
+        </div><!--/.off-canvas-content-->
+      </div><!--/.off-canvas-wrapper-inner-->
+    </div><!--/.off-canvas-wrapper-->
   </body>
-  <!--[if lt IE 9]>
-    <%= javascript_include_tag "ie_lt9" %>
-  <![endif]-->
 </html>

@@ -1,0 +1,82 @@
+/* Foundation button overrides*/
+
+.button{
+  &.small{
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+  }
+  &.tiny{
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+  }
+}
+
+
+/*Extra buttons styles*/
+
+.button--icon{
+  display: flex;
+  align-items: center;
+  .icon{
+    margin: 0 2px;
+  }
+  &.small{
+    .icon{
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
+
+.button--frosted{
+  background-color: rgba($white, .65);
+  color: $primary;
+}
+
+.button--muted{
+  background-color: $muted;
+  &:hover{
+    background-color: $secondary;
+  }
+  &.hollow{
+    border-color: $muted;
+  }
+}
+
+.button--sc{
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  font-weight: 600;
+  &.large{
+    font-size: 1rem;
+  }
+}
+
+.button__info{
+  text-transform: none;
+  font-weight: normal;
+  font-size: 80%;
+  margin-top: .25rem;
+  display: block;
+}
+
+.link{
+  color: $anchor-color;
+  font-weight: bold;
+}
+
+.link--no-color{
+  color: inherit;
+}
+
+.muted-link{
+  font-weight: 600;
+  color: $muted;
+  &:hover{
+    color: $anchor-color;
+  }
+}
+
+.show-more{
+  font-size: 90%;
+}

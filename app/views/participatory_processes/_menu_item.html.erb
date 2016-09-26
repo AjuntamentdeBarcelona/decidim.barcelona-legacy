@@ -1,0 +1,8 @@
+<li class="<%= 'is-active' if request.path.start_with?(path) %>">
+  <%= link_to path, class: "process-nav__link #{'is-active' if request.path.start_with?(path)}" do %>
+    <svg>
+      <use xlink:href="#shape-icon-info" />
+    </svg>
+    <span><%= title %></span>
+  <% end %>
+</li>

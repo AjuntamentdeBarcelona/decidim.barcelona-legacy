@@ -16,8 +16,7 @@
 //= require jquery-ui/datepicker-es
 //= require turbolinks
 //= require jquery.turbolinks
-//= require foundation/foundation
-//= require foundation/foundation.dropdown
+//= require foundation
 //= require modernizr
 //= require parallax
 //= require moment
@@ -97,3 +96,5 @@ GoogleMapsAPI = $.Deferred();
 function gmapsLoaded () {
   GoogleMapsAPI.resolve(google);
 }
+
+$(function(){ $(document).foundation(); });
