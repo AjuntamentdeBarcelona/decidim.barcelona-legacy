@@ -126,6 +126,12 @@ Rails.application.routes.draw do
     end
 
     resources :participatory_processes do
+      resources :steps do
+        member do
+          put :mark_as_active
+          put :restore
+        end
+      end
       member do
         put :restore
       end

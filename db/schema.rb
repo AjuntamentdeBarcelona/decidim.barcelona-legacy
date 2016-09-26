@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160926074639) do
+ActiveRecord::Schema.define(version: 20161005062754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -380,7 +380,6 @@ ActiveRecord::Schema.define(version: 20160926074639) do
     t.text     "citizenship_scope"
     t.datetime "hidden_at"
     t.datetime "confirmed_hide_at"
-    t.string   "flags",             default: [],                  array: true
   end
 
   create_table "proposal_answers", force: :cascade do |t|
@@ -476,6 +475,21 @@ ActiveRecord::Schema.define(version: 20160926074639) do
   add_index "spending_proposals", ["author_id"], name: "index_spending_proposals_on_author_id", using: :btree
   add_index "spending_proposals", ["geozone_id"], name: "index_spending_proposals_on_geozone_id", using: :btree
   add_index "spending_proposals", ["resolution"], name: "index_spending_proposals_on_resolution", using: :btree
+
+  create_table "steps", force: :cascade do |t|
+    t.text     "title"
+    t.text     "description"
+    t.date     "start_at"
+    t.date     "end_at"
+    t.integer  "position",                 default: 0
+    t.integer  "participatory_process_id"
+    t.datetime "hidden_at"
+    t.datetime "confirmed_hide_at"
+    t.boolean  "active",                   default: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.string   "flags",                    default: [],                 array: true
+  end
 
   create_table "subcategories", force: :cascade do |t|
     t.text     "name"

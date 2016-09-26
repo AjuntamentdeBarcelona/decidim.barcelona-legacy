@@ -7,11 +7,6 @@
       <%= f.text_field :name, placeholder: t("participatory_processes.form.participatory_process_name"), label: false %>
     </div>
 
-    <div div class="small-12 column">
-      <%= f.label :flags %>
-      <%= f.collection_check_boxes :flags, ParticipatoryProcess::FLAGS, :to_s, :to_s %>
-    </div>
-
     <% unless participatory_process.new_record? %>
       <div class="small-12 column">
         <%= f.label :slug, t("participatory_processes.form.participatory_process_slug") %>
