@@ -62,6 +62,7 @@ ca:
       hidden_proposals: Propostes ocultes
       incomplete_verifications: Verificacions incompletes
       organizations: Organitzacions
+      participatory_processes: Participatory processes
       spending_proposals: Propostes de despesa
       stats: Estadístiques
       users: Usuaris
@@ -85,6 +86,13 @@ ca:
         verify: Verifica
       search:
         title: Cerca organitzacions
+    participatory_processes:
+      index:
+        edit: Edit
+        new: New
+        title: Title
+        delete: Delete
+        restore: Restore
     proposals:
       index:
         filter: Filtre

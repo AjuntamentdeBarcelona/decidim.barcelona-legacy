@@ -133,7 +133,11 @@ Rails.application.routes.draw do
       resources :subcategories
     end
 
-    resources :participatory_processes
+    resources :participatory_processes do
+      member do
+        put :restore
+      end
+    end
   end
 
   namespace :moderation do

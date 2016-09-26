@@ -2,12 +2,16 @@
 <h3><%= page_entries_info @participatory_processes %></h3>
 <ul id="participatory_processes" class="admin-list">
   <% @participatory_processes.each do |process| %>
-    <li>
+    <li class="<%= 'hidden' if process.hidden? %>">
       <span><%= process.name %></span>
       <span><%= " (/" + process.slug + ")" %></span>
       <div class="right">
-        <%= link_to t('admin.participatory_processes.index.edit'), edit_admin_participatory_process_path(process), class: "button tiny radius" %>
-        <%= link_to t('admin.participatory_processes.index.delete'), admin_participatory_processes_path(process), method: :delete,  class: "button tiny radius alert", data: { confirm: t('admin.actions.confirm') } %>
+        <% if process.hidden? %>
+          <%= link_to t('admin.participatory_processes.index.restore'), restore_admin_participatory_process_path(process), method: :put, class: "button tiny radius" %>
+        <% else %>
+          <%= link_to t('admin.participatory_processes.index.edit'), edit_admin_participatory_process_path(process), class: "button tiny radius" %>
+          <%= link_to t('admin.participatory_processes.index.delete'), admin_participatory_process_path(process), method: :delete,  class: "button tiny radius alert", data: { confirm: t('admin.actions.confirm') } %>
+        <% end %>
       </div>
     </li>
   <% end %>

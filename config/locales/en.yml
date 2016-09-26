@@ -57,15 +57,6 @@ en:
     new:
       form:
         submit_button: Create action plan
-  admin:
-    menu:
-      participatory_processes: Participatory processes
-    participatory_processes:
-      index:
-        delete: Delete
-        edit: Edit
-        new: New
-        title: Title
   application:
     close: Close
   categories:
@@ -330,13 +321,27 @@ en:
   participatory_processes:
     edit:
       form:
-        submit_button: Update process
+        submit_button: Update participatory process
     form:
-      participatory_process_name: Participatory process name
-      participatory_process_slug: Participatory process slug
+      participatory_process_admin_email: Admin email
+      participatory_process_admin_name: Admin name
+      participatory_process_areas: Areas
+      participatory_process_audience: Audience
+      participatory_process_citizenship_scope: Citizenship scope
+      participatory_process_description: Description
+      participatory_process_manager_group: Manager group
+      participatory_process_name: Name
+      participatory_process_slug: Slug
+      participatory_process_subtitle: Subtitle
+      participatory_process_summary: Summary
+      participatory_process_title: Title
+      participatory_process_scope: Scope
+      participatory_process_scope_city: Whole city
+      participatory_process_scope_district: Districts
+      participatory_process_scope_note: Is it a measure for the whole city or just for one district?
     new:
       form:
-        submit_button: Create process
+        submit_button: Create participatory process
   proposal_results_mailer:
     proposal:
       status: State

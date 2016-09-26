@@ -455,5 +455,15 @@ FactoryGirl.define do
 
   factory :participatory_process do
     sequence(:name) { |n| "PAM #{n}" }
+    admin_name "David"
+    admin_email "david.morcillo@codegram.com"
+    title do { :en => "Title", :es => "Título", :ca => "Títol" } end
+    subtitle do { :en => "Subtitle", :es => "Subtítulo", :ca => "Subtítol" } end
+    manager_group "Ajuntament"
+    areas "Consell Municipal"
+    summary do { :en => "Summary", :es => "Resumen", :ca => "Resum" } end
+    description do { :en => "Description", :es => "Descripción", :ca => "Descripció" } end
+    audience "Tota la població"
+    citizenship_scope "Només poden opinar." 
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160705131323) do
+ActiveRecord::Schema.define(version: 20160921074116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -364,8 +364,22 @@ ActiveRecord::Schema.define(version: 20160705131323) do
   create_table "participatory_processes", force: :cascade do |t|
     t.string   "name"
     t.string   "slug"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.string   "admin_name"
+    t.string   "admin_email"
+    t.text     "title"
+    t.text     "subtitle"
+    t.string   "scope",             default: "city"
+    t.integer  "district",          default: 1
+    t.string   "manager_group"
+    t.string   "areas"
+    t.text     "summary"
+    t.text     "description"
+    t.text     "audience"
+    t.text     "citizenship_scope"
+    t.datetime "hidden_at"
+    t.datetime "confirmed_hide_at"
   end
 
   create_table "proposal_answers", force: :cascade do |t|

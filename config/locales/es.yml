@@ -57,15 +57,6 @@ es:
     new:
       form:
         submit_button: Crear actuación
-  admin:
-    menu:
-      participatory_processes: Participatory processes
-    participatory_processes:
-      index:
-        delete: Delete
-        edit: Edit
-        new: New
-        title: Title
   application:
     close: Cerrar
   categories:
@@ -332,8 +323,22 @@ es:
       form:
         submit_button: Actualitzar proceso
     form:
-      participatory_process_name: Participatory process name
-      participatory_process_slug: Participatory process slug
+      participatory_process_admin_email: Correo electrónico del administrador
+      participatory_process_admin_name: Nombre de l'administador
+      participatory_process_areas: Áreas del Ajuntament
+      participatory_process_audience: ¿A quién va dirigido el proceso?
+      participatory_process_citizenship_scope: ¿Cuál es el margen o ámbito de decisión ciudadana?
+      participatory_process_description: Descripción
+      participatory_process_manager_group: Grupo promotor
+      participatory_process_name: Nombre
+      participatory_process_slug: Url
+      participatory_process_subtitle: Subtítulo
+      participatory_process_summary: Entradilla
+      participatory_process_title: Título
+      participatory_process_scope: "Ámbito"
+      participatory_process_scope_city: Toda la ciudad
+      participatory_process_scope_district: Distritos
+      participatory_process_scope_note: "¿Es una medida para toda la ciudad o solo para un distrito?"
     new:
       form:
         submit_button: Crear proceso

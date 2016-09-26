@@ -62,6 +62,7 @@ es:
       hidden_proposals: Propuestas ocultas
       incomplete_verifications: Verificaciones incompletas
       organizations: Organizaciones
+      participatory_processes: Participatory processes
       spending_proposals: Propuestas de gasto
       stats: Estadísticas
       users: Usuarios
@@ -85,6 +86,13 @@ es:
         verify: Verificar
       search:
         title: Buscar organizaciones
+    participatory_processes:
+      index:
+        edit: Edit
+        new: New
+        title: Title
+        delete: Delete
+        restore: Restore
     proposals:
       index:
         filter: Filtro
