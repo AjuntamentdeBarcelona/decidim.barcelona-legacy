@@ -4,5 +4,5 @@ class MeetingProposal < ActiveRecord::Base
   belongs_to :meeting, counter_cache: :proposals_count
   belongs_to :proposal
 
-  delegate :title, to: :proposal
+  delegate :title, :participatory_process, to: :proposal
 end
