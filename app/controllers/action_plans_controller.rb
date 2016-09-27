@@ -1,4 +1,6 @@
 class ActionPlansController < ApplicationController
+  before_filter { |c| c.check_participatory_process_flags :action_plans }
+
   include ModerateActions
 
   load_and_authorize_resource

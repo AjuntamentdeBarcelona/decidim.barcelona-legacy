@@ -130,4 +130,12 @@ class ApplicationController < ActionController::Base
 
       $redis.sismember("email_notifications_reminder", current_user.id.to_s)
     end
+  
+  protected
+
+    def check_participatory_process_flags(feature)
+      unless @participatory_process.send("has_#{feature}?")
+        redirect_to participatory_process_path(@participatory_process), notice: t('participatory_processes.flash.feature_disabled_notice')
+      end
+    end
 end

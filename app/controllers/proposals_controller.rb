@@ -1,4 +1,6 @@
 class ProposalsController < ApplicationController
+  before_filter { |c| c.check_participatory_process_flags :proposals }
+
   FEATURED_PROPOSALS_LIMIT = 3
   include CommentableActions
   include FlagActions

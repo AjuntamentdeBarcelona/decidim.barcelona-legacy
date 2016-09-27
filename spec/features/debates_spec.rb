@@ -8,11 +8,6 @@ feature 'Debates' do
     Setting['feature.debates.search'] = true
   end
 
-  scenario 'Disabled with a feature flag' do
-    Setting['feature.debates'] = nil
-    expect{ visit debates_path(participatory_process_id: participatory_process) }.to raise_exception(FeatureFlags::FeatureDisabled)
-  end
-
   scenario 'Index' do
     debates = [
       create(:debate, participatory_process: participatory_process),

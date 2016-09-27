@@ -1,5 +1,6 @@
 class DebatesController < ApplicationController
-  include FeatureFlags
+  before_filter { |c| c.check_participatory_process_flags :debates }
+
   include CommentableActions
   include FlagActions
 
@@ -8,8 +9,6 @@ class DebatesController < ApplicationController
   before_action :parse_tag_filter, only: :index
   before_action :set_search_order, only: :index
   before_action :authenticate_user!, except: [:index, :show]
-
-  feature_flag :debates
 
   has_orders %w{hot_score confidence_score created_at relevance}, only: :index
   has_orders %w{most_voted newest oldest}, only: :show

@@ -323,6 +323,8 @@ ca:
     edit:
       form:
         submit_button: Actualitzar proces
+    flash:
+      feature_disabled_notice: Aquest procés no té aquesta funcionalitat activada
     form:
       participatory_process_admin_email: Correu electrònic de l'administrador
       participatory_process_admin_name: Nom de l'administrador
