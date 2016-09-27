@@ -10,6 +10,10 @@ class DebatesController < ApplicationController
   before_action :set_search_order, only: :index
   before_action :authenticate_user!, except: [:index, :show]
 
+  layout "participatory_process"
+
+  feature_flag :debates
+
   has_orders %w{hot_score confidence_score created_at relevance}, only: :index
   has_orders %w{most_voted newest oldest}, only: :show
 

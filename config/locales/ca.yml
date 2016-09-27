@@ -216,10 +216,7 @@ ca:
       more_information: Informació
       my_account_link: El meu compte
       my_activity_link: La meva activitat
-      new_notifications:
-        one: Tens una nova notificació
-        other: Tens %{count} notificacions noves
-      no_notifications: No tens notificacions noves
+      notifications: "Notificacions (%{count})"
       participatory_processes: Participatory processes
       proposals: Propostes
       revision: Revisar

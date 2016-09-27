@@ -1,48 +1,13 @@
-<!DOCTYPE html>
-<html lang="es">
-
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <%= render partial: 'layouts/i18n' %>
-    <title><%= content_for?(:title) ? yield(:title) : "Admin" %></title>
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-    <%= javascript_include_google_maps_api_tag %>
-    <%= content_for :head %>
-    <%= csrf_meta_tags %>
-    <%= render partial: 'layouts/scripts' %>
-  </head>
-
-  <body class="admin">
-    <%= cookies_warning %>
-    <%= render 'layouts/header' %>
-
-    <div class="row">
-
-      <div class="small-12 medium-3 column">
-        <%= side_menu %>
-      </div>
-
-      <div class="admin-content small-12 medium-9 column">
-        <% if notice %>
-          <div data-alert class="alert-box radius success">
-            <a href="#" class="close" title="<%= t("application.close") %>">&times;</a>
-            <%= notice %>
-          </div>
-        <% end %>
-
-        <% if alert %>
-          <div data-alert class="alert-box radius alert">
-            <a href="#" class="close" title="<%= t("application.close") %>">&times;</a>
-            <%= alert %>
-          </div>
-        <% end %>
-
-        <%= yield %>
-      </div>
+<%= content_for :body do %>
+  <div class="row">
+    <div class="small-12 medium-3 column">
+      <%= side_menu %>
     </div>
-  </body>
-</html>
+
+    <div class="admin-content small-12 medium-9 column">
+      <%= yield %>
+    </div>
+  </div>
+<% end %>
+
+<%= render partial: 'layouts/application' %>

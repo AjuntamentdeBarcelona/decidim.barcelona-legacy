@@ -216,10 +216,7 @@ es:
       more_information: Más información
       my_account_link: Mi cuenta
       my_activity_link: Mi actividad
-      new_notifications:
-        one: Tienes una nueva notificación
-        other: Tienes %{count} notificaciones nuevas
-      no_notifications: No tienes notificaciones nuevas
+      notifications: "Notificaciones (%{count})"
       participatory_processes: Participatory processes
       proposals: Propuestas
       revision: Revisar

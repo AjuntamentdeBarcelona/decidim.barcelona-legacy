@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>" data-current-user-id="<%= current_user.try(:id) %>">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title><%= content_for?(:title) ? content_for(:title) : Setting['org_name'] %></title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= javascript_include_google_maps_api_tag %>
+    <%= render partial: 'layouts/i18n' %>
+    <%= csrf_meta_tags %>
+    <%= content_for :social_media_meta_tags %>
+    <%= render partial: 'layouts/scripts' %>
+    <%= render 'layouts/tracking' %>
+
+    <%= Setting['per_page_code'].try(:html_safe) %>
+
+    <!--[if lte IE 9]>
+      <%= split_stylesheet_link_tag "application", :media => "all" %>
+    <![endif]-->
+
+  </head>
+  <body>
+  <div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+      <div class="off-canvas position-right" data-position="right"
+           id="offCanvas" data-off-canvas>
+        <!-- Close button -->
+        <button class="close-button"
+                aria-label="Close menu" type="button"
+                data-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <!-- Menu -->
+        <div class="hide-for-medium" data-set="nav-holder"></div>
+        <div class="hide-for-medium usermenu-off-canvas-holder"
+             data-set="nav-login-holder"></div>
+      </div>
+      <div class="off-canvas-content" data-off-canvas-content>
+        <div class="footer-separator">
+          <!--separates the footer from the rest of the page,
+          creates a sticky footer-->
+          <%= render 'layouts/topbar' %>
+          <%= render 'layouts/main_nav' %>
+
+          <%= display_flash_messages %>
+          <%= yield :body %>
+
+          </div><!-- /.footer-separator -->
+          <%= render 'layouts/main_footer' %>
+          <%= render 'layouts/mini_footer' %>
+        </div><!--/.off-canvas-content-->
+      </div><!--/.off-canvas-wrapper-inner-->
+    </div><!--/.off-canvas-wrapper-->
+  </body>
+</html>

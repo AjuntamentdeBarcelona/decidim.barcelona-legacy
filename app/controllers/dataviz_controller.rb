@@ -2,6 +2,8 @@ class DatavizController < ApplicationController
   skip_authorization_check
   helper_method :available_dataviz
 
+  layout "participatory_process", only: [:show]
+
   def index
     redirect_to action: :show, id: available_dataviz.first
   end

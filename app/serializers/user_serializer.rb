@@ -9,12 +9,6 @@ class UserSerializer < ActiveModel::Serializer
   end
 
   def avatar_image
-    if object.administrator?
-      scope && scope.image_url("admin_avatar.png")
-    elsif object.moderator?
-      scope && scope.image_url("moderator_avatar.png")
-    elsif object.organization?
-      scope && scope.image_url("collective_avatar.png")
-    end
+    scope.image_url("avatar.png")
   end
 end

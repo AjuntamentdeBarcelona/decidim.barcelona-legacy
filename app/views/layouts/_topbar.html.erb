@@ -8,10 +8,12 @@
     <div class="columns small-12 medium-4 topbar__dropmenu">
       <ul class="dropdown menu" data-dropdown-menu>
         <li class="is-dropdown-submenu-parent">
-          <a href="#">Català</a>
-          <ul class="menu is-dropdown-submenu">
-            <li><a href="#">Castellano</a></li>
-          </ul>
+          <%= link_to I18n.t("locale", locale: I18n.locale), current_path_with_query_params(locale: I18n.locale) %>
+          <% I18n.available_locales.reject{ |l| l == I18n.locale }.map do |loc| %>
+            <ul class="menu is-dropdown-submenu">
+              <%= link_to I18n.t("locale", locale: loc), current_path_with_query_params(locale: loc) %>
+            </ul>
+          <% end %>
         </li>
       </ul>
     </div>
@@ -39,25 +41,19 @@
                   <span class="author author--inline">
                     <span class="author__name">
                       <span class="author__avatar">
-                        <img src="/images/demo-avatar.jpg" alt="">
+                        <%= image_tag "avatar.png" %>
                       </span>
-                      María Martínez
+                      <%= current_user.name %>
                     </span>
                   </span>
                 </a>
               <ul class="menu is-dropdown-submenu js-append usermenu-off-canvas">
-                <li><a href="#">Notificaciones (35)</a></li>
-                <li><a href="#">Siguiendo (12)</a></li>
-                <li><a href="#">Tu cuenta</a></li>
-                <li><a href="#">Salir</a></li>
+                <%= render "devise/menu/logged_in_items" %>
               </ul>
               <span data-set="nav-login-holder" class="show-for-medium">
                 <!-- Repeated due to dropdown limitations -->
                 <ul class="menu is-dropdown-submenu js-append usermenu-off-canvas">
-                  <li><a href="#">Notificaciones (35)</a></li>
-                  <li><a href="#">Siguiendo (12)</a></li>
-                  <li><a href="#">Tu cuenta</a></li>
-                  <li><a href="#">Salir</a></li>
+                  <%= render "devise/menu/logged_in_items" %>
                 </ul>
               </span>
             </li>
@@ -66,8 +62,7 @@
       <% else %>
         <div class="topbar__user show-for-medium" data-set="nav-login-holder">
             <div class="topbar__user__login js-append">
-              <a href="/user-register">Regístrate</a>
-              <a href="/user-login">Entra</a>
+              <%= render "devise/menu/logged_out_items" %>
             </div>
         </div>
       <% end %>
