@@ -17,6 +17,8 @@
 //= require turbolinks
 //= require jquery.turbolinks
 //= require foundation
+//= require appendAround
+//= require owl.carousel.min
 //= require modernizr
 //= require parallax
 //= require moment
@@ -27,7 +29,6 @@
 //= require initial
 //= require ahoy
 //= require check_all_none
-//= require dropdown
 //= require ie_alert
 //= require location_changer
 //= require moderator_comment
@@ -58,7 +59,6 @@
 var initialize_modules = function() {
   App.Users.initialize();
   App.Tags.initialize();
-  App.Dropdown.initialize();
   App.LocationChanger.initialize();
   App.CheckAllNone.initialize();
   App.PreventDoubleSubmission.initialize();
@@ -84,6 +84,9 @@ $(function(){
 
   initialize_modules();
 
+  $(document).foundation();
+  $(".js-append").appendAround();
+
   $(document).on('ajax:complete', initialize_modules);
   $(document).on('ready page:load page:restore', function(){
     $('[data-parallax="scroll"]').parallax();
@@ -96,5 +99,3 @@ GoogleMapsAPI = $.Deferred();
 function gmapsLoaded () {
   GoogleMapsAPI.resolve(google);
 }
-
-$(function(){ $(document).foundation(); });

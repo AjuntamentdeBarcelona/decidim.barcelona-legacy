@@ -33,7 +33,8 @@
           <span aria-hidden="true">&times;</span>
         </button>
         <!-- Menu -->
-        <div class="hide-for-medium" data-set="nav-holder"></div>
+        <div class="hide-for-medium" data-set="nav-holder">
+        </div>
         <div class="hide-for-medium usermenu-off-canvas-holder"
              data-set="nav-login-holder"></div>
       </div>
@@ -44,7 +45,11 @@
           <%= render 'layouts/topbar' %>
           <%= render 'layouts/main_nav' %>
 
-          <%= display_flash_messages %>
+          <div class="row">
+            <div class="small-12">
+              <%= display_flash_messages %>
+            </div>
+          </div>
           <%= yield :body %>
 
           </div><!-- /.footer-separator -->
