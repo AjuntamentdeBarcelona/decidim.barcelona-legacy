@@ -3,7 +3,7 @@
     <p><%= t '.description' %></p>
     <ul class="references-list">
       <% references.each do |reference| %>
-        <li><%= link_to reference.title, reference %></li>
+        <li><%= link_to reference.title, reference_path(reference) %></li>
       <% end %>
     </ul>
   </div>
