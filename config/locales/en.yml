@@ -324,7 +324,7 @@ en:
       form:
         submit_button: Update participatory process
     flash:
-      feature_disabled_notice: Feature disabled notice
+      feature_disabled_notice: This feature is not enabled for this process
     form:
       participatory_process_admin_email: Admin email
       participatory_process_admin_name: Admin name
