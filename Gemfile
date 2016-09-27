@@ -25,7 +25,7 @@ gem 'jquery-turbolinks'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
-gem "font-awesome-rails"
+gem "font-awesome-sass"
 
 gem 'devise'
 # Use ActiveModel has_secure_password

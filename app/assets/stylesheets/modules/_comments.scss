@@ -8,6 +8,7 @@ $comment-nested-bg: $light-gray;
 $comment-nested-alt-bg: $white;
 
 $comment-highlight-bg: rgba($secondary,.15);
+$comment-pinned-bg: lighten($warning,45);
 
 $comment-form-bg: $light-gray;
 
@@ -39,6 +40,9 @@ $comment-form-bg: $light-gray;
 .comment{
   &--highlight{
     background: $comment-highlight-bg !important;
+  }
+  &--pinned{
+    background: $comment-pinned-bg !important;
   }
 }
 

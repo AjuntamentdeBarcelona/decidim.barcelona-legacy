@@ -218,7 +218,7 @@ $accordionmenu-arrow-color: $primary-color;
 $badge-background: $primary-color;
 $badge-color: foreground($badge-background);
 $badge-padding: 0.3em;
-$badge-minwidth: 2.1em;
+$badge-minwidth: 1.5em;
 $badge-font-size: 0.6rem;
 
 // 10. Breadcrumbs
@@ -513,7 +513,7 @@ $show-header-for-stacked: false;
 // --------
 
 $tab-margin: 0;
-$tab-background: $light-gray;
+$tab-background: darken($light-gray, 2.5);
 $tab-background-active: $white;
 $tab-item-font-size: rem-calc(16);
 $tab-item-background-hover: $white;

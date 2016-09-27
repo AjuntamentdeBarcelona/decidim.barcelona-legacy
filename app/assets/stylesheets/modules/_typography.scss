@@ -5,7 +5,7 @@
 
 .heading1{
   line-height: 1.1;
-  font-weight: bold;
+  font-weight: 600;
   font-size: map-get(map-get($header-sizes, small), h1) / 16 + em;
   @include breakpoint(medium){
     font-size: map-get(map-get($header-sizes, medium), h1) / 16 + em;
@@ -83,10 +83,17 @@ hr{
   }
 }
 
+.page-title{
+  margin-bottom: 3rem;
+}
+
 .text-highlight{
   margin-bottom: 0;
   color: $white;
 	text-shadow: 0 0 10px rgba(black, .8);
+  &.heading1{
+    font-weight: 800;
+  }
   > a{
     color: inherit;
     &:hover{

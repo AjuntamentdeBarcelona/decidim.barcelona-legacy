@@ -232,14 +232,14 @@ $datetime-bg: $primary;
   margin-left: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   padding: $card-padding-small;
   @include breakpoint(medium){
     padding: $card-padding;
   }
   .card__button{
-    margin-left: auto;
+    //margin-left: auto;
     font-size: $small-font-size;
   }
 }
@@ -317,6 +317,7 @@ $datetime-bg: $primary;
     display: block;
     width: 30px;
     height: 30px;
+    flex-shrink: 0;
   }
 }
 
@@ -324,7 +325,7 @@ $datetime-bg: $primary;
   flex-grow: 1;
   display: inline-flex;
   align-items: center;
-  padding: 1rem 0;
+  padding: 1rem 1rem 1rem 0;
   .card--list--mini &{
     padding: .5rem 0;
   }
@@ -337,7 +338,6 @@ $datetime-bg: $primary;
 .card--list__heading{
   margin-bottom: 0;
   display: block;
-  margin-right: 1rem;
 }
 
 .card--list .tags{
@@ -467,12 +467,16 @@ $datetime-bg: $primary;
   }
 
   .card--process__column{
+    position: relative;
     .card--full__image-wrapper{
       height: 100%;
       overflow: hidden;
     }
     .card--full__image{
       height: 100%;
+      position: absolute;
+      right: -1px;
+      left: 0;
       > img{
         min-height: 100%;
         max-width: initial;

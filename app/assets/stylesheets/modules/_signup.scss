@@ -1,49 +1,10 @@
-.social-register{
-  margin: 2rem 0;
-}
-
-.button--social{
-  padding: 0 1.5rem 0 0;
-  text-align: left;
-  display: block;
-  min-width: 250px;
-  &--twitter{
-    background-color: $twitter;
-    &:hover{
-      background-color: lighten($twitter,5);
-    }
-  }
-  &--facebook{
-    background-color: $facebook;
-    &:hover{
-      background-color: lighten($facebook,5);
-    }
-  }
-  &--google{
-    background-color: $google;
-    &:hover{
-      background-color: lighten($google,5);
-    }
-  }
-}
-
-.button--social__icon{
-  display: inline-block;
-  vertical-align: middle;
-  padding: 0.85em 1rem;
-  border-right: 1px solid rgba(black,.075);
-  margin-right: .5rem;
-  min-width: 3rem;
-  text-align: center;
-}
-
 .register__separator{
   display: block;
   text-align: center;
   position: relative;
   z-index: 1;
   font-style: italic;
-  margin: 4rem 0;
+  margin: 1rem 0 2rem;
   &:before{
     content: "";
     display: block;
@@ -58,7 +19,7 @@
 
 .register__separator__text{
   display: inline-block;
-  background: $white;
+  background: $light-gray;
   padding: 0 1rem;
 }
 
@@ -71,5 +32,8 @@
   }
   .button{
     margin: 2rem 0;
+  }
+  legend{
+    margin-bottom: 1rem;
   }
 }

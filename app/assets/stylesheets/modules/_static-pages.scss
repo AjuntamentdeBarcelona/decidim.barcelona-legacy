@@ -5,24 +5,14 @@
 }
 
 .static__content{
-  padding: 2rem 1rem;
+  //padding: 2rem 1rem;
   @include breakpoint(medium){
-    padding: 2rem 1.5rem;
+    //padding: 2rem 1.5rem;
   }
 }
 
 .static-nav{
-  background-color: $light-gray;
-  padding: 1.5rem 1rem 1rem;
-  @include breakpoint(medium){
-    padding: 3rem 1.5rem;
-  }
   min-height: 100%;
-  border-bottom: $border;
-  @include breakpoint(medium){
-    border-bottom: 0;
-    border-right: $border;
-  }
   .list-latin{
     list-style-type: upper-latin;
   }

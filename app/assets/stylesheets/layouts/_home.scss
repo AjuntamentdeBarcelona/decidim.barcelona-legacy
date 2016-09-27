@@ -128,9 +128,11 @@
 }
 
 .home-bullets{
-  margin: 2rem 0;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   @include breakpoint(mediumlarge){
-    margin: 5rem 0;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
   }
 }
 
@@ -140,7 +142,7 @@
 
 .home-bullet__icon{
   float: left;
-  width: 15%;
+  //width: 15%;
   text-align: right;
   svg{
     width: 30px;
@@ -152,6 +154,7 @@
 .home-bullet__desc{
   float: right;
   width: 85%;
+  width: calc(100% - 30px);
   padding-left: 1rem;
 }
 

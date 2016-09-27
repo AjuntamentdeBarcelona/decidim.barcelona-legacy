@@ -11,11 +11,9 @@ $container-padding-2y: 2rem;
 /* Main container */
 
 .main-container{
-  //@include breakpoint(medium){
-    background: $container-bg;
-    border: $container-border;
-    box-shadow: $container-shadow;
-  //}
+  background: $container-bg;
+  border: $container-border;
+
 }
 
 .main-container__content{
@@ -34,7 +32,7 @@ $container-padding-2y: 2rem;
 }
 
 .side-panel{
-  background-color: $light-gray;
+  background-color: $light-gray-dark;
   min-height: 100%;
   border-bottom: $border;
   @include breakpoint(medium){

@@ -1,8 +1,11 @@
-#google-map {
-  height: 100%;
+.google-map {
   width: 100%;
+  height: 200px;
   background-color: $medium-gray;
   margin-bottom: 2rem;
+  @include breakpoint(mediumlarge){
+    height: 450px;
+  }
 }
 
 .map-info{

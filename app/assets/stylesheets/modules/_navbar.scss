@@ -123,6 +123,13 @@ $navbar-active-shadow-medium: inset 0 4px 0 0 $primary;
   }
 }
 
+.notifications-badge{
+  margin-left: .2rem;
+  &.is-active{
+    color: $warning;
+  }
+}
+
 .usermenu-off-canvas-holder .usermenu-off-canvas{
   border-top: 1px solid;
   border-bottom: 1px solid;

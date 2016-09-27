@@ -44,6 +44,7 @@ $author-data-color: $muted;
 
 .author-data__extra{
   display: inline-block;
+  >button,
   >a{
     margin-right: 1rem;
   }

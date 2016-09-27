@@ -17,6 +17,9 @@ $active-triangle-height: 12px;
   overflow-y: scroll;
   padding-bottom: $active-triangle-height + $active-border-height;
   margin-bottom: -($active-triangle-height + $active-border-height);
+  &.owl-carousel{
+    overflow-y: hidden;
+  }
 }
 
 .phase-nav__item{

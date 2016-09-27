@@ -16,9 +16,7 @@ $card-grid-margin-bottom: map-get($grid-column-gutter, medium);
     margin-bottom: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100%;
-  }
-  .card__footer{
-    margin-top: auto;
+    height: 100%;
+    justify-content: space-between;
   }
 }

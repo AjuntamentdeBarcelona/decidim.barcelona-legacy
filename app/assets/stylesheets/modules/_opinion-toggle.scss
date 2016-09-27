@@ -2,6 +2,13 @@
   margin: 2rem 0;
 }
 
+.button-group .opinion-toggle--ok,
+.button-group .opinion-toggle--ko{
+  @include breakpoint(small down){
+    margin-bottom: 2px;  
+  }
+}
+
 .opinion-toggle--ok{
   &:hover,
   &.is-active{
