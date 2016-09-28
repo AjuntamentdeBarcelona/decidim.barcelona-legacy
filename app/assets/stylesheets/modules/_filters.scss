@@ -26,6 +26,9 @@ $filters-padding-y: 1rem;
   background: $light-gray;
   padding: .5rem;
   border: $border;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .filters{
@@ -67,13 +70,14 @@ $filters-padding-y: 1rem;
     padding-bottom: $filters-padding-x*1.5;
     border-bottom: none;
   }
+  
+  label{
+    line-height: 1.2;
+    margin-bottom: .4rem;
+  }
+  
   .button{
     margin-bottom: 0;
-  }
-  input[type="checkbox"],
-  input[type="radio"]{
-    margin-bottom: .5rem;
-    margin-left: .5rem;
   }
 }
 

@@ -20,6 +20,7 @@
 //= require appendAround
 //= require owl.carousel.min
 //= require modernizr
+//= require svg4everybody.min
 //= require parallax
 //= require moment
 //= require moment/ca
@@ -92,6 +93,8 @@ $(function(){
     $('[data-parallax="scroll"]').parallax();
     $(window).trigger('resize').trigger('resize.px.parallax');
   });
+
+  svg4everybody();
 });
 
 GoogleMapsAPI = $.Deferred();

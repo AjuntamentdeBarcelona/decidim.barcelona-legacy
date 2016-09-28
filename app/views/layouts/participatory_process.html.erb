@@ -24,9 +24,7 @@
               <a href="info" class="process-header__action">
                 <span class="action-title">El proceso</span>
                 <span class="action-icon">
-                  <svg class="icon">
-                    <use xlink:href="#icon-info" />
-                  </svg>
+                  <%= icon "info" %>
                 </span>
               </a>
             </div>
@@ -34,9 +32,7 @@
               <a class="process-header__action" data-toggle="phasesInfo">
                 <span class="action-title">Las fases</span>
                 <span class="action-icon">
-                  <svg class="icon">
-                    <use xlink:href="#icon-clock" />
-                  </svg>
+                  <%= icon "clock" %>
                 </span>
               </a>
             </div>
@@ -44,9 +40,7 @@
               <a class="process-header__action" data-toggle="processShare">
                 <span class="action-title">Compartir</span>
                 <span class="action-icon">
-                  <svg class="icon">
-                    <use xlink:href="#icon-share" />
-                  </svg>
+                  <%= icon "share" %>
                 </span>
               </a>
             </div>
@@ -56,9 +50,7 @@
         <div class="row collapse process-header__nav">
           <div class="columns phase-nav">
             <button class="prev">
-              <svg class="icon">
-                <use xlink:href="#icon-chevron-left" />
-              </svg>
+              <%= icon "chevron-left" %>
             </button>
             <div class="phase-nav__wrapper" data-carousel>
               <a href="/phase1_info" class="phase-nav__item
@@ -128,9 +120,7 @@
             </div>
 
             <button class="next">
-              <svg class="icon">
-                <use xlink:href="#icon-chevron-right" />
-              </svg>
+              <%= icon "chevron-right" %>
             </button>
           </div>
         </div>
@@ -140,13 +130,9 @@
         <div class="process-nav">
           <button class="process-nav__trigger hide-for-medium"
                   data-toggle="process-nav-content">
-            <svg class="icon icon--small process-nav__trigger__icon" aria-label="Desplegar" role="img">
-              <use xlink:href="#icon-caret-bottom"></use>
-            </svg>
+            <%= icon "caret-buttom", aria_label: "Desplegar", role: "img" %>
             <div class="process-nav__link">
-              <svg>
-                <use xlink:href="#shape-icon-info" />
-              </svg>
+              <%= icon "info" %>
               <span>Informació</span>
             </div>
           </button>
@@ -157,9 +143,9 @@
               <%= render partial: "participatory_processes/menu_item", locals: { path: action_plans_path(participatory_process_id: @participatory_process.slug), title: t("layouts.header.action_plans"), icon: "proposals" } %>
               <%= render partial: "participatory_processes/menu_item", locals: { path: meetings_path(participatory_process_id: @participatory_process.slug), title: t("layouts.header.meetings"), icon: "meetings" } %>
               <%= render partial: "participatory_processes/menu_item", locals: { path: debates_path(participatory_process_id: @participatory_process.slug), title: t("layouts.header.debates"), icon: "debates" } %>
-              <%= render partial: "participatory_processes/menu_item", locals: { path: categories_path(participatory_process_id: @participatory_process.slug), title: t("layouts.header.categories"), icon: "info" } %>
-              <%= render partial: "participatory_processes/menu_item", locals: { path: page_path(participatory_process_id: @participatory_process.slug, id: 'more_information'), title: t("layouts.header.more_information"), icon: "info" } %>
-              <%= render partial: "participatory_processes/menu_item", locals: { path: dataviz_index_path(participatory_process_id: @participatory_process.slug), title: t("dataviz.title"), icon: "info" } %>
+              <%= render partial: "participatory_processes/menu_item", locals: { path: categories_path(participatory_process_id: @participatory_process.slug), title: t("layouts.header.categories"), icon: "information" } %>
+              <%= render partial: "participatory_processes/menu_item", locals: { path: page_path(participatory_process_id: @participatory_process.slug, id: 'more_information'), title: t("layouts.header.more_information"), icon: "information" } %>
+              <%= render partial: "participatory_processes/menu_item", locals: { path: dataviz_index_path(participatory_process_id: @participatory_process.slug), title: t("dataviz.title"), icon: "information" } %>
               <li class="about-link ">
                 <a href="/phase1_about" class="process-nav__link
                                               ">
@@ -189,10 +175,7 @@
               <div class="timeline__desc" id="timeline-info" data-toggler=".is-expanded">
                 <a class="timeline__title" data-toggle="timeline-info">
                   <h6>Información
-                    <svg class="icon icon--small timeline__title__icon"
-                        aria-label="Desplegar" role="img">
-                      <use xlink:href="#icon-caret-bottom"></use>
-                    </svg>
+                    <%= icon "caret-bottom", class: "icon--small timeline__title__icon" %>
                   </h6>
                 </a>
                 <div class="timeline__content">
@@ -211,10 +194,7 @@
               <div class="timeline__desc" id="timeline-refl" data-toggler=".is-expanded">
                 <a class="timeline__title" data-toggle="timeline-refl">
                   <h6>Reflexión
-                    <svg class="icon icon--small timeline__title__icon"
-                        aria-label="Desplegar" role="img">
-                      <use xlink:href="#icon-caret-bottom"></use>
-                    </svg>
+                    <%= icon "caret-bottom", class: "icon--small timeline__title__icon" %>
                   </h6>
                 </a>
                 <div class="timeline__content">
@@ -233,10 +213,7 @@
               <div class="timeline__desc is-expanded" id="timeline-prop" data-toggler=".is-expanded">
                 <a class="timeline__title" data-toggle="timeline-prop">
                   <h6>Propuestas
-                    <svg class="icon icon--small timeline__title__icon"
-                        aria-label="Desplegar" role="img">
-                      <use xlink:href="#icon-caret-bottom"></use>
-                    </svg>
+                    <%= icon "caret-bottom", class: "icon--small timeline__title__icon" %>
                   </h6>
                 </a>
                 <div class="timeline__content">
@@ -254,10 +231,7 @@
               <div class="timeline__desc" id="timeline-conc" data-toggler=".is-expanded">
                 <a class="timeline__title" data-toggle="timeline-conc">
                   <h6>Concreción
-                    <svg class="icon icon--small timeline__title__icon"
-                        aria-label="Desplegar" role="img">
-                      <use xlink:href="#icon-caret-bottom"></use>
-                    </svg>
+                    <%= icon "caret-bottom", class: "icon--small timeline__title__icon" %>
                   </h6>
                 </a>
                 <div class="timeline__content">
@@ -275,10 +249,7 @@
               <div class="timeline__desc" id="timeline-return" data-toggler=".is-expanded">
                 <a class="timeline__title" data-toggle="timeline-return">
                   <h6>Retorno
-                    <svg class="icon icon--small timeline__title__icon"
-                        aria-label="Desplegar" role="img">
-                      <use xlink:href="#icon-caret-bottom"></use>
-                    </svg>
+                    <%= icon "caret-bottom", class: "icon--small timeline__title__icon" %>
                   </h6>
                 </a>
                 <div class="timeline__content">
@@ -296,10 +267,7 @@
               <div class="timeline__desc" id="timeline-follow" data-toggler=".is-expanded">
                 <a class="timeline__title" data-toggle="timeline-follow">
                   <h6>Seguimiento
-                    <svg class="icon icon--small timeline__title__icon"
-                        aria-label="Desplegar" role="img">
-                      <use xlink:href="#icon-caret-bottom"></use>
-                    </svg>
+                    <%= icon "caret-bottom", class: "icon--small timeline__title__icon" %>
                   </h6>
                 </a>
                 <div class="timeline__content">

@@ -1,0 +1,12 @@
+.quill{
+  background-color: #fff;
+
+  .quill-toolbar{
+    border-bottom: 2px solid $body-background;
+  }
+
+  .quill-contents{
+    height: 10em;
+  }
+  margin-bottom: $global-padding;
+}

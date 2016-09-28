@@ -62,7 +62,7 @@
 
 .link{
   color: $anchor-color;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .link--no-color{
@@ -88,24 +88,6 @@
   text-align: left;
   display: block;
   min-width: 250px;
-  &--twitter{
-    background-color: $twitter;
-    &:hover{
-      background-color: lighten($twitter,5);
-    }
-  }
-  &--facebook{
-    background-color: $facebook;
-    &:hover{
-      background-color: lighten($facebook,5);
-    }
-  }
-  &--google{
-    background-color: $google;
-    &:hover{
-      background-color: lighten($google,5);
-    }
-  }
 }
 
 .button--social__icon{
@@ -116,4 +98,23 @@
   margin-right: .5rem;
   min-width: 3rem;
   text-align: center;
+}
+
+.button--twitter{
+  background-color: $twitter;
+  &:hover{
+    background-color: lighten($twitter,5);
+  }
+}
+.button--facebook{
+  background-color: $facebook;
+  &:hover{
+    background-color: lighten($facebook,5);
+  }
+}
+.button--google{
+  background-color: $google;
+  &:hover{
+    background-color: lighten($google,5);
+  }
 }

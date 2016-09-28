@@ -30,6 +30,10 @@ $datetime-bg: $primary;
   //box-shadow: $card-shadow;
 }
 
+.card--nomargin{
+  margin-bottom: 0;
+}
+
 .card--secondary{
   background: $card-secondary-bg;
   box-shadow: none;
@@ -323,11 +327,13 @@ $datetime-bg: $primary;
 
 .card--list__text{
   flex-grow: 1;
+  flex-shrink: 1;
   display: inline-flex;
+  overflow: hidden;
   align-items: center;
   padding: 1rem 1rem 1rem 0;
   .card--list--mini &{
-    padding: .5rem 0;
+    padding: .5rem .5rem .5rem 0;
   }
   .author{
     margin-top: .3rem;

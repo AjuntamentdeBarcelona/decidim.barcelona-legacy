@@ -265,12 +265,12 @@ $buttongroup-expand-max: 6;
 
 $callout-background: $white;
 $callout-background-fade: 90%;
-$callout-border: 1px solid $medium-gray;
+$callout-border: 0;
 $callout-margin: 0 0 1rem 0;
 $callout-padding: 1rem;
 $callout-font-color: $body-font-color;
 $callout-font-color-alt: $body-background;
-$callout-radius: $global-radius;
+$callout-radius: 0;
 $callout-link-tint: 30%;
 
 // 14. Close Button
@@ -427,19 +427,19 @@ $orbit-control-zindex: 10;
 // 26. Pagination
 // --------------
 
-$pagination-font-size: rem-calc(14);
+$pagination-font-size: rem-calc(16);
 $pagination-margin-bottom: $global-margin;
-$pagination-item-color: $black;
+$pagination-item-color: $body-font-color;
 $pagination-item-padding: rem-calc(3 10);
 $pagination-item-spacing: rem-calc(1);
 $pagination-radius: $global-radius;
-$pagination-item-background-hover: $light-gray;
-$pagination-item-background-current: $primary-color;
+$pagination-item-background-hover: $white;
+$pagination-item-background-current: $secondary-color;
 $pagination-item-color-current: foreground($pagination-item-background-current);
-$pagination-item-color-disabled: $medium-gray;
-$pagination-ellipsis-color: $black;
+$pagination-item-color-disabled: lighten($body-font-color, 30);
+$pagination-ellipsis-color: $body-font-color;
 $pagination-mobile-items: false;
-$pagination-arrows: true;
+$pagination-arrows: false;
 
 // 27. Progress Bar
 // ----------------

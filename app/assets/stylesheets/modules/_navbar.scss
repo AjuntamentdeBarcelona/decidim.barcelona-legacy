@@ -15,59 +15,63 @@ $navbar-active-shadow-medium: inset 0 4px 0 0 $primary;
   background: $navbar-bg;
 }
 
-/* Top bar */
+/* Title bar */
 
-.topbar{
+.title-bar{
+  position: relative;
   @include breakpoint(smallmedium down){
-    border-top: 34px solid $dark-gray;
+    border-top: 2.125rem solid $dark-gray;
   }
+}
+
+.logo-cityhall{
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 0;
+  margin-top: -1.95rem;
+  text-align: right;
+  img{
+    width: auto;
+    height: 22px !important;
+  }
+
+  @include breakpoint(medium){
+    top: 50%;
+    margin-top: -19px;
+    img{ 
+      height: 38px !important;
+    }
+  }
+}
+
+
+/* Top bar */
+.topbar{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .logo-wrapper{
-  padding: 0 1rem;
-  @include breakpoint(medium){
-    text-align: center;
-    padding: .5rem 1rem;
-  }
+  display: inline-block;
+  line-height: 0;
+  flex-grow: 1;
   a{
     display: inline-block;
   }
-  span{
-    color: $white;
-    font-weight: 600;
-    display: inline-block;
-    text-align: left;
-    padding-left: .3rem;
-    line-height: 1;
-    position: relative;
-    &:before{
-      content: "";
-      display: block;
-      position: absolute;
-      border-left: 4px solid $white;
-      height: 88%;
-      top: 6%;
-      left: -5px;
-    }
+  img{
+    display: block;
   }
 }
 
+/* Dropmenus in topbar */
 .topbar__dropmenu{
-  @include breakpoint(smallmedium down){
-    font-size: .8rem;
-    position: absolute;
-    top: 0;
-    .dropdown.menu > li.is-dropdown-submenu-parent > a::after{
-      border-width: 3px;
-      right: 10px;
-      margin-top: 0;
-    }
-  }
-  
-  @include breakpoint(medium){
-    padding-top: .4rem;
-  }
-  .menu > li > a{
+  display: inline-block;
+  vertical-align: middle;
+  padding-top: 0;
+  margin-left: 2rem;
+  .dropdown > li > a{
     padding-left: 0;
   }
   .dropdown{
@@ -77,77 +81,79 @@ $navbar-active-shadow-medium: inset 0 4px 0 0 $primary;
   .is-dropdown-submenu{
     text-align: left;
     padding-left: .3rem;
-    background-color: rgba($white, .8);
-    border-radius: $global-radius;
+    background-color: $white;
+    border: 1px solid $light-gray;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
     min-width: 150px;
     a{
-      padding: 0.3rem 1rem;
+      color: $body-font-color;
+      padding: .5rem;
+    }
+    a:hover{
+      color: lighten($body-font-color, 20);
     }
   }
 }
 
+//Foundation overwrites
 .topbar__dropmenu > ul > li > a{
   color: $medium-gray;
   &:after{
+    margin-top: -1px !important;
     border-top-color: $medium-gray !important;
   }
 }
 
-.topbar__user{
-  padding-top: 1rem;
-  padding-right: 2rem;
-  @media (min-width: 1270px){
-    padding-right: 0;
+
+
+.language-choose{
+  @include breakpoint(smallmedium down){
+    font-size: .8rem;
+    position: absolute;
+    top: -2.2rem;
+    left: .5rem;
+    margin-left: 0;
+    .dropdown.menu > li.is-dropdown-submenu-parent > a::after{
+      border-width: 3px;
+      right: 10px;
+      margin-top: 0;
+    }
   }
 }
 
-.topbar__user__avatar{
-  float: right;
-  width: 100%;
-  max-width: 30px;
-  border-radius: 50%;
-  margin-left: 1rem;
-}
 
-
-.topbar__menu{
-  text-align: right;
-  font-size: 20px;
+.topbar__user{
+  display: inline-block;
+  padding-right: 2.5rem;
+  margin-left: 2rem;
+  @media (min-width: (1300 / 16) + em){
+    padding-right: 0;
+  }
 }
 
 .topbar__user__logged{
   text-align: right;
-  padding-right: 2rem;
-  @media (min-width: 1270px){
+  padding-right: 2.5rem;
+  display: none;
+  @include breakpoint(medium){
+    display: block;
+  }
+  @media (min-width: (1300 / 16) + em){
     padding-right: 0;
   }
 }
 
-.notifications-badge{
-  margin-left: .2rem;
-  &.is-active{
-    color: $warning;
-  }
-}
 
-.usermenu-off-canvas-holder .usermenu-off-canvas{
-  border-top: 1px solid;
-  border-bottom: 1px solid;
-  &.is-dropdown-submenu{
-    display: block;
-    position: static;
-    background: transparent;
-    border-left: 0;
-    border-right: 0;
+.topbar__notifications{
+  margin-right: .5rem;
+  vertical-align: -4px;
+  .icon{
+    fill: $white;
+    opacity: .3;
   }
-  a{
-    display: block;
-    padding: 1em 2em;
-    color: $navbar-color;
-    &:hover{
-      background: $navbar-bg-hover;
-      color: $navbar-color-hover;
-    }
+  &.is-active .icon{
+    fill: $warning;
+    opacity: 1;
   }
 }
 
@@ -171,27 +177,47 @@ $navbar-active-shadow-medium: inset 0 4px 0 0 $primary;
     border-left: $border;
     vertical-align: middle;
   }
-  .off-canvas &{
-    text-align: center;
-    margin-top: 1rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    border-top: 1px solid;
-    border-bottom: 1px solid;
+}
+
+
+/* Menu icon and off-canvas */
+.topbar__menu{
+  text-align: right;
+  font-size: 20px;
+  margin-right: .1rem;
+}
+
+.usermenu-off-canvas-holder .usermenu-off-canvas{
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  &.is-dropdown-submenu{
+    display: block;
+    position: static;
+    background: transparent;
+    border-left: 0;
+    border-right: 0;
+  }
+  a{
+    display: block;
+    padding: 1em 2em;
+    color: $navbar-color;
+    &:hover{
+      background: $navbar-bg-hover;
+      color: $navbar-color-hover;
+    }
   }
 }
 
-.logo-cityhall{
-  position: absolute;
-  z-index: 1;
-  top: 3px;
-  right: 0;
-  width: 24px;
-  @include breakpoint(medium){
-    top: 1rem;
-    width: 40px;
-  }
+
+.off-canvas .topbar__user__login{
+  text-align: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
 }
+
 
 /* Main nav */
 .main-nav{

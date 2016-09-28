@@ -1,7 +1,7 @@
 // User profile, notifications & settings
 
 .user-header{
-  overflow: hidden;
+  @include clearfix;
   display: flex;
   align-items: center;
   margin-bottom: 1rem;

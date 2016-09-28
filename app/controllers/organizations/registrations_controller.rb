@@ -1,5 +1,7 @@
 class Organizations::RegistrationsController < Devise::RegistrationsController
 
+  layout "application"
+
   def new
     super do |user|
       user.build_organization
