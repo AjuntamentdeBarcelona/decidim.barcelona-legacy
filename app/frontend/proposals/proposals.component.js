@@ -3,7 +3,6 @@ import { connect }              from 'react-redux';
 
 import Loading                  from '../application/loading.component';
 import InfinitePagination       from '../pagination/infinite_pagination.component';
-import FilterTabs               from '../filters/filter_tabs.component';
 import OrderSelector            from '../order/order_selector.component';
 
 import ProposalsHeader          from './proposals_header.component';
@@ -47,10 +46,6 @@ class Proposals extends Component {
       <div>
         <ProposalsHeader />
 
-        <div className="wrap row">
-          <FilterTabs />
-        </div>
-
         <div className="row column">
           <div className="title-action">
             <h2 className="title-action__title section-heading">
@@ -66,13 +61,13 @@ class Proposals extends Component {
           </div>
 
           <div className="columns mediumlarge-8 large-9">
-            <Loading show={this.state.loading} list={true} />
             <OrderSelector
               orderLinks={["random", "hot_score", "confidence_score", "created_at"]} />
+            <Loading show={this.state.loading} list={true} />
             <ProposalsList proposals={this.props.proposals} />
-            {this.renderInfinitePagination()}
           </div>
         </div>
+        {this.renderInfinitePagination()}
       </div>
     );
   }

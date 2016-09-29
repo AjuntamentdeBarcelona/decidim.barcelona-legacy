@@ -1,20 +1,19 @@
 import FilterMeta      from '../filters/filter_meta.component';
 
 import ProposalVoteBox from './proposal_vote_box.component';
-import ProposalBadge   from './proposal_badge.component';
 import ProposalInfo    from './proposal_info.component';
 
 import htmlToReact from '../application/html_to_react';
 import simpleFormat from '../application/simple_format';
 
 const Proposal = (proposal) => (
-  <div id={`proposal_${proposal.id}`} className="proposal clear">
-    <div className="row">
-      <div className="small-12 medium-9 column">
+  <div id={`proposal_${proposal.id}`} className="proposal column">
+    <article className="card card--proposal">
+      <div className="card__content">
         <div className="proposal-content">
-          <ProposalBadge proposal={proposal} />
-          <span className="label-proposal">{ I18n.t('proposals.proposal.proposal') }</span>
-          <h3><a href={proposal.url}>{ proposal.title }</a></h3>
+          <a href={proposal.url} className="card__link">
+            <h5 className="card__title">{ proposal.title }</h5>
+          </a>
           <ProposalInfo 
             code={ proposal.code }
             created_at={ proposal.created_at }
@@ -22,9 +21,21 @@ const Proposal = (proposal) => (
             official={ proposal.official }
             from_meeting={ proposal.from_meeting }
             author={ proposal.author }/>
-          <div className="proposal-description">
+          <p className="proposal-description">
+            {(() => {
+              if (proposal.status) {
+                return (
+                    <span className="proposal-status badge">
+                    <span className="bullet">&nbsp;&bull;&nbsp;</span>
+                    <span className={proposal.status}>{I18n.t(`proposals.status.${proposal.status}`)}</span>
+                    </span>
+                );
+              } else {
+                return null;
+              }
+            })()}
             {htmlToReact(simpleFormat(proposal.summary))}
-          </div>
+          </p>
           <div className="bottom-bar">
             <FilterMeta 
               scope={ proposal.scope_ }
@@ -34,7 +45,7 @@ const Proposal = (proposal) => (
           </div>
         </div>
       </div>
-      <aside id={`proposal_${proposal.id}_votes`} className="small-12 medium-3 column">
+      <aside id={`proposal_${proposal.id}_votes`} className="card__footer">
         <ProposalVoteBox 
           hideButton={ proposal.closed }
           proposalId={ proposal.id } 
@@ -45,7 +56,7 @@ const Proposal = (proposal) => (
           totalVotes={ proposal.total_votes } 
           totalComments={ proposal.total_comments } />
       </aside>
-    </div>
+    </article>
   </div>
 );
 

@@ -6,23 +6,10 @@ const ProposalInfoComponent = ({
   created_at,
   official,
   from_meeting,
-  author,
-  status
+  author
 }) => (
-  <p className="proposal-info">
+  <div className="card__author author-data author-data--small">
     <strong>{ code }</strong>
-    {(() => {
-      if (status) {
-        return (
-            <span className="proposal-status badge">
-            <span className="bullet">&nbsp;&bull;&nbsp;</span>
-            <span className={status}>{I18n.t(`proposals.status.${status}`)}</span>
-            </span>
-        );
-      } else {
-        return null;
-      }
-    })()}
     <span className="bullet">&nbsp;&bull;&nbsp;</span>
     <span>{ created_at }</span>
     <span className="bullet">&nbsp;&bull;&nbsp;</span>
@@ -30,7 +17,7 @@ const ProposalInfoComponent = ({
       official={ official }
       fromMeeting={ from_meeting }
       author={ author } />
-  </p>
+  </div>
 );
 
 ProposalInfoComponent.propTypes = {

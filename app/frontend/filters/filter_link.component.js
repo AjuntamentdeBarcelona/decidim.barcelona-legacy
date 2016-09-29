@@ -6,11 +6,13 @@ import * as actions             from './filters.actions';
 class FilterLink extends Component {
   render() {
     return (
-      <a className={this.isActive() ? "active" : ""}
-        onClick={() => this.toggleFilter()}>
-        <i className={this.props.cssClass} />
-        {this.props.label}
-      </a>
+      <li>
+        <a className={this.isActive() ? "active" : ""}
+          onClick={() => this.toggleFilter()}>
+          <i className={this.props.cssClass} />
+          {this.props.label}
+        </a>
+      </li>
     );
   }
 

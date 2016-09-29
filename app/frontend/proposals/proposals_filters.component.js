@@ -18,6 +18,18 @@ class ProposalsFilters extends Component {
     return (
       <form className="proposal-filters">
         <SearchFilter searchText={this.props.filters.text} />
+
+        <FilterOptionGroup
+          filterGroupName="source"
+          filterGroupValue={this.props.filters.filter["source"]}
+          isExclusive={true}
+          onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
+        <FilterOption filterName="official" />
+        <FilterOption filterName="citizenship" />
+        <FilterOption filterName="organization" />
+        <FilterOption filterName="meetings" filterLabel={I18n.t('components.filter_option.from_meetings')} />
+        </FilterOptionGroup>
+
         <ReviewerFilter />
 
         <FilterOptionGroup 
