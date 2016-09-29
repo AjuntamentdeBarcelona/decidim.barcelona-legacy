@@ -219,7 +219,10 @@ feature 'Users' do
     login_as(user)
 
     visit "/"
-    click_link 'Sign out'
+
+    within user_menu do
+      click_link 'Sign out'
+    end
 
     expect(page).to have_content 'You have been signed out successfully.'
   end

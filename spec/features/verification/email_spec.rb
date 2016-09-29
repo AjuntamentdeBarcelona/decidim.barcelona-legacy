@@ -60,7 +60,7 @@ feature 'Verify email' do
     verified_user.destroy
     click_button "Send code"
 
-    within ".alert-box" do
+    within ".flash.alert" do
       expect(page).to have_content "problem"
     end
   end
