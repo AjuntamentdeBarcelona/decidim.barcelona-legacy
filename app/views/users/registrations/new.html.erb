@@ -57,8 +57,6 @@
             <% end %>
 
             <%= render "devise/shared/links" %>
-
-            <p class="lopd-text"><%= t("devise_views.users.registrations.new.legal_lopd_text") %></p>
           </div>
         </div>
       </div>
@@ -71,6 +69,15 @@
         <div class="social-register">
           <%= render 'devise/omniauth_form' %>
         </div>
+        <span class="register__separator">
+          <span class="register__separator__text"></span>
+        </span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="columns small-12">
+        <p class="lopd-text"><%= t("devise_views.users.registrations.new.legal_lopd_text") %></p>
       </div>
     </div>
   </div>
