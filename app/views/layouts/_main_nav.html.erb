@@ -14,13 +14,10 @@
         </li>
 
         <li>
-          <%= link_to t("layouts.header.FAQ"), "",
-          class: "main-nav__link #{('main-nav__link--active' if  controller_name == 'faq')}", data: {'no-turbolink' => true}  %>
-        </li>
-
-        <li>
-          <%= link_to t("layouts.header.something_else"), "",
-          class: "main-nav__link #{('main-nav__link--active' if  controller_name == 'something_else')}", data: {'no-turbolink' => true}  %>
+          <%= link_to Setting['blog_url'][I18n.locale.to_s], class: "main-nav__link", target: "_blank" do %>
+          <%= icon "external-link" %>
+          <%= t("layouts.header.external_link_blog") %>
+          <% end %>
         </li>
       </ul>
     </div>

@@ -44,10 +44,9 @@
     <% if user_signed_in? %>
       <div class="topbar__dropmenu topbar__user__logged">
         <!-- No new notifications? Remove is-active class -->
-        <a href="/user-notifications" class="topbar__notifications is-active"
-           title="Notificaciones">
+        <%= link_to notifications_path, class: "topbar__notifications #{current_user.notifications.count > 0 ? 'is-active' : nil}" do %>
           <%= icon "bell" %>
-        </a>
+        <% end %>
         <ul class="dropdown menu" data-dropdown-menu>
           <li class="is-dropdown-submenu-parent show-for-medium">
               <a href="#">           

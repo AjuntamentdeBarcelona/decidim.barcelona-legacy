@@ -51,19 +51,22 @@ class Proposals extends Component {
           <FilterTabs />
         </div>
 
-        <div className="wrap row">
-          <div className="small-12 medium-3 column">
+        <div className="row column">
+          <div className="title-action">
+            <h2 className="title-action__title section-heading">
+              { I18n.t('components.proposals.count', { count: this.props.count }) }
+            </h2>
+            <NewProposalButton />
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="columns mediumlarge-4 large-3">
             <ProposalsSidebar />
           </div>
 
-          <div className="small-12 medium-9 column">
-            <div className="show-for-small-only">
-              <NewProposalButton />
-            </div>
+          <div className="columns mediumlarge-8 large-9">
             <Loading show={this.state.loading} list={true} />
-            <h3 className="proposals-count">
-              { I18n.t('components.proposals.count', { count: this.props.count }) }
-            </h3>
             <OrderSelector
               orderLinks={["random", "hot_score", "confidence_score", "created_at"]} />
             <ProposalsList proposals={this.props.proposals} />

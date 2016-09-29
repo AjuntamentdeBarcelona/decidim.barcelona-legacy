@@ -1,9 +1,7 @@
 <%= content_for :body do %>
   <main class="wrapper">
-    <div class="row column">
-      <div class="small-12">
-        <%= display_flash_messages %>
-      </div>
+    <div class="row">
+      <%= display_flash_messages %>
     </div>
     <%= yield %>
   </main>
