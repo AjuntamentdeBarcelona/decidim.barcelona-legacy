@@ -240,6 +240,7 @@ Rails.application.routes.draw do
   #   end
 
   namespace :api do
+    resources :authors, only: [:show]
     resources :districts, only: [:index]
     resources :categories, only: [:index]
     resources :subcategories, only: [:index]

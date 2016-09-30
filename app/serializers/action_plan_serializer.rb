@@ -2,10 +2,10 @@ class ActionPlanSerializer < ActiveModel::Serializer
   attributes :id, :title, :description, :created_at, :url, :scope_, :district,
     :edit_url, :new_revision_url, :approved, :weight, :social_media_image_url,
     :statistics, :permissions, :total_comments, :total_positive_comments,
-    :total_negative_comments, :total_neutral_comments
+    :total_negative_comments, :total_neutral_comments, :category_id, :subcategory_id
 
-  has_one :category
-  has_one :subcategory
+  #has_one :category
+  #has_one :subcategory
 
   # Name collision with serialization `scope`
   def scope_

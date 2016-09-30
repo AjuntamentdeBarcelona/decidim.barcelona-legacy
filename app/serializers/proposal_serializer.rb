@@ -4,11 +4,10 @@ class ProposalSerializer < ActiveModel::Serializer
              :editable, :conflictive?, :external_url, :hidden?, :can_hide, :can_hide_author,
              :flagged, :code, :arguable?, :permissions, :total_positive_comments,
              :total_negative_comments, :total_neutral_comments, :total_comments,
-             :social_media_image_url, :author_id, :status
+             :social_media_image_url, :author_id, :status, :author_id
   
   has_one :category
   has_one :subcategory
-  has_one :author
 
   # Name collision with serialization `scope`
   def scope_
