@@ -1,4 +1,4 @@
-class FullImageUploader < ApplicationUploader
+class ParticipatoryProcessFullImageUploader < ApplicationUploader
   include CarrierWave::MiniMagick
 
   process resize_to_fit: [1035, 667]
