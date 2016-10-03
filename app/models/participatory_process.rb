@@ -6,6 +6,9 @@ class ParticipatoryProcess < ActiveRecord::Base
   validates :name, presence: true
   friendly_id :name, use: [:slugged, :finders]
 
+  mount_uploader :full_image, ParticipatoryProcess::FullImageUploader
+  mount_uploader :banner_image, ParticipatoryProcess::BannerImageUploader
+
   serialize :title, JSON
   serialize :subtitle, JSON
   serialize :summary, JSON
