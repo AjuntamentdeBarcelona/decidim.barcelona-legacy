@@ -49,4 +49,23 @@ feature 'Admin steps' do
     expect(steps[1]).to have_content step_3.decorate.title
     expect(steps[2]).to have_content step_2.decorate.title
   end
+
+  scenario "Destroy an existing step", :js do
+    create(:step, participatory_process: @participatory_process)
+
+    visit admin_participatory_process_steps_path(@participatory_process)
+    click_link "Delete"
+
+    expect(page).to have_content("Restore")
+  end
+
+  scenario "Restore a deleted step", :js do
+    step = create(:step, participatory_process: @participatory_process)
+    step.destroy
+
+    visit admin_participatory_process_steps_path(@participatory_process)
+    click_link "Restore"
+
+    expect(page).to_not have_content("Restore")
+  end
 end

@@ -8,6 +8,7 @@ class CreateSteps < ActiveRecord::Migration
       t.integer :position, default: 0
       t.integer :participatory_process_id
       t.datetime :hidden_at
+      t.datetime :confirmed_hide_at
 
       t.timestamps null: false
     end

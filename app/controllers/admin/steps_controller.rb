@@ -1,5 +1,6 @@
 class Admin::StepsController < Admin::BaseController
-  include HasParticipatoryProcess
+  before_filter :load_participatory_process
+  before_filter :load_step, only: [:edit, :update, :destroy]
   authorize_resource
 
   def index
@@ -21,12 +22,9 @@ class Admin::StepsController < Admin::BaseController
   end
 
   def edit
-    @step = @participatory_process.steps.find(params[:id])
   end
 
   def update
-    @step = @participatory_process.steps.find(params[:id])
-
     if @step.update_attributes(strong_params)
       redirect_to admin_participatory_process_steps_url, notice: t("flash.actions.update.notice", resource_name: "Step")
     else
@@ -34,7 +32,26 @@ class Admin::StepsController < Admin::BaseController
     end
   end
 
+  def destroy
+    @step.destroy
+    redirect_to admin_participatory_process_steps_url, notice: t('flash.actions.destroy.notice', resource_name: "Step")
+  end
+
+  def restore
+    @step = @participatory_process.steps.with_hidden.find(params[:id])
+    @step.restore
+    redirect_to admin_participatory_process_steps_url, notice: t('flash.actions.update.notice', resource_name: "Step")
+  end
+
   private
+
+  def load_participatory_process
+    @participatory_process = ParticipatoryProcess.find(params[:participatory_process_id])
+  end
+
+  def load_step
+    @step = @participatory_process.steps.find(params[:id])
+  end
 
   def strong_params
     send("step_params")
