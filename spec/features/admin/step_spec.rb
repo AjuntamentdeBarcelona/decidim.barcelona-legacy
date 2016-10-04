@@ -31,4 +31,22 @@ feature 'Admin steps' do
     expect(page).to have_content "Step created successfully."
     expect(page).to have_content "Communication"
   end
+
+  scenario "Edit an existing step", :js do
+    step_1 = create(:step, participatory_process: @participatory_process, position: 0)
+    step_2 = create(:step, participatory_process: @participatory_process, position: 2)
+    step_3 = create(:step, participatory_process: @participatory_process, position: 3)
+
+    visit edit_admin_participatory_process_step_path(@participatory_process, step_3)
+
+    fill_in "step_position", with: 1
+    click_button "Update step"
+
+    steps = all("#steps li")
+
+    expect(page).to have_content "Step updated successfully."
+    expect(steps[0]).to have_content step_1.decorate.title
+    expect(steps[1]).to have_content step_3.decorate.title
+    expect(steps[2]).to have_content step_2.decorate.title
+  end
 end

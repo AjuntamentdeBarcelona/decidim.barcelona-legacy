@@ -3,7 +3,7 @@ class Admin::StepsController < Admin::BaseController
   authorize_resource
 
   def index
-    @steps = @participatory_process.steps.with_hidden.page(params[:page])
+    @steps = @participatory_process.steps.order(:position).with_hidden.page(params[:page])
   end
 
   def new
@@ -17,6 +17,20 @@ class Admin::StepsController < Admin::BaseController
       redirect_to admin_participatory_process_steps_url, notice: t("flash.actions.create.notice", resource_name: "Step")
     else
       render :new
+    end
+  end
+
+  def edit
+    @step = @participatory_process.steps.find(params[:id])
+  end
+
+  def update
+    @step = @participatory_process.steps.find(params[:id])
+
+    if @step.update_attributes(strong_params)
+      redirect_to admin_participatory_process_steps_url, notice: t("flash.actions.update.notice", resource_name: "Step")
+    else
+      render :edit
     end
   end
 

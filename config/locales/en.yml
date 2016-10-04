@@ -553,6 +553,9 @@ en:
     new:
       form:
         submit_button: Create step
+    edit:
+      form:
+        submit_button: Update step
   subcategories:
     edit:
       form:

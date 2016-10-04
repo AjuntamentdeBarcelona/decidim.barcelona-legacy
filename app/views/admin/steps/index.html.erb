@@ -3,7 +3,7 @@
 <ul id="steps" class="admin-list">
   <% @steps.each do |step| %>
     <li class="<%= 'hidden' if step.hidden? %>">
-      <span><%= step.title %></span>
+      <span><%= step.decorate.title %></span>
       <div class="right">
         <% if step.hidden? %>
           <%= link_to t('admin.steps.index.restore'), restore_admin_participatory_process_step_path(@participatory_process, step), method: :put, class: "button tiny radius" %>

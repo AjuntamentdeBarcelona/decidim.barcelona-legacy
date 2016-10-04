@@ -544,6 +544,9 @@ es:
       recommendations_title: Cómo crear una propuesta de gasto
       start_new: Crear una propuesta de gasto
   steps:
+    edit:
+      form:
+        submit_button: Update step
     form:
       step_description: Step description
       step_end_at: Step end at

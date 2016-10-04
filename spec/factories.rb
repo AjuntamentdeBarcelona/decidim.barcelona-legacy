@@ -470,8 +470,8 @@ FactoryGirl.define do
   end
 
   factory :step do
-    sequence(:title) { |n| "Step #{n}" }
-    description "lorem ipsum lorem ipsum"
+    sequence(:title) do |n| { en: "Step #{n}", es: "Paso #{n}", ca: "Pas #{n}" } end
+    description do { en: "lorem ipsum lorem ipsum", es: "lorem ipsum lorem ipsum", ca: "lorem ipsum lorem ipsum" } end
     start_at Date.today
     end_at Date.today + 1.year
     participatory_process

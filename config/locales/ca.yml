@@ -544,6 +544,9 @@ ca:
       recommendations_title: Com crear una proposta de despesa
       start_new: Crear una proposta de despesa
   steps:
+    edit:
+      form:
+        submit_button: Update step
     form:
       step_description: Step description
       step_end_at: Step end at
