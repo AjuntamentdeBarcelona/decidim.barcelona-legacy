@@ -1,6 +1,6 @@
 class Admin::StepsController < Admin::BaseController
   before_filter :load_participatory_process
-  before_filter :load_step, only: [:edit, :update, :destroy]
+  before_filter :load_step, only: [:edit, :update, :destroy, :mark_as_active]
   authorize_resource
 
   def index
@@ -13,6 +13,7 @@ class Admin::StepsController < Admin::BaseController
 
   def create
     @step = @participatory_process.steps.build(strong_params)
+    @step.active = @participatory_process.steps.count.zero?
 
     if @step.save
       redirect_to admin_participatory_process_steps_url, notice: t("flash.actions.create.notice", resource_name: "Step")
@@ -40,6 +41,12 @@ class Admin::StepsController < Admin::BaseController
   def restore
     @step = @participatory_process.steps.with_hidden.find(params[:id])
     @step.restore
+    redirect_to admin_participatory_process_steps_url, notice: t('flash.actions.update.notice', resource_name: "Step")
+  end
+
+  def mark_as_active
+    @participatory_process.steps.update_all(active: false)
+    @step.update_attribute(:active, true)
     redirect_to admin_participatory_process_steps_url, notice: t('flash.actions.update.notice', resource_name: "Step")
   end
 

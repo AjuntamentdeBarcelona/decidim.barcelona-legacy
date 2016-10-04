@@ -486,8 +486,9 @@ ActiveRecord::Schema.define(version: 20161004102226) do
     t.integer  "participatory_process_id"
     t.datetime "hidden_at"
     t.datetime "confirmed_hide_at"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.boolean  "active",                   default: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   create_table "subcategories", force: :cascade do |t|

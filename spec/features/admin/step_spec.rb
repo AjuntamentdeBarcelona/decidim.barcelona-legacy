@@ -30,6 +30,7 @@ feature 'Admin steps' do
 
     expect(page).to have_content "Step created successfully."
     expect(page).to have_content "Communication"
+    expect(page).not_to have_content "Mark as active"
   end
 
   scenario "Edit an existing step", :js do
@@ -48,6 +49,20 @@ feature 'Admin steps' do
     expect(steps[0]).to have_content step_1.decorate.title
     expect(steps[1]).to have_content step_3.decorate.title
     expect(steps[2]).to have_content step_2.decorate.title
+  end
+
+  scenario "Change active step", :js do
+    step_1 = create(:step, participatory_process: @participatory_process, position: 0, active: false)
+    step_2 = create(:step, participatory_process: @participatory_process, position: 1, active: true)
+
+    visit admin_participatory_process_steps_path(@participatory_process)
+
+    click_link "Mark as active"
+
+    steps = all("#steps li")
+
+    expect(steps[0]).not_to have_content "Mark as active"
+    expect(steps[1]).to have_content "Mark as active"
   end
 
   scenario "Destroy an existing step", :js do
