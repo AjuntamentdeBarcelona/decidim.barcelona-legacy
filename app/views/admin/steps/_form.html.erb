@@ -1,0 +1,39 @@
+<%= form_for(step, url: form_url) do |f| %>
+  <%= render 'shared/errors', resource: step %>
+
+  <div class="row">
+    <% I18n.available_locales.map(&:to_s).each do |locale| %>
+      <fieldset>
+        <legend><%= I18n.t "locale", locale: locale %></legend>
+        <div class="small-12 column">
+          <%= label_tag "title_#{locale}", t("steps.form.step_title") %>
+          <%= text_field_tag "#{resource_name}[title][#{locale}]", step.title && step.title[locale], id: "step_title_#{locale}", placeholder: t("steps.form.step_title"), label: false %>
+        </div>
+
+        <div class="small-12 column">
+          <%= label_tag "description_#{locale}", t("steps.form.step_description") %>
+          <%= rich_editor_tag "#{resource_name}[description][#{locale}]", step.description && step.description[locale], maxlength: 10 %>
+        </div>
+      </fieldset>
+    <% end %>
+
+    <div class="small-12 column">
+      <%= f.label :start_at, t("steps.form.step_start_at") %>
+      <%= f.date_field :start_at, label: false %>
+    </div>
+
+    <div class="small-12 column">
+      <%= f.label :end_at, t("steps.form.step_end_at") %>
+      <%= f.date_field :end_at, label: false %>
+    </div>
+
+    <div class="small-12 column">
+      <%= f.label :position, t("steps.form.step_position") %>
+      <%= f.number_field :position, label: false %>
+    </div>
+
+    <div class="actions small-12 column">
+      <%= f.submit(class: "button radius", value: t("#{resource_name.pluralize}.#{action_name}.form.submit_button")) %>
+    </div>
+  </div>
+<% end %>

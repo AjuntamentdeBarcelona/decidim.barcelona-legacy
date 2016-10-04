@@ -57,6 +57,17 @@ en:
     new:
       form:
         submit_button: Create action plan
+  admin:
+    participatory_processes:
+      index:
+        steps: Steps
+    steps:
+      index:
+        delete: Delete
+        edit: Edit
+        new: Create step
+        restore: Restore
+        title: Title
   application:
     close: Close
   categories:
@@ -532,6 +543,16 @@ en:
       recommendation_two: Any proposal or comment suggesting illegal action will be deleted.
       recommendations_title: How to create a spending proposal
       start_new: Create spending proposal
+  steps:
+    form:
+      step_description: Step description
+      step_end_at: Step end at
+      step_position: Step position
+      step_start_at: Step start at
+      step_title: Step title
+    new:
+      form:
+        submit_button: Create step
   subcategories:
     edit:
       form:

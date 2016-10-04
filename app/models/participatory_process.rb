@@ -19,6 +19,7 @@ class ParticipatoryProcess < ActiveRecord::Base
   has_many :debates
   has_many :categories
   has_many :subcategories
+  has_many :steps
 
   FLAGS.each do |feature|
     define_method "has_#{feature}?" do

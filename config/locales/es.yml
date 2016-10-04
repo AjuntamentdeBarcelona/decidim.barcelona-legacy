@@ -57,6 +57,17 @@ es:
     new:
       form:
         submit_button: Crear actuación
+  admin:
+    participatory_processes:
+      index:
+        steps: Steps
+    steps:
+      index:
+        delete: Delete
+        edit: Edit
+        new: New
+        restore: Restore
+        title: Title
   application:
     close: Cerrar
   categories:
@@ -532,6 +543,16 @@ es:
       recommendation_two: Cualquier propuesta o comentario que implique acciones ilegales será eliminada.
       recommendations_title: Cómo crear una propuesta de gasto
       start_new: Crear una propuesta de gasto
+  steps:
+    form:
+      step_description: Step description
+      step_end_at: Step end at
+      step_position: Step position
+      step_start_at: Step start at
+      step_title: Step title
+    new:
+      form:
+        submit_button: Create step
   subcategories:
     edit:
       form:

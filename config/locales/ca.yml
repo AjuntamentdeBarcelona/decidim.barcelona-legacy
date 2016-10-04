@@ -57,6 +57,17 @@ ca:
     new:
       form:
         submit_button: Crear actuació
+  admin:
+    participatory_processes:
+      index:
+        steps: Steps
+    steps:
+      index:
+        delete: Delete
+        edit: Edit
+        new: New
+        restore: Restore
+        title: Title
   application:
     close: Tancar
   categories:
@@ -532,6 +543,16 @@ ca:
       recommendation_two: Qualsevol proposta o comentari que impliqui accions il·legals serà eliminada.
       recommendations_title: Com crear una proposta de despesa
       start_new: Crear una proposta de despesa
+  steps:
+    form:
+      step_description: Step description
+      step_end_at: Step end at
+      step_position: Step position
+      step_start_at: Step start at
+      step_title: Step title
+    new:
+      form:
+        submit_button: Create step
   subcategories:
     edit:
       form:

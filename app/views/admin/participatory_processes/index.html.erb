@@ -6,6 +6,7 @@
       <span><%= process.name %></span>
       <span><%= " (/" + process.slug + ")" %></span>
       <div class="right">
+        <%= link_to t('admin.participatory_processes.index.steps'), admin_participatory_process_steps_path(process), class: "button tiny radius" %>
         <% if process.hidden? %>
           <%= link_to t('admin.participatory_processes.index.restore'), restore_admin_participatory_process_path(process), method: :put, class: "button tiny radius" %>
         <% else %>

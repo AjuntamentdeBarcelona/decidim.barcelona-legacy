@@ -1,4 +1,5 @@
 FactoryGirl.define do
+
   factory :newsletter do
     title do { I18n.default_locale => "Newsletter subject" } end
     body do {I18n.default_locale => "Newsletter body" } end
@@ -466,5 +467,13 @@ FactoryGirl.define do
     audience "Tota la població"
     citizenship_scope "Només poden opinar."
     flags ParticipatoryProcess::FLAGS.map(&:to_s)
+  end
+
+  factory :step do
+    sequence(:title) { |n| "Step #{n}" }
+    description "lorem ipsum lorem ipsum"
+    start_at Date.today
+    end_at Date.today + 1.year
+    participatory_process
   end
 end
