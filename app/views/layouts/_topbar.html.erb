@@ -24,18 +24,20 @@
         <!-- /Remove-->
       </a>
     </div>
-    <div class="topbar__dropmenu language-choose">
-      <ul class="dropdown menu" data-dropdown-menu>
-        <li class="is-dropdown-submenu-parent">
-          <%= link_to I18n.t("locale", locale: I18n.locale), current_path_with_query_params(locale: I18n.locale) %>
-          <% I18n.available_locales.reject{ |l| l == I18n.locale }.map do |loc| %>
-            <ul class="menu is-dropdown-submenu">
-              <%= link_to I18n.t("locale", locale: loc), current_path_with_query_params(locale: loc) %>
-            </ul>
-          <% end %>
-        </li>
-      </ul>
-    </div>
+    <% if I18n.available_locales.length > 1 %>
+      <div class="topbar__dropmenu language-choose">
+        <ul class="dropdown menu" data-dropdown-menu>
+          <li class="is-dropdown-submenu-parent">
+            <%= link_to I18n.t("locale", locale: I18n.locale), current_path_with_query_params(locale: I18n.locale) %>
+            <% I18n.available_locales.reject{ |l| l == I18n.locale }.map do |loc| %>
+              <ul class="menu is-dropdown-submenu">
+                <%= link_to I18n.t("locale", locale: loc), current_path_with_query_params(locale: loc) %>
+              </ul>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    <% end %>
     <div class="hide-for-medium topbar__menu">
       <button type="button" data-toggle="offCanvas">
         <%= icon "menu", aria_label: "Navegación", role: "img" %>
