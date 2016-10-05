@@ -25,7 +25,7 @@
 
   <div class="main-menu-wrapper">
     <%= render partial: 'layouts/main_menu' %>
-    <% if @participatory_process.present? %>
+    <% if @participatory_process.present? && !controller_path.match(/^admin/) %>
       <%= render partial: 'layouts/menu' %>
     <% end %>
   </div>

@@ -1,6 +1,4 @@
 class ParticipatoryProcess < ActiveRecord::Base
-  FLAGS = %w{proposals action_plans meetings debates}
-
   extend FriendlyId
   acts_as_paranoid column: :hidden_at
   include ActsAsParanoidAliases
@@ -21,9 +19,11 @@ class ParticipatoryProcess < ActiveRecord::Base
   has_many :subcategories
   has_many :steps
 
-  FLAGS.each do |feature|
-    define_method "has_#{feature}?" do
-      flags.include?(feature)
-    end
+  Step::FLAGS.each do |feature|
+    delegate "has_#{feature}?", to: :active_step
+  end
+
+  def active_step
+    @active_step ||= steps.where(active: true).first
   end
 end

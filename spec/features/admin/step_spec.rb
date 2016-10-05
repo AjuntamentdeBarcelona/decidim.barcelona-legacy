@@ -4,6 +4,7 @@ require 'rails_helper'
 feature 'Admin steps' do
   background do
     @participatory_process = create(:participatory_process, name: "test")
+    @participatory_process.steps.delete_all
     admin = create(:administrator)
     login_as(admin)
   end
