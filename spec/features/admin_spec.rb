@@ -49,7 +49,7 @@ feature 'Admin' do
     login_as(administrator)
     visit root_path
 
-    click_link 'Administration'
+    click_link 'Administration', match: :first
 
     expect(current_path).to eq(admin_root_path)
     expect(page).to have_css('#admin_menu')
@@ -60,7 +60,7 @@ feature 'Admin' do
     login_as(moderator)
     visit root_path
 
-    click_link 'Moderation'
+    click_link 'Moderation', match: :first
 
     expect(current_path).to eq(moderation_root_path)
     expect(page).to have_css('#moderation_menu')

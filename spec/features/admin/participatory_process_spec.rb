@@ -50,7 +50,7 @@ feature 'Admin participatory processes' do
     participatory_process = create(:participatory_process, name: "test")
 
     visit admin_participatory_processes_path
-    within all("li").last do
+    within all(".admin-list li").last do
       click_link "Edit"
     end
     fill_in "participatory_process_name", with: "pam"
@@ -64,7 +64,7 @@ feature 'Admin participatory processes' do
   scenario "Destroy an existing participatory process", :js do
     participatory_process = create(:participatory_process, name: "test")
     visit admin_participatory_processes_path
-    within all("li").last do
+    within all(".admin-list li").last do
       click_link "Delete"
     end
 
