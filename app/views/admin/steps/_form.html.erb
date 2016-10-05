@@ -32,6 +32,11 @@
       <%= f.number_field :position, label: false %>
     </div>
 
+    <div div class="small-12 column">
+      <%= f.label :flags %>
+      <%= f.collection_check_boxes :flags, Step::FLAGS, :to_s, :to_s %>
+    </div>
+
     <div class="actions small-12 column">
       <%= f.submit(class: "button radius", value: t("#{resource_name.pluralize}.#{action_name}.form.submit_button")) %>
     </div>

@@ -27,6 +27,9 @@ feature 'Admin steps' do
 
     fill_in "step_position", with: 0
 
+    check "proposals"
+    check "debates"
+
     click_button "Create step"
 
     expect(page).to have_content "Step created successfully."
