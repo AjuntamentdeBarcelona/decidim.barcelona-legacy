@@ -21,7 +21,7 @@ feature 'Admin' do
     visit root_path
 
     expect(page).to have_link("Moderation")
-    click_on "Moderation"
+    click_on "Moderation", match: :first
 
     expect(current_path).to eq(moderation_root_path)
     expect(page).to_not have_content "You do not have permission to access this page"
@@ -34,7 +34,7 @@ feature 'Admin' do
     visit root_path
 
     expect(page).to have_link("Moderation")
-    click_on "Moderation"
+    click_on "Moderation", match: :first
 
     expect(current_path).to eq(moderation_root_path)
     expect(page).to_not have_content "You do not have permission to access this page"

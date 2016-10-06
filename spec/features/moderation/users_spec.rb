@@ -39,7 +39,9 @@ feature 'Moderate users', :js do
 
     expect(page).to_not have_content(comment3.body)
 
-    click_link("Sign out")
+    #puts all('a').map(&:text).inspect
+    #puts current_url.inspect
+    click_link "Sign out", match: :first
 
     click_link 'Sign in', match: :first
     fill_in 'user_email',    with: citizen.email
