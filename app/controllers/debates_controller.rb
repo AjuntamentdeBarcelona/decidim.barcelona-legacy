@@ -1,6 +1,7 @@
 class DebatesController < ApplicationController
   before_filter { |c| c.check_participatory_process_flags :debates }
 
+  include FeatureFlags
   include CommentableActions
   include FlagActions
 
