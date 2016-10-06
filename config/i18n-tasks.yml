@@ -33,7 +33,6 @@ data:
     - config/locales/responders.%{locale}.yml
     - config/locales/kaminari.%{locale}.yml
     - config/locales/components.%{locale}.yml
-    - config/locales/welcome.%{locale}.yml
     - config/locales/errors.%{locale}.yml
     - config/locales/dataviz.%{locale}.yml
 

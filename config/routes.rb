@@ -41,14 +41,6 @@ Rails.application.routes.draw do
 
   resource :email_notifications_reminder, only: [:create, :destroy]
 
-  resources :legislations, only: [:show]
-
-  resources :annotations do
-    collection do
-      get :search
-    end
-  end
-
   resources :users, only: [:show]
 
   resource :account, controller: "account", only: [:show, :update, :delete] do

@@ -223,13 +223,6 @@ en:
       participatory_processes: Participatory processes
       proposals: Proposals
       revision: Review
-  legislation:
-    help:
-      alt: Select the text you want to comment and press the button with the pencil.
-      text: To comment this document you must %{sign_in} or %{sign_up}. Then select the text you want to comment and press the button with the pencil.
-      text_sign_in: login
-      text_sign_up: sign up
-      title: How I can comment this document?
   locale: English
   meetings:
     card:

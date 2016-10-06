@@ -223,13 +223,6 @@ ca:
       participatory_processes: Participatory processes
       proposals: Propostes
       revision: Revisar
-  legislation:
-    help:
-      alt: Selecciona el text que vols comentar i fes click al botó del llapis.
-      text: Per comentar aquest document has d'anar a %{sign_in} o %{sign_up}. Després selecciona el text que vols comentar i fes click al botó del llapis.
-      text_sign_in: iniciar sessió
-      text_sign_up: registra't
-      title: Com puc comentar aquest document?
   locale: Català
   meetings:
     card:

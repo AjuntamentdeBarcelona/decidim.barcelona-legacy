@@ -264,11 +264,6 @@ if ENV["SEED"]
     puts "    #{spending_proposal.title}"
   end
 
-
-  puts "Creating Legislation"
-
-  Legislation.create!(title: 'Participatory Democracy', body: 'In order to achieve...')
-
   puts "Ignoring flags in Debates, comments & proposals"
 
   Debate.flagged.reorder("RANDOM()").limit(10).each(&:ignore_flag)

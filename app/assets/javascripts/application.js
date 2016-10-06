@@ -38,10 +38,8 @@
 //= require moderator_meetings
 //= require prevent_double_submission
 //= require gettext
-//= require annotator
 //= require tags
 //= require users
-//= require annotatable
 //= require i18n
 //= require districts
 //= require advanced_search
@@ -64,7 +62,6 @@ var initialize_modules = function() {
   App.CheckAllNone.initialize();
   App.PreventDoubleSubmission.initialize();
   App.IeAlert.initialize();
-  App.Annotatable.initialize();
   App.Districts.initialize();
   App.AdvancedSearch.initialize();
   App.RegistrationForm.initialize();
