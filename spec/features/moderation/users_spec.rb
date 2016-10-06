@@ -39,8 +39,7 @@ feature 'Moderate users', :js do
 
     expect(page).to_not have_content(comment3.body)
 
-    #puts all('a').map(&:text).inspect
-    #puts current_url.inspect
+    find('a', text: moderator.name).hover
     click_link "Sign out", match: :first
 
     click_link 'Sign in', match: :first
