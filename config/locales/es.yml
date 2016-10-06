@@ -176,6 +176,14 @@ es:
     update:
       form:
         submit_button: Guardar cambios
+  devise_views:
+    sessions:
+      new:
+        subtitle: Subtitle
+    users:
+      registrations:
+        new:
+          subtitle: Subtitle
   form:
     accept_terms: Acepto las %{conditions}
     action_plan: la actuación
@@ -199,15 +207,10 @@ es:
       firefox: Firefox
       ie: Hemos detectado que estás navegando desde Internet Explorer. Para una mejor experiencia te recomendamos utilizar %{chrome} o %{firefox}.
       ie_title: Esta web no está optimizada para tu navegador
-    footer:
-      accessibility: Accesibilidad
-      code_links: Esta web está hecha con %{github_decidim_url}, basado en %{github_consul_url}.
-      conditions: Condiciones de uso
-      free_software: software libre
-      more_info: Infórmate
     header:
       action_plans: Actuaciones
       administration: Administrar
+      categories: Categories
       debates: Debates
       external_link_blog: Noticias
       locale: 'Idioma:'
@@ -216,11 +219,10 @@ es:
       more_information: Más información
       my_account_link: Mi cuenta
       my_activity_link: Mi actividad
-      notifications: "Notificaciones (%{count})"
+      notifications: Notificaciones (%{count})
       participatory_processes: Participatory processes
       proposals: Propuestas
       revision: Revisar
-      spending_proposals: Presupuestos ciudadanos
   legislation:
     help:
       alt: Selecciona el texto que quieres comentar y pulsa en el botón con el lápiz.
@@ -284,8 +286,6 @@ es:
       back_link: Volver
       proposals_title: Propuestas tratadas
       share: Comparte
-  menu:
-    mobile-menu: Menú
   notifications:
     index:
       comments_on:
@@ -307,15 +307,12 @@ es:
   omniauth:
     facebook:
       sign_in: Entra con Facebook
-      sign_up: Regístrate con Facebook
     finish_signup:
       title: Detalles adicionales de tu cuenta
     google_oauth2:
       sign_in: Entra con Google
-      sign_up: Regístrate con Google
     twitter:
       sign_in: Entra con Twitter
-      sign_up: Regístrate con Twitter
   participatory_processes:
     edit:
       form:
@@ -425,7 +422,6 @@ es:
         one: 1 Comentario
         other: "%{count} Comentarios"
         zero: Sin comentarios
-      proposal: Propuesta de actuación
       support: Apoyar
       support_title: Apoyar esta propuesta
       supports:
@@ -500,12 +496,6 @@ es:
       user: el código secreto no coincide con la imagen
     placeholder: Introduce el texto de la imagen
     refresh_button_text: Refrescar
-  social:
-    facebook: Facebook
-    github: GitHub
-    instagram: Instagram
-    twitter: Twitter
-    youtube: YouTube
   spending_proposals:
     form:
       description: Descripción detallada
@@ -577,12 +567,14 @@ es:
     verify_account: verifica tu cuenta
   welcome:
     welcome:
+      abilities:
+        debates: Debates
+        give_support: Give support
+        proposals: Proposals
+        text: Text
+      account_confirmed: Account confirmed
+      only_verified: Only verified
       see_proposals: Ver las propuestas
       skip_verification: Si no estás empadronado en Barcelona o no quieres verificarte,
       title: Empieza a participar
-      user_permission_debates: Participar en debates
-      user_permission_info: Con tu cuenta ya puedes...
-      user_permission_proposal: Crear nuevas propuestas
-      user_permission_support_proposal: Apoyar propuestas*
-      user_permission_verify_info: "* Sólo usuarios empadronados en el municipio de Barcelona."
       user_permission_verify_url: Verifica tu cuenta

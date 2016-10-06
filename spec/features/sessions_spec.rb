@@ -13,7 +13,7 @@ feature 'Sessions' do
     expect(page).to have_content('You have been signed in successfully')
     expect(current_path).to eq(debate_path(debate, participatory_process_id: debate.participatory_process))
 
-    click_link 'Sign out'
+    click_link 'Sign out', match: :first
 
     expect(page).to have_content('You have been signed out successfully')
     expect(current_path).to eq(debate_path(debate, participatory_process_id: debate.participatory_process))

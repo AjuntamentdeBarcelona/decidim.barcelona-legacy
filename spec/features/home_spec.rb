@@ -25,7 +25,7 @@ feature "Home" do
     end
 
     def ie_alert_box_xpath
-      "/html/body/div[@class='wrapper']/comment()[contains(.,'ie-alert-box')]"
+      "/html/body/div[@class='off-canvas-wrapper']/comment()[contains(.,'ie-alert-box')]"
     end
   end
 end

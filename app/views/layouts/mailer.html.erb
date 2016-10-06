@@ -1,2 +1,5 @@
 <%= stylesheet_link_tag :email %>
 <%= yield %>
+<p>
+  <%= t("mailers.config.manage_email_subscriptions") %> <%= link_to t("account.show.title"), account_url %>
+</p>
