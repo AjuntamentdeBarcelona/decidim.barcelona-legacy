@@ -223,6 +223,7 @@ en:
       participatory_processes: Participatory processes
       proposals: Proposals
       revision: Review
+      spending_proposals: Spending proposals
   locale: English
   meetings:
     card:
@@ -279,6 +280,8 @@ en:
       back_link: Back
       proposals_title: Discussed proposals
       share: Share
+  menu:
+    mobile-menu: Mobile-menu
   notifications:
     index:
       comments_on:

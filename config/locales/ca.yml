@@ -223,6 +223,7 @@ ca:
       participatory_processes: Participatory processes
       proposals: Propostes
       revision: Revisar
+      spending_proposals: Spending proposals
   locale: Català
   meetings:
     card:
@@ -279,6 +280,8 @@ ca:
       back_link: Tornar
       proposals_title: Propostes tractades
       share: Comparteix
+  menu:
+    mobile-menu: Mobile-menu
   notifications:
     index:
       comments_on:
