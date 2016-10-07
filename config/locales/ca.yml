@@ -208,6 +208,7 @@ ca:
     header:
       action_plans: Actuacions
       administration: Administrar
+      categories: Categories
       debates: Debats
       external_link_blog: Notícies
       locale: 'Idioma:'
@@ -322,6 +323,8 @@ ca:
     edit:
       form:
         submit_button: Actualitzar proces
+    flash:
+      feature_disabled_notice: Feature disabled notice
     form:
       participatory_process_admin_email: Correu electrònic de l'administrador
       participatory_process_admin_name: Nom de l'administrador
@@ -529,6 +532,19 @@ ca:
       recommendation_two: Qualsevol proposta o comentari que impliqui accions il·legals serà eliminada.
       recommendations_title: Com crear una proposta de despesa
       start_new: Crear una proposta de despesa
+  steps:
+    edit:
+      form:
+        submit_button: Update step
+    form:
+      step_description: Step description
+      step_end_at: Step end at
+      step_position: Step position
+      step_start_at: Step start at
+      step_title: Step title
+    new:
+      form:
+        submit_button: Create step
   subcategories:
     edit:
       form:

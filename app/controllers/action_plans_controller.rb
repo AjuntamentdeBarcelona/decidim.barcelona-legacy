@@ -1,5 +1,8 @@
 class ActionPlansController < ApplicationController
+  include ParticipatoryProcessFlags
   include ModerateActions
+
+  ensure_participatory_process_flag :action_plans
 
   load_and_authorize_resource
   respond_to :html, :json
