@@ -176,6 +176,14 @@ ca:
     update:
       form:
         submit_button: Desa els canvis
+  devise_views:
+    sessions:
+      new:
+        subtitle: Subtitle
+    users:
+      registrations:
+        new:
+          subtitle: Subtitle
   form:
     accept_terms: Accepto les %{conditions}
     action_plan: l'actuació
@@ -199,15 +207,10 @@ ca:
       firefox: Firefox
       ie: Hem detectat que estàs navegant des d'Internet Explorer. Per a una millor experiència et recomanem utilitzar %{chrome} o %{firefox}.
       ie_title: Aquest web no està optimitzada per al teu navegador
-    footer:
-      accessibility: Accessibilitat
-      code_links: Aquesta web està feta amb %{github_decidim_url}, basat en %{github_consul_url}.
-      conditions: Condicions d'ús
-      free_software: software lliure
-      more_info: Informació
     header:
       action_plans: Actuacions
       administration: Administrar
+      categories: Categories
       debates: Debats
       external_link_blog: Notícies
       locale: 'Idioma:'
@@ -216,21 +219,11 @@ ca:
       more_information: Informació
       my_account_link: El meu compte
       my_activity_link: La meva activitat
-      new_notifications:
-        one: Tens una nova notificació
-        other: Tens %{count} notificacions noves
-      no_notifications: No tens notificacions noves
+      notifications: Notificacions (%{count})
       participatory_processes: Participatory processes
       proposals: Propostes
       revision: Revisar
-      spending_proposals: Pressupostos ciutadans
-  legislation:
-    help:
-      alt: Selecciona el text que vols comentar i fes click al botó del llapis.
-      text: Per comentar aquest document has d'anar a %{sign_in} o %{sign_up}. Després selecciona el text que vols comentar i fes click al botó del llapis.
-      text_sign_in: iniciar sessió
-      text_sign_up: registra't
-      title: Com puc comentar aquest document?
+      spending_proposals: Spending proposals
   locale: Català
   meetings:
     card:
@@ -288,7 +281,7 @@ ca:
       proposals_title: Propostes tractades
       share: Comparteix
   menu:
-    mobile-menu: Menu
+    mobile-menu: Mobile-menu
   notifications:
     index:
       comments_on:
@@ -310,15 +303,12 @@ ca:
   omniauth:
     facebook:
       sign_in: Entra amb Facebook
-      sign_up: Registra't amb Facebook
     finish_signup:
       title: Detalls adicionals del compte
     google_oauth2:
       sign_in: Entra amb Google
-      sign_up: Registra't amb Google
     twitter:
       sign_in: Entra amb Twitter
-      sign_up: Registra't amb Twitter
   participatory_processes:
     edit:
       form:
@@ -428,7 +418,6 @@ ca:
         one: 1 Comentari
         other: "%{count} Comentaris"
         zero: Sense comentaris
-      proposal: Proposta d'actuació
       support: Donar suport
       support_title: Donar suport a aquesta proposta
       supports:
@@ -503,12 +492,6 @@ ca:
       user: el codi secret no coincideix amb la imatge
     placeholder: Introdueix el text de la imatge
     refresh_button_text: Refrescar
-  social:
-    facebook: Facebook
-    github: GitHub
-    instagram: Instagram
-    twitter: Twitter
-    youtube: YouTube
   spending_proposals:
     form:
       description: Descripció detallada
@@ -580,12 +563,14 @@ ca:
     verify_account: verifica el teu compte
   welcome:
     welcome:
+      abilities:
+        debates: Debates
+        give_support: Give support
+        proposals: Proposals
+        text: Text
+      account_confirmed: Account confirmed
+      only_verified: Only verified
       see_proposals: Veure les propostes
       skip_verification: Si no estàs empadronat a Barcelona o no vols verificar el compte,
       title: Comença a participar
-      user_permission_debates: Participar en debats
-      user_permission_info: Amb el teu compte ja pots ...
-      user_permission_proposal: Crear noves propostes
-      user_permission_support_proposal: Donar suport propostes *
-      user_permission_verify_info: "* Només usuaris empadronats al municipi de Barcelona."
       user_permission_verify_url: verifica el teu compte

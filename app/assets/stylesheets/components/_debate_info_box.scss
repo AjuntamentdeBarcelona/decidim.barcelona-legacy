@@ -1,8 +1,0 @@
-.debate-info-box{
-  @include arrow-box($brand, bottom);
-  .debate-date{
-    display: block;
-  }
-  margin-bottom: $line-height;
-  text-align: center;
-}

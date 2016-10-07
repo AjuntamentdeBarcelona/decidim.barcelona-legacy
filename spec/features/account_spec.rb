@@ -10,7 +10,7 @@ feature 'Account' do
   scenario 'Show' do
     visit root_path
 
-    click_link "My account"
+    click_link "My account", match: :first
 
     expect(current_path).to eq(account_path)
 

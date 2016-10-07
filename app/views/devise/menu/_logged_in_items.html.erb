@@ -1,0 +1,32 @@
+<% if can? :access_panel, :administration %>
+  <li>
+    <%= link_to t("layouts.header.administration"), admin_root_path %>
+  </li>
+<% end %>
+
+<% if can? :access_panel, :moderation %>
+  <li>
+    <%= link_to t("layouts.header.moderation"), moderation_root_path %>
+  </li>
+<% end %>
+
+<% if can? :access_panel, :revision %>
+  <li>
+    <%= link_to t("layouts.header.revision"), revision_root_path %>
+  </li>
+<% end %>
+
+<li>
+  <%= link_to notifications_path, class: "notifications" do %>
+    <%= t('layouts.header.notifications', count: current_user.notifications_count) %>
+  <% end %>
+</li>
+<li>
+  <%= link_to(t("layouts.header.my_activity_link"), user_path(current_user)) %>
+</li>
+<li>
+  <%= link_to(t("layouts.header.my_account_link"), account_path) %>
+</li>
+<li>
+  <%= link_to(t("devise_views.menu.login_items.logout"), destroy_user_session_path, method: :delete) %>
+</li>

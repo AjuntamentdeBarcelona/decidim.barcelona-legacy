@@ -57,10 +57,6 @@ module Abilities
         can :vote_featured, Proposal
         can :create, SpendingProposal
       end
-
-      can :create, Annotation
-      can [:update, :destroy], Annotation, user_id: user.id
-
     end
   end
 end

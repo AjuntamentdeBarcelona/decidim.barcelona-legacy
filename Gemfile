@@ -25,7 +25,7 @@ gem 'jquery-turbolinks'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
-gem "font-awesome-rails"
+gem "font-awesome-sass"
 
 gem 'devise'
 # Use ActiveModel has_secure_password
@@ -40,7 +40,7 @@ gem 'ancestry'
 gem 'acts-as-taggable-on'
 gem 'responders'
 gem 'foundation-rails'
-gem 'foundation_rails_helper'
+gem 'foundation_rails_helper', github: "sgruhier/foundation_rails_helper"
 gem 'acts_as_votable'
 gem 'recaptcha', require: "recaptcha/rails"
 gem 'cancancan'

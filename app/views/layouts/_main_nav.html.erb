@@ -1,0 +1,25 @@
+<div class="show-for-medium" data-set="nav-holder">
+  <nav class="navbar js-append">
+    <div class="row">
+      <ul class="main-nav">
+        <li>
+          <%= link_to root_path, class: "main-nav__link #{'main-nav__link--active' if home_page?} home" do %>
+            Home
+          <% end %>
+        </li>
+
+        <li>
+          <%= link_to t("layouts.header.participatory_processes"), participatory_processes_path,
+          class: "main-nav__link #{('main-nav__link--active' if  controller_name == 'participatory_processes')}", data: {'no-turbolink' => true}  %>
+        </li>
+
+        <li>
+          <%= link_to Setting['blog_url'][I18n.locale.to_s], class: "main-nav__link", target: "_blank" do %>
+          <%= icon "external-link" %>
+          <%= t("layouts.header.external_link_blog") %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>

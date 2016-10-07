@@ -5,6 +5,8 @@ class ProposalsController < ApplicationController
   include CommentableActions
   include FlagActions
 
+  layout "participatory_process"
+
   before_action :set_search_order, only: [:index]
   before_action :authenticate_user!, except: [:index, :show]
 

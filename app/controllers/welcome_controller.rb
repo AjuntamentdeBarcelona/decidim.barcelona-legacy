@@ -4,7 +4,7 @@ class WelcomeController < ApplicationController
   helper_method :featured_proposals, :citizenship_proposals, :random_meetings,
                 :videos, :statistics
 
-  layout "devise", only: :welcome
+  layout -> { params[:action] == 'index' ? 'welcome' : 'application' }
 
   def index
     @categories = Category.order(:position).decorate

@@ -1,16 +1,13 @@
-import NewProposalButton from './new_proposal_button.component';
 import ProposalsFilters  from './proposals_filters.component';
 
 const ProposalsSidebar = () => (
-  <aside className="sidebar" role="complementary">
-    <NewProposalButton />
-    <div className="sidebar-section proposal-filter-menu collapsed">
-      <h2 className="title">{I18n.t('proposals.index.filter.title')}<span className="toggle-menu"></span></h2>
-      <div className="sidebar-section-content">
+  <div className="filters-controls">
+    <div className="card card--secondary show-for-mediumlarge">
+      <div className="filters">
         <ProposalsFilters />
       </div>
     </div>
-  </aside>
+  </div>
 );
 
 export default ProposalsSidebar;

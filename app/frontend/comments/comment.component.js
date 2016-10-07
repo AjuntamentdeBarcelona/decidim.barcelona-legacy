@@ -135,11 +135,11 @@ class Comment extends Component {
       return (
         <span>
           <span className="in_favor">
-            <a onClick={() => upVoteComment(comment.id)}><i className="icon-angle-up"></i></a>
+            <a onClick={() => upVoteComment(comment.id)}><i className="icon-angle-up">UP</i></a>
             {comment.total_likes}
           </span>
           <span className="against">
-            <a onClick={() => downVoteComment(comment.id)}><i className="icon-angle-down"></i></a>
+            <a onClick={() => downVoteComment(comment.id)}><i className="icon-angle-down">DOWN</i></a>
             {comment.total_dislikes}
           </span>
         </span>

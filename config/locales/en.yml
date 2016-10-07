@@ -176,6 +176,14 @@ en:
     update:
       form:
         submit_button: Save changes
+  devise_views:
+    sessions:
+      new:
+        subtitle: Subtitle
+    users:
+      registrations:
+        new:
+          subtitle: Subtitle
   form:
     accept_terms: I agree to the %{conditions}
     action_plan: Action Plan
@@ -199,15 +207,10 @@ en:
       firefox: Firefox
       ie: We have detected that you are browsing with Internet Explorer. For an enhanced experience, we recommend using %{chrome} or %{firefox}.
       ie_title: This website is not optimised for your browser
-    footer:
-      accessibility: Accessibility
-      code_links: This web is %{github_decidim_url}, based on %{github_consul_url}.
-      conditions: Terms and conditions of use
-      free_software: free software
-      more_info: Information
     header:
       action_plans: Action plans
       administration: Administration
+      categories: Categories
       debates: Debates
       external_link_blog: News
       locale: 'Language:'
@@ -216,21 +219,11 @@ en:
       more_information: Information
       my_account_link: My account
       my_activity_link: My activity
-      new_notifications:
-        one: You have a new notification
-        other: You have %{count} new notifications
-      no_notifications: You don't have new notifications
+      notifications: Notifications (%{count})
       participatory_processes: Participatory processes
       proposals: Proposals
       revision: Review
       spending_proposals: Spending proposals
-  legislation:
-    help:
-      alt: Select the text you want to comment and press the button with the pencil.
-      text: To comment this document you must %{sign_in} or %{sign_up}. Then select the text you want to comment and press the button with the pencil.
-      text_sign_in: login
-      text_sign_up: sign up
-      title: How I can comment this document?
   locale: English
   meetings:
     card:
@@ -288,7 +281,7 @@ en:
       proposals_title: Discussed proposals
       share: Share
   menu:
-    mobile-menu: Menu
+    mobile-menu: Mobile-menu
   notifications:
     index:
       comments_on:
@@ -310,15 +303,12 @@ en:
   omniauth:
     facebook:
       sign_in: Sign in with Facebook
-      sign_up: Sign up with Facebook
     finish_signup:
       title: Additional details
     google_oauth2:
       sign_in: Sign in with Google
-      sign_up: Sign up with Google
     twitter:
       sign_in: Sign in with Twitter
-      sign_up: Sign up with Twitter
   participatory_processes:
     edit:
       form:
@@ -428,7 +418,6 @@ en:
         one: 1 comment
         other: "%{count} comments"
         zero: No comments
-      proposal: Proposal
       support: Support
       support_title: Support this proposal
       supports:
@@ -503,12 +492,6 @@ en:
       user: the secret code does not match the image
     placeholder: Enter the text from the image
     refresh_button_text: Refresh
-  social:
-    facebook: Facebook
-    github: GitHub
-    instagram: Instagram
-    twitter: Twitter
-    youtube: YouTube
   spending_proposals:
     form:
       description: Description
@@ -580,12 +563,14 @@ en:
     verify_account: verify your account
   welcome:
     welcome:
+      abilities:
+        debates: Debates
+        give_support: Give support
+        proposals: Proposals
+        text: Text
+      account_confirmed: Account confirmed
+      only_verified: Only verified
       see_proposals: View the Proposals
       skip_verification: If you are not registered or not quieres verificarte in Barcelona,
       title: Participate
-      user_permission_debates: Participate on debates
-      user_permission_info: With your account you can...
-      user_permission_proposal: Create new proposals
-      user_permission_support_proposal: Support proposals*
-      user_permission_verify_info: "* Only for users on the Barcelona City Census."
       user_permission_verify_url: verify your account

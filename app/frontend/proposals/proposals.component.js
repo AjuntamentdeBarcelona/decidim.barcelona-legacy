@@ -3,7 +3,6 @@ import { connect }              from 'react-redux';
 
 import Loading                  from '../application/loading.component';
 import InfinitePagination       from '../pagination/infinite_pagination.component';
-import FilterTabs               from '../filters/filter_tabs.component';
 import OrderSelector            from '../order/order_selector.component';
 
 import ProposalsHeader          from './proposals_header.component';
@@ -47,29 +46,28 @@ class Proposals extends Component {
       <div>
         <ProposalsHeader />
 
-        <div className="wrap row">
-          <FilterTabs />
+        <div className="row column">
+          <div className="title-action">
+            <h2 className="title-action__title section-heading">
+              { I18n.t('components.proposals.count', { count: this.props.count }) }
+            </h2>
+            <NewProposalButton />
+          </div>
         </div>
 
-        <div className="wrap row">
-          <div className="small-12 medium-3 column">
+        <div className="row">
+          <div className="columns mediumlarge-4 large-3">
             <ProposalsSidebar />
           </div>
 
-          <div className="small-12 medium-9 column">
-            <div className="show-for-small-only">
-              <NewProposalButton />
-            </div>
-            <Loading show={this.state.loading} list={true} />
-            <h3 className="proposals-count">
-              { I18n.t('components.proposals.count', { count: this.props.count }) }
-            </h3>
+          <div className="columns mediumlarge-8 large-9">
             <OrderSelector
               orderLinks={["random", "hot_score", "confidence_score", "created_at"]} />
+            <Loading show={this.state.loading} list={true} />
             <ProposalsList proposals={this.props.proposals} />
-            {this.renderInfinitePagination()}
           </div>
         </div>
+        {this.renderInfinitePagination()}
       </div>
     );
   }

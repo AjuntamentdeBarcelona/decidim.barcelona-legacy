@@ -1,6 +1,8 @@
 class CategoriesController < ApplicationController
   skip_authorization_check
 
+  layout "participatory_process"
+
   def index
     categories = @participatory_process.categories.includes(:subcategories)
     @last_modified = [

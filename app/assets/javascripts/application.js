@@ -16,9 +16,11 @@
 //= require jquery-ui/datepicker-es
 //= require turbolinks
 //= require jquery.turbolinks
-//= require foundation/foundation
-//= require foundation/foundation.dropdown
+//= require foundation
+//= require appendAround
+//= require owl.carousel.min
 //= require modernizr
+//= require svg4everybody.min
 //= require parallax
 //= require moment
 //= require moment/ca
@@ -28,7 +30,6 @@
 //= require initial
 //= require ahoy
 //= require check_all_none
-//= require dropdown
 //= require ie_alert
 //= require location_changer
 //= require moderator_comment
@@ -37,10 +38,8 @@
 //= require moderator_meetings
 //= require prevent_double_submission
 //= require gettext
-//= require annotator
 //= require tags
 //= require users
-//= require annotatable
 //= require i18n
 //= require districts
 //= require advanced_search
@@ -59,12 +58,10 @@
 var initialize_modules = function() {
   App.Users.initialize();
   App.Tags.initialize();
-  App.Dropdown.initialize();
   App.LocationChanger.initialize();
   App.CheckAllNone.initialize();
   App.PreventDoubleSubmission.initialize();
   App.IeAlert.initialize();
-  App.Annotatable.initialize();
   App.Districts.initialize();
   App.AdvancedSearch.initialize();
   App.RegistrationForm.initialize();
@@ -85,11 +82,16 @@ $(function(){
 
   initialize_modules();
 
+  $(document).foundation();
+  $(".js-append").appendAround();
+
   $(document).on('ajax:complete', initialize_modules);
   $(document).on('ready page:load page:restore', function(){
     $('[data-parallax="scroll"]').parallax();
     $(window).trigger('resize').trigger('resize.px.parallax');
   });
+
+  svg4everybody();
 });
 
 GoogleMapsAPI = $.Deferred();

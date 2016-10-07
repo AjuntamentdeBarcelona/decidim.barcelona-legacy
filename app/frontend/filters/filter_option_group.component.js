@@ -65,7 +65,11 @@ export default class FilterOptionGroup extends Component {
   renderTitle() {
     if (this.props.useTitle) {
       return (
-        <h3>{I18n.t(`components.filter_option_group.${this.props.filterGroupName}`)}</h3>
+        <legend>
+          <h6 className="heading6">
+            {I18n.t(`components.filter_option_group.${this.props.filterGroupName}`)}
+          </h6>
+        </legend>
       )
     } else {
       return null;
@@ -74,10 +78,12 @@ export default class FilterOptionGroup extends Component {
 
   renderGroupAsOptions() {
     return (
-      <div>
-        {this.renderTitle()}
-        {this.renderIncludeAll()}
-        {this.renderChildren()}
+      <div className="filters__section">
+        <fieldset>
+          {this.renderTitle()}
+          {this.renderIncludeAll()}
+          {this.renderChildren()}
+        </fieldset>
       </div>
     );
   }

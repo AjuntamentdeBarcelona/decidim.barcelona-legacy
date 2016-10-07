@@ -6,10 +6,10 @@ import FilterServerLink         from './filter_server_link.component';
 export default class FilterMeta extends Component {
   render() {
     return (
-      <div className="item-meta">
+      <ul className="item-meta tags tags--proposal">
         {this.renderMetaScope()}
         {this.renderMetaCategories()}
-      </div>
+      </ul>
     );
   }
 

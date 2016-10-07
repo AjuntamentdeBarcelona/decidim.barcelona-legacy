@@ -1,0 +1,77 @@
+<!-- Topbar -->
+<div class="title-bar">
+  <a target="_blank" href="http://ajuntament.barcelona.cat/"
+     class="logo-cityhall">
+    <%= image_tag "badge-ajuntament-header.svg", alt: "Ajuntament de Barcelona" %>
+  </a>
+  <div class="row topbar">
+    <div class="logo-wrapper">
+      <a href="/">
+        <!-- Remove this, use the final SVG logo -->
+          <span>
+            Decidim<br>
+            Barcelona
+          </span>
+          <style>
+            .logo-wrapper span{ color: white; font-weight: 600;
+                                display: inline-block; text-align: left;
+                                padding-left: 8px; line-height: 1;
+                                position: relative; }
+            .logo-wrapper span:before{ content: ""; display: block;
+              position: absolute; border-left: 4px solid white; height: 88%;
+              top: 6%; left: 0; }
+          </style>
+        <!-- /Remove-->
+      </a>
+    </div>
+    <% if I18n.available_locales.length > 1 %>
+      <div class="topbar__dropmenu language-choose">
+        <ul class="dropdown menu" data-dropdown-menu>
+          <li class="is-dropdown-submenu-parent">
+            <%= link_to I18n.t("locale", locale: I18n.locale), current_path_with_query_params(locale: I18n.locale) %>
+            <% I18n.available_locales.reject{ |l| l == I18n.locale }.map do |loc| %>
+              <ul class="menu is-dropdown-submenu">
+                <li><%= link_to I18n.t("locale", locale: loc), current_path_with_query_params(locale: loc) %></li>
+              </ul>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+    <div class="hide-for-medium topbar__menu">
+      <button type="button" data-toggle="offCanvas">
+        <%= icon "menu", aria_label: "Navegación", role: "img" %>
+      </button>
+    </div>
+    <% if user_signed_in? %>
+      <div class="topbar__dropmenu topbar__user__logged">
+        <!-- No new notifications? Remove is-active class -->
+        <%= link_to notifications_path, class: "topbar__notifications #{current_user.notifications.count > 0 ? 'is-active' : nil}" do %>
+          <%= icon "bell" %>
+        <% end %>
+        <ul class="dropdown menu" data-dropdown-menu>
+          <li class="is-dropdown-submenu-parent show-for-medium">
+              <a href="#">           
+                <%= current_user.name %>
+              </a>
+            <ul class="menu is-dropdown-submenu js-append usermenu-off-canvas">
+              <%= render "devise/menu/logged_in_items" %>
+            </ul>
+            <span data-set="nav-login-holder" class="show-for-medium">
+              <!-- Repeated due to dropdown limitations -->
+              <ul class="menu is-dropdown-submenu js-append usermenu-off-canvas">
+                <%= render "devise/menu/logged_in_items" %>
+              </ul>
+            </span>
+          </li>
+        </ul>
+      </div>
+    <% else %>
+      <div class="topbar__user show-for-medium" data-set="nav-login-holder">
+          <div class="topbar__user__login js-append">
+            <%= render "devise/menu/logged_out_items" %>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>

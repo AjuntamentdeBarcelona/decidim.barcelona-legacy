@@ -15,9 +15,9 @@ feature 'Participatory processes' do
 
   scenario "Show process with all features" do
     visit participatory_processes_path
-    click_link "Complete process"
-    
-    within ".menu .menu-items" do
+    click_link "Complete process", match: :first
+
+    within ".process-nav" do
       expect(page).to have_content("Proposals")
       expect(page).to have_content("Action plans")
       expect(page).to have_content("Presencial meetings")
@@ -27,9 +27,9 @@ feature 'Participatory processes' do
 
   scenario "Show process with half features" do
     visit participatory_processes_path
-    click_link "Half process"
-    
-    within ".menu .menu-items" do
+    click_link "Half process", match: :first
+
+    within ".process-nav" do
       expect(page).to have_content("Proposals")
       expect(page).to_not have_content("Action plans")
       expect(page).to_not have_content("Presencial meetings")

@@ -14,13 +14,11 @@ class SearchFilter extends Component {
 
   render() {
     return (
-      <div className="row collapse prefix-radius">
-        <div className="small-2 large-1 columns">
-          <span className="prefix"><i className="icon-search"></i></span>
-        </div>
-        <div className="small-10 large-11 columns">
-          <input 
-            className="search-filter"
+      <div className="filters__section">
+        <div className="filters__search">
+          <input
+            className="input-group-field search-filter"
+            type="search"
             value={this.state.searchText}
             placeholder={I18n.t("components.search_filter.search_input_placeholder")}
             onChange={(event) => this.onChange(event.target.value)} 

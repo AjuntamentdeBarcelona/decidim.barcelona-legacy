@@ -3,6 +3,8 @@ class ActionPlansController < ApplicationController
 
   include ModerateActions
 
+  layout "participatory_process"
+
   load_and_authorize_resource
   respond_to :html, :json
 

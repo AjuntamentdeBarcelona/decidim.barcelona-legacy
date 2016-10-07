@@ -7,6 +7,13 @@ feature "Notifications" do
   let(:debate) { create :debate, participatory_process: participatory_process, author: author }
   let(:proposal) { create :proposal, participatory_process: participatory_process, author: author }
 
+  def visit_notifications
+    within ".topbar__user__logged" do
+      find(".opens-right").click
+      find("a.notifications").click
+    end
+  end
+
   scenario "User commented on my debate", :js do
     login_as user
     visit debate_path debate, participatory_process_id: debate.participatory_process
@@ -23,7 +30,7 @@ feature "Notifications" do
 
     visit root_path
 
-    find(".icon-notification").click
+    visit_notifications
 
     expect(page).to have_css ".notification", count: 1
 
@@ -57,7 +64,7 @@ feature "Notifications" do
     login_as author
     visit root_path
 
-    find(".session-menu .icon-notification").click
+    visit_notifications
 
     expect(page).to have_css ".notification", count: 1
 
@@ -89,7 +96,7 @@ feature "Notifications" do
 
     visit root_path
 
-    find(".icon-notification").click
+    visit_notifications
 
     expect(page).to have_css ".notification", count: 1
     expect(page).to have_content "Someone replied to your comment on"
@@ -120,7 +127,7 @@ feature "Notifications" do
 
     visit root_path
 
-    find(".icon-notification").click
+    visit_notifications
 
     expect(page).to have_css ".notification", count: 1
     expect(page).to have_content "There are 3 new replies to your comment on"
@@ -137,7 +144,7 @@ feature "Notifications" do
       expect(page).to have_content "I commented on my own debate"
     end
 
-    find(".icon-no-notification").click
+    visit_notifications
     expect(page).to have_css ".notification", count: 0
   end
 
@@ -159,7 +166,7 @@ feature "Notifications" do
       expect(page).to have_content "I replied to my own comment"
     end
 
-    find(".icon-no-notification")
+    visit_notifications
 
     visit notifications_path
     expect(page).to have_css ".notification", count: 0

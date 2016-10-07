@@ -18,15 +18,18 @@ export default class FilterOption extends Component {
 
   renderOptionAsOptions(elemId) {
     return (
-      <div className="field">
-        <input
-          id={elemId}
-          type={this.props.isExclusive ? "radio" : "checkbox"}
-          value="{this.props.filterValue || this.props.filterName}" 
-          checked={this.props.checked}
-          onChange={(event) => this.props.onChangeFilter(this.props.filterName, event.target.checked)}
-        />
-        <label htmlFor={elemId}>{this.props.filterLabel || I18n.t(`components.filter_option.${this.props.filterName}`)}</label> {this.props.children}
+      <div>
+        <label>
+          <input
+            id={elemId}
+            type={this.props.isExclusive ? "radio" : "checkbox"}
+            value="{this.props.filterValue || this.props.filterName}" 
+            checked={this.props.checked}
+            onChange={(event) => this.props.onChangeFilter(this.props.filterName, event.target.checked)}
+          />
+          {this.props.filterLabel || I18n.t(`components.filter_option.${this.props.filterName}`)}
+        </label>
+        {this.props.children}
       </div>
     );
   }

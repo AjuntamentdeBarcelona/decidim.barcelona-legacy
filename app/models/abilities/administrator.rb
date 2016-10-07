@@ -40,8 +40,6 @@ module Abilities
 
       can :manage, :moderator
 
-      can :manage, Annotation
-
       can :manage, Meeting
 
       can :manage, SpendingProposal

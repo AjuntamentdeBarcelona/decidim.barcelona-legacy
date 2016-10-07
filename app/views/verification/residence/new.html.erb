@@ -1,76 +1,71 @@
-<div class="verification account row">
-  <div class="small-12 column">
-
-
-    <%= link_to account_path, class: "left back clear" do %>
-      <i class="icon-angle-left left"></i>
-      <%= t("verification.back") %>
-    <% end %>
-
-    <h1><%= t("verification.residence.new.title") %></h1>
-
-    <div class="user-permissions small-12">
-      <p><%= t("verification.user_permission_info") %></p>
-
-      <ul>
-        <li><i class="icon-check"></i>&nbsp;<%= t("verification.user_permission_debates") %></li>
-        <li><i class="icon-check"></i>&nbsp;<%= t("verification.user_permission_proposal") %></li>
-        <li><i class="icon-check"></i>&nbsp;<%= t("verification.user_permission_support_proposal") %></li>
-      </ul>
+<div class="row collapse">
+  <div class="row collapse">
+    <div class="columns large-8 large-centered text-center">
+      <h1><%= t("verification.residence.new.title") %></h1>
     </div>
+  </div>
+  <div class="row">
+    <div class="columns medium-7 large-5 medium-centered">
+      <div class="card">
+        <div class="card__content">
+          <p class="heading5"><%= t("verification.user_permission_info") %></p>
+          <ul class="list-check">
+            <li class="list-check__ok">
+              <%= icon "check", class: "list-check__icon", aria_label: "Incluye", role: "img" %>
+              <%= t("verification.user_permission_debates") %>
+            </li>
+            <li class="list-check__ok">
+              <%= icon "check", class: "list-check__icon", aria_label: "Incluye", role: "img" %>
+              <%= t("verification.user_permission_proposal") %>
+            </li>
+            <li class="list-check__ok">
+              <%= icon "check", class: "list-check__icon", aria_label: "Incluye", role: "img" %>
+              <%= t("verification.user_permission_support_proposal") %>
+            </li>
+          </ul>
 
-    <%= form_for @residence, as: "residence", url: residence_path do |f| %>
-      <%= render "errors" %>
+          <%= form_for @residence, as: "residence", url: residence_path, html: { class: 'register-form' } do |f| %>
+            <%= render "errors" %>
 
-      <div class="small-12 medium-8">
-        <div class="small-12 medium-4 left">
-        <%= f.label t("verification.residence.new.document_type_label") %>
-        <%= f.select :document_type, document_types, prompt: "", label: false %>
+            <%= f.label t("verification.residence.new.document_type_label") %>
+            <%= f.select :document_type, document_types, prompt: "", label: false %>
+
+            <%= f.label t("verification.residence.new.document_number") %>
+            <%= f.text_field :document_number, label: false %>
+
+            <div class="date  date-of-birth">
+              <%= f.label t("verification.residence.new.date_of_birth") %>
+              <%= f.date_select :date_of_birth,
+                                prompt: true,
+                                start_year: 1900, end_year: 16.years.ago.year,
+                                label: false %>
+            </div>
+
+            <%= f.label t("verification.residence.new.postal_code") %>
+            <%= f.text_field :postal_code, label: false %>
+            <p class="help-text"><%= t("verification.residence.new.postal_code_note") %></p>
+
+            <%= f.label :adult_verification do %>
+              <%= f.check_box :adult_verification, label: false %>
+              <span class="checkbox">
+                <%= t("verification.residence.new.adult_verification_text") %>
+              </span>
+            <% end %>
+
+            <%= f.label :terms_of_service do %>
+              <%= f.check_box :terms_of_service, label: false %>
+              <span class="checkbox">
+                <%= t("verification.residence.new.accept_terms_text",
+                    terms_url: link_to(t("verification.residence.new.terms"), "/census_terms",
+                    target: "_blank")).html_safe
+                %>
+              </span>
+            <% end %>
+
+            <%= f.submit t("verification.residence.new.verify_residence"), class: "button expanded" %>
+          <% end %>
         </div>
-        <div class="small-12 medium-5 left">
-        <%= f.label t("verification.residence.new.document_number") %>
-        <%= f.text_field :document_number, label: false %>
-        </div>
       </div>
-
-      <div class="date small-12 medium-6 clear date-of-birth">
-      <%= f.label t("verification.residence.new.date_of_birth") %>
-      <%= f.date_select :date_of_birth,
-                        prompt: true,
-                        start_year: 1900, end_year: 16.years.ago.year,
-                        label: false %>
-      </div>
-
-      <div class="small-12 medium-5 clear">
-        <%= f.label t("verification.residence.new.postal_code") %>
-        <p class="note"><%= t("verification.residence.new.postal_code_note") %></p>
-        <%= f.text_field :postal_code, label: false %>
-      </div>
-
-      <div class="small-12 adult-verification">
-        <%= f.label :adult_verification do %>
-          <%= f.check_box :adult_verification, label: false %>
-          <span class="checkbox">
-            <%= t("verification.residence.new.adult_verification_text") %>
-          </span>
-        <% end %>
-      </div>
-
-      <div class="small-12">
-        <%= f.label :terms_of_service do %>
-          <%= f.check_box :terms_of_service, label: false %>
-          <span class="checkbox">
-            <%= t("verification.residence.new.accept_terms_text",
-                terms_url: link_to(t("verification.residence.new.terms"), "/census_terms",
-                target: "_blank")).html_safe
-            %>
-          </span>
-        <% end %>
-      </div>
-
-      <div class="small-12 clear">
-        <%= f.submit t("verification.residence.new.verify_residence") %>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>

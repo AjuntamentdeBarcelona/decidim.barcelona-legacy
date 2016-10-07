@@ -1,79 +1,10 @@
-<!DOCTYPE html>
-<html lang="<%= I18n.locale %>" data-current-user-id="<%= current_user.try(:id) %>">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title><%= content_for?(:title) ? content_for(:title) : Setting['org_name'] %></title>
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-    <%= javascript_include_google_maps_api_tag %>
-    <%= render partial: 'layouts/i18n' %>
-    <%= csrf_meta_tags %>
-    <%= content_for :social_media_meta_tags %>
-    <%= render partial: 'layouts/scripts' %>
-    <%= render 'layouts/tracking' %>
-
-    <%= Setting['per_page_code'].try(:html_safe) %>
-
-    <!--[if lte IE 9]>
-      <%= split_stylesheet_link_tag "application", :media => "all" %>
-    <![endif]-->
-
-  </head>
-  <body>
-    <div class="wrapper">
-
-      <!--[if lte IE 9]>
-      <% if browser.ie? && cookies['ie_alert_closed'] != 'true' %>
-        <div data-alert class="alert-box info ie-alert-box">
-          <a href="#" class="close ie-alert-box-close-js">&times;</a>
-          <h2><%= t("layouts.application.ie_title") %></h2>
-          <p>
-            <%= t("layouts.application.ie",
-            chrome: link_to(
-                    t("layouts.application.chrome"), "https://www.google.com/chrome/browser/desktop/", target: "_blank"),
-            firefox: link_to(
-                     t("layouts.application.firefox"), "https://www.mozilla.org/firefox", target: "_blank")
-            ).html_safe %>
-          </p>
-        </div>
-      <% end %>
-      <![endif]-->
-
-      <%= cookies_warning %>
-      <%= render 'layouts/header' %>
-      <%= render partial: 'layouts/enable_notifications' %>
-
-      <% if notice %>
-      <div class="alert-messages">
-        <div class="row">
-          <div data-alert class="alert-box success radius">
-            <a href="#" class="close" title="<%= t("application.close") %>">&times;</a>
-            <%= notice %>
-          </div>
-        </div>
-      </div>
-      <% end %>
-
-      <% if alert %>
-      <div class="alert-messages">
-        <div class="row">
-          <div data-alert class="alert-box alert radius">
-            <a href="#" class="close" title="<%= t("application.close") %>">&times;</a>
-            <%= alert %>
-          </div>
-        </div>
-      </div>
-      <% end %>
-
-      <%= yield %>
+<%= content_for :body do %>
+  <main class="wrapper">
+    <div class="row">
+      <%= display_flash_messages %>
     </div>
-    <div class="footer">
-      <%= render 'layouts/footer' %>
-    </div>
-  </body>
-  <!--[if lt IE 9]>
-    <%= javascript_include_tag "ie_lt9" %>
-  <![endif]-->
-</html>
+    <%= yield %>
+  </main>
+<% end %>
+
+<%= render partial: 'layouts/application' %>
