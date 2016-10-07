@@ -1,11 +1,12 @@
 class ProposalsController < ApplicationController
-  before_filter { |c| c.check_participatory_process_flags :proposals }
-
   FEATURED_PROPOSALS_LIMIT = 3
+
+  include ParticipatoryProcessFlags
   include CommentableActions
   include FlagActions
 
   layout "participatory_process"
+  ensure_participatory_process_flag :proposals
 
   before_action :set_search_order, only: [:index]
   before_action :authenticate_user!, except: [:index, :show]

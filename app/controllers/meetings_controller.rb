@@ -1,5 +1,7 @@
 class MeetingsController < ApplicationController
-  before_filter { |c| c.check_participatory_process_flags :meetings }
+  include ParticipatoryProcessFlags
+
+  ensure_participatory_process_flag :meetings
 
   load_and_authorize_resource
   respond_to :html, :json

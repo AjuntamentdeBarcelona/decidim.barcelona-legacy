@@ -139,16 +139,16 @@
           <div class="row column process-nav__content" id="process-nav-content"
               data-toggler=".is-active">
             <ul>
-              <% if @participatory_process.has_proposals? %>
+              <% if @participatory_process.feature_enabled? :proposals %>
                 <%= render partial: "participatory_processes/menu_item", locals: { path: proposals_path(participatory_process_id: @participatory_process.slug), title: t("layouts.header.proposals"), icon: "proposals" } %>
               <% end %>
-              <% if @participatory_process.has_action_plans? %>
+              <% if @participatory_process.feature_enabled? :action_plans %>
                 <%= render partial: "participatory_processes/menu_item", locals: { path: action_plans_path(participatory_process_id: @participatory_process.slug), title: t("layouts.header.action_plans"), icon: "proposals" } %>
               <% end %>
-              <% if @participatory_process.has_meetings? %>
+              <% if @participatory_process.feature_enabled? :meetings %>
                 <%= render partial: "participatory_processes/menu_item", locals: { path: meetings_path(participatory_process_id: @participatory_process.slug), title: t("layouts.header.meetings"), icon: "meetings" } %>
               <% end %>
-              <% if @participatory_process.has_debates? %>
+              <% if @participatory_process.feature_enabled? :debates %>
                 <%= render partial: "participatory_processes/menu_item", locals: { path: debates_path(participatory_process_id: @participatory_process.slug), title: t("layouts.header.debates"), icon: "debates" } %>
               <% end %>
               <%= render partial: "participatory_processes/menu_item", locals: { path: categories_path(participatory_process_id: @participatory_process.slug), title: t("layouts.header.categories"), icon: "information" } %>

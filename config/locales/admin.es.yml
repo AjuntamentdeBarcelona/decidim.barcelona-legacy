@@ -92,6 +92,7 @@ es:
         edit: Edit
         new: New
         restore: Restore
+        steps: Steps
         title: Title
     proposals:
       index:
@@ -141,6 +142,14 @@ es:
           visits: Visitas
           votes: Votos
         visits_title: Visitas
+    steps:
+      index:
+        delete: Delete
+        edit: Edit
+        mark_as_active: Mark as active
+        new: New
+        restore: Restore
+        title: Title
     subcategories:
       index:
         delete: Borrar

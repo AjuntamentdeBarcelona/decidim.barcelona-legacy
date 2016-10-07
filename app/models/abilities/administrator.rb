@@ -47,6 +47,7 @@ module Abilities
       can :manage, Category
       can :manage, Subcategory
       can :manage, ParticipatoryProcess
+      can :manage, Step
 
       can :mark_as_official, Proposal
 

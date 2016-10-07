@@ -1,9 +1,9 @@
 class ActionPlansController < ApplicationController
-  before_filter { |c| c.check_participatory_process_flags :action_plans }
-
+  include ParticipatoryProcessFlags
   include ModerateActions
 
   layout "participatory_process"
+  ensure_participatory_process_flag :action_plans
 
   load_and_authorize_resource
   respond_to :html, :json

@@ -4,7 +4,8 @@ require 'rails_helper'
 feature 'Participatory processes' do
   before :each do
     @full = create(:participatory_process, name: "Complete process")
-    @half = create(:participatory_process, name: "Half process", flags: ["proposals", "debates"])
+    @half = create(:participatory_process, name: "Half process")
+    @half.active_step.update_attribute(:flags, ["proposals", "debates"])
   end
 
   scenario "Index" do
