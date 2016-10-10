@@ -7,7 +7,6 @@ import SearchFilter                 from '../filters/search_filter.component';
 import ScopeFilterOptionGroup       from '../filters/scope_filter_option_group.component';
 import CategoryFilterOptionGroup    from '../filters/category_filter_option_group.component';
 import SubcategoryFilterOptionGroup from '../filters/subcategory_filter_option_group.component';
-import ReviewerFilter               from '../filters/reviewer_filter.component';
 import UserInteractionFilter        from '../filters/user_interaction_filter.component';
 
 import FilterOptionGroup            from '../filters/filter_option_group.component';
@@ -30,16 +29,6 @@ class ProposalsFilters extends Component {
         <FilterOption filterName="meetings" filterLabel={I18n.t('components.filter_option.from_meetings')} />
         </FilterOptionGroup>
 
-        <ReviewerFilter />
-
-        <FilterOptionGroup 
-          isExclusive={true}
-          filterGroupName="review_status"
-          filterGroupValue={this.props.filters.filter["review_status"]}
-          onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
-          <FilterOption filterName="accepted" />
-          <FilterOption filterName="rejected" />
-        </FilterOptionGroup>
         <UserInteractionFilter />
         <ScopeFilterOptionGroup />
         <CategoryFilterOptionGroup />
