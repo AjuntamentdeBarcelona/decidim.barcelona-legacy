@@ -5,6 +5,7 @@ feature 'Participatory processes' do
   before :each do
     @full = create(:participatory_process, name: "Complete process")
     @half = create(:participatory_process, name: "Half process")
+    @unpublished = create(:participatory_process, name: "Unpublished", published: false)
     @half.active_step.update_attribute(:flags, ["proposals", "debates"])
   end
 
@@ -12,6 +13,7 @@ feature 'Participatory processes' do
     visit participatory_processes_path
     expect(page).to have_content("Complete process")
     expect(page).to have_content("Half process")
+    expect(page).to_not have_content("Unpublished")
   end
 
   scenario "Show process with all features" do

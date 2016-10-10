@@ -3,6 +3,8 @@ class ParticipatoryProcess < ActiveRecord::Base
   acts_as_paranoid column: :hidden_at
   include ActsAsParanoidAliases
 
+  scope :published, -> { where(published: true) }
+
   validates :name, presence: true
   friendly_id :name, use: [:slugged, :finders]
 
