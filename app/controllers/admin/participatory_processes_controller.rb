@@ -1,6 +1,8 @@
 class Admin::ParticipatoryProcessesController < Admin::BaseController
   has_filters %w{published unpublished}, only: :index
 
+  before_filter :load_participatory_process, only: [:edit, :update, :destroy, :publish, :unpublish]
+
   authorize_resource
 
   def index
@@ -15,42 +17,41 @@ class Admin::ParticipatoryProcessesController < Admin::BaseController
     @participatory_process = ParticipatoryProcess.new(strong_params)
 
     if @participatory_process.save
-      redirect_to admin_participatory_processes_url(published: false), notice: t('flash.actions.create.notice', resource_name: "Participatory process")
+      redirect_to admin_participatory_processes_url(filter: @current_filter), notice: t('flash.actions.create.notice', resource_name: "Participatory process")
     else
       render :new
     end
   end
 
   def edit
-    @participatory_process = ParticipatoryProcess.find(params[:id])
   end
 
   def update
-    @participatory_process = ParticipatoryProcess.find(params[:id])
     @participatory_process.assign_attributes(strong_params)
     if @participatory_process.save
-      redirect_to admin_participatory_processes_url(published: @participatory_process.published), notice: t('flash.actions.update.notice', resource_name: "Participatory process")
+      redirect_to admin_participatory_processes_url(filter: @current_filter), notice: t('flash.actions.update.notice', resource_name: "Participatory process")
     else
       render :edit
     end
   end
 
   def destroy
-    @participatory_process = ParticipatoryProcess.find(params[:id])
     @participatory_process.destroy
-    redirect_to admin_participatory_processes_url(published: @participatory_process.published), notice: t('flash.actions.destroy.notice', resource_name: "Participatory process")
+    redirect_to admin_participatory_processes_url(filter: @current_filter), notice: t('flash.actions.destroy.notice', resource_name: "Participatory process")
   end
 
   def restore
     @participatory_process = ParticipatoryProcess.with_hidden.find(params[:id])
     @participatory_process.restore
-    redirect_to admin_participatory_processes_url(published: @participatory_process.published), notice: t('flash.actions.update.notice', resource_name: "Participatory process")
+    redirect_to admin_participatory_processes_url(filter: @current_filter), notice: t('flash.actions.update.notice', resource_name: "Participatory process")
   end
 
   def publish
-    @participatory_process = ParticipatoryProcess.find(params[:id])
-    @participatory_process.update_attribute(:published, true)
-    redirect_to admin_participatory_processes_url(published: true), notice: t('flash.actions.update.notice', resource_name: "Participatory process")
+    change_participatory_process_published_flag_to(true)
+  end
+
+  def unpublish
+    change_participatory_process_published_flag_to(false)
   end
 
   private
@@ -79,5 +80,15 @@ class Admin::ParticipatoryProcessesController < Admin::BaseController
         :summary => I18n.available_locales.map(&:to_s),
         :description => I18n.available_locales.map(&:to_s)
       )
+  end
+
+  def load_participatory_process
+    @participatory_process = ParticipatoryProcess.find(params[:id])
+  end
+
+  def change_participatory_process_published_flag_to(value)
+    @participatory_process.update_attribute(:published, value)
+    redirect_to admin_participatory_processes_url(filter: value ? :published : :unpublished),
+                notice: t('flash.actions.update.notice', resource_name: "Participatory process")
   end
 end

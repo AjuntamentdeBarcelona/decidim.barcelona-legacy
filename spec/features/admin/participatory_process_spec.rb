@@ -96,4 +96,17 @@ feature 'Admin participatory processes' do
     expect(page).to have_content("test")
     expect(page).to_not have_css("a", text: "Publish")
   end
+  
+  scenario "Unpublish a participatory process", :js do
+    ParticipatoryProcess.delete_all
+    create(:participatory_process, name: "test", published: true)
+
+    visit admin_participatory_processes_path
+
+    click_link "Unpublish"
+
+    expect(page).to have_css(".sub-nav .active span", text: "Unpublished")
+    expect(page).to have_content("test")
+    expect(page).to have_css("a", text: "Publish")
+  end
 end
