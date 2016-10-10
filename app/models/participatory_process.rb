@@ -4,6 +4,7 @@ class ParticipatoryProcess < ActiveRecord::Base
   include ActsAsParanoidAliases
 
   scope :published, -> { where(published: true) }
+  scope :unpublished, -> { where(published: false) }
 
   validates :name, presence: true
   friendly_id :name, use: [:slugged, :finders]
