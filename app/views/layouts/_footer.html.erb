@@ -12,8 +12,8 @@
       </div>
 
       <div class="small-6 column">
-        <%= link_to t("layouts.footer.more_info"), page_path(id: 'more_information', participatory_process_id: @participatory_process) %>&nbsp;|&nbsp;
-        <%= link_to t("layouts.footer.conditions"), page_path(id: 'conditions', participatory_process_id: @participatory_process) %>&nbsp;|&nbsp;
+        <%= link_to t("layouts.footer.more_info"), page_path(id: 'more_information') %>&nbsp;|&nbsp;
+        <%= link_to t("layouts.footer.conditions"), page_path(id: 'conditions', participatory_process_id: nil) %>&nbsp;|&nbsp;
 	<%= link_to t("layouts.footer.accessibility"), "http://accessibilitat.bcn.cat/#{I18n.locale.to_s}", target: "_blank" %>
 
         <span class="footer-social">
