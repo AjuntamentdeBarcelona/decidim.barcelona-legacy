@@ -380,6 +380,8 @@ ActiveRecord::Schema.define(version: 20161005062754) do
     t.text     "citizenship_scope"
     t.datetime "hidden_at"
     t.datetime "confirmed_hide_at"
+    t.string   "full_image"
+    t.string   "banner_image"
   end
 
   create_table "proposal_answers", force: :cascade do |t|

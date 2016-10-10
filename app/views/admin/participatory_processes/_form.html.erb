@@ -7,6 +7,24 @@
       <%= f.text_field :name, placeholder: t("participatory_processes.form.participatory_process_name"), label: false %>
     </div>
 
+    <div class="small-12 column">
+      <%= f.label :full_image %>
+      <%= f.file_field :full_image, label: false %>
+      <% if participatory_process.full_image.present? %>
+        <p>Preview</p>
+        <%= image_tag participatory_process.full_image.thumb.url, class: 'full-image-preview' %>
+      <% end %>
+    </div>
+
+    <div class="small-12 column">
+      <%= f.label :banner_image %>
+      <%= f.file_field :banner_image, label: false %>
+      <% if participatory_process.banner_image.present? %>
+        <p>Preview</p>
+        <%= image_tag participatory_process.banner_image.thumb.url, class: 'banner-image-preview' %>
+      <% end %>
+    </div>
+
     <% unless participatory_process.new_record? %>
       <div class="small-12 column">
         <%= f.label :slug, t("participatory_processes.form.participatory_process_slug") %>

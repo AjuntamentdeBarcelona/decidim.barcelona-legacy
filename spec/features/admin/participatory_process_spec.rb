@@ -14,6 +14,9 @@ feature 'Admin participatory processes' do
 
     fill_in "participatory_process_name", with: "pam"
 
+    attach_file "participatory_process_full_image", "#{Rails.root}/spec/fixtures/participatory_process_full_image_example.jpg"
+    attach_file "participatory_process_banner_image", "#{Rails.root}/spec/fixtures/participatory_process_banner_image_example.jpg"
+
     fill_in "participatory_process_admin_name", with: "David"
     fill_in "participatory_process_admin_email", with: "david.morcillo@codegram.com"
 
