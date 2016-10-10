@@ -71,7 +71,8 @@ class Admin::StepsController < Admin::BaseController
         :start_at,
         :end_at,
         :title => I18n.available_locales.map(&:to_s),
-        :description => I18n.available_locales.map(&:to_s)
+        :description => I18n.available_locales.map(&:to_s),
+        :flags => []
       )
   end
 end
