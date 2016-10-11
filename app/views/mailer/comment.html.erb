@@ -17,6 +17,9 @@
       <blockquote>
         <%= text_with_links @comment.body %>
       </blockquote>
+      <p>
+        <%= t("mailers.config.manage_email_subscriptions") %> <%= link_to t("account.show.title"), account_url %>
+      </p>
     </th>
     <th class="expander"></th>
   </tr>
