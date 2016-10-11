@@ -32,41 +32,7 @@
                     </tr>
                   </tbody>
                 </table>
-                <table class="row">
-                  <tr>
-                    <th class="small-12 first columns"><h4>Et donem la benvinguda a Decidim.Barcelona</h4></th>
-                    <th class="expander"></th>
-                  </tr>
-                </table>
-                <table class="row">
-                  <tr>
-                    <th class="small-12 first columns">
-                      <p>Benvingut/uda <a href="#">hola@tumail.com</a></p>
-                      <p>Pots confirmar el teu compte de correu electrònic a l'enllaç següent:</p>
-                    </th>
-                    <th class="expander"></th>
-                  </tr>
-                </table>
-                <table class="row">
-                  <tr>
-                    <th class="small-12 first columns">
-                      <center>
-                        <table class="button radius">
-                          <tr>
-                            <td>
-                              <table>
-                                <tr>
-                                  <td><a href="#">Confirma el meu compte</a></td>
-                                </tr>
-                              </table>
-                            </td>
-                          </tr>
-                        </table>
-                      </center>
-                    </th>
-                    <th class="expander"></th>
-                  </tr>
-                </table>
+                <%= yield %>
                 <table class="row">
                   <tr>
                     <th class="small-12 first columns">
@@ -78,7 +44,7 @@
                   <tr>
                     <th class="expander"></th>
                     <th class="small-12 first columns cityhall-bar">
-                      <img alt="Ajuntament de Barcelona" align="right" width="150" class="float-right cityhall-logo" src="https://decidim.barcelona/assets/badge_ajuntament-10e4586ea1497a5892265a1bdb4d4243691f637bc145193202b560d603bb3123.png">
+                      <%= image_tag attachments['badge_ajuntament.png'].url, alt: "Ajuntament de Barcelona", align: "right", width: "150", class: "float-right cityhall-logo" %>
                     </th>
                   </tr>
                 </table>

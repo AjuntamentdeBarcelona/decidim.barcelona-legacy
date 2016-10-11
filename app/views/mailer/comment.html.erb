@@ -1,15 +1,23 @@
-<h2>
-  <%= t("mailers.comment.title") %>
-</h2>
+<table class="row">
+  <tr>
+    <th class="small-12 first columns"><h4><%= t("mailers.comment.title") %></h4></th>
+    <th class="expander"></th>
+  </tr>
+</table>
+<table class="row">
+  <tr>
+    <th class="small-12 first columns">
+      <p>
+        <%= t("mailers.comment.hi") %> <strong><%= @commentable.author.name %></strong>,
+      </p>
 
-<p>
-  <%= t("mailers.comment.hi") %> <strong><%= @commentable.author.name %></strong>,
-</p>
-
-<p>
-  <%= t("mailers.comment.new_comment_by_html", commenter: @comment.author.name) %> <%= link_to @commentable.title, commentable_url(@commentable) %>
-</p>
-
-<blockquote>
-  <%= text_with_links @comment.body %>
-</blockquote>
+      <p>
+        <%= t("mailers.comment.new_comment_by_html", commenter: @comment.author.name) %> <%= link_to @commentable.title, commentable_url(@commentable) %>
+      </p>
+      <blockquote>
+        <%= text_with_links @comment.body %>
+      </blockquote>
+    </th>
+    <th class="expander"></th>
+  </tr>
+</table>
