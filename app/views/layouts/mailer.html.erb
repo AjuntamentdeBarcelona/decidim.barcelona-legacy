@@ -1,5 +1,59 @@
-<%= stylesheet_link_tag :email %>
-<%= yield %>
-<p>
-  <%= t("mailers.config.manage_email_subscriptions") %> <%= link_to t("account.show.title"), account_url %>
-</p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Title</title>
+  <%= stylesheet_link_tag :email %>
+</head>
+<body>
+  <!-- <style> -->
+  <table class="body" data-made-with-foundation>
+    <tr>
+      <td class="float-center" align="center" valign="top">
+        <center>
+          <table class="container">
+            <tr>
+              <td>
+                <table class="row">
+                  <tr>
+                    <th class="small-12 first columns decidim-bar">
+                      <center class="decidim-logo">
+                        <img src="http://placehold.it/300x100" alt="Barcelona Decidim">
+                      </center>
+                    </th>
+                    <th class="expander"></th>
+                  </tr>
+                </table>
+                <table class="spacer">
+                  <tbody>
+                    <tr>
+                      <td height="40px" style="font-size:40px;line-height:40px;"> </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <%= yield %>
+                <table class="row">
+                  <tr>
+                    <th class="small-12 first columns">
+                    </th>
+                    <th class="expander"></th>
+                  </tr>
+                </table>
+                <table class="row">
+                  <tr>
+                    <th class="expander"></th>
+                    <th class="small-12 first columns cityhall-bar">
+                      <%= image_tag attachments['badge_ajuntament.png'].url, alt: "Ajuntament de Barcelona", align: "right", width: "150", class: "float-right cityhall-logo" %>
+                    </th>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table><!--/.container-->
+        </center>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

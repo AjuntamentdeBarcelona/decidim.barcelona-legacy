@@ -8,7 +8,7 @@ module CommonActions
   end
 
   def mail_content(mail)
-    mail.body.raw_source
+    mail.body.parts.find {|p| p.content_type.match /html/}.body.raw_source
   end
 
   def user_menu

@@ -1,19 +1,27 @@
-<h2>
-  <%= t("mailers.email_verification.title") %>
-</h2>
-
-<p>
-<%= t("mailers.email_verification.instructions_html",
-      verification_link: link_to(
-        t('mailers.email_verification.click_here_to_verify'),
-        email_url(email_verification_token: @token))) %>
-</p>
-
-<p>
-<%= t("mailers.email_verification.instructions_2_html",
-      document_type: humanize_document_type(@document_type),
-      document_number: @document_number) %>
-</p>
-<p>
-  <%= t("mailers.email_verification.thanks") %>
-</p>
+<table class="row">
+  <tr>
+    <th class="small-12 first columns"><h4><%= t("mailers.email_verification.title") %></h4></th>
+    <th class="expander"></th>
+  </tr>
+</table>
+<table class="row">
+  <tr>
+    <th class="small-12 first columns">
+      <p>
+        <%= t("mailers.email_verification.instructions_html",
+            verification_link: link_to(
+              t('mailers.email_verification.click_here_to_verify'),
+              email_url(email_verification_token: @token))) %>
+      </p>
+      <p>
+        <%= t("mailers.email_verification.instructions_2_html",
+            document_type: humanize_document_type(@document_type),
+            document_number: @document_number) %>
+      </p>
+      <p>
+        <%= t("mailers.email_verification.thanks") %>
+      </p>
+    </th>
+    <th class="expander"></th>
+  </tr>
+</table>

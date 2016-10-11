@@ -4,6 +4,8 @@ class ApplicationMailer < ActionMailer::Base
   default from: "Decidim Barcelona <#{Rails.application.secrets.email}>"
   layout 'mailer'
 
+  before_filter :inline_attachments
+
   private
 
   def with_user(user, &block)
@@ -16,5 +18,9 @@ class ApplicationMailer < ActionMailer::Base
     super.merge(
       keep_uninlinable_css: false
     )
+  end
+
+  def inline_attachments
+    attachments.inline["badge_ajuntament.png"] = File.read(Rails.root.join("app/assets/images/badge-ajuntament-footer.png"))
   end
 end
