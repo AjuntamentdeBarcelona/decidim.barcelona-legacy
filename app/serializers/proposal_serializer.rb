@@ -1,4 +1,6 @@
 class ProposalSerializer < ActiveModel::Serializer
+  include Concerns::ParticipatoryProcessSerializerUrl
+
   attributes :id, :title, :url, :summary, :created_at, :scope_, :district, :source,
              :total_votes, :voted, :votable, :closed, :official, :from_meeting,
              :editable, :conflictive?, :external_url, :hidden?, :can_hide, :can_hide_author,
@@ -65,10 +67,6 @@ class ProposalSerializer < ActiveModel::Serializer
     end.present?
   end
 
-  def url
-   scope && scope.proposal_url(object, participatory_process_id: object.participatory_process.slug)
-  end
-
   def created_at
     I18n.l object.created_at.to_date
   end
@@ -95,5 +93,9 @@ class ProposalSerializer < ActiveModel::Serializer
       comment_as_moderator: scope && scope.can?(:comment_as_moderator, object),
       comment_as_administrator: scope && scope.can?(:comment_as_administrator, object)
     }
+  end
+
+  def feature_name
+    "proposals"
   end
 end

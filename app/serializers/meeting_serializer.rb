@@ -7,6 +7,8 @@ class MeetingSerializer < ActiveModel::Serializer
   has_one :category
   has_one :subcategory
 
+  include Concerns::ParticipatoryProcessSerializerUrl
+
   def held_at
     I18n.l(object.held_at)
   end
@@ -33,6 +35,12 @@ class MeetingSerializer < ActiveModel::Serializer
   end
 
   def url
-    meeting_path(object, participatory_process_id: object.participatory_process.slug)
+    meeting_path(object,
+                 participatory_process_id: object.participatory_process.slug,
+                 step_id: step.id)
+  end
+
+  def feature_name
+    "meetings"
   end
 end

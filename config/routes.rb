@@ -324,38 +324,40 @@ Rails.application.routes.draw do
   resources :participatory_processes, only: [:index, :show]
 
   scope ":participatory_process_id" do
-    resources :proposals do
-      member do
-        post :vote
-        post :vote_featured
-        put :flag
-        put :unflag
+    scope ":step_id" do
+      resource :step
+
+      resources :proposals do
+        member do
+          post :vote
+          post :vote_featured
+          put :flag
+          put :unflag
+        end
       end
-    end
 
-    resources :meetings, only: [:index, :show]
+      resources :meetings, only: [:index, :show]
 
-    resources :debates do
-      member do
-        post :vote
-        put :flag
-        put :unflag
+      resources :debates do
+        member do
+          post :vote
+          put :flag
+          put :unflag
+        end
       end
-    end
 
-    resources :action_plans do
-      resources :revisions, except: [:show, :delete], controller: 'action_plans/revisions'
-      collection do
-        get :build_from_proposal
+      resources :action_plans do
+        resources :revisions, except: [:show, :delete], controller: 'action_plans/revisions'
+        collection do
+          get :build_from_proposal
+        end
       end
+
+      resources :categories, only: [:index]
+      resources :dataviz, only: [:show, :index]
+
+      # static pages
+      resources :pages, path: '/', only: [:show]
     end
-
-    resources :categories, only: [:index]
-
-    resources :dataviz, only: [:show, :index]
-  end
-
-  scope "(:participatory_process_id)" do
-    resources :pages, path: '/', only: [:show]
-  end
+k end
 end

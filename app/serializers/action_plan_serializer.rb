@@ -7,21 +7,26 @@ class ActionPlanSerializer < ActiveModel::Serializer
   has_one :category
   has_one :subcategory
 
+  include Concerns::ParticipatoryProcessSerializerUrl
+
   # Name collision with serialization `scope`
   def scope_
     object.scope
   end
 
   def url
-    action_plan_path(object, participatory_process_id: object.participatory_process)
+    action_plan_path(object, participatory_process_id: object.
+                             participatory_process, step_id: step)
   end
 
   def edit_url
-    edit_action_plan_path(object, participatory_process_id: object.participatory_process)
+    edit_action_plan_path(object, participatory_process_id: object.
+                                  participatory_process, step_id: step)
   end
 
   def new_revision_url
-    new_action_plan_revision_path(object, participatory_process_id: object.participatory_process)
+    new_action_plan_revision_path(object, participatory_process_id: object.
+                                          participatory_process, step_id: step)
   end
 
   def created_at
@@ -58,5 +63,9 @@ class ActionPlanSerializer < ActiveModel::Serializer
       comment_as_moderator: scope && scope.can?(:comment_as_moderator, object),
       comment_as_administrator: scope && scope.can?(:comment_as_administrator, object)
     }
+  end
+
+  def feature_name
+    "action_plans"
   end
 end
