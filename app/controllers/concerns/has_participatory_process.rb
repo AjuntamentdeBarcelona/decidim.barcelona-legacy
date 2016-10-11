@@ -11,7 +11,7 @@ module HasParticipatoryProcess
           @participatory_process = ParticipatoryProcess.first
         else
           @participatory_process_id = params[:participatory_process_id]
-          @participatory_process = ParticipatoryProcess.find(params[:participatory_process_id])
+          @participatory_process = ParticipatoryProcess.published.find(params[:participatory_process_id]).decorate
         end
       rescue
         raise ActionController::RoutingError.new('Not Found')
