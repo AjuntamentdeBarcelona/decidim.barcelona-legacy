@@ -57,6 +57,11 @@ ca:
     new:
       form:
         submit_button: Crear actuació
+  admin:
+    participatory_processes:
+      index:
+        publish: Publish
+        unpublish: Unpublish
   application:
     close: Tancar
   categories:

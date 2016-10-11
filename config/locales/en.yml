@@ -57,6 +57,11 @@ en:
     new:
       form:
         submit_button: Create action plan
+  admin:
+    participatory_processes:
+      index:
+        publish: Publish
+        unpublish: Unpublish
   application:
     close: Close
   categories:

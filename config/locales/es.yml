@@ -57,6 +57,11 @@ es:
     new:
       form:
         submit_button: Crear actuación
+  admin:
+    participatory_processes:
+      index:
+        publish: Publish
+        unpublish: Unpublish
   application:
     close: Cerrar
   categories:
