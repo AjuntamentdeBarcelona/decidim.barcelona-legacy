@@ -453,6 +453,7 @@ FactoryGirl.define do
     description do { :en => "Description", :es => "Descripción", :ca => "Descripció" } end
     audience "Tota la població"
     citizenship_scope "Només poden opinar."
+    published true
     after(:create) do |participatory_process|
       create(:step, active: true, participatory_process: participatory_process)
     end

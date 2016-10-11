@@ -134,6 +134,8 @@ Rails.application.routes.draw do
       end
       member do
         put :restore
+        put :publish
+        put :unpublish
       end
     end
   end
