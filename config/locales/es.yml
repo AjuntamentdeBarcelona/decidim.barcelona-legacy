@@ -337,6 +337,10 @@ es:
       participatory_process_subtitle: Subtítulo
       participatory_process_summary: Entradilla
       participatory_process_title: Título
+    index:
+      current_step: "Fase actual: %{step_title}"
+      join: Participa
+      more_info: Més informació
     new:
       form:
         submit_button: Crear proceso

@@ -337,6 +337,10 @@ en:
       participatory_process_subtitle: Subtitle
       participatory_process_summary: Summary
       participatory_process_title: Title
+    index:
+      current_step: "Fase actual: %{step_title}"
+      join: "Participa"
+      more_info: "Més informació"
     new:
       form:
         submit_button: Create participatory process
