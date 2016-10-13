@@ -5,7 +5,6 @@ import Loading                  from '../application/loading.component';
 import InfinitePagination       from '../pagination/infinite_pagination.component';
 import OrderSelector            from '../order/order_selector.component';
 
-import ProposalsHeader          from './proposals_header.component';
 import ProposalsSidebar         from './proposals_sidebar.component';
 import NewProposalButton        from './new_proposal_button.component';
 import ProposalsList            from './proposals_list.component';
