@@ -125,6 +125,7 @@ ignore_unused:
   - 'admin.users.index.search_form.*'
   - 'admin.activity.show.filter*'
   - 'admin.comments.index.hidden_*'
+  - 'admin.participatory_processes.index.filter*'
   - 'moderation.comments.index.filter*'
   - 'moderation.comments.index.order*'
   - 'revision.action_plans.index.filter*'

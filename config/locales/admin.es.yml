@@ -88,12 +88,15 @@ es:
         title: Buscar organizaciones
     participatory_processes:
       index:
-        delete: Delete
-        edit: Edit
-        new: New
-        restore: Restore
-        steps: Steps
-        title: Title
+        delete: Borrar
+        edit: Editar
+        new: Nuevo
+        restore: Restaurar
+        steps: Pasos
+        title: Titulo
+        filters:
+          published: Publicados
+          unpublished: Sin publicar
     proposals:
       index:
         filter: Filtro

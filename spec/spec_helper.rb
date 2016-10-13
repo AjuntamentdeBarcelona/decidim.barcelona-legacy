@@ -16,26 +16,12 @@ RSpec.configure do |config|
 
   config.filter_run :focus
   config.run_all_when_everything_filtered = true
+
   config.include Devise::TestHelpers, :type => :controller
   config.include FactoryGirl::Syntax::Methods
   config.include(EmailSpec::Helpers)
   config.include(EmailSpec::Matchers)
   config.include(CommonActions)
-
-  config.before(:suite) do
-    DatabaseCleaner.clean_with :truncation
-  end
-
-  config.around(:each) do |example|
-    DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.cleaning do
-      example.run
-    end
-  end
-
-  config.after(:each, :js) do |example|
-    sleep 1
-  end
 
   if ENV["CI"]
     config.include RSpec::Repeat
@@ -44,16 +30,20 @@ RSpec.configure do |config|
     end
   end
 
-  config.before(:each) do |example|
-    I18n.locale = :en
+  config.around(:each) do |example|
+    DatabaseCleaner.clean_with :truncation
     Rails.cache.clear
     ActionMailer::Base.deliveries = []
     $redis.flushdb
     load "#{Rails.root}/db/seeds.rb"
+    Setting.reload!
+    I18n.locale = :en
+
+    example.run
   end
 
-  config.after(:each) do
-    Setting.reload!
+  config.after(:each, :js) do |example|
+    sleep 1
   end
 
   config.before(:each, type: :feature) do
