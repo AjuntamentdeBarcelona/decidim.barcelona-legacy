@@ -44,8 +44,6 @@ class Proposals extends Component {
   render() {
     return (
       <div>
-        <ProposalsHeader />
-
         <div className="row column">
           <div className="title-action">
             <h2 className="title-action__title section-heading">
