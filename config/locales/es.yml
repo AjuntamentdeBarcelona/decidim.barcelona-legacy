@@ -338,7 +338,10 @@ es:
       participatory_process_summary: Entradilla
       participatory_process_title: Título
     index:
-      current_step: "Fase actual: %{step_title}"
+      count:
+        one: 1 proceso
+        other: "%{count} procesos"
+      current_step: 'Fase actual: %{step_title}'
       join: Participa
       more_info: Més informació
     new:

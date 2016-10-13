@@ -338,9 +338,12 @@ ca:
       participatory_process_summary: Breu resum
       participatory_process_title: Títol
     index:
-      current_step: "Fase actual: %{step_title}"
-      join: "Participa"
-      more_info: "Més informació"
+      count:
+        one: 1 procés
+        other: "%{count} processos"
+      current_step: 'Fase actual: %{step_title}'
+      join: Participa
+      more_info: Més informació
     new:
       form:
         submit_button: Crear proces

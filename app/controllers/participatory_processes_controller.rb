@@ -5,7 +5,7 @@ class ParticipatoryProcessesController < ApplicationController
   layout -> { params[:action] == 'show' ? "participatory_process" : "application" }
 
   def index
-    @participatory_processes = ParticipatoryProcess.published.all.decorate
+    @participatory_processes = ParticipatoryProcess.published.order("created_at desc").all.decorate
   end
 
   def show
