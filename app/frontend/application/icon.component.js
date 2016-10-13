@@ -1,8 +1,8 @@
 import { PropTypes } from 'react';
 import { connect }   from 'react-redux';
 
-const Icon = ({name, children, decidimIconsUrl}) => (
-  <svg className={`icon icon--${name}`}>
+const Icon = ({name, className, children, decidimIconsUrl}) => (
+  <svg className={`icon icon--${name} ${className}`}>
     <use xlinkHref={`${decidimIconsUrl}#icon-${name}`}></use>
     {children}
   </svg>
@@ -11,6 +11,7 @@ const Icon = ({name, children, decidimIconsUrl}) => (
 Icon.propTypes = {
   name: PropTypes.string.isRequired,
   decidimIconsUrl: PropTypes.string.isRequired,
+  className: PropTypes.string,
   children: PropTypes.any
 };
 

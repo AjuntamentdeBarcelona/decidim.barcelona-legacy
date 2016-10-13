@@ -1,6 +1,7 @@
 import { Component, PropTypes } from 'react';
 
-import FilterOption  from './filter_option.component';
+import Icon                     from '../application/icon.component';
+import FilterOption             from './filter_option.component';
 
 export default class FilterOptionGroup extends Component {
   constructor(props) {
@@ -68,12 +69,23 @@ export default class FilterOptionGroup extends Component {
         <legend>
           <h6 className="heading6">
             {I18n.t(`components.filter_option_group.${this.props.filterGroupName}`)}
+            {this.renderHelpIcon()}
           </h6>
         </legend>
       )
-    } else {
-      return null;
     }
+    return null;
+  }
+
+  renderHelpIcon() {
+    if (this.props.showHelp) {
+      return (
+        <span className="help">
+          <Icon name="info" className="icon--after" />
+        </span>
+      );
+    }
+    return null;
   }
 
   renderGroupAsOptions() {
@@ -145,5 +157,6 @@ FilterOptionGroup.propTypes = {
   children: PropTypes.any,
   useWrapper: PropTypes.bool,
   useTitle: PropTypes.bool,
+  showHelp: PropTypes.bool,
   onChangeFilterGroup: PropTypes.func.isRequired
 };
