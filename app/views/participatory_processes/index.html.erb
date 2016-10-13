@@ -1,6 +1,6 @@
-<div class="row section">
-  <h1 class="section-heading">Processos destacats</h1>
-  <% @participatory_processes.each do |process| %>
+<div class="row section featured">
+  <h1 class="section-heading"><%= t('.featured_processes') %></h1>
+  <% @featured_participatory_processes.each do |process| %>
     <article class="card card--full card--process">
       <div class="row collapse card--process__row">
         <div class="columns mediumlarge-8 large-6 card--process__column">
@@ -8,7 +8,7 @@
             <%= link_to participatory_process_path(process), class: "card__link" do %>
               <h2 class="card__title"><%= process.title %></h2>
             <% end %>
-            <%= process.summary.html_safe %>
+            <%= process.summary.try(:html_safe) %>
             <div><br /></div>
             <%= link_to t('.more_info'), participatory_process_path(process), class: "button secondary small hollow card__button" %>
           </div>
@@ -33,7 +33,7 @@
   <% end %>
 </div>
 
-<section class="section row collapse">
+<section class="section row collapse non-featured">
   <div class="row collapse order-by">
     <h2 class="order-by__text section-heading"><%= t('.count', count: @participatory_processes.length) %></h2>
   </div>
@@ -49,7 +49,7 @@
               <h4 class="card__title"><%= process.title %></h4>
             <% end %>
             <p class="card__desc">
-              <%= process.summary.html_safe %>
+              <%= process.summary.try(:html_safe) %>
             </p>
           </div>
           <div class="card__footer">

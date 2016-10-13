@@ -327,6 +327,7 @@ en:
       participatory_process_audience: Audience
       participatory_process_citizenship_scope: Citizenship scope
       participatory_process_description: Description
+      participatory_process_featured: Feature this process
       participatory_process_manager_group: Manager group
       participatory_process_name: Name
       participatory_process_scope: Scope
@@ -342,6 +343,7 @@ en:
         one: 1 process
         other: "%{count} processes"
       current_step: 'Fase actual: %{step_title}'
+      featured_processes: Featured processes
       join: Participa
       more_info: Més informació
     new:

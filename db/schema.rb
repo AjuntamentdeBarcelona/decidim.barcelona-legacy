@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161010073413) do
+ActiveRecord::Schema.define(version: 20161013083909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -382,6 +382,7 @@ ActiveRecord::Schema.define(version: 20161010073413) do
     t.datetime "confirmed_hide_at"
     t.string   "full_image"
     t.string   "banner_image"
+    t.boolean  "featured",          default: false
     t.boolean  "published",         default: false
   end
 

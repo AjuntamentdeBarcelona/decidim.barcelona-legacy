@@ -75,6 +75,7 @@ class Admin::ParticipatoryProcessesController < Admin::BaseController
         :district,
         :full_image,
         :banner_image,
+        :featured,
         :title => I18n.available_locales.map(&:to_s),
         :subtitle => I18n.available_locales.map(&:to_s),
         :summary => I18n.available_locales.map(&:to_s),
