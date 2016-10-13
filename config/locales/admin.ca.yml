@@ -88,12 +88,15 @@ ca:
         title: Cerca organitzacions
     participatory_processes:
       index:
-        delete: Delete
-        edit: Edit
-        new: New
-        restore: Restore
-        steps: Steps
-        title: Title
+        delete: Esborrar
+        edit: Editar
+        new: Nou
+        restore: Restaurar
+        steps: Passos
+        title: Titol
+        filters:
+          published: Publicats
+          unpublished: Sense publicar
     proposals:
       index:
         filter: Filtre

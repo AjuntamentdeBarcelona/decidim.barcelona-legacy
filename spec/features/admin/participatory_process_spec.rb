@@ -50,7 +50,7 @@ feature 'Admin participatory processes' do
   end
 
   scenario "Edit an existing participatory process", :js do
-    participatory_process = create(:participatory_process, name: "test")
+    create(:participatory_process, name: "test")
 
     visit admin_participatory_processes_path
     within all(".admin-list li").last do
@@ -65,7 +65,8 @@ feature 'Admin participatory processes' do
   end
 
   scenario "Destroy an existing participatory process", :js do
-    participatory_process = create(:participatory_process, name: "test")
+    create(:participatory_process, name: "test")
+
     visit admin_participatory_processes_path
     within all(".admin-list li").last do
       click_link "Delete"
@@ -92,11 +93,11 @@ feature 'Admin participatory processes' do
     click_link "Unpublished"
     click_link "Publish"
 
-    expect(page).to have_css(".sub-nav .active span", text: "Published")
+    expect(page).to have_css("dd.active", text: "Published")
     expect(page).to have_content("test")
     expect(page).to_not have_css("a", text: "Publish")
   end
-  
+
   scenario "Unpublish a participatory process", :js do
     ParticipatoryProcess.delete_all
     create(:participatory_process, name: "test", published: true)
@@ -105,7 +106,7 @@ feature 'Admin participatory processes' do
 
     click_link "Unpublish"
 
-    expect(page).to have_css(".sub-nav .active span", text: "Unpublished")
+    expect(page).to have_css("dd.active", text: "Unpublished")
     expect(page).to have_content("test")
     expect(page).to have_css("a", text: "Publish")
   end
