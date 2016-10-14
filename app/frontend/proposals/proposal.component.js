@@ -1,5 +1,6 @@
 import FilterMeta      from '../filters/filter_meta.component';
 
+import ProposalVoteBox from './proposal_vote_box.component';
 import ProposalInfo    from './proposal_info.component';
 
 import htmlToReact from '../application/html_to_react';
@@ -28,12 +29,15 @@ const Proposal = (proposal) => (
           subcategory={ proposal.subcategory } />
       </div>
       <div className="card__footer">
-        <div className="card__support">
-          <div className="card__support__data"></div>
-          <a href={proposal.url} className="card__button button small secondary">
-            {I18n.t('proposals.edit.show_link')}
-          </a>
-        </div>
+        <ProposalVoteBox 
+          hideButton={ proposal.closed }
+          proposalId={ proposal.id } 
+          proposalTitle={ proposal.title } 
+          proposalUrl={ proposal.url } 
+          voted={ proposal.voted } 
+          votable={ proposal.votable } 
+          totalVotes={ proposal.total_votes } 
+          totalComments={ proposal.total_comments } />
       </div>
     </article>
   </div>
