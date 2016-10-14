@@ -48,7 +48,7 @@ const UserAvatar = ({
 }
 
 UserAvatar.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object,
   role: PropTypes.string
 };
 
