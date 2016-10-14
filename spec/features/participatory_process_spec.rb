@@ -3,15 +3,10 @@ require 'rails_helper'
 
 feature 'Participatory processes' do
   before :each do
-<<<<<<< f0e04e1d0ea82a4bcc4ce58e11e685abbee0fc01
-    @full = create(:participatory_process, name: "Complete process")
-    @half = create(:participatory_process, name: "Half process")
-    @unpublished = create(:participatory_process, name: "Unpublished", published: false)
-=======
     @full = create(:participatory_process, title: { en: "Complete process" })
     @half = create(:participatory_process, title: { en: "Half process" })
->>>>>>> Add featured flag to processes
     @half.active_step.update_attribute(:flags, ["proposals", "debates"])
+    @unpublished = create(:participatory_process, title: { en: "Unpublished" }, published: false)
   end
 
   scenario "Index" do
