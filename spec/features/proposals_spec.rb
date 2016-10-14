@@ -458,7 +458,8 @@ feature 'Proposals' do
 
         visit proposals_path(participatory_process_id: participatory_process)
 
-        find('.proposal-filters .search-filter').set("Schwifty")
+        find('.proposal-filters .filters__search .input-group-field').set("Schwifty")
+        find('.proposal-filters .filters__search button').click
 
         within("#proposals") do
           expect(page).to have_css('.proposal', count: 2)
@@ -478,7 +479,8 @@ feature 'Proposals' do
 
       visit proposals_path(participatory_process_id: participatory_process)
 
-      find('.proposal-filters .search-filter').set("Show what you got")
+      find('.proposal-filters .filters__search .input-group-field').set("Show what you got")
+      find('.proposal-filters .filters__search button').click
       sleep 1 # Debounce
 
       expect(page).to_not have_content "Do not display"
@@ -500,7 +502,8 @@ feature 'Proposals' do
 
       visit proposals_path(participatory_process_id: participatory_process)
 
-      find('.proposal-filters .search-filter').set(proposal.title)
+      find('.proposal-filters .filters__search .input-group-field').set(proposal.title)
+      find('.proposal-filters .filters__search button').click
 
       expect(page).to_not have_selector('#proposals .proposal-featured')
       expect(page).to_not have_selector('#featured-proposals')
