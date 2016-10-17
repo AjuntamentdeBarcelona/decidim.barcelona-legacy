@@ -397,8 +397,6 @@ en:
       tags_label: Tags
       tags_placeholder: Enter the tags you would like to use, separated by commas (',')
     index:
-      description: Here you can browse the Government has drawn up proposals for the Municipal Action Plan 2016-2019. These proposals are in addition to other initiatives coming from citizens, spaces for debate and proposals made by institutions and organizations. Before adding a new one, see what proposals there. This way you can participate with more awareness in the debate already initiated, to support the proposals it deems appropriate and, finally, make new ones if you think any of that is what we want to propose collection. Read, think and participate!
-      download: Download Municipal Plan
       filter:
         title: Filter by
       orders:
@@ -415,7 +413,6 @@ en:
         title: Search
       select_order: Order by
       start_proposal: Create a proposal
-      title: Proposals
     new:
       back_link: Go back
       form:
@@ -426,7 +423,7 @@ en:
       recommendations_title: Recommendations for creating a proposal
       start_new: Create new proposal
     proposal:
-      already_supported: You have already supported this proposal. Share it!
+      already_supported: Already supported
       closing: The process of creating new proposals will close the next April 9th at 23:59 h.
       comments:
         one: 1 comment

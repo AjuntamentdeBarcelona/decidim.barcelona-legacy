@@ -96,7 +96,9 @@ feature 'Action plans', :js do
     action_plan.revisions << create(:action_plan_revision, title: 'A bad action plan')
 
     visit action_plans_path(participatory_process_id: participatory_process)
-    find('.search-filter').send_keys("good")
+
+    find('.proposal-filters .filters__search .input-group-field').send_keys("good")
+    find('.proposal-filters .filters__search button').click
 
     expect(page).to have_content('A good action plan')
     expect(page).not_to have_content('A bad action plan')

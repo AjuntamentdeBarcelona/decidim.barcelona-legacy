@@ -195,16 +195,16 @@ feature 'Votes' do
       visit proposals_path(participatory_process_id: participatory_process)
 
       within("#proposals") do
-        within("#proposal_#{proposal1.id}_votes") do
-          expect(page).to have_content "You have already supported this proposal. Share it!"
+        within("#proposal_#{proposal1.id} .card__support") do
+          expect(page).to have_content "Already supported"
         end
 
-        within("#proposal_#{proposal2.id}_votes") do
-          expect(page).to_not have_content "You have already supported this proposal. Share it!"
+        within("#proposal_#{proposal2.id} .card__support") do
+          expect(page).to_not have_content "Already supported"
         end
 
-        within("#proposal_#{proposal3.id}_votes") do
-          expect(page).to_not have_content "You have already supported this proposal. Share it!"
+        within("#proposal_#{proposal3.id} .card__support") do
+          expect(page).to_not have_content "Already supported"
         end
       end
     end
@@ -216,17 +216,17 @@ feature 'Votes' do
 
       scenario 'Show no votes', :js do
         visit proposal_path(@proposal, participatory_process_id: @proposal.participatory_process)
-        expect(page).to have_content "0 supports"
+        expect(page).to have_content "0 SUPPORTS"
       end
 
       scenario 'Trying to vote multiple times', :js do
         visit proposal_path(@proposal, participatory_process_id: @proposal.participatory_process)
 
-        within('.supports') do
-          find('.in-favor button').click
-          expect(page).to have_content "1 support"
+        within('.card__support') do
+          find('button.card__button').click
+          expect(page).to have_content "1 SUPPORT"
 
-          expect(page).to_not have_selector ".in-favor button"
+          expect(page).to_not have_selector "button.card__button"
         end
       end
 
@@ -236,19 +236,19 @@ feature 'Votes' do
 
         visit proposal_path(@proposal, participatory_process_id: @proposal.participatory_process)
 
-        within('.supports') do
-          expect(page).to have_content "2 supports"
+        within('.card__support') do
+          expect(page).to have_content "2 SUPPORTS"
         end
       end
 
       scenario 'Create from proposal show', :js do
         visit proposal_path(@proposal, participatory_process_id: @proposal.participatory_process)
 
-        within('.supports') do
-          find('.in-favor button').click
+        within('.card__support') do
+          find('button.card__button').click
 
-          expect(page).to have_content "1 support"
-          expect(page).to have_content "You have already supported this proposal. Share it!"
+          expect(page).to have_content "1 SUPPORT"
+          expect(page).to have_content "Already supported"
         end
       end
 
@@ -258,10 +258,10 @@ feature 'Votes' do
         expect(page).to have_selector("#proposal_#{@proposal.id}")
 
         within("#proposal_#{@proposal.id}") do
-          find('.in-favor button').click
+          find('button.card__button').click
 
-          expect(page).to have_content "1 support"
-          expect(page).to have_content "You have already supported this proposal. Share it!"
+          expect(page).to have_content "1 SUPPORT"
+          expect(page).to have_content "Already supported"
         end
       end
     end
@@ -272,25 +272,20 @@ feature 'Votes' do
 
     visit debates_path(participatory_process_id: participatory_process)
     within("#debate_#{debate.id}") do
-      find("div.votes button").hover
-      expect_message_you_need_to_sign_in
+      find('.in-favor button.like').click
     end
+    expect(page).to have_content 'You must Sign in or Sign up to continue'
   end
 
   scenario 'Not logged user trying to vote proposals', :js do
     proposal = create(:proposal, participatory_process: participatory_process)
 
-    visit proposals_path(participatory_process_id: participatory_process)
-    within("#proposal_#{proposal.id}") do
-      find("div.supports button").hover
-      expect_message_you_need_to_sign_in
-    end
-
     visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
     within("#proposal_#{proposal.id}") do
-      find("div.supports button").hover
-      expect_message_you_need_to_sign_in
+      find('button.card__button').click
     end
+
+    expect_message_you_need_to_sign_in
   end
 
   scenario 'Anonymous user trying to vote debates', :js do
@@ -302,16 +297,10 @@ feature 'Votes' do
 
     login_as(user)
 
-    visit debates_path(participatory_process_id: participatory_process)
-    within("#debate_#{debate.id}") do
-      find("div.votes button").hover
-      expect_message_to_many_anonymous_votes
-    end
-
     visit debate_path(debate, participatory_process_id: debate.participatory_process)
     within("#debate_#{debate.id}") do
-      find("div.votes button").hover
-      expect_message_to_many_anonymous_votes
+      find('.in-favor button.like').click
+      expect(page).to have_content 'Too many anonymous votes to admit vote'
     end
   end
 
@@ -322,15 +311,10 @@ feature 'Votes' do
     login_as(user)
     visit proposals_path(participatory_process_id: participatory_process)
 
-    within("#proposal_#{proposal.id}") do
-      find("div.supports button").hover
-      expect_message_only_verified_can_vote_proposals
-    end
-
     visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
     within("#proposal_#{proposal.id}") do
-      find("div.supports button").hover
-      expect_message_only_verified_can_vote_proposals
+      find('button.card__button').click
     end
+    expect_message_only_verified_can_vote_proposals
   end
 end

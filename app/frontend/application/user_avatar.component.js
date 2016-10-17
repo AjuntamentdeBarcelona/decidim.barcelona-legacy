@@ -13,7 +13,7 @@ const UserAvatar = ({
   user,
   role
 }) => {
-  if (role && user.avatar_image) {
+  if (role && user && user.avatar_image) {
     const cssClasses = classNames(
       'left',
       {
@@ -24,12 +24,17 @@ const UserAvatar = ({
     );
 
     return (
-      <img src={user.avatar_image} width="32" height="32" className={cssClasses} />
+      <img src={user.avatar_image} className={cssClasses} />
     );
-  } else if (user.name) {
+  } else if (user && user.name) {
     const firstLetter = user.name[0].toUpperCase();
     const style = {
-      backgroundColor: COLORS[(firstLetter.charCodeAt() - FIRST_LETTER_CHAR_CODE) % MAX_COLORS]
+      backgroundColor: COLORS[(firstLetter.charCodeAt() - FIRST_LETTER_CHAR_CODE) % MAX_COLORS],
+      width: '20px',
+      height: '20px',
+      display: 'inline-block',
+      textAlign: 'center',
+      color: '#fff'
     };
     
     return (
@@ -43,7 +48,7 @@ const UserAvatar = ({
 }
 
 UserAvatar.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object,
   role: PropTypes.string
 };
 

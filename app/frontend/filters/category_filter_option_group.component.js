@@ -20,6 +20,7 @@ class CategoryFilterOptionGroup extends Component {
         filterGroupName="category_id" 
         filterGroupValue={this.props.filters.filter["category_id"]}
         isExclusive={true}
+        showHelp={true}
         onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
         {
           this.props.categories.map(function (category) {
