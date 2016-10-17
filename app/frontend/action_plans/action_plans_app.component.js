@@ -61,7 +61,7 @@ function getInitialSeedState() {
   return seed;
 }
 
-function createReducers(sessionState, participatoryProcessIdState) {
+function createReducers(sessionState, participatoryProcessIdState, decidimIconsUrlState) {
   let session = function (state = sessionState) {
     return state;
   };
@@ -70,9 +70,14 @@ function createReducers(sessionState, participatoryProcessIdState) {
     return state;
   };
 
+  let decidimIconsUrl = function (state = decidimIconsUrlState) {
+    return state;
+  };
+
   return combineReducers({
     session,
     participatoryProcessId,
+    decidimIconsUrl,
     districts,
     categories,
     actionPlans,
@@ -88,7 +93,7 @@ export default class ActionPlansApp extends Component {
   render() {
     return (
       <Provider 
-        store={createStoreWithMiddleware(createReducers(this.props.session, this.props.participatory_process_id))}>
+        store={createStoreWithMiddleware(createReducers(this.props.session, this.props.participatory_process_id, this.props.decidim_icons_url))}>
         <ActionPlans />
       </Provider>
     );
@@ -97,5 +102,6 @@ export default class ActionPlansApp extends Component {
 
 ActionPlansApp.propTypes = {
   session: PropTypes.object.isRequired,
-  participatory_process_id: PropTypes.string.isRequired
+  participatory_process_id: PropTypes.string.isRequired,
+  decidim_icons_url: PropTypes.string.isRequired
 };
