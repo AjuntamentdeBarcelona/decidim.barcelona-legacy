@@ -23,7 +23,8 @@ feature 'Votes' do
       create(:vote, voter: @manuela, votable: debate1, vote_flag: true)
       create(:vote, voter: @manuela, votable: debate3, vote_flag: false)
 
-      visit debates_path(participatory_process_id: participatory_process)
+      visit debates_path(participatory_process_id: participatory_process,
+                         step_id: participatory_process.active_step)
 
       within("#debates") do
         within("#debate_#{debate1.id}_votes") do
@@ -70,7 +71,8 @@ feature 'Votes' do
       end
 
       scenario 'Show no votes' do
-        visit debate_path(@debate, participatory_process_id: @debate.participatory_process)
+        visit debate_path(@debate, participatory_process_id: @debate.
+                                   participatory_process, step_id: participatory_process.active_step)
 
         expect(page).to have_content "No votes"
 
@@ -88,7 +90,8 @@ feature 'Votes' do
       end
 
       scenario 'Update', :js do
-        visit debate_path(@debate, participatory_process_id: @debate.participatory_process)
+        visit debate_path(@debate, participatory_process_id: @debate.
+                                   participatory_process, step_id: participatory_process.active_step)
 
         find('.in-favor button').click
         find('.against a').click
@@ -107,7 +110,8 @@ feature 'Votes' do
       end
 
       scenario 'Trying to vote multiple times', :js do
-        visit debate_path(@debate, participatory_process_id: @debate.participatory_process)
+        visit debate_path(@debate, participatory_process_id: @debate.
+                                   participatory_process, step_id: participatory_process.active_step)
 
         find('.in-favor button').click
         expect(page).to have_content "1 vote"
@@ -127,7 +131,8 @@ feature 'Votes' do
         create(:vote, voter: @manuela, votable: @debate, vote_flag: true)
         create(:vote, voter: @pablo, votable: @debate, vote_flag: false)
 
-        visit debate_path(@debate, participatory_process_id: @debate.participatory_process)
+        visit debate_path(@debate, participatory_process_id: @debate.
+                                   participatory_process, step_id: participatory_process.active_step)
 
         expect(page).to have_content "2 votes"
 
@@ -143,7 +148,8 @@ feature 'Votes' do
       end
 
       scenario 'Create from debate show', :js do
-        visit debate_path(@debate, participatory_process_id: @debate.participatory_process)
+        visit debate_path(@debate, participatory_process_id: @debate.
+                                   participatory_process, step_id: participatory_process.active_step)
 
         find('.in-favor button').click
 
@@ -161,7 +167,8 @@ feature 'Votes' do
       end
 
       scenario 'Create in index', :js do
-        visit debates_path(participatory_process_id: participatory_process)
+        visit debates_path(participatory_process_id: participatory_process,
+                           step_id: participatory_process.active_step)
 
         within("#debates") do
 
@@ -192,7 +199,8 @@ feature 'Votes' do
       proposal3 = create(:proposal, participatory_process: participatory_process)
       create(:vote, voter: @manuela, votable: proposal1, vote_flag: true)
 
-      visit proposals_path(participatory_process_id: participatory_process)
+      visit proposals_path(participatory_process_id: participatory_process,
+                           step_id: participatory_process.active_step)
 
       within("#proposals") do
         within("#proposal_#{proposal1.id} .card__support") do
@@ -215,12 +223,14 @@ feature 'Votes' do
       end
 
       scenario 'Show no votes', :js do
-        visit proposal_path(@proposal, participatory_process_id: @proposal.participatory_process)
+        visit proposal_path(@proposal, participatory_process_id: @proposal.
+                                       participatory_process, step_id: participatory_process.active_step)
         expect(page).to have_content "0 SUPPORTS"
       end
 
       scenario 'Trying to vote multiple times', :js do
-        visit proposal_path(@proposal, participatory_process_id: @proposal.participatory_process)
+        visit proposal_path(@proposal, participatory_process_id: @proposal.
+                                       participatory_process, step_id: participatory_process.active_step)
 
         within('.card__support') do
           find('button.card__button').click
@@ -234,7 +244,8 @@ feature 'Votes' do
         create(:vote, voter: @manuela, votable: @proposal, vote_flag: true)
         create(:vote, voter: @pablo, votable: @proposal, vote_flag: true)
 
-        visit proposal_path(@proposal, participatory_process_id: @proposal.participatory_process)
+        visit proposal_path(@proposal, participatory_process_id: @proposal.
+                                       participatory_process, step_id: participatory_process.active_step)
 
         within('.card__support') do
           expect(page).to have_content "2 SUPPORTS"
@@ -242,7 +253,8 @@ feature 'Votes' do
       end
 
       scenario 'Create from proposal show', :js do
-        visit proposal_path(@proposal, participatory_process_id: @proposal.participatory_process)
+        visit proposal_path(@proposal, participatory_process_id: @proposal.
+                                       participatory_process, step_id: participatory_process.active_step)
 
         within('.card__support') do
           find('button.card__button').click
@@ -253,7 +265,8 @@ feature 'Votes' do
       end
 
       scenario 'Create in listed proposal in index', :js do
-        visit proposals_path(participatory_process_id: participatory_process)
+        visit proposals_path(participatory_process_id: participatory_process,
+                             step_id: participatory_process.active_step)
 
         expect(page).to have_selector("#proposal_#{@proposal.id}")
 
@@ -270,7 +283,8 @@ feature 'Votes' do
   scenario 'Not logged user trying to vote debates', :js do
     debate = create(:debate, participatory_process: participatory_process)
 
-    visit debates_path(participatory_process_id: participatory_process)
+    visit debates_path(participatory_process_id: participatory_process,
+                       step_id: participatory_process.active_step)
     within("#debate_#{debate.id}") do
       find('.in-favor button.like').click
     end
@@ -280,7 +294,8 @@ feature 'Votes' do
   scenario 'Not logged user trying to vote proposals', :js do
     proposal = create(:proposal, participatory_process: participatory_process)
 
-    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process,
+                        step_id: participatory_process.active_step)
     within("#proposal_#{proposal.id}") do
       find('button.card__button').click
     end
@@ -297,7 +312,8 @@ feature 'Votes' do
 
     login_as(user)
 
-    visit debate_path(debate, participatory_process_id: debate.participatory_process)
+    visit debate_path(debate, participatory_process_id: debate.
+                              participatory_process, step_id: participatory_process.active_step)
     within("#debate_#{debate.id}") do
       find('.in-favor button.like').click
       expect(page).to have_content 'Too many anonymous votes to admit vote'
@@ -309,9 +325,13 @@ feature 'Votes' do
     proposal = create(:proposal, participatory_process: participatory_process)
 
     login_as(user)
-    visit proposals_path(participatory_process_id: participatory_process)
+    visit proposals_path(participatory_process_id: participatory_process,
+                         step_id: participatory_process.active_step)
 
-    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+    visit proposal_path(proposal,
+                        participatory_process_id: proposal.participatory_process,
+                        step_id: participatory_process.active_step)
+
     within("#proposal_#{proposal.id}") do
       find('button.card__button').click
     end

@@ -3,5 +3,7 @@
 </div>
 <div class="phase-nav__info">
   <span class="phase-nav__title"><%= translate step.title %></span>
-  <span class="phase-nav__date"><%= l step.start_at %> - <%= l step.end_at %></span>
+  <span class="phase-nav__date">
+    <% if step.start_at %><%= l step.start_at %><% end %><% if step.end_at %> - <%= l step.end_at %><% end %>
+  </span>
 </div>

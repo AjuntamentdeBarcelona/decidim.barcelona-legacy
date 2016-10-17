@@ -12,7 +12,8 @@ feature 'Admin activity' do
     scenario "Shows moderation activity on proposals", :js do
       proposal = create(:proposal, participatory_process: participatory_process)
 
-      visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+      visit proposal_path(proposal, participatory_process_id: proposal.participatory_process,
+                          step_id: participatory_process.active_step)
 
       expect(page).to have_selector("#proposal_#{proposal.id}")
       find("#proposal_#{proposal.id} a", text: 'Hide').click
@@ -75,7 +76,8 @@ feature 'Admin activity' do
     scenario "Shows moderation activity on debates", :js do
       debate = create(:debate, participatory_process: participatory_process)
 
-      visit debate_path(debate, participatory_process_id: debate.participatory_process)
+      visit debate_path(debate, participatory_process_id: debate.
+                                participatory_process, step_id: participatory_process.active_step)
 
       within("#debate_#{debate.id}") do
         click_link 'Hide'
@@ -138,7 +140,8 @@ feature 'Admin activity' do
       debate = create(:debate, participatory_process: participatory_process)
       comment = create(:comment, commentable: debate)
 
-      visit debate_path(debate, participatory_process_id: debate.participatory_process)
+      visit debate_path(debate, participatory_process_id: debate.
+                                participatory_process, step_id: debate.participatory_process.active_step)
 
       expect(page).to have_css("#comment_#{comment.id}")
       page.find("#comment_#{comment.id} a", text: "Hide").click
@@ -199,7 +202,8 @@ feature 'Admin activity' do
     scenario "Shows moderation activity on users", :js do
       proposal = create(:proposal, participatory_process: participatory_process)
 
-      visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+      visit proposal_path(proposal, participatory_process_id: proposal.
+                                    participatory_process, step_id: participatory_process.active_step)
 
       expect(page).to have_selector("#proposal_#{proposal.id}")
       find("#proposal_#{proposal.id} a", text: 'Block author').click

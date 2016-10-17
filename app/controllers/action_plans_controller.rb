@@ -57,7 +57,8 @@ class ActionPlansController < ApplicationController
 
     if @resource.save
       ActionPlanStatisticsWorker.perform_async(@resource.id)
-      redirect_to action_plan_url(@resource, participatory_process_id: @resource.participatory_process.slug), notice: t('flash.actions.create.notice', resource_name: "#{resource_name.capitalize}")
+      redirect_to action_plan_url(@resource, participatory_process_id: @resource.participatory_process.slug,
+                                  step_id: Step.step_for(@resource.participatory_process, "action_plans")), notice: t('flash.actions.create.notice', resource_name: "#{resource_name.capitalize}")
     else
       set_resource_instance
       render :new

@@ -17,7 +17,8 @@ feature 'Admin comments' do
     expect(page).to have_content("SPAM from SPAMMER")
     expect(page).not_to have_content("Good Proposal!")
 
-    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process,
+                        step_id: participatory_process.active_step)
 
     expect(page).to have_css("#comment_#{other_comment.id}")
     find("#comment_#{other_comment.id} a", text: 'Block author').click

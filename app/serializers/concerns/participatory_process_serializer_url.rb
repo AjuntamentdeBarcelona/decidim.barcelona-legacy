@@ -1,7 +1,7 @@
 module Concerns
   module ParticipatoryProcessSerializerUrl
     def url
-      scope && scope.url_for(id: object, controller: controller_name, action: :show,
+      scope && scope.url_for(id: object, controller: "/#{controller_name}", action: :show,
                                   participatory_process_id: object.participatory_process.slug,
                                   step_id: step)
     end

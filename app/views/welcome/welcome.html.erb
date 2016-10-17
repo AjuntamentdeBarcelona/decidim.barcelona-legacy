@@ -34,7 +34,7 @@
 
           <p class="text-center">
             <%= t("welcome.welcome.skip_verification") %>
-            <%= link_to t("welcome.welcome.see_proposals"), proposals_path(participatory_process_id: @main_participatory_process) %>
+            <%= link_to t("welcome.welcome.see_proposals"), proposals_path(participatory_process_id: @main_participatory_process, step_id: Step.step_for(@main_participatory_process, "proposals")) %>
           </p>
 
         </div>

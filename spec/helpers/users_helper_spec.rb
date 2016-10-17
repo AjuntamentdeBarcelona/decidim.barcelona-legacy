@@ -39,7 +39,8 @@ describe UsersHelper do
         controller: commentable.class.name.downcase.pluralize,
         action: 'show',
         id: commentable.id,
-        participatory_process_id: commentable.participatory_process
+        participatory_process_id: commentable.participatory_process,
+        step_id: participatory_process.active_step
       }))
     end
 
