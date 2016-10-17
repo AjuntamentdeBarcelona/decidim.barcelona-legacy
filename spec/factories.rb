@@ -1,3 +1,4 @@
+# coding: utf-8
 FactoryGirl.define do
 
   factory :newsletter do
@@ -465,7 +466,7 @@ FactoryGirl.define do
     description do { en: "lorem ipsum lorem ipsum", es: "lorem ipsum lorem ipsum", ca: "lorem ipsum lorem ipsum" } end
     start_at Date.today
     end_at Date.today + 1.year
-    flags Step::FLAGS.map(&:to_s)
+    flags Step::FLAGS.map(&:to_s) - ['proposals_readonly']
     participatory_process
   end
 end
