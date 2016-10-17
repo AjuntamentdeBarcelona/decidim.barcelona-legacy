@@ -66,7 +66,7 @@ const tags = function (state = [], action) {
   return state;
 }
 
-function createReducers(sessionState, participatoryProcessIdState) {
+function createReducers(sessionState, participatoryProcessIdState, decidimIconsUrlState) {
   let session = function (state = sessionState) {
     return state;
   };
@@ -75,9 +75,14 @@ function createReducers(sessionState, participatoryProcessIdState) {
     return state;
   };
 
+  let decidimIconsUrl = function (state = decidimIconsUrlState) {
+    return state;
+  };
+
   return combineReducers({
     session, 
     participatoryProcessId,
+    decidimIconsUrl,
     districts,
     categories,
     meetings,
@@ -92,7 +97,7 @@ export default class MeetingsApp extends Component {
   render() {
     return (
       <Provider 
-        store={createStoreWithMiddleware(createReducers(this.props.session, this.props.participatory_process_id))}>
+        store={createStoreWithMiddleware(createReducers(this.props.session, this.props.participatory_process_id, this.props.decidim_icons_url))}>
         <Meetings />
       </Provider>
     );
@@ -101,5 +106,6 @@ export default class MeetingsApp extends Component {
 
 MeetingsApp.propTypes = {
   session: PropTypes.object.isRequired,
-  participatory_process_id: PropTypes.string.isRequired
+  participatory_process_id: PropTypes.string.isRequired,
+  decidim_icons_url: PropTypes.string.isRequired
 };
