@@ -8,8 +8,11 @@ class Revision::BaseController < ApplicationController
 
   private
 
-    def verify_reviewer
-      raise CanCan::AccessDenied unless can? :access_panel, :revision
-    end
+  def verify_reviewer
+    raise CanCan::AccessDenied unless can? :access_panel, :revision
+  end
 
+  def admin_section?
+    true
+  end
 end

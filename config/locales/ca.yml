@@ -213,7 +213,6 @@ ca:
     header:
       action_plans: Actuacions
       administration: Administrar
-      categories: Categories
       debates: Debats
       external_link_blog: Notícies
       locale: 'Idioma:'
