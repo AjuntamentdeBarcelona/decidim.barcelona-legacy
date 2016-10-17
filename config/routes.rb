@@ -359,5 +359,5 @@ Rails.application.routes.draw do
       # static pages
       resources :pages, path: '/', only: [:show]
     end
-k end
+  end
 end
