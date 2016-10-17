@@ -208,6 +208,7 @@ es:
     header:
       action_plans: Actuaciones
       administration: Administrar
+      categories: Categorías
       debates: Debates
       external_link_blog: Noticias
       locale: 'Idioma:'
@@ -322,6 +323,8 @@ es:
     edit:
       form:
         submit_button: Actualitzar proceso
+    flash:
+      feature_disabled_notice: Esta funcionalidad no está activa
     form:
       participatory_process_admin_email: Correo electrónico del administrador
       participatory_process_admin_name: Nombre de l'administador
@@ -529,6 +532,19 @@ es:
       recommendation_two: Cualquier propuesta o comentario que implique acciones ilegales será eliminada.
       recommendations_title: Cómo crear una propuesta de gasto
       start_new: Crear una propuesta de gasto
+  steps:
+    edit:
+      form:
+        submit_button: Update step
+    form:
+      step_description: Step description
+      step_end_at: Step end at
+      step_position: Step position
+      step_start_at: Step start at
+      step_title: Step title
+    new:
+      form:
+        submit_button: Create step
   subcategories:
     edit:
       form:

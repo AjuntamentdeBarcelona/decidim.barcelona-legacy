@@ -1,7 +1,10 @@
 class DebatesController < ApplicationController
   include FeatureFlags
+  include ParticipatoryProcessFlags
   include CommentableActions
   include FlagActions
+
+  ensure_participatory_process_flag :debates
 
   before_action :parse_search_terms, only: :index
   before_action :parse_advanced_search_terms, only: :index
