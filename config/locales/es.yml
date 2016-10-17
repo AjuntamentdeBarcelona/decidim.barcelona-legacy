@@ -327,6 +327,7 @@ es:
       participatory_process_audience: "¿A quién va dirigido el proceso?"
       participatory_process_citizenship_scope: "¿Cuál es el margen o ámbito de decisión ciudadana?"
       participatory_process_description: Descripción
+      participatory_process_featured: Destacar este proceso
       participatory_process_manager_group: Grupo promotor
       participatory_process_name: Nombre
       participatory_process_scope: "Ámbito"
@@ -337,6 +338,14 @@ es:
       participatory_process_subtitle: Subtítulo
       participatory_process_summary: Entradilla
       participatory_process_title: Título
+    index:
+      count:
+        one: 1 proceso
+        other: "%{count} procesos"
+      current_step: 'Fase actual: %{step_title}'
+      featured_processes: Procesos destacados
+      join: Participa
+      more_info: Més informació
     new:
       form:
         submit_button: Crear proceso

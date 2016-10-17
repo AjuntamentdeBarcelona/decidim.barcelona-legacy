@@ -8,6 +8,11 @@
     </div>
 
     <div class="small-12 column">
+      <%= f.check_box :featured, placeholder: t("participatory_processes.form.participatory_process_featured"), label: false %>
+      <%= f.label :featured, t("participatory_processes.form.participatory_process_featured") %>
+    </div>
+
+    <div class="small-12 column">
       <%= f.label :full_image %>
       <%= f.file_field :full_image, label: false %>
       <% if participatory_process.full_image.present? %>

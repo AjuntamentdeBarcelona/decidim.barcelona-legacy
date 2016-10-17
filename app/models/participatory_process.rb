@@ -25,6 +25,8 @@ class ParticipatoryProcess < ActiveRecord::Base
   has_many :subcategories
   has_many :steps
 
+  scope :featured, -> { where(featured: true) }
+
   delegate :feature_enabled?, to: :active_step
 
   def active_step
