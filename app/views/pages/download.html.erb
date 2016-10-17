@@ -12,6 +12,15 @@
           <% end %>
           </span>
         </li>
+        <% (1..10).to_a.each do |id| %>
+          <li>
+            <span>
+              <%= link_to "https://s3-eu-west-1.amazonaws.com/decidimbcn-production/documents/#{id.to_s.rjust(2, '0')}.pdf" do %>
+                <%=t ".download-#{id}" %>
+              <% end %>
+            </span>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
