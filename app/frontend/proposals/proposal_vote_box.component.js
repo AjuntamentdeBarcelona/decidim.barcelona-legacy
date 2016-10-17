@@ -22,13 +22,6 @@ class ProposalVoteBox extends Component {
         <div className="card__support__data">
           <span className="card__support__number">{ this.props.totalVotes }</span>
           {I18n.t("proposals.proposal.supports", { count: "" })}&nbsp;
-          <div className="popularity popularity--level3">
-            <span className="popularity__item"></span>
-            <span className="popularity__item"></span>
-            <span className="popularity__item"></span>
-            <span className="popularity__item"></span>
-            <span className="popularity__item"></span>
-          </div>
         </div>
 
         {this.renderVoteButton(proposalTitle, proposalUrl)}
