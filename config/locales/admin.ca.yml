@@ -90,13 +90,13 @@ ca:
       index:
         delete: Esborrar
         edit: Editar
+        filters:
+          published: Publicats
+          unpublished: Sense publicar
         new: Nou
         restore: Restaurar
         steps: Passos
         title: Titol
-        filters:
-          published: Publicats
-          unpublished: Sense publicar
     proposals:
       index:
         filter: Filtre

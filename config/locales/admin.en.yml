@@ -90,13 +90,13 @@ en:
       index:
         delete: Delete
         edit: Edit
+        filters:
+          published: Published
+          unpublished: Unpublished
         new: Create participatory process
         restore: Restore
         steps: Steps
         title: Title
-        filters:
-          published: Published
-          unpublished: Unpublished
     proposals:
       index:
         filter: Filter

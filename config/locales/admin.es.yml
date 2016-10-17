@@ -90,13 +90,13 @@ es:
       index:
         delete: Borrar
         edit: Editar
+        filters:
+          published: Publicados
+          unpublished: Sin publicar
         new: Nuevo
         restore: Restaurar
         steps: Pasos
         title: Titulo
-        filters:
-          published: Publicados
-          unpublished: Sin publicar
     proposals:
       index:
         filter: Filtro
