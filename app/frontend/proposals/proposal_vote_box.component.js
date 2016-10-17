@@ -12,10 +12,6 @@ import htmlToReact              from '../application/html_to_react';
 class ProposalVoteBox extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      showCantVoteOverlay: false
-    };
   }
 
   render() {
@@ -34,6 +30,7 @@ class ProposalVoteBox extends Component {
             <span className="popularity__item"></span>
           </div>
         </div>
+
         {this.renderVoteButton(proposalTitle, proposalUrl)}
         
         <div className="reveal" id="loginModal" data-reveal="">
@@ -43,69 +40,7 @@ class ProposalVoteBox extends Component {
               type="button">
               <span aria-hidden="true">&times;</span>
             </button>
-          </div>
-          <div className="row">
-            <div className="columns medium-8 medium-centered">
-              <form action="/users/sign_in" className="register-form">
-                <div>
-                  <div>
-                    <label>{I18n.t("devise_views.sessions.new.email_label")}
-                      <input type="email" name="user[email]" placeholder="exemple@domini.com" />
-                    </label>
-                  </div>
-                  <div>
-                    <label>{I18n.t("devise_views.sessions.new.password_label")}
-                      <input type="password" name="user[password]" placeholder="Contrasenya" />
-                    </label>
-                  </div>
-                </div>
-                <fieldset>
-                  <label>
-                    <input type="checkbox" />
-                    {I18n.t("devise_views.sessions.new.remember_me")}
-                  </label>
-                </fieldset>
-                <button type="submit" className="button expanded">{I18n.t("devise_views.sessions.new.submit")}</button>
-              </form>
-              <p className="text-center">
-                {htmlToReact(
-                  I18n.t('votes.unauthenticated', {
-                    signin: `<a href="/users/sign_in">${I18n.t("votes.signin")}</a>`,
-                    signup: `<a href="/users/sign_up">${I18n.t("votes.signup")}</a>`
-                  })
-                )}
-              </p>
-            </div>
-          </div>
-          <div className="row">
-            <div className="columns medium-8 medium-centered">
-              <span className="register__separator">
-                <span className="register__separator__text">o bé</span>
-              </span>
-              <div className="social-register">
-                <a className="button button--social button--twitter" href="/users/auth/twitter">
-                  <span className="button--social__icon">
-                    <Icon name="twitter" />
-                  </span>
-                  {I18n.t("omniauth.twitter.sign_in")}
-                </a>
-                <a className="button button--social button--facebook" href="/users/auth/facebook">
-                  <span className="button--social__icon">
-                    <Icon name="facebook" />
-                  </span>
-                  {I18n.t("omniauth.facebook.sign_in")}
-                </a>
-                <a className="button button--social button--google_oauth2" href="/users/auth/google_oauth2">
-                  <span className="button--social__icon">
-                    <Icon name="google" />
-                  </span>
-                  {I18n.t("omniauth.google_oauth2.sign_in")}
-                </a>
-              </div>
-              <span className="register__separator">
-                <span className="register__separator__text"></span>
-              </span>
-            </div>
+            {this.renderModalContent()}
           </div>
         </div>
       </div>
@@ -155,42 +90,101 @@ class ProposalVoteBox extends Component {
       return null;
   }
 
-  renderCantVoteOverlay() {
+  renderModalContent() {
     let session = this.props.session,
         cantVote = !session.signed_in ||
           session.signed_in && !this.props.votable ||
           session.signed_in && session.is_organization;
 
-    if (cantVote && this.state.showCantVoteOverlay) {
+    if (cantVote) {
       if (session.signed_in && session.is_organization) {
         return (
-          <div className="organizations-votes">
-            <p>{ I18n.t("votes.organizations") }</p>
+          <div className="row organizations-votes">
+            <div className="columns medium-8 medium-centered">
+              <p>{ I18n.t("votes.organizations") }</p>
+            </div>
           </div>
         );
       } else if (session.signed_in && !this.props.votable) {
         return (
-          <div className="anonymous-votes">
-            {
-              htmlToReact(
-                I18n.t('votes.verified_only', {
-                  verify_account: `<a href="/verification">${I18n.t("votes.verify_account")}</a>`
-                })
-              )
-            }
+          <div className="row anonymous-votes">
+            <div className="columns medium-8 medium-centered">
+              {
+                htmlToReact(
+                  I18n.t('votes.verified_only', {
+                    verify_account: `<a href="/verification">${I18n.t("votes.verify_account")}</a>`
+                  })
+                )
+              }
+            </div>
           </div>
         );
       } else if (!session.signed_in) {
         return (
-          <div className="not-logged">
-            {
-              htmlToReact(
-                I18n.t('votes.unauthenticated', {
-                  signin: `<a href="/users/sign_in">${I18n.t("votes.signin")}</a>`,
-                  signup: `<a href="/users/sign_up">${I18n.t("votes.signup")}</a>`
-                })
-              )
-            }
+          <div>
+            <div className="row">
+              <div className="columns medium-8 medium-centered">
+                <form action="/users/sign_in" className="register-form">
+                  <div>
+                    <div>
+                      <label>{I18n.t("devise_views.sessions.new.email_label")}
+                        <input type="email" name="user[email]" placeholder="exemple@domini.com" />
+                      </label>
+                    </div>
+                    <div>
+                      <label>{I18n.t("devise_views.sessions.new.password_label")}
+                        <input type="password" name="user[password]" placeholder="Contrasenya" />
+                      </label>
+                    </div>
+                  </div>
+                  <fieldset>
+                    <label>
+                      <input type="checkbox" />
+                      {I18n.t("devise_views.sessions.new.remember_me")}
+                    </label>
+                  </fieldset>
+                  <button type="submit" className="button expanded">{I18n.t("devise_views.sessions.new.submit")}</button>
+                </form>
+                <p className="text-center">
+                  {htmlToReact(
+                    I18n.t('votes.unauthenticated', {
+                      signin: `<a href="/users/sign_in">${I18n.t("votes.signin")}</a>`,
+                      signup: `<a href="/users/sign_up">${I18n.t("votes.signup")}</a>`
+                    })
+                  )}
+                </p>
+              </div>
+            </div>
+            <div className="row">
+              <div className="columns medium-8 medium-centered">
+                <span className="register__separator">
+                  <span className="register__separator__text">o bé</span>
+                </span>
+                <div className="social-register">
+                  <a className="button button--social button--twitter" href="/users/auth/twitter">
+                    <span className="button--social__icon">
+                      <Icon name="twitter" />
+                    </span>
+                    {I18n.t("omniauth.twitter.sign_in")}
+                  </a>
+                  <a className="button button--social button--facebook" href="/users/auth/facebook">
+                    <span className="button--social__icon">
+                      <Icon name="facebook" />
+                    </span>
+                    {I18n.t("omniauth.facebook.sign_in")}
+                  </a>
+                  <a className="button button--social button--google_oauth2" href="/users/auth/google_oauth2">
+                    <span className="button--social__icon">
+                      <Icon name="google" />
+                    </span>
+                    {I18n.t("omniauth.google_oauth2.sign_in")}
+                  </a>
+                </div>
+                <span className="register__separator">
+                  <span className="register__separator__text"></span>
+                </span>
+              </div>
+            </div>
           </div>
         )
       }
