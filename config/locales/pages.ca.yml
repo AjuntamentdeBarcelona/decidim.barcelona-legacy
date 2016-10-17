@@ -2,18 +2,18 @@
 ca:
   pages:
     download:
+      download-1: Ciutat Vella
+      download-10: Sant Martí
+      download-2: Eixample
+      download-3: Sants - Montjuïc
+      download-4: Les Corts
+      download-5: Sarrià - Sant Gervasi
+      download-6: Gràcia
+      download-7: Horta - Guinardó
+      download-8: Nou Barris
+      download-9: Sant Andreu
       download-district: Descarrega't el PAD de %{district}
       download-pam: Descarrega't el PAM
-      download-1: "Ciutat Vella"
-      download-2: "Eixample"
-      download-3: "Sants - Montjuïc"
-      download-4: "Les Corts"
-      download-5: "Sarrià - Sant Gervasi"
-      download-6: "Gràcia"
-      download-7: "Horta - Guinardó"
-      download-8: "Nou Barris"
-      download-9: "Sant Andreu"
-      download-10: "Sant Martí"
       title: Descarrega't el Pla municipal
     more_information:
       faq:
@@ -71,7 +71,7 @@ ca:
           title: Necessito telèfon mòbil o accés a internet per poder participar?
         title: Preguntes freqüents
       section_1:
-        paragraph-1: 'El Pla d’actuació municipal (PAM) defineix el full de ruta per a la construcció d’una ciutat més equitativa i inclusiva, on tothom pugui viure dignament i hi tingui veu. Una ciutat en què la gent se senti protagonista, acollida i cuidada.'
+        paragraph-1: El Pla d’actuació municipal (PAM) defineix el full de ruta per a la construcció d’una ciutat més equitativa i inclusiva, on tothom pugui viure dignament i hi tingui veu. Una ciutat en què la gent se senti protagonista, acollida i cuidada.
         paragraph-2: El PAM estableix les línies prioritàries, els objectius i les actuacions que el Govern de la ciutat desplegarà durant el mandat. La finalitat és impulsar un projecte socioeconòmic que ha de contribuir a revertir les dinàmiques que han accentuat les desigualtats entre persones i barris, al temps que ha d’iniciar la transició cap a una ciutat que no pot ser aliena als grans reptes ambientals i energètics del nou segle.
         paragraph-3: El PAM, doncs, inclou mesures urgents que no admeten espera, però també té una mirada estratègica, de mitjà i llarg termini en el desenvolupament socioeconòmic, en la cultura, en la innovació tecnològica, en la igualtat de gènere, en l’aprofundiment democràtic, en la lluita contra la contaminació i el canvi climàtic…, en tots els àmbits que han de contribuir a fer de Barcelona una ciutat de drets i d'oportunitats.
         paragraph-4: L’Ajuntament de Barcelona, partint d'una proposta inicial elaborada per l’equip de govern, obre un procés de participació ciutadana per construir, pensar i debatre entre tots les actuacions i prioritats que s’hi han inclòs. Aquest ha de ser un pas endavant en la construcció col•lectiva de Barcelona.
@@ -101,7 +101,7 @@ ca:
         paragraph-1: El procés de participació per al Pla municipal és un mètode híbrid entre les cites presencials i els espais digitals. Aquesta singularitat ha impulsat el naixement de la plataforma <strong>decidim.barcelona</strong>.
         paragraph-2: 'Gràcies a la plataforma decidim.barcelona es crea un espai de participació obert a tota la ciutadania, es fa visible tot el procés de manera transparent i traçable i hi ha un retorn de les propostes introduïdes. '
         paragraph-3: 'Així, doncs, aquest procés ha estat pensat perquè durant dos mesos puguis participar-hi de diferents maneres:'
-        paragraph-4: "Amb aquest procés, volem generar un debat ciutadà sobre els grans temes de la nostra ciutat a partir d’espais de deliberació conjunta i la construcció col·lectiva.<strong>Data de finalització de la recollida de propostes, suports i comentaris: 9 d'abril.</strong>"
+        paragraph-4: 'Amb aquest procés, volem generar un debat ciutadà sobre els grans temes de la nostra ciutat a partir d’espais de deliberació conjunta i la construcció col·lectiva.<strong>Data de finalització de la recollida de propostes, suports i comentaris: 9 d''abril.</strong>'
         title: Com puc participar-hi?
       section_5:
         part-1:
@@ -133,7 +133,7 @@ ca:
           item-2: Que es corresponguin amb les competències municipals.
           item-3: Que no siguin contràries al bé comú.
         paragraph-1: Aquest procés no és vinculant perquè el document final ha de ser aprovat pel Ple municipal i requereix un consens polític suficient.
-        paragraph-2: "Això que es presenta aquí és, per tant, un primer esborrany que s'haurà de modificar amb les aportacions que surtin del procés participatiu. Només aleshores començarà el tràmit per a l’aprovació en el Ple i el període d’al·legacions."
+        paragraph-2: Això que es presenta aquí és, per tant, un primer esborrany que s'haurà de modificar amb les aportacions que surtin del procés participatiu. Només aleshores començarà el tràmit per a l’aprovació en el Ple i el període d’al·legacions.
         paragraph-3: El Govern es compromet a valorar la viabilitat de les propostes amb més suports i a explicar perquè cada una de les propostes s’ha incorporat al document final o s’ha desestimat.
         paragraph-4: 'Els criteris per valorar les propostes sorgides seran els següents:'
         title: "És vinculant aquest procés participatiu?"
