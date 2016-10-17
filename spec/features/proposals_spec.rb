@@ -25,7 +25,8 @@ feature 'Proposals' do
     proposals.each do |proposal|
       within('#proposals') do
         expect(page).to have_content proposal.title
-        expect(page).to have_xpath "//a[contains(@href,'#{proposal_path(proposal, participatory_process_id: participatory_process)}')]"
+        expect(page).
+          to have_xpath "//a[contains(@href,'#{proposal_path(proposal, participatory_process_id: participatory_process, step_id: participatory_process.active_step)}')]"
       end
     end
   end
@@ -72,7 +73,8 @@ feature 'Proposals' do
   scenario 'Show', :js do
     proposal = create(:proposal, participatory_process: participatory_process)
 
-    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+    visit proposal_path(proposal, participatory_process_id: proposal.
+                                  participatory_process, step_id: proposal.participatory_process.active_step.id)
 
     expect(page).to have_content proposal.title
     expect(page).to have_content "external_documention.es"
@@ -304,7 +306,7 @@ feature 'Proposals' do
     login_as(create(:user))
 
     visit edit_proposal_path(proposal, participatory_process_id: proposal.
-                                       participatory_process, step_id: participatory_process.step_id)
+                                       participatory_process, step_id: participatory_process.active_step.id)
     expect(current_path).
       not_to eq(edit_proposal_path(proposal, participatory_process_id: proposal.
                                              participatory_process, step_id: participatory_process.active_step))
@@ -333,10 +335,10 @@ feature 'Proposals' do
     login_as(proposal.author)
 
     visit edit_proposal_path(proposal, participatory_process_id: proposal.
-                                       participatory_process, step_id: participatory_process.active_step)
+                                       participatory_process, step_id: proposal.participatory_process.active_step)
     expect(current_path).
       to eq(edit_proposal_path(proposal, participatory_process_id: proposal.
-                                         participatory_process, step_id: participatory_process.active_step))
+                                         participatory_process, step_id: proposal.participatory_process.active_step))
 
     fill_in 'proposal_title', with: "End child poverty"
     fill_in 'proposal_summary', with: 'Basically...'
@@ -354,8 +356,7 @@ feature 'Proposals' do
     proposal = create(:proposal)
     login_as(proposal.author)
 
-    visit edit_proposal_path(proposal, participatory_process_id: proposal.
-                                       participatory_process, step_id: participatory_process.active_step)
+    visit edit_proposal_path(proposal, participatory_process_id: proposal.participatory_process, step_id: proposal.participatory_process.active_step)
     fill_in 'proposal_title', with: ""
     click_button "Save changes"
 
@@ -560,11 +561,11 @@ feature 'Proposals' do
     conflictive_proposal = create(:proposal, :conflictive)
 
     visit proposal_path(conflictive_proposal, participatory_process_id: conflictive_proposal.participatory_process,
-                        step_id: participatory_process.active_step)
+                        step_id: conflictive_proposal.participatory_process.active_step)
     expect(page).to have_content "This proposal has been flagged as inappropriate by several users."
 
     visit proposal_path(good_proposal, participatory_process_id: good_proposal.
-                                       participatory_process, step_id: participatory_process.active_step)
+                                       participatory_process, step_id: good_proposal.participatory_process.active_step)
     expect(page).to_not have_content "This proposal has been flagged as inappropriate by several users."
   end
 
@@ -574,7 +575,7 @@ feature 'Proposals' do
 
     login_as(user)
     visit proposal_path(proposal, participatory_process_id: proposal.
-                                  participatory_process, step_id: participatory_process.active_step)
+                                  participatory_process, step_id: proposal.participatory_process.active_step)
 
     expect(page).to have_selector("#proposal_#{proposal.id}")
     page.find("#flag-action-#{proposal.id}").click
@@ -589,8 +590,7 @@ feature 'Proposals' do
     Flag.flag(user, proposal)
 
     login_as(user)
-    visit proposal_path(proposal, participatory_process_id: proposal.
-                                  participatory_process, step_id: participatory_process.active_step)
+    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process, step_id: proposal.participatory_process.active_step)
 
     expect(page).to have_selector("#proposal_#{proposal.id}")
     page.find("#unflag-action-#{proposal.id}").click
@@ -604,8 +604,9 @@ feature 'Proposals' do
     user = create(:user)
     proposal = create(:proposal)
     login_as(user)
-    visit proposal_path(proposal, participatory_process_id: proposal.
-                                  participatory_process, step_id: participatory_process.active_step)
+
+    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process, step_id: proposal.participatory_process.active_step)
+
     expect(page).to have_selector("#proposal_#{proposal.id}")
 
     page.find("button", text: "Follow").click
