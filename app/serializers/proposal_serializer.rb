@@ -2,7 +2,7 @@ class ProposalSerializer < ActiveModel::Serializer
   include Concerns::ParticipatoryProcessSerializerUrl
 
   attributes :id, :title, :url, :summary, :created_at, :scope_, :district, :source,
-             :total_votes, :voted, :votable, :closed, :official, :from_meeting,
+             :total_votes, :voted, :votable, :closed?, :official, :from_meeting,
              :editable, :conflictive?, :external_url, :hidden?, :can_hide, :can_hide_author,
              :flagged, :code, :arguable?, :permissions, :total_positive_comments,
              :total_negative_comments, :total_neutral_comments, :total_comments,

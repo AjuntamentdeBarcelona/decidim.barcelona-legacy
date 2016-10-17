@@ -27,7 +27,7 @@ class ParticipatoryProcess < ActiveRecord::Base
 
   scope :featured, -> { where(featured: true) }
 
-  delegate :feature_enabled?, to: :active_step
+  delegate :feature_enabled?, to: :active_step, allow_nil: true
 
   def active_step
     @active_step ||= steps.where(active: true).first
