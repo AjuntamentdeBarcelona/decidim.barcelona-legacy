@@ -22,7 +22,7 @@ class ParticipatoryProcess < ActiveRecord::Base
   has_many :subcategories
   has_many :steps
 
-  delegate :feature_enabled?, to: :active_step
+  delegate :feature_enabled?, to: :active_step, allow_nil: true
 
   def active_step
     @active_step ||= steps.where(active: true).first
