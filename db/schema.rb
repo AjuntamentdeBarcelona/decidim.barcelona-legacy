@@ -382,8 +382,6 @@ ActiveRecord::Schema.define(version: 20161017074216) do
     t.datetime "confirmed_hide_at"
     t.string   "full_image"
     t.string   "banner_image"
-    t.boolean  "featured",          default: false
-    t.boolean  "published",         default: false
   end
 
   create_table "proposal_answers", force: :cascade do |t|
