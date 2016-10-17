@@ -23,6 +23,7 @@ class ProposalsFilters extends Component {
           filterGroupName="source"
           filterGroupValue={this.props.filters.filter["source"]}
           isExclusive={true}
+          showHelp={true}
           onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
         <FilterOption filterName="official" />
         <FilterOption filterName="citizenship" />

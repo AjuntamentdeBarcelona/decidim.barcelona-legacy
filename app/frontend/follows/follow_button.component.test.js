@@ -1,5 +1,5 @@
 import React              from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow }        from 'enzyme';
 
 import { FollowButton }   from './follow_button.component';
 
@@ -16,7 +16,7 @@ describe("Follow button component", function () {
 
   describe("user doesn't follow the resource", function () {
     it("should not render the unfollow button", function () {
-      const wrapper = mount(
+      const wrapper = shallow(
         <FollowButton 
           session={{signed_in: true}}
           fetchFollow={() => {}}
@@ -28,7 +28,7 @@ describe("Follow button component", function () {
 
     it("should call follow action on button click", function () {
       const onButtonClick = sinon.spy();
-      const wrapper = mount(
+      const wrapper = shallow(
         <FollowButton
           session={{signed_in: true}}
           fetchFollow={() => {}}
@@ -38,7 +38,7 @@ describe("Follow button component", function () {
         />
       );
 
-      wrapper.find('button.follow').simulate('click');
+      wrapper.find('SmartButton.follow').simulate('click');
 
       expect(onButtonClick).to.have.been.calledWith({ 
         followingId: 1, 
@@ -49,7 +49,7 @@ describe("Follow button component", function () {
 
   describe("user follows the resource", function () {
     it("should not render the follow button", function () {
-      const wrapper = mount(
+      const wrapper = shallow(
         <FollowButton 
           session={{signed_in: true}}
           fetchFollow={() => {}}
@@ -62,7 +62,7 @@ describe("Follow button component", function () {
 
     it("should call unFollow action on button click", function () {
       const onButtonClick = sinon.spy();
-      const wrapper = mount(
+      const wrapper = shallow(
         <FollowButton
           session={{signed_in: true}}
           fetchFollow={() => {}}
@@ -71,7 +71,7 @@ describe("Follow button component", function () {
         />
       );
 
-      wrapper.find('button.unfollow').simulate('click');
+      wrapper.find('SmartButton.unfollow').simulate('click');
 
       expect(onButtonClick).to.have.been.calledWith(1);
     });

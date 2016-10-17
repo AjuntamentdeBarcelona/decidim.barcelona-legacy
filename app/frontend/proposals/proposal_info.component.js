@@ -1,32 +1,33 @@
 import { PropTypes }  from 'react';
-import ProposalAuthor from './proposal_author.component';
+
+import UserAvatar     from '../application/user_avatar.component';
 
 const ProposalInfoComponent = ({
-  code,
   created_at,
-  official,
-  from_meeting,
   author
-}) => (
-  <div className="card__author author-data author-data--small">
-    <strong>{ code }</strong>
-    <span className="bullet">&nbsp;&bull;&nbsp;</span>
-    <span>{ created_at }</span>
-    <span className="bullet">&nbsp;&bull;&nbsp;</span>
-    <ProposalAuthor 
-      official={ official }
-      fromMeeting={ from_meeting }
-      author={ author } />
-  </div>
-);
+}) => {
+  const authorUrl = author ? `/users/${author.id}` : '#';
+
+  return (
+    <div className="card__author author-data author-data--small">
+      <div className="author-data__main">
+        <div className="author author--inline">
+          <a href={authorUrl} className="author__avatar author__avatar--small">
+            <UserAvatar user={author} />
+          </a>
+          <a href={authorUrl} className="author__name">
+            { author ? author.name : 'no user' }
+          </a>
+          { ' ' + created_at }
+        </div>
+      </div>
+    </div>
+  );
+};
 
 ProposalInfoComponent.propTypes = {
-  code: PropTypes.string.isRequired,
   created_at: PropTypes.string.isRequired,
-  author: PropTypes.object,
-  status: PropTypes.string,
-  official: PropTypes.bool,
-  from_meeting: PropTypes.bool
+  author: PropTypes.object
 };
 
 export default ProposalInfoComponent;
