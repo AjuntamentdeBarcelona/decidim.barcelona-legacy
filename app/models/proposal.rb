@@ -164,16 +164,11 @@ class Proposal < ActiveRecord::Base
   end
 
   def self.not_reviewed
-    where.not(id: reviewed) 
+    where.not(id: reviewed)
   end
 
-  def closed
-    Proposal.closed?
-  end
-  alias :closed? :closed
-
-  def self.closed?
-    Setting[:proposal_closing_time] && (Time.now > Setting[:proposal_closing_time])
+  def closed?
+    participatory_process.feature_enabled? :proposals_readonly
   end
 
   protected
