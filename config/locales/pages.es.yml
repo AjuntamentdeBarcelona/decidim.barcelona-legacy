@@ -2,8 +2,28 @@
 es:
   pages:
     download:
+      download-1: Ciutat Vella
+      download-10: Sant Martí
+      download-2: Eixample
+      download-3: Sants - Montjuïc
+      download-4: Les Corts
+      download-5: Sarrià - Sant Gervasi
+      download-6: Gràcia
+      download-7: Horta - Guinardó
+      download-8: Nou Barris
+      download-9: Sant Andreu
       download-district: Descarga el PAD de %{district}
       download-pam: Descarga el PAM
+      download-1: "Ciutat Vella"
+      download-2: "Eixample"
+      download-3: "Sants - Montjuïc"
+      download-4: "Les Corts"
+      download-5: "Sarrià - Sant Gervasi"
+      download-6: "Gràcia"
+      download-7: "Horta - Guinardó"
+      download-8: "Nou Barris"
+      download-9: "Sant Andreu"
+      download-10: "Sant Martí"
       title: Descarga el Plan municipal
     more_information:
       faq:
@@ -50,7 +70,7 @@ es:
           title: No estoy empadronado en Barcelona, ¿por qué no puedo participar?
         question-8:
           answer: 'Para utilizar la web necesitas una cuenta de usuario. Según el grado de verificación podrás hacer más o menos cosas:'
-          answer-1: "Si te registras en la web con la dirección electrónica y no das ningún dato más (no realizamos el proceso de verificación de residencia) podrás:"
+          answer-1: 'Si te registras en la web con la dirección electrónica y no das ningún dato más (no realizamos el proceso de verificación de residencia) podrás:'
           answer-1-1: Comentar y argumentar propuestas.
           answer-1-2: Apoyar propuestas.
           answer-2: 'Si después de registrarte has hecho la verificación básica, es decir, has verificado la residencia a través de la web (+ info en "Cómo creo y verifico mi cuenta?") podrás:'
@@ -61,10 +81,10 @@ es:
           title: "¿Necesito teléfono móvil o internet para poder participar?"
         title: Preguntas frecuentes
       section_1:
-        paragraph-1: El Plan de Actuación Municipal (PAM) define la hoja de ruta para la construcción de una ciudad más equitativa e inclusiva, donde todo el mundo pueda vivir dignamente y donde todo el mundo tenga voz. Una ciudad en la que la gente se sienta protagonista, acogida y cuidada. 
-        paragraph-2: El PAM establece las líneas prioritarias, los objetivos y las actuaciones que el Gobierno de la ciudad desplegará durante el mandato. La finalidad es impulsar un proyecto socioeconómico que debe contribuir a revertir las dinámicas que han acentuado las desigualdades entre personas y barrios y, al mismo tiempo,  iniciar la transición hacia una ciudad que no puede ser ajena a los grandes retos ambientales y energéticos del nuevo siglo.  
+        paragraph-1: El Plan de Actuación Municipal (PAM) define la hoja de ruta para la construcción de una ciudad más equitativa e inclusiva, donde todo el mundo pueda vivir dignamente y donde todo el mundo tenga voz. Una ciudad en la que la gente se sienta protagonista, acogida y cuidada.
+        paragraph-2: El PAM establece las líneas prioritarias, los objetivos y las actuaciones que el Gobierno de la ciudad desplegará durante el mandato. La finalidad es impulsar un proyecto socioeconómico que debe contribuir a revertir las dinámicas que han acentuado las desigualdades entre personas y barrios y, al mismo tiempo,  iniciar la transición hacia una ciudad que no puede ser ajena a los grandes retos ambientales y energéticos del nuevo siglo.
         paragraph-3: El PAM, pues, incluye medidas urgentes que no admiten espera, pero también tiene una mirada estratégica, de medio y largo plazo en el desarrollo socioeconómico, en la cultura, en la innovación tecnológica, en la igualdad de género, en la profundización democrática, en la lucha contra la contaminación y el cambio climático..., en todos aquellos ámbitos que tienen que contribuir a hacer de Barcelona una ciudad de derechos y oportunidades.
-        paragraph-4: El Ayuntamiento de Barcelona, en base a una propuesta inicial elaborada por el equipo de gobierno, abre un proceso de participación ciudadana para construir, pensar y debatir entre todos las actuaciones y prioridades que se han incluido. Este tiene que ser un paso adelante en la construcción colectiva de Barcelona. 
+        paragraph-4: El Ayuntamiento de Barcelona, en base a una propuesta inicial elaborada por el equipo de gobierno, abre un proceso de participación ciudadana para construir, pensar y debatir entre todos las actuaciones y prioridades que se han incluido. Este tiene que ser un paso adelante en la construcción colectiva de Barcelona.
         title: "¿Qué es el Plan de Actuación Municipal de Barcelona?"
       section_10:
         paragraph-1: El mundo asociativo, las entidades, asociaciones, gremios, colectivos, son el espíritu de la ciudad, han jugado un papel clave en la construcción de Barcelona. Y son quiénes mejor conocen los problemas, necesidades, y muchas veces las soluciones de su barrio, sector, ámbito de trabajo, etc. Por eso, si eres una entidad o asociación y quieres organizar un debate, el Ayuntamiento te facilita la infraestructura necesaria para a que lo puedas hacer. Escríbenos un mail a participacio@bcn.cat y desde el Área de participación nos pondremos en contacto con usted para facilitarle el "KIT DE PARTICIPACIÓN PARA LA AUTOORGANIZACIÓN DE DEBATES EN EL PLAN MUNICIPAL 2016-2019" y el apoyo necesario para realizar el debate.
@@ -91,7 +111,7 @@ es:
         paragraph-1: El proceso de participación para el Plan municipal es un método híbrido entre las citas presenciales y los espacios digitales. Esta singularidad ha impulsado el nacimiento de la plataforma  <strong> decidim.barcelona </ strong>.
         paragraph-2: Gracias a la plataforma decidim.barcelona se crea un espacio de participación abierto a toda la ciudadanía, se hace visible todo el proceso de forma transparente y trazable y hay un retorno de las propuestas introducidas.
         paragraph-3: 'Así pues, este proceso ha sido pensado para que durante dos meses puedas participar de diferentes maneras:'
-        paragraph-4: "Con este proceso, queremos generar un debate ciudadano sobre los grandes temas de nuestra ciudad a partir de espacios de deliberación conjunta y la construcción colectiva. <strong>Fecha de finalización de recogida de propuestas, apoyos y comentarios: 9 de abril.</strong>"
+        paragraph-4: 'Con este proceso, queremos generar un debate ciudadano sobre los grandes temas de nuestra ciudad a partir de espacios de deliberación conjunta y la construcción colectiva. <strong>Fecha de finalización de recogida de propuestas, apoyos y comentarios: 9 de abril.</strong>'
         title: "¿Cómo puedo participar?"
       section_5:
         part-1:

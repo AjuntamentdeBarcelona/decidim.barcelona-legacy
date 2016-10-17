@@ -21,7 +21,7 @@ dependencies:
     - docker-compose run app npm run lint
     - docker-compose run -e NODE_ENV=test app webpack 
     - mkdir -p ~/docker; docker save codegram/ruby-node-phantomjs postgres redis > ~/docker/image.tar
-    - docker-compose run app rake db:setup
+    - docker-compose run app bundle exec rake db:setup
     - docker-compose run app bundle exec rake assets:precompile
 
 database:

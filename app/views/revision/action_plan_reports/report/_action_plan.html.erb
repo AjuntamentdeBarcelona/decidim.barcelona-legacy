@@ -21,12 +21,12 @@
     </p>
 
     <p>
-      <strong>Cites presencials on aquesta actuació ha estat debatuda: </strong> <%= action_plan.meetings.count %>
+      <strong>Cites presencials en què s'ha debatut aquesta actuació: </strong> <%= action_plan.meetings.count %>
     </p>
 
 
     <p>
-      <strong>Número de participants a les cites:</strong>
+      <strong>Nombre de participants a les cites:</strong>
       <%= action_plan.meetings.to_a.map(&:attendee_count).compact.sum %>
     </p>
 
