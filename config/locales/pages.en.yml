@@ -2,6 +2,16 @@
 en:
   pages:
     download:
+      download-1: Ciutat Vella
+      download-10: Sant Martí
+      download-2: Eixample
+      download-3: Sants - Montjuïc
+      download-4: Les Corts
+      download-5: Sarrià - Sant Gervasi
+      download-6: Gràcia
+      download-7: Horta - Guinardó
+      download-8: Nou Barris
+      download-9: Sant Andreu
       download-district: Download PAD %{district}
       download-pam: Download PAM
       download-1: "Ciutat Vella"
@@ -101,7 +111,7 @@ en:
         paragraph-1: The participation process for the municipal plan is a hybrid method appointments face and digital spaces. This uniqueness has promoted the creation of the platform <strong> decidim.barcelona </ strong>.
         paragraph-2: Thanks to decidim.barcelona platform creates an open space for participation to all citizens, is visible throughout the process transparent and traceable and there is a return of the proposals introduced.
         paragraph-3: 'Thus, this process has been designed for two months can participate in different ways:'
-        paragraph-4: "With this process, we generated a public debate on the major issues of our city from areas of joint deliberation and collective construction. <strong>The process of collecting proposals ends on April 9.</strong>"
+        paragraph-4: With this process, we generated a public debate on the major issues of our city from areas of joint deliberation and collective construction. <strong>The process of collecting proposals ends on April 9.</strong>
         title: How can I participate?
       section_5:
         part-1:
