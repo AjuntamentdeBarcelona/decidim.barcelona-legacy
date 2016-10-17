@@ -1,6 +1,8 @@
 import { Component, PropTypes } from 'react';
 import { connect }              from 'react-redux';
 
+import Icon                     from './icon.component';
+
 class FlagActions extends Component {
   render() {
     const { flaggeable, session } = this.props;
@@ -9,11 +11,9 @@ class FlagActions extends Component {
 
     if (session.signed_in && session.user.id !== authorId) {
       return (
-        <span className="js-flag-actions">
-          <span className="flag-content">
-            {this.renderFlagAction(id, flagged)}
-            {this.renderUnFlagAction(id, flagged)}
-          </span>
+        <span>
+          {this.renderFlagAction(id, flagged)}
+          {this.renderUnFlagAction(id, flagged)}
         </span>
       );
     }
@@ -24,12 +24,13 @@ class FlagActions extends Component {
   renderFlagAction(id, flagged) {
     if (!flagged) {
       return (
-        <a 
+        <button 
           id={`flag-action-${id}`}
           onClick={ () => this.props.flagAction(id) }
+          type="button"
           title={ I18n.t('shared.flag') }>
-          &nbsp;<i className="icon-flag flag-disable"></i>&nbsp;&nbsp;
-        </a>
+          <Icon name="flag" className="icon--small" ariaLabel={ I18n.t('shared.flag') } role="img" />
+        </button>
       );
     }
 
@@ -39,12 +40,13 @@ class FlagActions extends Component {
   renderUnFlagAction(id, flagged) {
     if (flagged) {
       return (
-        <a 
+        <button 
           id={`unflag-action-${id}`}
           onClick={ () => this.props.unFlagAction(id) }
+          type="button"
           title={ I18n.t('shared.unflag') }>
-          &nbsp;<i className="icon-flag flag-active"></i>&nbsp;&nbsp;
-        </a>
+          <Icon name="flag" className="icon--small" ariaLabel={ I18n.t('shared.flag') } role="img" />
+        </button>
       );
     }
 

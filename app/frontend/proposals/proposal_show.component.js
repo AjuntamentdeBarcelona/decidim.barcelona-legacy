@@ -3,6 +3,8 @@ import { connect }              from 'react-redux';
 
 import * as actions             from './proposals.actions';
 
+import Icon                     from '../application/icon.component';
+import SmartButton              from '../application/smart_button.component';
 import Loading                  from '../application/loading.component';
 import SocialShareButtons       from '../application/social_share_buttons.component';
 import DangerLink               from '../application/danger_link.component';
@@ -82,86 +84,68 @@ class ProposalShow extends Component {
 
       return (
         <div>
-          <div className={(hidden || (author && author.hidden)) ? 'row faded' : 'row'} id={`proposal_${proposal.id}`}>
-            <div className="small-12 medium-9 column">
-              <i className="icon-angle-left left"></i>&nbsp;
-
-              <a className="left back" href="/proposals">
-                {I18n.t('proposals.show.back_link')}
-              </a>
-
+          <div>
+            <div className="row column view-header">
               {this.renderEditButton(editable, url)}
-
-              <h2>
-                <a href={url}>{title}<ProposalBadge proposal={proposal} /></a>
-              </h2>
-
-              {this.renderConflictiveWarning(conflictive)}
-
+              <h2 className="heading2">{title}</h2>
               <ProposalInfoExtended
                 id={ id }
-                code={ code }
                 created_at={ created_at }
-                official={ official }
-                from_meeting={ from_meeting }
                 author={ author }
                 totalComments={ total_comments } 
                 flagged={ flagged } />
-
-              <div className="proposal-description">
-                {htmlToReact(simpleFormat(summary))}
+            </div>
+            <div className="row">
+              <div className="columns section view-side mediumlarge-4 mediumlarge-push-8 large-3 large-push-9">
+                <div className="card extra">
+                  <div className="card__content">
+                    <span className="extra__suport-number">{ total_votes }</span>
+                    <span className="extra__suport-text">{ I18n.t("votes.supports") }</span>
+                    <SmartButton className="button expanded button--sc">Apoyar</SmartButton>
+                    <FollowButton 
+                      followingId={id}
+                      followingType={'Proposal'} />
+                  </div>
+                </div>
+                <div className="reference">
+                  Referencia: {code}
+                </div>
+                <div className="text-center">
+                  <button className="link text-center">
+                    Compartir propuesta
+                    <Icon name="share" className="icon--share icon--after" />
+                  </button>
+                </div>
               </div>
-
-              {this.renderExternalUrl(external_url)}
-
-              <FilterMeta 
-                scope={ scope_ }
-                district={ district }
-                category={ category }
-                subcategory={ subcategory } 
-                useServerLinks={ true }/>
-
-              <ProposalAnswerMessage answer={proposal.answer} />
-
-              <ProposalActionPlans />
-
-              <ProposalReferences />
-
-              <ProposalReviewer />
-
-              <div className="js-moderator-proposal-actions margin">
-                {this.renderHideButton(id, can_hide)}
-                {this.renderHideAuthorButton(id, can_hide_author)}
-                {this.renderBuildActionPlanButton(id)}
+              <div className="columns mediumlarge-8 mediumlarge-pull-4">
+                <div className="section">
+                  <span className="success label proposal-status">Acceptada</span>
+                  <p>{htmlToReact(simpleFormat(summary))}</p>
+                  <FilterMeta 
+                    scope={ scope_ }
+                    district={ district }
+                    category={ category }
+                    subcategory={ subcategory } 
+                    useServerLinks={ true }/>
+                </div>
+                <div className="section">
+                  <ProposalActionPlans />
+                </div>
+                <div className="section">
+                  <ProposalMeetings useServerLinks={ true } />
+                </div>
               </div>
             </div>
-
-            <aside className="small-12 medium-3 column">
-              <div className="sidebar-divider"></div>
-              <h3>{ I18n.t("votes.supports") }</h3>
-              <ProposalVoteBox 
-                hideButton={ closed }
-                proposalId={ proposal.id } 
-                proposalTitle={ title } 
-                proposalUrl={ url } 
-                voted={ voted } 
-                votable={ votable } 
-                totalVotes={ total_votes } 
-                totalComments={ total_comments } />
-              <FollowButton 
-                followingId={id}
-                followingType={'Proposal'} />
-              <div className="sidebar-divider"></div>
-              <h3>{ I18n.t("proposals.show.share") }</h3>
-              <SocialShareButtons 
-                title={ title }
-                url={ url }/>
-            </aside>
           </div>
-
-          <ProposalMeetings useServerLinks={ true } />
-
-          <Comments commentable={{...proposal, type: 'Proposal'}} />
+          <div className="expanded">
+            <div className="wrapper--inner">
+              <div className="row">
+                <div className="columns large-9" id="comments">
+                  <Comments commentable={{...proposal, type: 'Proposal'}} />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       );
     }

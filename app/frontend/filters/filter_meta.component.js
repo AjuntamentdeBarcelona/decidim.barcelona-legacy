@@ -19,22 +19,22 @@ export default class FilterMeta extends Component {
     if (scope === "city") {
       if (useServerLinks) {
         return (
-          <FilterServerLink name="scope" value="city" cssClass="bcn-icon-localitzacio bcn-icon" label={I18n.t("components.filter_option.city")} namespace={namespace} />
+          <li><FilterServerLink name="scope" value="city" cssClass="bcn-icon-localitzacio bcn-icon" label={I18n.t("components.filter_option.city")} namespace={namespace} /></li>
         );
       } else {
         return (
-          <FilterLink name="scope" value="city" cssClass="bcn-icon-localitzacio bcn-icon" label={I18n.t("components.filter_option.city")} />
+          <li><FilterLink name="scope" value="city" cssClass="bcn-icon-localitzacio bcn-icon" label={I18n.t("components.filter_option.city")} /></li>
         );
       }
     }
 
     if (useServerLinks && district) {
       return (
-        <FilterServerLink name="district" value={district.id} cssClass="bcn-icon-localitzacio bcn-icon" label={district.name} namespace={namespace} />
+        <li><FilterServerLink name="district" value={district.id} cssClass="bcn-icon-localitzacio bcn-icon" label={district.name} namespace={namespace} /></li>
       );
     } else if (district) {
       return (
-        <FilterLink name="district" value={district.id} cssClass="bcn-icon-localitzacio bcn-icon" label={district.name} />
+        <li><FilterLink name="district" value={district.id} cssClass="bcn-icon-localitzacio bcn-icon" label={district.name} /></li>
       );
     }
 
@@ -47,13 +47,13 @@ export default class FilterMeta extends Component {
 
     if (useServerLinks) {
       links = [
-        <FilterServerLink key="category_id" name="category_id" value={category.id} label={` ${category.name}`} cssClass={`category-icon category-icon-${category.id}`}  namespace={namespace} />,
-        <FilterServerLink key="subcategory_id" name="subcategory_id" value={subcategory.id} label={subcategory.name} namespace={namespace} />
+        <li><FilterServerLink key="category_id" name="category_id" value={category.id} label={` ${category.name}`} cssClass={`category-icon category-icon-${category.id}`}  namespace={namespace} /></li>,
+        <li><FilterServerLink key="subcategory_id" name="subcategory_id" value={subcategory.id} label={subcategory.name} namespace={namespace} /></li>
       ];
     } else {
       links = [
-        <FilterLink key="category_id" name="category_id" value={category.id} label={` ${category.name}`} cssClass={`category-icon category-icon-${category.id}`} />,
-        <FilterLink key="subcategory_id" name="subcategory_id" value={subcategory.id} label={subcategory.name} />
+        <li><FilterLink key="category_id" name="category_id" value={category.id} label={` ${category.name}`} cssClass={`category-icon category-icon-${category.id}`} /></li>,
+        <li><FilterLink key="subcategory_id" name="subcategory_id" value={subcategory.id} label={subcategory.name} /></li>
       ];
     }
 

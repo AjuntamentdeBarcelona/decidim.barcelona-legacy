@@ -1,6 +1,7 @@
 import { Component, PropTypes } from 'react';
 import { connect }              from 'react-redux';
 
+import Icon                     from '../application/icon.component';
 import Meeting                  from '../meetings/meeting.component';
 
 import * as actions             from './proposals.actions';
@@ -14,10 +15,9 @@ class ProposalMeetings extends Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="small-12 medium-12 column">
-          {this.renderMeetings()}
-        </div>
+      <div>
+        <h3 className="section-heading">{ I18n.t("proposals.show.meetings_title") }</h3>
+        {this.renderMeetings()}
       </div>
     );
   }
@@ -28,21 +28,42 @@ class ProposalMeetings extends Component {
 
     if (meetings.length > 0) {
       return (
-        <div>
-          <h2>{ I18n.t("proposals.show.meetings_title") }</h2>
-          <div className="meetings-directory">
-            <div className="meetings-list">
-              <ul className="meetings-list-items">
-                { 
-                  meetings.map((meeting) => 
-                    <li key={ meeting.id }>
-                      <Meeting meeting={ meeting } useServerLinks={ useServerLinks } />
-                    </li>
-                  )
-                }
-              </ul>
-            </div>
-          </div>
+        <div className="row small-up-1 medium-up-2 card-grid">
+          { 
+            meetings.map((meeting) => 
+              <div className="column" key={ meeting.id }>
+                <article className="card card--meeting">
+                  <div className="card__content">
+                    <div className="card__header">
+                      <h5 className="card__title">
+                        <a href={meeting.url} className="card__link">
+                          {meeting.title}
+                        </a>
+                      </h5>
+                    </div>
+                    <div className="card__datetime">
+                      <div className="card__datetime__date">
+                        {meeting.held_at}
+                      </div>
+                      <div className="card__datetime__time">
+                        {meeting.start_at} - {meeting.end_at}
+                      </div>
+                    </div>
+                    <p>{meeting.description}</p>
+                    <div className="address card__extra">
+                      <div className="address__icon">
+                        <Icon name="meetings" removeIconClass={true} width="40" height="70" />
+                      </div>
+                      <div className="address__details">
+                        <strong>{meeting.address}</strong><br/>
+                        <span>{meeting.address_details}</span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            )
+          }
         </div>
       );
     }
