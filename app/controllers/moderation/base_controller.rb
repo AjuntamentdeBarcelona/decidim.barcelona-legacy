@@ -8,8 +8,11 @@ class Moderation::BaseController < ApplicationController
 
   private
 
-    def verify_moderator
-      raise CanCan::AccessDenied unless can? :access_panel, :moderation
-    end
+  def verify_moderator
+    raise CanCan::AccessDenied unless can? :access_panel, :moderation
+  end
 
+  def admin_section?
+    true
+  end
 end
