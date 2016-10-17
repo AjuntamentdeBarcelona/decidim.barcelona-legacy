@@ -8,7 +8,7 @@ module ComponentsHelper
         },
         is_organization: current_user && current_user.organization?,
         is_reviewer: current_user && current_user.reviewer?,
-        can_create_new_proposals: can?(:create, Proposal),
+        can_create_new_proposals: @participatory_process && !@participatory_process.feature_enabled?(:proposals_readonly),
         can_create_action_plan: can?(:create, ActionPlan)
       },
       participatory_process_id: @participatory_process_id
