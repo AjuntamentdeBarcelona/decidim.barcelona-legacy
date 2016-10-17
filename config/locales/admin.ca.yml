@@ -88,11 +88,11 @@ ca:
         title: Cerca organitzacions
     participatory_processes:
       index:
+        delete: Delete
         edit: Edit
         new: New
-        title: Title
-        delete: Delete
         restore: Restore
+        title: Title
     proposals:
       index:
         filter: Filtre

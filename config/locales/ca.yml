@@ -325,20 +325,20 @@ ca:
     form:
       participatory_process_admin_email: Correu electrònic de l'administrador
       participatory_process_admin_name: Nom de l'administrador
-      participatory_process_areas: Àrees de l'Ajuntament
+      participatory_process_areas: "Àrees de l'Ajuntament"
       participatory_process_audience: A qui va dirigit el procés?
       participatory_process_citizenship_scope: Quin es el marge o àmbit de la decisió ciutadana?
       participatory_process_description: Descripció
       participatory_process_manager_group: Grup promotor
       participatory_process_name: Nom
-      participatory_process_slug: Url
-      participatory_process_subtitle: Subtítol
-      participatory_process_summary: Breu resum
-      participatory_process_title: Títol
       participatory_process_scope: "Àmbit"
       participatory_process_scope_city: Tota la ciutat
       participatory_process_scope_district: Districtes
       participatory_process_scope_note: Es una mesura per a tota la ciutat o només per a un districte?
+      participatory_process_slug: Url
+      participatory_process_subtitle: Subtítol
+      participatory_process_summary: Breu resum
+      participatory_process_title: Títol
     new:
       form:
         submit_button: Crear proces
