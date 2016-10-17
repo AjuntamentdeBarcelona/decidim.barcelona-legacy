@@ -161,17 +161,17 @@ module CommonActions
 
   def expect_message_you_need_to_sign_in
     expect(page).to have_content 'You must Sign in or Sign up to continue'
-    expect(page).to have_selector('.in-favor button', visible: false)
+    expect(page).to have_selector('button.card__button', visible: false)
   end
 
   def expect_message_to_many_anonymous_votes
     expect(page).to have_content 'Too many anonymous votes to admit vote'
-    expect(page).to have_selector('.in-favor button', visible: false)
+    expect(page).to have_selector('button.card__button', visible: false)
   end
 
   def expect_message_only_verified_can_vote_proposals
     expect(page).to have_content 'Only verified users can vote on proposals'
-    expect(page).to have_selector('.in-favor button', visible: false)
+    expect(page).to have_selector('button.card__button', visible: false)
   end
 
   def create_featured_debates

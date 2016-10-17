@@ -397,8 +397,6 @@ ca:
       tags_label: Temes
       tags_placeholder: Escriu les etiquetes que vulguis separades per una coma (',')
     index:
-      description: Aquí pots navegar tant per les propostes que el Govern va elaborar per a la proposta inicial pel Pla d'Actuació Municipal 2016-2019 com per a aquelles que provenen de la ciutadania, de les cites presencials o de propostes realitzades per entitats i organitzacions socials. També pots consultar els suports rebuts i els comentaris de cada proposta. Aquestes propostes han estat estudiades per a la seva incorporació al pla i totes elles han rebut una resposta.
-      download: Baixa el Pla Municipal
       filter:
         title: Filtrar per
       orders:
@@ -415,7 +413,6 @@ ca:
         title: Cercar
       select_order: Ordenar per
       start_proposal: Crea una proposta
-      title: Propostes
     new:
       back_link: Tornar
       form:
