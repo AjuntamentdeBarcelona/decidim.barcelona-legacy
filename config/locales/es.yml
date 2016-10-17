@@ -324,7 +324,7 @@ es:
       form:
         submit_button: Actualitzar proceso
     flash:
-      feature_disabled_notice: Feature disabled notice
+      feature_disabled_notice: Esta funcionalidad no está activa
     form:
       participatory_process_admin_email: Correo electrónico del administrador
       participatory_process_admin_name: Nombre de l'administador

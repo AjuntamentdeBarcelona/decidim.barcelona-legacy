@@ -70,6 +70,7 @@ class Admin::StepsController < Admin::BaseController
         :position,
         :start_at,
         :end_at,
+        :flags => [],
         :title => I18n.available_locales.map(&:to_s),
         :description => I18n.available_locales.map(&:to_s)
       )

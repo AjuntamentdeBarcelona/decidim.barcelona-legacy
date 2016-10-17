@@ -11,7 +11,7 @@ module ParticipatoryProcessFlags
 
   def check_participatory_process_flag(name)
     unless @participatory_process.send("feature_enabled?", name)
-      redirect_to participatory_process_path(@participatory_process),
+      redirect_to root_path(participatory_process_id: @participatory_process),
         notice: t('participatory_processes.flash.feature_disabled_notice')
     end
   end
