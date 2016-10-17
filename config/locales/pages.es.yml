@@ -4,6 +4,16 @@ es:
     download:
       download-district: Descarga el PAD de %{district}
       download-pam: Descarga el PAM
+      download-1: "Ciutat Vella"
+      download-2: "Eixample"
+      download-3: "Sants - Montjuïc"
+      download-4: "Les Corts"
+      download-5: "Sarrià - Sant Gervasi"
+      download-6: "Gràcia"
+      download-7: "Horta - Guinardó"
+      download-8: "Nou Barris"
+      download-9: "Sant Andreu"
+      download-10: "Sant Martí"
       title: Descarga el Plan municipal
     more_information:
       faq:

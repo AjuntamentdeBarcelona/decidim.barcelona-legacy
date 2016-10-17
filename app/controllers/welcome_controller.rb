@@ -66,7 +66,7 @@ class WelcomeController < ApplicationController
       proposals: Proposal.count,
       supports: Vote.where(votable_type: "Proposal").count,
       action_plans: ActionPlan.count,
-      included_proposals: Proposal.where(official: false).joins(:action_plans).count
+      included_proposals: 8142
     )
   end
 end

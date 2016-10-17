@@ -170,6 +170,7 @@ ignore_unused:
   - 'proposal_results_mailer.proposal.status_*'
   - 'proposals.status.*'
   - 'pages.download.download-district'
+  - 'pages.download.download-*'
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'
