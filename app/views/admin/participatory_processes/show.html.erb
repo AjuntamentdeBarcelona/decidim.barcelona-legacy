@@ -1,0 +1,130 @@
+<% @pp = @participatory_process %>
+
+<p>
+<%= link_to "Volver a procesos participativos", admin_participatory_process_path %> 
+</p>
+
+<h1><%= @pp.decorate.title %></h1>
+
+<dl>
+  <dt><%= t("participatory_processes.form.participatory_process_name") %></dt>
+  <dd><%= @pp.name %></dd>
+  <dt><%= t("participatory_processes.form.full_image") %></dt>
+  <dd><%= image_tag @pp.full_image.thumb.url, class: 'full-image-preview' %></dd>
+  <dt><%= t("participatory_processes.form.banner_image") %></dt>
+  <dd><%= image_tag @pp.banner_image.thumb.url, class: 'banner-image-preview' %></dd>
+  <dt><%= t("participatory_processes.form.participatory_process_slug") %></dt>
+  <dd><%= @pp.slug %></dd>
+  <dt><%= t("participatory_processes.form.participatory_process_published") %></dt>
+  <dd><%= @pp.published %></dd>
+  <dt><%# t("participatory_processes.form.participatory_process_featured") %></dt>
+  <dd><%# @pp.featured %></dd>
+  <dt><%= t("participatory_processes.form.participatory_process_admin_name") %></dt>
+  <dd><%= @pp.admin_name %></dd>
+  <dt><%= t("participatory_processes.form.participatory_process_admin_email") %></dt>
+  <dd><%= @pp.admin_email %></dd>
+  <dt><%= t("participatory_processes.form.participatory_process_admin_email") %></dt>
+  <dd><%= @pp.admin_email %></dd>
+  <dt><%= t("participatory_processes.form.participatory_process_title") %></dt>
+  <dd>
+    <ul>
+      <li>Català: <%= @pp.title["ca"] %></li>
+      <li>English: <%= @pp.title["en"] %></li>
+      <li>Castellano: <%= @pp.title["es"] %></li>
+    </ul>
+  </dd>
+  <dt><%= t("participatory_processes.form.participatory_process_subtitle") %></dt>
+  <dd>
+    <ul>
+      <li>Català: <%= @pp.subtitle["ca"] %></li>
+      <li>English: <%= @pp.subtitle["en"] %></li>
+      <li>Castellano: <%= @pp.subtitle["es"] %></li>
+    </ul>
+  </dd>
+  <dt><%= t("participatory_processes.form.participatory_process_summary") %></dt>
+  <dd>
+    <ul>
+      <li>Català: <%= @pp.summary["ca"] %></li>
+      <li>English: <%= @pp.summary["en"] %></li>
+      <li>Castellano: <%= @pp.summary["es"] %></li>
+    </ul>
+  </dd>
+  <dt><%= t("participatory_processes.form.participatory_process_description") %></dt>
+  <dd>
+    <ul>
+      <li>Català: <%= @pp.description["ca"] %></li>
+      <li>English: <%= @pp.description["en"] %></li>
+      <li>Castellano: <%= @pp.description["es"] %></li>
+    </ul>
+  </dd>
+  <dt><%= t("participatory_processes.form.participatory_process_manager_group") %></dt>
+  <dd><%= @pp.manager_group %></dd>
+  <dt><%= t("participatory_processes.form.participatory_process_areas") %></dt>
+  <dd><%= @pp.areas %></dd>
+  <dt><%= t("participatory_processes.form.participatory_process_audience") %></dt>
+  <dd><%= @pp.audience %></dd>
+  <dt><%= t("participatory_processes.form.participatory_process_citizenship_scope") %></dt>
+  <dd><%= @pp.citizenship_scope %></dd>
+</dl>
+
+<%= link_to "Editar proceso participativo", edit_admin_participatory_process_path(@pp.id), class: "button" %>
+
+<h2><%= @pp.steps.count %> Fases</h2>
+
+<% @pp.steps.each do |step| %>
+  <li>
+    <b><%= step.decorate.title %></b>: <%= step.decorate.title %>. (de <%= step.start_at %> a <%= step.end_at %>). <i><%= step.flags %></i> 
+  </li>
+<% end %>
+
+<%= link_to "Editar fases", admin_participatory_process_steps_path(participatory_process_id: @pp.id), class: "button" %>
+
+<h2><%= @pp.categories.count %> Categorías</h2>
+
+<ul>
+  <% @pp.categories.each do |category| %>
+    <li>
+      <b><%= category.name %></b>: <%= category.description %>.  
+      <ul>
+        <% category.subcategories.each do |subcategory| %> 
+          <li>
+            <b><%= subcategory.name %></b>: <%= category.description %>.  
+          </li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Editar categorías", admin_categories_path, class: "button" %>
+
+<h2><%= @pp.meetings.count %> Citas</h2>
+
+<% @pp.meetings.limit(20).each do |meeting| %>
+  <li>
+    <b><%= meeting.title %></b> 
+  </li>
+<% end %>
+
+<%= link_to "Crear cita nueva", new_moderation_meeting_path(participatory_process_id: @pp.id), class: "button" %>
+
+<h2><%= @pp.proposals.count %> Propuestas</h2>
+
+<% @pp.proposals.limit(20).each do |proposal| %>
+  <li>
+    <b><%= proposal.title %></b> 
+  </li>
+<% end %>
+
+<%= link_to "Crear propuesta nueva", new_proposal_path(@pp.id), class: "button" %>
+
+<h2><%= @pp.debates.count %> Debates</h2>
+
+<% @pp.debates.limit(20).each do |debate| %>
+  <li>
+    <b><%= debate.title %></b> 
+  </li>
+<% end %>
+
+<%= link_to "Crear debate nuevo", new_debate_path(@pp.id), class: "button" %>
+

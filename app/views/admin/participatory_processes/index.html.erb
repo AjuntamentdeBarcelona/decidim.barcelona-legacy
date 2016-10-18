@@ -7,6 +7,7 @@
       <span><%= process.name %></span>
       <span><%= " (/" + process.slug + ")" %></span>
       <div class="right">
+        <%= link_to t('admin.participatory_processes.index.show'), admin_participatory_process_path(process), class: "button tiny radius" %>
         <%= link_to t('admin.participatory_processes.index.steps'), admin_participatory_process_steps_path(process), class: "button tiny radius" %>
         <% unless process.published? %>
           <%= link_to t('admin.participatory_processes.index.publish'), publish_admin_participatory_process_path(process), method: :put, class: "button tiny radius", data: { confirm: t('admin.actions.confirm') } %>
