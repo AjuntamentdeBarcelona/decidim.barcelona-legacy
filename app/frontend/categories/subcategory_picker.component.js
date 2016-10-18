@@ -16,14 +16,14 @@ export default class SubcategoryPicker extends Component {
       var selected = subcategory.id === selectedId;
 
       var classNames = ['subcategory-' + subcategory.id];
-      if(selected){ classNames.push('selected'); }
 
       return (
-        <li className={classNames.join(' ')}
+        <div className={classNames.join(' ')}
             key={subcategory.id}
             onClick={() => component.select(subcategory)}>
-          <span className="name">{subcategory.name} <a href={`/${participatoryProcessId}/categories#subcategory_${subcategory.id}`} target="_blank"> <i className="fa fa-info-circle"></i></a></span>
-        </li>
+          <input type="checkbox" checked={selected} />
+          <label className="name">{subcategory.name} <a href={`/${participatoryProcessId}/categories#subcategory_${subcategory.id}`} target="_blank"> <i className="fa fa-info-circle"></i></a></label>
+        </div>
       );
     });
   }

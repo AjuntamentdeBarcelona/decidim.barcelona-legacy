@@ -41,18 +41,16 @@ export default class CategoryPicker extends Component {
     var name = category.name;
 
     var classNames = ['category-' + category.id];
-    if(selected){ classNames.push('selected'); }
-    var iconName = "icon category-icon-" + category.id;
 
     return (
-      <li className={classNames.join(' ')}
+      <div className={classNames.join(' ')}
           key={category.id}
           onClick={() => this.selectCategory(category)}>
         <span className="category">
-          <span className={iconName}></span>
-          <span className="name">{name}</span>
+          <input type="checkbox" checked={selected} />
+          <label className="name">{name}</label>
         </span>
-      </li>
+      </div>
     );
   }
 

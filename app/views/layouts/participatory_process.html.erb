@@ -54,9 +54,9 @@
               <%= icon "chevron-left" %>
             </button>
             <div class="phase-nav__wrapper" data-carousel>
-              <% @participatory_process.decorate.steps.each do |step| %>
+              <% @participatory_process.decorate.steps.each_with_index do |step, index| %>
                 <%= link_to step_path(participatory_process_id: @participatory_process, step_id: step), class: "phase-nav__item #{(step == participatory_process_step) ? 'is-active' : nil}" do %>
-                  <%= render partial: "participatory_processes/step_navigation_item", locals: { step: step } %>
+                  <%= render partial: "participatory_processes/step_navigation_item", locals: { step: step, index: (index + 1) } %>
                 <% end %>
               <% end %>
             </div>
