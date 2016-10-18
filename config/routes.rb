@@ -141,7 +141,6 @@ Rails.application.routes.draw do
         end
       end
       member do
-        get :show
         put :restore
         put :publish
         put :unpublish
