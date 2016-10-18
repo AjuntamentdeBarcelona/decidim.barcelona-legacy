@@ -18,7 +18,13 @@ class ProposalVoteButton extends Component {
   }
 
   renderVoteButton() {
-    if (this.props.voted) { 
+    if (this.props.closed) {
+      return (
+        <button className={`card__button button ${this.props.className || 'small'}`} disabled>
+          {I18n.t("proposals.proposal.closed_support")}
+        </button>
+      )
+    } else if (this.props.voted) { 
       return (
         <button className={`card__button button ${this.props.className || 'small'} success`}>
           {I18n.t("proposals.proposal.already_supported")}
@@ -173,6 +179,7 @@ export default connect(
 
 ProposalVoteButton.propTypes = {
   className: PropTypes.string,
+  closed: PropTypes.bool.isRequired,
   voted: PropTypes.bool.isRequired,
   votable: PropTypes.bool,
   session: PropTypes.object.isRequired,

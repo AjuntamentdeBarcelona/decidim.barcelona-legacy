@@ -4,19 +4,13 @@ import { connect }              from 'react-redux';
 import * as actions             from './proposals.actions';
 
 import Icon                     from '../application/icon.component';
-import SmartButton              from '../application/smart_button.component';
 import Loading                  from '../application/loading.component';
-import SocialShareButtons       from '../application/social_share_buttons.component';
 import DangerLink               from '../application/danger_link.component';
 import FilterMeta               from '../filters/filter_meta.component';
 import FollowButton             from '../follows/follow_button.component';
 import Comments                 from '../comments/comments.component';
 
-import ProposalReviewer         from './proposal_reviewer.component';
-import ProposalBadge            from './proposal_badge.component';
 import ProposalInfoExtended     from './proposal_info_extended.component';
-import ProposalVoteBox          from './proposal_vote_box.component';
-import ProposalReferences       from './proposal_references.component';
 import ProposalActionPlans      from './proposal_action_plans.component';
 import ProposalMeetings         from './proposal_meetings.component';
 import ProposalAnswerMessage    from './proposal_answer_message.component';
@@ -63,11 +57,8 @@ class ProposalShow extends Component {
         url, 
         title, 
         created_at, 
-        official, 
-        from_meeting, 
         author,
         summary,
-        closed,
         voted,
         votable,
         total_votes,
@@ -77,12 +68,8 @@ class ProposalShow extends Component {
         category,
         subcategory,
         editable,
-        conflictive,
-        external_url,
-        hidden,
-        can_hide,
-        can_hide_author,
-        flagged
+        flagged,
+        closed
       } = proposal;
 
       return (
@@ -106,6 +93,7 @@ class ProposalShow extends Component {
                     <span className="extra__suport-text">{ I18n.t("votes.supports") }</span>
                     <ProposalVoteButton
                       className="expanded button--sc extra"
+                      closed={closed}
                       voted={voted}
                       votable={votable}
                       proposalId={id}
