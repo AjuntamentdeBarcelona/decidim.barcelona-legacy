@@ -220,6 +220,9 @@ en:
       participatory_processes: Participatory processes
       proposals: Proposals
       revision: Review
+    main_footer:
+      condicions: Conditions and terms of use
+      more_information: More information
   locale: English
   meetings:
     card:

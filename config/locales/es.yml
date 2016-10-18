@@ -217,9 +217,12 @@ es:
       my_account_link: Mi cuenta
       my_activity_link: Mi actividad
       notifications: Notificaciones (%{count})
-      participatory_processes: Participatory processes
+      participatory_processes: Procesos participativos
       proposals: Propuestas
       revision: Revisar
+    main_footer:
+      conditions: Condiciones y términos de uso
+      more_information: más información
   locale: Español
   meetings:
     card:
