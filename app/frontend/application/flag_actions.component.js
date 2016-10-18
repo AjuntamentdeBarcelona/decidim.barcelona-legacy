@@ -26,8 +26,7 @@ class FlagActions extends Component {
       return (
         <button 
           id={`flag-action-${id}`}
-          onClick={ () => this.props.flagAction(id) }
-          type="button"
+          onClick={ () => { this.props.flagAction(id) } }
           title={ I18n.t('shared.flag') }>
           <Icon name="flag" className="icon--small" ariaLabel={ I18n.t('shared.flag') } role="img" />
         </button>

@@ -53,7 +53,7 @@ class Comments extends Component {
               )
             }
             return null;
-          })
+          })()
         }
         <div className="row collapse order-by">
           <h2 className="order-by__text section-heading">{commentable.total_comments} comentaris - 

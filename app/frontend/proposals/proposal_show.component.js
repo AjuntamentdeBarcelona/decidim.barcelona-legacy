@@ -69,11 +69,16 @@ class ProposalShow extends Component {
         subcategory,
         editable,
         flagged,
-        closed
+        closed,
+        hidden,
+        can_hide,
+        can_hide_author,
+        external_url,
+        conflictive
       } = proposal;
 
       return (
-        <div>
+        <div className={(hidden || (author && author.hidden)) ? 'faded' : ''} id={`proposal_${proposal.id}`}>
           <div>
             <div className="row column view-header">
               {this.renderEditButton(editable, url)}
@@ -84,7 +89,13 @@ class ProposalShow extends Component {
                 author={ author }
                 totalComments={ total_comments } 
                 flagged={ flagged } />
+              <div className="js-moderator-proposal-actions margin">
+                {this.renderHideButton(id, can_hide)}
+                {this.renderHideAuthorButton(id, can_hide_author)}
+                {this.renderBuildActionPlanButton(id)}
+              </div>
             </div>
+            {this.renderConflictiveWarning(conflictive)}
             <div className="row">
               <div className="columns section view-side mediumlarge-4 mediumlarge-push-8 large-3 large-push-9">
                 <div className="card extra">
@@ -116,7 +127,9 @@ class ProposalShow extends Component {
               <div className="columns mediumlarge-8 mediumlarge-pull-4">
                 <div className="section">
                   {this.renderStatusBadge()}
-                  <p>{htmlToReact(simpleFormat(summary))}</p>
+                  {htmlToReact(simpleFormat(summary))}
+                  <br />
+                  {this.renderExternalUrl(external_url)}
                   <FilterMeta 
                     scope={ scope_ }
                     district={ district }

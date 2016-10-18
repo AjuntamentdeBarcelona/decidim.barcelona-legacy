@@ -52,7 +52,7 @@ class Comment extends Component {
     const authorUrl = author ? `/users/${author.id}` : '#';
 
     return (
-      <article className={`comment ${ancestry ? 'comment--nested' : ''}`}>
+      <article id={`comment_${comment.id}`} className={`comment ${ancestry ? 'comment--nested' : ''}`}>
         <div className="comment__header">
           <div className="author-data">
             <div className="author-data__main">
@@ -140,7 +140,7 @@ class Comment extends Component {
 
     if (comment.permissions.vote) {
       return (
-        <div className="comment__votes">
+        <div id={`comment_${comment.id}_votes`} className="comment__votes">
           <a onClick={() => upVoteComment(comment.id)} className="comment__votes--up">
             <Icon name="chevron-top" className="icon--small" ariaLabel="Votar a favor" role="img" />
             {comment.total_likes}
@@ -154,7 +154,7 @@ class Comment extends Component {
     }
 
     return (
-      <div className="comment__votes">
+      <div id={`comment_${comment.id}_votes`} className="comment__votes">
         <span className="comment__votes--up">
           <Icon name="chevron-top" className="icon--small" ariaLabel="Votar a favor" role="img" />
           {comment.total_likes}

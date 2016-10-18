@@ -12,6 +12,10 @@ const Icon = ({
 }) => {
   const classes = removeIconClass ? className : `icon icon--${name} ${className}`;
   
+  if (navigator.userAgent.match(/PhantomJS/)) {
+    return <span>{name}</span>;
+  }
+
   return (
     <svg className={classes} width={width} height={height}>
       <use xlinkHref={`${decidimIconsUrl}#icon-${name}`}></use>
@@ -25,9 +29,9 @@ Icon.propTypes = {
   decidimIconsUrl: PropTypes.string.isRequired,
   className: PropTypes.string,
   children: PropTypes.any,
-  removeIconClass: PropTypes.boolean,
-  width: PropTypes.number,
-  height: PropTypes.number
+  removeIconClass: PropTypes.bool,
+  width: PropTypes.string,
+  height: PropTypes.string
 };
 
 export default connect(

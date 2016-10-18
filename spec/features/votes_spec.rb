@@ -232,11 +232,10 @@ feature 'Votes' do
         visit proposal_path(@proposal, participatory_process_id: @proposal.
                                        participatory_process, step_id: participatory_process.active_step)
 
-        within('.card__support') do
+        within('.card__content') do
           find('button.card__button').click
           expect(page).to have_content "1 SUPPORT"
-
-          expect(page).to_not have_selector "button.card__button"
+          expect(page).to have_selector "button.card__button"
         end
       end
 
@@ -247,7 +246,7 @@ feature 'Votes' do
         visit proposal_path(@proposal, participatory_process_id: @proposal.
                                        participatory_process, step_id: participatory_process.active_step)
 
-        within('.card__support') do
+        within('.card__content') do
           expect(page).to have_content "2 SUPPORTS"
         end
       end
@@ -256,11 +255,11 @@ feature 'Votes' do
         visit proposal_path(@proposal, participatory_process_id: @proposal.
                                        participatory_process, step_id: participatory_process.active_step)
 
-        within('.card__support') do
+        within('.card__content') do
           find('button.card__button').click
 
           expect(page).to have_content "1 SUPPORT"
-          expect(page).to have_content "Already supported"
+          expect(page).to have_content "ALREADY SUPPORTED"
         end
       end
 
@@ -274,7 +273,7 @@ feature 'Votes' do
           find('button.card__button').click
 
           expect(page).to have_content "1 SUPPORT"
-          expect(page).to have_content "Already supported"
+          expect(page).to have_content "ALREADY SUPPORTED"
         end
       end
     end

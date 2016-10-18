@@ -139,7 +139,6 @@ export function hideProposalAuthor(proposalId) {
 
 export function flagProposal(proposalId) {
   const request = axios.patch(`${API_BASE_URL}/proposals/${proposalId}/flag.json`);
-
   return {
     type: FLAG_PROPOSAL,
     payload: request

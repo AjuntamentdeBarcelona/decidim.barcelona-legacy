@@ -82,11 +82,11 @@ feature 'Proposals' do
     expect(page).to have_content I18n.l(proposal.created_at.to_date)
     expect(page.html).to include "<title>#{proposal.title}</title>"
 
-    expect(page).to have_selector('.share-buttons')
+    #expect(page).to have_selector('.share-buttons')
 
-    within('.share-buttons') do
-      expect(page.all('div.SocialMediaShareButton').count).to be(3) # Twitter, Facebook, Google+
-    end
+    #within('.share-buttons') do
+    #  expect(page.all('div.SocialMediaShareButton').count).to be(3) # Twitter, Facebook, Google+
+    #end
   end
 
   scenario 'Social Media Cards', :js do
