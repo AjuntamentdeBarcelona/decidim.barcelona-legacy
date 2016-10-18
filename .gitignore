@@ -44,3 +44,4 @@ config/locales/*.csv
 
 app/assets/javascripts/bundle*
 app/assets/stylesheets/bundle*
+screenshot_*
