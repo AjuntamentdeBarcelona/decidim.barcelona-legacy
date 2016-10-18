@@ -19,32 +19,34 @@
               </h2>
             </div>
           </div>
-          <div class="columns mediumlarge-3 process-header__actions">
-            <div>
-              <a href="info" class="process-header__action">
-                <span class="action-title">El proceso</span>
-                <span class="action-icon">
-                  <%= icon "info" %>
-                </span>
-              </a>
+          <% if false %>
+            <div class="columns mediumlarge-3 process-header__actions">
+              <div>
+                <a href="info" class="process-header__action">
+                  <span class="action-title">El proceso</span>
+                  <span class="action-icon">
+                    <%= icon "info" %>
+                  </span>
+                </a>
+              </div>
+              <div>
+                <a class="process-header__action" data-toggle="phasesInfo">
+                  <span class="action-title">Las fases</span>
+                  <span class="action-icon">
+                    <%= icon "clock" %>
+                  </span>
+                </a>
+              </div>
+              <div>
+                <a class="process-header__action" data-toggle="processShare">
+                  <span class="action-title">Compartir</span>
+                  <span class="action-icon">
+                    <%= icon "share" %>
+                  </span>
+                </a>
+              </div>
             </div>
-            <div>
-              <a class="process-header__action" data-toggle="phasesInfo">
-                <span class="action-title">Las fases</span>
-                <span class="action-icon">
-                  <%= icon "clock" %>
-                </span>
-              </a>
-            </div>
-            <div>
-              <a class="process-header__action" data-toggle="processShare">
-                <span class="action-title">Compartir</span>
-                <span class="action-icon">
-                  <%= icon "share" %>
-                </span>
-              </a>
-            </div>
-          </div>
+          <% end %>
         </div>
         <div class="row collapse process-header__nav">
           <div class="columns phase-nav">
@@ -109,143 +111,6 @@
           </div>
         </div>
       <% end %>
-    </div>
-
-    <div class="reveal large" id="phasesInfo" data-reveal>
-      <div class="reveal__header">
-        <h3 class="reveal__title">Fases del projecte:</h3>
-        <button class="close-button" data-close aria-label="Close modal" type="button">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="row">
-        <div class="columns large-9 large-centered">
-          <ol class="timeline">
-            <li class="timeline__item">
-              <div class="timeline__phase">
-                <span class="timeline__phase__number">1</span>
-              </div>
-              <div class="timeline__desc" id="timeline-info" data-toggler=".is-expanded">
-                <a class="timeline__title" data-toggle="timeline-info">
-                  <h6>Información
-                    <%= icon "caret-bottom", class: "icon--small timeline__title__icon" %>
-                  </h6>
-                </a>
-                <div class="timeline__content">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Atque, facilis quo maiores magnam modi ab libero praesentium blanditiis.
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li class="timeline__item">
-              <div class="timeline__phase">
-                <span class="timeline__phase__number">2</span>
-              </div>
-              <div class="timeline__desc" id="timeline-refl" data-toggler=".is-expanded">
-                <a class="timeline__title" data-toggle="timeline-refl">
-                  <h6>Reflexión
-                    <%= icon "caret-bottom", class: "icon--small timeline__title__icon" %>
-                  </h6>
-                </a>
-                <div class="timeline__content">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Atque, facilis quo maiores magnam modi ab libero praesentium blanditiis.
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li class="timeline__item timeline__item--current">
-              <div class="timeline__phase">
-                <span class="timeline__phase__number">3</span>
-              </div>
-              <div class="timeline__desc is-expanded" id="timeline-prop" data-toggler=".is-expanded">
-                <a class="timeline__title" data-toggle="timeline-prop">
-                  <h6>Propuestas
-                    <%= icon "caret-bottom", class: "icon--small timeline__title__icon" %>
-                  </h6>
-                </a>
-                <div class="timeline__content">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Atque, facilis quo maiores magnam modi ab libero praesentium blanditiis.
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li class="timeline__item timeline__item--inactive">
-              <div class="timeline__phase">
-                <span class="timeline__phase__number">4</span>
-              </div>
-              <div class="timeline__desc" id="timeline-conc" data-toggler=".is-expanded">
-                <a class="timeline__title" data-toggle="timeline-conc">
-                  <h6>Concreción
-                    <%= icon "caret-bottom", class: "icon--small timeline__title__icon" %>
-                  </h6>
-                </a>
-                <div class="timeline__content">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Atque, facilis quo maiores magnam modi ab libero praesentium blanditiis.
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li class="timeline__item timeline__item--inactive">
-              <div class="timeline__phase">
-                <span class="timeline__phase__number">5</span>
-              </div>
-              <div class="timeline__desc" id="timeline-return" data-toggler=".is-expanded">
-                <a class="timeline__title" data-toggle="timeline-return">
-                  <h6>Retorno
-                    <%= icon "caret-bottom", class: "icon--small timeline__title__icon" %>
-                  </h6>
-                </a>
-                <div class="timeline__content">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Atque, facilis quo maiores magnam modi ab libero praesentium blanditiis.
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li class="timeline__item timeline__item--inactive">
-              <div class="timeline__phase">
-                <span class="timeline__phase__number">6</span>
-              </div>
-              <div class="timeline__desc" id="timeline-follow" data-toggler=".is-expanded">
-                <a class="timeline__title" data-toggle="timeline-follow">
-                  <h6>Seguimiento
-                    <%= icon "caret-bottom", class: "icon--small timeline__title__icon" %>
-                  </h6>
-                </a>
-                <div class="timeline__content">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Atque, facilis quo maiores magnam modi ab libero praesentium blanditiis.
-                  </p>
-                </div>
-              </div>
-            </li>
-          </ol>
-        </div>
-      </div>
-    </div>
-
-    <div class="reveal" id="processShare" data-reveal>
-      <div class="reveal__header">
-        <h3 class="reveal__title">Compartir:</h3>
-        <button class="close-button" data-close aria-label="Close modal" type="button">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="callout warning">
-        <h3>Pendiente revisar contenido.</h3>
-      </div>
     </div>
 
     <div class="row">

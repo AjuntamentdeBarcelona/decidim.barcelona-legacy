@@ -445,6 +445,8 @@ ca:
   recaptcha:
     errors:
       verification_failed: La verificació de paraules no s'ha pogut realitzar
+  scopes:
+    city: Tota la ciutat
   shared:
     advanced_search:
       author_type: Per autor categoria

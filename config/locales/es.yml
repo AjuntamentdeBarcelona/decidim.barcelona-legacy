@@ -445,6 +445,8 @@ es:
   recaptcha:
     errors:
       verification_failed: La verificación de palabras no se ha podido realizar
+  scopes:
+    city: Toda la ciudad
   shared:
     advanced_search:
       author_type: Por categoría de autor

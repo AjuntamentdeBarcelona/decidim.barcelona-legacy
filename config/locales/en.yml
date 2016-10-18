@@ -445,6 +445,8 @@ en:
   recaptcha:
     errors:
       verification_failed: Word verification was unsuccessful
+  scopes:
+    city: The whole city
   shared:
     advanced_search:
       author_type: By author category
