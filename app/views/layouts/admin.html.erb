@@ -1,14 +1,16 @@
 <%= content_for :body do %>
-  <div class="row">
-    <div class="small-12 medium-3 column">
-      <%= side_menu %>
-    </div>
-
-    <div class="admin-content small-12 medium-9 column">
-      <div class="row">
-        <%= display_flash_messages %>
+  <div class="wrapper">
+    <div class="row">
+      <div class="small-12 medium-3 column">
+        <%= side_menu %>
       </div>
-      <%= yield %>
+
+      <div class="admin-content small-12 medium-9 column">
+        <div class="row">
+          <%= display_flash_messages %>
+        </div>
+        <%= yield %>
+      </div>
     </div>
   </div>
 <% end %>
