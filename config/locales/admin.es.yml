@@ -90,10 +90,11 @@ es:
       index:
         delete: Delete
         edit: Edit
-        new: New
+        new: Nuevo
         restore: Restore
-        steps: Steps
-        title: Title
+        show: Mostrar
+        steps: Fases
+        title: Título
     proposals:
       index:
         filter: Filtro

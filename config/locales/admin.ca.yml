@@ -92,8 +92,9 @@ ca:
         edit: Edit
         new: New
         restore: Restore
-        steps: Steps
-        title: Title
+        show: Mostrar
+        steps: Fases
+        title: Titol
     proposals:
       index:
         filter: Filtre

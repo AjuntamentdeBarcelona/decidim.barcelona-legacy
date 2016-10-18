@@ -9,15 +9,15 @@
 <dl>
   <dt><%= t("participatory_processes.form.participatory_process_name") %></dt>
   <dd><%= @pp.name %></dd>
-  <dt><%= t("participatory_processes.form.full_image") %></dt>
+  <dt>full_image</dt>
   <dd><%= image_tag @pp.full_image.thumb.url, class: 'full-image-preview' %></dd>
-  <dt><%= t("participatory_processes.form.banner_image") %></dt>
+  <dt>banner_image</dt>
   <dd><%= image_tag @pp.banner_image.thumb.url, class: 'banner-image-preview' %></dd>
   <dt><%= t("participatory_processes.form.participatory_process_slug") %></dt>
   <dd><%= @pp.slug %></dd>
-  <dt><%= t("participatory_processes.form.participatory_process_published") %></dt>
+  <dt>Publicado</dt>
   <dd><%= @pp.published %></dd>
-  <dt><%# t("participatory_processes.form.participatory_process_featured") %></dt>
+  <dt>Destacado</dt>
   <dd><%# @pp.featured %></dd>
   <dt><%= t("participatory_processes.form.participatory_process_admin_name") %></dt>
   <dd><%= @pp.admin_name %></dd>
