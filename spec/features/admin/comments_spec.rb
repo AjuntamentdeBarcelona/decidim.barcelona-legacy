@@ -53,28 +53,6 @@ feature 'Admin comments' do
     expect(comment.reload).to be_confirmed_hide
   end
 
-  scenario "Current filter is properly highlighted" do
-    visit admin_comments_path
-    expect(page).to_not have_link('Pending')
-    expect(page).to have_link('All')
-    expect(page).to have_link('Confirmed')
-
-    visit admin_comments_path(filter: 'Pending')
-    expect(page).to_not have_link('Pending')
-    expect(page).to have_link('All')
-    expect(page).to have_link('Confirmed')
-
-    visit admin_comments_path(filter: 'all')
-    expect(page).to have_link('Pending')
-    expect(page).to_not have_link('All')
-    expect(page).to have_link('Confirmed')
-
-    visit admin_comments_path(filter: 'with_confirmed_hide')
-    expect(page).to have_link('Pending')
-    expect(page).to have_link('All')
-    expect(page).to_not have_link('Confirmed')
-  end
-
   scenario "Filtering comments" do
     create(:comment, :hidden, body: "Unconfirmed comment")
     create(:comment, :hidden, :with_confirmed_hide, body: "Confirmed comment")

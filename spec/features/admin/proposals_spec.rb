@@ -46,28 +46,6 @@ feature 'Admin proposals' do
     expect(proposal.reload).to be_confirmed_hide
   end
 
-  scenario "Current filter is properly highlighted" do
-    visit admin_proposals_path
-    expect(page).to_not have_link('Pending')
-    expect(page).to have_link('All')
-    expect(page).to have_link('Confirmed')
-
-    visit admin_proposals_path(filter: 'Pending')
-    expect(page).to_not have_link('Pending')
-    expect(page).to have_link('All')
-    expect(page).to have_link('Confirmed')
-
-    visit admin_proposals_path(filter: 'all')
-    expect(page).to have_link('Pending')
-    expect(page).to_not have_link('All')
-    expect(page).to have_link('Confirmed')
-
-    visit admin_proposals_path(filter: 'with_confirmed_hide')
-    expect(page).to have_link('All')
-    expect(page).to have_link('Pending')
-    expect(page).to_not have_link('Confirmed')
-  end
-
   scenario "Filtering proposals" do
     create(:proposal, :hidden, title: "Unconfirmed proposal")
     create(:proposal, :hidden, :with_confirmed_hide, title: "Confirmed proposal")

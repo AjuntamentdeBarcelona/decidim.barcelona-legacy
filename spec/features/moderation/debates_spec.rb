@@ -124,34 +124,6 @@ feature 'Moderate debates' do
       end
     end
 
-    scenario "Current filter is properly highlighted" do
-      visit moderation_debates_path
-      expect(page).to_not have_link('Pending')
-      expect(page).to have_link('All')
-      expect(page).to have_link('Marked as viewed')
-
-      visit moderation_debates_path(filter: 'all')
-      within('.sub-nav') do
-        expect(page).to_not have_link('All')
-        expect(page).to have_link('Pending')
-        expect(page).to have_link('Marked as viewed')
-      end
-
-      visit moderation_debates_path(filter: 'pending_flag_review')
-      within('.sub-nav') do
-        expect(page).to have_link('All')
-        expect(page).to_not have_link('Pending')
-        expect(page).to have_link('Marked as viewed')
-      end
-
-      visit moderation_debates_path(filter: 'with_ignored_flag')
-      within('.sub-nav') do
-        expect(page).to have_link('All')
-        expect(page).to have_link('Pending')
-        expect(page).to_not have_link('Marked as viewed')
-      end
-    end
-
     scenario "Filtering debates" do
       create(:debate, title: "Regular debate")
       create(:debate, :flagged, title: "Pending debate")

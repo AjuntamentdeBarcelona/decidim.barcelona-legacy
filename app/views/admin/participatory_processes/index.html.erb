@@ -1,7 +1,7 @@
 <h2><%= t("admin.participatory_processes.index.title") %></h2>
 <%= render 'shared/filter_subnav', i18n_namespace: "admin.participatory_processes.index" %>
 <h3><%= page_entries_info @participatory_processes.object %></h3>
-<table id="participatory_processes">
+<table id="participatory_processes" class="admin-list">
   <tbody>
     <% @participatory_processes.each do |process| %>
       <tr class="<%= 'hidden' if process.hidden? %>">

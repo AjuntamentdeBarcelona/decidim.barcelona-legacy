@@ -116,34 +116,6 @@ feature 'Moderate proposals' do
       end
     end
 
-    scenario "Current filter is properly highlighted" do
-      visit moderation_proposals_path
-      expect(page).to_not have_link('Pending')
-      expect(page).to have_link('All')
-      expect(page).to have_link('Mark as viewed')
-
-      visit moderation_proposals_path(filter: 'all')
-      within('.sub-nav') do
-        expect(page).to_not have_link('All')
-        expect(page).to have_link('Pending review')
-        expect(page).to have_link('Mark as viewed')
-      end
-
-      visit moderation_proposals_path(filter: 'pending_flag_review')
-      within('.sub-nav') do
-        expect(page).to have_link('All')
-        expect(page).to_not have_link('Pending')
-        expect(page).to have_link('Mark as viewed')
-      end
-
-      visit moderation_proposals_path(filter: 'with_ignored_flag')
-      within('.sub-nav') do
-        expect(page).to have_link('All')
-        expect(page).to have_link('Pending review')
-        expect(page).to_not have_link('Marked as viewed')
-      end
-    end
-
     scenario "Filtering proposals" do
       create(:proposal, title: "Regular proposal")
       create(:proposal, :flagged, title: "Pending proposal")

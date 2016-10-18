@@ -66,7 +66,7 @@ feature 'Admin participatory processes' do
     create(:participatory_process, name: "test")
 
     visit admin_participatory_processes_path
-    within all(".admin-list li").last do
+    within all(".admin-list tr").last do
       click_link "Delete"
     end
 
