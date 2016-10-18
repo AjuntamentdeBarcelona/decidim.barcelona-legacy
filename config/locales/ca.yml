@@ -307,6 +307,8 @@ ca:
     twitter:
       sign_in: Entra amb Twitter
   participatory_processes:
+    show:
+      steps: "Fases"
     edit:
       form:
         submit_button: Actualitzar proces
