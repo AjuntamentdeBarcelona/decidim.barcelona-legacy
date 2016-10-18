@@ -115,8 +115,8 @@ feature 'Proposals' do
     fill_in 'proposal_video_url', with: 'http://youtube.com'
     fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
 
-    find('li', text: category.name["en"]).click
-    find('li', text: subcategory.name["en"]).click
+    find('.category', text: category.name["en"]).click
+    find('.subcategory', text: subcategory.name["en"]).click
 
     click_button 'Create proposal'
 
@@ -140,8 +140,8 @@ feature 'Proposals' do
     fill_in 'proposal_external_url', with: 'http://rescue.org/refugees'
     fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
     fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
-    find('li', text: category.name["en"]).click
-    find('li', text: subcategory.name["en"]).click
+    find('.category', text: category.name["en"]).click
+    find('.subcategory', text: subcategory.name["en"]).click
 
     click_button 'Create proposal'
 
@@ -160,8 +160,8 @@ feature 'Proposals' do
     fill_in 'proposal_title', with: 'Help refugees'
     fill_in 'proposal_summary', with: 'In summary, what we want is...'
     fill_in 'proposal_external_url', with: 'http://rescue.org/refugees'
-    find('li', text: category.name["en"]).click
-    find('li', text: subcategory.name["en"]).click
+    find('.category', text: category.name["en"]).click
+    find('.subcategory', text: subcategory.name["en"]).click
 
     click_button 'Create proposal'
 
@@ -213,8 +213,8 @@ feature 'Proposals' do
     fill_in 'proposal_summary', with: '<p>This is alert("an attack");</p>'
     fill_in 'proposal_external_url', with: 'http://rescue.org/refugees'
     fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
-    find('li', text: category.name["en"]).click
-    find('li', text: subcategory.name["en"]).click
+    find('.category', text: category.name["en"]).click
+    find('.subcategory', text: subcategory.name["en"]).click
 
     click_button 'Create proposal'
 
@@ -233,8 +233,8 @@ feature 'Proposals' do
     fill_in 'proposal_title', with: 'Testing auto link'
     fill_in 'proposal_summary', with: 'This is a link http://www.example.org'
     fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
-    find('li', text: category.name["en"]).click
-    find('li', text: subcategory.name["en"]).click
+    find('.category', text: category.name["en"]).click
+    find('.subcategory', text: subcategory.name["en"]).click
 
     click_button 'Create proposal'
 

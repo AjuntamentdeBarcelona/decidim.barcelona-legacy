@@ -5,11 +5,11 @@ import Icon                     from '../application/icon.component';
 
 class NewProposalButton extends Component {
   render() {
-    const { session, participatoryProcessId } = this.props;
+    const { session, participatoryProcessId, stepId } = this.props;
 
     if (session.can_create_new_proposals) {
       return (
-        <a href={`/${participatoryProcessId}/proposals/new`}
+        <a href={`/${participatoryProcessId}/${stepId}/proposals/new`}
         className="new-proposal title-action__action button small hollow">{I18n.t("proposals.index.start_proposal")}
           <Icon name="plus"/>
         </a>
@@ -20,10 +20,11 @@ class NewProposalButton extends Component {
 }
 
 export default connect(
-  ({ session, participatoryProcessId }) => ({ session, participatoryProcessId })
+  ({ session, participatoryProcessId, stepId }) => ({ session, participatoryProcessId, stepId })
 )(NewProposalButton);
 
 NewProposalButton.propTypes = {
   session: PropTypes.object.isRequired,
-  participatoryProcessId: PropTypes.string.isRequired
+  participatoryProcessId: PropTypes.string.isRequired,
+  stepId: PropTypes.string.isRequired
 };
