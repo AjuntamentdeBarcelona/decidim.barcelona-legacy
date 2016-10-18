@@ -20,6 +20,7 @@ import ProposalReferences       from './proposal_references.component';
 import ProposalActionPlans      from './proposal_action_plans.component';
 import ProposalMeetings         from './proposal_meetings.component';
 import ProposalAnswerMessage    from './proposal_answer_message.component';
+import ProposalVoteButton       from './proposal_vote_button.component';
 
 import htmlToReact              from '../application/html_to_react';
 import simpleFormat             from '../application/simple_format';
@@ -103,7 +104,12 @@ class ProposalShow extends Component {
                   <div className="card__content">
                     <span className="extra__suport-number">{ total_votes }</span>
                     <span className="extra__suport-text">{ I18n.t("votes.supports") }</span>
-                    <SmartButton className="button expanded button--sc">Apoyar</SmartButton>
+                    <ProposalVoteButton
+                      className="expanded button--sc extra"
+                      voted={voted}
+                      votable={votable}
+                      proposalId={id}
+                    />
                     <FollowButton 
                       followingId={id}
                       followingType={'Proposal'} />
