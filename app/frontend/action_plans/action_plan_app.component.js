@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
-function createReducers(sessionState, participatoryProcessIdState) {
+function createReducers(sessionState, participatoryProcessIdState, stepIdState) {
   let session = function (state = sessionState) {
     return state;
   };
@@ -35,11 +35,16 @@ function createReducers(sessionState, participatoryProcessIdState) {
     return state;
   };
 
+  let stepId = function (state = stepIdState) {
+    return state;
+  };
+
   return combineReducers({
     session,
     order,
     pagination,
     participatoryProcessId,
+    stepId,
     actionPlan,
     categories,
     districts,
@@ -51,7 +56,10 @@ export default class ActionPlanApp extends Component {
   render() {
     return (
       <Provider 
-        store={createStoreWithMiddleware(createReducers(this.props.session, this.props.participatory_process_id))}>
+      store={createStoreWithMiddleware(createReducers(this.props.session,
+                                                      this.props.participatory_process_id,
+                                                      this.props.step_id))}>
+
         <ActionPlanShow actionPlanId={this.props.actionPlanId} />
       </Provider>
     );
@@ -61,5 +69,6 @@ export default class ActionPlanApp extends Component {
 ActionPlanApp.propTypes = {
   session: PropTypes.object.isRequired,
   actionPlanId: PropTypes.string.isRequired,
-  participatory_process_id: PropTypes.string.isRequired
+  participatory_process_id: PropTypes.string.isRequired,
+  step_id: PropTypes.string.isRequired
 };

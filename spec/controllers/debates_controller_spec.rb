@@ -14,7 +14,7 @@ describe DebatesController do
       sign_in create(:user)
 
       expect do
-        xhr :post, :vote, id: debate.id, participatory_process_id: participatory_process.slug, value: 'yes'
+        xhr :post, :vote, id: debate.id, participatory_process_id: participatory_process.slug, step_id: participatory_process.active_step, value: 'yes'
       end.to change { debate.reload.votes_for.size }.by(1)
     end
 
@@ -24,7 +24,7 @@ describe DebatesController do
       sign_in create(:user)
 
       expect do
-        xhr :post, :vote, id: debate.id, participatory_process_id: participatory_process.slug, value: 'yes'
+        xhr :post, :vote, id: debate.id, participatory_process_id: participatory_process.slug, step_id: participatory_process.active_step, value: 'yes'
       end.to_not change { debate.reload.votes_for.size }
     end
   end

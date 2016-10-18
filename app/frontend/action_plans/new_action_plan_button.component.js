@@ -3,11 +3,11 @@ import { connect }              from 'react-redux';
 
 class NewActionPlanButton extends Component {
   render() {
-    const { session, participatoryProcessId } = this.props;
+    const { session, participatoryProcessId, stepId } = this.props;
 
     if (session.can_create_action_plan) {
       return (
-        <a href={`/${participatoryProcessId}/action_plans/new`} className="new-proposal button radius expand">{I18n.t("action_plans.index.new")}</a>
+        <a href={`/${participatoryProcessId}/${stepId}/action_plans/new`} className="new-proposal button radius expand">{I18n.t("action_plans.index.new")}</a>
       );
     }
     return null;
@@ -15,10 +15,11 @@ class NewActionPlanButton extends Component {
 }
 
 export default connect(
-  ({ session, participatoryProcessId }) => ({ session, participatoryProcessId })
+  ({ session, participatoryProcessId, stepId }) => ({ session, participatoryProcessId, stepId })
 )(NewActionPlanButton);
 
 NewActionPlanButton.propTypes = {
   session: PropTypes.object.isRequired,
-  participatoryProcessId: PropTypes.string.isRequired
+  participatoryProcessId: PropTypes.string.isRequired,
+  stepId: PropTypes.string.isRequired
 };

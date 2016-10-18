@@ -110,7 +110,9 @@ class Api::ActionPlansController < Api::ApplicationController
               action_plan.subcategory.name[I18n.default_locale.to_s],
               action_plan.title,
               strip_tags(action_plan.description),
-              action_plan_url(id: action_plan, participatory_process_id: @participatory_process),
+              action_plan_url(id: action_plan, participatory_process_id:
+                                                 @participatory_process,
+                              step_id: Step.step_for(@participatory_process, "action_plans")),
               proposal.code,
               proposal.author.try(:name),
               translate_source(proposal.source),
@@ -121,7 +123,8 @@ class Api::ActionPlansController < Api::ApplicationController
               proposal.summary,
               proposal.total_votes,
               proposal.comments_count,
-              proposal_url(id: proposal, participatory_process_id: @participatory_process)
+              proposal_url(id: proposal, participatory_process_id: @participatory_process,
+                           step_id: Step.step_for(@participatory_process, "proposals"))
             ]
           end
         end

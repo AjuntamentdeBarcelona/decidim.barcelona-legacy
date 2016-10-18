@@ -38,7 +38,10 @@ module CommentableActions
     if verify_recaptcha(model: @resource) && @resource.save
       track_event
       if @resource.participatory_process.present?
-        redirect_path = url_for(controller: controller_name, action: :show, id: @resource, participatory_process_id: @resource.participatory_process)
+        redirect_path = url_for(controller: controller_name, action: :show,
+                                id: @resource,
+                                participatory_process_id: @resource. participatory_process,
+                                step_id: Step. step_for(@resource.participatory_process, controller_name))
       else
         redirect_path = url_for(controller: controller_name, action: :show, id: @resource)
       end
@@ -58,7 +61,9 @@ module CommentableActions
     resource.assign_attributes(strong_params)
     if verify_recaptcha(model: resource) && resource.save
       if resource.participatory_process.present?
-        redirect_path = url_for(controller: controller_name, action: :show, id: resource, participatory_process_id: resource.participatory_process)
+        redirect_path = url_for(controller: controller_name, action: :show,
+                                id: resource, participatory_process_id: resource.participatory_process,
+                                step_id: Step.step_for(resource.participatory_process, controller_name))
       else
         redirect_path = url_for(controller: controller_name, action: :show, id: resource)
       end

@@ -1,11 +1,10 @@
 module MailerHelper
-
   def commentable_url(commentable)
-    if commentable.is_a?(Debate)
-      debate_url(commentable, participatory_process_id: commentable.participatory_process.slug) 
-    elsif commentable.is_a?(Proposal)
-      proposal_url(commentable, participatory_process_id: commentable.participatory_process.slug) 
-    end
-  end
+    name = commentable.class.name.downcase.pluralize
+    participatory_process = commentable.participatory_process
 
+    url_for(id: commentable, controller: name, action: :show,
+            participatory_process_id: participatory_process,
+            step_id: Step.step_for(participatory_process, name))
+  end
 end

@@ -9,14 +9,16 @@ feature 'Moderate comments', :js do
     comment = create(:comment)
 
     login_as(moderator)
-    visit debate_path(comment.commentable, participatory_process_id: comment.commentable.participatory_process)
+    visit debate_path(comment.commentable, participatory_process_id: comment.commentable.participatory_process,
+                      step_id: comment.commentable.participatory_process.active_step)
 
     expect(page).to have_css("#comment_#{comment.id}")
 
     page.find("#comment_#{comment.id} a", text: 'Hide').click
 
     login_as(citizen)
-    visit debate_path(comment.commentable, participatory_process_id: comment.commentable.participatory_process)
+    visit debate_path(comment.commentable, participatory_process_id: comment.commentable.participatory_process,
+                      step_id: comment.commentable.participatory_process.active_step)
 
     expect(page).not_to have_css('.comment', count: 1)
   end
@@ -26,7 +28,8 @@ feature 'Moderate comments', :js do
     comment = create(:comment, user: moderator)
 
     login_as(moderator)
-    visit debate_path(comment.commentable, participatory_process_id: comment.commentable.participatory_process)
+    visit debate_path(comment.commentable, participatory_process_id: comment.commentable.participatory_process,
+                      step_id: comment.commentable.participatory_process.active_step)
 
     within("#comment_#{comment.id}") do
       expect(page).to_not have_link('Hide')

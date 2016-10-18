@@ -5,7 +5,9 @@ class CategoryDecorator < ApplicationDecorator
   translates :name, :description
 
   def proposals_path
-    h.proposals_path(participatory_process_id: participatory_process, filter: "category_id=#{id}")
+    h.proposals_path(participatory_process_id: participatory_process,
+                     filter: "category_id=#{id}",
+                     step_id: Step.step_for(participatory_process, "proposals"))
   end
 
   def code

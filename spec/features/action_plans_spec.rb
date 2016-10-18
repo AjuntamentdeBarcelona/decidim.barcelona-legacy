@@ -14,7 +14,9 @@ feature 'Action plans', :js do
   scenario 'Create an action plan from scratch' do
     proposal = create(:proposal, participatory_process: participatory_process, title: "A good looking proposal")
 
-    visit action_plans_path(participatory_process_id: participatory_process)
+    visit action_plans_path(participatory_process_id: participatory_process,
+                            step_id: participatory_process.active_step)
+
     click_link "New action plan" 
     fill_in "action_plan_title", with: "My action plan title"
     fill_in_editor "action_plan_description", with: "My action plan description"
@@ -40,7 +42,9 @@ feature 'Action plans', :js do
     related = create(:proposal, participatory_process: participatory_process, title: "A related proposal")
     Reference.create(source: comment, referrer: proposal, referenced: related)
 
-    visit proposals_path(participatory_process_id: participatory_process)
+    visit proposals_path(participatory_process_id: participatory_process,
+                         step_id: participatory_process.active_step)
+
     click_link "A good looking proposal"
     click_link "Create action plan"
     click_button "Create action plan"
@@ -55,11 +59,14 @@ feature 'Action plans', :js do
   scenario 'Edit an existing action plan' do
     action_plan = create(:action_plan, participatory_process: participatory_process, scope: 'city')
 
-    visit action_plans_path(participatory_process_id: participatory_process)
+    visit action_plans_path(participatory_process_id: participatory_process,
+                            step_id: participatory_process.active_step)
+
     click_link action_plan.title
     choose 'action_plan_scope_district'
     select 'Ciutat Vella', from: 'action_plan_district'
-    visit action_plans_path(participatory_process_id: participatory_process)
+    visit action_plans_path(participatory_process_id: participatory_process,
+                            step_id: participatory_process.active_step)
 
     expect(page).to have_content("Ciutat Vella")
   end
@@ -67,7 +74,9 @@ feature 'Action plans', :js do
   scenario 'Create a new revision for an action plan' do
     action_plan = create(:action_plan, participatory_process: participatory_process)
 
-    visit action_plans_path(participatory_process_id: participatory_process)
+    visit action_plans_path(participatory_process_id: participatory_process,
+                            step_id: participatory_process.active_step)
+
     click_link action_plan.title
     click_link "New revision"
     fill_in "action_plan_revision_title", with: "My title revision"
@@ -82,7 +91,9 @@ feature 'Action plans', :js do
     target_action_plan = create(:action_plan, participatory_process: participatory_process, category: category)
     another_action_plan = create(:action_plan, participatory_process: participatory_process)
 
-    visit action_plans_path(participatory_process_id: participatory_process)
+    visit action_plans_path(participatory_process_id: participatory_process,
+                            step_id: participatory_process.active_step)
+
     choose "filter_category_id_#{category.id}"
 
     expect(page).to have_content(target_action_plan.title)
@@ -95,7 +106,8 @@ feature 'Action plans', :js do
     action_plan = create(:action_plan, participatory_process: participatory_process)
     action_plan.revisions << create(:action_plan_revision, title: 'A bad action plan')
 
-    visit action_plans_path(participatory_process_id: participatory_process)
+    visit action_plans_path(participatory_process_id: participatory_process,
+                            step_id: participatory_process.active_step)
 
     find('.proposal-filters .filters__search .input-group-field').send_keys("good")
     find('.proposal-filters .filters__search button').click
@@ -107,10 +119,13 @@ feature 'Action plans', :js do
   scenario 'Delete an action plan' do
     action_plan = create(:action_plan, participatory_process: participatory_process)
 
-    visit action_plans_path(participatory_process_id: participatory_process)
+    visit action_plans_path(participatory_process_id: participatory_process,
+                            step_id: participatory_process.active_step)
+
     click_link action_plan.title
     page.find('a', text: 'remove').click
-    visit action_plans_path(participatory_process_id: participatory_process)
+    visit action_plans_path(participatory_process_id: participatory_process,
+                            step_id: participatory_process.active_step)
 
     expect(page).not_to have_content(action_plan.title)
   end
@@ -119,10 +134,13 @@ feature 'Action plans', :js do
     approved_action_plan = create(:action_plan, participatory_process: participatory_process)
     non_approved_action_plan = create(:action_plan, participatory_process: participatory_process)
 
-    visit action_plans_path(participatory_process_id: participatory_process)
+    visit action_plans_path(participatory_process_id: participatory_process,
+                            step_id: participatory_process.active_step)
+
     click_link approved_action_plan.title
     page.find('a', text: 'approve').click
-    visit action_plans_path(participatory_process_id: participatory_process)
+    visit action_plans_path(participatory_process_id: participatory_process,
+                            step_id: participatory_process.active_step)
     choose 'filter_action_plan_approval_approved'
 
     expect(page).to have_content(approved_action_plan.title)

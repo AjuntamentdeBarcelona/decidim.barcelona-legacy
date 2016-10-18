@@ -10,13 +10,15 @@ feature 'Moderate proposals' do
     proposal = create(:proposal, participatory_process: participatory_process)
 
     login_as(moderator)
-    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process,
+                        step_id: proposal.participatory_process.active_step)
 
     expect(page).to have_selector("#proposal_#{proposal.id}")
     find("#proposal_#{proposal.id} a", text: "Hide").click
 
     login_as(citizen)
-    visit proposals_path(participatory_process_id: participatory_process)
+    visit proposals_path(participatory_process_id: participatory_process,
+                         step_id: participatory_process.active_step)
 
     expect(page).to have_css('.proposal', count: 0)
   end
@@ -26,7 +28,8 @@ feature 'Moderate proposals' do
     proposal = create(:proposal, participatory_process: participatory_process, author: moderator)
 
     login_as(moderator)
-    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process,
+                        step_id: proposal.participatory_process.active_step)
 
     within("#proposal_#{proposal.id}") do
       expect(page).to_not have_link('Hide')

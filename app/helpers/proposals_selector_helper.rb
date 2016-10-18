@@ -12,7 +12,8 @@ module ProposalsSelectorHelper
     proposals.map do |proposal|
       {
         id: proposal.id,
-        url: proposal_url(proposal, participatory_process_id: proposal.participatory_process),
+        url: proposal_url(proposal, participatory_process_id: proposal.participatory_process,
+                          step_id: Step.step_for(proposal.participatory_process, "proposals")),
         title: proposal.title,
         summary: proposal.summary,
         source: proposal.source,

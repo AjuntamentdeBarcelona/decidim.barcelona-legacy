@@ -9,7 +9,8 @@ feature 'Commenting proposals', :js do
   scenario 'Index' do
     3.times { create(:comment, commentable: proposal) }
 
-    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+    visit proposal_path(proposal, participatory_process_id: proposal.
+                                  participatory_process, step_id: participatory_process.active_step)
 
     expect(page).to have_css('.comment', count: 3)
 
@@ -26,7 +27,8 @@ feature 'Commenting proposals', :js do
     c2 = create(:comment, :with_confidence_score, commentable: proposal, cached_votes_up: 10, cached_votes_total: 12, created_at: Time.now - 1)
     c3 = create(:comment, :with_confidence_score, commentable: proposal, cached_votes_up: 1, cached_votes_total: 2, created_at: Time.now)
 
-    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+    visit proposal_path(proposal, participatory_process_id: proposal.
+                                  participatory_process, step_id: participatory_process.active_step)
 
     expect(page).to have_css(".comment", count: 3)
 
@@ -52,7 +54,8 @@ feature 'Commenting proposals', :js do
    old_child = create(:comment, commentable: proposal, parent_id: new_root.id, created_at: Time.now - 10)
    new_child = create(:comment, commentable: proposal, parent_id: new_root.id, created_at: Time.now)
 
-   visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+   visit proposal_path(proposal, participatory_process_id: proposal.
+                                 participatory_process, step_id: participatory_process.active_step)
 
    expect(page).to have_css(".comment", count: 4)
 
@@ -75,7 +78,8 @@ feature 'Commenting proposals', :js do
   scenario 'Turns links into html links' do
     comment = create :comment, commentable: proposal, body: 'Built with http://rubyonrails.org/'
 
-    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+    visit proposal_path(proposal, participatory_process_id: proposal.
+                                  participatory_process, step_id: participatory_process.active_step)
 
     expect(page).to have_css("#comment_#{comment.id}")
 
@@ -88,7 +92,8 @@ feature 'Commenting proposals', :js do
   scenario 'Sanitizes comment body for security' do
     comment = create :comment, commentable: proposal, body: "<script>alert('hola')</script> <a href=\"javascript:alert('sorpresa!')\">click me<a/> http://madrid.es"
 
-    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+    visit proposal_path(proposal, participatory_process_id: proposal.
+                                  participatory_process, step_id: participatory_process.active_step)
 
     expect(page).to have_css("#comment_#{comment.id}")
 
@@ -102,7 +107,8 @@ feature 'Commenting proposals', :js do
   feature 'Not logged user' do
     scenario 'can not see comments forms' do
       create(:comment, commentable: proposal)
-      visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+      visit proposal_path(proposal, participatory_process_id: proposal.
+                                    participatory_process, step_id: participatory_process.active_step)
 
       expect(page).to have_content 'You must Sign in or Sign up to leave a comment'
       within('#comments') do
@@ -114,7 +120,8 @@ feature 'Commenting proposals', :js do
 
   scenario 'Create a neutral comment' do
     login_as(user)
-    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+    visit proposal_path(proposal, participatory_process_id: proposal.
+                                  participatory_process, step_id: participatory_process.active_step)
 
     fill_in "comment-body-root", with: 'Have you thought about...?'
     click_button 'Publish comment'
@@ -127,7 +134,8 @@ feature 'Commenting proposals', :js do
 
   scenario 'Create a comment in favor' do
     login_as(user)
-    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+    visit proposal_path(proposal, participatory_process_id: proposal.
+                                  participatory_process, step_id: participatory_process.active_step)
 
     fill_in "comment-body-root", with: 'Have you thought about...?'
     choose "In favor"
@@ -141,7 +149,8 @@ feature 'Commenting proposals', :js do
 
   scenario 'Create a comment against' do
     login_as(user)
-    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+    visit proposal_path(proposal, participatory_process_id: proposal.
+                                  participatory_process, step_id: participatory_process.active_step)
 
     fill_in "comment-body-root", with: 'Have you thought about...?'
     choose "Against"
@@ -159,7 +168,8 @@ feature 'Commenting proposals', :js do
     comment = create(:comment, commentable: proposal, user: citizen)
 
     login_as(manuela)
-    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+    visit proposal_path(proposal, participatory_process_id: proposal.
+                                  participatory_process, step_id: participatory_process.active_step)
 
     expect(page).not_to have_css('.comments_list .loading-component')
 
@@ -182,7 +192,8 @@ feature 'Commenting proposals', :js do
       parent = parent.children.first
     end
 
-    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+    visit proposal_path(proposal, participatory_process_id: proposal.
+                                  participatory_process, step_id: participatory_process.active_step)
     expect(page).not_to have_css('.loading-component')
     expect(page).to have_css('.comments_list .comment', count: 8)
   end
@@ -191,7 +202,8 @@ feature 'Commenting proposals', :js do
     comment = create(:comment, commentable: proposal)
 
     login_as(user)
-    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+    visit proposal_path(proposal, participatory_process_id: proposal.
+                                  participatory_process, step_id: participatory_process.active_step)
 
     within "#comment_#{comment.id}" do
       page.find("#flag-action-#{comment.id}").click
@@ -206,7 +218,8 @@ feature 'Commenting proposals', :js do
     Flag.flag(user, comment)
 
     login_as(user)
-    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+    visit proposal_path(proposal, participatory_process_id: proposal.
+                                  participatory_process, step_id: participatory_process.active_step)
 
     within "#comment_#{comment.id}" do
       page.find("#unflag-action-#{comment.id}").click
@@ -221,7 +234,8 @@ feature 'Commenting proposals', :js do
     comment = create(:comment, commentable: proposal)
 
     login_as(user)
-    visit proposals_path(participatory_process_id: participatory_process)
+    visit proposals_path(participatory_process_id: participatory_process,
+                         step_id: participatory_process.active_step)
     click_link "Should we change the world?", match: :first
 
     within "#comment_#{comment.id}" do
@@ -235,7 +249,8 @@ feature 'Commenting proposals', :js do
     comment = create(:comment, commentable: proposal, body: "this should be visible")
     comment.user.erase
 
-    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+    visit proposal_path(proposal, participatory_process_id: proposal.
+                                  participatory_process, step_id: participatory_process.active_step)
     within "#comment_#{comment.id}" do
       expect(page).to have_content('User deleted')
       expect(page).to have_content('this should be visible')
@@ -247,7 +262,8 @@ feature 'Commenting proposals', :js do
       moderator = create(:moderator)
 
       login_as(moderator)
-      visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+      visit proposal_path(proposal, participatory_process_id: proposal.
+                                    participatory_process, step_id: participatory_process.active_step)
 
       fill_in "comment-body-root", with: "I am moderating!"
       check "comment-as-moderator-root"
@@ -266,7 +282,8 @@ feature 'Commenting proposals', :js do
       comment = create(:comment, commentable: proposal, user: citizen)
 
       login_as(moderator)
-      visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+      visit proposal_path(proposal, participatory_process_id: proposal.
+                                    participatory_process, step_id: participatory_process.active_step)
 
       expect(page).to have_css("#comment_#{comment.id}")
       page.find('a.reply').click
@@ -290,7 +307,8 @@ feature 'Commenting proposals', :js do
       moderator = create(:moderator)
 
       login_as(moderator)
-      visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+      visit proposal_path(proposal, participatory_process_id: proposal.
+                                    participatory_process, step_id: participatory_process.active_step)
 
       expect(page).to_not have_content "Comment as administrator"
     end
@@ -301,7 +319,8 @@ feature 'Commenting proposals', :js do
       admin = create(:administrator)
 
       login_as(admin)
-      visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+      visit proposal_path(proposal, participatory_process_id: proposal.
+                                    participatory_process, step_id: participatory_process.active_step)
 
       fill_in "comment-body-root", with: "I am your Admin!"
       check "comment-as-administrator-root"
@@ -320,7 +339,8 @@ feature 'Commenting proposals', :js do
       comment = create(:comment, commentable: proposal, user: citizen)
 
       login_as(admin)
-      visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+      visit proposal_path(proposal, participatory_process_id: proposal.
+                                    participatory_process, step_id: participatory_process.active_step)
 
       expect(page).to have_css("#comment_#{comment.id}")
       page.find('a.reply').click
@@ -344,7 +364,8 @@ feature 'Commenting proposals', :js do
       admin  = create(:administrator)
 
       login_as(admin)
-      visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+      visit proposal_path(proposal, participatory_process_id: proposal.
+                                    participatory_process, step_id: participatory_process.active_step)
 
       expect(page).to_not have_content "Comment as moderator"
     end
@@ -365,7 +386,8 @@ feature 'Commenting proposals', :js do
       create(:vote, voter: @manuela, votable: @comment, vote_flag: true)
       create(:vote, voter: @pablo, votable: @comment, vote_flag: false)
 
-      visit proposal_path(@proposal, participatory_process_id: @proposal.participatory_process)
+      visit proposal_path(@proposal, participatory_process_id: @proposal.
+                                     participatory_process, step_id: participatory_process.active_step)
 
       within("#comment_#{@comment.id}_votes") do
         within(".in_favor") do
@@ -381,7 +403,8 @@ feature 'Commenting proposals', :js do
     end
 
     scenario 'Create' do
-      visit proposal_path(@proposal, participatory_process_id: @proposal.participatory_process)
+      visit proposal_path(@proposal, participatory_process_id: @proposal.
+                                     participatory_process, step_id: participatory_process.active_step)
 
       within("#comment_#{@comment.id}_votes") do
         find(".in_favor a").click
@@ -399,7 +422,8 @@ feature 'Commenting proposals', :js do
     end
 
     scenario 'Update' do
-      visit proposal_path(@proposal, participatory_process_id: @proposal.participatory_process)
+      visit proposal_path(@proposal, participatory_process_id: @proposal.
+                                     participatory_process, step_id: participatory_process.active_step)
 
       within("#comment_#{@comment.id}_votes") do
         find('.in_favor a').click
@@ -418,7 +442,8 @@ feature 'Commenting proposals', :js do
     end
 
     scenario 'Trying to vote multiple times' do
-      visit proposal_path(@proposal, participatory_process_id: @proposal.participatory_process)
+      visit proposal_path(@proposal, participatory_process_id: @proposal.
+                                     participatory_process, step_id: participatory_process.active_step)
 
       within("#comment_#{@comment.id}_votes") do
         find('.in_favor a').click

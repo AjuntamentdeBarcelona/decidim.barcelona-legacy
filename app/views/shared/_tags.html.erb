@@ -3,12 +3,12 @@
 <% if taggable.tags.any? %>
   <span class='tags'>
     <% taggable.tag_list_with_limit(limit).each do |tag| %>
-      <%= link_to sanitize(tag.name), send("#{taggable.class.to_s.downcase.pluralize}_path", participatory_process_id: @participatory_process, tag: tag.name) %>
+      <%= link_to sanitize(tag.name), send("#{taggable.class.to_s.downcase.pluralize}_path", participatory_process_id: @participatory_process, tag: tag.name, step_id: params[:step_id]) %>
     <% end %>
 
     <% if taggable.tags_count_out_of_limit(limit) > 0 %>
       <%= link_to "#{taggable.tags_count_out_of_limit(limit)}+",
-                  send("#{taggable.class.to_s.downcase}_path", taggable, participatory_process_id: @participatory_process) %>
+                  send("#{taggable.class.to_s.downcase}_path", taggable, participatory_process_id: @participatory_process, step_id: params[:step_id]) %>
     <% end %>
   </span>
 <% end %>

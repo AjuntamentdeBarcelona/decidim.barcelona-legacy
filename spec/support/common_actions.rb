@@ -75,10 +75,12 @@ module CommonActions
     login_as(user)
 
     commentable_path = if commentable.is_a?(Proposal)
-      proposal_path(commentable, participatory_process_id: commentable.participatory_process.slug)
-    else
-      debate_path(commentable, participatory_process_id: commentable.participatory_process.slug)
-    end
+                         proposal_path(commentable, participatory_process_id: commentable.participatory_process,
+                                       step_id: commentable.participatory_process.active_step)
+                       elsif commentable.is_a?(Debate)
+                         debate_path(commentable, participatory_process_id: commentable.participatory_process,
+                                     step_id: commentable.participatory_process.active_step)
+                       end
 
     visit commentable_path
 
