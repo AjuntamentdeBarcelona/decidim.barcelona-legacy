@@ -34,11 +34,13 @@ class ProposalShow extends Component {
   }
 
   componentDidMount() {
-    const { fetchProposal } = this.props;
+    const { fetchProposal, fetchAnswer, proposalId } = this.props;
 
-    fetchProposal(this.props.proposalId).then(() => {
+    fetchProposal(proposalId).then(() => {
       this.setState({ loading: false });
     });
+
+    fetchAnswer(proposalId);
   }
 
   render() {
@@ -119,7 +121,7 @@ class ProposalShow extends Component {
               </div>
               <div className="columns mediumlarge-8 mediumlarge-pull-4">
                 <div className="section">
-                  <span className="success label proposal-status">Acceptada</span>
+                  {this.renderStatusBadge()}
                   <p>{htmlToReact(simpleFormat(summary))}</p>
                   <FilterMeta 
                     scope={ scope_ }
@@ -128,6 +130,7 @@ class ProposalShow extends Component {
                     subcategory={ subcategory } 
                     useServerLinks={ true }/>
                 </div>
+                <ProposalAnswerMessage answer={proposal.answer} />
                 <div className="section">
                   <ProposalActionPlans />
                 </div>
@@ -148,6 +151,26 @@ class ProposalShow extends Component {
           </div>
         </div>
       );
+    }
+    return null;
+  }
+
+  renderStatusBadge() {
+    const { proposal } = this.props;
+    const { answer } = proposal;
+
+    if (answer) {
+      const { status } = answer;
+
+      if (status === 'accepted') {
+        return (
+          <span className="success label proposal-status">Acceptada</span>
+        );
+      } else if (status === 'rejected') {
+        return (
+          <span className="warning label proposal-status">Rebutjada</span>
+        );
+      }
     }
     return null;
   }
@@ -245,6 +268,7 @@ ProposalShow.propTypes = {
   proposalId: PropTypes.string.isRequired,
   proposal: PropTypes.object,
   fetchProposal: PropTypes.func.isRequired,
+  fetchAnswer: PropTypes.func.isRequired,
   hideProposal: PropTypes.func.isRequired,
   hideProposalAuthor: PropTypes.func.isRequired,
   stepId: PropTypes.string.isRequired,

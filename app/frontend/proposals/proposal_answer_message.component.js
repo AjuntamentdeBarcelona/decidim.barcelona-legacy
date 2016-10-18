@@ -30,18 +30,20 @@ class ProposalAnswerMessage extends Component {
 
       if(status == 'accepted') {
         notice = (
-          <span>
-            <strong>
-              { I18n.t("components.proposal_answer_message.accepted") }
-            </strong>
-          </span>
+          <div className="section">
+            <div className="callout success">
+              <h5>{ I18n.t("components.proposal_answer_message.accepted") }</h5>
+            </div>
+          </div>
         );
       } else {
         notice = (
-          <span>
-            <strong>{ I18n.t("components.proposal_answer_message.rejected") } </strong>
-            { htmlToReact(message) }
-          </span>
+          <div className="section">
+            <div className="callout warning">
+              <h5>{ I18n.t("components.proposal_answer_message.rejected") }</h5>
+              { htmlToReact(message) }
+            </div>
+          </div>
         );
       }
 
