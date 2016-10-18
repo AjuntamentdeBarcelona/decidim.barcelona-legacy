@@ -36,7 +36,9 @@ feature 'Participatory processes' do
   scenario "Show process with all features" do
     visit participatory_processes_path
     click_link "Complete process", match: :first
-    find("a", text: @full.active_step.title["en"]).click
+    within ".process-header" do
+      find("a", text: @full.active_step.title["en"]).click
+    end
 
     within ".process-nav" do
       expect(page).to have_content("Proposals")
@@ -49,7 +51,9 @@ feature 'Participatory processes' do
   scenario "Show process with half features" do
     visit participatory_processes_path
     click_link "Half process", match: :first
-    find("a", text: @half.active_step.title["en"]).click
+    within ".process-header" do
+      find("a", text: @half.active_step.title["en"]).click
+    end
 
     within ".process-nav" do
       expect(page).to have_content("Proposals")
