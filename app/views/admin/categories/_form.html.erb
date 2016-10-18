@@ -7,6 +7,10 @@
       <%= f.number_field :position, placeholder: t("categories.form.category_position"), label: false %>
     </div>
 
+    <div class="small-12 column">
+      <%= participatory_process_select(f) %>
+    </div>
+
     <% I18n.available_locales.map(&:to_s).each do |locale| %>
       <fieldset>
         <legend><%= I18n.t "locale", locale: locale %></legend>
