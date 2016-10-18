@@ -10,7 +10,8 @@ feature 'Moderate proposals' do
     proposal = create(:proposal, participatory_process: participatory_process)
 
     login_as(moderator)
-    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process,
+                        step_id: proposal.participatory_process.active_step)
 
     expect(page).to have_selector("#proposal_#{proposal.id}")
     find("#proposal_#{proposal.id} a", text: "Hide").click

@@ -66,7 +66,7 @@ feature 'Emails' do
       expect(email).to have_subject('Someone has commented on your debate')
       expect(email).to deliver_to(debate.author)
       expect(email).
-        to have_body_text(debate_path(debate, participatory_process_id: debate. participatory_process, step_id: participatory_process.active_step))
+        to have_body_text(debate_path(debate, participatory_process_id: debate.participatory_process, step_id: debate.participatory_process.active_step))
       expect(email).to have_body_text(I18n.t("mailers.config.manage_email_subscriptions"))
       expect(email).to have_body_text(account_path)
     end

@@ -206,6 +206,7 @@ feature 'Commenting debates', :js do
     login_as(user)
     visit debates_path(participatory_process_id: participatory_process,
                        step_id: participatory_process.active_step)
+
     click_link "Should we change the world?"
 
     within "#comment_#{comment.id}" do

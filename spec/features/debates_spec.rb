@@ -22,7 +22,7 @@ feature 'Debates' do
     expect(page).to have_selector('#debates .debate', count: 2)
     debates.each do |debate|
       within('#debates') do
-        expect(page).to have_css("a[href='#{debate_path(debate, participatory_process_id: debate.participatory_process)}']", text: debate.title)
+        expect(page).to have_css("a[href='#{debate_path(debate, participatory_process_id: debate.participatory_process, step_id: debate.participatory_process.active_step)}']", text: debate.title)
       end
     end
   end
@@ -49,8 +49,8 @@ feature 'Debates' do
   scenario 'Show' do
     debate = create(:debate)
 
-    visit debate_path(debate, participatory_process_id: debate.
-                              participatory_process, step_id: participatory_process.active_step)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process,
+                      step_id: debate.participatory_process.active_step)
 
     expect(page).to have_content debate.title
     expect(page).to have_content "Debate description"
@@ -73,8 +73,7 @@ feature 'Debates' do
     first(:link, debate.title).click
     link_text = find_link('Go back')[:href]
 
-    expect(link_text).to include(debates_path participatory_process_id:
-                                                participatory_process,
+    expect(link_text).to include(debates_path participatory_process_id: participatory_process,
                                               order: :hot_score, page: 1,
                                               step_id: participatory_process.active_step)
   end
@@ -272,11 +271,11 @@ feature 'Debates' do
     debate = create(:debate)
     login_as(debate.author)
 
-    visit edit_debate_path(debate, participatory_process_id: debate.
-                                   participatory_process, step_id: participatory_process.active_step)
+    visit edit_debate_path(debate, participatory_process_id: debate.participatory_process,
+                           step_id: debate.participatory_process.active_step)
     expect(current_path).
-      to eq(edit_debate_path(debate, participatory_process_id: debate.
-                                     participatory_process, step_id: participatory_process.active_step))
+      to eq(edit_debate_path(debate, participatory_process_id: debate.participatory_process,
+                             step_id: debate.participatory_process.active_step))
 
     fill_in 'debate_title', with: "End child poverty"
     fill_in_editor 'debate_description', with: "Let's do something to end child poverty"
@@ -292,8 +291,9 @@ feature 'Debates' do
     debate = create(:debate)
     login_as(debate.author)
 
-    visit edit_debate_path(debate, participatory_process_id: debate.
-                                   participatory_process, step_id: participatory_process.active_step)
+    visit edit_debate_path(debate, participatory_process_id: debate.participatory_process,
+                           step_id: debate.participatory_process.active_step)
+
     fill_in 'debate_title', with: ""
     click_button "Save changes"
 
@@ -306,11 +306,11 @@ feature 'Debates' do
     tag = create(:tag)
     login_as(debate.author)
 
-    visit edit_debate_path(debate, participatory_process_id: debate.
-                                   participatory_process, step_id: participatory_process.active_step)
+    visit edit_debate_path(debate, participatory_process_id: debate.participatory_process,
+                           step_id: debate.participatory_process.active_step)
     expect(current_path).
-      to eq(edit_debate_path(debate, participatory_process_id: debate.
-                                     participatory_process, step_id: participatory_process.active_step))
+      to eq(edit_debate_path(debate, participatory_process_id: debate.participatory_process,
+                             step_id: debate.participatory_process.active_step))
 
     fill_in 'debate_title', with: ""
     click_button "Save changes"
@@ -357,8 +357,8 @@ feature 'Debates' do
     debate = create(:debate)
 
     login_as(user)
-    visit debate_path(debate, participatory_process_id: debate.
-                              participatory_process, step_id: participatory_process.active_step)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process,
+                      step_id: debate.participatory_process.active_step)
 
     within "#debate_#{debate.id}" do
       page.find("#flag-expand-debate-#{debate.id}").click
@@ -376,8 +376,8 @@ feature 'Debates' do
     Flag.flag(user, debate)
 
     login_as(user)
-    visit debate_path(debate, participatory_process_id: debate.
-                              participatory_process, step_id: participatory_process.active_step)
+    visit debate_path(debate, participatory_process_id: debate.participatory_process,
+                      step_id: debate.participatory_process.active_step)
 
     within "#debate_#{debate.id}" do
       page.find("#unflag-expand-debate-#{debate.id}").click
@@ -880,13 +880,14 @@ feature 'Debates' do
     good_debate = create(:debate)
     conflictive_debate = create(:debate, :conflictive)
 
-    visit debate_path(conflictive_debate, participatory_process_id: conflictive_debate.
-                                          participatory_process, step_id: participatory_process.active_step)
+    visit debate_path(conflictive_debate, participatory_process_id: conflictive_debate.participatory_process,
+                      step_id: conflictive_debate.participatory_process.active_step)
 
     expect(page).to have_content "This debate has been flagged as inappropriate by several users."
 
-    visit debate_path(good_debate, participatory_process_id: good_debate.
-                                   participatory_process, step_id: participatory_process.active_step)
+    visit debate_path(good_debate, participatory_process_id: good_debate.participatory_process,
+                      step_id: good_debate.participatory_process.active_step)
+
     expect(page).to_not have_content "This debate has been flagged as inappropriate by several users."
   end
 

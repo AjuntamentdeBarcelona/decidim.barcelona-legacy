@@ -12,6 +12,7 @@ module ComponentsHelper
         can_create_action_plan: can?(:create, ActionPlan)
       },
       participatory_process_id: @participatory_process_id,
+      step_id: params[:step_id] || @participatory_process.active_step.id,
       decidim_icons_url: asset_url("decidim-icons.svg")
     })
     react_component("#{name}App", props)

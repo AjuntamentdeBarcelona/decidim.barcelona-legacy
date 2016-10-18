@@ -15,7 +15,7 @@ class ProposalResults::ProposalDecorator < ApplicationDecorator
 
   def linked_title
     h.link_to(title, h.proposal_url(id: object.id, participatory_process_id: object.participatory_process,
-                                    step_id: Step.step_for(participatory_process, "proposals")))
+                                    step_id: Step.step_for(object.participatory_process, "proposals")))
   end
 
   def votes

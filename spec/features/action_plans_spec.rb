@@ -43,10 +43,11 @@ feature 'Action plans', :js do
     Reference.create(source: comment, referrer: proposal, referenced: related)
 
     visit proposals_path(participatory_process_id: participatory_process,
-                            step_id: participatory_process.active_step)
+                         step_id: participatory_process.active_step)
 
     click_link "A good looking proposal"
     click_link "Create action plan"
+    save_and_open_page
     click_button "Create action plan"
 
     expect(page).to have_content("A good looking proposal")
@@ -65,7 +66,8 @@ feature 'Action plans', :js do
     click_link action_plan.title
     choose 'action_plan_scope_district'
     select 'Ciutat Vella', from: 'action_plan_district'
-    visit action_plans_path(participatory_process_id: participatory_process)
+    visit action_plans_path(participatory_process_id: participatory_process,
+                            step_id: participatory_process.active_step)
 
     expect(page).to have_content("Ciutat Vella")
   end
@@ -123,7 +125,8 @@ feature 'Action plans', :js do
 
     click_link action_plan.title
     page.find('a', text: 'remove').click
-    visit action_plans_path(participatory_process_id: participatory_process)
+    visit action_plans_path(participatory_process_id: participatory_process,
+                            step_id: participatory_process.active_step)
 
     expect(page).not_to have_content(action_plan.title)
   end
@@ -137,7 +140,8 @@ feature 'Action plans', :js do
 
     click_link approved_action_plan.title
     page.find('a', text: 'approve').click
-    visit action_plans_path(participatory_process_id: participatory_process)
+    visit action_plans_path(participatory_process_id: participatory_process,
+                            step_id: participatory_process.active_step)
     choose 'filter_action_plan_approval_approved'
 
     expect(page).to have_content(approved_action_plan.title)

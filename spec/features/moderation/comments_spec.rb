@@ -10,7 +10,7 @@ feature 'Moderate comments', :js do
 
     login_as(moderator)
     visit debate_path(comment.commentable, participatory_process_id: comment.commentable.participatory_process,
-                      step_id: participatory_process.active_step)
+                      step_id: comment.commentable.participatory_process.active_step)
 
     expect(page).to have_css("#comment_#{comment.id}")
 
@@ -18,7 +18,7 @@ feature 'Moderate comments', :js do
 
     login_as(citizen)
     visit debate_path(comment.commentable, participatory_process_id: comment.commentable.participatory_process,
-                      step_id: participatory_process.active_step)
+                      step_id: comment.commentable.participatory_process.active_step)
 
     expect(page).not_to have_css('.comment', count: 1)
   end
@@ -29,7 +29,7 @@ feature 'Moderate comments', :js do
 
     login_as(moderator)
     visit debate_path(comment.commentable, participatory_process_id: comment.commentable.participatory_process,
-                      step_id: participatory_process.active_step)
+                      step_id: comment.commentable.participatory_process.active_step)
 
     within("#comment_#{comment.id}") do
       expect(page).to_not have_link('Hide')

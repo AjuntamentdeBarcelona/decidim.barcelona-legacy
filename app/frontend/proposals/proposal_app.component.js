@@ -27,12 +27,16 @@ if (process.env.NODE_ENV === 'development') {
 }
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
-function createReducers(sessionState, participatoryProcessIdState, decidimIconsUrlState) {
+function createReducers(sessionState, participatoryProcessIdState, stepIdState, decidimIconsUrlState) {
   let session = function (state = sessionState) {
     return state;
   };
 
   let participatoryProcessId = function (state = participatoryProcessIdState) {
+    return state;
+  };
+
+  let stepId = function (state = stepIdState) {
     return state;
   };
 
@@ -43,6 +47,7 @@ function createReducers(sessionState, participatoryProcessIdState, decidimIconsU
   return combineReducers({
     session,
     participatoryProcessId,
+    stepId,
     decidimIconsUrl,
     proposal,
     categories,
@@ -57,7 +62,10 @@ export default class ProposalApp extends Component {
   render() {
     return (
       <Provider 
-        store={createStoreWithMiddleware(createReducers(this.props.session, this.props.participatory_process_id, this.props.decidim_icons_url))}>
+      store={createStoreWithMiddleware(createReducers(this.props.session,
+                                                      this.props.participatory_process_id,
+                                                      this.props.step_id,
+                                                      this.props.decidim_icons_url))}>
         <ProposalShow proposalId={this.props.proposalId} />
       </Provider>
     );
@@ -68,5 +76,6 @@ ProposalApp.propTypes = {
   session: PropTypes.object.isRequired,
   proposalId: PropTypes.string.isRequired,
   participatory_process_id: PropTypes.string.isRequired,
+  step_id: PropTypes.string.isRequired,
   decidim_icons_url: PropTypes.string.isRequired
 };

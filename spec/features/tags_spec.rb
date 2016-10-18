@@ -82,7 +82,8 @@ feature 'Tags' do
     login_as(user)
 
     visit new_debate_path(participatory_process_id: participatory_process,
-                          active_step: participatory_process.active_step)
+                          step_id: participatory_process.active_step)
+
     fill_in 'debate_title', with: 'Title'
     fill_in_editor 'debate_description', with: 'Description'
     check 'debate_terms_of_service'

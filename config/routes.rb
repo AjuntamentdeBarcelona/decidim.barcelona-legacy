@@ -355,9 +355,11 @@ Rails.application.routes.draw do
 
       resources :categories, only: [:index]
       resources :dataviz, only: [:show, :index]
-
-      # static pages
-      resources :pages, path: '/', only: [:show]
     end
+  end
+
+  scope "(:participatory_process_id/:step_id)" do
+    # static pages
+    resources :pages, path: '/', only: [:show]
   end
 end

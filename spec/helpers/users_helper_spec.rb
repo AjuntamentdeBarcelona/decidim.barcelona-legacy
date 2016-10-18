@@ -40,7 +40,7 @@ describe UsersHelper do
         action: 'show',
         id: commentable.id,
         participatory_process_id: commentable.participatory_process,
-        step_id: participatory_process.active_step
+        step_id: commentable.participatory_process.active_step
       }))
     end
 
