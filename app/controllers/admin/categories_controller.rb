@@ -46,7 +46,9 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def category_params
-    params.require(:category).permit(:position, :name => I18n.available_locales.map(&:to_s), :description => I18n.available_locales.map(&:to_s))
+    params.require(:category).
+      permit(:position, :participatory_process_id, :name => I18n.available_locales.map(&:to_s),
+             :description => I18n.available_locales.map(&:to_s))
   end
 
   def default_data_for_all_locales
