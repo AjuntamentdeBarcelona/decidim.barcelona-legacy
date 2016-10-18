@@ -5,7 +5,7 @@ import ActionPlan    from './action_plan.component';
 const ActionPlansList = ({
   actionPlans
 }) => (
-  <div id="action-plans" className="proposals-list">
+  <div className="row small-up-1 medium-up-2 mediumlarge-up-1 large-up-2 card-grid">
     {
       actionPlans.map((actionPlan) => {
         return (
