@@ -1,30 +1,32 @@
 <h2><%= t("admin.participatory_processes.index.title") %></h2>
 <%= render 'shared/filter_subnav', i18n_namespace: "admin.participatory_processes.index" %>
-<h3><%= page_entries_info @participatory_processes %></h3>
-<ul id="participatory_processes" class="admin-list">
-  <% @participatory_processes.each do |process| %>
-    <li class="<%= 'hidden' if process.hidden? %>">
-      <span><%= process.name %></span>
-      <span><%= " (/" + process.slug + ")" %></span>
-      <div class="right">
-        <%= link_to t('admin.participatory_processes.index.steps'), admin_participatory_process_steps_path(process), class: "button tiny radius" %>
-        <% unless process.published? %>
-          <%= link_to t('admin.participatory_processes.index.publish'), publish_admin_participatory_process_path(process), method: :put, class: "button tiny radius", data: { confirm: t('admin.actions.confirm') } %>
-        <% else %>
-          <%= link_to t('admin.participatory_processes.index.unpublish'), unpublish_admin_participatory_process_path(process), method: :put, class: "button tiny radius", data: { confirm: t('admin.actions.confirm') } %>
-        <% end %>
-        <% if process.hidden? %>
-          <%= link_to t('admin.participatory_processes.index.restore'), restore_admin_participatory_process_path(process), method: :put, class: "button tiny radius" %>
-        <% else %>
-          <%= link_to t('admin.participatory_processes.index.edit'), edit_admin_participatory_process_path(process), class: "button tiny radius" %>
-          <%= link_to t('admin.participatory_processes.index.delete'), admin_participatory_process_path(process), method: :delete,  class: "button tiny radius alert", data: { confirm: t('admin.actions.confirm') } %>
-        <% end %>
-      </div>
-    </li>
-  <% end %>
-</ul>
+<h3><%= page_entries_info @participatory_processes.object %></h3>
+<table id="participatory_processes">
+  <tbody>
+    <% @participatory_processes.each do |process| %>
+      <tr class="<%= 'hidden' if process.hidden? %>">
+        <td><%= link_to process.title, participatory_process_path(process), target: "_blank" %></td>
+        <td><%= " (/" + process.slug + ")" %></td>
+        <td>
+          <%= link_to t('admin.participatory_processes.index.steps'), admin_participatory_process_steps_path(process), class: "button tiny radius" %>
+          <% unless process.published? %>
+            <%= link_to t('admin.participatory_processes.index.publish'), publish_admin_participatory_process_path(process), method: :put, class: "button tiny radius", data: { confirm: t('admin.actions.confirm') } %>
+          <% else %>
+            <%= link_to t('admin.participatory_processes.index.unpublish'), unpublish_admin_participatory_process_path(process), method: :put, class: "button tiny radius", data: { confirm: t('admin.actions.confirm') } %>
+          <% end %>
+          <% if process.hidden? %>
+            <%= link_to t('admin.participatory_processes.index.restore'), restore_admin_participatory_process_path(process), method: :put, class: "button tiny radius" %>
+          <% else %>
+            <%= link_to t('admin.participatory_processes.index.edit'), edit_admin_participatory_process_path(process), class: "button tiny radius" %>
+            <%= link_to t('admin.participatory_processes.index.delete'), admin_participatory_process_path(process), method: :delete,  class: "button tiny radius alert", data: { confirm: t('admin.actions.confirm') } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<%= paginate @participatory_processes %>
+<%= paginate @participatory_processes.object %>
 
 <div class="right">
   <%= link_to t('admin.participatory_processes.index.new'), new_admin_participatory_process_path, class: "button radius alert right" %>

@@ -55,7 +55,7 @@ ca:
         title: Debats ocults
     menu:
       activity: Activitat de moderadors
-      categories: Gestió d'eixos
+      categories: Categories
       debate_topics: Temes de debat
       hidden_comments: Comentaris ocults
       hidden_debates: Debats ocults
@@ -96,7 +96,7 @@ ca:
         new: Nou
         restore: Restaurar
         steps: Passos
-        title: Titol
+        title: Processos participatius
     proposals:
       index:
         filter: Filtre
@@ -152,7 +152,7 @@ ca:
         mark_as_active: Mark as active
         new: New
         restore: Restore
-        title: Title
+        title: Fases
     subcategories:
       index:
         delete: Esborrar

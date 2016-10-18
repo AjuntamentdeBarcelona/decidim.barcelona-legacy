@@ -55,7 +55,7 @@ es:
         title: Debates ocultos
     menu:
       activity: Actividad de moderadores
-      categories: Gestión de ejes
+      categories: Categorías
       debate_topics: Temas de debate
       hidden_comments: Comentarios ocultos
       hidden_debates: Debates ocultos
@@ -96,7 +96,7 @@ es:
         new: Nuevo
         restore: Restaurar
         steps: Pasos
-        title: Titulo
+        title: Procesos participativos
     proposals:
       index:
         filter: Filtro
@@ -152,7 +152,7 @@ es:
         mark_as_active: Mark as active
         new: New
         restore: Restore
-        title: Title
+        title: Fases
     subcategories:
       index:
         delete: Borrar
