@@ -47,7 +47,6 @@ feature 'Action plans', :js do
 
     click_link "A good looking proposal"
     click_link "Create action plan"
-    save_and_open_page
     click_button "Create action plan"
 
     expect(page).to have_content("A good looking proposal")
