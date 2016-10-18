@@ -27,7 +27,8 @@ feature 'Moderate proposals' do
     proposal = create(:proposal, participatory_process: participatory_process, author: moderator)
 
     login_as(moderator)
-    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process)
+    visit proposal_path(proposal, participatory_process_id: proposal.participatory_process,
+                        step_id: proposal.participatory_process.active_step)
 
     within("#proposal_#{proposal.id}") do
       expect(page).to_not have_link('Hide')

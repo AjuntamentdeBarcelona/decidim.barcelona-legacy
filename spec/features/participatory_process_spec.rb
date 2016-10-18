@@ -36,6 +36,7 @@ feature 'Participatory processes' do
   scenario "Show process with all features" do
     visit participatory_processes_path
     click_link "Complete process", match: :first
+    find("a", text: @full.active_step.title["en"]).click
 
     within ".process-nav" do
       expect(page).to have_content("Proposals")
@@ -48,6 +49,7 @@ feature 'Participatory processes' do
   scenario "Show process with half features" do
     visit participatory_processes_path
     click_link "Half process", match: :first
+    find("a", text: @half.active_step.title["en"]).click
 
     within ".process-nav" do
       expect(page).to have_content("Proposals")
@@ -58,7 +60,7 @@ feature 'Participatory processes' do
   end
 
   scenario "Navigate to a disabled feature" do
-    visit meetings_path(participatory_process_id: @half)
+    visit meetings_path(participatory_process_id: @half, step_id: @half.active_step)
 
     expect(page).to have_content("This feature is not enabled for this process")
     expect(current_path).to eq(participatory_process_path(@half))

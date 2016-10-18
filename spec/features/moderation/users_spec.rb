@@ -13,29 +13,30 @@ feature 'Moderate users', :js do
     comment3 = create(:comment, user: citizen, commentable: debate3, body: 'SPAMMER')
 
     login_as(moderator)
-    visit debates_path(participatory_process_id: participatory_process)
+    visit debates_path(participatory_process_id: participatory_process, step_id: participatory_process.active_step)
 
     expect(page).to have_content(debate1.title)
     expect(page).to have_content(debate2.title)
     expect(page).to have_content(debate3.title)
 
-    visit debate_path(debate3, participatory_process_id: debate3.participatory_process)
+    visit debate_path(debate3, participatory_process_id: debate3.participatory_process, step_id: debate3.participatory_process.active_step)
 
     expect(page).to have_content(comment3.body)
 
-    visit debate_path(debate1, participatory_process_id: debate1.participatory_process)
+    visit debate_path(debate1, participatory_process_id: debate1.participatory_process, step_id: debate1.participatory_process.active_step)
 
     within("#debate_#{debate1.id}") do
       click_link 'Block author'
     end
 
-    visit debates_path(participatory_process_id: participatory_process)
+    sleep(1)
+    visit debates_path(participatory_process_id: participatory_process, step_id: participatory_process.active_step)
 
     expect(page).to_not have_content(debate1.title)
     expect(page).to_not have_content(debate2.title)
     expect(page).to have_content(debate3.title)
 
-    visit debate_path(debate3, participatory_process_id: debate3.participatory_process)
+    visit debate_path(debate3, participatory_process_id: debate3.participatory_process, step_id: debate3.participatory_process.active_step)
 
     expect(page).to_not have_content(comment3.body)
 
