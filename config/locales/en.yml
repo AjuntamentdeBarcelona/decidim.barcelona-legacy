@@ -81,15 +81,7 @@ en:
     comment:
       admin: Administrator
       moderator: Moderator
-      responses:
-        one: 1 response
-        other: "%{count} responses"
-        zero: No responses
       user_deleted: User deleted
-      votes:
-        one: 1 vote
-        other: "%{count} votes"
-        zero: No votes
     form:
       alignment:
         negative: Against
@@ -436,11 +428,6 @@ en:
     show:
       author_deleted: User deleted
       back_link: Go back
-      comments:
-        one: 1 comment
-        other: "%{count} comments"
-        zero: No comments
-      comments_title: Comments
       edit_proposal_link: Edit
       flag: This proposal has been flagged as inappropriate by several users.
       login_to_comment: You must %{signin} or %{signup} to leave a comment.

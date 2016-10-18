@@ -273,7 +273,7 @@ feature 'Votes' do
           find('button.card__button').click
 
           expect(page).to have_content "1 SUPPORT"
-          expect(page).to have_content "ALREADY SUPPORTED"
+          expect(page).to have_content "Already supported"
         end
       end
     end

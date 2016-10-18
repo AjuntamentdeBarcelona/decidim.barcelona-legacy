@@ -81,15 +81,7 @@ ca:
     comment:
       admin: Administrador
       moderator: Moderador
-      responses:
-        one: 1 resposta
-        other: "%{count} Respostes"
-        zero: Sense respostes
       user_deleted: Usuari eliminat
-      votes:
-        one: 1 vot
-        other: "%{count} vots"
-        zero: Sense vots
     form:
       alignment:
         negative: En contra
@@ -436,11 +428,6 @@ ca:
     show:
       author_deleted: Usuari eliminat
       back_link: Tornar
-      comments:
-        one: 1 Comentari
-        other: "%{count} Comentaris"
-        zero: Sense comentaris
-      comments_title: Comentaris
       edit_proposal_link: Edita proposta
       flag: Aquesta proposta ha estat marcada com inapropiada per diversos usuaris.
       login_to_comment: Necessites %{signin} o %{signup} per fer comentaris.

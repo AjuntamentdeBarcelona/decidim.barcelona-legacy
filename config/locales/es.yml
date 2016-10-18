@@ -81,15 +81,7 @@ es:
     comment:
       admin: Administrador
       moderator: Moderador
-      responses:
-        one: 1 Respuesta
-        other: "%{count} Respuestas"
-        zero: Sin respuestas
       user_deleted: Usuario eliminado
-      votes:
-        one: 1 voto
-        other: "%{count} votos"
-        zero: Sin votos
     form:
       alignment:
         negative: En contra
@@ -436,11 +428,6 @@ es:
     show:
       author_deleted: Usuario eliminado
       back_link: Volver
-      comments:
-        one: 1 Comentario
-        other: "%{count} Comentarios"
-        zero: Sin comentarios
-      comments_title: Comentarios
       edit_proposal_link: Editar propuesta
       flag: Esta propuesta ha sido marcada como inapropiada por varios usuarios.
       login_to_comment: Necesitas %{signin} o %{signup} para comentar.
