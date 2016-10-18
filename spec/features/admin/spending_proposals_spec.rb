@@ -47,28 +47,6 @@ feature 'Admin spending proposals' do
     expect(spending_proposal.reload).to be_rejected
   end
 
-  scenario "Current filter is properly highlighted" do
-    visit admin_spending_proposals_path
-    expect(page).to_not have_link('Unresolved')
-    expect(page).to have_link('Accepted')
-    expect(page).to have_link('Rejected')
-
-    visit admin_spending_proposals_path(filter: 'unresolved')
-    expect(page).to_not have_link('Unresolved')
-    expect(page).to have_link('Accepted')
-    expect(page).to have_link('Rejected')
-
-    visit admin_spending_proposals_path(filter: 'accepted')
-    expect(page).to have_link('Unresolved')
-    expect(page).to_not have_link('Accepted')
-    expect(page).to have_link('Rejected')
-
-    visit admin_spending_proposals_path(filter: 'rejected')
-    expect(page).to have_link('Accepted')
-    expect(page).to have_link('Unresolved')
-    expect(page).to_not have_link('Rejected')
-  end
-
   scenario "Filtering proposals" do
     create(:spending_proposal, title: "Recent spending proposal")
     create(:spending_proposal, title: "Good spending proposal", resolution: "accepted")

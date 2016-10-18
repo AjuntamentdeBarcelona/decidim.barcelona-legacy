@@ -1,6 +1,6 @@
 <nav class="admin-sidebar">
-  <ul id="revision_menu">
-    <li>
+  <ul id="revision_menu" class="vertical menu">
+    <li <%= "class=active" if controller_name == "dashboard" %>>
       <%= link_to t("revision.dashboard.index.title"), revision_root_path %>
     </li>
 

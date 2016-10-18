@@ -143,38 +143,6 @@ feature 'Admin::Organizations' do
     expect(organization.reload.verified?).to eq(true)
   end
 
-  scenario "Current filter is properly highlighted" do
-    visit admin_organizations_path
-    expect(page).to_not have_link('Pending')
-    expect(page).to have_link('All')
-    expect(page).to have_link('Verified')
-    expect(page).to have_link('Rejected')
-
-    visit admin_organizations_path(filter: 'all')
-    expect(page).to_not have_link('All')
-    expect(page).to have_link('Pending')
-    expect(page).to have_link('Verified')
-    expect(page).to have_link('Rejected')
-
-    visit admin_organizations_path(filter: 'pending')
-    expect(page).to have_link('All')
-    expect(page).to_not have_link('Pending')
-    expect(page).to have_link('Verified')
-    expect(page).to have_link('Rejected')
-
-    visit admin_organizations_path(filter: 'verified')
-    expect(page).to have_link('All')
-    expect(page).to have_link('Pending')
-    expect(page).to_not have_link('Verified')
-    expect(page).to have_link('Rejected')
-
-    visit admin_organizations_path(filter: 'rejected')
-    expect(page).to have_link('All')
-    expect(page).to have_link('Pending')
-    expect(page).to have_link('Verified')
-    expect(page).to_not have_link('Rejected')
-  end
-
   scenario "Filtering organizations" do
     create(:organization, name: "Pending Organization")
     create(:organization, :rejected, name: "Rejected Organization")
