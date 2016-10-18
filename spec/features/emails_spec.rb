@@ -34,8 +34,9 @@ feature 'Emails' do
       expect(email).to have_subject('Someone has commented on your citizen proposal')
       expect(email).to deliver_to(proposal.author)
       expect(email).
-        to have_body_text(proposal_path(proposal, participatory_process_id: proposal.participatory_process,
-                                        step_id: participatory_process.active_step))
+        to have_body_text(proposal_path(proposal,
+                                        participatory_process_id: proposal.participatory_process,
+                                        step_id: proposal.participatory_process.active_step))
     end
 
     scenario 'Do not send email about own proposal comments', :js do

@@ -129,7 +129,6 @@ feature "Notifications" do
     author.reload
 
     visit root_path
-
     visit_notifications
 
     expect(page).to have_css ".notification", count: 1

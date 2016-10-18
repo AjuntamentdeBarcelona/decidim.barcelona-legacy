@@ -11,7 +11,8 @@ class NotificationsController < ApplicationController
     @notification = current_user.notifications.find(params[:id])
     if @notification.notifiable.respond_to? :participatory_process
       participatory_process = @notification.notifiable.participatory_process
-      resource_name = @notification.notifiable.class.name.downcase.pluralize,
+      resource_name = @notification.notifiable.class.name.downcase.pluralize
+
       redirect_to url_for({
         controller: resource_name,
         action: 'show',
