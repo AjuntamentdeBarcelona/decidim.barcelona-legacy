@@ -1,7 +1,7 @@
 class ParticipatoryProcessBannerImageUploader < ApplicationUploader
   include CarrierWave::MiniMagick
 
-  process resize_to_fit: [1200, 300]
+  process resize_to_fill: [1200, 300]
 
   version :thumb do
     process resize_to_fill: [300, 75]

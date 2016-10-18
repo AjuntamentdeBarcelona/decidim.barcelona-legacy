@@ -1,77 +1,49 @@
-<div class="row">
-  <div class="columns mediumlarge-8">
-    <div class="section">
-      <p>Texto de presentación donde se explicará en qué consiste este proceso
-        así como el trabajo previo realizado para el punto de partida del mismo
-        (informes, reuniones, etc). </p>
-      <p>Contará con documentación adjunta</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac
-        varius dui, egestas rutrum metus. Nulla venenatis elit tortor, id
-        rhoncus sem interdum vel. In magna mauris, blandit rhoncus enim non,
-        malesuada egestas nisl. Donec aliquet commodo imperdiet. Morbi non
-        elit arcu. Nullam magna urna, hendrerit convallis dui a, vulputate
-        viverra lacus. Aliquam in tellus et elit vehicula efficitur eget eget
-        tellus. Etiam vulputate ligula vitae lacus ultrices, in dignissim
-        lorem congue. Nullam mollis molestie purus, ac scelerisque purus
-        sagittis eget. Integer sagittis, metus non ultricies varius, turpis
-        erat bibendum neque, porta iaculis erat mauris auctor nibh. Aliquam
-        erat volutpat. Nam finibus nulla a quam eleifend, nec lacinia elit
-        luctus.</p>
-      <p>Donec eu sapien molestie, varius mi in, ultrices lorem. Quisque
-        vestibulum dapibus urna ut tincidunt. In hac habitasse platea dictumst.
-        Sed vestibulum eu nisi in semper. Mauris elit est, pulvinar ut tortor
-        nec, semper sagittis turpis. Nulla vulputate urna a lacus aliquet, ut
-        blandit justo mattis. Nulla sollicitudin bibendum accumsan. Etiam
-        posuere imperdiet nulla, eu posuere lorem aliquam nec. Aliquam erat
-        volutpat. Nunc in ultrices orci. Cras eros metus, ultricies sodales
-        sagittis id, volutpat eget metus. Proin et viverra nisi. Nam a viverra
-        mauris. Phasellus vel finibus libero.</p>
+<div class="row column">
+  <div class="row">
+    <div class="columns medium-7 mediumlarge-8">
+      <div class="section">
+        <div class="lead"><%== @participatory_process.decorate.summary %></div>
+        <br />
+        <%== @participatory_process.decorate.description %>
+      </div>
+    </div>
+
+    <div class="section columns medium-5 mediumlarge-4 large-3">
+      <div class="card extra definition-data">
+        <% %w(scope manager_group areas).each do |item| %>
+          <% content = @participatory_process.decorate.send(item) %>
+          <div class="definition-data__item">
+            <span class="definition-data__title"><%= t ".data.#{item}" %></span>
+            <%== !content.blank? ? content : "N/A" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-  <div class="columns mediumlarge-4 large-3">
-    <h2 class="section-heading">Documentos relacionados</h2>
-    <div class="card card--list card--list--mini">
-      <div class="card--list__item">
-        <div class="card--list__text">
-          <div>
-            <a href="#" class="card__link">
-              <h6 class="card--list__heading heading-small">
-                Acta Paral·lel <small>PDF 57Kb</small>
-              </h6>
-            </a>
-          </div>
-        </div>
-        <div class="card--list__data">
-          <%= icon "cloud-download" %>
-        </div>
-      </div>
-      <div class="card--list__item">
-        <div class="card--list__text">
-          <div>
-            <a href="#" class="card__link">
-              <h6 class="card--list__heading heading-small">
-                Informe reunió 18-04-2016 <small>PDF 57Kb</small>
-              </h6>
-            </a>
-          </div>
-        </div>
-        <div class="card--list__data">
-          <%= icon "cloud-download" %>
-        </div>
-      </div>
-      <div class="card--list__item">
-        <div class="card--list__text">
-          <div>
-            <a href="#" class="card__link">
-              <h6 class="card--list__heading heading-small">
-                Informe reunió 18-04-2016 <small>PDF 57Kb</small>
-              </h6>
-            </a>
-          </div>
-        </div>
-        <div class="card--list__data">
-          <%= icon "cloud-download" %>
-        </div>
+
+  <div class="row">
+    <div class="columns large-8">
+      <div class="section">
+        <h4 class="section-heading"><%= t ".steps" %></h4>
+        <ol class="timeline">
+          <% @participatory_process.decorate.steps.each_with_index do |step, index| %>
+            <li class="timeline__item">
+              <div class="timeline__phase">
+                <span class="timeline__phase__number"><%= index + 1 %></span>
+              </div>
+              <div class="timeline__desc" id="timeline-<%= index %>" data-toggler=".is-expanded">
+                <a class="timeline__title" data-toggle="timeline-<%= index %>">
+                  <h6><%= step.title %>
+                    <svg class="icon icon--caret-bottom icon--small timeline__title__icon" role="img" aria-label="Desplegar" > <%= icon "caret-bottom" %> </svg>
+                  </h6>
+                </a>
+                <div class="timeline__content">
+                  <%== step.description %>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ol>
       </div>
     </div>
   </div>

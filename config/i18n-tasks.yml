@@ -171,6 +171,7 @@ ignore_unused:
   - 'proposals.status.*'
   - 'pages.download.download-district'
   - 'pages.download.download-*'
+  - 'scopes.city'
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'
