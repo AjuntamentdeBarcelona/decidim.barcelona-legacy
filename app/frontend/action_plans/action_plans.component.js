@@ -7,8 +7,8 @@ import OrderSelector            from '../order/order_selector.component';
 
 import ActionPlansSidebar       from './action_plans_sidebar.component';
 import ActionPlansList          from './action_plans_list.component';
+import NewActionPlanButton      from './new_action_plan_button.component';
 import DownloadButton           from './download_button.component';
-import ActionPlansHeader        from './action_plans_header.component';
 
 import * as actions             from './action_plans.actions';
 import { setOrder }             from '../order/order.actions';
@@ -44,27 +44,29 @@ class ActionPlans extends Component {
   render() {
     return (
       <div>
-        <ActionPlansHeader />
-
-        <div className="wrap row">
-          <div className="wrap row">
-            <div className="small-12 medium-3 column">
-              <ActionPlansSidebar />
-            </div>
-
-            <div className="small-12 medium-9 column">
-              <Loading show={this.state.loading} list={true} />
-              <h3 className="proposals-count">
-                { I18n.t('components.action_plans.count', { count: this.props.count }) }
-              </h3>
-              <DownloadButton filters={this.props.filters} order={this.props.order} seed={this.props.seed}/>
-              <OrderSelector 
-                orderLinks={["weight", "random", "confidence_score", "participants"]} />
-              <ActionPlansList actionPlans={this.props.actionPlans} />
-              {this.renderInfinitePagination()}
-            </div>
+        <div className="row column">
+          <div className="title-action">
+            <h2 className="title-action__title section-heading">
+              { I18n.t('components.action_plans.count', { count: this.props.count }) }
+            </h2>
+            <NewActionPlanButton />
           </div>
         </div>
+
+        <div className="row">
+          <div className="columns mediumlarge-4 large-3">
+            <ActionPlansSidebar />
+          </div>
+
+          <div className="columns mediumlarge-8 large-9">
+            <DownloadButton filters={this.props.filters} order={this.props.order} seed={this.props.seed}/>
+            <OrderSelector 
+              orderLinks={["weight", "random", "confidence_score", "participants"]} />
+            <Loading show={this.state.loading} list={true} />
+            <ActionPlansList actionPlans={this.props.actionPlans} />
+          </div>
+        </div>
+        {this.renderInfinitePagination()}
       </div>
     );
   }
