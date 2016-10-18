@@ -2,16 +2,16 @@
   <div class="row">
     <div class="columns medium-7 mediumlarge-8">
       <div class="section">
-        <div class="lead"><%== @participatory_process.summary %></div>
+        <div class="lead"><%== @participatory_process.decorate.summary %></div>
         <br />
-        <%== @participatory_process.description %>
+        <%== @participatory_process.decorate.description %>
       </div>
     </div>
 
     <div class="section columns medium-5 mediumlarge-4 large-3">
       <div class="card extra definition-data">
         <% %w(scope manager_group areas).each do |item| %>
-          <% content = @participatory_process.send(item) %>
+          <% content = @participatory_process.decorate.send(item) %>
           <div class="definition-data__item">
             <span class="definition-data__title"><%= t ".data.#{item}" %></span>
             <%== !content.blank? ? content : "N/A" %>
@@ -26,7 +26,7 @@
       <div class="section">
         <h4 class="section-heading"><%= t ".steps" %></h4>
         <ol class="timeline">
-          <% @participatory_process.steps.each_with_index do |step, index| %>
+          <% @participatory_process.decorate.steps.each_with_index do |step, index| %>
             <li class="timeline__item">
               <div class="timeline__phase">
                 <span class="timeline__phase__number"><%= index + 1 %></span>

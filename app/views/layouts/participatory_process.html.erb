@@ -2,20 +2,20 @@
   <main class="wrapper">
     <div class="process-header row column">
       <div class="row column process-header__main"
-          style="background-image:url(<%= @participatory_process.full_image_url %>);">
+          style="background-image:url(<%= @participatory_process.decorate.full_image_url %>);">
         <div class="process-header__container row">
           <div class="columns mediumlarge-9 process-header__info">
             <div>
               <h1 class="text-highlight heading2">
                 <%= link_to participatory_process_path(@participatory_process), class: "info" do %>
-                  <%= @participatory_process.title %>
+                  <%= @participatory_process.decorate.title %>
                 <% end %>
               </h1>
             </div>
             <div>
               <h2 class="text-highlight heading-small">
                 <span class="process-header__hashtag">#urbaGracia</span>
-                <%= @participatory_process.subtitle %>
+                <%= @participatory_process.decorate.subtitle %>
               </h2>
             </div>
           </div>
@@ -54,7 +54,7 @@
               <%= icon "chevron-left" %>
             </button>
             <div class="phase-nav__wrapper" data-carousel>
-              <% @participatory_process.steps.each do |step| %>
+              <% @participatory_process.decorate.steps.each do |step| %>
                 <%= link_to step_path(participatory_process_id: @participatory_process, step_id: step), class: "phase-nav__item #{(step == participatory_process_step) ? 'is-active' : nil}" do %>
                   <%= render partial: "participatory_processes/step_navigation_item", locals: { step: step } %>
                 <% end %>
