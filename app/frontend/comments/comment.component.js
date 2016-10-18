@@ -3,6 +3,7 @@ import { connect }              from 'react-redux';
 
 import classNames               from 'classnames';
 
+import Icon                     from '../application/icon.component';
 import UserAvatar               from '../application/user_avatar.component';
 import FlagActions              from '../application/flag_actions.component';
 import DangerLink               from '../application/danger_link.component';
@@ -24,6 +25,21 @@ class Comment extends Component {
   }
 
   render() {
+    const { comment } = this.props;
+    const { ancestry } = comment;
+
+    if (ancestry) {
+      return this.renderComment();
+    } else {
+      return (
+        <div className="comment-thread">
+          {this.renderComment()}
+        </div>
+      );
+    }
+  }
+
+  renderComment() {
     const { 
       comment, 
       commentable, 
@@ -31,60 +47,54 @@ class Comment extends Component {
       unFlagComment
     } = this.props;
 
-    const { alignment, author, as } = comment;
+    const { author, ancestry } = comment;
 
-    const cssClasses = classNames(
-      'comment',
-      'small-12',
-      'column',
-      {
-        negative: alignment < 0,
-        neutral: alignment === 0,
-        positive: alignment > 0,
-        'comment-author': commentable.author && author.id === commentable.author.id
-      }
-    );
+    const authorUrl = author ? `/users/${author.id}` : '#';
 
     return (
-      <div className="row">
-        <div id={`comment_${comment.id}`} className={cssClasses}>
-          <UserAvatar user={author} role={as} />
-          <div className="comment-body">
-            <div className="comment-info">
-              {this.renderAuthorName()}
-              {this.renderAuthorOfficialBadge()}
-              {this.renderAlignmentBadge()}
-              &nbsp;&bull;&nbsp;
-              <time>{comment.created_at}</time>
-            </div>
-            <div className="comment-user">
-              {htmlToReact(comment.body)}
-            </div>
-            <div id={`comment_${comment.id}_reply`} className="reply">
-              <span id={`comment_${comment.id}_votes`} className="comment-votes right">
-                <span>{I18n.t('comments.comment.votes', { count: comment.total_votes })}</span>
-                &nbsp;|&nbsp;
-                {this.renderVoteActionLinks()}
-              </span>
-              {I18n.t("comments.comment.responses", { count: comment.children ? comment.children.length : 0 })}
-              {this.renderReplyAction()}
-              <FlagActions 
-                flaggeable={comment}
-                flagAction={flagComment}
-                unFlagAction={unFlagComment}
-              />
-              {this.renderHideButton()}
-              {this.renderHideAuthorButton()}
-              <NewCommentForm 
-                commentable={commentable}
-                visible={this.state.showReplyForm} 
-                onCommentCreated={() => this.setState({ showReplyForm: false })}
-                parent={comment} />
+      <article id={`comment_${comment.id}`} className={`comment ${ancestry ? 'comment--nested' : ''}`}>
+        <div className="comment__header">
+          <div className="author-data">
+            <div className="author-data__main">
+              <div className="author author--inline">
+                <a href={authorUrl} className="author__avatar">
+                  <UserAvatar user={author} />
+                </a>
+                <a href={authorUrl} className="author__name">
+                  {this.renderAuthorName()}
+                </a>
+                <time dateTime={comment.created_at}>{' ' + comment.created_at}</time>
+                <div className="author-data__extra">
+                  <FlagActions 
+                    flaggeable={comment}
+                    flagAction={flagComment}
+                    unFlagAction={unFlagComment}
+                  />
+                </div>
+              </div>
             </div>
           </div>
-          <ChildrenComments comment={comment} commentable={commentable} />
         </div>
-      </div>
+        <div className="comment__content">
+          <p>
+            {this.renderAlignmentBadge()}
+            {htmlToReact(comment.body)}
+          </p>
+        </div>
+        <div className="comment__footer">
+          <div id={`comment_${comment.id}_reply`} className="reply">
+            {this.renderReplyAction()}
+            {this.renderHideButton()}
+            {this.renderHideAuthorButton()}
+            <NewCommentForm 
+              commentable={commentable}
+              visible={this.state.showReplyForm} 
+              onCommentCreated={() => this.setState({ showReplyForm: false })  }  parent={comment} />
+          </div>
+          {this.renderVoteActionLinks()}
+        </div>
+        <ChildrenComments comment={comment} commentable={commentable} />
+      </article>
     );
   }
 
@@ -114,13 +124,10 @@ class Comment extends Component {
 
   renderReplyAction() {
     const { commentable } = this.props;
-
     if (commentable.permissions.comment) {
       return (
         <span>
-          <span className="divider">&nbsp;|&nbsp;</span>
-          <a className="reply" onClick={() => this.setState({showReplyForm: !this.state.showReplyForm })}>{I18n.t("comments_helper.reply_link")}</a>
-          <span className="divider">&nbsp;|&nbsp;</span>
+          <a className="comment__reply muted-link" onClick={() => this.setState({showReplyForm: !this.state.showReplyForm })}>{I18n.t("comments_helper.reply_link")}</a>
         </span>
       );
     }
@@ -133,30 +140,30 @@ class Comment extends Component {
 
     if (comment.permissions.vote) {
       return (
-        <span>
-          <span className="in_favor">
-            <a onClick={() => upVoteComment(comment.id)}><i className="icon-angle-up">UP</i></a>
+        <div id={`comment_${comment.id}_votes`} className="comment__votes">
+          <a onClick={() => upVoteComment(comment.id)} className="comment__votes--up">
+            <Icon name="chevron-top" className="icon--small" ariaLabel="Votar a favor" role="img" />
             {comment.total_likes}
-          </span>
-          <span className="against">
-            <a onClick={() => downVoteComment(comment.id)}><i className="icon-angle-down">DOWN</i></a>
+          </a>
+          <a onClick={() => downVoteComment(comment.id)} className="comment__votes--down">
+            <Icon name="chevron-bottom" className="icon--small" ariaLabel="Votar en contra" role="img" />
             {comment.total_dislikes}
-          </span>
-        </span>
+          </a>
+        </div>
       );
     }
 
     return (
-      <span>
-        <span className="in_favor">
-          <i className="icon-angle-up"></i>
+      <div id={`comment_${comment.id}_votes`} className="comment__votes">
+        <span className="comment__votes--up">
+          <Icon name="chevron-top" className="icon--small" ariaLabel="Votar a favor" role="img" />
           {comment.total_likes}
         </span>
-        <span className="against">
-          <i className="icon-angle-down"></i>
+        <span className="comment__votes--down">
+          <Icon name="chevron-bottom" className="icon--small" ariaLabel="Votar en contra" role="img" />
           {comment.total_dislikes}
         </span>
-      </span>
+      </div>
     );
   }
 
@@ -198,10 +205,7 @@ class Comment extends Component {
         I18n.t('comments.form.alignment.neutral');
 
       return (
-        <span>
-          &nbsp;&bull;&nbsp;
-          <span className={cssClasses}>{text}</span>
-        </span>
+        <span className={cssClasses}>{text}</span>
       );
     }
     return null;

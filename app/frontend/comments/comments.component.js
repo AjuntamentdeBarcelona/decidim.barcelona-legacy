@@ -3,7 +3,6 @@ import { connect }              from 'react-redux';
 
 import * as actions             from './comments.actions';
 
-import Loading                  from '../application/loading.component';
 import InfinitePagination       from '../pagination/infinite_pagination.component';
 import CommentsOrderSelector    from './comments_order_selector.component';
 import Comment                  from './comment.component';
@@ -33,28 +32,41 @@ class Comments extends Component {
 
   render() {
     const { commentable } = this.props;
+    const { closed } = commentable;
 
     return (
-      <section className="row-full comments">
-        <div className="row">
-          <div id="comments" className="small-12 column">
-            <div className="row">
-              <h2 className="small-12 medium-8 column">
-                {`${I18n.t("proposals.show.comments_title")} `}
-                ({this.renderSummary()})
-              </h2>
-              <CommentsOrderSelector />
-            </div>
-            {this.renderSignInWarning()}
-            <NewCommentForm 
-              commentable={commentable}
-              visible={commentable.permissions.comment} />
-            <div className="comments_list">
-              <Loading show={this.state.loading} />
-              {this.renderComments()}
-            </div>
+      <section className="comments">
+        {
+          (() => {
+            if (!closed) {
+              return (
+                <div className="add-coment">
+                  <h5 className="section-heading">Deixa el teu comentari</h5>
+                  {this.renderSignInWarning()}
+                  <NewCommentForm 
+                    commentable={commentable}
+                    visible={commentable.permissions.comment} />
+                  <span className="register__separator">
+                    <span className="register__separator__text"></span>
+                  </span>
+                </div>
+              )
+            }
+            return null;
+          })()
+        }
+        <div className="row collapse order-by">
+          <h2 className="order-by__text section-heading">{commentable.total_comments} comentaris - 
+            <span className="order-by__tabs">
+              <a href="#" className="order-by__tab">a favor</a>
+              <a href="#" className="order-by__tab">en contra</a>
+            </span>
+          </h2>
+          <div className="order-by__dropdown order-by__dropdown--right">
+            <CommentsOrderSelector />
           </div>
         </div>
+        {this.renderComments()}
       </section>
     );
   }

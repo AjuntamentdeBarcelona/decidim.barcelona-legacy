@@ -81,15 +81,7 @@ ca:
     comment:
       admin: Administrador
       moderator: Moderador
-      responses:
-        one: 1 resposta
-        other: "%{count} Respostes"
-        zero: Sense respostes
       user_deleted: Usuari eliminat
-      votes:
-        one: 1 vot
-        other: "%{count} vots"
-        zero: Sense vots
     form:
       alignment:
         negative: En contra
@@ -421,6 +413,7 @@ ca:
       start_new: Crear una proposta
     proposal:
       already_supported: Donant suport
+      closed_support: Suports tancats
       closing: S'està estudiant la viabilitat d'aquesta proposta i la possible inclusió al Pla Municipal 2016-2019. Al llarg de les pròximes setmanes aquesta proposta rebrà una resposta de l'Ajuntament de Barcelona. Recorda que pots participar en els debats d'avaluació del procés participatiu del Pla Municipal.
       comments:
         one: 1 Comentari
@@ -435,11 +428,6 @@ ca:
     show:
       author_deleted: Usuari eliminat
       back_link: Tornar
-      comments:
-        one: 1 Comentari
-        other: "%{count} Comentaris"
-        zero: Sense comentaris
-      comments_title: Comentaris
       edit_proposal_link: Edita proposta
       flag: Aquesta proposta ha estat marcada com inapropiada per diversos usuaris.
       login_to_comment: Necessites %{signin} o %{signup} per fer comentaris.

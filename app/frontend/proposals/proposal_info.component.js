@@ -4,7 +4,8 @@ import UserAvatar     from '../application/user_avatar.component';
 
 const ProposalInfoComponent = ({
   created_at,
-  author
+  author,
+  children
 }) => {
   const authorUrl = author ? `/users/${author.id}` : '#';
 
@@ -21,13 +22,15 @@ const ProposalInfoComponent = ({
           { ' ' + created_at }
         </div>
       </div>
+      {children}
     </div>
   );
 };
 
 ProposalInfoComponent.propTypes = {
   created_at: PropTypes.string.isRequired,
-  author: PropTypes.object
+  author: PropTypes.object,
+  children: PropTypes.any
 };
 
 export default ProposalInfoComponent;

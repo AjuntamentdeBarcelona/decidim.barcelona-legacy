@@ -30,14 +30,11 @@ const Proposal = (proposal) => (
       </div>
       <div className="card__footer">
         <ProposalVoteBox 
-          hideButton={ proposal.closed }
-          proposalId={ proposal.id } 
-          proposalTitle={ proposal.title } 
-          proposalUrl={ proposal.url } 
+          proposalId={ proposal.id }
+          closed={ proposal.closed }
           voted={ proposal.voted } 
           votable={ proposal.votable } 
-          totalVotes={ proposal.total_votes } 
-          totalComments={ proposal.total_comments } />
+          totalVotes={ proposal.total_votes } />
       </div>
     </article>
   </div>

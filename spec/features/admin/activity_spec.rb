@@ -136,7 +136,7 @@ feature 'Admin activity' do
   end
 
   context "Comments" do
-    scenario "Shows moderation activity on comments", :js do
+    xscenario "Shows moderation activity on comments", :js do
       debate = create(:debate, participatory_process: participatory_process)
       comment = create(:comment, commentable: debate)
 

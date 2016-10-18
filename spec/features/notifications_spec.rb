@@ -20,7 +20,7 @@ feature "Notifications" do
 
     fill_in "comment-body-root", with: "I commented on your debate"
     click_button "Publish comment"
-    within "#comments" do
+    within ".comments" do
       expect(page).to have_content "I commented on your debate"
     end
 
@@ -45,7 +45,7 @@ feature "Notifications" do
 
     fill_in "comment-body-root", with: "I agree"
     click_button "Publish comment"
-    within "#comments" do
+    within ".comments" do
       expect(page).to have_content "I agree"
     end
 
@@ -56,7 +56,7 @@ feature "Notifications" do
 
     fill_in "comment-body-root", with: "I disagree"
     click_button "Publish comment"
-    within "#comments" do
+    within ".comments" do
       expect(page).to have_content "I disagree"
     end
 
@@ -82,7 +82,7 @@ feature "Notifications" do
 
     expect(page).to have_css("#comment_#{comment.id}")
 
-    page.find('a.reply').click
+    page.find('a.comment__reply').click
 
     within "#comment_#{comment.id}" do
       fill_in "comment-body-#{comment.id}", with: "I replied to your comment"
@@ -112,7 +112,7 @@ feature "Notifications" do
       login_as create(:user)
       visit debate_path debate, participatory_process_id: debate.participatory_process, step_id: debate.participatory_process.active_step
 
-      page.find("#comment_#{comment.id} a.reply", match: :first).click
+      page.find("#comment_#{comment.id} a.comment__reply", match: :first).click
 
       within "#comment_#{comment.id}" do
         fill_in "comment-body-#{comment.id}", with: "Reply number #{n}"
@@ -143,7 +143,7 @@ feature "Notifications" do
 
     fill_in "comment-body-root", with: "I commented on my own debate"
     click_button "Publish comment"
-    within "#comments" do
+    within ".comments" do
       expect(page).to have_content "I commented on my own debate"
     end
 
@@ -159,7 +159,7 @@ feature "Notifications" do
 
     expect(page).to have_css("#comment_#{comment.id}")
 
-    page.find('a.reply').click
+    page.find('a.comment__reply').click
 
     within "#comment_#{comment.id}" do
       fill_in "comment-body-#{comment.id}", with: "I replied to my own comment"

@@ -16,49 +16,43 @@ export class FollowButton extends Component {
   }
 
   render() {
-    const { session } = this.props;
+    const { session, followId } = this.props;
 
     if (session.signed_in) {
-      return (
-        <div className="follow-component">
-          {this.renderFollowButton()}
-          {this.renderUnFollowButton()}
-        </div>
-      )
+      if (!followId) {
+        return this.renderFollowButton();
+      } else {
+        return this.renderUnFollowButton();
+      }
     }
 
     return null;
   }
 
   renderFollowButton() {
-    const { followingId, followingType, followId, follow } = this.props;
+    const { followingId, followingType, follow } = this.props;
 
-    if (!followId) {
-      return (
-        <SmartButton
-          className="follow"
-          onClick={() => follow({ followingId, followingType })}>
-          <Icon name="check">{I18n.t('components.follow_button.follow')}</Icon>
-        </SmartButton>
-      );
-    }
-    return null;
+    return (
+      <SmartButton 
+        className="follow button secondary hollow expanded small button--icon"
+        onClick={() => follow({ followingId, followingType })}>
+        <Icon name="bell" />
+        <span>{I18n.t('components.follow_button.follow')}</span>
+      </SmartButton>
+    );
   }
 
   renderUnFollowButton() {
     const { followId, unFollow } = this.props;
 
-    if (followId) {
-      return (
-        <SmartButton 
-          className="unfollow"
-          onClick={() => unFollow(followId)}>
-          <Icon name="times">{I18n.t('components.follow_button.unfollow')}</Icon>
-        </SmartButton>
-      );
-    }
-
-    return null;
+    return (
+      <SmartButton 
+        className="unfollow button secondary hollow expanded small button--icon"
+        onClick={() => unFollow(followId)}>
+        <Icon name="bell" />
+        <span>{I18n.t('components.follow_button.unfollow')}</span>
+      </SmartButton>
+    );
   }
 }
 
