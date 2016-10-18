@@ -37,10 +37,6 @@ class Comment extends Component {
         </div>
       );
     }
-
-      //     </div>
-      //   </div>
-      // </div>
   }
 
   renderComment() {
@@ -51,7 +47,7 @@ class Comment extends Component {
       unFlagComment
     } = this.props;
 
-    const { alignment, author, as, ancestry } = comment;
+    const { author, ancestry } = comment;
 
     const authorUrl = author ? `/users/${author.id}` : '#';
 
