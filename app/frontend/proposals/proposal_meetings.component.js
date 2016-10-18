@@ -2,7 +2,6 @@ import { Component, PropTypes } from 'react';
 import { connect }              from 'react-redux';
 
 import Icon                     from '../application/icon.component';
-import Meeting                  from '../meetings/meeting.component';
 
 import * as actions             from './proposals.actions';
 
@@ -23,7 +22,7 @@ class ProposalMeetings extends Component {
   }
 
   renderMeetings() {
-    const { proposal, useServerLinks } = this.props;
+    const { proposal } = this.props;
     const meetings = proposal.meetings || [];
 
     if (meetings.length > 0) {

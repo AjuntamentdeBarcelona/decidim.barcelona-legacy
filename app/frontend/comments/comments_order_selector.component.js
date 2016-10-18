@@ -13,14 +13,14 @@ class CommentsOrderSelector extends Component {
     const { order, setOrder } = this.props;
 
     return (
-      <div className="small-12 medium-4 columns">
+      <div>
         <form>
-          <div className="small-12 medium-4 left">
+          <div>
             <label forHtml="order-selector-participation">
               {I18n.t("comments.select_order")}
             </label>
           </div>
-          <div className="small-12 medium-8 left">
+          <div>
             <select id="comments-order-selector" value={order} onChange={e => setOrder(e.target.value)}>
               <option value="most_voted">{I18n.t("comments.orders.most_voted")}</option>
               <option value="newest">{I18n.t("comments.orders.newest")}</option>

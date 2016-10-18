@@ -35,28 +35,36 @@ class Comments extends Component {
     const { commentable } = this.props;
 
     return (
-      <section className="row-full comments">
-        <div className="row">
-          <div id="comments" className="small-12 column">
-            <div className="row">
-              <h2 className="small-12 medium-8 column">
-                {`${I18n.t("proposals.show.comments_title")} `}
-                ({this.renderSummary()})
-              </h2>
-              <CommentsOrderSelector />
-            </div>
-            {this.renderSignInWarning()}
-            <NewCommentForm 
-              commentable={commentable}
-              visible={commentable.permissions.comment} />
-            <div className="comments_list">
-              <Loading show={this.state.loading} />
-              {this.renderComments()}
-            </div>
+      <section className="comments">
+        <div className="row collapse order-by">
+          <h2 className="order-by__text section-heading">132 comentaris - 
+            <span className="order-by__tabs">
+              <a href="#" className="order-by__tab">a favor</a>
+              <a href="#" className="order-by__tab">en contra</a>
+            </span>
+          </h2>
+          <div className="order-by__dropdown order-by__dropdown--right">
+            <CommentsOrderSelector />
           </div>
         </div>
+        {this.renderComments()}
       </section>
     );
+    // <div className="row">
+    //       <div id="comments" className="small-12 column">
+    //         <div className="row">
+    //           <h2 className="small-12 medium-8 column">
+    //             {`${I18n.t("proposals.show.comments_title")} `}
+    //             ({this.renderSummary()})
+    //           </h2>
+    //           <CommentsOrderSelector />
+    //         </div>
+    //         {this.renderSignInWarning()}
+    //         <NewCommentForm 
+    //           commentable={commentable}
+    //           visible={commentable.permissions.comment} />
+    //       </div>
+    //     </div>
   }
 
   renderSignInWarning() {

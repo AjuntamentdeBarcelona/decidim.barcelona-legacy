@@ -33,14 +33,15 @@ class NewCommentForm extends Component {
           submitButtonText = parent ? I18n.t("comments_helper.reply_button") : I18n.t("comments_helper.comment_button");
 
       return (
-        <div>
+        <div className="add-comment">
           <form className="new_comment" onSubmit={(e) => this.onSubmitNewComment(e)}>
             <Loading show={this.state.loading} />
             <label 
+              className="show-for-sr"
               htmlFor={textAreaId}>
               Deixa el teu comentari
             </label>
-            <textarea id={textAreaId} value={this.state.newComment.body} onChange={e => this.setBody(e.target.value)}></textarea>
+            <textarea id={textAreaId} placeholder="Deixa el teu comentari" value={this.state.newComment.body} onChange={e => this.setBody(e.target.value)}></textarea>
             {this.renderAlignmentRadioButtons()}
             {this.renderCommentAsModerator()}
             <span className="right">&nbsp;&nbsp;</span>
@@ -50,7 +51,7 @@ class NewCommentForm extends Component {
               disabled={this.state.newComment.body === ''}
               type="submit" 
               value={submitButtonText} 
-              className="button radius small inline-block" />
+              className="button small hollow" />
           </form>
         </div>
       );
