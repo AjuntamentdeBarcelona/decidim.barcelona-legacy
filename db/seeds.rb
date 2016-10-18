@@ -288,4 +288,65 @@ if ENV["SEED"]
   Comment.only_hidden.flagged.reorder("RANDOM()").limit(10).each(&:confirm_hide)
   Debate.only_hidden.flagged.reorder("RANDOM()").limit(5).each(&:confirm_hide)
   Proposal.only_hidden.flagged.reorder("RANDOM()").limit(5).each(&:confirm_hide)
+
+  (0..6).each do |i|
+    pp = ParticipatoryProcess.create!(name: Faker::Lorem.sentence(3).truncate(60),
+                                      admin_name: Faker::Name.name,
+                                      admin_email: Faker::Internet.email,
+                                      areas: Faker::Lorem.sentence(3).truncate(60),
+                                      title: {
+                                        es: Faker::Lorem.sentence(3).truncate(60),
+                                        en: Faker::Lorem.sentence(3).truncate(60),
+                                        ca: Faker::Lorem.sentence(3).truncate(60)
+                                      },
+                                      subtitle: {
+                                        es: Faker::Lorem.sentence(3).truncate(60),
+                                        en: Faker::Lorem.sentence(3).truncate(60),
+                                        ca: Faker::Lorem.sentence(3).truncate(60)
+
+                                      },
+                                      summary: { 
+                                        es: "<p>#{Faker::Lorem.paragraphs.join('</p><p>')}</p>",
+                                        en: "<p>#{Faker::Lorem.paragraphs.join('</p><p>')}</p>",
+                                        ca: "<p>#{Faker::Lorem.paragraphs.join('</p><p>')}</p>"
+                                      },
+                                      description: { 
+                                        es: "<p>#{Faker::Lorem.paragraphs.join('</p><p>')}</p>",
+                                        en: "<p>#{Faker::Lorem.paragraphs.join('</p><p>')}</p>",
+                                        ca: "<p>#{Faker::Lorem.paragraphs.join('</p><p>')}</p>"
+                                      },
+                                      citizenship_scope: Faker::Lorem.sentence(3).truncate(60),
+                                      audience: Faker::Lorem.sentence(3).truncate(60),
+                                      manager_group: Faker::Lorem.sentence(3).truncate(60),
+                                      published: true)
+    puts "#{pp.title}"
+
+    pp.steps.create(
+      position: 0,
+      title: {es: "Diagnostico", ca: "Diagnostic", en: "Diagnostic"},
+      description: {es: "Fase de diagnostico", en: "Diagnostic phase", ca: "Diagnostico"},
+      start_at: "2016-10-01", 
+      end_at: "2016-10-31", 
+      flags: ["meetings", "debates"]
+    )
+
+    pp.steps.create(
+      position: 1,
+      title: {es: "Aportaciones", ca: "Aportaciones", en: "Aportaciones"},
+      description: {es: "Fase de Aportaciones", en: "Aportaciones phase", ca: "Aportaciones"},
+      start_at: "2016-11-01", 
+      end_at: "2016-11-30", 
+      flags: ["proposals"]
+    )
+
+    pp.steps.create(
+      position: 1,
+      title: {es: "Respuestas", ca: "Respuestas", en: "Respuestas"},
+      description: {es: "Fase de Respuestas", en: "Respuestas phase", ca: "Respuestas"},
+      start_at: "2016-12-01", 
+      end_at: "2016-12-31", 
+      flags: ["action_plans"]
+    )
+  end
+
 end
