@@ -228,7 +228,6 @@ es:
       participatory_processes: Participatory processes
       proposals: Propuestas
       revision: Revisar
-      spending_proposals: Spending proposals
   locale: Español
   meetings:
     card:
@@ -285,8 +284,6 @@ es:
       back_link: Volver
       proposals_title: Propuestas tratadas
       share: Comparte
-  menu:
-    mobile-menu: Mobile-menu
   notifications:
     index:
       comments_on:
