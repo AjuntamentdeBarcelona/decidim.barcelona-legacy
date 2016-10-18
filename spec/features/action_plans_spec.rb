@@ -22,8 +22,8 @@ feature 'Action plans', :js do
     fill_in_editor "action_plan_description", with: "My action plan description"
     choose 'action_plan_scope_district'
     select 'Ciutat Vella', from: 'action_plan_district'
-    find('li', text: category.name["en"]).click
-    find('li', text: subcategory.name["en"]).click
+    find('.category', text: category.name["en"]).click
+    find('.subcategory', text: subcategory.name["en"]).click
     page.find("#autocomplete-1").send_keys("good looking")
     page.find("#autocomplete_result_#{proposal.id}").click
     click_button "Create action plan"

@@ -15,7 +15,7 @@ export default class SubcategoryPicker extends Component {
     return subcategories.map( function(subcategory){
       var selected = subcategory.id === selectedId;
 
-      var classNames = ['subcategory-' + subcategory.id];
+      var classNames = ['subcategory', 'subcategory-' + subcategory.id];
 
       return (
         <div className={classNames.join(' ')}
