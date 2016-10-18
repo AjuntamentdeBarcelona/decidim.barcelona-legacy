@@ -59,7 +59,6 @@ class ActionPlans extends Component {
           </div>
 
           <div className="columns mediumlarge-8 large-9">
-            <DownloadButton filters={this.props.filters} order={this.props.order} seed={this.props.seed}/>
             <OrderSelector 
               orderLinks={["weight", "random", "confidence_score", "participants"]} />
             <Loading show={this.state.loading} list={true} />
