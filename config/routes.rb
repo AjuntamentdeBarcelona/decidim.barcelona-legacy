@@ -284,26 +284,26 @@ Rails.application.routes.draw do
     resources :debates, only: [:show]
   end
 
-  # TODO: I think this can be deprecated on the finale release
-  # [
-  #   "proposals",
-  #   "action_plans",
-  #   "meetings",
-  #   "debates",
-  #   "categories",
-  #   "more_information",
-  #   "download",
-  #   "dataviz"
-  # ].each do |path|
-  #   get "/#{path}/(:id)", as: "#{path}_root" , to: redirect { |_, request|
-  #     p = ParticipatoryProcess.first
-  #     if p.present?
-  #       "/#{p.slug}#{request.path}"
-  #     else
-  #       raise ActionController::RoutingError.new('Not Found')
-  #     end
-  #   }
-  # end
+  [
+    "proposals",
+    "action_plans",
+    "meetings",
+    "debates",
+    "categories",
+    "more_information",
+    "download",
+    "dataviz"
+  ].each do |path|
+    get "/#{path}/(:id)", as: "#{path}_root" , to: redirect { |_, request|
+      p = ParticipatoryProcess.find('pam')
+      resource = path.split("/").first
+      if p.present?
+        "/#{p.to_param}/#{Step.step_for(p, resource).to_param}#{request.path}"
+      else
+        raise ActionController::RoutingError.new('Not Found')
+      end
+    }
+  end
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
