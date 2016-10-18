@@ -1,3 +1,4 @@
+# coding: utf-8
 class Moderation::MeetingsController < Moderation::BaseController
   include ModerateActions
 
@@ -100,7 +101,7 @@ class Moderation::MeetingsController < Moderation::BaseController
   private
 
   def meeting_params
-    params.require(:meeting).permit(:title, :description, :address,
+    params.require(:meeting).permit(:title, :description, :address, :participatory_process_id,
                                     :address_longitude, :address_latitude,
                                     :address_details, :held_at, :start_at,
                                     :end_at, :category_id, :subcategory_id,
