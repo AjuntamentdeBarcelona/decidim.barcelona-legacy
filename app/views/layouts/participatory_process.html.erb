@@ -14,7 +14,9 @@
             </div>
             <div>
               <h2 class="text-highlight heading-small">
-                <span class="process-header__hashtag"><%= @participatory_process.hashtag %></span>
+                <% if !@participatory_process.hashtag.blank? %>
+                  <span class="process-header__hashtag"><%= @participatory_process.hashtag %></span>
+                <% end %>
                 <%= @participatory_process.decorate.subtitle %>
               </h2>
             </div>

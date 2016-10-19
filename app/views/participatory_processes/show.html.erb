@@ -1,3 +1,54 @@
+<div class="process-header process-header--home row column">
+  <div class="row column process-header__main"
+        style="background-image:url(<%= @participatory_process.decorate.full_image_url %>);">
+    <div class="process-header__container row">
+      <div class="columns mediumlarge-9 process-header__info">
+        <h1 class="text-highlight heading1">
+          <%= link_to participatory_process_path(@participatory_process), class: "info" do %>
+            <%= @participatory_process.decorate.title %>
+          <% end %>
+        </h1>
+        <h2 class="text-highlight heading4">
+          <% if !@participatory_process.hashtag.blank? %>
+            <span class="process-header__hashtag"><%= @participatory_process.hashtag %></span>
+          <% end %>
+          <%= @participatory_process.decorate.subtitle %>
+        </h2>
+      </div>
+      <% if false %>
+        <div class="columns mediumlarge-3 process-header__actions">
+          <div>
+            <a class="process-header__action" data-toggle="phasesInfo">
+              <span class="action-title">Las fases</span>
+              <span class="action-icon">
+                <svg class="icon icon--clock "   > <use xlink:href="/images/icons.svg#icon-clock" /> </svg>
+              </span>
+            </a>
+          </div>
+          <div>
+            <a class="process-header__action" data-toggle="processShare">
+              <span class="action-title">Compartir</span>
+              <span class="action-icon">
+                <svg class="icon icon--share "   > <use xlink:href="/images/icons.svg#icon-share" /> </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="row process-header--home__cta">
+      <% if @participatory_process.active_step %>
+        <div class="columns small-centered small-10 medium-6 mediumlarge-4 large-3">
+          <%= link_to step_path(@participatory_process, @participatory_process.active_step), class: "button expanded button--sc" do %>
+            <%= t ".participate" %>
+            <span class="button__info"><%= t ".active_step", name: @participatory_process.active_step.title %></span>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <div class="row column">
   <div class="row">
     <div class="columns medium-7 mediumlarge-8">

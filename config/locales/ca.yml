@@ -325,6 +325,8 @@ ca:
     show:
       documents: Documents relacionats
       steps: Fases
+      participate: Participa
+      active_step: "Fase actual: %{name}"
   proposal_results_mailer:
     proposal:
       status: Estat
