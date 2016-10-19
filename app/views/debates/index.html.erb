@@ -1,60 +1,17 @@
 <% provide :title do %><%= t('debates.index.title') %><% end %>
 
 <section role="main">
-  <div class="wrap row">
-    <div class="small-12 columns">
-      <div class="page-title">
-        <h2><%= t '.title' %></h2>
-        <h3><%== t '.description' %></h3>
-      </div>
+  <div class="row columns">
+    <div class="title-action">
+      <h2 class="title-action__title section-heading">Debates abiertos</h2>
+      <%= link_to url_for(action: :new), class: "title-action__action button small hollow button--sc" do %>
+        <%= t("debates.index.start_debate") %>
+        <%= icon "plus" %>
+      <% end %>
     </div>
   </div>
-
-  <div class="wrap row">
-    <div class="small-12 medium-3 column">
-      <aside class="sidebar" role="complementary">
-        <% if Setting["feature.debates.search"] %>
-          <%= render "shared/search_form",
-                    search_path: debates_path(page: 1),
-                    i18n_namespace: "debates.index.search_form" %>
-        <% end %>
-        <%= link_to t("debates.index.start_debate"), url_for(action: :new), class: 'button radius expand' if can?(:create, Debate) %>
-        <%= render "shared/tag_cloud", taggable: 'debate' %>
-      </aside>
-    </div>
-
-    <div id="debates" class="debates-list small-12 medium-9 column">
-
-      <% if @search_terms || @advanced_search_terms || @tag_filter %>
-        <div class="small-12 margin-top search-results">
-          <% if @search_terms || @advanced_search_terms %>
-            <h2>
-              <%= page_entries_info @debates %>
-              <% if !@advanced_search_terms %>
-                <%= t("debates.index.search_results", count: @debates.size, search_term: @search_terms) %>
-              <% end %>
-            </h2>
-          <% elsif @tag_filter %>
-            <h2>
-              <%= page_entries_info @debates %>
-              <%= t("debates.index.filter_topic", count: @debates.size, topic: @tag_filter) %>
-            </h2>
-          <% end %>
-        </div>
-      <% end %>
-
-      <% if Setting["feature.debates.search"] %>
-        <%= render "shared/advanced_search", search_path: debates_path(page: 1) %>
-      <% end %>
-
-      <%= render 'shared/order_links', i18n_namespace: "debates.index" %>
-
-      <div class="show-for-small-only">
-        <%= link_to t("debates.index.start_debate"), url_for(action: :new), class: 'button radius expand' %>
-      </div>
-
-      <%= render @debates %>
-      <%= paginate @debates %>
-    </div>
+  <div id="debates" class="debates-list row small-up-1 medium-up-2 large-up-3 card-grid">
+    <%= render @debates %>
+    <%= paginate @debates %>
   </div>
 </section>
