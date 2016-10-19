@@ -49,6 +49,17 @@ feature 'Admin participatory processes' do
     expect(page).to have_content "/pam"
   end
 
+  scenario "Show an existing participatory process", :js do
+    participatory_process = create(:participatory_process, name: "test")
+
+    visit admin_participatory_processes_path
+    within all("li").last do
+      click_link "Show"
+    end
+    expect(page).to have_content "pam"
+    expect(page).to have_content "Editar proceso participativo"
+  end
+
   scenario "Edit an existing participatory process", :js do
     create(:participatory_process, name: "test")
 
