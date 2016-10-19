@@ -21,12 +21,13 @@ const ActionPlan = ({
   <div id={`action_plan${id}`} className="proposal column">
     <article className="card card--action">
       <div className="card__content">
-        <a href="/action-view" className="card__link">
-          <h5 className="card__title"><a href={url}>{ title }</a></h5>
+        <a href={url} className="card__link">
+          <h5 className="card__title">{ title }</h5>
         </a>
-        <p className="card__desc">
+        <div className="card__desc">
           {htmlToReact(ellipsis(description, DESCRIPTION_MAX_CHARACTERS, true))}
-        </p>
+        </div>
+        <br />
         <FilterMeta
           scope={ scope_ }
           district={ district }

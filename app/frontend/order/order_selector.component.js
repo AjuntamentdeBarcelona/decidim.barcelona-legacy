@@ -8,21 +8,19 @@ class OrderSelector extends Component {
     const { orderLinks, order, setOrder } = this.props;
 
     return (
-      <p>
-        <ul className="menu">
-          { 
-            orderLinks.map(orderLink => {
-              return (
-                <li className={order === orderLink ? `${orderLink} active` : orderLink}>
-                  <a key={orderLink} onClick={() => setOrder(orderLink)} >
-                    { I18n.t(`components.order_selector.${orderLink}`) }
-                  </a>
-                </li>
-              );
-            })
-          }
-        </ul>
-      </p>
+      <ul className="menu">
+        {
+          orderLinks.map(orderLink => {
+            return (
+              <li key={orderLink} className={order === orderLink ? `${orderLink} active` : orderLink}>
+                <a onClick={() => setOrder(orderLink)} >
+                  { I18n.t(`components.order_selector.${orderLink}`) }
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
     );
   }
 }
