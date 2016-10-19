@@ -1,5 +1,7 @@
 import { Component, PropTypes } from 'react';
 
+import Icon                     from '../application/icon.component';
+
 import MeetingTime              from './meeting_time.component';
 import FilterLink               from '../filters/filter_link.component';
 import FilterServerLink         from '../filters/filter_server_link.component';
@@ -13,30 +15,43 @@ export default class Meeting extends Component {
     let { meeting } = this.props;
 
     return(
-      <div className="meeting">
-        <div className="meeting-inner">
-          <div className="meeting-content">
-            <a href={meeting.url} className="meeting-title" >
-              { meeting.title }
+      <div className="meeting column">
+        <article className="card card--meeting">
+          <span className="card__type">
+            <Icon name="meetings" />
+            Trobada
+          </span>
+          <div className="card__content">
+            <a href={meeting.url} className="card__link">
+              <h5 className="card__title">{ meeting.title }</h5>
             </a>
-            <MeetingTime meeting={ meeting } relativeTime={true} />
-            <p className="meeting-description">{ meeting.description }</p>
-            { (() => { if(meeting.district) {
-              return (
-                <div className="district">
-                  <strong>{ meeting.district.name }</strong>
-                </div>
-              )
-            }})() }
-            { (() => { if(meeting.address_details) {
-              return (<div className="meeting-address-details"><i className="icon"></i> { meeting.address_details }</div>)
-            }})()}
-            <div className="meeting-address"><i className="icon"></i> { meeting.address }</div>
+            <div className="card__datetime">
+              <MeetingTime meeting={ meeting } relativeTime={true} />
+            </div>
+            <div>{ meeting.description }</div><br />
+            <div className="address card__extra">
+              <div className="address__icon">
+                <Icon name="meetings" removeIconClass={true} width="40" height="70" />
+              </div>
+              <div className="address__details">
+                { (() => { if(meeting.address_details) {
+                  return (
+                    <div className="meeting-address-details">
+                      { meeting.address_details }
+                    </div>
+                  )
+                }})()}
+                <div className="meeting-address">{ meeting.address }</div>
+              </div>
+            </div>
           </div>
-          {this.renderMeetingCategory()}
-        </div>
+        </article>
       </div>
     );
+
+    //   </div>
+    //   {this.renderMeetingCategory()}
+    // </div>
   }
 
   renderMeetingCategory() {
