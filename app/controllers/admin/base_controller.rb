@@ -8,7 +8,7 @@ class Admin::BaseController < ApplicationController
   private
 
   def verify_administrator
-    raise CanCan::AccessDenied unless current_user.try(:administrator?)
+    raise CanCan::AccessDenied unless can?(:access_panel, :administration)
   end
 
   def admin_section?

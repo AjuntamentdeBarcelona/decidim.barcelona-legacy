@@ -1,4 +1,7 @@
 class Admin::VerificationsController < Admin::BaseController
+  before_action do
+    authorize!(:manage, :verifications)
+  end
 
   def index
     @users = User.incomplete_verification.page(params[:page])

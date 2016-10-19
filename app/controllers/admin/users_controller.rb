@@ -1,6 +1,10 @@
 class Admin::UsersController < Admin::BaseController
   has_filters %w{all without_confirmed_hide with_confirmed_hide administrators moderators dynamizers reviewer}, only: :index
 
+  before_filter do
+    authorize!(:manage, User)
+  end
+
   before_action :load_user, only: [:confirm_hide, :restore]
 
   helper_method :debates, :comments
