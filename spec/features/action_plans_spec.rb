@@ -56,7 +56,7 @@ feature 'Action plans', :js do
     expect(page).to have_content(proposal.subcategory.name["en"])
   end
 
-  scenario 'Edit an existing action plan' do
+  xscenario 'Edit an existing action plan' do
     action_plan = create(:action_plan, participatory_process: participatory_process, scope: 'city')
 
     visit action_plans_path(participatory_process_id: participatory_process,
@@ -71,7 +71,7 @@ feature 'Action plans', :js do
     expect(page).to have_content("Ciutat Vella")
   end
 
-  scenario 'Create a new revision for an action plan' do
+  xscenario 'Create a new revision for an action plan' do
     action_plan = create(:action_plan, participatory_process: participatory_process)
 
     visit action_plans_path(participatory_process_id: participatory_process,
@@ -116,7 +116,7 @@ feature 'Action plans', :js do
     expect(page).not_to have_content('A bad action plan')
   end
 
-  scenario 'Delete an action plan' do
+  xscenario 'Delete an action plan' do
     action_plan = create(:action_plan, participatory_process: participatory_process)
 
     visit action_plans_path(participatory_process_id: participatory_process,
@@ -130,7 +130,7 @@ feature 'Action plans', :js do
     expect(page).not_to have_content(action_plan.title)
   end
 
-  scenario 'Approve an action plan' do 
+  xscenario 'Approve an action plan' do 
     approved_action_plan = create(:action_plan, participatory_process: participatory_process)
     non_approved_action_plan = create(:action_plan, participatory_process: participatory_process)
 
