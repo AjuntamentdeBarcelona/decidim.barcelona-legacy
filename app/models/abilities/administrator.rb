@@ -43,6 +43,7 @@ module Abilities
       can :manage, Annotation
 
       can :manage, Meeting
+      can :manage, ParticipatoryProcessAttachment
 
       can :manage, SpendingProposal
 

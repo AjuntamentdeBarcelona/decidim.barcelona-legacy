@@ -10,6 +10,7 @@ class Moderation::ParticipatoryProcessesController < Moderation::BaseController
   end
 
   def show
+    @pp = ParticipatoryProcess.find(params[:id]).decorate
   end
 
   def new

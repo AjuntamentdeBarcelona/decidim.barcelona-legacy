@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161017074216) do
+ActiveRecord::Schema.define(version: 20161019090901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -360,6 +360,17 @@ ActiveRecord::Schema.define(version: 20161017074216) do
   end
 
   add_index "organizations", ["user_id"], name: "index_organizations_on_user_id", using: :btree
+
+  create_table "participatory_process_attachments", force: :cascade do |t|
+    t.string   "name"
+    t.string   "file"
+    t.string   "content_type"
+    t.text     "description"
+    t.integer  "file_size"
+    t.integer  "participatory_process_id", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "participatory_processes", force: :cascade do |t|
     t.string   "name"

@@ -178,6 +178,8 @@ Rails.application.routes.draw do
     end
 
     resources :participatory_processes do
+      resources :attachments, controller: "participatory_process_attachments", only: [:index, :create, :destroy]
+
       resources :steps do
         member do
           put :mark_as_active

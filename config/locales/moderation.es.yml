@@ -83,8 +83,18 @@ es:
       participatory_processes: Procesos participativos
       proposals: Propuestas
       users: Bloquear usuarios
+    participatory_process_attachments:
+      index:
+        add: Añadir adjunto
+        header:
+          actions: Acciones
+          content_type: Tipo de contenido
+          name: Nombre
+          size: Tamaño
+        title: Archivos adjuntos
     participatory_processes:
       index:
+        attachments: Archivos adjuntos
         delete: Borrar
         edit: Editar
         new: Nuevo
