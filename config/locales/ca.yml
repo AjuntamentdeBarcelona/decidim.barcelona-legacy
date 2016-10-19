@@ -254,10 +254,10 @@ ca:
         submit_button: Crear cita
     photos:
       title: Fotografies de la cita
-    proposals:
-      see_more: Veure més
     show:
-      back_link: Tornar
+      attendee_count: Attendee count
+      interventions: Interventions
+      organizations: Organizations
       proposals_title: Propostes tractades
       share: Comparteix
   notifications:

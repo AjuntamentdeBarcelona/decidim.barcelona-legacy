@@ -74,7 +74,7 @@
         </div>
         <div class="text-center">
           <button class="link text-center">
-            Compartir debate
+            <%= t('.share') %>
             <%= icon "share", class: "icon--after" %>
           </button>
         </div>
@@ -107,11 +107,11 @@
           <%= render "shared/tags", taggable: @meeting, limit: 5 %>
         </div>
         <div class="section">
-          <h3 class="section-heading">Fotografías de la cita</h3>
+          <h3 class="section-heading"><%= t('meetings.photos.title') %></h3>
           <%= render 'photos' %>
         </div>
         <div class="section">
-          <h3 class="section-heading">Resumen de la cita</h3>
+          <h3 class="section-heading"><%= t('meetings.close_report.title') %></h3>
           <%= render 'close_report' %>
         </div>
         <div class="section">
