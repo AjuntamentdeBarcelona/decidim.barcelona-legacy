@@ -57,8 +57,14 @@
             </button>
             <div class="phase-nav__wrapper" data-carousel>
               <% @participatory_process.steps.order(:position).decorate.each_with_index do |step, index| %>
-                <%= link_to step_path(participatory_process_id: @participatory_process, step_id: step), class: "phase-nav__item #{(step == participatory_process_step) ? 'is-active' : nil}" do %>
-                  <%= render partial: "participatory_processes/step_navigation_item", locals: { step: step, index: (index + 1) } %>
+                <% if step.enabled? %>
+                  <%= link_to step_path(participatory_process_id: @participatory_process, step_id: step), class: "phase-nav__item #{(step == participatory_process_step) ? 'is-active' : nil}" do %>
+                    <%= render partial: "participatory_processes/step_navigation_item", locals: { step: step, index: (index + 1) } %>
+                  <% end %>
+                <% else %>
+                  <span class="phase-nav__item is-inactive">
+                    <%= render partial: "participatory_processes/step_navigation_item", locals: { step: step, index: (index + 1) } %>
+                  </span>
                 <% end %>
               <% end %>
             </div>
