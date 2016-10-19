@@ -305,11 +305,9 @@ feature 'Proposals' do
     expect(proposal).to be_editable
     login_as(create(:user))
 
-    visit edit_proposal_path(proposal, participatory_process_id: proposal.
-                                       participatory_process, step_id: participatory_process.active_step.id)
+    visit edit_proposal_path(proposal, participatory_process_id: proposal.participatory_process, step_id: proposal.participatory_process.active_step.id)
     expect(current_path).
-      not_to eq(edit_proposal_path(proposal, participatory_process_id: proposal.
-                                             participatory_process, step_id: participatory_process.active_step))
+      not_to eq(edit_proposal_path(proposal, participatory_process_id: proposal.participatory_process, step_id: proposal.participatory_process.active_step))
     expect(page).to have_content 'You do not have permission'
   end
 
