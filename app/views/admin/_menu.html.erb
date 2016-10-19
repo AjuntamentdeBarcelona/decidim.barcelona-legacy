@@ -71,13 +71,6 @@
       <% end %>
     </li>
 
-    <li <%= "class=active" if (controller_name == "categories" || controller_name == "subcategories") %>>
-      <%= link_to admin_categories_path do %>
-        <i class="icon-check"></i>
-        <%= t("admin.menu.categories") %>
-      <% end %>
-    </li>
-
     <li <%= "class=active" if controller_name == "stats" %>>
       <%= link_to admin_stats_path do %>
         <i class="icon-stats"></i>
@@ -85,11 +78,5 @@
       <% end %>
     </li>
 
-    <li <%= "class=active" if controller_name == "participatory_processes" %>>
-      <%= link_to admin_participatory_processes_path do %>
-        <i class="icon-settings"></i>
-        <%= t("admin.menu.participatory_processes") %>
-      <% end %>
-    </li>
   </ul>
 </nav>

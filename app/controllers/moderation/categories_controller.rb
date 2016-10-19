@@ -1,4 +1,4 @@
-class Admin::CategoriesController < Admin::BaseController
+class Moderation::CategoriesController < Moderation::BaseController
   load_and_authorize_resource
 
   def index
@@ -16,7 +16,7 @@ class Admin::CategoriesController < Admin::BaseController
     @category = Category.new(strong_params)
 
     if @category.save
-      redirect_to admin_categories_url, notice: t('flash.actions.create.notice', resource_name: "Category")
+      redirect_to moderation_categories_url, notice: t('flash.actions.create.notice', resource_name: "Category")
     else
       render :new
     end
@@ -28,7 +28,7 @@ class Admin::CategoriesController < Admin::BaseController
   def update
     @category.assign_attributes(strong_params)
     if @category.save
-      redirect_to admin_categories_url, notice: t('flash.actions.update.notice', resource_name: "Category")
+      redirect_to moderation_categories_url, notice: t('flash.actions.update.notice', resource_name: "Category")
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class Admin::CategoriesController < Admin::BaseController
 
   def destroy
     @category.destroy
-    redirect_to admin_categories_url, notice: t('flash.actions.destroy.notice', resource_name: "Category")
+    redirect_to moderation_categories_url, notice: t('flash.actions.destroy.notice', resource_name: "Category")
   end
 
   private

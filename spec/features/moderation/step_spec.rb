@@ -1,16 +1,16 @@
 # coding: utf-8
 require 'rails_helper'
 
-feature 'Admin steps' do
+feature 'Moderate steps' do
   background do
     @participatory_process = create(:participatory_process, name: "test")
     @participatory_process.steps.delete_all
-    admin = create(:administrator)
-    login_as(admin)
+    moderator = create(:moderator)
+    login_as(moderator)
   end
 
   scenario "Create a step for an existing participatory process", :js do
-    visit admin_participatory_process_steps_path(@participatory_process)
+    visit moderation_participatory_process_steps_path(@participatory_process)
 
     click_link "Create step"
 
@@ -42,7 +42,7 @@ feature 'Admin steps' do
     step_2 = create(:step, participatory_process: @participatory_process, position: 2)
     step_3 = create(:step, participatory_process: @participatory_process, position: 3)
 
-    visit edit_admin_participatory_process_step_path(@participatory_process, step_3)
+    visit edit_moderation_participatory_process_step_path(@participatory_process, step_3)
 
     fill_in "step_position", with: 1
     click_button "Update step"
@@ -59,7 +59,7 @@ feature 'Admin steps' do
     step_1 = create(:step, participatory_process: @participatory_process, position: 0, active: false)
     step_2 = create(:step, participatory_process: @participatory_process, position: 1, active: true)
 
-    visit admin_participatory_process_steps_path(@participatory_process)
+    visit moderation_participatory_process_steps_path(@participatory_process)
 
     click_link "Mark as active"
 
@@ -72,7 +72,7 @@ feature 'Admin steps' do
   scenario "Destroy an existing step", :js do
     create(:step, participatory_process: @participatory_process)
 
-    visit admin_participatory_process_steps_path(@participatory_process)
+    visit moderation_participatory_process_steps_path(@participatory_process)
     click_link "Delete"
 
     expect(page).to have_content("Restore")
@@ -82,7 +82,7 @@ feature 'Admin steps' do
     step = create(:step, participatory_process: @participatory_process)
     step.destroy
 
-    visit admin_participatory_process_steps_path(@participatory_process)
+    visit moderation_participatory_process_steps_path(@participatory_process)
     click_link "Restore"
 
     expect(page).to_not have_content("Restore")

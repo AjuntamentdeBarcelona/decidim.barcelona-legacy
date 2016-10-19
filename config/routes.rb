@@ -129,23 +129,6 @@ Rails.application.routes.draw do
       resource :stats, only: :show
     end
 
-    resources :categories do
-      resources :subcategories
-    end
-
-    resources :participatory_processes do
-      resources :steps do
-        member do
-          put :mark_as_active
-          put :restore
-        end
-      end
-      member do
-        put :restore
-        put :publish
-        put :unpublish
-      end
-    end
   end
 
   namespace :moderation do
@@ -188,6 +171,24 @@ Rails.application.routes.draw do
     resources :meetings, except: [:show] do
       resource :close, controller: 'meetings/close', only: [:new, :create]
       resources :pictures, controller: 'meetings/pictures'
+    end
+
+    resources :categories do
+      resources :subcategories
+    end
+
+    resources :participatory_processes do
+      resources :steps do
+        member do
+          put :mark_as_active
+          put :restore
+        end
+      end
+      member do
+        put :restore
+        put :publish
+        put :unpublish
+      end
     end
   end
 

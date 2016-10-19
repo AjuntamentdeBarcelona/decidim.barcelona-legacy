@@ -25,13 +25,6 @@ es:
           on_users: Usuarios
         title: Actividad de los moderadores
         type: Tipo
-    categories:
-      index:
-        delete: Borrar
-        edit: Editar
-        new: Crear eje
-        title: Ejes
-        view_subcategories: Ver líneas estratégicas
     comments:
       index:
         filter: Filtro
@@ -55,14 +48,12 @@ es:
         title: Debates ocultos
     menu:
       activity: Actividad de moderadores
-      categories: Gestión de ejes
       debate_topics: Temas de debate
       hidden_comments: Comentarios ocultos
       hidden_debates: Debates ocultos
       hidden_proposals: Propuestas ocultas
       incomplete_verifications: Verificaciones incompletas
       organizations: Organizaciones
-      participatory_processes: Participatory processes
       spending_proposals: Propuestas de gasto
       stats: Estadísticas
       users: Usuarios
@@ -86,15 +77,6 @@ es:
         verify: Verificar
       search:
         title: Buscar organizaciones
-    participatory_processes:
-      index:
-        delete: Delete
-        edit: Edit
-        new: Nuevo
-        restore: Restore
-        show: Mostrar
-        steps: Fases
-        title: Título
     proposals:
       index:
         filter: Filtro
@@ -143,20 +125,6 @@ es:
           visits: Visitas
           votes: Votos
         visits_title: Visitas
-    steps:
-      index:
-        delete: Delete
-        edit: Edit
-        mark_as_active: Mark as active
-        new: New
-        restore: Restore
-        title: Title
-    subcategories:
-      index:
-        delete: Borrar
-        edit: Editar
-        new: Crear línea estratégica
-        title: Líneas estratégicas
     tags:
       create: Crear tema
       destroy: Eliminar tema

@@ -1,17 +1,17 @@
 # coding: utf-8
 require 'rails_helper'
 
-feature 'Admin categories' do
+feature 'Moderate categories' do
 
   background do
-    admin = create(:administrator)
-    login_as(admin)
+    moderator = create(:moderator)
+    login_as(moderator)
   end
 
   scenario "Can create new categories", :js do
-    visit admin_categories_path
+    visit moderation_categories_path
 
-    click_link "Create axis"
+    click_link "Create category"
 
     fill_in "category_position", with: 1
     fill_in "name_ca", with: "Eix 1"
@@ -21,7 +21,7 @@ feature 'Admin categories' do
     fill_in_editor 'description_es', with: 'Esta es una categoría'
     fill_in_editor 'description_en', with: 'This is a category'
 
-    click_button "Create axis"
+    click_button "Create category"
 
     expect(page).to have_content "Category created successfully."
     expect(page).to have_content("1. Axis 1")
@@ -30,13 +30,13 @@ feature 'Admin categories' do
   scenario "Edit an existing category", :js do
     create(:category, name: { en: "My axis" })
 
-    visit admin_categories_path
+    visit moderation_categories_path
 
     click_link "Edit"
 
     fill_in "name_en", with: "My edited axis"
 
-    click_button "Update axis"
+    click_button "Update category"
 
     expect(page).to have_content "Category updated successfully."
     expect(page).to have_content("My edited axis")
@@ -45,7 +45,7 @@ feature 'Admin categories' do
   scenario "Delete an existing category" do
     create(:category, name: { en: "My axis" })
 
-    visit admin_categories_path
+    visit moderation_categories_path
 
     click_link "Delete"
 
@@ -56,11 +56,11 @@ feature 'Admin categories' do
   scenario "Create a subcategory for an existing category", :js do
     create(:category, name: { en: "My axis" }, position: 1)
 
-    visit admin_categories_path
+    visit moderation_categories_path
 
-    click_link "View strategic lines"
+    click_link "View subcategories"
 
-    click_link "Create strategic line"
+    click_link "Create subcategory"
 
     fill_in "subcategory_position", with: 1
     fill_in "name_ca", with: "Línea de acció 1"
@@ -70,7 +70,7 @@ feature 'Admin categories' do
     fill_in_editor 'description_es', with: 'Esta es una subcategoría'
     fill_in_editor 'description_en', with: 'This is a subcategory'
 
-    click_button "Create strategic line"
+    click_button "Create subcategory"
 
     expect(page).to have_content "Subcategory created successfully."
     expect(page).to have_content("1.1. Action line 1")
@@ -80,9 +80,9 @@ feature 'Admin categories' do
     category = create(:category, name: { en: "My axis" })
     create(:subcategory, name: { en: "My action line" }, category_id: category.id)
 
-    visit admin_categories_path
+    visit moderation_categories_path
 
-    click_link "View strategic lines"
+    click_link "View subcategories"
 
     expect(page).to have_content "My action line"
 
@@ -90,7 +90,7 @@ feature 'Admin categories' do
 
     fill_in "name_en", with: "My edited action line"
 
-    click_button "Update strategic line"
+    click_button "Update subcategory"
 
     expect(page).to have_content "Subcategory updated successfully."
     expect(page).to have_content("My edited action line")
@@ -100,9 +100,9 @@ feature 'Admin categories' do
     category = create(:category, name: { en: "My axis" })
     create(:subcategory, name: { en: "My action line" }, category_id: category.id)
 
-    visit admin_categories_path
+    visit moderation_categories_path
 
-    click_link "View strategic lines"
+    click_link "View subcategories"
     click_link "Delete"
 
     expect(page).to have_content "Subcategory deleted successfully."

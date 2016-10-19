@@ -48,6 +48,13 @@ module Abilities
 
       can :manage, Meeting
       can :create, Meeting
+
+      can :manage, Category
+      can :manage, Subcategory
+
+      can :manage, ParticipatoryProcess
+      can :manage, Step
+
     end
   end
 end

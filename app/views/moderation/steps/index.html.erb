@@ -1,0 +1,26 @@
+<h2><%= t("moderation.steps.index.title") %></h2>
+<h3><%= page_entries_info @steps %></h3>
+<ul id="steps" class="admin-list">
+  <% @steps.each do |step| %>
+    <li class="<%= 'hidden' if step.hidden? %>">
+      <span><%= step.decorate.title %></span>
+      <div class="right">
+        <% if step.hidden? %>
+          <%= link_to t('moderation.steps.index.restore'), restore_moderation_participatory_process_step_path(@participatory_process, step), method: :put, class: "button tiny radius" %>
+        <% else %>
+          <% unless step.active? %>
+            <%= link_to t('moderation.steps.index.mark_as_active'), mark_as_active_moderation_participatory_process_step_path(@participatory_process, step), method: :put,  class: "button tiny radius alert" %>
+          <% end %>
+          <%= link_to t('moderation.steps.index.edit'), edit_moderation_participatory_process_step_path(@participatory_process, step), class: "button tiny radius" %>
+          <%= link_to t('moderation.steps.index.delete'), moderation_participatory_process_step_path(@participatory_process, step), method: :delete,  class: "button tiny radius alert", data: { confirm: t('moderation.actions.confirm') } %>
+        <% end %>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+<%= paginate @steps %>
+
+<div class="right">
+  <%= link_to t('moderation.steps.index.new'), new_moderation_participatory_process_step_path(@participatory_process), class: "button radius alert right" %>
+</div>

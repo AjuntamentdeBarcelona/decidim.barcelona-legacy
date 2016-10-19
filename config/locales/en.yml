@@ -67,7 +67,7 @@ en:
   categories:
     edit:
       form:
-        submit_button: Update axis
+        submit_button: Update category
     filter: View acting proposals
     form:
       category_description: Description
@@ -75,7 +75,7 @@ en:
       category_position: Position
     new:
       form:
-        submit_button: Create axis
+        submit_button: Create category
     title: City Plan
   comments:
     comment:
@@ -552,10 +552,10 @@ en:
   subcategories:
     edit:
       form:
-        submit_button: Update strategic line
+        submit_button: Update subcategory
     new:
       form:
-        submit_button: Create strategic line
+        submit_button: Create subcategory
   unauthorized:
     default: You do not have permission to access this page.
     manage:

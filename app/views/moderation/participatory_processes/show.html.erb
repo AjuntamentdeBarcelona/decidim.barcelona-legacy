@@ -1,7 +1,7 @@
 <% @pp = @participatory_process %>
 
 <p>
-<%= link_to "Volver a procesos participativos", admin_participatory_process_path %> 
+<%= link_to "Volver a procesos participativos", moderation_participatory_processes_path %> 
 </p>
 
 <h1><%= @pp.decorate.title %></h1>
@@ -21,8 +21,6 @@
   <dd><%# @pp.featured %></dd>
   <dt><%= t("participatory_processes.form.participatory_process_admin_name") %></dt>
   <dd><%= @pp.admin_name %></dd>
-  <dt><%= t("participatory_processes.form.participatory_process_admin_email") %></dt>
-  <dd><%= @pp.admin_email %></dd>
   <dt><%= t("participatory_processes.form.participatory_process_admin_email") %></dt>
   <dd><%= @pp.admin_email %></dd>
   <dt><%= t("participatory_processes.form.participatory_process_title") %></dt>
@@ -67,7 +65,7 @@
   <dd><%= @pp.citizenship_scope %></dd>
 </dl>
 
-<%= link_to "Editar proceso participativo", edit_admin_participatory_process_path(@pp.id), class: "button" %>
+<%= link_to "Editar proceso participativo", edit_moderation_participatory_process_path(@pp.id), class: "button" %>
 
 <h2><%= @pp.steps.count %> Fases</h2>
 
@@ -77,18 +75,18 @@
   </li>
 <% end %>
 
-<%= link_to "Editar fases", admin_participatory_process_steps_path(participatory_process_id: @pp.id), class: "button" %>
+<%= link_to "Editar fases", moderation_participatory_process_steps_path(participatory_process_id: @pp.id), class: "button" %>
 
 <h2><%= @pp.categories.count %> Categorías</h2>
 
 <ul>
   <% @pp.categories.each do |category| %>
     <li>
-      <b><%= category.name %></b>: <%= category.description %>.  
+      <b><%= category.decorate.name %></b>: <%= category.decorate.description %>.  
       <ul>
         <% category.subcategories.each do |subcategory| %> 
           <li>
-            <b><%= subcategory.name %></b>: <%= category.description %>.  
+            <b><%= subcategory.decorate.name %></b>: <%= category.decorate.description %>.  
           </li>
         <% end %>
       </ul>
@@ -96,13 +94,13 @@
   <% end %>
 </ul>
 
-<%= link_to "Editar categorías", admin_categories_path, class: "button" %>
+<%= link_to "Editar categorías", moderation_categories_path, class: "button" %>
 
 <h2><%= @pp.meetings.count %> Citas</h2>
 
 <% @pp.meetings.limit(20).each do |meeting| %>
   <li>
-    <b><%= meeting.title %></b> 
+    <b><%= meeting.title %></b> <%= link_to "Editar", edit_moderation_meeting_path(meeting, participatory_process_id: meeting.participatory_process) %>
   </li>
 <% end %>
 
@@ -112,7 +110,7 @@
 
 <% @pp.proposals.limit(20).each do |proposal| %>
   <li>
-    <b><%= proposal.title %></b> 
+    <b><%= proposal.title %></b> <%= link_to "Editar", edit_proposal_path(proposal, participatory_process_id: proposal.participatory_process) %>
   </li>
 <% end %>
 
@@ -122,7 +120,7 @@
 
 <% @pp.debates.limit(20).each do |debate| %>
   <li>
-    <b><%= debate.title %></b> 
+    <b><%= debate.title %></b> <%= link_to "Editar", edit_debate_path(debate, participatory_process_id: debate.participatory_process) %>
   </li>
 <% end %>
 

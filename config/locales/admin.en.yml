@@ -25,13 +25,6 @@ en:
           on_users: Users
         title: Moderator activity
         type: Type
-    categories:
-      index:
-        delete: Delete
-        edit: Edit
-        new: Create axis
-        title: Axis
-        view_subcategories: View strategic lines
     comments:
       index:
         filter: Filter
@@ -55,14 +48,12 @@ en:
         title: Hidden debates
     menu:
       activity: Moderator activity
-      categories: Axis management
       debate_topics: Debate topics
       hidden_comments: Hidden comments
       hidden_debates: Hidden debates
       hidden_proposals: Hidden proposals
       incomplete_verifications: Incomplete verifications
       organizations: Organisations
-      participatory_processes: Participatory processes
       spending_proposals: Spending proposals
       stats: Statistics
       users: Users
@@ -86,15 +77,6 @@ en:
         verify: Verify
       search:
         title: Search Organisations
-    participatory_processes:
-      index:
-        delete: Delete
-        edit: Edit
-        new: Create participatory process
-        restore: Restore
-        show: Show
-        steps: Steps
-        title: Title
     proposals:
       index:
         filter: Filter
@@ -143,20 +125,6 @@ en:
           visits: Visits
           votes: Votes
         visits_title: Visits
-    steps:
-      index:
-        delete: Delete
-        edit: Edit
-        mark_as_active: Mark as active
-        new: Create step
-        restore: Restore
-        title: Title
-    subcategories:
-      index:
-        delete: Delete
-        edit: Edit
-        new: Create strategic line
-        title: Strategic lines
     tags:
       create: Create Topic
       destroy: Delete Topic

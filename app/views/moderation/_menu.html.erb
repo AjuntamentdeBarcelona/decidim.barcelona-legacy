@@ -4,6 +4,13 @@
       <%= link_to t("moderation.dashboard.index.title"), moderation_root_path %>
     </li>
 
+    <li <%= "class=active" if controller_name == "participatory_processes" %>>
+      <%= link_to moderation_participatory_processes_path do %>
+        <i class="icon-settings"></i>
+        <%= t("moderation.menu.participatory_processes") %>
+      <% end %>
+    </li>
+
     <% if can? :moderate, Proposal %>
       <li <%= "class=active" if controller_name == "proposals" %>>
         <%= link_to moderation_proposals_path do %>
@@ -48,5 +55,13 @@
         <% end %>
       </li>
     <% end %>
+
+    <li <%= "class=active" if (controller_name == "categories" || controller_name == "subcategories") %>>
+      <%= link_to moderation_categories_path do %>
+        <i class="icon-check"></i>
+        <%= t("moderation.menu.categories") %>
+      <% end %>
+    </li>
+
   </ul>
 </nav>
