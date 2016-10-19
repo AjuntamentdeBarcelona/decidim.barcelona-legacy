@@ -1,62 +1,52 @@
 <% cache [locale_and_user_status, debate, @debate_votes[debate.id]] do %>
-  <div id="<%= dom_id(debate) %>" class="debate clear">
-    <div class="panel">
-      <div class="row">
-
-        <div class="small-12 medium-9 column">
-          <div class="debate-content">
-            <h3><%= link_to debate.title, url_for(id: debate, action: :show) %></h3>
-            <p class="debate-info">
-              <i class="icon-comments"></i>&nbsp;
-              <%= link_to t("debates.debate.comments", count: debate.comments_count), url_for(id: debate, action: :show, anchor: "comments") %>
+  <div id="<%= dom_id(debate) %>" class="debate column">
+    <article class="card card--debate">
+      <div class="card__content">
+        <div class="card__header">
+          <%= link_to url_for(id: debate, action: :show), class: "card__link" do %>
+            <h5 class="card__title"><%= debate.title %></h5>
+          <% end %>
+          <div class="card__author author-data author-data--small">
+            <% if !debate.author || debate.author.hidden? || debate.author.erased? %>
               <span class="bullet">&nbsp;&bull;&nbsp;</span>
-              <%= l debate.created_at.to_date %>
-
-              <% if !debate.author || debate.author.hidden? || debate.author.erased? %>
-                <span class="bullet">&nbsp;&bull;&nbsp;</span>
-                <span class="author">
-                  <%= t("debates.show.author_deleted") %>
-                </span>
-              <% else %>
-                <span class="bullet">&nbsp;&bull;&nbsp;</span>
-                <span class="author">
-                  <%= debate.author.name %>
-                </span>
-                <% if debate.author.official? %>
-                  <span class="bullet">&nbsp;&bull;&nbsp;</span>
-                  <span class="label round level-<%= debate.author.official_level %>">
-                    <%= official_position(debate.author) %>
-                  </span>
-                <% end %>
-              <% end %>
-
-              <% if debate.author.verified_organization? %>
-                <span class="bullet">&nbsp;&bull;&nbsp;</span>
-                <span class="label round is-association">
-                  <%= t("shared.collective") %>
-                </span>
-              <% end %>
-
-            </p>
-            <div class="debate-description">
-              <%== truncate strip_tags(debate.description), length: 900 %>
-            </div>
-            <%= render "shared/tags", taggable: debate, limit: 5 %>
-            <div class="actions">
-              <%= link_to t('.read_more'), url_for(id: debate, action: :show), class: 'button small' %>
-            </div>
+              <span class="author">
+                <%= t("debates.show.author_deleted") %>
+              </span>
+            <% else %>
+              <div class="author-data__main">
+                <div class="author author--inline">
+                  <a href="#" class="author__avatar">
+                    <%= avatar_image(debate.author, seed: debate.author_id, size: 32, class: 'author-photo') %>
+                  </a>
+                  <a href="#" class="author__name">
+                    <%= debate.author.name %>
+                    <% if debate.author.official? %>
+                      <span class="label label--small label--basic"><%= official_position(debate.author) %></span>
+                    <% end %>
+                  </a>
+                  <%= l debate.created_at.to_date %>
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
-
-        <div id="<%= dom_id(debate) %>_votes" class="small-12 medium-3 column text-center">
-          <%= debate_info_box(debate) %>
-          <%= render partial: 'debates/picture', locals: { debate: debate } %>
-          <% if Setting['feature.debates.vote'] %>
-            <%= render 'debates/votes', debate: debate %>
-          <% end %>
+        <div class="card__datetime">
+          <div class="card__datetime__date">
+            <%= l debate.starts_at.to_date %>
+          </div>
+          <div class="card__datetime__time">
+            <%= l debate.starts_at %> - <%= l debate.ends_at %>
+          </div>
         </div>
-
+        <p><%== truncate strip_tags(debate.description), length: 300 %></p>
+        <%= render "shared/tags", taggable: debate, limit: 5 %>
       </div>
-    </div>
+      <div class="card__footer">
+        <div class="card__support">
+          <div class="card__support__data"></div>
+          <%= link_to t('.read_more'), url_for(id: debate, action: :show), class: 'button small secondary card__button' %>
+        </div>
+      </div>
+    </article>
   </div>
 <% end %>

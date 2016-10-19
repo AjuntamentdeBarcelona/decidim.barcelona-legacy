@@ -12,7 +12,7 @@ feature 'Votes' do
     @pablo = create(:user)
   end
 
-  feature 'Debates' do
+  xfeature 'Debates' do
     background { login_as(@manuela) }
 
     scenario "Index shows user votes on debates" do
@@ -279,7 +279,7 @@ feature 'Votes' do
     end
   end
 
-  scenario 'Not logged user trying to vote debates', :js do
+  xscenario 'Not logged user trying to vote debates', :js do
     debate = create(:debate, participatory_process: participatory_process)
 
     visit debates_path(participatory_process_id: participatory_process,
@@ -302,7 +302,7 @@ feature 'Votes' do
     expect_message_you_need_to_sign_in
   end
 
-  scenario 'Anonymous user trying to vote debates', :js do
+  xscenario 'Anonymous user trying to vote debates', :js do
     user = create(:user)
     debate = create(:debate, participatory_process: participatory_process)
 

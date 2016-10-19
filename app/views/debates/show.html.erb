@@ -1,73 +1,82 @@
 <% provide :title do %><%= @debate.title %><% end %>
+
 <% cache [locale_and_user_status(@debate), @debate, @debate.author, Flag.flagged?(current_user, @debate), @debate_votes] do %>
   <section class="debate-show">
     <div id="<%= dom_id(@debate) %>" class="row">
-      <div class="small-12 medium-9 column">
-        <i class="icon-angle-left left"></i>&nbsp;
-        <%= link_to t("debates.show.back_link"), :back, class: 'left back' %>
-
-        <% if current_user && can?(:update, @debate) %>
-          <%= link_to url_for(action: 'edit', id: @debate), class: 'edit-debate button success tiny radius right' do %>
-            <i class="icon-edit"></i>
-            <%= t("debates.show.edit_debate_link") %>
-          <% end %>
+      <% if current_user && can?(:update, @debate) %>
+        <%= link_to url_for(action: 'edit', id: @debate), class: 'edit-debate button success tiny radius right' do %>
+          <%= t("debates.show.edit_debate_link") %>
         <% end %>
-
-        <h2><%= @debate.title %></h2>
-        <% if @debate.conflictive? %>
-          <div class="alert-box alert radius margin-top">
-            <strong><%= t("debates.show.flag") %></strong>
-          </div>
-        <% end %>
-
-        <div class="debate-info">
-          <%= render '/shared/author_info', resource: @debate %>
-
+      <% end %>
+      
+      <div class="row column view-header">
+        <h2 class="heading2"><%= @debate.title %></h2>
+        <% if !@debate.author || @debate.author.hidden? || @debate.author.erased? %>
           <span class="bullet">&nbsp;&bull;&nbsp;</span>
-          <%= l @debate.created_at.to_date %>
-          <span class="bullet">&nbsp;&bull;&nbsp;</span>
-          <i class="icon-comments"></i>&nbsp;
-          <%= link_to t("debates.show.comments", count: @debate.comments_count), "#comments" %>
-          <span class="bullet">&nbsp;&bull;&nbsp;</span>
-          <span class="js-flag-actions">
-            <%= render 'debates/flag_actions', debate: @debate %>
+          <span class="author">
+            <%= t("debates.show.author_deleted") %>
           </span>
-        </div>
-
-        <%== safe_html_with_links @debate.description %>
-
-        <% if !@debate.instructions.blank? %>
-          <div class="debate-instructions">
-            <%== safe_html_with_links @debate.instructions %>
-          </div>
-        <% end %>
-
-        <%= render 'shared/tags', taggable: @debate %>
-
-        <%= render partial: 'shared/references', locals: { subject: @debate } %>
-
-        <div class="js-moderator-debate-actions margin">
-          <%= render 'actions', debate: @debate %>
-        </div>
-      </div>
-
-      <aside class="small-12 medium-3 column">
-        <div class="sidebar-divider"></div>
-        <%= debate_info_box(@debate) %>
-
-        <%= render partial: 'debates/picture', locals: { debate: @debate } %>
-        <% if true %><!--Setting["feature.debates.vote"] %>-->
-          <h3><%= t("votes.supports") %></h3>
-          <div class="text-center">
-            <div id="<%= dom_id(@debate) %>_votes">
-            <%= render 'debates/votes', debate: @debate %>
+        <% else %>
+          <div class="author-data">
+            <div class="author-data__main">
+              <div class="author author--inline">
+                <a href="#" class="author__avatar">
+                  <%= avatar_image(@debate.author, seed: @debate.author_id, size: 32, class: 'author-photo') %>
+                </a>
+                <%= l @debate.created_at.to_date %>
+                <a href="#" class="author__name">
+                  <%= @debate.author.name %>
+                  <% if @debate.author.official? %>
+                    <span class="label label--small label--basic"><%= official_position(@debate.author) %></span>
+                  <% end %>
+                </a>
+              </div>
+            </div>
+            <div class="author-data__extra">
+              <a href="#comments" title="Comentarios">
+                <%= icon "comment-square", class: "icon--small" %>
+                <%= @debate.comments_count %>
+              </a>
             </div>
           </div>
-          <div class="sidebar-divider"></div>
         <% end %>
-        <h3><%= t("debates.show.share") %></h3>
-        <%= social_share_button_tag(@debate.title) %>
-      </aside>
+      </div>
+      <div class="row">
+        <div class="columns section view-side mediumlarge-4 mediumlarge-push-8
+          large-3 large-push-9">
+          <div class="card extra">
+            <div class="card__content">
+              <div class="extra__time">
+                <%= l @debate.starts_at.to_date %>
+              </div>
+              <div class="extra__time">
+                <%= l @debate.starts_at %> - <%= l @debate.ends_at %>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <button class="link text-center">
+              Compartir debate
+              <%= icon "share", class: "icon--after" %>
+            </button>
+          </div>
+        </div>
+        <div class="columns mediumlarge-8 mediumlarge-pull-4">
+          <div class="section">
+            <%== safe_html_with_links @debate.description %>
+            <% if !@debate.instructions.blank? %>
+              <div class="callout success debate-instructions">
+                <%== safe_html_with_links @debate.instructions %>
+              </div>
+            <% end %>
+            <br />
+            <%= render 'shared/tags', taggable: @debate %>
+          </div>
+        </div>
+      </div>
+      <div class="js-moderator-debate-actions margin">
+        <%= render 'actions', debate: @debate %>
+      </div>
     </div>
   </section>
 <% end %>
