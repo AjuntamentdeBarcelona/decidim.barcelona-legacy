@@ -16,20 +16,35 @@ import pagination               from '../pagination/pagination.reducers';
 
 const middlewares = [ReduxPromise];
 
-if (process.env.NODE_ENV === 'development') {
-  const createLogger = require('redux-logger');
-  const logger = createLogger();
-  middlewares.push(logger);
-}
+// if (process.env.NODE_ENV === 'development') {
+//   const createLogger = require('redux-logger');
+//   const logger = createLogger();
+//   middlewares.push(logger);
+// }
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
-function createReducers(sessionState) {
+function createReducers(sessionState, participatoryProcessIdState, stepIdState, decidimIconsUrlState) {
   let session = function (state = sessionState) {
+    return state;
+  };
+
+  let participatoryProcessId = function (state = participatoryProcessIdState) {
+    return state;
+  };
+
+  let stepId = function (state = stepIdState) {
+    return state;
+  };
+
+  let decidimIconsUrl = function (state = decidimIconsUrlState) {
     return state;
   };
 
   return combineReducers({
     session,
+    participatoryProcessId,
+    stepId,
+    decidimIconsUrl,
     debate,
     pagination,
     order
@@ -40,7 +55,7 @@ export default class DebateApp extends Component {
   render() {
     return (
       <Provider 
-        store={createStoreWithMiddleware(createReducers(this.props.session))}>
+        store={createStoreWithMiddleware(createReducers(this.props.session, this.props.participatory_process_id, this.props.step_id, this.props.decidim_icons_url))}>
         <DebateShow debateId={this.props.debateId} />
       </Provider>
     );
@@ -49,5 +64,8 @@ export default class DebateApp extends Component {
 
 DebateApp.propTypes = {
   session: PropTypes.object.isRequired,
-  debateId: PropTypes.number.isRequired
+  debateId: PropTypes.number.isRequired,
+  participatory_process_id: PropTypes.string.isRequired,
+  step_id: PropTypes.string.isRequired,
+  decidim_icons_url: PropTypes.string.isRequired
 };

@@ -9,6 +9,9 @@
           <div class="card__author author-data author-data--small">
             <div class="author-data__main">
               <div class="author author--inline">
+                <a href="#" class="author__avatar">
+                  <%= avatar_image(debate.author, seed: debate.author_id, size: 32, class: 'author-photo') %>
+                </a>
                 <a href="#" class="author__name">
                   <%= debate.author.name %>
                   <% if debate.author.official? %>
