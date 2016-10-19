@@ -51,9 +51,7 @@ ca:
       description: Descripció
       title: Títol
     index:
-      description: Aquí pots navegar per les actuacions que l'Ajuntament ha elaborat pel Pla d'Actuació Municipal 2016-2019 basant-se en les propostes elaborades pel mateix Ajuntament, la ciutadania, organitzacions i entitats socials, així com aquelles que provenen de cites presencials. Des de les actuacions podràs consultar les propostes en què estan basades, així com els suports rebuts, els comentaris realitzats a cadascuna d'elles, i les cites presencials associades.
       new: Nova actuació
-      title: Actuacions
     new:
       form:
         submit_button: Crear actuació
@@ -392,8 +390,6 @@ ca:
       tags_label: Temes
       tags_placeholder: Escriu les etiquetes que vulguis separades per una coma (',')
     index:
-      filter:
-        title: Filtrar per
       orders:
         confidence_score: amb més suport
         created_at: més noves

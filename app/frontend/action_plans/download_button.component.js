@@ -1,4 +1,6 @@
-import { connect } from 'react-redux';
+import { connect }                      from 'react-redux';
+
+import Icon                             from '../application/icon.component';
 
 import { buildActionPlansRequestParams} from "./action_plans.actions";
 
@@ -18,7 +20,7 @@ function buildUrl(props){
 
 const DownloadButton = (props) => (
   <a href={buildUrl(props)} className="action-plans-download button small right">
-    <i className={`icon fa fa-download`}></i>
+    <Icon name="file" />
   </a>
 )
 

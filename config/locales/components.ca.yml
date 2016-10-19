@@ -1,8 +1,6 @@
 ---
 ca:
   components:
-    action_plan:
-      label: Actuació
     action_plan_authors:
       title: Autoria
     action_plan_info:

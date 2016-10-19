@@ -1,16 +1,13 @@
 import ActionPlansFilters  from './action_plans_filters.component';
-import NewActionPlanButton from './new_action_plan_button.component';
 
 const ActionPlansSidebar = () => (
-  <aside className="sidebar" role="complementary">
-    <NewActionPlanButton />
-    <div className="sidebar-section proposal-filter-menu collapsed">
-      <h2 className="title">{I18n.t('proposals.index.filter.title')}<span className="toggle-menu"></span></h2>
-      <div className="sidebar-section-content">
+  <div className="filters-controls">
+    <div className="card card--secondary show-for-mediumlarge">
+      <div className="filters">
         <ActionPlansFilters />
       </div>
     </div>
-  </aside>
+  </div>
 );
 
 export default ActionPlansSidebar;

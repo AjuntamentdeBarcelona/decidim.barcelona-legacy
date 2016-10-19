@@ -51,9 +51,7 @@ es:
       description: Descripción
       title: Título
     index:
-      description: Aquí  puedes navegar por las actuaciones que el Ayuntamiento ha elaborado para el Plan de actuación municipal 2016-2019 basándose en las propuestas elaboradas por el propio Ayuntamiento, la ciudadanía, organizaciones y entidades sociales, así como esas que provienen de las citas presenciales. Desde las actuaciones podrás consultar las propuestas en las que están basadas, así como los  apoyos recibidos, los  comentarios realizados a cada una, y las citas presenciales asociadas con ellas.
       new: Nueva actuación
-      title: Actuaciones
     new:
       form:
         submit_button: Crear actuación
@@ -392,8 +390,6 @@ es:
       tags_label: Temas
       tags_placeholder: Escribe las etiquetas que desees separadas por una coma (',')
     index:
-      filter:
-        title: Filtrado por
       orders:
         confidence_score: Más apoyadas
         created_at: Nuevas

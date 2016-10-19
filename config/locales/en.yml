@@ -51,9 +51,7 @@ en:
       description: Description
       title: Title
     index:
-      description: Here you can browse the actions developed by the City Council Municipal Action Plan 2016-2019 on the basis of proposals made by the same council, citizens, organizations and social organizations, as well as those from dating face. Since actions can view the proposals which are based, as well as the support received, comments made to each of them and face associated appointments.
       new: New action plan
-      title: actions
     new:
       form:
         submit_button: Create action plan
@@ -392,8 +390,6 @@ en:
       tags_label: Tags
       tags_placeholder: Enter the tags you would like to use, separated by commas (',')
     index:
-      filter:
-        title: Filter by
       orders:
         confidence_score: highest rated
         created_at: newest

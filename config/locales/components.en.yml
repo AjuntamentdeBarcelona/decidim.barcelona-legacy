@@ -1,8 +1,6 @@
 ---
 en:
   components:
-    action_plan:
-      label: Action plan
     action_plan_authors:
       title: Authorship
     action_plan_info:
