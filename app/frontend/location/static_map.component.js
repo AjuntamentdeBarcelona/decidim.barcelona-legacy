@@ -49,8 +49,10 @@ export default class StaticMap extends Component {
   }
 
   render() {
+    const { height } = this.props;
+
     return (
-      <div ref="map" className="static-map"></div>
+      <div ref="map" className="static-map" style={{height: (height || 120) + 'px'}}></div>
     );
   }
 }
@@ -59,5 +61,6 @@ StaticMap.propTypes = {
   latitude: PropTypes.number.isRequired,
   longitude: PropTypes.number.isRequired,
   onMapInit: PropTypes.func,
-  zoom: PropTypes.number.isRequired
+  zoom: PropTypes.number.isRequired,
+  height: PropTypes.number
 };
