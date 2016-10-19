@@ -263,7 +263,6 @@ ca:
     index:
       close: Tancar
       delete: Esborrar
-      description: Aquí podràs trobar totes les cites presencials realitzades en el procés de participació. Les cites són trobades presencials en forma de jornades, debats i dinamitzacions en l’espai públic per debatre propostes del Pla d'actuació municipal relacionades amb cadascun dels eixos temàtics (habitatge, educació, sanitat, participació, economia, etc.). Hi ha cites de barri, de districte i de ciutat. Pots consultar totes les cites realitzades, l'acta de cadascuna d'elles i les propostes sorgides d’aquestes cites.
       edit: Editar
       new: Crear cita
       pictures: Imatges

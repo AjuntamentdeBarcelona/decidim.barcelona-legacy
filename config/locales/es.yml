@@ -263,7 +263,6 @@ es:
     index:
       close: Cerrar
       delete: Borrar
-      description: Aquí podrás encontrar todas las citas presenciales realizadas en el proceso de participación. Las citas son encuentros presenciales en forma de jornadas, debates y dinamizaciones en el espacio público para debatir propuestas del Plan de actuación municipal relacionadas con cada uno de los ejes temáticos (vivienda , educación, sanidad, participación, economía, etc.). hay citas de barrio, de distrito y de ciudad. Puedes consultar todas las citas realizadas, el acta de cada una de ellas y las propuestas surgidas de estas citas.
       edit: Editar
       new: Crear cita
       pictures: Imágenes

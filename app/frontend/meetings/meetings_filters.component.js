@@ -39,7 +39,9 @@ class MeetingsFilters extends Component {
         this.props.filters.text.length > 0 ||
         this.props.filters.tags.length > 0) {
       return (
-        <a onClick={() => this.props.clearFilters()}>{I18n.t('components.meetings_filters.clean_filters')}</a>
+        <div className="columns small-12">
+          <a className="button expanded hollow" onClick={() => this.props.clearFilters()}>{I18n.t('components.meetings_filters.clean_filters')}</a>
+        </div>
       )
     }
     return null;
