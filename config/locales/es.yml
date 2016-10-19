@@ -342,6 +342,7 @@ es:
       form:
         submit_button: Crear proceso
     show:
+      documents: Documentos relacionados
       steps: Fases
   proposal_results_mailer:
     proposal:

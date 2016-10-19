@@ -1,0 +1,37 @@
+<h2><%= t(".title") %> (<%= @participatory_process.decorate.title %>)</h2>
+
+<table id="participatory_processes" class="admin-list">
+  <thead>
+    <th><%= t ".header.name" %></th>
+    <th><%= t ".header.content_type" %></th>
+    <th><%= t ".header.size" %></th>
+    <th><%= t ".header.actions" %></th>
+  </thead>
+  <tbody>
+    <% @attachments.each do |attachment| %>
+      <tr>
+        <td>
+          <%= link_to attachment.name, attachment.file.url %>
+          <%= attachment.description[I18n.locale.to_s] %>
+        </td>
+        <td><%= attachment.content_type %></td>
+        <td><%= number_to_human_size attachment.file_size %></td>
+        <td><%= link_to "Destroy", url_for(id: attachment, action: :destroy), method: :delete, data: { confirm: "Are you sure?" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3><%= t ".add" %></h3>
+
+<%= form_for @new_attachment, url: url_for(action: :create), multipart: true do |f| %>
+  <%= f.text_field :name %>
+  <%= f.file_field :file %>
+
+  <% I18n.available_locales.map(&:to_s).each do |locale| %>
+    <%= label_tag "Description #{locale}" %>
+    <%= text_field_tag "participatory_process_attachment[description][#{locale}]", @new_attachment.description.try(:[], locale) %>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>

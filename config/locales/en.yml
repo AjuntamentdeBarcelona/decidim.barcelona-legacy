@@ -342,6 +342,7 @@ en:
       form:
         submit_button: Create participatory process
     show:
+      documents: related documents
       steps: Steps
   proposal_results_mailer:
     proposal:

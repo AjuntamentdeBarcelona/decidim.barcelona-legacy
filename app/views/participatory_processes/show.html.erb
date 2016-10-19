@@ -24,6 +24,31 @@
   <div class="row">
     <div class="columns large-8">
       <div class="section">
+				<h4 class="section-heading"><%= t ".documents" %></h4>
+				<div class="card card--list">
+          <% @participatory_process.documents.each do |document| %>
+            <div class="card--list__item">
+              <div class="card--list__text">
+                <div>
+                  <%= link_to document.url, class: "card__link" do %>
+                    <h6 class="card--list__heading heading6">
+                      <%= document.name %> <small><%= document.label %> <%= document.file_size %></small>
+                    </h6>
+                    <span class="text-small"><%= document.description %></span>
+                  <% end %>
+                </div>
+              </div>
+              <div class="card--list__data">
+                <%= link_to document.url, class: "card--list__data__icon" do %>
+                  <%= icon "cloud-download" %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+				</div>
+			</div>
+
+      <div class="section">
         <h4 class="section-heading"><%= t ".steps" %></h4>
         <ol class="timeline">
           <% @participatory_process.decorate.steps.each_with_index do |step, index| %>
