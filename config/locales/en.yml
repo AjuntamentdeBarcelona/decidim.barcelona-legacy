@@ -254,10 +254,10 @@ en:
         submit_button: Create meeting
     photos:
       title: Pictures of the event
-    proposals:
-      see_more: See more
     show:
-      back_link: Back
+      attendee_count: Attendee count
+      interventions: Interventions
+      organizations: Organizations
       proposals_title: Discussed proposals
       share: Share
   notifications:

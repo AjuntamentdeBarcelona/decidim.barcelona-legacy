@@ -254,10 +254,10 @@ es:
         submit_button: Crear cita
     photos:
       title: Fotografías de la cita
-    proposals:
-      see_more: Ver más
     show:
-      back_link: Volver
+      attendee_count: Attendee count
+      interventions: Interventions
+      organizations: Organizations
       proposals_title: Propuestas tratadas
       share: Comparte
   notifications:

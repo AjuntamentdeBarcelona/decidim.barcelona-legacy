@@ -1,16 +1,38 @@
 <% unless @meeting.proposals.empty? %>
-  <div class="meeting-proposals">
-    <h3><%= t("meetings.show.proposals_title") %></h3>
-    <ul>
-      <% @meeting.meeting_proposals.each do |meeting_proposal| %>
-        <li>
-          <span class="proposal-title"><%= meeting_proposal.proposal.title %></span>
-          <% if meeting_proposal.meeting.closed? && meeting_proposal.consensus %>
-            <span class="support label round success "><%= t("meetings.close.form.proposals.consensus") %></span>
-          <% end %>
-          <%= link_to t('.see_more'), proposal_path(meeting_proposal.proposal, participatory_process_id: meeting_proposal.participatory_process), class: 'see-more button tiny round' %>
-        </li>
-      <% end %>
-    </ul>
+  <div class="meeting-proposals card card--action card--list">
+    <% @meeting.meeting_proposals.each do |meeting_proposal| %>
+      <div class="card--list__item">
+        <div class="card--list__text">
+          <a href="#">
+            <%= icon "proposals", class: "card--list__icon", removeIconClass: true %>
+          </a>
+          <div>
+            <a href="#" class="card__link">
+              <h5 class="card--list__heading">
+                <%= meeting_proposal.proposal.title %>
+              </h5>
+            </a>
+            <div class="author">
+              <% if !meeting_proposal.proposal.author || meeting_proposal.proposal.author.hidden? || meeting_proposal.proposal.author.erased? %>
+                <span class="bullet">&nbsp;&bull;&nbsp;</span>
+                <span class="author">
+                  <%= t("debates.show.author_deleted") %>
+                </span>
+              <% else %>
+                <a href="#" class="author__avatar">
+                  <%= avatar_image(meeting_proposal.proposal.author, seed: meeting_proposal.proposal.author_id, size: 32, class: 'author-photo') %>
+                </a>
+                <a href="#" class="author__name">
+                  <%= meeting_proposal.proposal.author.name %>
+                </a>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="card--list__data">
+          <span class="card--list__data__number"><%= meeting_proposal.proposal.total_votes %></span>apoyos
+        </div>
+      </div>
+    <% end %>
   </div>
 <% end %>
