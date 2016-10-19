@@ -103,10 +103,6 @@ en:
       form:
         submit_button: Start a debate
     debate:
-      comments:
-        one: 1 comment
-        other: "%{count} comments"
-        zero: No comments
       read_more: Come in and participate
       votes:
         one: 1 vote
@@ -126,10 +122,6 @@ en:
       tags_label: Topics
       tags_placeholder: Enter the tags you would like to use, separated by commas (',')
     index:
-      description: The debates are open questions with different deputy mayors and the mayor of Barcelona taking place under the Municipal Action Plan. 48 hours before the start of the debate can now begin to ask questions and / or vote for those deemed most relevant. Once the debate begins at the appointed time will be answering questions giving priority to those with the most votes. Therefore it is important to actively participate in deciding what questions are more collaborative priority and which less. Equally important is to ask the questions in advance and made the clearest way possible and reasonable to be well positioned when to start answering the questions.
-      filter_topic:
-        one: " with topic '%{topic}'"
-        other: " with topic '%{topic}'"
       orders:
         confidence_score: highest rated
         created_at: newest
@@ -141,9 +133,6 @@ en:
         button: Search
         placeholder: Search debates...
         title: Search
-      search_results:
-        one: " containing the term '%{search_term}'"
-        other: " containing the term '%{search_term}'"
       select_order: Order by
       start_debate: Start a debate
       title: Debates
@@ -162,14 +151,7 @@ en:
       start_new: Start a debate
     show:
       author_deleted: User deleted
-      back_link: Go back
-      comments:
-        one: 1 comment
-        other: "%{count} comments"
-        zero: No comments
       edit_debate_link: Edit
-      flag: This debate has been flagged as inappropriate by several users.
-      share: Share
     update:
       form:
         submit_button: Save changes

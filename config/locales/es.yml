@@ -103,10 +103,6 @@ es:
       form:
         submit_button: Empieza un debate
     debate:
-      comments:
-        one: 1 Comentario
-        other: "%{count} Comentarios"
-        zero: Sin comentarios
       read_more: Entra y participa
       votes:
         one: 1 voto
@@ -126,10 +122,6 @@ es:
       tags_label: Temas
       tags_placeholder: Escribe las etiquetas que desees separadas por coma (',')
     index:
-      description: Los debates son un espacio abierto de preguntas con los diferentes tenientes alcaldes y la alcaldesa de Barcelona y tienen lugar en el marco del Plan de Actuación Municipal. 48 horas antes de que comience el debate ya se pueden empezar a hacer preguntas y/o votar aquellas que se consideren más relevantes. Una vez comience el debate a la hora señalada se irán respondiendo las preguntas dando prioridad a aquellas que tengan más votos. Por lo tanto es importante participar activamente en la decisión colaborativa de qué preguntas son más prioritarias y cuáles menos. Igualmente es importante hacer las preguntas con suficiente antelación y formuladas de la manera más clara y razonada posible para que esté bien posicionada cuando se empiecen a responder las preguntas.
-      filter_topic:
-        one: " con el tema '%{topic}'"
-        other: " con el tema '%{topic}'"
       orders:
         confidence_score: Mejor valorados
         created_at: Nuevos
@@ -141,9 +133,6 @@ es:
         button: Buscar
         placeholder: Buscar debates...
         title: Buscar
-      search_results:
-        one: " que contiene '%{search_term}'"
-        other: " que contienen '%{search_term}'"
       select_order: Ordenar por
       start_debate: Empieza un debate
       title: Debates
@@ -162,14 +151,7 @@ es:
       start_new: Empezar un debate
     show:
       author_deleted: Usuario eliminado
-      back_link: Volver
-      comments:
-        one: 1 Comentario
-        other: "%{count} Comentarios"
-        zero: Sin comentarios
       edit_debate_link: Editar debate
-      flag: Este debate ha sido marcado como inapropiado por varios usuarios.
-      share: Compartir
     update:
       form:
         submit_button: Guardar cambios
