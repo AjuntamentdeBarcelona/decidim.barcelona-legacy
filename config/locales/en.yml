@@ -323,7 +323,9 @@ en:
       form:
         submit_button: Create participatory process
     show:
+      active_step: 'Current phase: %{name}'
       documents: related documents
+      participate: participates
       steps: Steps
   proposal_results_mailer:
     proposal:
