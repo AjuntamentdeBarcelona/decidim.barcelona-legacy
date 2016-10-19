@@ -1,4 +1,4 @@
-class Admin::SubcategoriesController < Admin::BaseController
+class Moderation::SubcategoriesController < Admin::BaseController
   load_and_authorize_resource
 
   before_filter :load_category
@@ -18,7 +18,7 @@ class Admin::SubcategoriesController < Admin::BaseController
     @subcategory = @category.subcategories.build(strong_params)
 
     if @subcategory.save
-      redirect_to admin_category_subcategories_url(@category), notice: t('flash.actions.create.notice', resource_name: "Subcategory")
+      redirect_to moderation_category_subcategories_url(@category), notice: t('flash.actions.create.notice', resource_name: "Subcategory")
     else
       render :new
     end
@@ -30,7 +30,7 @@ class Admin::SubcategoriesController < Admin::BaseController
   def update
     @subcategory.assign_attributes(strong_params)
     if @subcategory.save
-      redirect_to admin_category_subcategories_url(@category), notice: t('flash.actions.update.notice', resource_name: "Subcategory")
+      redirect_to moderation_category_subcategories_url(@category), notice: t('flash.actions.update.notice', resource_name: "Subcategory")
     else
       render :edit
     end
@@ -38,7 +38,7 @@ class Admin::SubcategoriesController < Admin::BaseController
 
   def destroy
     @subcategory.destroy
-    redirect_to admin_category_subcategories_url(@category), notice: t('flash.actions.destroy.notice', resource_name: "Subcategory")
+    redirect_to moderation_category_subcategories_url(@category), notice: t('flash.actions.destroy.notice', resource_name: "Subcategory")
   end
 
   private

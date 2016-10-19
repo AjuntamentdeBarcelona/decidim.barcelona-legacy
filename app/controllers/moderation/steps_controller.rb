@@ -1,4 +1,4 @@
-class Admin::StepsController < Admin::BaseController
+class Moderation::StepsController < Moderation::BaseController
   before_filter :load_participatory_process
   before_filter :load_step, only: [:edit, :update, :destroy, :mark_as_active]
   authorize_resource
@@ -16,7 +16,7 @@ class Admin::StepsController < Admin::BaseController
     @step.active = @participatory_process.steps.count.zero?
 
     if @step.save
-      redirect_to admin_participatory_process_steps_url, notice: t("flash.actions.create.notice", resource_name: "Step")
+      redirect_to moderation_participatory_process_steps_url, notice: t("flash.actions.create.notice", resource_name: "Step")
     else
       render :new
     end
@@ -27,7 +27,7 @@ class Admin::StepsController < Admin::BaseController
 
   def update
     if @step.update_attributes(strong_params)
-      redirect_to admin_participatory_process_steps_url, notice: t("flash.actions.update.notice", resource_name: "Step")
+      redirect_to moderation_participatory_process_steps_url, notice: t("flash.actions.update.notice", resource_name: "Step")
     else
       render :edit
     end
@@ -35,19 +35,19 @@ class Admin::StepsController < Admin::BaseController
 
   def destroy
     @step.destroy
-    redirect_to admin_participatory_process_steps_url, notice: t('flash.actions.destroy.notice', resource_name: "Step")
+    redirect_to moderation_participatory_process_steps_url, notice: t('flash.actions.destroy.notice', resource_name: "Step")
   end
 
   def restore
     @step = @participatory_process.steps.with_hidden.find(params[:id])
     @step.restore
-    redirect_to admin_participatory_process_steps_url, notice: t('flash.actions.update.notice', resource_name: "Step")
+    redirect_to moderation_participatory_process_steps_url, notice: t('flash.actions.update.notice', resource_name: "Step")
   end
 
   def mark_as_active
     @participatory_process.steps.update_all(active: false)
     @step.update_attribute(:active, true)
-    redirect_to admin_participatory_process_steps_url, notice: t('flash.actions.update.notice', resource_name: "Step")
+    redirect_to moderation_participatory_process_steps_url, notice: t('flash.actions.update.notice', resource_name: "Step")
   end
 
   private

@@ -27,7 +27,7 @@
   <% @meetings.each do |meeting| %>
     <tr id="meeting<%= meeting.id %>">
       <td>
-        <%= link_to meeting.title, edit_moderation_meeting_path(meeting) %>
+        <%= link_to meeting.title, edit_moderation_meeting_path(meeting) %> [<%= meeting.participatory_process.decorate.title %>]
         <br>
         <span class="date"><%= l meeting.held_at %></span>
         <span class="bullet">&nbsp;&bull;&nbsp;</span>

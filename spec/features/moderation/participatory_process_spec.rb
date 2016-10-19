@@ -1,14 +1,14 @@
 # coding: utf-8
 require 'rails_helper'
 
-feature 'Admin participatory processes' do
+feature 'Moderate participatory processes' do
   background do
-    admin = create(:administrator)
-    login_as(admin)
+    moderator = create(:moderator)
+    login_as(moderator)
   end
 
   scenario "Can create new participatory processes", :js do
-    visit admin_participatory_processes_path
+    visit moderation_participatory_processes_path
 
     click_link "Create participatory process"
 
@@ -52,7 +52,7 @@ feature 'Admin participatory processes' do
   scenario "Show an existing participatory process", :js do
     participatory_process = create(:participatory_process, name: "test")
 
-    visit admin_participatory_processes_path
+    visit moderation_participatory_processes_path
     within all("li").last do
       click_link "Show"
     end
@@ -63,7 +63,7 @@ feature 'Admin participatory processes' do
   scenario "Edit an existing participatory process", :js do
     participatory_process = create(:participatory_process, name: "test")
 
-    visit admin_participatory_processes_path
+    visit moderation_participatory_processes_path
     within all("li").last do
       click_link "Edit"
     end
@@ -77,7 +77,7 @@ feature 'Admin participatory processes' do
 
   scenario "Destroy an existing participatory process", :js do
     participatory_process = create(:participatory_process, name: "test")
-    visit admin_participatory_processes_path
+    visit moderation_participatory_processes_path
     within all("li").last do
       click_link "Delete"
     end
@@ -89,7 +89,7 @@ feature 'Admin participatory processes' do
     participatory_process = create(:participatory_process, name: "test")
     participatory_process.destroy
 
-    visit admin_participatory_processes_path
+    visit moderation_participatory_processes_path
     click_link "Restore"
 
     expect(page).to_not have_content "Restore"
@@ -98,7 +98,7 @@ feature 'Admin participatory processes' do
   scenario "Publish a participatory process", :js do
     create(:participatory_process, name: "test", published: false)
 
-    visit admin_participatory_processes_path
+    visit moderation_participatory_processes_path
 
     click_link "Unpublished"
     click_link "Publish"
@@ -112,7 +112,7 @@ feature 'Admin participatory processes' do
     ParticipatoryProcess.delete_all
     create(:participatory_process, name: "test", published: true)
 
-    visit admin_participatory_processes_path
+    visit moderation_participatory_processes_path
 
     click_link "Unpublish"
 

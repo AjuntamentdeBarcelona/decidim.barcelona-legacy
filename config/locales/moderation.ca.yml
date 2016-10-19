@@ -1,11 +1,21 @@
 ---
 ca:
   moderation:
+    actions:
+      confirm: N'estàs segur?
+      confirm_hide: Confirma
     action_plan_reports:
       index:
         headers:
           title: Data de generació
         title: Informes d'actuacions
+    categories:
+      index:
+        delete: Esborrar
+        edit: Editar
+        new: Crear categoria
+        title: Categories
+        view_subcategories: Veure subcategories
     comments:
       index:
         block_authors: Bloqueja autors
@@ -71,6 +81,29 @@ ca:
       meetings: Cites presencials
       proposals: Propostes
       users: Bloqueja usuaris
+      categories: Gestió de categories
+      participatory_processes: Processos participatius
+    participatory_process_attachments:
+      index:
+        add: Afegir adjunt
+        header:
+          actions: Accions
+          content_type: Tipus de contingut
+          name: Nom
+          size: Mida
+        title: Arxius adjunts
+    participatory_processes:
+      index:
+        attachments: Arxius adjunts
+        delete: Esborrar
+        edit: Editar
+        new: Nou
+        publish: Publicar
+        unpublish: Unpublish
+        restore: Restaurar
+        show: Mostrar
+        steps: Fases
+        title: Titol
     proposals:
       index:
         block_authors: Bloqueja autors
@@ -90,6 +123,20 @@ ca:
           created_at: Més recents
           flags: Més denunciades
         title: Propostes
+    steps:
+      index:
+        delete: Delete
+        edit: Edit
+        mark_as_active: Mark as active
+        new: New
+        restore: Restore
+        title: Title
+    subcategories:
+      index:
+        delete: Esborrar
+        edit: Editar
+        new: Crear subcategoria
+        title: Subcategories
     users:
       index:
         hidden: Bloquejat

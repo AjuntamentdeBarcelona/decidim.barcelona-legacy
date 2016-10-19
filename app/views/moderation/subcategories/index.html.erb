@@ -1,0 +1,19 @@
+<h2><%= t("moderation.subcategories.index.title") %></h2>
+<h3><%= page_entries_info @subcategories %></h3>
+<ul id="subcategories" class="admin-list">
+  <% SubcategoryDecorator.decorate_collection(@subcategories).each do |subcategory| %>
+    <li>
+      <span><%= subcategory.name_with_code %></span>
+      <div class="right">
+        <%= link_to t('moderation.subcategories.index.edit'), edit_moderation_category_subcategory_path(@category, subcategory), class: "button tiny radius" %>
+        <%= link_to t('moderation.subcategories.index.delete'), moderation_category_subcategory_path(@category, subcategory), method: :delete,  class: "button tiny radius alert", data: { confirm: t('moderation.actions.confirm') } %>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+<%= paginate @subcategories %>
+
+<div class="right">
+  <%= link_to t('moderation.subcategories.index.new'), new_moderation_category_subcategory_path(@category), class: "button radius alert right" %>
+</div>

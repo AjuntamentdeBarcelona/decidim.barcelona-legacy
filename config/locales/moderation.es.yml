@@ -1,11 +1,21 @@
 ---
 es:
   moderation:
+    actions:
+      confirm: "¿Estás seguro?"
+      confirm_hide: Confirmar
     action_plan_reports:
       index:
         headers:
           title: Fecha de generación
         title: Informes de actuaciones
+    categories:
+      index:
+        delete: Borrar
+        edit: Editar
+        new: Crear categoría
+        title: Categorías
+        view_subcategories: Ver subcategorías
     comments:
       index:
         block_authors: Bloquear autores
@@ -66,11 +76,34 @@ es:
           destroy: Eliminar
           upload: Subir imagen
     menu:
+      categories: Gestión de categorías
       flagged_comments: Comentarios
       flagged_debates: Debates
       meetings: Citas presenciales
+      participatory_processes: Procesos participativos
       proposals: Propuestas
       users: Bloquear usuarios
+    participatory_process_attachments:
+      index:
+        add: Añadir adjunto
+        header:
+          actions: Acciones
+          content_type: Tipo de contenido
+          name: Nombre
+          size: Tamaño
+        title: Archivos adjuntos
+    participatory_processes:
+      index:
+        attachments: Archivos adjuntos
+        delete: Borrar
+        edit: Editar
+        new: Nuevo
+        publish: Publicar
+        unpublish: Unpublish
+        restore: Restaurar
+        show: Mostrar
+        steps: Fases
+        title: Título
     proposals:
       index:
         block_authors: Bloquear autores
@@ -90,6 +123,20 @@ es:
           created_at: Más recientes
           flags: Más denunciadas
         title: Propuestas
+    steps:
+      index:
+        delete: Borrar
+        edit: Editar
+        mark_as_active: Marcar como activa
+        new: Nueva
+        restore: Restaurar
+        title: Título
+    subcategories:
+      index:
+        delete: Borrar
+        edit: Editar
+        new: Crear subcategoría
+        title: Subcategorías
     users:
       index:
         hidden: Bloqueado

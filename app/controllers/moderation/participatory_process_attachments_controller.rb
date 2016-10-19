@@ -1,4 +1,4 @@
-class Admin::ParticipatoryProcessAttachmentsController < Admin::BaseController
+class Moderation::ParticipatoryProcessAttachmentsController < Moderation::BaseController
   before_filter :load_participatory_process
   authorize_resource
 
@@ -27,7 +27,7 @@ class Admin::ParticipatoryProcessAttachmentsController < Admin::BaseController
   def restore
     @participatory_process = ParticipatoryProcess.with_hidden.find(params[:id])
     @participatory_process.restore
-    redirect_to admin_participatory_processes_url(filter: @current_filter), notice: t('flash.actions.update.notice', resource_name: "Participatory process")
+    redirect_to moderation_participatory_processes_url(filter: @current_filter), notice: t('flash.actions.update.notice', resource_name: "Participatory process")
   end
 
   def publish

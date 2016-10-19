@@ -25,13 +25,6 @@ ca:
           on_users: Usuaris
         title: Activitat dels moderadors
         type: Tipus
-    categories:
-      index:
-        delete: Esborrar
-        edit: Editar
-        new: Crear eix
-        title: Eixos
-        view_subcategories: Veure línies estratègiques
     comments:
       index:
         filter: Filtre
@@ -55,14 +48,12 @@ ca:
         title: Debats ocults
     menu:
       activity: Activitat de moderadors
-      categories: Gestió d'eixos
       debate_topics: Temes de debat
       hidden_comments: Comentaris ocults
       hidden_debates: Debats ocults
       hidden_proposals: Propostes ocultes
       incomplete_verifications: Verificacions incompletes
       organizations: Organitzacions
-      participatory_processes: Participatory processes
       spending_proposals: Propostes de despesa
       stats: Estadístiques
       users: Usuaris
@@ -86,25 +77,6 @@ ca:
         verify: Verifica
       search:
         title: Cerca organitzacions
-    participatory_process_attachments:
-      index:
-        add: Afegir adjunt
-        header:
-          actions: Accions
-          content_type: Tipus de contingut
-          name: Nom
-          size: Mida
-        title: Arxius adjunts
-    participatory_processes:
-      index:
-        attachments: Arxius adjunts
-        delete: Delete
-        edit: Edit
-        new: New
-        restore: Restore
-        show: Mostrar
-        steps: Fases
-        title: Titol
     proposals:
       index:
         filter: Filtre
@@ -153,20 +125,6 @@ ca:
           visits: Visites
           votes: Vots
         visits_title: Visites
-    steps:
-      index:
-        delete: Delete
-        edit: Edit
-        mark_as_active: Mark as active
-        new: New
-        restore: Restore
-        title: Title
-    subcategories:
-      index:
-        delete: Esborrar
-        edit: Editar
-        new: Crear línia estratègica
-        title: Línies estratègiques
     tags:
       create: Crea un tema
       destroy: Elimina tema
