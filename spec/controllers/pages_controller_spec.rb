@@ -23,11 +23,6 @@ describe PagesController do
       get :show, id: :more_information, participatory_process_id: @participatory_process
       expect(response).to be_ok
     end
-
-    it 'should include a accessibility page' do
-      get :show, id: :accessibility, participatory_process_id: @participatory_process
-      expect(response).to be_ok
-    end
   end
 
   describe 'Not found pages' do

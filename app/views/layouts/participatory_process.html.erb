@@ -100,12 +100,13 @@
                 <% if participatory_process_step.feature_enabled? :categories %>
                   <%= render partial: "participatory_processes/menu_item", locals: { path: categories_path(participatory_process_id: @participatory_process.slug), title: t("layouts.header.categories"), icon: "information" } %>
                 <% end %>
-                <li class="about-link ">
-                  <a href="/phase1_about" class="process-nav__link
-                                                ">
-                    <span>Ayuda</span>
-                  </a>
-                </li>
+                <% if participatory_process_step.feature_enabled? :more_information %>
+                  <li class="about-link ">
+                    <%= link_to url_for(controller: :pages, id: 'more_information', action: :show), class: "process-nav__link" do %>
+                      <span><%= t '.help' %></span>
+                    <% end %>
+                  </li>
+                <% end %>
               </ul>
             </div>
           </div>

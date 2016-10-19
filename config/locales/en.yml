@@ -219,8 +219,10 @@ en:
       proposals: Proposals
       revision: Review
     main_footer:
+      census_terms: Terms of use register
       conditions: Conditions and terms of use
-      more_information: More information
+    participatory_process:
+      help: Help
   locale: English
   meetings:
     card:

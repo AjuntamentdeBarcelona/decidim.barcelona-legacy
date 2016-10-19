@@ -219,8 +219,10 @@ ca:
       proposals: Propostes
       revision: Revisar
     main_footer:
-      conditions: Condicions i termes d'ús
-      more_information: Més informació
+      census_terms: Termes d'ús del padró
+      conditions: Condicions generals
+    participatory_process:
+      help: Ajuda
   locale: Català
   meetings:
     card:

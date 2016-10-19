@@ -14,17 +14,6 @@ en:
       download-9: Sant Andreu
       download-district: Download PAD %{district}
       download-pam: Download PAM
-      download-1: "Ciutat Vella"
-      download-2: "Eixample"
-      download-3: "Sants - Montjuïc"
-      download-4: "Les Corts"
-      download-5: "Sarrià - Sant Gervasi"
-      download-6: "Gràcia"
-      download-7: "Horta - Guinardó"
-      download-8: "Nou Barris"
-      download-9: "Sant Andreu"
-      download-10: "Sant Martí"
-      title: Download the Municipal Plan
     more_information:
       faq:
         question-1:
@@ -186,8 +175,6 @@ en:
           title: Check track proposals
         title: What can I do to decidim.barcelona?
       title: Learn
-    titles:
-      accessibility: Accessibility
     verify:
       code: Code you received in your letter
       email: Email
