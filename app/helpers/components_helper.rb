@@ -23,7 +23,8 @@ module ComponentsHelper
       'StaticMap',
       latitude: options[:latitude],
       longitude: options[:longitude],
-      zoom: options[:zoom]
+      zoom: options[:zoom],
+      height: 120
     )
   end
 

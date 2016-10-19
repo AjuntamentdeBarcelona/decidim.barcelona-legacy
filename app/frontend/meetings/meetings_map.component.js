@@ -88,7 +88,7 @@ export default class MeetingsMap extends Component {
     return (
       <div className="meetings-map">
         <div className="map-overlay-shadow"></div>
-        <div className="map"></div>
+        <div className="map google-map"></div>
       </div>
     )
   }
