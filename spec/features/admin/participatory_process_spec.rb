@@ -53,7 +53,7 @@ feature 'Admin participatory processes' do
     participatory_process = create(:participatory_process, name: "test")
 
     visit admin_participatory_processes_path
-    within all("li").last do
+    within all("tr").last do
       click_link "Show"
     end
     expect(page).to have_content "pam"
