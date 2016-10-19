@@ -24,6 +24,7 @@ class ParticipatoryProcess < ActiveRecord::Base
   has_many :categories
   has_many :subcategories
   has_many :steps
+  has_many :attachments, class_name: 'ParticipatoryProcessAttachment'
 
   delegate :feature_enabled?, to: :active_step, allow_nil: true
 

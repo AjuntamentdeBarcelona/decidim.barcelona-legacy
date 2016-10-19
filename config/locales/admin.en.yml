@@ -86,8 +86,18 @@ en:
         verify: Verify
       search:
         title: Search Organisations
+    participatory_process_attachments:
+      index:
+        add: Add attachment
+        header:
+          actions: actions
+          content_type: Content Type
+          name: Name
+          size: size
+        title: attachments
     participatory_processes:
       index:
+        attachments: attachments
         delete: Delete
         edit: Edit
         new: Create participatory process
