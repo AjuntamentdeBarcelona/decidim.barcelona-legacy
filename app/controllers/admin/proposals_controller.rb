@@ -3,6 +3,10 @@ class Admin::ProposalsController < Admin::BaseController
 
   before_action :load_proposal, only: [:confirm_hide, :restore]
 
+  before_action do
+    authorize!(:restore, Proposal)
+  end
+
   def index
     @proposals = Proposal.only_hidden.send(@current_filter).order(hidden_at: :desc).page(params[:page])
   end

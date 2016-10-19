@@ -15,10 +15,17 @@ module Abilities
 
       can :create, Debate
       can :update, Debate
+      can :manage, ActsAsTaggableOn::Tag
+      can :manage, :verifications
+      can :show, Activity
+      can :manage, ParticipatoryProcess
+
+      can :show, :statistics
 
       can :restore, Proposal
       cannot :restore, Proposal, hidden_at: nil
 
+      can :manage, User
       can :restore, User
       cannot :restore, User, hidden_at: nil
 

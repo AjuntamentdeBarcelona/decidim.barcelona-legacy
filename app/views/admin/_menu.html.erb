@@ -1,22 +1,26 @@
 <nav class="admin-sidebar">
   <ul id="admin_menu" class="vertical menu">
-    <li <%= "class=active" if controller_name == "dashboard" %>>
-      <%= link_to t("admin.dashboard.index.title"), admin_root_path %>
-    </li>
+      <li <%= "class=active" if controller_name == "dashboard" %>>
+        <%= link_to t("admin.dashboard.index.title"), admin_root_path %>
+      </li>
 
-    <li <%= "class=active" if controller_name == "tags" %>>
-      <%= link_to admin_tags_path do %>
-        <%= t("admin.menu.debate_topics") %>
-      <% end %>
-    </li>
+    <% if can?(:manage, ActsAsTaggableOn::Tag) %>
+      <li <%= "class=active" if controller_name == "tags" %>>
+        <%= link_to admin_tags_path do %>
+          <%= t("admin.menu.debate_topics") %>
+        <% end %>
+      </li>
+    <% end %>
 
-    <li <%= "class=active" if controller_name == "proposals" %>>
-      <%= link_to admin_proposals_path do %>
-        <%= t("admin.menu.hidden_proposals") %>
-      <% end %>
-    </li>
+    <% if can?(:restore, Proposal) %>
+      <li <%= "class=active" if controller_name == "proposals" %>>
+        <%= link_to admin_proposals_path do %>
+          <%= t("admin.menu.hidden_proposals") %>
+        <% end %>
+      </li>
+    <% end %>
 
-    <% if feature?(:debates) %>
+    <% if can?(:restore, Debate) && feature?(:debates) %>
       <li <%= "class=active" if controller_name == "debates" %>>
         <%= link_to admin_debates_path do %>
           <%= t("admin.menu.hidden_debates") %>
@@ -24,13 +28,15 @@
       </li>
     <% end %>
 
-    <li <%= "class=active" if controller_name == "comments" %>>
-      <%= link_to admin_comments_path do %>
-        <%= t("admin.menu.hidden_comments") %>
-      <% end %>
-    </li>
+    <% if can?(:restore, Comment) %>
+      <li <%= "class=active" if controller_name == "comments" %>>
+        <%= link_to admin_comments_path do %>
+          <%= t("admin.menu.hidden_comments") %>
+        <% end %>
+      </li>
+    <% end %>
 
-    <% if feature? :spending_proposals %>
+    <% if can?(:manage, SpendingProposal) && feature?(:spending_proposals) %>
       <li <%= "class=active" if controller_name == "spending_proposals" %>>
         <%= link_to admin_spending_proposals_path do %>
           <%= t("admin.menu.spending_proposals") %>
@@ -38,46 +44,60 @@
       </li>
     <% end %>
 
-    <li <%= "class=active" if controller_name == "users" %>>
-      <%= link_to admin_users_path do %>
-        <%= t("admin.menu.users") %>
-      <% end %>
-    </li>
+    <% if can?(:manage, User) %>
+      <li <%= "class=active" if controller_name == "users" %>>
+        <%= link_to admin_users_path do %>
+          <%= t("admin.menu.users") %>
+        <% end %>
+      </li>
+    <% end %>
 
-    <li <%= "class=active" if controller_name == "verifications" %>>
-      <%= link_to admin_verifications_path do %>
-        <%= t("admin.menu.incomplete_verifications") %>
-      <% end %>
-    </li>
+    <% if can?(:manage, :verifications) %>
+      <li <%= "class=active" if controller_name == "verifications" %>>
+        <%= link_to admin_verifications_path do %>
+          <%= t("admin.menu.incomplete_verifications") %>
+        <% end %>
+      </li>
+    <% end %>
 
-    <li <%= "class=active" if controller_name == "organizations" %>>
-      <%= link_to admin_organizations_path do %>
-        <%= t("admin.menu.organizations") %>
-      <% end %>
-    </li>
+    <% if can?(:verify, Organization) %>
+      <li <%= "class=active" if controller_name == "organizations" %>>
+        <%= link_to admin_organizations_path do %>
+          <%= t("admin.menu.organizations") %>
+        <% end %>
+      </li>
+    <% end %>
 
-    <li <%= 'class=active' if controller_name == 'activity' %>>
-      <%= link_to admin_activity_path do %>
-        <%= t('admin.menu.activity') %>
-      <% end %>
-    </li>
+    <% if can?(:show, Activity) %>
+      <li <%= 'class=active' if controller_name == 'activity' %>>
+        <%= link_to admin_activity_path do %>
+          <%= t('admin.menu.activity') %>
+        <% end %>
+      </li>
+    <% end %>
 
-    <li <%= "class=active" if (controller_name == "categories" || controller_name == "subcategories") %>>
-      <%= link_to admin_categories_path do %>
-        <%= t("admin.menu.categories") %>
-      <% end %>
-    </li>
+    <% if can?(:manage, Category) %>
+      <li <%= "class=active" if (controller_name == "categories" || controller_name == "subcategories") %>>
+        <%= link_to admin_categories_path do %>
+          <%= t("admin.menu.categories") %>
+        <% end %>
+      </li>
+    <% end %>
 
-    <li <%= "class=active" if controller_name == "stats" %>>
-      <%= link_to admin_stats_path do %>
-        <%= t("admin.menu.stats") %>
-      <% end %>
-    </li>
+    <% if can?(:show, :statistics) %>
+      <li <%= "class=active" if controller_name == "stats" %>>
+        <%= link_to admin_stats_path do %>
+          <%= t("admin.menu.stats") %>
+        <% end %>
+      </li>
+    <% end %>
 
-    <li <%= "class=active" if controller_name == "participatory_processes" %>>
-      <%= link_to admin_participatory_processes_path do %>
-        <%= t("admin.menu.participatory_processes") %>
-      <% end %>
-    </li>
+    <% if can?(:manage, ParticipatoryProcess) %>
+      <li <%= "class=active" if controller_name == "participatory_processes" %>>
+        <%= link_to admin_participatory_processes_path do %>
+          <%= t("admin.menu.participatory_processes") %>
+        <% end %>
+      </li>
+    <% end %>
   </ul>
 </nav>
