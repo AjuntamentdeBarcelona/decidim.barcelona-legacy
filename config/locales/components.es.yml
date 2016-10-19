@@ -3,12 +3,10 @@ es:
   components:
     action_plan_authors:
       title: Autoría
-    action_plan_info:
-      title: Datos
     action_plan_proposals:
       comments: 'Comentarios: %{comments}'
       title: Propuestas
-      votes: 'Votos: %{votes}'
+      votes: Votos %{votes}
     action_plan_show:
       approve: Aprobar
       approved: Aprobada

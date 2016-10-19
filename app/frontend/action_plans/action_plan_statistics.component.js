@@ -3,9 +3,11 @@ import { PropTypes } from 'react';
 const ActionPlanStatistics = ({
   statistics
 }) => (
-  <ul className="action-plan-statistics">
-    {renderStatistics(statistics)}
-  </ul>
+  <div className="card extra action-plan-statistics">
+    <div className="definition-data">
+      {renderStatistics(statistics)}
+    </div>
+  </div>
 );
 
 function renderStatistics (statistics) {
@@ -13,10 +15,10 @@ function renderStatistics (statistics) {
 
   for (let key in statistics) {
     result.push(
-      <li key={key}>
-        <span className="number">{statistics[key]}</span>
-        {I18n.t(`components.action_plan_statistics.${key}`)}
-      </li>
+      <div key={key} className="definition-data__item definition-data__item--double">
+        <span className="definition-data__title">{I18n.t(`components.action_plan_statistics.${key}`)}</span>
+        <span className="definition-data__number">{statistics[key]}</span>
+      </div>
     );
   }
 

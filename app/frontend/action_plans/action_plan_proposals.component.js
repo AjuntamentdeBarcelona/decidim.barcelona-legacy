@@ -36,7 +36,7 @@ class ActionPlanProposals extends Component {
 
     return (
       <div className="action-plan-proposals-component">
-        <h2>{I18n.t("components.action_plan_proposals.title")}</h2>
+        <h3 className="section-heading">{I18n.t("components.action_plan_proposals.title")}</h3>
         {this.renderSearchProposalsInput(id, actionPlansProposals)}
         <Loading show={this.state.loading} />
         <ProposalsTable 

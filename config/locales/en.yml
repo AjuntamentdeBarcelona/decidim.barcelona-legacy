@@ -434,7 +434,6 @@ en:
       flag: This proposal has been flagged as inappropriate by several users.
       login_to_comment: You must %{signin} or %{signup} to leave a comment.
       meetings_title: Related meetings
-      share: Share
     status:
       accepted: accepted
       rejected: rejected

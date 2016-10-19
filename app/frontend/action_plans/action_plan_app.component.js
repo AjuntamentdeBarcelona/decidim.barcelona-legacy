@@ -19,14 +19,14 @@ import ActionPlanShow           from './action_plan_show.component';
 
 const middlewares = [ReduxPromise, ReduxThunk];
 
-if (process.env.NODE_ENV === 'development') {
-  const createLogger = require('redux-logger');
-  const logger = createLogger();
-  middlewares.push(logger);
-}
+// if (process.env.NODE_ENV === 'development') {
+//   const createLogger = require('redux-logger');
+//   const logger = createLogger();
+//   middlewares.push(logger);
+// }
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
-function createReducers(sessionState, participatoryProcessIdState, stepIdState) {
+function createReducers(sessionState, participatoryProcessIdState, stepIdState, decidimIconsUrlState) {
   let session = function (state = sessionState) {
     return state;
   };
@@ -39,12 +39,17 @@ function createReducers(sessionState, participatoryProcessIdState, stepIdState) 
     return state;
   };
 
+  let decidimIconsUrl = function (state = decidimIconsUrlState) {
+    return state;
+  };
+
   return combineReducers({
     session,
     order,
     pagination,
     participatoryProcessId,
     stepId,
+    decidimIconsUrl,
     actionPlan,
     categories,
     districts,
@@ -58,7 +63,8 @@ export default class ActionPlanApp extends Component {
       <Provider 
       store={createStoreWithMiddleware(createReducers(this.props.session,
                                                       this.props.participatory_process_id,
-                                                      this.props.step_id))}>
+                                                      this.props.step_id,
+                                                      this.props.decidim_icons_url))}>
 
         <ActionPlanShow actionPlanId={this.props.actionPlanId} />
       </Provider>
@@ -70,5 +76,6 @@ ActionPlanApp.propTypes = {
   session: PropTypes.object.isRequired,
   actionPlanId: PropTypes.string.isRequired,
   participatory_process_id: PropTypes.string.isRequired,
-  step_id: PropTypes.string.isRequired
+  step_id: PropTypes.string.isRequired,
+  decidim_icons_url: PropTypes.string.isRequired
 };

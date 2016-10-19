@@ -434,7 +434,6 @@ es:
       flag: Esta propuesta ha sido marcada como inapropiada por varios usuarios.
       login_to_comment: Necesitas %{signin} o %{signup} para comentar.
       meetings_title: Citas presenciales relacionadas
-      share: Compartir
     status:
       accepted: Aceptada
       rejected: Rechazada
