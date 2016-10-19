@@ -23,4 +23,11 @@ class Step < ActiveRecord::Base
   def current?
     participatory_process.active_step == self
   end
+
+  def enabled?
+    return false unless position
+    return false unless participatory_process.active_step
+
+    position <= participatory_process.active_step.position
+  end
 end
