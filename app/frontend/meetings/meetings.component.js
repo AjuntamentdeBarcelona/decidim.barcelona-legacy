@@ -40,14 +40,21 @@ class Meetings extends Component {
     return (
       <div className="meetings-directory">
         <Loading show={this.state.loading} />
+        
         <MeetingsMap className="meetings-map" meetings={this.props.meetings} />
 
-        <div className="meetings-directory-content">
-          <aside className="filters sidebar" role="complementary">
-            <MeetingsFilters />
-          </aside>
+        <div className="row meetings-directory-content">
+          <div className="columns mediumlarge-4 large-3">
+            <div className="filters-controls">
+              <div className="card card--secondary show-for-mediumlarge">
+                <div className="filters">
+                  <MeetingsFilters />
+                </div>
+              </div>
+            </div>
+          </div>
 
-          <div className="meetings-list-container">
+          <div className="columns mediumlarge-8 large-9 meetings-list-container">
             <div className="meetings-list">
               <MeetingsList meetings={this.props.visibleMeetings} />
               {this.renderInfinitePagination()}

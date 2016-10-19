@@ -1,14 +1,5 @@
 <% provide :title do %><%= t('meetings.index.title') %><% end %>
 
 <section role="main">
-  <div class="wrap row">
-    <div class="small-12 columns">
-      <div class="page-title">
-        <h2><%= t '.title' %></h2>
-        <h3><%= t '.description' %></h3>
-      </div>
-    </div>
-  </div>
-
   <%= react_app("Meetings") %>
 </section>
