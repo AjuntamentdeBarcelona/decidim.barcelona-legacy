@@ -37,4 +37,8 @@ class ParticipatoryProcessDecorator < ApplicationDecorator
       attachment.type == :image
     end
   end
+
+  def hashtag
+    "##{object.hashtag}" if object.hashtag
+  end
 end
