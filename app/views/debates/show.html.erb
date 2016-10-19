@@ -11,28 +11,35 @@
       
       <div class="row column view-header">
         <h2 class="heading2"><%= @debate.title %></h2>
-        <div class="author-data">
-          <div class="author-data__main">
-            <div class="author author--inline">
-              <a href="#" class="author__avatar">
-                <%= avatar_image(@debate.author, seed: @debate.author_id, size: 32, class: 'author-photo') %>
-              </a>
-              <%= l @debate.created_at.to_date %>
-              <a href="#" class="author__name">
-                <%= @debate.author.name %>
-                <% if @debate.author.official? %>
-                  <span class="label label--small label--basic"><%= official_position(@debate.author) %></span>
-                <% end %>
+        <% if !@debate.author || @debate.author.hidden? || @debate.author.erased? %>
+          <span class="bullet">&nbsp;&bull;&nbsp;</span>
+          <span class="author">
+            <%= t("debates.show.author_deleted") %>
+          </span>
+        <% else %>
+          <div class="author-data">
+            <div class="author-data__main">
+              <div class="author author--inline">
+                <a href="#" class="author__avatar">
+                  <%= avatar_image(@debate.author, seed: @debate.author_id, size: 32, class: 'author-photo') %>
+                </a>
+                <%= l @debate.created_at.to_date %>
+                <a href="#" class="author__name">
+                  <%= @debate.author.name %>
+                  <% if @debate.author.official? %>
+                    <span class="label label--small label--basic"><%= official_position(@debate.author) %></span>
+                  <% end %>
+                </a>
+              </div>
+            </div>
+            <div class="author-data__extra">
+              <a href="#comments" title="Comentarios">
+                <%= icon "comment-square", class: "icon--small" %>
+                <%= @debate.comments_count %>
               </a>
             </div>
           </div>
-          <div class="author-data__extra">
-            <a href="#comments" title="Comentarios">
-              <%= icon "comment-square", class: "icon--small" %>
-              <%= @debate.comments_count %>
-            </a>
-          </div>
-        </div>
+        <% end %>
       </div>
       <div class="row">
         <div class="columns section view-side mediumlarge-4 mediumlarge-push-8
@@ -57,6 +64,12 @@
         <div class="columns mediumlarge-8 mediumlarge-pull-4">
           <div class="section">
             <%== safe_html_with_links @debate.description %>
+            <% if !@debate.instructions.blank? %>
+              <div class="callout success debate-instructions">
+                <%== safe_html_with_links @debate.instructions %>
+              </div>
+            <% end %>
+            <br />
             <%= render 'shared/tags', taggable: @debate %>
           </div>
         </div>

@@ -7,20 +7,27 @@
             <h5 class="card__title"><%= debate.title %></h5>
           <% end %>
           <div class="card__author author-data author-data--small">
-            <div class="author-data__main">
-              <div class="author author--inline">
-                <a href="#" class="author__avatar">
-                  <%= avatar_image(debate.author, seed: debate.author_id, size: 32, class: 'author-photo') %>
-                </a>
-                <a href="#" class="author__name">
-                  <%= debate.author.name %>
-                  <% if debate.author.official? %>
-                    <span class="label label--small label--basic"><%= official_position(debate.author) %></span>
-                  <% end %>
-                </a>
-                <%= l debate.created_at.to_date %>
+            <% if !debate.author || debate.author.hidden? || debate.author.erased? %>
+              <span class="bullet">&nbsp;&bull;&nbsp;</span>
+              <span class="author">
+                <%= t("debates.show.author_deleted") %>
+              </span>
+            <% else %>
+              <div class="author-data__main">
+                <div class="author author--inline">
+                  <a href="#" class="author__avatar">
+                    <%= avatar_image(debate.author, seed: debate.author_id, size: 32, class: 'author-photo') %>
+                  </a>
+                  <a href="#" class="author__name">
+                    <%= debate.author.name %>
+                    <% if debate.author.official? %>
+                      <span class="label label--small label--basic"><%= official_position(debate.author) %></span>
+                    <% end %>
+                  </a>
+                  <%= l debate.created_at.to_date %>
+                </div>
               </div>
-            </div>
+            <% end %>
           </div>
         </div>
         <div class="card__datetime">
