@@ -1,12 +1,11 @@
 <% if @meeting.pictures.any? %>
-  <h3><%= t '.title' %></h3>
-  <ul class="meeting-pictures">
+  <div class="gallery row meeting-pictures">
     <% @meeting.pictures.each do |picture| %>
-      <li>
+      <div class="columns small-6 medium-4">
         <%= link_to picture.file.url do %>
-        <img src="<%= picture.file.medium.url %>" />
+        <img class="thumbnail" src="<%= picture.file.medium.url %>" />
         <% end %>
-      </li>
+      </div>
     <% end %>
-  </ul>
+  </div>
 <% end %>

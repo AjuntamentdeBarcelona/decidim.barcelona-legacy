@@ -7,78 +7,118 @@
             social_description: text_with_links(@meeting.description) %>
 <% end %>
 <section class="meeting-show">
-  <div id="<%= dom_id(@meeting) %>" class="row">
-    <div class="small-12 medium-9 column">
-      <i class="icon-angle-left left"></i>&nbsp;
-      <%= link_to t("meetings.show.back_link"), :back, class: 'left back' %>
-
-      <div class="meeting-main-info">
-        <div class="title-and-description">
-          <h2 class="meeting-title"><%= @meeting.title %></h2>
-
-          <div class="description">
-            <%= text_with_links @meeting.description %>
-          </div>
-        </div>
-
-        <% if @meeting.held_at %>
-          <div class="meeting-date-wrapper">
-            <div class="meeting-date">
-              <span class="date"> <%= l @meeting.held_at %></span>
-              <span class="week-day"><%= (t 'date.day_names')[@meeting.held_at.wday] %></span>
-
-              <span class="time">
-                <%= meeting_time @meeting %>
-              </span>
+  <div id="<%= dom_id(@meeting) %>">
+    <% if current_user and (current_user.moderator? or current_user.administrator?) %>
+      <div class="right">
+        <%= link_to t("meetings.index.edit"), edit_moderation_meeting_path(@meeting), class: 'button radius tiny secondary' %>
+        <%= link_to t("meetings.index.pictures"), moderation_meeting_pictures_path(@meeting), class: 'button radius tiny secondary' %>
+        <%= link_to t("meetings.index.close"), new_moderation_meeting_close_path(@meeting), class: 'button radius tiny secondary' %>
+      </div>
+    <% end %>
+    <div class="row column view-header">
+      <h2 class="heading2"><%= @meeting.title %></h2>
+      <div class="author-data">
+        <% if !@meeting.author || @meeting.author.hidden? || @meeting.author.erased? %>
+          <span class="bullet">&nbsp;&bull;&nbsp;</span>
+          <span class="author">
+            <%= t("debates.show.author_deleted") %>
+          </span>
+        <% else %>
+          <div class="author-data__main">
+            <div class="author author--inline">
+              <a href="#" class="author__avatar">
+                <%= avatar_image(@meeting.author, seed: @meeting.author_id, size: 32, class: 'author-photo') %>
+              </a>
+              <%= l @meeting.created_at.to_date %>
+              <a href="#" class="author__name">
+                <%= @meeting.author.name %>
+              </a>
             </div>
           </div>
         <% end %>
       </div>
-
-
-      <% if current_user and (current_user.moderator? or current_user.administrator?) %>
-        <div class="right">
-          <%= link_to t("meetings.index.edit"), edit_moderation_meeting_path(@meeting), class: 'button radius tiny secondary' %>
-          <%= link_to t("meetings.index.pictures"), moderation_meeting_pictures_path(@meeting), class: 'button radius tiny secondary' %>
-          <%= link_to t("meetings.index.close"), new_moderation_meeting_close_path(@meeting), class: 'button radius tiny secondary' %>
+    </div>
+    <div class="row">
+      <div class="columns section view-side mediumlarge-4 mediumlarge-push-8
+        large-3 large-push-9">
+        <div class="card extra">
+          <div class="card__content">
+            <div class="extra__time">
+              <%= l @meeting.held_at %>
+            </div>
+            <div class="extra__time">
+              <%= meeting_time @meeting %>
+            </div>
+          </div>
         </div>
-      <% end %>
-
-      <div class="location-info">
-        <% if @meeting.district %>
-          <div class="district">
-            <%= District.find(@meeting.district).name %>
-          </div>
-        <% end %>
-
-        <% if !@meeting.address_details.blank? %>
-          <div class="address-details">
-            <%= bcn_icon 'localitzacio' %>
-            <%= @meeting.address_details %>
-          </div>
-        <% end %>
-
-        <div class="address">
-          <%= bcn_icon 'planol' %>
-          <%= @meeting.address %>
+        
+        <div class="card card--secondary extra definition-data">
+          <% if !@meeting.attendee_count.blank? %>
+            <div class="definition-data__item definition-data__item--double">
+              <span class="definition-data__title"><%= t('.attendee_count') %></span>
+              <span class="definition-data__number"><%= @meeting.attendee_count %></span>
+            </div>
+          <% end %>
+          <% if !@meeting.interventions.blank? %>
+            <div class="definition-data__item definition-data__item--double">
+              <span class="definition-data__title"><%= t('.interventions') %></span>
+              <span class="definition-data__number"><%= @meeting.interventions %></span>
+            </div>
+          <% end %>
+          <% if !@meeting.organizations.blank? %>
+            <div class="definition-data__item">
+              <span class="definition-data__title"><%= t('.organizations') %></span>
+              <span class="definition-data__text"><%= @meeting.organizations %></span>
+            </div>
+          <% end %>
+        </div>
+        <div class="text-center">
+          <button class="link text-center">
+            Compartir debate
+            <%= icon "share", class: "icon--after" %>
+          </button>
         </div>
       </div>
-
-      <% if !@meeting.closed? %>
-        <%= static_map latitude: @meeting.address_latitude, longitude: @meeting.address_longitude, zoom: 16 %>
-      <% end %>
-      <%= render 'shared/tags', taggable: @meeting %>
-
-      <%= render 'photos' %>
-      <%= render 'close_report' %>
-      <%= render 'proposals' %>
+      <div class="columns mediumlarge-8 mediumlarge-pull-4">
+        <div class="section">
+          <%= text_with_links @meeting.description %><br />
+          <div class="card card--secondary">
+            <div class="card__content address">
+              <div class="address__info">
+                <div class="address__icon">
+                  <%= icon "meetings", removeIconClass: true, width: 40, height: 70 %>
+                </div>
+                <div class="address__details">
+                  <% if !@meeting.address_details.blank? %>
+                    <div class="address-details">
+                      <%= @meeting.address_details %>
+                    </div>
+                  <% end %>
+                  <div class="address">
+                    <%= @meeting.address %>
+                  </div>
+                </div>
+              </div>
+              <div class="address__map">
+                <%= static_map latitude: @meeting.address_latitude, longitude: @meeting.address_longitude, zoom: 16 %>
+              </div>
+            </div>
+          </div>
+          <%= render "shared/tags", taggable: @meeting, limit: 5 %>
+        </div>
+        <div class="section">
+          <h3 class="section-heading">Fotografías de la cita</h3>
+          <%= render 'photos' %>
+        </div>
+        <div class="section">
+          <h3 class="section-heading">Resumen de la cita</h3>
+          <%= render 'close_report' %>
+        </div>
+        <div class="section">
+          <h3 class="section-heading"><%= t("meetings.show.proposals_title") %></h3>
+          <%= render 'proposals' %>
+        </div>
+      </div>
     </div>
-
-    <aside class="small-12 medium-3 column sidebar">
-      <h3><%= t("meetings.show.share") %></h3>
-      <%= social_share_button_tag(@meeting.title) %>
-
-      <%= render 'card' %>
-    </aside>
   </div>
 </section>
