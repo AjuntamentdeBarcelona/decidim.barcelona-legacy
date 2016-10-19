@@ -10,7 +10,7 @@ en:
     action_plan_proposals:
       comments: 'Comments: %{comments}'
       title: Motions
-      votes: 'Votes: %{votes}'
+      votes: 'Votes %{votes}'
     action_plan_show:
       approve: approve
       approved: adopted

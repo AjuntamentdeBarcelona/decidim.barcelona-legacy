@@ -12,9 +12,10 @@ import Comments                 from '../comments/comments.component';
 
 import ProposalInfoExtended     from './proposal_info_extended.component';
 import ProposalActionPlans      from './proposal_action_plans.component';
-import ProposalMeetings         from './proposal_meetings.component';
 import ProposalAnswerMessage    from './proposal_answer_message.component';
 import ProposalVoteButton       from './proposal_vote_button.component';
+
+import RelatedMeetings          from '../meetings/related_meetings.component';
 
 import htmlToReact              from '../application/html_to_react';
 import simpleFormat             from '../application/simple_format';
@@ -48,7 +49,7 @@ class ProposalShow extends Component {
   }
 
   renderProposal() {
-    const { proposal } = this.props;
+    const { proposal, fetchRelatedMeetings } = this.props;
 
     if (proposal.id) {
       const { 
@@ -142,7 +143,7 @@ class ProposalShow extends Component {
                   <ProposalActionPlans />
                 </div>
                 <div className="section">
-                  <ProposalMeetings useServerLinks={ true } />
+                  <RelatedMeetings model={proposal} fetchRelatedMeetings={fetchRelatedMeetings} useServerLinks={ true } />
                 </div>
               </div>
             </div>
@@ -276,6 +277,7 @@ ProposalShow.propTypes = {
   proposal: PropTypes.object,
   fetchProposal: PropTypes.func.isRequired,
   fetchAnswer: PropTypes.func.isRequired,
+  fetchRelatedMeetings: PropTypes.func.isRequired,
   hideProposal: PropTypes.func.isRequired,
   hideProposalAuthor: PropTypes.func.isRequired,
   stepId: PropTypes.string.isRequired,

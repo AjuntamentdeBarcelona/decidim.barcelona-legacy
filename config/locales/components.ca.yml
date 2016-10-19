@@ -10,7 +10,7 @@ ca:
     action_plan_proposals:
       comments: 'Comentaris: %{comments}'
       title: Propostes relacionades
-      votes: 'Suports: %{votes}'
+      votes: 'Suports %{votes}'
     action_plan_show:
       approve: Aprovar
       approved: Aprovada

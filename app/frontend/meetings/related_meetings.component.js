@@ -1,21 +1,17 @@
 import { Component, PropTypes } from 'react';
-import { connect }              from 'react-redux';
 
 import Icon                     from '../application/icon.component';
 
-import * as actions             from './proposals.actions';
-
-class ProposalMeetings extends Component {
+export default class RelatedMeetings extends Component {
   componentDidMount() {
-    const { proposal } = this.props;
+    const { model } = this.props;
 
-    this.props.fetchRelatedMeetings(proposal.id);
+    this.props.fetchRelatedMeetings(model.id);
   }
 
   render() {
-    
-    const { proposal } = this.props;
-    const meetings = proposal.meetings || [];
+    const { model } = this.props;
+    const meetings = model.meetings || [];
 
     if (meetings.length > 0) {
       return (
@@ -65,13 +61,8 @@ class ProposalMeetings extends Component {
   }
 }
 
-export default connect(
-  ({ proposal }) => ({ proposal }),
-  actions
-)(ProposalMeetings);
-
-ProposalMeetings.propTypes = {
-  proposal: PropTypes.object.isRequired,
+RelatedMeetings.propTypes = {
+  model: PropTypes.object.isRequired,
   fetchRelatedMeetings: PropTypes.func.isRequired,
   useServerLinks: PropTypes.bool
 };

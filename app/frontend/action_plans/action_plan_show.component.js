@@ -3,18 +3,17 @@ import { connect }              from 'react-redux';
 
 import * as actions             from './action_plans.actions';
 
+import Icon                     from '../application/icon.component';
 import Loading                  from '../application/loading.component';
-import SocialShareButtons       from '../application/social_share_buttons.component';
 import DangerLink               from '../application/danger_link.component';
 import FilterMeta               from '../filters/filter_meta.component';
 
 import ActionPlanStatistics     from './action_plan_statistics.component';
 import ActionPlanProposals      from './action_plan_proposals.component';
-import ActionPlanMeetings       from './action_plan_meetings.component';
-import ActionPlanReviewer       from './action_plan_reviewer.component';
 import WeightControl            from './weight_control.component';
-import ActionPlanAuthors        from './action_plan_authors.component';
+
 import Comments                 from '../comments/comments.component';
+import RelatedMeetings          from '../meetings/related_meetings.component';
 
 import htmlToReact              from '../application/html_to_react';
 
@@ -46,11 +45,10 @@ class ActionPlanShow extends Component {
   }
 
   renderActionPlan() {
-    const { actionPlan } = this.props;
+    const { actionPlan, fetchRelatedMeetings } = this.props;
 
     if (actionPlan.id) {
       const { 
-        url,
         title, 
         description,
         created_at,
@@ -58,64 +56,69 @@ class ActionPlanShow extends Component {
         category,
         subcategory,
         district,
-        statistics
+        statistics,
+        total_comments
       } = actionPlan;
 
       return (
         <div className="action-plan-show">
-          <div className="row" id={`action_plan_${actionPlan.id}`}>
-            <div className="small-12 medium-9 column">
-              <i className="icon-angle-left left"></i>&nbsp;
-
-              <a className="left back" href="/action_plans" onClick={() => window.history.back()}>
-                {I18n.t('proposals.show.back_link')}
-              </a>
-
-              {this.renderReviewerActions()}
-              {this.renderNotice()}
-
-              <h2><a href={url}>{title}</a></h2>
-
-              <p className="proposal-info"><span>{ created_at }</span></p>
-
-              <div className="proposal-description">
-                {htmlToReact(description)}
+          <div>
+            <div className="row column view-header">
+              <h2 className="heading2">{title}</h2>
+              <div className="author-data author-data--noavatar">
+                <div className="author-data__main">
+                  <div className="author author--inline">
+                    {created_at}
+                  </div>
+                </div>
+                <div className="author-data__extra">
+                  <a href="#comments" title="Comentarios">
+                    <Icon name="comment-square" className="icon--small" ariaLabel="Comentarios" role="img" />
+                    { ' ' + total_comments }
+                  </a>
+                </div>
               </div>
-
-              <FilterMeta 
-                scope={ scope_ }
-                district={ district }
-                category={ category }
-                subcategory={ subcategory } 
-                namespace="action_plans"
-                useServerLinks={ true }/>
-
-              <ActionPlanReviewer visible={this.state.editable} />
-
-              <ActionPlanProposals actionPlan={actionPlan} editable={this.state.editable} />
-              <ActionPlanMeetings useServerLinks={true} />
             </div>
-
-            <aside className="small-12 medium-3 column">
-              <div className="action-plan-share-buttons">
-                <h3>{ I18n.t("proposals.show.share") }</h3>
-                <SocialShareButtons 
-                  title={ title }
-                  url={ url }/>
+            <div className="row">
+              <div className="columns section view-side mediumlarge-4 mediumlarge-push-8 large-3 large-push-9">
+                <ActionPlanStatistics statistics={statistics} />
+                <div className="text-center">
+                  <button className="link text-center">
+                    Compartir propuesta
+                    <Icon name="share" className="icon--after" />
+                  </button>
+                </div>
               </div>
-              <div className="action-plan-info">
-                <ActionPlanAuthors
-                  actionPlan={actionPlan} />
-                <hr />
-                <h3>{ I18n.t('components.action_plan_info.title')}</h3>
-                <ActionPlanStatistics 
-                  statistics={statistics}>
-                </ActionPlanStatistics>
+              <div className="columns mediumlarge-8 mediumlarge-pull-4">
+                <div className="section">
+                  <div>{htmlToReact(description)}</div><br />
+                  <FilterMeta 
+                    scope={ scope_ }
+                    district={ district }
+                    category={ category }
+                    subcategory={ subcategory } 
+                    namespace="action_plans"
+                    useServerLinks={ true } />
+                </div>
+                <div className="section">
+                  <ActionPlanProposals actionPlan={actionPlan} editable={this.state.editable} />
+                </div>
+                <div className="section">
+                  <RelatedMeetings model={actionPlan} fetchRelatedMeetings={fetchRelatedMeetings} useServerLinks={true} />
+                </div>
               </div>
-            </aside>
+            </div>
           </div>
-          <Comments commentable={{...actionPlan, type: 'ActionPlan'}} />
-        </div>
+          <div className="expanded">
+            <div className="wrapper--inner">
+              <div className="row">
+                <div className="columns large-9" id="comments">
+                  <Comments commentable={{...actionPlan, type: 'ActionPlan'}} />
+                </div>
+              </div>
+            </div>
+          </div> 
+        </div>        
       );
     }
     return null;
@@ -183,6 +186,7 @@ export default connect(
 ActionPlanShow.propTypes = {
   session: PropTypes.object.isRequired,
   fetchActionPlan: PropTypes.func.isRequired,
+  fetchRelatedMeetings: PropTypes.func.isRequired,
   actionPlanId: PropTypes.string.isRequired,
   actionPlan: PropTypes.object,
   approveActionPlan: PropTypes.func.isRequired,
