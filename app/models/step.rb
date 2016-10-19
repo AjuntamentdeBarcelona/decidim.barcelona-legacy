@@ -12,7 +12,7 @@ class Step < ActiveRecord::Base
 
   def self.step_for(participatory_process, flag)
     participatory_process.steps.reverse.detect do |step|
-      step.flags.include?(flag)
+      step.flags.map(&:to_s).include?(flag.to_s)
     end
   end
 
