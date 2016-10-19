@@ -6,6 +6,7 @@ class ParticipatoryProcessDecorator < ApplicationDecorator
   decorates_association :steps
   decorates_association :attachments
   decorates_association :categories
+  decorates_association :active_step
 
   def scope
     if object.scope == "city"

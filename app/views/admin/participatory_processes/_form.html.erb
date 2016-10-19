@@ -13,6 +13,11 @@
     </div>
 
     <div class="small-12 column">
+      <%= f.label :hashtag, "Hashtag" %>
+      <%= f.text_field :hashtag %>
+    </div>
+
+    <div class="small-12 column">
       <%= f.label :full_image %>
       <%= f.file_field :full_image, label: false %>
       <% if participatory_process.full_image.present? %>

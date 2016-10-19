@@ -74,6 +74,7 @@ class Admin::ParticipatoryProcessesController < Admin::BaseController
         :audience,
         :citizenship_scope,
         :manager_group,
+        :hashtag,
         :areas,
         :scope,
         :district,

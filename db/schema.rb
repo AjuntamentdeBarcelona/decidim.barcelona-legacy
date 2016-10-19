@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161019090901) do
+ActiveRecord::Schema.define(version: 20161019140330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -395,6 +395,7 @@ ActiveRecord::Schema.define(version: 20161019090901) do
     t.string   "banner_image"
     t.boolean  "published",         default: false
     t.boolean  "featured",          default: false
+    t.string   "hashtag"
   end
 
   create_table "proposal_answers", force: :cascade do |t|
