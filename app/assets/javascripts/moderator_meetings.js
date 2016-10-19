@@ -2,22 +2,26 @@ window.App = window.App || {}
 
 App.ModeratorMeetings = {
   initialize: function () {
-    var newMeetingButtons = $('.new_meeting_button'),
-        participatoryProcessSelector = $('.participatory_process_selector');
+    var participatoryProcessSelector = $('#meeting_participatory_process_id'),
+        loadScopedFieldsUrl = participatoryProcessSelector.data('load-scoped-fields-url'),
+        meetingId = participatoryProcessSelector.data('meting-id');
 
     participatoryProcessSelector.on('change', function () {
       var selectedValue = $(this).val();
+      var url = loadScopedFieldsUrl + "?participatory_process_id=" + selectedValue;
 
-      participatoryProcessSelector.each(function () {
-        $(this).val(selectedValue);
-      });
+      if (meetingId !== undefined) {
+        url += '&meeting_id=' + meetingId;
+      }
 
-      newMeetingButtons.each(function () {
-        var url = $(this).attr('href');
-        url = url.replace(/participatory_process_id=\d+/, "participatory_process_id=" + selectedValue);
-        $(this).attr('href', url);
+      $.ajax({
+        url: url,
+        dataType: "html",
+        success: function (data) {
+          $('.process-scoped-fields').html(data);
+          window.ReactRailsUJS.mountComponents();
+        }
       });
     });
-
   }
 };

@@ -8,11 +8,8 @@
                search_path: moderation_meetings_path(page: 1),
                i18n_namespace: "moderation.meetings.index.search_form" %>
   </div>
-  <div class="small-2 column">
-    <%= select_tag "participatory_process_id", options_from_collection_for_select(@participatory_processes, "id", "name"), id: "participatory_process_top", class: "participatory_process_selector" %>
-  </div>
   <div class="small-4 column">
-    <%= link_to t("meetings.index.new"), new_moderation_meeting_path(participatory_process_id: @participatory_processes[0].id), class: 'button radius expand new_meeting_button' %>
+    <%= link_to t("meetings.index.new"), new_moderation_meeting_path, class: 'button radius expand new_meeting_button' %>
   </div>
 </div>
 
@@ -54,11 +51,8 @@
 </table>
 
 <div class="row">
-  <div class="small-2 small-offset-6 column">
-    <%= select_tag "participatory_process_id", options_from_collection_for_select(@participatory_processes, "id", "name"), id: "participatory_process_bottom", class: "participatory_process_selector" %>
-  </div>
   <div class="small-4 column">
-    <%= link_to t("meetings.index.new"), new_moderation_meeting_path(participatory_process_id: @participatory_processes[0].id), class: 'button radius expand new_meeting_button' %>
+    <%= link_to t("meetings.index.new"), new_moderation_meeting_path, class: 'button radius expand new_meeting_button' %>
   </div>
 </div>
 

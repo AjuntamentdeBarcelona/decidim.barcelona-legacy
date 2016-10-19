@@ -1,0 +1,8 @@
+<div class="small-12 column">
+  <label><%= t("meetings.form.meeting_proposal_ids")%></label>
+  <%= proposals_selector resource_name: "meeting", proposals: @meeting.proposals, participatory_process_id: participatory_process_id  %>
+</div>
+
+<div class="small-12 column">
+  <%= category_picker(@meeting, participatory_process_id: participatory_process_id, participatory_process_slug: participatory_process_slug) %>
+</div>
