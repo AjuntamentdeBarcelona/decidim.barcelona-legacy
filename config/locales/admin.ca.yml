@@ -86,8 +86,18 @@ ca:
         verify: Verifica
       search:
         title: Cerca organitzacions
+    participatory_process_attachments:
+      index:
+        add: Afegir adjunt
+        header:
+          actions: Accions
+          content_type: Tipus de contingut
+          name: Nom
+          size: Mida
+        title: Arxius adjunts
     participatory_processes:
       index:
+        attachments: Arxius adjunts
         delete: Esborrar
         edit: Editar
         filters:

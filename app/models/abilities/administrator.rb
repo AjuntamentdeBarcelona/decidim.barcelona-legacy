@@ -41,6 +41,7 @@ module Abilities
       can :manage, :moderator
 
       can :manage, Meeting
+      can :manage, ParticipatoryProcessAttachment
 
       can :manage, SpendingProposal
 

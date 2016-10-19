@@ -4,6 +4,7 @@ class ParticipatoryProcessDecorator < ApplicationDecorator
   translates :title, :subtitle, :summary, :description
 
   decorates_association :steps
+  decorates_association :attachments
 
   def scope
     if object.scope == "city"
@@ -21,5 +22,17 @@ class ParticipatoryProcessDecorator < ApplicationDecorator
   def banner_image_url
     return object.banner_image.url if object.banner_image.present?
     h.asset_url('barcelona-hero.jpg')
+  end
+
+  def documents
+    attachments.sort_by(&:name).select do |attachment|
+      attachment.type == :document
+    end
+  end
+
+  def images
+    attachments.sort_by(&:name).select do |attachment|
+      attachment.type == :image
+    end
   end
 end

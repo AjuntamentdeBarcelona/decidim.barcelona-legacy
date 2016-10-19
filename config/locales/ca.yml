@@ -342,6 +342,7 @@ ca:
       form:
         submit_button: Crear proces
     show:
+      documents: Documents relacionats
       steps: Fases
   proposal_results_mailer:
     proposal:
