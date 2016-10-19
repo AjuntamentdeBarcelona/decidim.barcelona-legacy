@@ -10,6 +10,7 @@ class Admin::ParticipatoryProcessesController < Admin::BaseController
   end
 
   def show
+    @pp = ParticipatoryProcess.find(params[:id]).decorate
   end
 
   def new

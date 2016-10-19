@@ -1,5 +1,3 @@
-<% @pp = @participatory_process %>
-
 <p>
 <%= link_to "Volver a procesos participativos", admin_participatory_process_path %> 
 </p>
@@ -25,38 +23,12 @@
   <dd><%= @pp.admin_email %></dd>
   <dt><%= t("participatory_processes.form.participatory_process_admin_email") %></dt>
   <dd><%= @pp.admin_email %></dd>
-  <dt><%= t("participatory_processes.form.participatory_process_title") %></dt>
-  <dd>
-    <ul>
-      <li>Català: <%= @pp.title["ca"] %></li>
-      <li>English: <%= @pp.title["en"] %></li>
-      <li>Castellano: <%= @pp.title["es"] %></li>
-    </ul>
-  </dd>
-  <dt><%= t("participatory_processes.form.participatory_process_subtitle") %></dt>
-  <dd>
-    <ul>
-      <li>Català: <%= @pp.subtitle["ca"] %></li>
-      <li>English: <%= @pp.subtitle["en"] %></li>
-      <li>Castellano: <%= @pp.subtitle["es"] %></li>
-    </ul>
-  </dd>
-  <dt><%= t("participatory_processes.form.participatory_process_summary") %></dt>
-  <dd>
-    <ul>
-      <li>Català: <%= @pp.summary["ca"] %></li>
-      <li>English: <%= @pp.summary["en"] %></li>
-      <li>Castellano: <%= @pp.summary["es"] %></li>
-    </ul>
-  </dd>
-  <dt><%= t("participatory_processes.form.participatory_process_description") %></dt>
-  <dd>
-    <ul>
-      <li>Català: <%= @pp.description["ca"] %></li>
-      <li>English: <%= @pp.description["en"] %></li>
-      <li>Castellano: <%= @pp.description["es"] %></li>
-    </ul>
-  </dd>
+  <% %w(title subtitle summary description).each do |field| %>
+    <dt><%= t("participatory_processes.form.participatory_process_#{field}") %></dt>
+    <dd>
+      <%= render partial: 'translated_list', locals: { object: @pp, field: field } %>
+    </dd>
+  <% end %>
   <dt><%= t("participatory_processes.form.participatory_process_manager_group") %></dt>
   <dd><%= @pp.manager_group %></dd>
   <dt><%= t("participatory_processes.form.participatory_process_areas") %></dt>
@@ -84,11 +56,11 @@
 <ul>
   <% @pp.categories.each do |category| %>
     <li>
-      <b><%= category.name %></b>: <%= category.description %>.  
+      <b><%= category.name %></b>: <%== category.description %>.  
       <ul>
         <% category.subcategories.each do |subcategory| %> 
           <li>
-            <b><%= subcategory.name %></b>: <%= category.description %>.  
+            <b><%= subcategory.name %></b>: <%== category.description %>
           </li>
         <% end %>
       </ul>
@@ -116,7 +88,7 @@
   </li>
 <% end %>
 
-<%= link_to "Crear propuesta nueva", new_proposal_path(@pp.id), class: "button" %>
+<%= link_to "Crear propuesta nueva", new_proposal_path(participatory_process_id: @pp.id, step_id: Step.step_for(@pp, "proposals")), class: "button" %>
 
 <h2><%= @pp.debates.count %> Debates</h2>
 
@@ -126,5 +98,5 @@
   </li>
 <% end %>
 
-<%= link_to "Crear debate nuevo", new_debate_path(@pp.id), class: "button" %>
+<%= link_to "Crear debate nuevo", new_debate_path(@pp.id, Step.step_for(@pp, "debates")), class: "button" %>
 
