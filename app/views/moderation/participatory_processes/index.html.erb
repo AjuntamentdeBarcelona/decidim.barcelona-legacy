@@ -9,6 +9,7 @@
       <div class="right">
         <%= link_to t('moderation.participatory_processes.index.show'), moderation_participatory_process_path(process), class: "button tiny radius" %>
         <%= link_to t('moderation.participatory_processes.index.steps'), moderation_participatory_process_steps_path(process), class: "button tiny radius" %>
+        <%= link_to t('moderation.participatory_processes.index.attachments'), moderation_participatory_process_attachments_path(process), class: "button tiny radius" %>
         <% unless process.published? %>
           <%= link_to t('moderation.participatory_processes.index.publish'), publish_moderation_participatory_process_path(process), method: :put, class: "button tiny radius", data: { confirm: t('moderation.actions.confirm') } %>
         <% else %>

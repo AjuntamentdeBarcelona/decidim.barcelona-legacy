@@ -53,6 +53,7 @@ module Abilities
       can :manage, Subcategory
 
       can :manage, ParticipatoryProcess
+      can :manage, ParticipatoryProcessAttachment
       can :manage, Step
 
     end
