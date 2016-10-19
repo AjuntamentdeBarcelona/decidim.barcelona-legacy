@@ -56,19 +56,11 @@
 <ul>
   <% @pp.categories.each do |category| %>
     <li>
-<<<<<<< HEAD:app/views/moderation/participatory_processes/show.html.erb
       <b><%= category.decorate.name %></b>: <%= category.decorate.description %>.  
       <ul>
         <% category.subcategories.each do |subcategory| %> 
           <li>
             <b><%= subcategory.decorate.name %></b>: <%= category.decorate.description %>.  
-=======
-      <b><%= category.name %></b>: <%== category.description %>.  
-      <ul>
-        <% category.subcategories.each do |subcategory| %> 
-          <li>
-            <b><%= subcategory.name %></b>: <%== category.description %>
->>>>>>> origin/master:app/views/admin/participatory_processes/show.html.erb
           </li>
         <% end %>
       </ul>
