@@ -5,12 +5,10 @@ en:
       label: Action plan
     action_plan_authors:
       title: Authorship
-    action_plan_info:
-      title: Data
     action_plan_proposals:
       comments: 'Comments: %{comments}'
       title: Motions
-      votes: 'Votes %{votes}'
+      votes: Votes %{votes}
     action_plan_show:
       approve: approve
       approved: adopted
