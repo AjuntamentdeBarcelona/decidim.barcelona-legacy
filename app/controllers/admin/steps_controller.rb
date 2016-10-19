@@ -3,6 +3,10 @@ class Admin::StepsController < Admin::BaseController
   before_filter :load_step, only: [:edit, :update, :destroy, :mark_as_active]
   authorize_resource
 
+  before_action do
+    authorize!(:manage, Step)
+  end
+
   def index
     @steps = @participatory_process.steps.order(:position).with_hidden.page(params[:page])
   end

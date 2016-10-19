@@ -7,6 +7,10 @@ class Admin::DebatesController < Admin::BaseController
 
   before_action :load_debate, only: [:confirm_hide, :restore]
 
+  before_action do
+    authorize!(:restore, Debate)
+  end
+
   def index
     @debates = Debate.only_hidden.send(@current_filter).order(hidden_at: :desc).page(params[:page])
   end

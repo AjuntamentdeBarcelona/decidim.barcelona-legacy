@@ -1,6 +1,10 @@
 class Admin::CategoriesController < Admin::BaseController
   load_and_authorize_resource
 
+  before_action do
+    authorize!(:manage, Category)
+  end
+
   def index
     @categories = @categories.page(params[:page])
   end

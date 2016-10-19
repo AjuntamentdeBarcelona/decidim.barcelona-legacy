@@ -15,6 +15,7 @@ feature 'Admin activity' do
       visit proposal_path(proposal, participatory_process_id: proposal.participatory_process,
                           step_id: participatory_process.active_step)
 
+
       expect(page).to have_selector("#proposal_#{proposal.id}")
       find("#proposal_#{proposal.id} a", text: 'Hide').click
 

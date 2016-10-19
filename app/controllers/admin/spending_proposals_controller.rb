@@ -7,6 +7,10 @@ class Admin::SpendingProposalsController < Admin::BaseController
 
   feature_flag :spending_proposals
 
+  before_action do
+    authorize!(:restore, SpendingProposal)
+  end
+
   def index
     @spending_proposals = @spending_proposals.includes([:geozone]).send(@current_filter).order(created_at: :desc).page(params[:page])
   end

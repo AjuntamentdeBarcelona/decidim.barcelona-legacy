@@ -2,6 +2,10 @@ class Admin::ParticipatoryProcessAttachmentsController < Admin::BaseController
   before_filter :load_participatory_process
   authorize_resource
 
+  before_action do
+    authorize!(:manage, ParticipatoryProcessAttachment)
+  end
+
   def index
     @attachments = @participatory_process.attachments.order(:name)
     @new_attachment = ParticipatoryProcessAttachment.new(participatory_process: @participatory_process)
