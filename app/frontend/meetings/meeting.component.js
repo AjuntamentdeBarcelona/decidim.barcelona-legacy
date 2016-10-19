@@ -23,7 +23,7 @@ export default class Meeting extends Component {
           </span>
           <div className="card__content">
             <a href={meeting.url} className="card__link">
-              <h5 className="card__title">{ meeting.title }</h5>
+              <h5 className="card__title meeting-title">{ meeting.title }</h5>
             </a>
             <div className="card__datetime">
               <MeetingTime meeting={ meeting } relativeTime={true} />
@@ -48,10 +48,6 @@ export default class Meeting extends Component {
         </article>
       </div>
     );
-
-    //   </div>
-    //   {this.renderMeetingCategory()}
-    // </div>
   }
 
   renderMeetingCategory() {
