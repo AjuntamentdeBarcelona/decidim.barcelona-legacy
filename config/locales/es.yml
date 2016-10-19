@@ -219,8 +219,10 @@ es:
       proposals: Propuestas
       revision: Revisar
     main_footer:
+      census_terms: Términos de uso del padrón
       conditions: Condiciones y términos de uso
-      more_information: más información
+    participatory_process:
+      help: Ayuda
   locale: Español
   meetings:
     card:
