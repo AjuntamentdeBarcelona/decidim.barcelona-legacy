@@ -6,13 +6,12 @@ module HasParticipatoryProcess
     helper_method :participatory_process_step
 
     def participatory_process
-      begin
-        if params[:participatory_process_id]
-          @participatory_process_id = params[:participatory_process_id]
-          @participatory_process = ParticipatoryProcess.published.find(params[:participatory_process_id])
-        end
-      rescue
-        raise ActionController::RoutingError.new('Not Found')
+      if params[:participatory_process_id]
+        @participatory_process_id ||= params[:participatory_process_id]
+        @participatory_process ||= ParticipatoryProcess.find(params[:participatory_process_id])
+        raise ActionController::RoutingError.new("Not allowed") unless can?(:read, @participatory_process)
+
+        @participatory_process
       end
     end
 
