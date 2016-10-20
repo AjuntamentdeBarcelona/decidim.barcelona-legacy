@@ -1,4 +1,5 @@
 class CookiePolicyController < ApplicationController
+  include HasParticipatoryProcess
   skip_authorization_check
 
   def allow

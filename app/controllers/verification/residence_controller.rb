@@ -1,4 +1,5 @@
 class Verification::ResidenceController < ApplicationController
+  include HasParticipatoryProcess
   before_action :authenticate_user!
   before_action :verify_verified!
   before_action :verify_lock, only: [:new, :create]
