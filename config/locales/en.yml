@@ -120,6 +120,7 @@ en:
       tags_label: Topics
       tags_placeholder: Enter the tags you would like to use, separated by commas (',')
     index:
+      debates_open: Debates open
       orders:
         confidence_score: highest rated
         created_at: newest
