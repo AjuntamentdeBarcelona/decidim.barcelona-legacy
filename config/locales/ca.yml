@@ -120,6 +120,7 @@ ca:
       tags_label: Temes
       tags_placeholder: Escriu les etiquetes que vulguis separades per coma (',')
     index:
+      debates_open: Debats oberts
       orders:
         confidence_score: millor valorats
         created_at: més nous
@@ -323,10 +324,10 @@ ca:
       form:
         submit_button: Crear proces
     show:
+      active_step: 'Fase actual: %{name}'
       documents: Documents relacionats
-      steps: Fases
       participate: Participa
-      active_step: "Fase actual: %{name}"
+      steps: Fases
   proposal_results_mailer:
     proposal:
       status: Estat
