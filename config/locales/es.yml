@@ -562,44 +562,44 @@ es:
   welcome:
     index:
       bullets:
+        block-1:
+          description: Participa en los espacios presenciales vinculados a los procesos de cada territorio o ámbito
+          title: Encuentros
+        block-2:
+          description: Entra en los espacios digitales para informarte y debatir sobre el futuro de nuestra ciudad
+          title: Debates
+        block-3:
+          description: Haz tus aportaciones en los procesos de participación abiertos.
+          title: Propuestas
+        button: Más información
         title: "¿Como puedo participar en un proceso?"
-        button: "Más información"
-        block-1: 
-          title: "Encuentros" 
-          description: "Participa en los espacios presenciales vinculados a los procesos de cada territorio o ámbito"
-        block-2: 
-          title: "Debates"
-          description: "Entra en los espacios digitales para informarte y debatir sobre el futuro de nuestra ciudad"
-        block-3: 
-          title: "Propuestas"
-          description: "Haz tus aportaciones en los procesos de participación abiertos."
       hero:
+        button: Participa
         line-1: Decidamos la Barcelona
         line-2: que queremos
-        button: Participa
       meetings:
-        title: "Próximas citas presenciales"
+        title: Próximas citas presenciales
       participatory_process:
-        title: "Procesos destacados"
-        button: "Ver todos los procesos"
-        active_step: "Fase actual"
+        active_step: Fase actual
+        button: Ver todos los procesos
+        title: Procesos destacados
       results:
-        title: "Resultados del proceso del Plan Municipal"
-        title-1: "Propuestas incorporadas"
-        title-2: "Actuaciones"
-        title-3: "Total propuestas"
-        title-4: "Apoyos"
-        title-5: "Citas presenciales"
-        button-1: "Explora los resultados"
-        button-2: "Descarga el Plan Municipal"
+        button-1: Explora los resultados
+        button-2: Descarga el Plan Municipal
+        title: Resultados del proceso del Plan Municipal
+        title-1: Propuestas incorporadas
+        title-2: Actuaciones
+        title-3: Total propuestas
+        title-4: Apoyos
+        title-5: Citas presenciales
       subhero-1:
-        line-1: "decidim.barcelona: la platafroma de participación de Barcelona."
-        line-2: "Entra, participa y decide."
         button: Regístrate
+        line-1: 'decidim.barcelona: la platafroma de participación de Barcelona.'
+        line-2: Entra, participa y decide.
       subhero-2:
-        line-1: "decidim.barcelona: la platafroma de participación de Barcelona."
-        line-2: "Entra, participa y decide."
         button: Regístrate
+        line-1: 'decidim.barcelona: la platafroma de participación de Barcelona.'
+        line-2: Entra, participa y decide.
     welcome:
       abilities:
         debates: Debates
