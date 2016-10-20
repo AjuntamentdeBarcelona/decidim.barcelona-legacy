@@ -1,4 +1,5 @@
 class NotificationsController < ApplicationController
+  include HasParticipatoryProcess
   before_action :authenticate_user!
   after_action :mark_as_read, only: :show
   skip_authorization_check

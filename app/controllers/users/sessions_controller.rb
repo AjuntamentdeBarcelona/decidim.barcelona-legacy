@@ -1,4 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
+  include HasParticipatoryProcess
   skip_before_action :ensure_signup_complete, only: [:destroy]
 
   private

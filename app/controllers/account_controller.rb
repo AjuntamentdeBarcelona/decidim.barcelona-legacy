@@ -1,4 +1,6 @@
 class AccountController < ApplicationController
+  include HasParticipatoryProcess
+
   before_action :authenticate_user!
   before_action :set_account
   load_and_authorize_resource class: "User"

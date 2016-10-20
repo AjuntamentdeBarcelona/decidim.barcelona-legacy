@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include HasParticipatoryProcess
   has_filters %w{proposals meetings debates comments}, only: :show
 
   load_and_authorize_resource

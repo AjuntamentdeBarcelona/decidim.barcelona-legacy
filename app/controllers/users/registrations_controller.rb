@@ -1,4 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  include HasParticipatoryProcess
   prepend_before_action :authenticate_scope!, only: [:edit, :update, :destroy, :finish_signup, :do_finish_signup]
 
   def create

@@ -1,4 +1,5 @@
 class ErrorsController < ApplicationController
+  include HasParticipatoryProcess
   include Gaffe::Errors
 
   layout 'application'

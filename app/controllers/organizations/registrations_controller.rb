@@ -1,4 +1,5 @@
 class Organizations::RegistrationsController < Devise::RegistrationsController
+  include HasParticipatoryProcess
 
   def new
     super do |user|

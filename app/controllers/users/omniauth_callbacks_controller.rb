@@ -1,4 +1,5 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  include HasParticipatoryProcess
 
   def twitter
     sign_in_with :twitter

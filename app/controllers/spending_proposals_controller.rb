@@ -1,4 +1,5 @@
 class SpendingProposalsController < ApplicationController
+  include HasParticipatoryProcess
   include FeatureFlags
 
   before_action :authenticate_user!, except: [:index]
