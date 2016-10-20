@@ -5,7 +5,7 @@ ca:
       title: Autoria
     action_plan_proposals:
       comments: 'Comentaris: %{comments}'
-      title: Propostes relacionades
+      title: Propostes incloses en aquesta actuació
       votes: Suports %{votes}
     action_plan_show:
       approve: Aprovar

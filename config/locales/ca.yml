@@ -97,6 +97,8 @@ ca:
     reply_button: Publica resposta
     reply_link: Respondre
   components:
+    action_plan_show:
+      share: Compartir pla d'actuació
     comments:
       new_comment:
         title: Deixa el teu comentari
@@ -106,6 +108,8 @@ ca:
         zero: Sense comentaris
     proposal_action_plans:
       title: 'Proposta recollida als següents resultats:'
+    proposal_show:
+      share: Compartir proposta
   debates:
     create:
       form:

@@ -5,7 +5,7 @@ es:
       title: Autoría
     action_plan_proposals:
       comments: 'Comentarios: %{comments}'
-      title: Propuestas
+      title: Propuestas incluídas en esta actuación
       votes: Votos %{votes}
     action_plan_show:
       approve: Aprobar

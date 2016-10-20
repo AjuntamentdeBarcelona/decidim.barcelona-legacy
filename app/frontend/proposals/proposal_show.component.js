@@ -120,7 +120,7 @@ class ProposalShow extends Component {
                 </div>
                 <div className="text-center">
                   <button className="link text-center">
-                    Compartir propuesta
+                    {I18n.t('components.proposal_show.share')}
                     <Icon name="share" className="icon--share icon--after" />
                   </button>
                 </div>

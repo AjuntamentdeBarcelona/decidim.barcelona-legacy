@@ -97,12 +97,16 @@ en:
     reply_button: Publish reply
     reply_link: Reply
   components:
+    action_plan_show:
+      share: Share
     comments:
       new_comment:
         title: Title
       total_comments: Total comments
     proposal_action_plans:
       title: Title
+    proposal_show:
+      share: Share
   debates:
     create:
       form:
