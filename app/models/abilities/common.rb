@@ -57,6 +57,10 @@ module Abilities
         can :vote_featured, Proposal
         can :create, SpendingProposal
       end
+
+      can :read, ParticipatoryProcess do |proposal|
+        proposal.published?
+      end
     end
   end
 end
