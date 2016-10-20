@@ -36,7 +36,7 @@
       <div class="row collapse">
         <div class="row small-up-1 smallmedium-up-2 mediumlarge-up-3
                     large-up-4 card-grid">
-          <% @participatory_process.each do |participatory_process| %>
+          <% @participatory_process.order('featured desc').limit(8).each do |participatory_process| %>
             <%= render partial: "participatory_process", locals: { participatory_process: participatory_process } %> 
           <% end %>
         </div>
@@ -151,16 +151,18 @@
       </div>
     </div>
   </section>
-  <section class="home-map">
-    <div class="wrapper-home wrapper-home--mini home-section">
-      <div class="row column">
-        <h3 class="section-heading"><%= t ".meetings.title" %></h3>
+  <% if false %>
+    <section class="home-map">
+      <div class="wrapper-home wrapper-home--mini home-section">
+        <div class="row column">
+          <h3 class="section-heading"><%= t ".meetings.title" %></h3>
+        </div>
       </div>
-    </div>
-    <div id="google-map" class="google-map">
-    </div>
-  </section>
-  <section class="extended subhero">
+      <div id="google-map" class="google-map">
+      </div>
+    </section>
+  <% end %>
+  <section class="extended subhero home-section">
     <div class="row">
       <div class="columns small-centered large-10">
         <h4 class="heading2"><%= t ".subhero-2.line-1" %></h4>
