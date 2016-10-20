@@ -7,7 +7,7 @@ class WelcomeController < ApplicationController
   layout -> { params[:action] == 'index' ? 'welcome' : 'application' }
 
   def index
-    @participatory_process = ParticipatoryProcess.all.limit(6)
+    @participatory_processes = ParticipatoryProcess.published.order('featured desc').limit(8)
   end
 
   def welcome

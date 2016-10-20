@@ -36,7 +36,7 @@
       <div class="row collapse">
         <div class="row small-up-1 smallmedium-up-2 mediumlarge-up-3
                     large-up-4 card-grid">
-          <% @participatory_process.order('featured desc').limit(8).each do |participatory_process| %>
+          <% @participatory_processes.each do |participatory_process| %>
             <%= render partial: "participatory_process", locals: { participatory_process: participatory_process } %> 
           <% end %>
         </div>
