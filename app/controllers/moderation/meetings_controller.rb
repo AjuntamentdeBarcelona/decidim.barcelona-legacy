@@ -61,11 +61,13 @@ class Moderation::MeetingsController < Moderation::BaseController
 
 
   def new
+    @participatory_process = ParticipatoryProcess.find(params[:participatory_process_id])
     @resource = resource_model.new
     set_resource_instance
   end
 
   def create
+    @participatory_process = ParticipatoryProcess.find(params[:participatory_process_id])
     @resource = resource_model.new(strong_params)
     @resource.author = current_user
     @resource.participatory_process_id = @participatory_process.id if @participatory_process.present?

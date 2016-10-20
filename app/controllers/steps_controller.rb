@@ -1,4 +1,5 @@
 class StepsController < ApplicationController
+  include HasParticipatoryProcess
   layout "participatory_process"
   skip_authorization_check
 
