@@ -56,12 +56,12 @@
           </div>
           <div class="card__footer">
             <div class="card__support">
-              <span class="card--process__small">
-                <% if process.active_step.present? %>
+              <% if process.active_step.present? %>
+                <span class="card--process__small">
                   <%= t('.current_step', step_title: process.active_step.decorate.title) %>
-                <% end %>
-              </span>
-              <%= link_to t('.join'), participatory_process_path(process), class: "card__button button small" %>
+                </span>
+                <%= link_to t('.join'), step_path(process, process.active_step), class: "card__button button small" %>
+              <% end %>
             </div>
           </div>
         </article>
