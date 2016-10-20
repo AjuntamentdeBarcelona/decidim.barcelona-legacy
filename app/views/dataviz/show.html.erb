@@ -1,9 +1,9 @@
 <div class="dataviz row-full more-information">
   <div class="row">
     <div class="small-12 column">
-      <ul class="horizontal-menu">
+      <ul class="vertical large-horizontal menu">
         <% available_dataviz.each do |dataviz| %>
-          <li class="<%= 'selected' if dataviz == @id %>">
+          <li class="<%= 'active' if dataviz == @id %>">
             <%= link_to({ id: dataviz }) do %><%= t "dataviz.#{dataviz}.title" %><% end %>
           </li>
         <% end %>

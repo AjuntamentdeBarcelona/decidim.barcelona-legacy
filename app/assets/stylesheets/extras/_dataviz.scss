@@ -1,0 +1,45 @@
+.dataviz{
+  margin-top: -2rem;
+
+  .menu{
+    margin-bottom: 2rem;
+  }
+
+  iframe{
+    overflow-x:hidden;
+    overflow-Y:hidden;
+  }
+
+  .dataviz-embedded{
+    &:not(.autoheight){
+      height: rem-calc(250px);
+      @media #{$medium-up}{
+        height: rem-calc(450px);
+      }
+
+      @media #{$large-up}{
+        height: rem-calc(800px);
+      }
+    }
+
+    &.total_interactions{
+      height: rem-calc(600px);
+      @media #{$medium-up}{
+        height: rem-calc(800px);
+      }
+
+      @media #{$large-up}{
+        height: rem-calc(800px);
+      }
+    }
+
+    width: 100%;
+    border: 0;
+  }
+
+  @media #{$large-up}{
+    .mobile-devices-alert{
+      display: none;
+    }
+  }
+}
