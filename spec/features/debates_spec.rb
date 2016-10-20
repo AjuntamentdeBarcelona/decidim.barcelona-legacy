@@ -238,11 +238,11 @@ feature 'Debates' do
     login_as(create(:user, :official))
 
     visit edit_debate_path(debate, participatory_process_id: debate.
-                                   participatory_process, step_id: participatory_process.active_step)
+                                   participatory_process, step_id: debate.participatory_process.active_step)
 
     expect(current_path).
       not_to eq(edit_debate_path(debate, participatory_process_id: debate.
-                                         participatory_process, step_id: participatory_process.active_step))
+                                         participatory_process, step_id: debate.participatory_process.active_step))
     expect(page).to have_content "You do not have permission to carry out the action 'edit' on debate."
   end
 
@@ -255,11 +255,11 @@ feature 'Debates' do
     login_as(debate.author)
 
     visit edit_debate_path(debate, participatory_process_id: debate.
-                                   participatory_process, step_id: participatory_process.active_step)
+                                   participatory_process, step_id: debate.participatory_process.active_step)
 
     expect(current_path).
       not_to eq(edit_debate_path(debate, participatory_process_id: debate.
-                                         participatory_process, step_id: participatory_process.active_step))
+                                         participatory_process, step_id: debate.participatory_process.active_step))
     expect(page).to have_content 'You do not have permission to'
   end
 

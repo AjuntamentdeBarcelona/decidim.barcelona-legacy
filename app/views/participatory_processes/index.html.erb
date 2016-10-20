@@ -19,9 +19,9 @@
                   style="background-image:url(<%= process.full_image_url %>)">
               <div class="card__content row collapse">
                 <div class="large-6 large-offset-6 columns">
-                  <%= link_to participatory_process_path(process), class: "button expanded button--sc" do %>
-                    <%= t('.join') %>
-                    <% if process.active_step.present? %>
+                  <% if process.active_step.present? %>
+                    <%= link_to step_path(process, process.active_step), class: "button expanded button--sc" do %>
+                      <%= t('.join') %>
                       <span class="button__info"><%= t('.current_step', step_title: process.active_step.decorate.title) %></span>
                     <% end %>
                   <% end %>
@@ -56,12 +56,12 @@
           </div>
           <div class="card__footer">
             <div class="card__support">
-              <span class="card--process__small">
-                <% if process.active_step.present? %>
+              <% if process.active_step.present? %>
+                <span class="card--process__small">
                   <%= t('.current_step', step_title: process.active_step.decorate.title) %>
-                <% end %>
-              </span>
-              <%= link_to t('.join'), participatory_process_path(process), class: "card__button button small" %>
+                </span>
+                <%= link_to t('.join'), step_path(process, process.active_step), class: "card__button button small" %>
+              <% end %>
             </div>
           </div>
         </article>

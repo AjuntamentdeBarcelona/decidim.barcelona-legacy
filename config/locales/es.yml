@@ -120,6 +120,7 @@ es:
       tags_label: Temas
       tags_placeholder: Escribe las etiquetas que desees separadas por coma (',')
     index:
+      debates_open: Debates abiertos
       orders:
         confidence_score: Mejor valorados
         created_at: Nuevos

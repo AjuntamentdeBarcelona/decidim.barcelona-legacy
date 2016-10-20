@@ -1,4 +1,5 @@
 class DatavizController < ApplicationController
+  include HasParticipatoryProcess
   skip_authorization_check
   helper_method :available_dataviz
 

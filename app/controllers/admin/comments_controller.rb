@@ -3,6 +3,10 @@ class Admin::CommentsController < Admin::BaseController
 
   before_action :load_comment, only: [:confirm_hide, :restore]
 
+  before_action do
+    authorize!(:restore, Comment)
+  end
+
   def index
     @comments = Comment.only_hidden.with_visible_author.send(@current_filter).order(hidden_at: :desc).page(params[:page])
   end

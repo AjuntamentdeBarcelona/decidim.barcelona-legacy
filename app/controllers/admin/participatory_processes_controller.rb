@@ -5,6 +5,10 @@ class Admin::ParticipatoryProcessesController < Admin::BaseController
 
   authorize_resource
 
+  before_action do
+    authorize!(:manage, ParticipatoryProcess)
+  end
+
   def index
     @participatory_processes = ParticipatoryProcess.send(@current_filter).with_hidden.page(params[:page]).decorate
   end

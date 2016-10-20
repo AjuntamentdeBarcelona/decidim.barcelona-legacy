@@ -1,4 +1,5 @@
 class MeetingsController < ApplicationController
+  include HasParticipatoryProcess
   include ParticipatoryProcessFlags
 
   ensure_participatory_process_flag :meetings

@@ -52,7 +52,7 @@ class Admin::SubcategoriesController < Admin::BaseController
   end
 
   def subcategory_params
-    params.require(:subcategory).permit(:position, :name => I18n.available_locales.map(&:to_s), :description => I18n.available_locales.map(&:to_s))
+    params.require(:subcategory).permit(:position, :participatory_process_id, :name => I18n.available_locales.map(&:to_s), :description => I18n.available_locales.map(&:to_s))
   end
 
   def default_data_for_all_locales

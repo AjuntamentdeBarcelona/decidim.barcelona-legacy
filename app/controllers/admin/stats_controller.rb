@@ -1,4 +1,7 @@
 class Admin::StatsController < Admin::BaseController
+  before_action do
+    authorize!(:show, :statistics)
+  end
 
   def show
     @event_types = Ahoy::Event.group(:name).count
