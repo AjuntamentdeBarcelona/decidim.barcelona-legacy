@@ -1,4 +1,5 @@
 class ActionPlansController < ApplicationController
+  include HasParticipatoryProcess
   include ParticipatoryProcessFlags
   include ModerateActions
 

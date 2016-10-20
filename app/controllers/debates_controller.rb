@@ -1,5 +1,6 @@
 class DebatesController < ApplicationController
   include FeatureFlags
+  include HasParticipatoryProcess
   include ParticipatoryProcessFlags
   include CommentableActions
   include FlagActions

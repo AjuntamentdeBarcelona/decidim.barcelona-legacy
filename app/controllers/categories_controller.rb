@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  include HasParticipatoryProcess
   skip_authorization_check
 
   def index
