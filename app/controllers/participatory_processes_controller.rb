@@ -1,5 +1,5 @@
 class ParticipatoryProcessesController < ApplicationController
-  skip_authorization_check
+  authorize_resource :participatory_process
 
   def index
     participatory_processes = ParticipatoryProcess.published.order("created_at desc").all
@@ -8,6 +8,6 @@ class ParticipatoryProcessesController < ApplicationController
   end
 
   def show
-    @participatory_process = ParticipatoryProcess.published.find(params[:id]).decorate
+    @participatory_process = ParticipatoryProcess.find(params[:id]).decorate
   end
 end
