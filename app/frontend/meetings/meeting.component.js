@@ -19,7 +19,7 @@ export default class Meeting extends Component {
         <article className="card card--meeting">
           <span className="card__type">
             <Icon name="meetings" />
-            Trobada
+            {I18n.t('components.meeting.title')}
           </span>
           <div className="card__content">
             <a href={meeting.url} className="card__link">

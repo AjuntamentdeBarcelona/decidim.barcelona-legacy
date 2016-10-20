@@ -106,6 +106,8 @@ ca:
         one: 1 comentari
         other: "%{count} comentaris"
         zero: Sense comentaris
+    meeting:
+      title: Trobada
     proposal_action_plans:
       title: 'Proposta recollida als següents resultats:'
     proposal_show:
@@ -271,11 +273,11 @@ ca:
     photos:
       title: Fotografies de la cita
     show:
-      attendee_count: Attendee count
-      interventions: Interventions
-      organizations: Organizations
+      attendee_count: Nombre d'assistents
+      interventions: Nombre d'intervencions
+      organizations: Organitzacions participants
       proposals_title: Propostes tractades
-      share: Comparteix
+      share: Comparteix la trobada
   notifications:
     index:
       comments_on:
