@@ -16,6 +16,10 @@ module Abilities
       can :read, Category
       can :read, Subcategory
       can :read, District
+
+      can :read, ParticipatoryProcess do |participatory_process|
+        participatory_process.published?
+      end
     end
   end
 end

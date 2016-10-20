@@ -11,6 +11,7 @@ module Abilities
       can :manage, Category
       can :manage, Subcategory
       can :manage, ParticipatoryProcess
+      can :read, ParticipatoryProcess
       can :manage, Step
 
       can :manage, Meeting
