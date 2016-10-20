@@ -167,6 +167,7 @@ es:
     show:
       author_deleted: Usuario eliminado
       edit_debate_link: Editar debate
+      share: Compartir debate
     update:
       form:
         submit_button: Guardar cambios

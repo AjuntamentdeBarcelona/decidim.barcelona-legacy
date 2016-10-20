@@ -167,6 +167,7 @@ ca:
     show:
       author_deleted: Usuari eliminat
       edit_debate_link: Edita debat
+      share: Compartir debat
     update:
       form:
         submit_button: Desa els canvis

@@ -164,6 +164,7 @@ en:
     show:
       author_deleted: User deleted
       edit_debate_link: Edit
+      share: Share
     update:
       form:
         submit_button: Save changes
