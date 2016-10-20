@@ -1,6 +1,6 @@
-import React       from 'react';
-import { shallow } from 'enzyme';
-import Loading     from './loading.component';
+// import React       from 'react';
+// import { shallow } from 'enzyme';
+// import Loading     from './loading.component';
 
 describe("Loading component", function() {
   // it("should return a blank component if show props is false", function () {
