@@ -4,16 +4,16 @@ module CategoryPickerHelper
       'CategoryPicker',
       categoryInputName: options.fetch(:axis_name, "#{record.class.name.underscore}[category_id]"),
       subcategoryInputName: options.fetch(:action__line_name, "#{record.class.name.underscore}[subcategory_id]"),
-      categories: serialized_categories,
-      subcategories: serialized_subcategories,
+      categories: serialized_categories(options),
+      subcategories: serialized_subcategories(options),
       selectedCategoryId: record.category_id.to_s,
       selectedSubcategoryId: record.subcategory_id.to_s,
-      participatoryProcessId: @participatory_process.slug
+      participatoryProcessId: options[:participatory_process_slug]
     )
   end
 
-  def serialized_categories
-    CategoryDecorator.decorate_collection(Category.where(participatory_process_id: @participatory_process.id).all).map do |category|
+  def serialized_categories(options = {})
+    CategoryDecorator.decorate_collection(Category.where(participatory_process_id: options[:participatory_process_id]).all).map do |category|
       {
         id: category.id.to_s,
         name: category.name
@@ -21,8 +21,8 @@ module CategoryPickerHelper
     end
   end
 
-  def serialized_subcategories
-    SubcategoryDecorator.decorate_collection(Subcategory.where(participatory_process_id: @participatory_process.id).all).map do |subcategory|
+  def serialized_subcategories(options = {})
+    SubcategoryDecorator.decorate_collection(Subcategory.where(participatory_process_id: options[:participatory_process_id]).all).map do |subcategory|
       {
         id: subcategory.id.to_s,
         name: subcategory.name,
