@@ -7,8 +7,7 @@ class WelcomeController < ApplicationController
   layout -> { params[:action] == 'index' ? 'welcome' : 'application' }
 
   def index
-    @categories = Category.order(:position).decorate
-    @main_participatory_process = ParticipatoryProcess.first
+    @participatory_process = ParticipatoryProcess.all.limit(6)
   end
 
   def welcome

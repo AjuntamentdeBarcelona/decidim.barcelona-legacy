@@ -5,15 +5,13 @@
       <div class="row">
         <div class="columns small-centered large-10">
           <h1 class="text-highlight heading1 hero-heading">
-            Construïm entre tots <br>la Barcelona que volem
+            <%= t ".hero.line-1" %> <br><%= t ".hero.line-2" %>
           </h1>
         </div>
       </div>
       <div class="row">
         <div class="columns small-centered small-6 medium-4 mediumlarge-3">
-          <a href="/processes" class="hero-cta button expanded large button--sc">
-            Participa
-          </a>
+          <%= link_to t(".hero.button"), participatory_processes_path, class: "hero-cta button expanded large button--sc" %>
         </div>
       </div>
     </div>
@@ -21,167 +19,42 @@
   <section class="extended subhero home-section">
     <div class="row">
       <div class="columns small-centered large-10">
-        <h2 class="heading3">Únete a la plataforma online de
-          participación ciudadana y participa de forma activa para mejorar tu
-          ciudad. Ya somos 156000.</h2>
-        <a href="/user-register" class="button--sc link subhero-cta">
-          Regístrate
+        <h2 class="heading3">
+          <%= t ".subhero-1.line-1" %><br>
+          <%= t ".subhero-1.line-2" %>
+        </h2>
+        <%= link_to new_user_registration_path, class: "button--sc link subhero-cta" do %>
+          <%= t ".subhero-1.button" %>
           <%= icon "chevron-right", aria_hidden: true %>
-        </a>
+        <% end %>
       </div>
     </div>
   </section>
   <section class="wrapper-home">
     <div class="row">
-      <h3 class="section-heading">Processos destacats</h3>
+      <h3 class="section-heading"><%= t ".participatory_process.title" %></h3>
       <div class="row collapse">
         <div class="row small-up-1 smallmedium-up-2 mediumlarge-up-3
                     large-up-4 card-grid">
-          <div class="column">
-            <article class="card card--process card--mini">
-              <a href="/info" class="card__link">
-                <div class="card__image-top"
-                     style="background-image:url(<%= image_url("superilles.jpg") %>)"></div>
-              </a>
-              <div class="card__content">
-                <a href="/info" class="card__link">
-                  <h4 class="card__title">Superilles</h4>
-                </a>
-                <span class="card--process__small">Fase activa:
-                  <strong>Diagnóstico</strong>
-                </span>
-              </div>
-            </article>
-          </div>
-          <div class="column">
-            <article class="card card--process card--mini">
-              <a href="/info" class="card__link">
-                <div class="card__image-top"
-                     style="background-image:url(<%= image_url("gracia.jpg") %>)"></div>
-              </a>
-              <div class="card__content">
-                <a href="/info" class="card__link">
-                  <h4 class="card__title">Plan urbanístico de Gracia</h4>
-                </a>
-                <span class="card--process__small">Fase activa:
-                  <strong>Diagnóstico</strong>
-                </span>
-              </div>
-            </article>
-          </div>
-          <div class="column">
-            <article class="card card--process card--mini">
-              <a href="/info" class="card__link">
-                <div class="card__image-top"
-                     style="background-image:url(<%= image_url("puntverd.jpg") %>)"></div>
-              </a>
-              <div class="card__content">
-                <a href="/info" class="card__link">
-                  <h4 class="card__title">Reciclatge de dispositius electrònics</h4>
-                </a>
-                <span class="card--process__small">Fase activa:
-                  <strong>Diagnóstico</strong>
-                </span>
-              </div>
-            </article>
-          </div>
-          <div class="column">
-            <article class="card card--process card--mini">
-              <a href="/info" class="card__link">
-                <div class="card__image-top"
-                     style="background-image:url(<%= image_url("demo-info-page.jpg") %>)"></div>
-              </a>
-              <div class="card__content">
-                <a href="/info" class="card__link">
-                  <h4 class="card__title">Pla de turisme sostenible</h4>
-                </a>
-                <span class="card--process__small">Fase activa:
-                  <strong>Diagnóstico</strong>
-                </span>
-              </div>
-            </article>
-          </div>
-          <div class="column">
-            <article class="card card--process card--mini">
-              <a href="/info" class="card__link">
-                <div class="card__image-top"
-                     style="background-image:url(<%= image_url("demo-info-page.jpg") %>)"></div>
-              </a>
-              <div class="card__content">
-                <a href="/info" class="card__link">
-                  <h4 class="card__title">Pla de turisme sostenible</h4>
-                </a>
-                <span class="card--process__small">Fase activa:
-                  <strong>Diagnóstico</strong>
-                </span>
-              </div>
-            </article>
-          </div>
-          <div class="column">
-            <article class="card card--process card--mini">
-              <a href="/info" class="card__link">
-                <div class="card__image-top"
-                     style="background-image:url(<%= image_url("superilles.jpg") %>)"></div>
-              </a>
-              <div class="card__content">
-                <a href="/info" class="card__link">
-                  <h4 class="card__title">Superilles</h4>
-                </a>
-                <span class="card--process__small">Fase activa:
-                  <strong>Diagnóstico</strong>
-                </span>
-              </div>
-            </article>
-          </div>
-          <div class="column">
-            <article class="card card--process card--mini">
-              <a href="/info" class="card__link">
-                <div class="card__image-top"
-                     style="background-image:url(<%= image_url("gracia.jpg") %>)"></div>
-              </a>
-              <div class="card__content">
-                <a href="/info" class="card__link">
-                  <h4 class="card__title">Plan urbanístico de Gracia</h4>
-                </a>
-                <span class="card--process__small">Fase activa:
-                  <strong>Diagnóstico</strong>
-                </span>
-              </div>
-            </article>
-          </div>
-          <div class="column">
-            <article class="card card--process card--mini">
-              <a href="/info" class="card__link">
-                <div class="card__image-top"
-                     style="background-image:url(<%= image_url("puntverd.jpg") %>)"></div>
-              </a>
-              <div class="card__content">
-                <a href="/info" class="card__link">
-                  <h4 class="card__title">Reciclatge de dispositius electrònics</h4>
-                </a>
-                <span class="card--process__small">Fase activa:
-                  <strong>Diagnóstico</strong>
-                </span>
-              </div>
-            </article>
-          </div>
+          <% @participatory_process.each do |participatory_process| %>
+            <%= render partial: "participatory_process", locals: { participatory_process: participatory_process } %> 
+          <% end %>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="columns small-centered small-12
                   smallmedium-8 medium-6 large-4">
-        <a href="/processes" class="button expanded hollow button--sc
-                                    home-section__cta">
-          Ver todos los procesos
-        </a>
+        <%= link_to t(".participatory_process.button"), 
+                participatory_processes_path, 
+                class: "button expanded hollow button--sc home-section__cta" %>
       </div>
     </div>
   </section>
   <section class="extended">
     <div class="wrapper-home home-section">
       <div class="row column text-center">
-        <h3 class="heading2">¿Cómo participo en un proceso?</h3>
+        <h3 class="heading2"><%= t ".bullets.title" %></h3>
       </div>
       <div class="row small-up-1 medium-up-3 home-bullets">
         <div class="column">
@@ -190,9 +63,8 @@
               <%= icon "meetings" %>
             </div>
             <div class="home-bullet__desc">
-              <h4 class="heading6">Encuentros</h4>
-              <p>Encontrarnos, debatir y compartir lo que nos parece importante
-                en nuestra ciudad.</p>
+              <h4 class="heading6"><%= t ".bullets.block-1.title" %></h4>
+              <p><%= t ".bullets.block-1.description" %></p>
             </div>
           </div>
         </div>
@@ -202,9 +74,8 @@
               <%= icon "debates" %>
             </div>
             <div class="home-bullet__desc">
-              <h4 class="heading6">Debates</h4>
-              <p>Encontrarnos, debatir y compartir lo que nos parece importante en
-                nuestra ciudad.</p>
+              <h4 class="heading6"><%= t ".bullets.block-2.title" %></h4>
+              <p><%= t ".bullets.block-2.description" %></p>
             </div>
           </div>
         </div>
@@ -214,9 +85,8 @@
               <%= icon "proposals" %>
             </div>
             <div class="home-bullet__desc">
-              <h4 class="heading6">Propuestas</h4>
-              <p>Espacio abierto para propuestas ciudadanas sobre el tipo de
-                ciudad en el que queremos vivir.</p>
+              <h4 class="heading6"><%= t ".bullets.block-3.title" %></h4>
+              <p><%= t ".bullets.block-3.description" %></p>
             </div>
           </div>
         </div>
@@ -224,9 +94,7 @@
       <div class="row">
         <div class="columns small-centered small-10
                     smallmedium-8 medium-6 large-4">
-          <a href="/processes" class="button expanded hollow button--sc">
-            Más información
-          </a>
+          <%= link_to t(".bullets.button"), participatory_processes_path, class: "button expanded hollow button--sc" %>
         </div>
       </div>
     </div>
@@ -234,32 +102,32 @@
   <section class="extended">
     <div class="wrapper-home">
       <div class="row column text-center">
-        <h3 class="heading2">Resultados del proceso del Plan Municipal</h3>
+        <h3 class="heading2"><%= t ".results.title" %></h3>
       </div>
       <div class="row">
         <div class="columns small-centered mediumlarge-10 large-8">
           <div class="home-pam">
             <div class="home-pam__highlight">
               <div class="home-pam__data">
-                <h4 class="home-pam__title">Propuestas incorporadas</h4>
+                <h4 class="home-pam__title"><%= t ".results.title-1" %></h4>
                 <span class="home-pam__number">7.284</span>
               </div>
               <div class="home-pam__data">
-                <h4 class="home-pam__title">Actuaciones</h4>
+                <h4 class="home-pam__title"><%= t ".results.title-2" %></h4>
                 <span class="home-pam__number">1.467</span>
               </div>
             </div>
             <div class="home-pam__lowlight">
               <div class="home-pam__data">
-                <h4 class="home-pam__title">Total propuestas</h4>
+                <h4 class="home-pam__title"><%= t ".results.title-3" %></h4>
                 <span class="home-pam__number">10.860</span>
               </div>
               <div class="home-pam__data">
-                <h4 class="home-pam__title">Apoyos</h4>
+                <h4 class="home-pam__title"><%= t ".results.title-4" %></h4>
                 <span class="home-pam__number">165.121</span>
               </div>
               <div class="home-pam__data">
-                <h4 class="home-pam__title">Encuentros</h4>
+                <h4 class="home-pam__title"><%= t ".results.title-5" %></h4>
                 <span class="home-pam__number">410</span>
               </div>
             </div>
@@ -269,17 +137,16 @@
       <div class="row">
         <div class="columns small-centered small-12
                     smallmedium-8 medium-6 large-4">
-          <a href="/processes" class="button expanded hollow button--sc">
-            Explora los resultados
-          </a>
+          <%= link_to t(".results.button-1"), 
+                  participatory_processes_path, 
+                  class: "button expanded hollow button--sc" %>
         </div>
       </div>
       <div class="row text-center">
         <div class="columns small-centered large-3">
-          <a href="/processes" class="button--sc link
-                                      subhero-cta subhero-cta--secondary">
-            Descarga el Plan Municipal
-          </a>
+          <%= link_to t(".results.button-2"), 
+                  participatory_processes_path, 
+                  class: "button--sc link subhero-cta subhero-cta--secondary" %>
         </div>
       </div>
     </div>
@@ -287,7 +154,7 @@
   <section class="home-map">
     <div class="wrapper-home wrapper-home--mini home-section">
       <div class="row column">
-        <h3 class="section-heading">Pròximes trobades</h3>
+        <h3 class="section-heading"><%= t ".meetings.title" %></h3>
       </div>
     </div>
     <div id="google-map" class="google-map">
@@ -296,15 +163,12 @@
   <section class="extended subhero">
     <div class="row">
       <div class="columns small-centered large-10">
-        <h4 class="heading2">73 barris, una Barcelona. Cap a la ciutat dels
-          drets i les oportunitats</h4>
-        <h5 class="heading4">Únete a la plataforma online de
-          participación ciudadana y participa de forma activa para mejorar tu
-          ciudad. Ya somos 156000.</h5>
-        <a href="/user-register" class="button--sc link subhero-cta">
-          Regístrate
+        <h4 class="heading2"><%= t ".subhero-2.line-1" %></h4>
+        <h5 class="heading4"><%= t ".subhero-2.line-2" %></h5>
+        <%= link_to new_user_registration_path, class: "button--sc link subhero-cta" do %>
+          <%= t ".subhero-2.button" %>
           <%= icon "chevron-right", aria_hidden: true %>
-        </a>
+        <% end %>
       </div>
     </div>
   </section>

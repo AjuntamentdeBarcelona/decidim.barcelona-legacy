@@ -323,10 +323,10 @@ ca:
       form:
         submit_button: Crear proces
     show:
+      active_step: 'Fase actual: %{name}'
       documents: Documents relacionats
-      steps: Fases
       participate: Participa
-      active_step: "Fase actual: %{name}"
+      steps: Fases
   proposal_results_mailer:
     proposal:
       status: Estat
@@ -559,6 +559,46 @@ ca:
     verified_only: Les propostes només poden ser votades per usuaris verificats, %{verify_account}.
     verify_account: verifica el teu compte
   welcome:
+    index:
+      hero:
+        line-1: Decidim la Barcelona
+        line-2: que volem
+        button: Participa
+      subhero-1:
+        line-1: "decidim.barcelona: la plataforma de participació de Barcelona."
+        line-2: "Entra, participa i decideix."
+        button: "Registra't"
+      bullets:
+        title: "Com puc participar en un procés?"
+        button: "Mès informació"
+        block-1: 
+          title: "Cites presencials" 
+          description: "Participa als espais presencials vinculats als processos de cada territori o àmbit."
+        block-2: 
+          title: "Debates"
+          description: "Entra als espais digitals per informar-te i debatre sobre el futur de la nostra ciutat"
+        block-3: 
+          title: "Propostes"
+          description: "Fes les teves aportacions als processos de participació oberts."
+      participatory_process:
+        title: "Processos destacats"
+        button: "Veure tots els processos"
+        active_step: "Fase actual"
+      results:
+        title: "Resultats del procés del Pla Municipal"
+        title-1: "Propostes incorporades"
+        title-2: "Actuacions"
+        title-3: "Total propostes"
+        title-4: "Suports"
+        title-5: "Cites presencials"
+        button-1: "Explora els resultats"
+        button-2: "Descarrega el Pla Municipal"
+      meetings:
+        title: "Properes cites presencials"
+      subhero-2:
+        line-1: "decidim.barcelona: la plataforma de participació de Barcelona."
+        line-2: "Entra, participa i decideix."
+        button: "Registra't"
     welcome:
       abilities:
         debates: Debates

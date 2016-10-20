@@ -323,7 +323,9 @@ es:
       form:
         submit_button: Crear proceso
     show:
+      active_step: 'Fase actual: %{name}'
       documents: Documentos relacionados
+      participate: Participa
       steps: Fases
   proposal_results_mailer:
     proposal:
@@ -557,6 +559,46 @@ es:
     verified_only: Las propuestas sólo pueden ser votadas por usuarios verificados, %{verify_account}.
     verify_account: verifica tu cuenta
   welcome:
+    index:
+      bullets:
+        title: "¿Como puedo participar en un proceso?"
+        button: "Más información"
+        block-1: 
+          title: "Encuentros" 
+          description: "Participa en los espacios presenciales vinculados a los procesos de cada territorio o ámbito"
+        block-2: 
+          title: "Debates"
+          description: "Entra en los espacios digitales para informarte y debatir sobre el futuro de nuestra ciudad"
+        block-3: 
+          title: "Propuestas"
+          description: "Haz tus aportaciones en los procesos de participación abiertos."
+      hero:
+        line-1: Decidamos la Barcelona
+        line-2: que queremos
+        button: Participa
+      meetings:
+        title: "Próximas citas presenciales"
+      participatory_process:
+        title: "Procesos destacados"
+        button: "Ver todos los procesos"
+        active_step: "Fase actual"
+      results:
+        title: "Resultados del proceso del Plan Municipal"
+        title-1: "Propuestas incorporadas"
+        title-2: "Actuaciones"
+        title-3: "Total propuestas"
+        title-4: "Apoyos"
+        title-5: "Citas presenciales"
+        button-1: "Explora los resultados"
+        button-2: "Descarga el Plan Municipal"
+      subhero-1:
+        line-1: "decidim.barcelona: la platafroma de participación de Barcelona."
+        line-2: "Entra, participa y decide."
+        button: Regístrate
+      subhero-2:
+        line-1: "decidim.barcelona: la platafroma de participación de Barcelona."
+        line-2: "Entra, participa y decide."
+        button: Regístrate
     welcome:
       abilities:
         debates: Debates
