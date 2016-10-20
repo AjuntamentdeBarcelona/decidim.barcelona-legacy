@@ -10,7 +10,6 @@ class Moderation::MeetingsController < Moderation::BaseController
   load_and_authorize_resource
 
   def index
-    @participatory_processes = ParticipatoryProcess.all
     @search    = params[:search]
     @resources = @resources.send(@current_filter)
     @resources = @resources.search(@search) if @search.present?
@@ -62,6 +61,7 @@ class Moderation::MeetingsController < Moderation::BaseController
 
   def new
     @resource = resource_model.new
+    @resource.participatory_process = ParticipatoryProcess.first
     set_resource_instance
   end
 
@@ -96,6 +96,11 @@ class Moderation::MeetingsController < Moderation::BaseController
   def destroy
     resource.destroy
     redirect_to moderation_meetings_url, notice: t('flash.actions.destroy.notice', resource_name: "#{resource_name.capitalize}")
+  end
+
+  def load_scoped_fields
+    @meeting = params[:meeting_id].present? ? Meeting.find(params[:meeting_id]) : Meeting.new
+    @participatory_process = ParticipatoryProcess.find(params[:participatory_process_id])
   end
 
   private
