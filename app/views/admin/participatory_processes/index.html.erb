@@ -6,7 +6,6 @@
     <% @participatory_processes.each do |process| %>
       <tr class="<%= 'hidden' if process.hidden? %>">
         <td><%= link_to process.title, participatory_process_path(process), target: "_blank" %></td>
-        <td><%= " (/" + process.slug + ")" %></td>
         <td>
           <%= link_to t('admin.participatory_processes.index.show'), admin_participatory_process_path(process), class: "button tiny radius" %>
           <%= link_to t('admin.participatory_processes.index.steps'), admin_participatory_process_steps_path(process), class: "button tiny radius" %>

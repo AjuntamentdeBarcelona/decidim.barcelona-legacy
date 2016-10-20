@@ -45,12 +45,10 @@ feature 'Admin participatory processes' do
     click_button "Create participatory process"
 
     expect(page).to have_content "Participatory process created successfully."
-    expect(page).to have_content "pam"
-    expect(page).to have_content "/pam"
   end
 
   scenario "Show an existing participatory process", :js do
-    participatory_process = create(:participatory_process, name: "test")
+    participatory_process = create(:participatory_process, title: { "en" => "test" })
 
     visit admin_participatory_processes_path
     within all("tr").last do
@@ -61,7 +59,7 @@ feature 'Admin participatory processes' do
   end
 
   scenario "Edit an existing participatory process", :js do
-    create(:participatory_process, name: "test")
+    create(:participatory_process, title: { "en" => "test"})
 
     visit admin_participatory_processes_path
     within all("#participatory_processes tr").last do
@@ -74,7 +72,7 @@ feature 'Admin participatory processes' do
   end
 
   scenario "Destroy an existing participatory process", :js do
-    create(:participatory_process, name: "test")
+    create(:participatory_process, title: { "en" => "test" })
 
     visit admin_participatory_processes_path
     within all(".admin-list tr").last do
@@ -85,7 +83,7 @@ feature 'Admin participatory processes' do
   end
 
   scenario "Restore a deleted participatory process", :js do
-    participatory_process = create(:participatory_process, name: "test")
+    participatory_process = create(:participatory_process, title: { "en" => "test" })
     participatory_process.destroy
 
     visit admin_participatory_processes_path
@@ -95,7 +93,7 @@ feature 'Admin participatory processes' do
   end
 
   scenario "Publish a participatory process", :js do
-    create(:participatory_process, name: "test", published: false)
+    create(:participatory_process, title: { "en" => "test" }, published: false)
 
     visit admin_participatory_processes_path
 
@@ -109,7 +107,7 @@ feature 'Admin participatory processes' do
 
   scenario "Unpublish a participatory process", :js do
     ParticipatoryProcess.delete_all
-    create(:participatory_process, name: "test", published: true)
+    create(:participatory_process, title: { "en" => "test" }, published: true)
 
     visit admin_participatory_processes_path
 
