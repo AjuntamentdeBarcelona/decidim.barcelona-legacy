@@ -1,5 +1,5 @@
 # coding: utf-8
-FactoryGirl.define do  factory :participatory_process_attachment do
+FactoryGirl.define do
   factory :newsletter do
     title do { I18n.default_locale => "Newsletter subject" } end
     body do {I18n.default_locale => "Newsletter body" } end
