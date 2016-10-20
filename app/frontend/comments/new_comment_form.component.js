@@ -39,9 +39,9 @@ class NewCommentForm extends Component {
             <label 
               className="show-for-sr"
               htmlFor={textAreaId}>
-              Deixa el teu comentari
+              {I18n.t('components.comments.new_comment.title')}
             </label>
-            <textarea id={textAreaId} placeholder="Deixa el teu comentari" value={this.state.newComment.body} onChange={e => this.setBody(e.target.value)}></textarea>
+            <textarea id={textAreaId} placeholder={I18n.t('components.comments.new_comment.title')} value={this.state.newComment.body} onChange={e => this.setBody(e.target.value)}></textarea>
             {this.renderAlignmentRadioButtons()}
             {this.renderCommentAsModerator()}
             <span className="right">&nbsp;&nbsp;</span>

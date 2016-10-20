@@ -96,6 +96,16 @@ es:
     comment_button: Publicar comentario
     reply_button: Publicar respuesta
     reply_link: Responder
+  components:
+    comments:
+      new_comment:
+        title: Deja tu comentario
+      total_comments:
+        one: 1 comentario
+        other: "%{count} comentarios"
+        zero: Sin comentarios
+    proposal_action_plans:
+      title: 'Propuesta recogida en los siguientes resultados:'
   debates:
     create:
       form:
@@ -191,6 +201,7 @@ es:
       categories: Categorías
       debates: Debates
       external_link_blog: Noticias
+      home: Inicio
       locale: 'Idioma:'
       meetings: Citas presenciales
       moderation: Moderar

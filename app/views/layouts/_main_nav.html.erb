@@ -4,7 +4,7 @@
       <ul class="main-nav">
         <li>
           <%= link_to root_path, class: "main-nav__link #{'main-nav__link--active' if home_page?} home" do %>
-            Home
+            <%= t("layouts.header.home") %>
           <% end %>
         </li>
 

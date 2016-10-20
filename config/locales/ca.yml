@@ -96,6 +96,16 @@ ca:
     comment_button: Afegeix un comentari
     reply_button: Publica resposta
     reply_link: Respondre
+  components:
+    comments:
+      new_comment:
+        title: Deixa el teu comentari
+      total_comments:
+        one: 1 comentari
+        other: "%{count} comentaris"
+        zero: Sense comentaris
+    proposal_action_plans:
+      title: 'Proposta recollida als següents resultats:'
   debates:
     create:
       form:
@@ -191,6 +201,7 @@ ca:
       categories: Categories
       debates: Debats
       external_link_blog: Notícies
+      home: Inici
       locale: 'Idioma:'
       meetings: Cites presencials
       moderation: Moderar

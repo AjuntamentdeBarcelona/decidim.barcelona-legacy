@@ -41,7 +41,7 @@ class Comments extends Component {
             if (!closed) {
               return (
                 <div className="add-coment">
-                  <h5 className="section-heading">Deixa el teu comentari</h5>
+                  <h5 className="section-heading">{I18n.t('components.comments.new_comment.title')}</h5>
                   {this.renderSignInWarning()}
                   <NewCommentForm 
                     commentable={commentable}
@@ -56,11 +56,8 @@ class Comments extends Component {
           })()
         }
         <div className="row collapse order-by">
-          <h2 className="order-by__text section-heading">{commentable.total_comments} comentaris - 
-            <span className="order-by__tabs">
-              <a href="#" className="order-by__tab">a favor</a>
-              <a href="#" className="order-by__tab">en contra</a>
-            </span>
+          <h2 className="order-by__text section-heading">
+            {I18n.t('components.comments.total_comments', { count: commentable.total_comments})}
           </h2>
           <div className="order-by__dropdown order-by__dropdown--right">
             <CommentsOrderSelector />

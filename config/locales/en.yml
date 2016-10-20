@@ -96,6 +96,13 @@ en:
     comment_button: Publish comment
     reply_button: Publish reply
     reply_link: Reply
+  components:
+    comments:
+      new_comment:
+        title: Title
+      total_comments: Total comments
+    proposal_action_plans:
+      title: Title
   debates:
     create:
       form:
@@ -191,6 +198,7 @@ en:
       categories: Categories
       debates: Debates
       external_link_blog: News
+      home: Home
       locale: 'Language:'
       meetings: Presencial meetings
       moderation: Moderation
