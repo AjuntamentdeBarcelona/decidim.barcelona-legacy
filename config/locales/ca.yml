@@ -96,6 +96,22 @@ ca:
     comment_button: Afegeix un comentari
     reply_button: Publica resposta
     reply_link: Respondre
+  components:
+    action_plan_show:
+      share: Compartir pla d'actuació
+    comments:
+      new_comment:
+        title: Deixa el teu comentari
+      total_comments:
+        one: 1 comentari
+        other: "%{count} comentaris"
+        zero: Sense comentaris
+    meeting:
+      title: Trobada
+    proposal_action_plans:
+      title: 'Proposta recollida als següents resultats:'
+    proposal_show:
+      share: Compartir proposta
   debates:
     create:
       form:
@@ -151,6 +167,7 @@ ca:
     show:
       author_deleted: Usuari eliminat
       edit_debate_link: Edita debat
+      share: Compartir debat
     update:
       form:
         submit_button: Desa els canvis
@@ -191,6 +208,7 @@ ca:
       categories: Categories
       debates: Debats
       external_link_blog: Notícies
+      home: Inici
       locale: 'Idioma:'
       meetings: Cites presencials
       moderation: Moderar
@@ -256,11 +274,11 @@ ca:
     photos:
       title: Fotografies de la cita
     show:
-      attendee_count: Attendee count
-      interventions: Interventions
-      organizations: Organizations
+      attendee_count: Nombre d'assistents
+      interventions: Nombre d'intervencions
+      organizations: Organitzacions participants
       proposals_title: Propostes tractades
-      share: Comparteix
+      share: Comparteix la trobada
   notifications:
     index:
       comments_on:

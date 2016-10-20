@@ -19,7 +19,7 @@ class ProposalActionPlans extends Component {
     if (actionPlans.length > 0) {
       return (
         <div>
-          <h3 className="section-heading">Proposta recollida als següents presultats:</h3>
+          <h3 className="section-heading">{I18n.t('components.proposal_action_plans.title')}</h3>
 
           <div className="card card--action card--list">
             {

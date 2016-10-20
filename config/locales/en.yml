@@ -96,6 +96,19 @@ en:
     comment_button: Publish comment
     reply_button: Publish reply
     reply_link: Reply
+  components:
+    action_plan_show:
+      share: Share
+    comments:
+      new_comment:
+        title: Title
+      total_comments: Total comments
+    meeting:
+      title: Title
+    proposal_action_plans:
+      title: Title
+    proposal_show:
+      share: Share
   debates:
     create:
       form:
@@ -151,6 +164,7 @@ en:
     show:
       author_deleted: User deleted
       edit_debate_link: Edit
+      share: Share
     update:
       form:
         submit_button: Save changes
@@ -191,6 +205,7 @@ en:
       categories: Categories
       debates: Debates
       external_link_blog: News
+      home: Home
       locale: 'Language:'
       meetings: Presencial meetings
       moderation: Moderation

@@ -84,7 +84,7 @@ class ActionPlanShow extends Component {
                 <ActionPlanStatistics statistics={statistics} />
                 <div className="text-center">
                   <button className="link text-center">
-                    Compartir propuesta
+                    {I18n.t('components.action_plan_show.share')}
                     <Icon name="share" className="icon--after" />
                   </button>
                 </div>

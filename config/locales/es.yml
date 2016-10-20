@@ -96,6 +96,22 @@ es:
     comment_button: Publicar comentario
     reply_button: Publicar respuesta
     reply_link: Responder
+  components:
+    action_plan_show:
+      share: Compartir actuación
+    comments:
+      new_comment:
+        title: Deja tu comentario
+      total_comments:
+        one: 1 comentario
+        other: "%{count} comentarios"
+        zero: Sin comentarios
+    meeting:
+      title: Cita presencial
+    proposal_action_plans:
+      title: 'Propuesta recogida en los siguientes resultados:'
+    proposal_show:
+      share: Compartir propuesta
   debates:
     create:
       form:
@@ -151,6 +167,7 @@ es:
     show:
       author_deleted: Usuario eliminado
       edit_debate_link: Editar debate
+      share: Compartir debate
     update:
       form:
         submit_button: Guardar cambios
@@ -191,6 +208,7 @@ es:
       categories: Categorías
       debates: Debates
       external_link_blog: Noticias
+      home: Inicio
       locale: 'Idioma:'
       meetings: Citas presenciales
       moderation: Moderar
@@ -256,11 +274,11 @@ es:
     photos:
       title: Fotografías de la cita
     show:
-      attendee_count: Attendee count
-      interventions: Interventions
-      organizations: Organizations
+      attendee_count: Número de asistentes
+      interventions: Número de intervenciones
+      organizations: Organizaciones participantes
       proposals_title: Propuestas tratadas
-      share: Comparte
+      share: Comparte el encuentro
   notifications:
     index:
       comments_on:
