@@ -326,7 +326,7 @@ es:
     show:
       active_step: 'Fase actual: %{name}'
       documents: Documentos relacionados
-      participate: participa
+      participate: Participa
       steps: Fases
   proposal_results_mailer:
     proposal:
@@ -560,6 +560,46 @@ es:
     verified_only: Las propuestas sólo pueden ser votadas por usuarios verificados, %{verify_account}.
     verify_account: verifica tu cuenta
   welcome:
+    index:
+      bullets:
+        block-1:
+          description: Participa en los espacios presenciales vinculados a los procesos de cada territorio o ámbito
+          title: Encuentros
+        block-2:
+          description: Entra en los espacios digitales para informarte y debatir sobre el futuro de nuestra ciudad
+          title: Debates
+        block-3:
+          description: Haz tus aportaciones en los procesos de participación abiertos.
+          title: Propuestas
+        button: Más información
+        title: "¿Como puedo participar en un proceso?"
+      hero:
+        button: Participa
+        line-1: Decidamos la Barcelona
+        line-2: que queremos
+      meetings:
+        title: Próximas citas presenciales
+      participatory_process:
+        active_step: Fase actual
+        button: Ver todos los procesos
+        title: Procesos destacados
+      results:
+        button-1: Explora los resultados
+        button-2: Descarga el Plan Municipal
+        title: Resultados del proceso del Plan Municipal
+        title-1: Propuestas incorporadas
+        title-2: Actuaciones
+        title-3: Total propuestas
+        title-4: Apoyos
+        title-5: Citas presenciales
+      subhero-1:
+        button: Regístrate
+        line-1: 'decidim.barcelona: la platafroma de participación de Barcelona.'
+        line-2: Entra, participa y decide.
+      subhero-2:
+        button: Regístrate
+        line-1: 'decidim.barcelona: la platafroma de participación de Barcelona.'
+        line-2: Entra, participa y decide.
     welcome:
       abilities:
         debates: Debates

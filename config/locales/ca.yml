@@ -560,6 +560,46 @@ ca:
     verified_only: Les propostes només poden ser votades per usuaris verificats, %{verify_account}.
     verify_account: verifica el teu compte
   welcome:
+    index:
+      bullets:
+        block-1:
+          description: Participa als espais presencials vinculats als processos de cada territori o àmbit.
+          title: Cites presencials
+        block-2:
+          description: Entra als espais digitals per informar-te i debatre sobre el futur de la nostra ciutat
+          title: Debats
+        block-3:
+          description: Fes les teves aportacions als processos de participació oberts.
+          title: Propostes
+        button: Mès informació
+        title: Com puc participar en un procés?
+      hero:
+        button: Participa
+        line-1: Decidim la Barcelona
+        line-2: que volem
+      meetings:
+        title: Properes cites presencials
+      participatory_process:
+        active_step: Fase actual
+        button: Veure tots els processos
+        title: Processos destacats
+      results:
+        button-1: Explora els resultats
+        button-2: Descarrega el Pla Municipal
+        title: Resultats del procés del Pla Municipal
+        title-1: Propostes incorporades
+        title-2: Actuacions
+        title-3: Total propostes
+        title-4: Suports
+        title-5: Cites presencials
+      subhero-1:
+        button: Registra't
+        line-1: 'decidim.barcelona: la plataforma de participació de Barcelona.'
+        line-2: Entra, participa i decideix.
+      subhero-2:
+        button: Registra't
+        line-1: 'decidim.barcelona: la plataforma de participació de Barcelona.'
+        line-2: Entra, participa i decideix.
     welcome:
       abilities:
         debates: Debates

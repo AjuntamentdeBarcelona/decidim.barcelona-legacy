@@ -324,9 +324,9 @@ en:
       form:
         submit_button: Create participatory process
     show:
-      active_step: 'Current phase: %{name}'
+      active_step: 'Fase actual: %{name}'
       documents: related documents
-      participate: participates
+      participate: Participa
       steps: Steps
   proposal_results_mailer:
     proposal:
@@ -560,6 +560,46 @@ en:
     verified_only: Only verified users can vote on proposals; %{verify_account}.
     verify_account: verify your account
   welcome:
+    index:
+      bullets:
+        block-1:
+          description: Description
+          title: Title
+        block-2:
+          description: Description
+          title: Title
+        block-3:
+          description: Description
+          title: Title
+        button: Button
+        title: Title
+      hero:
+        button: Button
+        line-1: Line-1
+        line-2: Line-2
+      meetings:
+        title: Title
+      participatory_process:
+        active_step: Active step
+        button: Button
+        title: Title
+      results:
+        button-1: Button-1
+        button-2: Button-2
+        title: Title
+        title-1: Title-1
+        title-2: Title-2
+        title-3: Title-3
+        title-4: Title-4
+        title-5: Title-5
+      subhero-1:
+        button: Button
+        line-1: Line-1
+        line-2: Line-2
+      subhero-2:
+        button: Button
+        line-1: Line-1
+        line-2: Line-2
     welcome:
       abilities:
         debates: Debates
