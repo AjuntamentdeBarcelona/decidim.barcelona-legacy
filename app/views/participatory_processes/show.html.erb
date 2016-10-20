@@ -44,6 +44,13 @@
             <span class="button__info"><%= t ".active_step", name: @participatory_process.active_step.title %></span>
           <% end %>
         </div>
+      <% else %>
+        <div class="columns small-centered small-10 medium-6 mediumlarge-4 large-3">
+          <span class="button disabled expanded button--sc">
+            <%= t ".participate" %>
+            <span class="button__info"><%= t ".steps_soon" %></span>
+          </span>
+        </div>
       <% end %>
     </div>
   </div>
@@ -74,57 +81,61 @@
 
   <div class="row">
     <div class="columns large-8">
-      <div class="section">
-				<h4 class="section-heading"><%= t ".documents" %></h4>
-				<div class="card card--list">
-          <% @participatory_process.documents.each do |document| %>
-            <div class="card--list__item">
-              <div class="card--list__text">
-                <div>
-                  <%= link_to document.url, class: "card__link" do %>
-                    <h6 class="card--list__heading heading6">
-                      <%= document.name %> <small><%= document.label %> <%= document.file_size %></small>
-                    </h6>
-                    <span class="text-small"><%= document.description %></span>
+      <% if @participatory_process.documents.any? %>
+        <div class="section">
+          <h4 class="section-heading"><%= t ".documents" %></h4>
+          <div class="card card--list">
+            <% @participatory_process.documents.each do |document| %>
+              <div class="card--list__item">
+                <div class="card--list__text">
+                  <div>
+                    <%= link_to document.url, class: "card__link" do %>
+                      <h6 class="card--list__heading heading6">
+                        <%= document.name %> <small><%= document.label %> <%= document.file_size %></small>
+                      </h6>
+                      <span class="text-small"><%= document.description %></span>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="card--list__data">
+                  <%= link_to document.url, class: "card--list__data__icon" do %>
+                    <%= icon "cloud-download" %>
                   <% end %>
                 </div>
               </div>
-              <div class="card--list__data">
-                <%= link_to document.url, class: "card--list__data__icon" do %>
-                  <%= icon "cloud-download" %>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-				</div>
-			</div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
 
-      <div class="section">
-        <h4 class="section-heading"><%= t ".steps" %></h4>
-        <ol class="timeline">
-          <% @participatory_process.decorate.steps.each_with_index do |step, index| %>
-            <li class="timeline__item">
-              <div class="timeline__phase">
-                <span class="timeline__phase__number"><%= index + 1 %></span>
-              </div>
-              <div class="timeline__desc" id="timeline-<%= index %>" data-toggler=".is-expanded">
-                <a class="timeline__title" data-toggle="timeline-<%= index %>">
-                  <h6><%= step.title %>
-                    <% if !step.description.blank? %>
-                      <svg class="icon icon--caret-bottom icon--small timeline__title__icon" role="img" aria-label="Desplegar" ><%= icon "caret-bottom" %></svg>
-                    <% end %>
-                  </h6>
-                </a>
-                <% if !step.description.blank? %>
-                  <div class="timeline__content">
-                    <%== step.description %>
-                  </div>
-                <% end %>
-              </div>
-            </li>
-          <% end %>
-        </ol>
-      </div>
+      <% if @participatory_process.decorate.steps.any? %>
+        <div class="section">
+          <h4 class="section-heading"><%= t ".steps" %></h4>
+          <ol class="timeline">
+            <% @participatory_process.decorate.steps.each_with_index do |step, index| %>
+              <li class="timeline__item">
+                <div class="timeline__phase">
+                  <span class="timeline__phase__number"><%= index + 1 %></span>
+                </div>
+                <div class="timeline__desc" id="timeline-<%= index %>" data-toggler=".is-expanded">
+                  <a class="timeline__title" data-toggle="timeline-<%= index %>">
+                    <h6><%= step.title %>
+                      <% if !step.description.blank? %>
+                        <svg class="icon icon--caret-bottom icon--small timeline__title__icon" role="img" aria-label="Desplegar" ><%= icon "caret-bottom" %></svg>
+                      <% end %>
+                    </h6>
+                  </a>
+                  <% if !step.description.blank? %>
+                    <div class="timeline__content">
+                      <%== step.description %>
+                    </div>
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
+          </ol>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

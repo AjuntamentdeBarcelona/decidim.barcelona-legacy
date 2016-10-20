@@ -327,6 +327,7 @@ ca:
       active_step: 'Fase actual: %{name}'
       documents: Documents relacionats
       participate: Participa
+      steps_soon: Aquest procés encara no està obert
       steps: Fases
   proposal_results_mailer:
     proposal:

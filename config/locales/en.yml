@@ -328,6 +328,7 @@ en:
       documents: related documents
       participate: Participa
       steps: Steps
+      steps_soon: This process is not yet open
   proposal_results_mailer:
     proposal:
       status: State

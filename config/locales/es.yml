@@ -328,6 +328,7 @@ es:
       documents: Documentos relacionados
       participate: Participa
       steps: Fases
+      steps_soon: Este proceso todavía no está abierto
   proposal_results_mailer:
     proposal:
       status: Estado
