@@ -57,7 +57,7 @@ class ActionPlans extends Component {
             <ActionPlansSidebar />
           </div>
 
-          <div className="columns mediumlarge-8 large-9">
+          <div style={{ position: 'relative' }} className="columns mediumlarge-8 large-9">
             <OrderSelector 
               orderLinks={["weight", "random", "confidence_score", "participants"]} />
             <Loading show={this.state.loading} list={true} />

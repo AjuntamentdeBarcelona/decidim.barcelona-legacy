@@ -1,0 +1,49 @@
+.loading-component {
+  position: absolute;
+  z-index: 100;
+  background: transparentize($body-background, 0.3);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  font-size: rem-calc(80);
+  overflow: hidden;
+  min-height: rem-calc(150);
+
+  @keyframes spin { 100% { transform: rotate(-360deg) } }
+
+  .wrapper {
+    position:absolute;
+    left:50%;
+    transform: translate3d(-50%,50%,0);
+  }
+
+  svg {
+    position: relative;
+    fill: $primary-color;
+    animation: spin 4s linear infinite;
+  }
+
+  &.list {
+    min-height: rem-calc(500);
+
+    .wrapper {
+      transform: translate3d(-50%,-50%,0);
+    }
+
+    svg {
+      top: rem-calc(200);
+    }
+  }
+
+  &.votes{
+    min-height: 100%;
+    font-size: rem-calc(40);
+    svg {
+      top: 40%;
+      left: 40%;
+      transform: translateX(-40%);
+    }
+  }
+
+}

@@ -3,6 +3,7 @@ import { connect }              from 'react-redux';
 
 import * as actions             from './comments.actions';
 
+import Loading                  from '../application/loading.component';
 import InfinitePagination       from '../pagination/infinite_pagination.component';
 import CommentsOrderSelector    from './comments_order_selector.component';
 import Comment                  from './comment.component';
@@ -35,7 +36,7 @@ class Comments extends Component {
     const { closed } = commentable;
 
     return (
-      <section className="comments">
+      <section style={{ position: 'relative', minHeight: '30em' }} className="comments">
         {
           (() => {
             if (!closed) {
@@ -63,6 +64,7 @@ class Comments extends Component {
             <CommentsOrderSelector />
           </div>
         </div>
+        <Loading show={this.state.loading} />
         {this.renderComments()}
       </section>
     );

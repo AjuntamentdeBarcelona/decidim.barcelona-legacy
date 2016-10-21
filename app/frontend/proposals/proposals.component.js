@@ -57,7 +57,7 @@ class Proposals extends Component {
             <ProposalsSidebar />
           </div>
 
-          <div className="columns mediumlarge-8 large-9">
+          <div style={{ position: 'relative' }} className="columns mediumlarge-8 large-9">
             <OrderSelector
               orderLinks={["random", "hot_score", "confidence_score", "created_at"]} />
             <Loading show={this.state.loading} list={true} />
