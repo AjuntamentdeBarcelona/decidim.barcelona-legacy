@@ -25,7 +25,7 @@ class DebateShow extends Component {
 
   render() {
     return (
-      <div className="debate-show component">
+      <div style={{ position: 'relative', minHeight: '30em' }} className="debate-show component">
         <Loading show={this.state.loading} />
         {this.renderDebate()}
       </div>

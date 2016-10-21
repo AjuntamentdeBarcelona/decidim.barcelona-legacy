@@ -37,7 +37,7 @@ class ActionPlanShow extends Component {
 
   render() {
     return (
-      <div className="action-plan-show component">
+      <div style={{ position: 'relative', minHeight: '30em' }} className="action-plan-show component">
         <Loading show={this.state.loading} />
         {this.renderActionPlan()}
       </div>

@@ -1,26 +1,27 @@
 import { Component, PropTypes } from 'react';
 
-// import classNames               from 'classnames';
+import Icon                     from './icon.component';
+
+import classNames               from 'classnames';
 
 export default class Loading extends Component {
   render() {
-    // const cssClasses = classNames(
-    //   'loading-component',
-    //   {
-    //     list: this.props.list
-    //   }
-    // );
+    const cssClasses = classNames(
+      'loading-component',
+      {
+        list: this.props.list
+      }
+    );
 
     if (this.props.show) {
       return (
-        <noscript />
+        <div className={cssClasses}>
+          <div className="wrapper">
+            <Icon name="loop-circular" removeIconClass={true} />
+            <p>{this.props.text}</p>
+          </div>
+        </div>
       )
-      // return (
-      //   <div className={cssClasses}>
-      //     <span className="fa fa-spinner fa-spin"></span>
-      //     <p>{this.props.text}</p>
-      //   </div>
-      // )
     }
     return null;
   }

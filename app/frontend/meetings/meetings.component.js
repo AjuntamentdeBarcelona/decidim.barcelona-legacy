@@ -38,7 +38,7 @@ class Meetings extends Component {
 
   render () {
     return (
-      <div className="meetings-directory">
+      <div style={{ position: 'relative' }} className="meetings-directory">
         <Loading show={this.state.loading} />
         
         <MeetingsMap className="meetings-map" meetings={this.props.meetings} />
