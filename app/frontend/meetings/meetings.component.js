@@ -40,16 +40,15 @@ class Meetings extends Component {
     return (
       <div style={{ position: 'relative' }} className="meetings-directory">
         <Loading show={this.state.loading} />
-        
-        <MeetingsMap className="meetings-map" meetings={this.props.meetings} />
+        <div className="row column">
+          <MeetingsMap className="meetings-map" meetings={this.props.meetings} />
+        </div>
 
         <div className="row meetings-directory-content">
           <div className="columns mediumlarge-4 large-3">
-            <div className="filters-controls">
-              <div className="card card--secondary show-for-mediumlarge">
-                <div className="filters">
-                  <MeetingsFilters />
-                </div>
+            <div className="card card--secondary show-for-mediumlarge">
+              <div className="filters">
+                <MeetingsFilters />
               </div>
             </div>
           </div>

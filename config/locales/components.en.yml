@@ -80,6 +80,8 @@ en:
       unfollow: Unfollow
     infinite_pagination:
       loading_more: Loading more results...
+    meeting_info_window:
+      show: View event
     meetings_filters:
       clean_filters: Clean filter
     order_selector:

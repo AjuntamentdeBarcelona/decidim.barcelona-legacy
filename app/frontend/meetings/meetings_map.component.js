@@ -1,7 +1,7 @@
 import { Component, PropTypes } from 'react';
 import ReactDOMServer           from 'react-dom/server';
 
-import Meeting                  from './meeting.component';
+import MeetingInfoWindow        from './meeting_info_window.component';
 
 export default class MeetingsMap extends Component {
   constructor(props) {
@@ -70,7 +70,7 @@ export default class MeetingsMap extends Component {
         marker._meeting = meeting;
         marker.addListener('click', () => {
           let infoWindow = new google.maps.InfoWindow({
-            content: ReactDOMServer.renderToString(<Meeting meeting={ meeting } useServerLinks={true} />)
+            content: ReactDOMServer.renderToString(<MeetingInfoWindow meeting={ meeting } />)
           });
           markers.map((marker) => { if(marker.infoWindow) marker.infoWindow.close(); } );
           marker.infoWindow = infoWindow;

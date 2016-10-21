@@ -17,10 +17,6 @@ export default class Meeting extends Component {
     return(
       <div className="meeting column">
         <article className="card card--meeting">
-          <span className="card__type">
-            <Icon name="meetings" />
-            {I18n.t('components.meeting.title')}
-          </span>
           <div className="card__content">
             <a href={meeting.url} className="card__link">
               <h5 className="card__title meeting-title">{ meeting.title }</h5>
@@ -37,7 +33,7 @@ export default class Meeting extends Component {
                 { (() => { if(meeting.address_details) {
                   return (
                     <div className="meeting-address-details">
-                      { meeting.address_details }
+                      <strong>{ meeting.address_details }</strong>
                     </div>
                   )
                 }})()}
