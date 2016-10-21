@@ -17,7 +17,11 @@ class Step < ActiveRecord::Base
   end
 
   def feature_enabled?(name)
-    flags.include?(name.to_s)
+    if name == :proposals_readonly
+      flags.include?("proposals_readonly") || (flags.include?("proposals") && !current?)
+    else
+      flags.include?(name.to_s)
+    end
   end
 
   def current?
