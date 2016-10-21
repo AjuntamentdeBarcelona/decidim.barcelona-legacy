@@ -61,6 +61,12 @@
                   <%= t('.current_step', step_title: process.active_step.decorate.title) %>
                 </span>
                 <%= link_to t('.join'), step_path(process, process.active_step), class: "card__button button small" %>
+              <% else %>
+                <span class="card--process__small">
+                </span>
+                <span class="card__button button small disabled">
+                  <%= t('.join') %>
+                </span>
               <% end %>
             </div>
           </div>
