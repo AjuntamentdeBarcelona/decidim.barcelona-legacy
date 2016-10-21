@@ -103,8 +103,6 @@ en:
       new_comment:
         title: Title
       total_comments: Total comments
-    meeting:
-      title: Title
     proposal_action_plans:
       title: Title
     proposal_show:

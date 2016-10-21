@@ -106,8 +106,6 @@ ca:
         one: 1 comentari
         other: "%{count} comentaris"
         zero: Sense comentaris
-    meeting:
-      title: Trobada
     proposal_action_plans:
       title: 'Proposta recollida als següents resultats:'
     proposal_show:
@@ -345,8 +343,8 @@ ca:
       active_step: 'Fase actual: %{name}'
       documents: Documents relacionats
       participate: Participa
-      steps_soon: Aquest procés encara no està obert
       steps: Fases
+      steps_soon: Aquest procés encara no està obert
   proposal_results_mailer:
     proposal:
       status: Estat
