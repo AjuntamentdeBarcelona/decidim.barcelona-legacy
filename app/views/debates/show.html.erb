@@ -2,7 +2,7 @@
 
 <% cache [locale_and_user_status(@debate), @debate, @debate.author, Flag.flagged?(current_user, @debate), @debate_votes] do %>
   <section class="debate-show">
-    <div id="<%= dom_id(@debate) %>" class="row">
+    <div id="<%= dom_id(@debate) %>" class="row column">
       <% if current_user && can?(:update, @debate) %>
         <%= link_to url_for(action: 'edit', id: @debate), class: 'edit-debate button success tiny radius right' do %>
           <%= t("debates.show.edit_debate_link") %>
@@ -65,6 +65,8 @@
           <div class="section">
             <%== safe_html_with_links @debate.description %>
             <% if !@debate.instructions.blank? %>
+              <br />
+              <br />
               <div class="callout success debate-instructions">
                 <%== safe_html_with_links @debate.instructions %>
               </div>
