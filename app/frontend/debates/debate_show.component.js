@@ -37,7 +37,11 @@ class DebateShow extends Component {
 
     if (debate.id) {
       return (
-        <Comments commentable={{...debate, type: 'Debate'}} />
+        <div className="row">
+          <div className="columns large-9">
+            <Comments commentable={{...debate, type: 'Debate'}} />
+          </div>
+        </div>
       );
     }
     return null;
