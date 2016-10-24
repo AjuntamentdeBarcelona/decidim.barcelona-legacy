@@ -22,5 +22,6 @@ class ApplicationMailer < ActionMailer::Base
 
   def inline_attachments
     attachments.inline["badge_ajuntament.png"] = File.read(Rails.root.join("app/assets/images/badge-ajuntament-footer.png"))
+    attachments.inline["logo.svg"] = File.read(Rails.root.join("app/assets/images/decidim-logo.svg"))
   end
 end

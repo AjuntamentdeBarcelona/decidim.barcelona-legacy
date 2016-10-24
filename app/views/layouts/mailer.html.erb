@@ -19,7 +19,9 @@
                   <tr>
                     <th class="small-12 first columns decidim-bar">
                       <center class="decidim-logo">
-                        <img src="http://placehold.it/300x100" alt="Barcelona Decidim">
+                        <%= link_to root_url do %>
+                          <%= image_tag attachments['logo.svg'].url, alt: "decidim.barcelona" %>
+                        <% end %>
                       </center>
                     </th>
                     <th class="expander"></th>
@@ -32,7 +34,13 @@
                     </tr>
                   </tbody>
                 </table>
-                <%= yield %>
+                <table class="row">
+                  <tr>
+                    <th class="small-12 first columns">
+                      <%= yield %>
+                    </th>
+                  </tr>
+                </table>
                 <table class="row">
                   <tr>
                     <th class="small-12 first columns">
