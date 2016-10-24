@@ -169,14 +169,6 @@ es:
     update:
       form:
         submit_button: Guardar cambios
-  devise_views:
-    sessions:
-      new:
-        subtitle: Subtitle
-    users:
-      registrations:
-        new:
-          subtitle: Subtitle
   form:
     accept_terms: Acepto las %{conditions}
     action_plan: la actuación

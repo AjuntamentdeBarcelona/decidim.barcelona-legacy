@@ -166,14 +166,6 @@ en:
     update:
       form:
         submit_button: Save changes
-  devise_views:
-    sessions:
-      new:
-        subtitle: Subtitle
-    users:
-      registrations:
-        new:
-          subtitle: Subtitle
   form:
     accept_terms: I agree to the %{conditions}
     action_plan: Action Plan

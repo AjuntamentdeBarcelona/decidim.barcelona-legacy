@@ -169,14 +169,6 @@ ca:
     update:
       form:
         submit_button: Desa els canvis
-  devise_views:
-    sessions:
-      new:
-        subtitle: Subtitle
-    users:
-      registrations:
-        new:
-          subtitle: Subtitle
   form:
     accept_terms: Accepto les %{conditions}
     action_plan: l'actuació
