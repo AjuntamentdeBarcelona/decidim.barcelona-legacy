@@ -3,6 +3,7 @@ import { connect }              from 'react-redux';
 
 import * as actions             from './action_plans.actions';
 
+import SocialShareButtons       from '../application/social_share_buttons.component';
 import Icon                     from '../application/icon.component';
 import Loading                  from '../application/loading.component';
 import DangerLink               from '../application/danger_link.component';
@@ -45,11 +46,13 @@ class ActionPlanShow extends Component {
   }
 
   renderActionPlan() {
-    const { actionPlan, fetchRelatedMeetings } = this.props;
+    const { actionPlan, fetchRelatedMeetings, decidimIconsUrl } = this.props;
 
     if (actionPlan.id) {
       const { 
+        id,
         title, 
+        url,
         description,
         created_at,
         scope_,
@@ -83,10 +86,12 @@ class ActionPlanShow extends Component {
               <div className="columns section view-side mediumlarge-4 mediumlarge-push-8 large-3 large-push-9">
                 <ActionPlanStatistics statistics={statistics} />
                 <div className="text-center">
-                  <button className="link text-center">
-                    {I18n.t('components.action_plan_show.share')}
-                    <Icon name="share" className="icon--after" />
-                  </button>
+                  <SocialShareButtons 
+                      title={title}
+                      url={url}
+                      modalId={`action_plan_share_${id}`}
+                      decidimIconsUrl={decidimIconsUrl}
+                      linkText={I18n.t('components.action_plan_show.share')} />
                 </div>
               </div>
               <div className="columns mediumlarge-8 mediumlarge-pull-4">
@@ -179,7 +184,7 @@ class ActionPlanShow extends Component {
 }
 
 export default connect(
-  ({ session, actionPlan }) => ({ session, actionPlan }),
+  ({ session, actionPlan, decidimIconsUrl }) => ({ session, actionPlan, decidimIconsUrl }),
   actions
 )(ActionPlanShow);
 
@@ -188,6 +193,7 @@ ActionPlanShow.propTypes = {
   fetchActionPlan: PropTypes.func.isRequired,
   fetchRelatedMeetings: PropTypes.func.isRequired,
   actionPlanId: PropTypes.string.isRequired,
+  decidimIconsUrl: PropTypes.string.isRequired,
   actionPlan: PropTypes.object,
   approveActionPlan: PropTypes.func.isRequired,
   deleteActionPlan: PropTypes.func.isRequired,

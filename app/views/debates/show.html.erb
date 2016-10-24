@@ -55,10 +55,9 @@
             </div>
           </div>
           <div class="text-center">
-            <button class="link text-center">
-              <%= t('.share') %>
-              <%= icon "share", class: "icon--after" %>
-            </button>
+            <%= share_component_for(@debate.decorate, 
+                                  text: t('.share'),
+                                  modal_id: "debate_#{@debate.id}_share") %>
           </div>
         </div>
         <div class="columns mediumlarge-8 mediumlarge-pull-4">
