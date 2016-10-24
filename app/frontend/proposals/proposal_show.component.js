@@ -4,6 +4,7 @@ import { connect }              from 'react-redux';
 import * as actions             from './proposals.actions';
 
 import Icon                     from '../application/icon.component';
+import SocialShareButtons       from '../application/social_share_buttons.component';
 import Loading                  from '../application/loading.component';
 import DangerLink               from '../application/danger_link.component';
 import FilterMeta               from '../filters/filter_meta.component';
@@ -49,7 +50,7 @@ class ProposalShow extends Component {
   }
 
   renderProposal() {
-    const { proposal, fetchRelatedMeetings } = this.props;
+    const { proposal, fetchRelatedMeetings, decidimIconsUrl } = this.props;
 
     if (proposal.id) {
       const { 
@@ -110,6 +111,7 @@ class ProposalShow extends Component {
                       votable={votable}
                       proposalId={id}
                     />
+                    <br />
                     <FollowButton 
                       followingId={id}
                       followingType={'Proposal'} />
@@ -119,10 +121,12 @@ class ProposalShow extends Component {
                   Referencia: {code}
                 </div>
                 <div className="text-center">
-                  <button className="link text-center">
-                    {I18n.t('components.proposal_show.share')}
-                    <Icon name="share" className="icon--share icon--after" />
-                  </button>
+                  <SocialShareButtons 
+                    title={title}
+                    url={url}
+                    modalId={`proposal_share_${id}`}
+                    decidimIconsUrl={decidimIconsUrl}
+                    linkText={I18n.t('components.proposal_show.share')} />
                 </div>
               </div>
               <div className="columns mediumlarge-8 mediumlarge-pull-4">
@@ -267,7 +271,13 @@ class ProposalShow extends Component {
 }
 
 export default connect(
-  ({ session, proposal, participatoryProcessId, stepId }) => ({ session, proposal, participatoryProcessId, stepId}),
+  ({ session, proposal, participatoryProcessId, stepId, decidimIconsUrl }) => ({ 
+    session,
+    proposal,
+    participatoryProcessId,
+    stepId,
+    decidimIconsUrl
+  }),
   actions
 )(ProposalShow);
 

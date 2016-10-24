@@ -41,4 +41,8 @@ class ParticipatoryProcessDecorator < ApplicationDecorator
   def hashtag
     "##{object.hashtag}" if object.hashtag
   end
+
+  def url
+    h.participatory_process_url(object)
+  end
 end

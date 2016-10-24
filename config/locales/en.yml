@@ -107,6 +107,8 @@ en:
       title: Title
     proposal_show:
       share: Share
+    social_share_buttons:
+      share: Share
   debates:
     create:
       form:

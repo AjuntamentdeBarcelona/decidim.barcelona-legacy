@@ -13,4 +13,15 @@ module SocialHelper
       end
     end
   end
+
+  def share_component_for(model, options={})
+    react_component("SocialShareButtons",
+                    title: model.title,
+                    url: model.url,
+                    decidimIconsUrl: asset_url("decidim-icons.svg"),
+                    modalId: options[:modal_id] || "share",
+                    linkText: options[:text] || "Share",
+                    linkClassName: options[:class_name]
+    )
+  end
 end

@@ -37,14 +37,25 @@
                   <%= icon "clock" %>
                 </span>
               </a>
+              <div class="reveal large" id="phasesInfo" data-reveal>
+                <div class="reveal__header">
+                  <h3 class="reveal__title"><%= t "participatory_processes.show.steps" %></h3>
+                  <button class="close-button" data-close aria-label="Close modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="row">
+                  <div class="columns large-9 large-centered">
+                    <%= render 'participatory_processes/timeline' %>
+                  </div>
+                </div>
+              </div>
             </div>
             <div>
-              <a class="process-header__action" data-toggle="processShare">
-                <span class="action-title"><%= t('layouts.participatory_process.share_title') %></span>
-                <span class="action-icon">
-                  <%= icon "share" %>
-                </span>
-              </a>
+              <%= share_component_for(@participatory_process.decorate, 
+                                      text: t('layouts.participatory_process.share_title'),
+                                      class_name: "process-header__action",
+                                      modal_id: "process_share") %>
             </div>
           </div>
         </div>
@@ -126,20 +137,6 @@
 
     <%= yield %>
   </main>
-
-  <div class="reveal large" id="phasesInfo" data-reveal>
-    <div class="reveal__header">
-      <h3 class="reveal__title"><%= t "participatory_processes.show.steps" %></h3>
-      <button class="close-button" data-close aria-label="Close modal" type="button">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="row">
-      <div class="columns large-9 large-centered">
-        <%= render 'participatory_processes/timeline' %>
-      </div>
-    </div>
-  </div>
 <% end %>
 
 <%= render partial: 'layouts/application' %>

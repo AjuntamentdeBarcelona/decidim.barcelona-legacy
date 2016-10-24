@@ -110,6 +110,8 @@ es:
       title: 'Propuesta recogida en los siguientes resultados:'
     proposal_show:
       share: Compartir propuesta
+    social_share_buttons:
+      share: Compartir
   debates:
     create:
       form:
