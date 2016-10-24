@@ -4,7 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   prepend_before_action :authenticate_scope!, only: [:edit, :update, :destroy, :finish_signup, :do_finish_signup]
 
   def create
-    build_resource(sign_up_params)
+    build_resource(sign_up_params.merge(new_terms_shown: true))
 
     if verify_recaptcha(model: resource)
       super
