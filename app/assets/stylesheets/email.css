@@ -1365,6 +1365,9 @@ body.outlook p {
 
 .decidim-logo{
   margin-top: 16px;
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .cityhall-bar{
