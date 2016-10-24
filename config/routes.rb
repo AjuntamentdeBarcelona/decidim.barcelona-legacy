@@ -323,7 +323,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :participatory_processes, only: [:index, :show]
+  resources :participatory_processes, only: [:index, :show] do
+    collection do
+      get :list
+    end
+  end
 
   scope ":participatory_process_id" do
     scope ":step_id" do

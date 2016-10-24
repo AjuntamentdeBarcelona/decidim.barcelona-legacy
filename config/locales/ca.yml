@@ -3,7 +3,7 @@ ca:
   account:
     show:
       change_credentials_link: Canviar les meves dades d'accés
-      email_notifications: Rebre informacio sobre activitat rellevant
+      email_notifications: Rebre informacio sobre activitat rellevant de decidim.barcelona
       email_on_comment_label: Rebre un email quan algú comenta en les meves propostes o debats
       email_on_comment_reply_label: Rebre un email quan algú contesta els meus comentaris
       erase_account_link: Donar-me de baixa
@@ -333,6 +333,8 @@ ca:
       featured_processes: Processos destacats
       join: Participa
       more_info: Més informació
+    list:
+      title: Processos participatius actius
     new:
       form:
         submit_button: Crear proces
