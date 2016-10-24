@@ -6,4 +6,11 @@ module ParticipatoryProcessesHelper
 
     form.select :participatory_process_id, collection
   end
+
+  def participatory_process_timeline_class_names(step)
+    class_names = ""
+    class_names += "timeline__item--current" if step.current?
+    class_names += "timeline__item--inactive" unless step.enabled?
+    class_names
+  end
 end

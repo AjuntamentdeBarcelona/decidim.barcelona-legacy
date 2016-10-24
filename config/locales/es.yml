@@ -222,6 +222,9 @@ es:
       conditions: Condiciones y términos de uso
     participatory_process:
       help: Ayuda
+      process_title: El proceso
+      share_title: Compartir
+      steps_title: Las fases
   locale: Español
   meetings:
     card:

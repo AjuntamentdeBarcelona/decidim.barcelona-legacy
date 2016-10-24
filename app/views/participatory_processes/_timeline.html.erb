@@ -1,0 +1,23 @@
+<ol class="timeline">
+  <% @participatory_process.decorate.steps.each_with_index do |step, index| %>
+    <li class="timeline__item <%= participatory_process_timeline_class_names(step) %>">
+      <div class="timeline__phase">
+        <span class="timeline__phase__number"><%= index + 1 %></span>
+      </div>
+      <div class="timeline__desc <%= @participatory_process.active_step == step ? 'is-expanded' : '' %>" id="timeline-<%= index %>" data-toggler=".is-expanded">
+        <a class="timeline__title" data-toggle="timeline-<%= index %>">
+          <h6><%= step.title %>
+            <% if !step.description.blank? %>
+              <svg class="icon icon--caret-bottom icon--small timeline__title__icon" role="img" aria-label="Desplegar" ><%= icon "caret-bottom" %></svg>
+            <% end %>
+          </h6>
+        </a>
+        <% if !step.description.blank? %>
+          <div class="timeline__content">
+            <%== step.description %>
+          </div>
+        <% end %>
+      </div>
+    </li>
+  <% end %>
+</ol>

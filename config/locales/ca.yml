@@ -222,6 +222,9 @@ ca:
       conditions: Condicions generals
     participatory_process:
       help: Ajuda
+      process_title: El procés
+      share_title: Compartir
+      steps_title: Les fases
   locale: Català
   meetings:
     card:

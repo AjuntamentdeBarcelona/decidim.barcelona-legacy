@@ -219,6 +219,9 @@ en:
       conditions: Conditions and terms of use
     participatory_process:
       help: Help
+      process_title: Process title
+      share_title: Share title
+      steps_title: Steps title
   locale: English
   meetings:
     card:

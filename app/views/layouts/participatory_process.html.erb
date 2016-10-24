@@ -21,34 +21,32 @@
               </h2>
             </div>
           </div>
-          <% if false %>
-            <div class="columns mediumlarge-3 process-header__actions">
-              <div>
-                <a href="info" class="process-header__action">
-                  <span class="action-title">El proceso</span>
-                  <span class="action-icon">
-                    <%= icon "info" %>
-                  </span>
-                </a>
-              </div>
-              <div>
-                <a class="process-header__action" data-toggle="phasesInfo">
-                  <span class="action-title">Las fases</span>
-                  <span class="action-icon">
-                    <%= icon "clock" %>
-                  </span>
-                </a>
-              </div>
-              <div>
-                <a class="process-header__action" data-toggle="processShare">
-                  <span class="action-title">Compartir</span>
-                  <span class="action-icon">
-                    <%= icon "share" %>
-                  </span>
-                </a>
-              </div>
+          <div class="columns mediumlarge-3 process-header__actions">
+            <div>
+              <%= link_to participatory_process_path(@participatory_process), class: "process-header__action" do %>
+                <span class="action-title"><%= t('layouts.participatory_process.process_title') %></span>
+                <span class="action-icon">
+                  <%= icon "info" %>
+                </span>
+              <% end %>
             </div>
-          <% end %>
+            <div>
+              <a class="process-header__action" data-toggle="phasesInfo">
+                <span class="action-title"><%= t('layouts.participatory_process.steps_title') %></span>
+                <span class="action-icon">
+                  <%= icon "clock" %>
+                </span>
+              </a>
+            </div>
+            <div>
+              <a class="process-header__action" data-toggle="processShare">
+                <span class="action-title"><%= t('layouts.participatory_process.share_title') %></span>
+                <span class="action-icon">
+                  <%= icon "share" %>
+                </span>
+              </a>
+            </div>
+          </div>
         </div>
         <div class="row collapse process-header__nav">
           <div class="columns phase-nav">
@@ -128,6 +126,20 @@
 
     <%= yield %>
   </main>
+
+  <div class="reveal large" id="phasesInfo" data-reveal>
+    <div class="reveal__header">
+      <h3 class="reveal__title"><%= t "participatory_processes.show.steps" %></h3>
+      <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="row">
+      <div class="columns large-9 large-centered">
+        <%= render 'participatory_processes/timeline' %>
+      </div>
+    </div>
+  </div>
 <% end %>
 
 <%= render partial: 'layouts/application' %>
