@@ -55,7 +55,7 @@ es:
         electrónico y visita el enlace para finalizar la confirmación de tu nueva
         dirección de correo electrónico.
       updated: Has actualizado tu cuenta correctamente.
-      new_terms: 'Los términos y condiciones de uso han cambiado. <a href="%{url}">Más información</a>.'
+      new_terms: "Los términos y condiciones de uso han cambiado. <a href=\"%{url}\">Más información</a>."
     sessions:
       signed_in: Has iniciado sesión correctamente.
       signed_out: Has cerrado la sesión correctamente.
