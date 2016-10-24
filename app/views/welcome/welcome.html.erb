@@ -8,9 +8,6 @@
     <div class="columns medium-7 large-5 medium-centered">
       <div class="card">
         <div class="card__content">
-          <div class="callout success">
-            <p><%= t ".account_confirmed" %></p>
-          </div>
           <p><%= t ".abilities.text" %></p>
           <ul class="list-check">
             <li class="list-check__ok">
@@ -34,7 +31,7 @@
 
           <p class="text-center">
             <%= t("welcome.welcome.skip_verification") %>
-            <%= link_to t("welcome.welcome.see_proposals"), proposals_path(participatory_process_id: @main_participatory_process, step_id: Step.step_for(@main_participatory_process, "proposals")) %>
+            <%= link_to t("welcome.welcome.see_proposals"), participatory_processes_path %>
           </p>
 
         </div>

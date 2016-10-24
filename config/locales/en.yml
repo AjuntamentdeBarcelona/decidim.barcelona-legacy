@@ -166,14 +166,6 @@ en:
     update:
       form:
         submit_button: Save changes
-  devise_views:
-    sessions:
-      new:
-        subtitle: Subtitle
-    users:
-      registrations:
-        new:
-          subtitle: Subtitle
   form:
     accept_terms: I agree to the %{conditions}
     action_plan: Action Plan
@@ -616,13 +608,12 @@ en:
         line-2: Line-2
     welcome:
       abilities:
-        debates: Debates
-        give_support: Give support
-        proposals: Proposals
-        text: Text
-      account_confirmed: Account confirmed
-      only_verified: Only verified
-      see_proposals: View the Proposals
-      skip_verification: If you are not registered or not quieres verificarte in Barcelona,
-      title: Participate
-      user_permission_verify_url: verify your account
+        debates: Participate in discussions
+        give_support: Supporting proposals
+        proposals: View proposals
+        text: 'Currently, you can:'
+      only_verified: Only verified users
+      see_proposals: still not verify your account
+      skip_verification: If you are not registered to Barcelona or not to verify the account,
+      title: Begins to participate
+      user_permission_verify_url: Verify your account
