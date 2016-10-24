@@ -54,6 +54,7 @@ ca:
       already_signed_out: Has tancat la sessió correctament.
       signed_in: Has iniciat sessió correctament.
       signed_out: Has tancat la sessió correctament.
+      new_terms: "Els termes i condicions d'ús han canviat. <a href=\"%{url}\">Més informació</a>."
     unlocks:
       send_instructions: D'aquí a uns minuts rebràs un correu electrònic amb instruccions
         sobre com desbloquejar el teu compte.
