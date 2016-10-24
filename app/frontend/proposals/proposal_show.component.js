@@ -3,7 +3,6 @@ import { connect }              from 'react-redux';
 
 import * as actions             from './proposals.actions';
 
-import Icon                     from '../application/icon.component';
 import SocialShareButtons       from '../application/social_share_buttons.component';
 import Loading                  from '../application/loading.component';
 import DangerLink               from '../application/danger_link.component';
@@ -284,6 +283,7 @@ export default connect(
 ProposalShow.propTypes = {
   session: PropTypes.object.isRequired,
   proposalId: PropTypes.string.isRequired,
+  decidimIconsUrl: PropTypes.string.isRequired,
   proposal: PropTypes.object,
   fetchProposal: PropTypes.func.isRequired,
   fetchAnswer: PropTypes.func.isRequired,
