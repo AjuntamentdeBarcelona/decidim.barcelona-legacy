@@ -110,6 +110,8 @@ es:
       title: 'Propuesta recogida en los siguientes resultados:'
     proposal_show:
       share: Compartir propuesta
+    social_share_buttons:
+      share: Compartir
   debates:
     create:
       form:
@@ -214,6 +216,9 @@ es:
       conditions: Condiciones y términos de uso
     participatory_process:
       help: Ayuda
+      process_title: El proceso
+      share_title: Compartir
+      steps_title: Las fases
   locale: Español
   meetings:
     card:

@@ -23,7 +23,7 @@ class ParticipatoryProcess < ActiveRecord::Base
   has_many :debates
   has_many :categories
   has_many :subcategories
-  has_many :steps
+  has_many :steps, -> { order(:position) }
   has_many :attachments, class_name: 'ParticipatoryProcessAttachment'
 
   scope :featured, -> { where(featured: true) }
