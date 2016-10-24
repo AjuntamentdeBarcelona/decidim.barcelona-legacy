@@ -619,13 +619,12 @@ ca:
         line-2: Entra, participa i decideix.
     welcome:
       abilities:
-        debates: Debates
-        give_support: Give support
-        proposals: Proposals
-        text: Text
-      account_confirmed: Account confirmed
-      only_verified: Only verified
-      see_proposals: Veure les propostes
+        debates: Participar en debats
+        give_support: Donar suport a propostes
+        proposals: Veure propostes
+        text: "Actualment, pots:"
+      only_verified: Només usuaris verificats
+      see_proposals: continua sense verificar el teu compte
       skip_verification: Si no estàs empadronat a Barcelona o no vols verificar el compte,
       title: Comença a participar
-      user_permission_verify_url: verifica el teu compte
+      user_permission_verify_url: Verifica el teu compte
