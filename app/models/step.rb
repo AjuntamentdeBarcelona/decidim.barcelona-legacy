@@ -11,7 +11,7 @@ class Step < ActiveRecord::Base
   serialize :description, JSON
 
   def self.step_for(participatory_process, flag)
-    participatory_process.steps.reverse.detect do |step|
+    participatory_process.steps.select{ |s| s.enabled? }.detect do |step|
       step.flags.map(&:to_s).include?(flag.to_s)
     end
   end
