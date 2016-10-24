@@ -104,6 +104,7 @@ ignore_missing:
   - 'errors.messages.taken'
   - 'devise.failure.invalid'
   - 'devise.registrations.destroyed'
+  - 'devise.sessions.*'
   - 'date.day_names'
   - 'officials.level_*'
   - 'time.*'
