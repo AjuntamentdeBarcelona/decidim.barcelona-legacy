@@ -1,7 +1,5 @@
 <% if resource.errors.any? %>
-  <div id="error_explanation" data-alert class="alert-box alert radius">
-    <a href="#" class="close" title="<%= t("application.close") %>">&times;</a>
-
+  <div id="error_explanation" class="flash callout primary">
     <strong>
       <%= pluralize resource.errors.count, t("form.error"), t("form.errors") %>
 
