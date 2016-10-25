@@ -1,44 +1,49 @@
 <% provide :title do %><%= t("devise_views.organizations.registrations.new.title") %><% end %>
-<h2><%= t("devise_views.organizations.registrations.new.title") %></h2>
 
- <%= form_for(resource, as: :user, url: organization_registration_path) do |f| %>
-   <%= render 'shared/errors', resource: resource %>
-   <div class="row">
-     <div class="small-12 column">
-
-      <%= f.fields_for :organization do |fo| %>
-        <%= fo.text_field :name, autofocus: true, maxlength: Organization.name_max_length, placeholder: t("devise_views.organizations.registrations.new.organization_name_label") %>
-        <%= fo.text_field :document_number, placeholder: t("devise_views.organizations.registrations.new.organization_document_number_label") %>
-        <%= fo.label :responsible_name %>
-        <p class="note"><%= t("devise_views.organizations.registrations.new.responsible_name_note") %></p>
-        <%= fo.text_field :responsible_name, placeholder: t("devise_views.organizations.registrations.new.responsible_name_label"), maxlength: Organization.responsible_name_max_length, label: false %>
-      <% end %>
-
-      <%= f.email_field :email, placeholder: t("devise_views.organizations.registrations.new.email_label") %>
-
-      <%= f.text_field  :phone_number,  placeholder: t("devise_views.organizations.registrations.new.phone_number_label") %>
-
-      <%= f.password_field :password, autocomplete: "off",
-                           placeholder: t("devise_views.organizations.registrations.new.password_label") %>
-
-      <%= f.password_field :password_confirmation, autocomplete: "off",
-                           label: t("devise_views.organizations.registrations.new.password_confirmation_label"),
-                           placeholder: t("devise_views.organizations.registrations.new.password_confirmation_label") %>
-
-      <%= captcha(resource) %>
-
-      <%= f.label :terms_of_service do %>
-        <%= f.check_box :terms_of_service, label: false %>
-        <span class="checkbox">
-          <%= t("devise_views.users.registrations.new.terms",
-              terms: link_to(t("devise_views.users.registrations.new.terms_link"), "/conditions", target: "_blank")).html_safe %></span>
-      <% end %>
-
-
-      <%= f.submit t("devise_views.organizations.registrations.new.submit"), class: "button radius expand" %>
+<div class="row collapse">
+  <div class="row collapse">
+    <div class="columns large-8 large-centered text-center page-title">
+      <h1><%= t("devise_views.organizations.registrations.new.title") %></h1>
     </div>
   </div>
-<% end %>
-<p class="lopd-text"><%= t("devise_views.users.registrations.new.legal_lopd_text") %></p>
-
-<%= render "devise/shared/links" %>
+  <div class="row">
+    <div class="columns large-6 medium-10 medium-centered">
+      <div class="card">
+        <div class="card__content">
+          <%= form_for(resource, as: :user, url: organization_registration_path, html: { class: "register-form" }) do |f| %>
+            <%= render 'shared/errors', resource: resource %>
+            <%= f.fields_for :organization do |fo| %>
+              <%= fo.text_field :name, autofocus: true, maxlength: Organization.name_max_length, placeholder: t("devise_views.organizations.registrations.new.organization_name_label") %>
+              <%= fo.text_field :document_number, placeholder: t("devise_views.organizations.registrations.new.organization_document_number_label") %>
+              <%= fo.label :responsible_name %>
+              <p class="note"><%= t("devise_views.organizations.registrations.new.responsible_name_note") %></p>
+              <%= fo.text_field :responsible_name, placeholder: t("devise_views.organizations.registrations.new.responsible_name_label"), maxlength: Organization.responsible_name_max_length, label: false %>
+            <% end %>
+            <%= f.email_field :email, placeholder: t("devise_views.organizations.registrations.new.email_label") %>
+            <%= f.text_field  :phone_number,  placeholder: t("devise_views.organizations.registrations.new.phone_number_label") %>
+            <%= f.password_field :password, autocomplete: "off",
+                                placeholder: t("devise_views.organizations.registrations.new.password_label") %>
+            <%= f.password_field :password_confirmation, autocomplete: "off",
+                                label: t("devise_views.organizations.registrations.new.password_confirmation_label"),
+                                placeholder: t("devise_views.organizations.registrations.new.password_confirmation_label") %>
+            <%= captcha(resource) %>
+            <%= f.label :terms_of_service do %>
+              <%= f.check_box :terms_of_service, label: false %>
+              <span class="checkbox">
+                <%= t("devise_views.users.registrations.new.terms",
+                    terms: link_to(t("devise_views.users.registrations.new.terms_link"), "/conditions", target: "_blank")).html_safe %>
+              </span>
+            <% end %>
+            <%= f.submit t("devise_views.organizations.registrations.new.submit"), class: "button expanded" %>
+            <%= render "devise/shared/links" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="columns small-12">
+      <p class="lopd-text"><%= t("devise_views.users.registrations.new.legal_lopd_text") %></p>
+    </div>
+  </div>
+</div>
