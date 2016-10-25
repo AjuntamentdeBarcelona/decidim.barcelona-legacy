@@ -341,7 +341,7 @@ en:
       active_step: 'Fase actual: %{name}'
       data:
         areas: Areas
-        manager_grup: Promoting Group
+        manager_group: Promoting Group
         scope: Scope
       documents: related documents
       participate: Participa

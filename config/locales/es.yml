@@ -344,7 +344,7 @@ es:
       active_step: 'Fase actual: %{name}'
       data:
         areas: "Áreas"
-        manager_grup: Grupo promotor
+        manager_group: Grupo promotor
         scope: "Ámbito"
       documents: Documentos relacionados
       participate: Participa

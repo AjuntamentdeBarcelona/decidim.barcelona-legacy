@@ -344,7 +344,7 @@ ca:
       active_step: 'Fase actual: %{name}'
       data:
         areas: "Àrees"
-        manager_grup: Grup promotor
+        manager_group: Grup promotor
         scope: "Àmbit"
       documents: Documents relacionats
       participate: Participa
