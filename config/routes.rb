@@ -323,7 +323,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :participatory_processes, only: [:index, :show] do
+  resources :participatory_processes, path: "/processes", only: [:index, :show] do
     collection do
       get :list
     end
