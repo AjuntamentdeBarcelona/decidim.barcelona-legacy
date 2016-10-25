@@ -6,6 +6,8 @@ import MeetingTime              from './meeting_time.component';
 import FilterLink               from '../filters/filter_link.component';
 import FilterServerLink         from '../filters/filter_server_link.component';
 
+import htmlToReact              from '../application/html_to_react';
+
 export default class Meeting extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +26,7 @@ export default class Meeting extends Component {
             <div className="card__datetime">
               <MeetingTime meeting={ meeting } relativeTime={true} />
             </div>
-            <div>{ meeting.description }</div><br />
+            <div>{ htmlToReact(meeting.description) }</div><br />
             <div className="address card__extra">
               <div className="address__icon">
                 <Icon name="meetings" removeIconClass={true} width="40" height="70" />

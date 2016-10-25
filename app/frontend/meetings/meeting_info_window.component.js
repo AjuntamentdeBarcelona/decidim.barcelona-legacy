@@ -1,12 +1,14 @@
-import MeetingTime from "./meeting_time.component";
+import MeetingTime   from "./meeting_time.component";
 import { PropTypes } from "react";
+
+import htmlToReact   from '../application/html_to_react';
 
 export default function MeetingInfoWindow ({ meeting }) {
   return (
     <div className="map-info__content">
       <h3>{ meeting.title }</h3>
       <div id="bodyContent">
-        <p>{ meeting.description }</p>
+        <div>{ htmlToReact(meeting.description) }</div>
         <div className="map__date-adress">
             <div className="card__datetime">
               <MeetingTime meeting={ meeting } relativeTime={true} />
