@@ -10,6 +10,9 @@ module Abilities
       can :manage, ParticipatoryProcess
       can :read, ParticipatoryProcess
       can :manage, Step
+      can :create, Debate
+      can :update, Debate
+      can :manage, ActionPlan
     end
   end
 end
