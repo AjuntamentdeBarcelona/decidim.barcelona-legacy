@@ -14,10 +14,8 @@
         </li>
 
         <li>
-          <%= link_to Setting['blog_url'][I18n.locale.to_s], class: "main-nav__link", target: "_blank" do %>
-          <%= icon "external-link" %>
-          <%= t("layouts.header.external_link_blog") %>
-          <% end %>
+          <%= link_to t("layouts.header.more_information"), page_path("more_information"),
+          class: "main-nav__link #{'main-nav__link--active' if more_information?}" %>
         </li>
       </ul>
     </div>

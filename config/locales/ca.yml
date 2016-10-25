@@ -206,7 +206,7 @@ ca:
       locale: 'Idioma:'
       meetings: Cites presencials
       moderation: Moderar
-      more_information: Informació
+      more_information: Més informació
       my_account_link: El meu compte
       my_activity_link: La meva activitat
       notifications: Notificacions (%{count})

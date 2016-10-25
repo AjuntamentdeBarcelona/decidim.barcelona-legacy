@@ -6,6 +6,10 @@ module ApplicationHelper
     request.path == '/'
   end
 
+  def more_information?
+    request.path == page_path("more_information")
+  end
+
   def opendata_page?
     request.path == '/opendata'
   end
