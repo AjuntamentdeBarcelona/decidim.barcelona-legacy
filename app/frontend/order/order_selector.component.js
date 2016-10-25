@@ -35,7 +35,7 @@ class OrderSelector extends Component {
           </ul>
         </div>
       </div>
-    );``
+    );
   }
 }
 
