@@ -316,6 +316,7 @@ en:
       participatory_process_featured: Feature this process
       participatory_process_manager_group: Manager group
       participatory_process_name: Name
+      participatory_process_participatory_structure: participatory structure
       participatory_process_scope: Scope
       participatory_process_scope_city: Whole city
       participatory_process_scope_district: Districts
@@ -341,7 +342,10 @@ en:
       active_step: 'Fase actual: %{name}'
       data:
         areas: Areas
+        audience: hearing
+        citizenship_scope: Scope of the decision citizen
         manager_group: Promoting Group
+        participatory_structure: participatory structure
         scope: Scope
       documents: related documents
       participate: Participa

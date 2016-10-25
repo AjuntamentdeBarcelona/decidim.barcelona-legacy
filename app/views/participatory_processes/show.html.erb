@@ -68,7 +68,7 @@
 
     <div class="section columns medium-5 mediumlarge-4 large-3">
       <div class="card extra definition-data">
-        <% %w(scope manager_group areas).each do |item| %>
+        <% %w(scope manager_group areas audience citizenship_scope participatory_structure).each do |item| %>
           <% content = @participatory_process.decorate.send(item) %>
           <div class="definition-data__item">
             <span class="definition-data__title"><%= t ".data.#{item}" %></span>

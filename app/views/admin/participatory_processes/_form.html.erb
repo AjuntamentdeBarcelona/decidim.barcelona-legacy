@@ -98,6 +98,11 @@
       <%= f.label :citizenship_scope, t("participatory_processes.form.participatory_process_citizenship_scope") %>
       <%= f.text_field :citizenship_scope, placeholder: t("participatory_processes.form.participatory_process_citizenship_scope"), label: false %>
     </div>
+    
+    <div class="small-12 column">
+      <%= f.label :participatory_structure, t("participatory_processes.form.participatory_process_participatory_structure") %>
+      <%= f.text_field :participatory_structure, placeholder: t("participatory_processes.form.participatory_process_participatory_structure"), label: false %>
+    </div>
 
     <div class="actions small-12 column">
       <%= f.submit(class: "button radius", value: t("#{resource_name.pluralize}.#{action_name}.form.submit_button")) %>

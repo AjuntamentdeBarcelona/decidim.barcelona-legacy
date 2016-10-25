@@ -319,6 +319,7 @@ es:
       participatory_process_featured: Destacar este proceso
       participatory_process_manager_group: Grupo promotor
       participatory_process_name: Nombre
+      participatory_process_participatory_structure: Estructura participativa
       participatory_process_scope: "Ámbito"
       participatory_process_scope_city: Toda la ciudad
       participatory_process_scope_district: Distritos
@@ -344,7 +345,10 @@ es:
       active_step: 'Fase actual: %{name}'
       data:
         areas: "Áreas"
+        audience: Audiencia
+        citizenship_scope: "Ámbito de la decisión ciudadana"
         manager_group: Grupo promotor
+        participatory_structure: Estructura participativa
         scope: "Ámbito"
       documents: Documentos relacionados
       participate: Participa
