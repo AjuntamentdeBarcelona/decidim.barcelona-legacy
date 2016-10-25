@@ -339,6 +339,10 @@ en:
         submit_button: Create participatory process
     show:
       active_step: 'Fase actual: %{name}'
+      data:
+        areas: Areas
+        manager_grup: Promoting Group
+        scope: Scope
       documents: related documents
       participate: Participa
       steps: Steps

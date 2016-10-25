@@ -342,6 +342,10 @@ es:
         submit_button: Crear proceso
     show:
       active_step: 'Fase actual: %{name}'
+      data:
+        areas: "Áreas"
+        manager_grup: Grupo promotor
+        scope: "Ámbito"
       documents: Documentos relacionados
       participate: Participa
       steps: Fases
