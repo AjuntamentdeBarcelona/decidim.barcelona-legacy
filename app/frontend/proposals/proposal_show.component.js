@@ -33,10 +33,10 @@ class ProposalShow extends Component {
     const { fetchProposal, fetchAnswer, proposalId } = this.props;
 
     fetchProposal(proposalId).then(() => {
-      this.setState({ loading: false });
+      fetchAnswer(proposalId).then(() => {
+        this.setState({ loading: false });
+      })
     });
-
-    fetchAnswer(proposalId);
   }
 
   render() {
