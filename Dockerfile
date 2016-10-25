@@ -14,8 +14,5 @@ WORKDIR $APP_HOME
 # Add source code
 ADD . $APP_HOME
 
-# Install webpack
-RUN yarn global add webpack
-
 # Run rails server by default
 CMD ["bundle" "exec" "puma", "-C config/puma.rb"]
