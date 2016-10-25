@@ -1,40 +1,37 @@
-<i class="icon-angle-left left"></i>&nbsp;<%= link_to t("devise_views.users.registrations.edit.back_link"), :back, class: "left back" %>
+<% provide :title do %><%= t("devise_views.users.registrations.edit.edit") %><% end %>
 
-<h1><%= t("devise_views.users.registrations.edit.edit") %></h1>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <div class="row">
-    <div class="small-12 column">
-      <%= f.label :email, t("devise_views.users.registrations.edit.email_label") %>
-      <%= f.email_field :email, label: false, autofocus: true, placeholder: t("devise_views.users.registrations.edit.email_label") %>
-    </div>
-
-    <div class="small-12 column">
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div><%= t("devise_views.users.registrations.edit.waiting_for") %> <%= resource.unconfirmed_email %></div>
-      <% end %>
-    </div>
-
-    <div class="small-12 column">
-      <%= f.label :password, t("devise_views.users.registrations.edit.password_label") %>
-      <p class="note"><%= t("devise_views.users.registrations.edit.leave_blank") %></p>
-      <%= f.password_field :password, autocomplete: "off", label: false, placeholder: t("devise_views.users.registrations.edit.password_label") %>
-    </div>
-
-    <div class="small-12 column">
-      <%= f.label :password_confirmation, t("devise_views.users.registrations.edit.password_confirmation_label") %>
-      <%= f.password_field :password_confirmation, label: false, autocomplete: "off", placeholder: t("devise_views.users.registrations.edit.password_confirmation_label") %>
-    </div>
-
-    <div class="small-12 column">
-      <%= f.label :current_password, t("devise_views.users.registrations.edit.current_password_label") %>
-      <p class="note"><%= t("devise_views.users.registrations.edit.need_current") %></p>
-      <%= f.password_field :current_password, label: false, autocomplete: "off", placeholder:  t("devise_views.users.registrations.edit.current_password_label") %>
-    </div>
-
-    <div class="small-12 column">
-      <%= f.submit t("devise_views.users.registrations.edit.update_submit"), class: "button radius" %>
+<div class="row collapse">
+  <div class="row collapse">
+    <div class="columns large-8 large-centered text-center page-title">
+      <h1><%= t("devise_views.users.registrations.edit.edit") %></h1>
     </div>
   </div>
-<% end %>
+  <div class="row">
+    <div class="columns large-6 medium-10 medium-centered">
+      <div class="card">
+        <div class="card__content">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= devise_error_messages! %>
+            <%= f.label :email, t("devise_views.users.registrations.edit.email_label") %>
+            <%= f.email_field :email, label: false, autofocus: true, placeholder: t("devise_views.users.registrations.edit.email_label") %>
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div><%= t("devise_views.users.registrations.edit.waiting_for") %> <%= resource.unconfirmed_email %></div>
+            <% end %>
+            <%= f.label :password, t("devise_views.users.registrations.edit.password_label") %>
+            <p class="note"><%= t("devise_views.users.registrations.edit.leave_blank") %></p>
+            <%= f.password_field :password, autocomplete: "off", label: false, placeholder: t("devise_views.users.registrations.edit.password_label") %>
+            <%= f.label :password_confirmation, t("devise_views.users.registrations.edit.password_confirmation_label") %>
+            <%= f.password_field :password_confirmation, label: false, autocomplete: "off", placeholder: t("devise_views.users.registrations.edit.password_confirmation_label") %>
+            <%= f.label :current_password, t("devise_views.users.registrations.edit.current_password_label") %>
+            <p class="note"><%= t("devise_views.users.registrations.edit.need_current") %></p>
+            <%= f.password_field :current_password, label: false, autocomplete: "off", placeholder:  t("devise_views.users.registrations.edit.current_password_label") %>
+            <%= f.submit t("devise_views.users.registrations.edit.update_submit"), class: "button expanded" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
