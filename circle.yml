@@ -17,8 +17,8 @@ dependencies:
     - cp .env.example .env
     - docker-compose build
     - docker-compose run app bundle install
-    - docker-compose run app npm install
-    - docker-compose run app npm run lint
+    - docker-compose run app yarn
+    - docker-compose run app yarn run lint
     - docker-compose run -e NODE_ENV=test app webpack 
     - mkdir -p ~/docker; docker save codegram/ruby-node-phantomjs postgres redis > ~/docker/image.tar
     - docker-compose run app bundle exec rake db:setup
@@ -34,4 +34,4 @@ test:
         parallel: true
         files:
           - spec/**/*_spec.rb
-    - docker-compose run app npm test
+    - docker-compose run app yarn test
