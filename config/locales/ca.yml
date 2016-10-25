@@ -319,6 +319,7 @@ ca:
       participatory_process_featured: Destacar aquest procés
       participatory_process_manager_group: Grup promotor
       participatory_process_name: Nom
+      participatory_process_participatory_structure: Estructura participativa
       participatory_process_scope: "Àmbit"
       participatory_process_scope_city: Tota la ciutat
       participatory_process_scope_district: Districtes
@@ -344,7 +345,10 @@ ca:
       active_step: 'Fase actual: %{name}'
       data:
         areas: "Àrees"
+        audience: Audiència
+        citizenship_scope: "Àmbit de la decisió ciutadana"
         manager_group: Grup promotor
+        participatory_structure: Estructura participativa
         scope: "Àmbit"
       documents: Documents relacionats
       participate: Participa

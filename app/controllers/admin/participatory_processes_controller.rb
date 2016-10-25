@@ -81,6 +81,7 @@ class Admin::ParticipatoryProcessesController < Admin::BaseController
         :hashtag,
         :areas,
         :scope,
+        :participatory_structure,
         :district,
         :full_image,
         :banner_image,
