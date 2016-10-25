@@ -18,5 +18,6 @@ class ParticipatoryProcessesController < ApplicationController
 
   def show
     @participatory_process = ParticipatoryProcess.find(params[:id]).decorate
+    authorize! :read, @participatory_process
   end
 end
