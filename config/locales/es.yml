@@ -106,6 +106,8 @@ es:
         one: 1 comentario
         other: "%{count} comentarios"
         zero: Sin comentarios
+    order_selector:
+      title: Ordenar por
     proposal_action_plans:
       title: 'Propuesta recogida en los siguientes resultados:'
     proposal_show:

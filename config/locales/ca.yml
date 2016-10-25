@@ -106,6 +106,8 @@ ca:
         one: 1 comentari
         other: "%{count} comentaris"
         zero: Sense comentaris
+    order_selector:
+      title: Ordenar per
     proposal_action_plans:
       title: 'Proposta recollida als següents resultats:'
     proposal_show:
@@ -621,7 +623,7 @@ ca:
         debates: Participar en debats
         give_support: Donar suport a propostes
         proposals: Veure propostes
-        text: "Actualment, pots:"
+        text: 'Actualment, pots:'
       only_verified: Només usuaris verificats
       see_proposals: continua sense verificar el teu compte
       skip_verification: Si no estàs empadronat a Barcelona o no vols verificar el compte,
