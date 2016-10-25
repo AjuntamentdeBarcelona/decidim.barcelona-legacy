@@ -423,7 +423,8 @@ feature 'Proposals' do
       visit proposals_path(participatory_process_id: participatory_process,
                            step_id: participatory_process.active_step)
 
-      page.find('.menu .confidence_score').click
+      page.find('.dropdown .current').hover
+      page.find('.dropdown .menu .confidence_score').click
       expect(page).not_to have_selector('.loading-component')
 
       expect(page.find('.proposal', match: :first)).to have_content('Best proposal')
@@ -444,7 +445,8 @@ feature 'Proposals' do
       visit proposals_path(participatory_process_id: participatory_process,
                            order: "confidence_score", step_id: participatory_process.active_step)
 
-      page.find('.menu .created_at').click
+      page.find('.dropdown .current').hover
+      page.find('.dropdown .menu .created_at').click
       expect(page).not_to have_selector('.loading-component')
 
       expect(page.find('.proposal', match: :first)).to have_content('Best proposal')
@@ -517,7 +519,8 @@ feature 'Proposals' do
 
       expect(page).to_not have_content "Do not display"
 
-      page.find('.menu .created_at').click
+      page.find('.dropdown .current').hover
+      page.find('.dropdown .menu .created_at').click
       expect(page).not_to have_selector('.loading-component')
 
       expect(page.find('.proposal', match: :first)).to have_content('Show you got')

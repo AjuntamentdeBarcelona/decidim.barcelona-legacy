@@ -17,13 +17,13 @@ class OrderSelector extends Component {
           <span className="order-by__text">{ I18n.t('components.order_selector.title') }:</span>
           <ul className="dropdown menu" data-dropdown-menu="">
             <li>
-              <a>{ I18n.t(`components.order_selector.${order}`) }</a>
+              <a className="current">{ I18n.t(`components.order_selector.${order}`) }</a>
               <ul className="menu">
                 {
                   orderLinks.map(orderLink => {
                     return (
                       <li key={orderLink}>
-                        <a onClick={() => setOrder(orderLink)}>
+                        <a className={orderLink} onClick={() => setOrder(orderLink)}>
                           { I18n.t(`components.order_selector.${orderLink}`) }
                         </a>
                       </li>
