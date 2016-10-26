@@ -33,18 +33,13 @@
 
               <%= captcha(resource) %>
 
-              <%= f.label :newsletter do %>
-                <%= f.check_box :newsletter, checked: true, label: false %>
-                <span class="checkbox"><%= t("account.show.subscription_to_website_newsletter_label") %></span>
-              <% end %>
-
               <%= f.label :notifications_by_default do %>
-                <%= f.check_box :notifications_by_default, checked: true, label: false %>
+                <%= f.check_box :notifications_by_default, checked: false, label: false %>
                 <span class="checkbox"><%= t("account.show.email_notifications") %></span>
               <% end %>
 
               <%= f.label :terms_of_service do %>
-                <%= f.check_box :terms_of_service, checked: true, label: false %>
+                <%= f.check_box :terms_of_service, checked: false, label: false %>
                 <span class="checkbox">
                   <%= t("devise_views.users.registrations.new.terms",
                       terms: link_to(t("devise_views.users.registrations.new.terms_link"), "/conditions", target: "_blank")).html_safe %></span>
