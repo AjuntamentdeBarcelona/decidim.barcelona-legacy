@@ -11,17 +11,26 @@ const ProposalInfoComponent = ({
 
   return (
     <div className="card__author author-data author-data--small">
-      <div className="author-data__main">
-        <div className="author author--inline">
-          <a href={authorUrl} className="author__avatar author__avatar--small">
-            <UserAvatar user={author} />
-          </a>
-          <a href={authorUrl} className="author__name">
-            { author ? author.name : 'no user' }
-          </a>
-          { ' ' + created_at }
-        </div>
-      </div>
+      {
+        (() => {
+          if (author) {
+            return (
+              <div className="author-data__main">
+                <div className="author author--inline">
+                  <a href={authorUrl} className="author__avatar author__avatar--small">
+                    <UserAvatar user={author} />
+                  </a>
+                  <a href={authorUrl} className="author__name">
+                    {author.name}
+                  </a>
+                  { ' ' + created_at }
+                </div>
+              </div>
+            );
+          }
+          return null;
+        })()
+      }
       {children}
     </div>
   );
