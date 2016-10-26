@@ -14,24 +14,26 @@ export default class CategoryPicker extends Component {
   }
 
   render () {
-    var category = this.props.categories.map(category => this.renderRow(category));
+    let selectedCategoryId = this.state.selectedCategoryId;
+    let selectedSubcategoryId = this.state.selectedSubcategoryId;
+
+    if (this.props.categories.length === 1) {
+      selectedCategoryId = this.props.categories[0].id;
+      selectedSubcategoryId = this.props.subcategories.find(sc => sc.categoryId === selectedCategoryId).id;
+    }
 
     return (
       <div>
-        <div className="category-picker">
-          <label>{I18n.t("components.category_picker.category.label")}</label>
-          <ul>{category}</ul>
-        </div>
-
+        {this.axisPicker()}
         {this.actionLinePicker()}
 
         <input type="hidden"
                name={this.props.categoryInputName}
-               value={this.state.selectedCategoryId} />
+               value={selectedCategoryId} />
 
         <input type="hidden"
                name={this.props.subcategoryInputName}
-               value={this.state.selectedSubcategoryId} />
+               value={selectedSubcategoryId} />
       </div>
     );
   }
@@ -54,6 +56,19 @@ export default class CategoryPicker extends Component {
     );
   }
 
+  axisPicker() {
+    if (this.props.categories.length > 1) {
+      var category = this.props.categories.map(category => this.renderRow(category));
+
+      return (
+        <div className="category-picker">
+          <label>{I18n.t("components.category_picker.category.label")}</label>
+          <ul>{category}</ul>
+        </div>
+      );
+    }
+    return null;
+  }
   actionLinePicker() {
     const { participatoryProcessId } = this.props;
 

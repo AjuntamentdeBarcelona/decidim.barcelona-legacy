@@ -9,6 +9,7 @@ feature 'Proposals' do
   before(:each) do
     Setting['feature.proposal_tags'] = true
     Setting['feature.proposal_video_url'] = true
+    create(:category, participatory_process: participatory_process)
   end
 
   scenario 'Index', :js do

@@ -9,6 +9,7 @@ feature 'Action plans', :js do
 
   before :each do
     login_as(reviewer)
+    create(:category, participatory_process: participatory_process)
   end
 
   scenario 'Create an action plan from scratch' do
