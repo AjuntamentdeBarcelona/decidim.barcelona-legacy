@@ -8,6 +8,11 @@ describe("Follow button component", function () {
     const wrapper = shallow(
       <FollowButton 
         session={{signed_in: false}} 
+        followingId={1}
+        followingType="Proposal"
+        fetchFollow={() => {}}
+        follow={() => {}}
+        unFollow={() => {}}
       />
     );
 
@@ -19,7 +24,11 @@ describe("Follow button component", function () {
       const wrapper = shallow(
         <FollowButton 
           session={{signed_in: true}}
+          followingId={1}
+          followingType="Proposal"
           fetchFollow={() => {}}
+          follow={() => {}}
+          unFollow={() => {}}
         />
       );
 
@@ -31,10 +40,11 @@ describe("Follow button component", function () {
       const wrapper = shallow(
         <FollowButton
           session={{signed_in: true}}
-          fetchFollow={() => {}}
           followingId={1}
           followingType="Proposal"
+          fetchFollow={() => {}}
           follow={onButtonClick}
+          unFollow={() => {}}
         />
       );
 
@@ -52,8 +62,12 @@ describe("Follow button component", function () {
       const wrapper = shallow(
         <FollowButton 
           session={{signed_in: true}}
+          followingId={1}
+          followingType="Proposal"
           fetchFollow={() => {}}
-          followId={1} 
+          followId={1}
+          follow={() => {}}
+          unFollow={() => {}}
         />
       );
 
@@ -65,8 +79,11 @@ describe("Follow button component", function () {
       const wrapper = shallow(
         <FollowButton
           session={{signed_in: true}}
+          followingId={1}
+          followingType="Proposal"
           fetchFollow={() => {}}
           followId={1}
+          follow={() => {}}
           unFollow={onButtonClick}
         />
       );
