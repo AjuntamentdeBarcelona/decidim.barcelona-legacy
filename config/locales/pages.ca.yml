@@ -14,8 +14,6 @@ ca:
       download-9: Sant Andreu
       download-district: Descarrega't el PAD de %{district}
       download-pam: Descarrega't el PAM
-    more_information:
-      title: "Més informació"
     verify:
       code: Codi que has rebut a la carta
       email: Adreça electrònica

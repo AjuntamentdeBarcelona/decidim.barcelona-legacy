@@ -14,8 +14,6 @@ en:
       download-9: Sant Andreu
       download-district: Download PAD %{district}
       download-pam: Download PAM
-    more_information:
-      title: "More information"
     verify:
       code: Code you received in your letter
       email: Email
