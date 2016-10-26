@@ -25,7 +25,7 @@ feature 'Moderate meetings' do
 
     def fill_in_meeting_form
       fill_in 'meeting_title', with: @meeting_data[:title]
-      fill_in 'meeting_description', with: @meeting_data[:description]
+      fill_in_editor 'meeting_description', with: @meeting_data[:description]
       page.find('input[name="meeting[address]"]').set(@meeting_data[:address])
       fill_in 'meeting_held_at', with: @meeting_data[:held_at]
       fill_in 'meeting_start_at', with: @meeting_data[:start_at]

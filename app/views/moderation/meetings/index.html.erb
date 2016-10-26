@@ -45,7 +45,7 @@
         </div>
         <br>
         <div>
-          <%= meeting.description %>
+          <%= meeting.description.html_safe %>
         </div>
         <%= render "shared/tags", taggable: meeting, limit: 5 %>
       </td>

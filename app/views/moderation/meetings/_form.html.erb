@@ -9,7 +9,7 @@
 
     <div class="small-12 column">
       <%= f.label :description, t("meetings.form.meeting_description") %>
-      <%= f.text_area :description, rows: 4, maxlength: 350, label: false,
+      <%= f.rich_editor :description, rows: 4, maxlength: 350, label: false,
                       placeholder: t('meetings.form.meeting_description') %>
     </div>
 

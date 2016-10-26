@@ -82,7 +82,7 @@
       </div>
       <div class="columns mediumlarge-8 mediumlarge-pull-4">
         <div class="section">
-          <%= text_with_links @meeting.description %><br />
+          <%= @meeting.description.html_safe %><br />
           <div class="card card--secondary">
             <div class="card__content address">
               <div class="address__info">
