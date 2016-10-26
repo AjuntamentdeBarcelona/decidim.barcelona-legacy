@@ -8,7 +8,7 @@ describe("Proposal answer box component", function () {
   it("should render a rich editor for the message", function () {
     const wrapper = shallow(
       <ProposalAnswerBox 
-        onButtonClick={}
+        onButtonClick={() => {}}
         answer={{message: "Just a simple message", status: ""}} />
     );
     expect(wrapper).to.have.descendants(RichEditor);
