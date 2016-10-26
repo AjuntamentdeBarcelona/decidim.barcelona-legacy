@@ -17,7 +17,7 @@ feature 'Action plans', :js do
     visit action_plans_path(participatory_process_id: participatory_process,
                             step_id: participatory_process.active_step)
 
-    click_link "New action plan" 
+    page.find('a', text: "New action plan").click
     fill_in "action_plan_title", with: "My action plan title"
     fill_in_editor "action_plan_description", with: "My action plan description"
     choose 'action_plan_scope_district'
