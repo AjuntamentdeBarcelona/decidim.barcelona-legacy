@@ -7,6 +7,9 @@
       <ul class="footer-nav">
         <li><%= link_to t(".conditions"), page_path(id: "conditions", participatory_process_id: nil) %></li>
         <li><%= link_to t(".census_terms"), page_path(id: "census_terms", participatory_process_id: nil) %></li>
+        <li>
+          <a target="_blank" href="http://accessibilitat.bcn.cat/<%= I18n.locale %>"><%= t('.accessibility') %></a>
+        </li>
       </ul>
     </div>
     <div class="medium-4 large-3 column main__footer__social">
