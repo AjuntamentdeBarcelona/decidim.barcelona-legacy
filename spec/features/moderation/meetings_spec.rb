@@ -5,6 +5,7 @@ feature 'Moderate meetings' do
 
   before :each do
     @category = create(:category, participatory_process: participatory_process)
+    create(:category, participatory_process: participatory_process)
     @subcategory = create(:subcategory, category_id: @category.id, participatory_process: participatory_process)
   end
 
