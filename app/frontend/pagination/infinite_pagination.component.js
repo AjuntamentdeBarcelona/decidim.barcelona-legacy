@@ -1,21 +1,14 @@
 import { Component, PropTypes } from 'react';
-import VisibilitySensor         from 'react-visibility-sensor';
 
 export default class InfinitePagination extends Component {
-  onChange(isVisible) {
-    if (isVisible) {
-      this.props.onVisible();
-    }
-  }
-
   render() {
     return (
-      <VisibilitySensor 
-        partialVisibility={true}
-        delay={200}
-        onChange={(isVisible) => this.onChange(isVisible)}>
-        <p className="infinite-pagination loading">{I18n.t('components.infinite_pagination.loading_more')}</p>
-      </VisibilitySensor>
+      <div style={{textAlign: 'right'}}>
+        <button onClick={() => this.props.onVisible()} className="muted-link">
+          {I18n.t('components.infinite_pagination.load_more')}
+          <span aria-hidden="true">+</span>
+        </button>
+      </div>
     );
   }
 }

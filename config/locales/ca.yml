@@ -106,6 +106,8 @@ ca:
         one: 1 comentari
         other: "%{count} comentaris"
         zero: Sense comentaris
+    infinite_pagination:
+      load_more: Veure més resultats
     order_selector:
       title: Ordenar per
     proposal_action_plans:

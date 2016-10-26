@@ -78,8 +78,6 @@ en:
     follow_button:
       follow: Follow
       unfollow: Unfollow
-    infinite_pagination:
-      loading_more: Loading more results...
     meeting_info_window:
       show: View event
     meetings_filters:
