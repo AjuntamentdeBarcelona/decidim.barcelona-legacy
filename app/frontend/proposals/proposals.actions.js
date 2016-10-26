@@ -17,8 +17,9 @@ export const FLAG_PROPOSAL          = 'FLAG_PROPOSAL';
 export const UNFLAG_PROPOSAL        = 'UNFLAG_PROPOSAL';
 
 export const fetchProposals = (options) => (dispatch, getState) => {
-  const { participatoryProcessId } = getState();
+  const { participatoryProcessId, stepId } = getState();
   options['participatoryProcessId'] = participatoryProcessId;
+  options['stepId'] = stepId;
 
   const request = buildProposalsRequest(options);
 
@@ -49,8 +50,9 @@ export function updateProposal(proposalId, proposalParams) {
 }
 
 export const appendProposalsPage = (options) => (dispatch, getState) => {
-  const { participatoryProcessId } = getState();
+  const { participatoryProcessId, stepId } = getState();
   options['participatoryProcessId'] = participatoryProcessId;
+  options['stepId'] = stepId;
 
   const request = buildProposalsRequest(options);
 
@@ -162,6 +164,7 @@ function buildProposalsRequest(options = {}) {
       page,
       seed,
       participatoryProcessId,
+      stepId,
       params;
 
   filters                = options.filters || {};
@@ -169,6 +172,7 @@ function buildProposalsRequest(options = {}) {
   order                  = options.order;
   seed                   = options.seed;
   participatoryProcessId = options.participatoryProcessId;
+  stepId                 = options.stepId;
 
   // TODO: worst name ever
   filter = filters.filter;
@@ -189,7 +193,8 @@ function buildProposalsRequest(options = {}) {
     page: page,
     order: order,
     random_seed: seed,
-    participatory_process_id: participatoryProcessId
+    participatory_process_id: participatoryProcessId,
+    step_id: stepId
   };
 
   replaceUrl(params);

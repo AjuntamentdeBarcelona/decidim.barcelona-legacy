@@ -167,10 +167,6 @@ class Proposal < ActiveRecord::Base
     where.not(id: reviewed)
   end
 
-  def closed?
-    participatory_process.feature_enabled? :proposals_readonly
-  end
-
   protected
 
     def set_responsible_name
