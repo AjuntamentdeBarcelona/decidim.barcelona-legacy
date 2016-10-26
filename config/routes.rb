@@ -293,7 +293,6 @@ Rails.application.routes.draw do
     "meetings",
     "debates",
     "categories",
-    "more_information",
     "dataviz"
   ].each do |path|
     get "/(pam)/#{path}/(:id)", as: "#{path}_root" , to: redirect { |_, request|
