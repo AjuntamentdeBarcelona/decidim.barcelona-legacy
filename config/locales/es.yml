@@ -106,6 +106,8 @@ es:
         one: 1 comentario
         other: "%{count} comentarios"
         zero: Sin comentarios
+    infinite_pagination:
+      load_more: Ver más resultados
     order_selector:
       title: Ordenar por
     proposal_action_plans:

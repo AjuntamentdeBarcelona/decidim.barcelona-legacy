@@ -62,9 +62,9 @@ class Proposals extends Component {
               orderLinks={["random", "hot_score", "confidence_score", "created_at"]} />
             <Loading show={this.state.loading} list={true} />
             <ProposalsList proposals={this.props.proposals} />
+            {this.renderInfinitePagination()}
           </div>
         </div>
-        {this.renderInfinitePagination()}
       </div>
     );
   }
