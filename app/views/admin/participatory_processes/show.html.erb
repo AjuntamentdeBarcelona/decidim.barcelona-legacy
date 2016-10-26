@@ -78,7 +78,7 @@
   </li>
 <% end %>
 
-<%= link_to "Crear cita nueva", new_moderation_meeting_path(participatory_process_id: @pp.id), class: "button" %>
+<%= link_to "Crear cita nueva", new_moderation_meeting_path(participatory_process_id: @pp.id, step_id: Step.step_for(@pp, "meetings")), class: "button" %>
 
 <h2><%= @pp.proposals.count %> Propuestas</h2>
 
