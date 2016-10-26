@@ -78,8 +78,6 @@ ca:
     follow_button:
       follow: Seguir
       unfollow: Deixar de seguir
-    infinite_pagination:
-      loading_more: Carregant més resultats...
     meeting_info_window:
       show: Veure trobada
     meetings_filters:
