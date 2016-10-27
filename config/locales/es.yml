@@ -428,7 +428,6 @@ es:
     proposal:
       already_supported: Dando soporte
       closed_support: Apoyos cerrados
-      closing: Se está estudiando la viabilidad de esta propuesta y la posible inclusión en el Plan Municipal 2016 a 2019. A lo largo de las próximas semanas esta propuesta recibirá una respuesta del Ayuntamiento de Barcelona. Recuerda que puedes participar en los debates de evaluación del proceso participativo del Plan Municipal.
       comments:
         one: 1 Comentario
         other: "%{count} Comentarios"
