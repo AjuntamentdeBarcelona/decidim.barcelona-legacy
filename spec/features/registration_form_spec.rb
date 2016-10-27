@@ -35,7 +35,6 @@ feature 'Registration form' do
     expect(page).to have_content("Thank you for registering with the website")
 
     user = User.find_by(email: 'userwithnotifications@email.com')
-    expect(user.weekly_summary).to be_truthy
     expect(user.email_on_comment).to be_truthy
     expect(user.email_on_comment_reply).to be_truthy
   end
@@ -53,7 +52,6 @@ feature 'Registration form' do
     expect(page).to have_content("Thank you for registering with the website")
 
     user = User.find_by(email: 'userwithnotifications@email.com')
-    expect(user.weekly_summary).to_not be_truthy
     expect(user.email_on_comment).to_not be_truthy
     expect(user.email_on_comment_reply).to_not be_truthy
   end
