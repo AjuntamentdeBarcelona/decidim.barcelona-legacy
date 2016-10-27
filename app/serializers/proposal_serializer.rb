@@ -50,8 +50,9 @@ class ProposalSerializer < ActiveModel::Serializer
   end
 
   def closed
-    Rails.logger.debug(scope.step_id.inspect)
-    false
+    return false unless serialization_options[:step_id].present?
+    step = object.participatory_process.steps.where(id: serialization_options[:step_id]).first
+    step.feature_enabled?(:proposals_readonly) || !step.feature_enabled?(:enable_proposal_votes)
   end
 
   def editable

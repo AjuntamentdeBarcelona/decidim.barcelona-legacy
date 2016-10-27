@@ -29,9 +29,8 @@ class Api::ProposalsController < Api::ApplicationController
           next_page: @proposals.next_page,
           prev_page: @proposals.prev_page,
           total_pages: @proposals.total_pages,
-          total_count: @proposals.total_count,
-          step_id: params[:step_id]
-        }
+          total_count: @proposals.total_count
+        }, step_id: params[:step_id]
       }
     end
   end
