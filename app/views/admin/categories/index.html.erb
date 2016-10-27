@@ -1,3 +1,10 @@
+<div class="row">
+  <div class="small-6 column">
+    <label for="participatory_process_id">Selecciona un procés participatiu:</label>
+    <%= select_tag "participatory_process_id", options_from_collection_for_select(@participatory_processes, "id", "name", @participatory_process.id), id: "participatory_process_top", class: "participatory_process_selector" %>
+  </div>
+</div>
+
 <h2><%= t("admin.categories.index.title") %></h2>
 <h3><%= page_entries_info @categories %></h3>
 <ul id="categories" class="admin-list">
@@ -16,5 +23,5 @@
 <%= paginate @categories %>
 
 <div class="right">
-  <%= link_to t('admin.categories.index.new'), new_admin_category_path, class: "button radius alert right" %>
+  <%= link_to t('admin.categories.index.new'), new_admin_category_path(participatory_process_id: @participatory_process.id), class: "button radius alert right" %>
 </div>
