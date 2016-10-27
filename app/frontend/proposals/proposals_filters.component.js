@@ -15,6 +15,10 @@ import FilterOption                 from '../filters/filter_option.component';
 
 class ProposalsFilters extends Component {
   render() {
+    const { participatoryProcess } = this.props;
+    const { step } = participatoryProcess;
+    const { flags } = step;
+
     return (
       <form className="proposal-filters">
         <SearchFilter searchText={this.props.filters.text} />
@@ -42,7 +46,16 @@ class ProposalsFilters extends Component {
           <FilterOption filterName="rejected" />
         </FilterOptionGroup>
         <UserInteractionFilter />
-        <ScopeFilterOptionGroup />
+        {
+          (() => {
+            if (flags.enable_proposal_scope) {
+              return (
+                <ScopeFilterOptionGroup />
+              );
+            }
+            return null;
+          })()
+        }
         <CategoryFilterOptionGroup />
         <SubcategoryFilterOptionGroup />
         <FilterOptionGroup 
@@ -71,12 +84,13 @@ class ProposalsFilters extends Component {
 }
 
 export default connect(
-  ({ filters }) => ({ filters }),
+  ({ filters, participatoryProcess }) => ({ filters, participatoryProcess }),
   actions
 )(ProposalsFilters);
 
 ProposalsFilters.propTypes = {
   filters: PropTypes.object.isRequired,
   setFilterGroup: PropTypes.func.isRequired,
-  clearFilters: PropTypes.func.isRequired
+  clearFilters: PropTypes.func.isRequired,
+  participatoryProcess: PropTypes.object.isRequired
 };

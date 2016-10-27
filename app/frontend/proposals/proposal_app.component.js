@@ -27,7 +27,7 @@ const middlewares = [ReduxPromise, ReduxThunk];
 // }
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
-function createReducers(sessionState, participatoryProcessState, stepIdState, decidimIconsUrlState) {
+function createReducers(sessionState, participatoryProcessState, decidimIconsUrlState) {
   let session = function (state = sessionState) {
     return state;
   };

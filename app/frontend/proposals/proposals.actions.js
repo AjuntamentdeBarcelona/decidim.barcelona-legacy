@@ -32,8 +32,8 @@ export const fetchProposals = (options) => (dispatch, getState) => {
 }
 
 export const fetchProposal = (proposalId) => (dispatch, getState) => {
-  const { stepId } = getState();
-  const request = axios.get(`${API_BASE_URL}/proposals/${proposalId}.json?step_id=${stepId}`);
+  const { participatoryProcess } = getState();
+  const request = axios.get(`${API_BASE_URL}/proposals/${proposalId}.json?step_id=${participatoryProcess.step.id}`);
 
   dispatch({
     type: FETCH_PROPOSAL,
@@ -68,8 +68,8 @@ export const appendProposalsPage = (options) => (dispatch, getState) => {
 }
 
 export const voteProposal = (proposalId) => (dispatch, getState) => {
-  const { stepId } = getState();
-  const request = axios.post(`${API_BASE_URL}/proposals/${proposalId}/votes.json?step_id=${stepId}`);
+  const { participatoryProcess } = getState();
+  const request = axios.post(`${API_BASE_URL}/proposals/${proposalId}/votes.json?step_id=${participatoryProcess.step.id}`);
 
   dispatch({
     type: VOTE_PROPOSAL,

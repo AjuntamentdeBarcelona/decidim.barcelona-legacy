@@ -20,7 +20,7 @@ class NewProposalButton extends Component {
 }
 
 export default connect(
-  ({ session, participatoryProcess, stepId }) => ({ session, participatoryProcess, stepId })
+  ({ session, participatoryProcess }) => ({ session, participatoryProcess })
 )(NewProposalButton);
 
 NewProposalButton.propTypes = {

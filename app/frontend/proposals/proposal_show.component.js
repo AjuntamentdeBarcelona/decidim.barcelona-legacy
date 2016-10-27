@@ -50,7 +50,9 @@ class ProposalShow extends Component {
   }
 
   renderProposal() {
-    const { proposal, fetchRelatedMeetings, decidimIconsUrl } = this.props;
+    const { proposal, fetchRelatedMeetings, participatoryProcess, decidimIconsUrl } = this.props;
+    const { step } = participatoryProcess;
+    const { flags } = step;
 
     if (proposal.id) {
       const { 
@@ -140,7 +142,8 @@ class ProposalShow extends Component {
                     district={ district }
                     category={ category }
                     subcategory={ subcategory } 
-                    useServerLinks={ true }/>
+                    useServerLinks={ true }
+                    disableScope={ !flags.enable_proposal_scope } />
                 </div>
                 <ProposalAnswerMessage answer={proposal.answer} />
                 <div className="section">
