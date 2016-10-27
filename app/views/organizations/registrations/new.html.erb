@@ -27,6 +27,11 @@
                                 label: t("devise_views.organizations.registrations.new.password_confirmation_label"),
                                 placeholder: t("devise_views.organizations.registrations.new.password_confirmation_label") %>
             <%= captcha(resource) %>
+            <%= f.label :notifications_by_default do %>
+                <%= f.check_box :notifications_by_default, checked: false, label: false %>
+                <span class="checkbox"><%= t("account.show.email_notifications") %></span>
+              <% end %>
+
             <%= f.label :terms_of_service do %>
               <%= f.check_box :terms_of_service, label: false %>
               <span class="checkbox">
