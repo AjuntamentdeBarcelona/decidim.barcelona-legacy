@@ -14,7 +14,7 @@ module Abilities
 
       can :read, Proposal
       can :update, Proposal do |proposal|
-        proposal.editable_by?(user) && !proposal.closed?
+        proposal.editable_by?(user)
       end
 
       can :read, SpendingProposal

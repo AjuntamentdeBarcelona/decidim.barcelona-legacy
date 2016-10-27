@@ -67,13 +67,16 @@ export const appendProposalsPage = (options) => (dispatch, getState) => {
   return request;
 }
 
-export function voteProposal(proposalId) {
-  const request = axios.post(`${API_BASE_URL}/proposals/${proposalId}/votes.json`);
+export const voteProposal = (proposalId) => (dispatch, getState) => {
+  const { stepId } = getState();
+  const request = axios.post(`${API_BASE_URL}/proposals/${proposalId}/votes.json?step_id=${stepId}`);
 
-  return {
+  dispatch({
     type: VOTE_PROPOSAL,
     payload: request
-  };
+  });
+
+  return request;
 }
 
 export function fetchAnswer(proposalId) {
