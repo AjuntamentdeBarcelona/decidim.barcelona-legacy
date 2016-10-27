@@ -621,10 +621,12 @@ en:
         button: Button
         line-1: Line-1
         line-2: Line-2
+        line-3: Entra, participa y decide.
       subhero-2:
         button: Button
         line-1: Line-1
         line-2: Line-2
+        line-3: Entra, participa y decide.
     welcome:
       abilities:
         debates: Participate in discussions
