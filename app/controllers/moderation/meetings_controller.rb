@@ -10,9 +10,14 @@ class Moderation::MeetingsController < Moderation::BaseController
   load_and_authorize_resource
 
   def index
+    @participatory_process = if params[:participatory_process_id].present?
+      ParticipatoryProcess.find(params[:participatory_process_id])
+    else
+      ParticipatoryProcess.first
+    end
     @participatory_processes = ParticipatoryProcess.all
     @search    = params[:search]
-    @resources = @resources.send(@current_filter)
+    @resources = @participatory_process.meetings.send(@current_filter)
     @resources = @resources.search(@search) if @search.present?
 
     respond_to do |format|
