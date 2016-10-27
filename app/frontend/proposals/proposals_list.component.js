@@ -9,7 +9,7 @@ const ProposalsList = ({
     {
       proposals.map((proposal) => {
         return (
-          <Proposal key={proposal.id} {...proposal} />
+          <Proposal key={proposal.id} proposal={proposal} />
         )
       })
     }

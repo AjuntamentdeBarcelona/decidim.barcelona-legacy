@@ -111,6 +111,9 @@ en:
       title: Title
     proposal_show:
       share: Share
+    proposal_status_badge:
+      accepted: Accepted
+      rejected: Rejected
     social_share_buttons:
       share: Share
   debates:
