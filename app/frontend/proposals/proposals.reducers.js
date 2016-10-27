@@ -37,6 +37,7 @@ export const proposals = function (state = [], action) {
         ...action.payload.data.proposals
       ];
     case VOTE_PROPOSAL:
+    case FETCH_ANSWER:
       return state.map(p => proposal(p, action));
   }
   return state;

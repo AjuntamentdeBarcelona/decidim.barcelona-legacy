@@ -10,6 +10,7 @@ import FilterMeta               from '../filters/filter_meta.component';
 import FollowButton             from '../follows/follow_button.component';
 import Comments                 from '../comments/comments.component';
 
+import ProposalStatusBadge      from './proposal_status_badge.component';
 import ProposalInfoExtended     from './proposal_info_extended.component';
 import ProposalActionPlans      from './proposal_action_plans.component';
 import ProposalAnswerMessage    from './proposal_answer_message.component';
@@ -130,7 +131,7 @@ class ProposalShow extends Component {
               </div>
               <div className="columns mediumlarge-8 mediumlarge-pull-4">
                 <div className="section">
-                  {this.renderStatusBadge()}
+                  <ProposalStatusBadge answer={proposal.answer} />
                   {htmlToReact(simpleFormat(summary))}
                   <br />
                   {this.renderExternalUrl(external_url)}
@@ -162,26 +163,6 @@ class ProposalShow extends Component {
           </div>
         </div>
       );
-    }
-    return null;
-  }
-
-  renderStatusBadge() {
-    const { proposal } = this.props;
-    const { answer } = proposal;
-
-    if (answer) {
-      const { status } = answer;
-
-      if (status === 'accepted') {
-        return (
-          <span className="success label proposal-status">Acceptada</span>
-        );
-      } else if (status === 'rejected') {
-        return (
-          <span className="warning label proposal-status">Rebutjada</span>
-        );
-      }
     }
     return null;
   }

@@ -114,6 +114,9 @@ ca:
       title: 'Proposta recollida als següents resultats:'
     proposal_show:
       share: Compartir proposta
+    proposal_status_badge:
+      accepted: Acceptada
+      rejected: Rebutjada
     social_share_buttons:
       share: Compartir
   debates:
