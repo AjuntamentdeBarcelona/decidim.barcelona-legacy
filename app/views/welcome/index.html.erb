@@ -145,7 +145,7 @@
       <div class="row text-center">
         <div class="columns small-centered large-3">
           <%= link_to t(".results.button-2"), 
-                  @pam_process_plan_attachment.file_url,
+                  @pam_process_plan_attachment.try(:file_url),
                   class: "button--sc link subhero-cta subhero-cta--secondary" %>
         </div>
       </div>
