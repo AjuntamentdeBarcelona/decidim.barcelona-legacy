@@ -10,6 +10,6 @@
 </div>
 
 <div class="small-12 column">
-  <%= f.select :district, District.all.map{|d| [d.name, d.id] } %>
+  <%= f.select :district, District.all.map{|d| [d.name, d.id] }, include_blank: true %>
 </div>
 
