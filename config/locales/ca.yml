@@ -599,7 +599,7 @@ ca:
         block-3:
           description: Fes les teves aportacions als processos de participació oberts.
           title: Propostes
-        button: Mès informació
+        button: Més informació
         title: Com puc participar en un procés?
       hero:
         button: Participa
@@ -622,12 +622,14 @@ ca:
         title-5: Cites presencials
       subhero-1:
         button: Registra't
-        line-1: 'decidim.barcelona: la plataforma de participació de Barcelona.'
-        line-2: Entra, participa i decideix.
+        line-1: Benvingut a la plataforma de participació de Barcelona.
+        line-2: Construïm una ciutat més oberta, transparent i col·laborativa. 
+        line-3: Entra, participa i decideix
       subhero-2:
         button: Registra't
-        line-1: 'decidim.barcelona: la plataforma de participació de Barcelona.'
-        line-2: Entra, participa i decideix.
+        line-1: Benvingut a la plataforma de participació de Barcelona.
+        line-2: Construïm una ciutat més oberta, transparent i col·laborativa. 
+        line-3: Entra, participa i decideix
     welcome:
       abilities:
         debates: Participar en debats
