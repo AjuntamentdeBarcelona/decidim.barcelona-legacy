@@ -332,8 +332,6 @@ en:
       featured_processes: Featured processes
       join: Participa
       more_info: Més informació
-    list:
-      title: Active participatory processes
     new:
       form:
         submit_button: Create participatory process

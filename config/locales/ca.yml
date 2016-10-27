@@ -335,8 +335,6 @@ ca:
       featured_processes: Processos destacats
       join: Participa
       more_info: Més informació
-    list:
-      title: Processos participatius actius
     new:
       form:
         submit_button: Crear proces
