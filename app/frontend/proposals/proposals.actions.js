@@ -17,8 +17,9 @@ export const FLAG_PROPOSAL          = 'FLAG_PROPOSAL';
 export const UNFLAG_PROPOSAL        = 'UNFLAG_PROPOSAL';
 
 export const fetchProposals = (options) => (dispatch, getState) => {
-  const { participatoryProcessId } = getState();
+  const { participatoryProcessId, stepId } = getState();
   options['participatoryProcessId'] = participatoryProcessId;
+  options['stepId'] = stepId;
 
   const request = buildProposalsRequest(options);
 
@@ -30,13 +31,16 @@ export const fetchProposals = (options) => (dispatch, getState) => {
   return request;
 }
 
-export function fetchProposal(proposalId) {
-  const request = axios.get(`${API_BASE_URL}/proposals/${proposalId}.json`);
+export const fetchProposal = (proposalId) => (dispatch, getState) => {
+  const { stepId } = getState();
+  const request = axios.get(`${API_BASE_URL}/proposals/${proposalId}.json?step_id=${stepId}`);
 
-  return {
+  dispatch({
     type: FETCH_PROPOSAL,
     payload: request
-  };
+  });
+
+  return request;
 }
 
 export function updateProposal(proposalId, proposalParams) {
@@ -49,8 +53,9 @@ export function updateProposal(proposalId, proposalParams) {
 }
 
 export const appendProposalsPage = (options) => (dispatch, getState) => {
-  const { participatoryProcessId } = getState();
+  const { participatoryProcessId, stepId } = getState();
   options['participatoryProcessId'] = participatoryProcessId;
+  options['stepId'] = stepId;
 
   const request = buildProposalsRequest(options);
 
@@ -62,13 +67,16 @@ export const appendProposalsPage = (options) => (dispatch, getState) => {
   return request;
 }
 
-export function voteProposal(proposalId) {
-  const request = axios.post(`${API_BASE_URL}/proposals/${proposalId}/votes.json`);
+export const voteProposal = (proposalId) => (dispatch, getState) => {
+  const { stepId } = getState();
+  const request = axios.post(`${API_BASE_URL}/proposals/${proposalId}/votes.json?step_id=${stepId}`);
 
-  return {
+  dispatch({
     type: VOTE_PROPOSAL,
     payload: request
-  };
+  });
+
+  return request;
 }
 
 export function fetchAnswer(proposalId) {
@@ -162,6 +170,7 @@ function buildProposalsRequest(options = {}) {
       page,
       seed,
       participatoryProcessId,
+      stepId,
       params;
 
   filters                = options.filters || {};
@@ -169,6 +178,7 @@ function buildProposalsRequest(options = {}) {
   order                  = options.order;
   seed                   = options.seed;
   participatoryProcessId = options.participatoryProcessId;
+  stepId                 = options.stepId;
 
   // TODO: worst name ever
   filter = filters.filter;
@@ -189,7 +199,8 @@ function buildProposalsRequest(options = {}) {
     page: page,
     order: order,
     random_seed: seed,
-    participatory_process_id: participatoryProcessId
+    participatory_process_id: participatoryProcessId,
+    step_id: stepId
   };
 
   replaceUrl(params);

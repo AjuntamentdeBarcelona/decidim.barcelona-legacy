@@ -14,7 +14,7 @@ module Abilities
 
       can :read, Proposal
       can :update, Proposal do |proposal|
-        proposal.editable_by?(user) && !proposal.closed?
+        proposal.editable_by?(user)
       end
 
       can :read, SpendingProposal
@@ -36,9 +36,7 @@ module Abilities
       can [:flag, :unflag], Proposal
       cannot [:flag, :unflag], Proposal, author_id: user.id
 
-      can :comment, Proposal do |proposal| 
-        !proposal.closed?
-      end
+      can :comment, Proposal
 
       can :comment, Debate
       can :comment, ActionPlan
@@ -51,9 +49,7 @@ module Abilities
       end
 
       if user.level_two_or_three_verified?
-        can :vote, Proposal do |proposal|
-          !proposal.closed?
-        end
+        can :vote, Proposal
         can :vote_featured, Proposal
         can :create, SpendingProposal
       end

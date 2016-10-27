@@ -2,12 +2,12 @@ class ProposalSerializer < ActiveModel::Serializer
   include Concerns::ParticipatoryProcessSerializerUrl
 
   attributes :id, :title, :url, :summary, :created_at, :scope_, :district, :source,
-             :total_votes, :voted, :votable, :closed?, :official, :from_meeting,
+             :total_votes, :voted, :votable, :official, :from_meeting,
              :editable, :conflictive?, :external_url, :hidden?, :can_hide, :can_hide_author,
              :flagged, :code, :arguable?, :permissions, :total_positive_comments,
              :total_negative_comments, :total_neutral_comments, :total_comments,
-             :social_media_image_url, :author_id, :status
-  
+             :social_media_image_url, :author_id, :status, :closed
+
   has_one :category
   has_one :subcategory
   has_one :author
@@ -47,6 +47,12 @@ class ProposalSerializer < ActiveModel::Serializer
 
   def votable
     scope && scope.current_user && scope.current_user.level_two_or_three_verified?
+  end
+
+  def closed
+    return false unless serialization_options[:step_id].present?
+    step = object.participatory_process.steps.where(id: serialization_options[:step_id]).first
+    step.feature_enabled?(:proposals_readonly) || !step.feature_enabled?(:enable_proposal_votes)
   end
 
   def editable
