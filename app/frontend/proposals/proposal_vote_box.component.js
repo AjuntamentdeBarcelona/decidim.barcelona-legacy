@@ -16,7 +16,6 @@ export default class ProposalVoteBox extends Component {
         </div>
 
         <ProposalVoteButton
-          closed={this.props.closed}
           voted={this.props.voted}
           votable={this.props.votable}
           proposalId={this.props.proposalId}
@@ -28,7 +27,6 @@ export default class ProposalVoteBox extends Component {
 
 ProposalVoteBox.propTypes = {
   totalVotes: PropTypes.number.isRequired,
-  closed: PropTypes.bool,
   voted: PropTypes.bool,
   votable: PropTypes.bool,
   proposalId: PropTypes.number.isRequired

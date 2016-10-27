@@ -18,7 +18,12 @@ class ProposalVoteButton extends Component {
   }
 
   renderVoteButton() {
-    if (this.props.closed) {
+    const { participatoryProcess } = this.props;
+    const { step } = participatoryProcess;
+    const { flags } = step;
+    const votesDisabled = flags.proposal_readonly || !flags.proposal_enable_votes;
+
+    if (votesDisabled) {
       return (
         <button className={`card__button button ${this.props.className || 'small'}`} disabled>
           {I18n.t("proposals.proposal.closed_support")}
@@ -173,13 +178,13 @@ class ProposalVoteButton extends Component {
 }
 
 export default connect(
-  ({ session }) => ({ session }),
+  ({ participatoryProcess, session }) => ({ participatoryProcess, session }),
   actions
 )(ProposalVoteButton);
 
 ProposalVoteButton.propTypes = {
+  participatoryProcess: PropTypes.object.isRequired,
   className: PropTypes.string,
-  closed: PropTypes.bool.isRequired,
   voted: PropTypes.bool.isRequired,
   votable: PropTypes.bool,
   session: PropTypes.object.isRequired,

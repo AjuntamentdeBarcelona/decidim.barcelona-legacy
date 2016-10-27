@@ -73,7 +73,6 @@ class ProposalShow extends Component {
         subcategory,
         editable,
         flagged,
-        closed,
         hidden,
         can_hide,
         can_hide_author,
@@ -108,7 +107,6 @@ class ProposalShow extends Component {
                     <span className="extra__suport-text">{ I18n.t("votes.supports") }</span>
                     <ProposalVoteButton
                       className="expanded button--sc extra"
-                      closed={closed}
                       voted={voted}
                       votable={votable}
                       proposalId={id}
