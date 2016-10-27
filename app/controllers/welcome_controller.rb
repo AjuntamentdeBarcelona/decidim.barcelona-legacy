@@ -8,6 +8,8 @@ class WelcomeController < ApplicationController
 
   def index
     @participatory_processes = ParticipatoryProcess.published.order('featured desc').limit(8)
+    @pam_process = ParticipatoryProcess.where(name: "pam").first
+    @pam_process_plan_attachment = @pam_process.attachments.where(name: "00 - Programa d'Actuació Municipal").first
   end
 
   def welcome

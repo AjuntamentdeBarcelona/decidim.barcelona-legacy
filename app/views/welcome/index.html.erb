@@ -110,7 +110,7 @@
             <div class="home-pam__highlight">
               <div class="home-pam__data">
                 <h4 class="home-pam__title"><%= t ".results.title-1" %></h4>
-                <span class="home-pam__number">7.284</span>
+                <span class="home-pam__number">8.142</span>
               </div>
               <div class="home-pam__data">
                 <h4 class="home-pam__title"><%= t ".results.title-2" %></h4>
@@ -138,14 +138,14 @@
         <div class="columns small-centered small-12
                     smallmedium-8 medium-6 large-4">
           <%= link_to t(".results.button-1"), 
-                  participatory_processes_path, 
+                  action_plans_path(@pam_process, step_id: @pam_process.active_step),
                   class: "button expanded hollow button--sc" %>
         </div>
       </div>
       <div class="row text-center">
         <div class="columns small-centered large-3">
           <%= link_to t(".results.button-2"), 
-                  participatory_processes_path, 
+                  @pam_process_plan_attachment.try(:file_url),
                   class: "button--sc link subhero-cta subhero-cta--secondary" %>
         </div>
       </div>
