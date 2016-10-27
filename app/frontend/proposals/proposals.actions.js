@@ -31,13 +31,16 @@ export const fetchProposals = (options) => (dispatch, getState) => {
   return request;
 }
 
-export function fetchProposal(proposalId) {
-  const request = axios.get(`${API_BASE_URL}/proposals/${proposalId}.json`);
+export const fetchProposal = (proposalId) => (dispatch, getState) => {
+  const { stepId } = getState();
+  const request = axios.get(`${API_BASE_URL}/proposals/${proposalId}.json?step_id=${stepId}`);
 
-  return {
+  dispatch({
     type: FETCH_PROPOSAL,
     payload: request
-  };
+  });
+
+  return request;
 }
 
 export function updateProposal(proposalId, proposalParams) {

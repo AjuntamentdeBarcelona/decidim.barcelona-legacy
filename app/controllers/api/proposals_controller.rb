@@ -36,7 +36,7 @@ class Api::ProposalsController < Api::ApplicationController
   end
 
   def show
-    render json: @proposal
+    render json: @proposal, step_id: params[:step_id]
   end
 
   def update
