@@ -425,7 +425,6 @@ en:
     proposal:
       already_supported: Already supported
       closed_support: Closed support
-      closing: The process of creating new proposals will close the next April 9th at 23:59 h.
       comments:
         one: 1 comment
         other: "%{count} comments"

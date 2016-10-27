@@ -428,7 +428,6 @@ ca:
     proposal:
       already_supported: Donant suport
       closed_support: Suports tancats
-      closing: S'està estudiant la viabilitat d'aquesta proposta i la possible inclusió al Pla Municipal 2016-2019. Al llarg de les pròximes setmanes aquesta proposta rebrà una resposta de l'Ajuntament de Barcelona. Recorda que pots participar en els debats d'avaluació del procés participatiu del Pla Municipal.
       comments:
         one: 1 Comentari
         other: "%{count} Comentaris"
