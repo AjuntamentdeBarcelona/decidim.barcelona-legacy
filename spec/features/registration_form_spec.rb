@@ -30,6 +30,7 @@ feature 'Registration form' do
     fill_in "user_password", with: 'test1234'
     fill_in "user_password_confirmation", with: 'test1234'
     check 'user_terms_of_service'
+    check 'notifications_by_default'
     click_button("Register")
 
     expect(page).to have_content("Thank you for registering with the website")
