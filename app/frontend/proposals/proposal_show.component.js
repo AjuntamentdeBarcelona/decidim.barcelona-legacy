@@ -210,13 +210,13 @@ class ProposalShow extends Component {
   }
 
   renderBuildActionPlanButton(id) {
-    const { session, participatoryProcessId, stepId } = this.props;
+    const { session, participatoryProcess } = this.props;
 
     if (session.can_create_action_plan) {
       return (
         <span>
           <span>&nbsp;|&nbsp;</span>
-          <a href={`/${participatoryProcessId}/${stepId}/action_plans/build_from_proposal?proposal_id=${id}`}>
+          <a href={`/${participatoryProcess.id}/${participatoryProcess.step.id}/action_plans/build_from_proposal?proposal_id=${id}`}>
             { I18n.t('admin.actions.build_action_plan') }
           </a>
         </span>
@@ -251,11 +251,10 @@ class ProposalShow extends Component {
 }
 
 export default connect(
-  ({ session, proposal, participatoryProcessId, stepId, decidimIconsUrl }) => ({ 
+  ({ session, proposal, participatoryProcess, decidimIconsUrl }) => ({ 
     session,
     proposal,
-    participatoryProcessId,
-    stepId,
+    participatoryProcess,
     decidimIconsUrl
   }),
   actions
@@ -271,6 +270,5 @@ ProposalShow.propTypes = {
   fetchRelatedMeetings: PropTypes.func.isRequired,
   hideProposal: PropTypes.func.isRequired,
   hideProposalAuthor: PropTypes.func.isRequired,
-  stepId: PropTypes.string.isRequired,
-  participatoryProcessId: PropTypes.string.isRequired
+  participatoryProcess: PropTypes.object.isRequired
 };

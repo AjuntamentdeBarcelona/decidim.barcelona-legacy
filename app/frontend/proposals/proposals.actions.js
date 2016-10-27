@@ -17,9 +17,9 @@ export const FLAG_PROPOSAL          = 'FLAG_PROPOSAL';
 export const UNFLAG_PROPOSAL        = 'UNFLAG_PROPOSAL';
 
 export const fetchProposals = (options) => (dispatch, getState) => {
-  const { participatoryProcessId, stepId } = getState();
-  options['participatoryProcessId'] = participatoryProcessId;
-  options['stepId'] = stepId;
+  const { participatoryProcess } = getState();
+  options['participatoryProcessId'] = participatoryProcess.id;
+  options['stepId'] = participatoryProcess.step.id;
 
   const request = buildProposalsRequest(options);
 
@@ -53,9 +53,9 @@ export function updateProposal(proposalId, proposalParams) {
 }
 
 export const appendProposalsPage = (options) => (dispatch, getState) => {
-  const { participatoryProcessId, stepId } = getState();
-  options['participatoryProcessId'] = participatoryProcessId;
-  options['stepId'] = stepId;
+  const { participatoryProcess } = getState();
+  options['participatoryProcessId'] = participatoryProcess.id;
+  options['stepId'] = participatoryProcess.step.id;
 
   const request = buildProposalsRequest(options);
 

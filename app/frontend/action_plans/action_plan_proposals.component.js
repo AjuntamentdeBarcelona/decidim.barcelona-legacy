@@ -48,12 +48,12 @@ class ActionPlanProposals extends Component {
   }
 
   renderSearchProposalsInput(id, actionPlansProposals) {
-    const {editable, addActionPlanProposal, participatoryProcessId} = this.props;
+    const {editable, addActionPlanProposal, participatoryProcess} = this.props;
 
     if (editable) {
       return (
         <ProposalsAutocompleteInput 
-          proposalsApiUrl={`/api/proposals?participatory_process_id=${participatoryProcessId}`}
+          proposalsApiUrl={`/api/proposals?participatory_process_id=${participatoryProcess.id}`}
           excludeIds={actionPlansProposals.map(a => a.proposal.id)}
           onAddProposal={proposal => addActionPlanProposal(id, proposal)} />
       );
@@ -64,13 +64,13 @@ class ActionPlanProposals extends Component {
 }
 
 export default connect(
-  ({ participatoryProcessId }) => ({ participatoryProcessId }),
+  ({ participatoryProcess }) => ({ participatoryProcess }),
   actions
 )(ActionPlanProposals);
 
 ActionPlanProposals.propTypes = {
   actionPlan: PropTypes.object,
-  participatoryProcessId: PropTypes.string.isRequired,
+  participatoryProcess: PropTypes.object.isRequired,
   fetchActionPlanProposals: PropTypes.func.isRequired,
   editable: PropTypes.bool,
   removeActionPlanProposal: PropTypes.func.isRequired,

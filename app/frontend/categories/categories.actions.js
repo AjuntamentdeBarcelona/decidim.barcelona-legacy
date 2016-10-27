@@ -5,12 +5,12 @@ import { API_BASE_URL } from '../proposals/proposals.actions';
 export const FETCH_CATEGORIES = 'FETCH_CATEGORIES';
 
 export const fetchCategories = () => (dispatch, getState) => {
-  const { participatoryProcessId } = getState();
+  const { participatoryProcess } = getState();
   const promise =  new Promise((resolve, reject) => {
-    axios.get(`${API_BASE_URL}/categories.json?participatory_process_id=${participatoryProcessId}`).then(({ data }) => {
+    axios.get(`${API_BASE_URL}/categories.json?participatory_process_id=${participatoryProcess.id}`).then(({ data }) => {
       let { categories } = data;
 
-      axios.get(`${API_BASE_URL}/subcategories.json?participatory_process_id=${participatoryProcessId}`).then(({ data }) => {
+      axios.get(`${API_BASE_URL}/subcategories.json?participatory_process_id=${participatoryProcess.id}`).then(({ data }) => {
         let { subcategories } = data;
 
         categories = categories.map(category => ({

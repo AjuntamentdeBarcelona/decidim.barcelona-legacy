@@ -17,9 +17,9 @@ module HasParticipatoryProcess
 
     def participatory_process_step
       return unless participatory_process
-      step = participatory_process.steps.find(params[:step_id])
-      raise "Not authorized" unless step.enabled?
-      step
+      @participatory_process_step = participatory_process.steps.find(params[:step_id])
+      raise "Not authorized" unless @participatory_process_step.enabled?
+      @participatory_process_step
     end
   end
 end

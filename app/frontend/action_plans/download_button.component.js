@@ -25,6 +25,6 @@ const DownloadButton = (props) => (
 )
 
 export default connect(
-  ({ participatoryProcessId }) => ({ participatoryProcessId }),
+  ({ participatoryProcess }) => ({ participatoryProcess }),
   null
 )(DownloadButton);

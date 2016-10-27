@@ -26,16 +26,12 @@ const middlewares = [ReduxPromise, ReduxThunk];
 // }
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
-function createReducers(sessionState, participatoryProcessIdState, stepIdState, decidimIconsUrlState) {
+function createReducers(sessionState, participatoryProcessState, stepIdState, decidimIconsUrlState) {
   let session = function (state = sessionState) {
     return state;
   };
 
-  let participatoryProcessId = function (state = participatoryProcessIdState) {
-    return state;
-  };
-
-  let stepId = function (state = stepIdState) {
+  let participatoryProcess = function (state = participatoryProcessState) {
     return state;
   };
 
@@ -47,8 +43,7 @@ function createReducers(sessionState, participatoryProcessIdState, stepIdState, 
     session,
     order,
     pagination,
-    participatoryProcessId,
-    stepId,
+    participatoryProcess,
     decidimIconsUrl,
     actionPlan,
     categories,
@@ -62,8 +57,7 @@ export default class ActionPlanApp extends Component {
     return (
       <Provider 
       store={createStoreWithMiddleware(createReducers(this.props.session,
-                                                      this.props.participatory_process_id,
-                                                      this.props.step_id,
+                                                      this.props.participatory_process,
                                                       this.props.decidim_icons_url))}>
 
         <ActionPlanShow actionPlanId={this.props.actionPlanId} />
@@ -75,7 +69,6 @@ export default class ActionPlanApp extends Component {
 ActionPlanApp.propTypes = {
   session: PropTypes.object.isRequired,
   actionPlanId: PropTypes.string.isRequired,
-  participatory_process_id: PropTypes.string.isRequired,
-  step_id: PropTypes.string.isRequired,
+  participatory_process: PropTypes.object.isRequired,
   decidim_icons_url: PropTypes.string.isRequired
 };
