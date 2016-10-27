@@ -622,12 +622,14 @@ es:
         title-5: Citas presenciales
       subhero-1:
         button: Regístrate
-        line-1: 'decidim.barcelona: la plataforma de participación de Barcelona.'
-        line-2: Entra, participa y decide.
+        line-1: Bienvenido a la plataforma de participación de Barcelona.
+        line-2: Contruyamos una ciudad más abierta, transparente y colaborativa.
+        line-3: Entra, participa y decide.
       subhero-2:
         button: Regístrate
-        line-1: 'decidim.barcelona: la platafroma de participación de Barcelona.'
-        line-2: Entra, participa y decide.
+        line-1: Bienvenido a la plataforma de participación de Barcelona.
+        line-2: Contruyamos una ciudad más abierta, transparente y colaborativa.
+        line-3: Entra, participa y decide.
     welcome:
       abilities:
         debates: Participar en debates

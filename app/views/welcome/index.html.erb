@@ -5,7 +5,8 @@
       <div class="row">
         <div class="columns small-centered large-10">
           <h1 class="text-highlight heading1 hero-heading">
-            <%= t ".hero.line-1" %> <br><%= t ".hero.line-2" %>
+            <%= t ".hero.line-1" %> <br>
+            <%= t ".hero.line-2" %>
           </h1>
         </div>
       </div>
@@ -21,7 +22,8 @@
       <div class="columns small-centered large-10">
         <h2 class="heading3">
           <%= t ".subhero-1.line-1" %><br>
-          <%= t ".subhero-1.line-2" %>
+          <%= t ".subhero-1.line-2" %><br>
+          <%= t ".subhero-1.line-3" %>
         </h2>
         <%= link_to new_user_registration_path, class: "button--sc link subhero-cta" do %>
           <%= t ".subhero-1.button" %>
@@ -166,7 +168,10 @@
     <div class="row">
       <div class="columns small-centered large-10">
         <h4 class="heading2"><%= t ".subhero-2.line-1" %></h4>
-        <h5 class="heading4"><%= t ".subhero-2.line-2" %></h5>
+        <h5 class="heading4">
+          <%= t ".subhero-2.line-2" %> <br>
+          <%= t ".subhero-2.line-3" %>
+        </h5>
         <%= link_to new_user_registration_path, class: "button--sc link subhero-cta" do %>
           <%= t ".subhero-2.button" %>
           <%= icon "chevron-right", aria_hidden: true %>
