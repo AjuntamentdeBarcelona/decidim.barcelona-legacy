@@ -9,7 +9,7 @@ export default class CategoryPicker extends Component {
     this.state = {
       selectedCategoryId: props.selectedCategoryId,
       selectedSubcategoryId: props.selectedSubcategoryId,
-      subcategories: props.subcategories.sort( () => Math.round(Math.random())-0.5 )
+      subcategories: props.subcategories
     }
   }
 
