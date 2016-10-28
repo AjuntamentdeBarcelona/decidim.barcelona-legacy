@@ -21,7 +21,7 @@ class ProposalVoteButton extends Component {
     const { participatoryProcess } = this.props;
     const { step } = participatoryProcess;
     const { flags } = step;
-    const votesDisabled = flags.proposal_readonly || !flags.proposal_enable_votes;
+    const votesDisabled = flags.proposal_readonly || !flags.enable_proposal_votes;
 
     if (votesDisabled) {
       return (
