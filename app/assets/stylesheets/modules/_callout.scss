@@ -1,8 +1,9 @@
 /* Callout foundation overwrites*/
 
 .callout{
+  margin-bottom: 0;
+
   &.primary{
-    background: $light-gray;
     border-color: $medium-gray;
     border-left: 8px solid $primary;
   }

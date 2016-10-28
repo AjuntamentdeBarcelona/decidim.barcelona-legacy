@@ -1,5 +1,5 @@
 <% if resource.errors.any? %>
-  <div id="error_explanation" class="flash callout primary">
+  <div id="error_explanation" class="flash callout alert">
     <strong>
       <%= pluralize resource.errors.count, t("form.error"), t("form.errors") %>
 

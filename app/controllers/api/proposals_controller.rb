@@ -30,13 +30,13 @@ class Api::ProposalsController < Api::ApplicationController
           prev_page: @proposals.prev_page,
           total_pages: @proposals.total_pages,
           total_count: @proposals.total_count
-        }
+        }, step_id: params[:step_id]
       }
     end
   end
 
   def show
-    render json: @proposal
+    render json: @proposal, step_id: params[:step_id]
   end
 
   def update
