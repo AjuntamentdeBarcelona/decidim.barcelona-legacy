@@ -47,8 +47,8 @@ export function updateActionPlan(id, attributes) {
 }
 
 export const fetchActionPlans = (options) => (dispatch, getState) => {
-  const { participatoryProcessId } = getState();
-  options['participatoryProcessId'] = participatoryProcessId;
+  const { participatoryProcess } = getState();
+  options['participatoryProcessId'] = participatoryProcess.id;
 
   const request = buildActionPlansRequest(options);
 
@@ -70,8 +70,8 @@ export function fetchActionPlan(actionPlanId) {
 }
 
 export const appendActionPlansPage = (options) => (dispatch, getState) => {
-  const { participatoryProcessId } = getState();
-  options['participatoryProcessId'] = participatoryProcessId;
+  const { participatoryProcess } = getState();
+  options['participatoryProcessId'] = participatoryProcess.id;
 
   const request = buildActionPlansRequest(options);
 

@@ -14,8 +14,12 @@ export default class FilterMeta extends Component {
   }
 
   renderMetaScope() {
-    const { scope, district, useServerLinks, namespace } = this.props;
+    const { scope, district, useServerLinks, namespace, disableScope } = this.props;
 
+    if (disableScope) {
+      return null;
+    }
+    
     if (scope === "city") {
       if (useServerLinks) {
         return (
@@ -62,6 +66,7 @@ export default class FilterMeta extends Component {
 }
 
 FilterMeta.propTypes = {
+  disableScope: PropTypes.bool,
   scope: PropTypes.string.isRequired,
   district: PropTypes.object,
   category: PropTypes.object,

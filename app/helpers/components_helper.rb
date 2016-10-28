@@ -8,11 +8,19 @@ module ComponentsHelper
         },
         is_organization: current_user && current_user.organization?,
         is_reviewer: current_user && current_user.reviewer?,
-        can_create_new_proposals: @participatory_process && !@participatory_process.feature_enabled?(:proposals_readonly),
+        can_create_new_proposals: @participatory_process && !@participatory_process_step.feature_enabled?(:proposals_readonly),
         can_create_action_plan: can?(:create, ActionPlan)
       },
-      participatory_process_id: @participatory_process_id,
-      step_id: params[:step_id] || @participatory_process.active_step.id,
+      participatory_process: {
+        id: @participatory_process_id,
+        step: {
+          id: @participatory_process_step.id,
+          flags: Step::FLAGS.inject({}) do |acc, step|
+            acc[step] = @participatory_process.feature_enabled? step
+            acc
+          end
+        }
+      },
       decidim_icons_url: asset_url("decidim-icons.svg")
     })
     react_component("#{name}App", props)

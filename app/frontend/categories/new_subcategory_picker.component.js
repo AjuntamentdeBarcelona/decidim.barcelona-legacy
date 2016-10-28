@@ -3,7 +3,7 @@ import { Component, PropTypes } from 'react';
 
 class SubcategoryPicker extends Component {
   subcategories () {
-    const { subcategories, subcategory, participatoryProcessId } = this.props;
+    const { subcategories, subcategory, participatoryProcess } = this.props;
 
     return subcategories.map(sc => {
       var selected = subcategory && sc.id === subcategory.id;
@@ -15,7 +15,7 @@ class SubcategoryPicker extends Component {
         <li className={classNames.join(' ')}
             key={sc.id}
             onClick={() => this.select(sc)}>
-          <span className="name">{sc.name} <a href={`/${participatoryProcessId}/categories#subcategory_${sc.id}`} target="_blank"> <i className="fa fa-info-circle"></i></a></span>
+          <span className="name">{sc.name} <a href={`/${participatoryProcess.id}/categories#subcategory_${sc.id}`} target="_blank"> <i className="fa fa-info-circle"></i></a></span>
         </li>
       );
     });
@@ -43,10 +43,10 @@ SubcategoryPicker.propTypes = {
   subcategory: PropTypes.object,
   subcategories: PropTypes.array.isRequired,
   onSelect: PropTypes.func.isRequired,
-  participatoryProcessId: PropTypes.string.isRequired
+  participatoryProcess: PropTypes.object.isRequired
 };
 
 export default connect(
-  ({ participatoryProcessId }) => ({ participatoryProcessId }),
+  ({ participatoryProcess }) => ({ participatoryProcess }),
   null
 )(SubcategoryPicker);

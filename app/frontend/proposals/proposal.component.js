@@ -20,8 +20,10 @@ class Proposal extends Component {
   }
 
   render() {
-    const { proposal } = this.props;
-    
+    const { proposal, participatoryProcess } = this.props;
+    const { step } = participatoryProcess;
+    const { flags } = step;
+
     return (
       <div id={`proposal_${proposal.id}`} className="proposal column">
         <article className="card card--proposal">
@@ -43,12 +45,12 @@ class Proposal extends Component {
               scope={ proposal.scope_ }
               district={ proposal.district }
               category={ proposal.category }
-              subcategory={ proposal.subcategory } />
+              subcategory={ proposal.subcategory } 
+              disableScope={ !flags.enable_proposal_scope } />
           </div>
           <div className="card__footer">
             <ProposalVoteBox 
               proposalId={ proposal.id }
-              closed={ proposal.closed }
               voted={ proposal.voted } 
               votable={ proposal.votable } 
               totalVotes={ proposal.total_votes } />
@@ -59,9 +61,13 @@ class Proposal extends Component {
   }
 }
 
-export default connect(null, actions)(Proposal);
+export default connect(
+  ({ participatoryProcess }) => ({ participatoryProcess }), 
+  actions
+)(Proposal);
 
 Proposal.propTypes = {
   proposal: PropTypes.object.isRequired,
-  fetchAnswer: PropTypes.func.isRequired
+  fetchAnswer: PropTypes.func.isRequired,
+  participatoryProcess: PropTypes.object.isRequired
 };

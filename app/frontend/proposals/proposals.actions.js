@@ -17,9 +17,9 @@ export const FLAG_PROPOSAL          = 'FLAG_PROPOSAL';
 export const UNFLAG_PROPOSAL        = 'UNFLAG_PROPOSAL';
 
 export const fetchProposals = (options) => (dispatch, getState) => {
-  const { participatoryProcessId, stepId } = getState();
-  options['participatoryProcessId'] = participatoryProcessId;
-  options['stepId'] = stepId;
+  const { participatoryProcess } = getState();
+  options['participatoryProcessId'] = participatoryProcess.id;
+  options['stepId'] = participatoryProcess.step.id;
 
   const request = buildProposalsRequest(options);
 
@@ -32,8 +32,8 @@ export const fetchProposals = (options) => (dispatch, getState) => {
 }
 
 export const fetchProposal = (proposalId) => (dispatch, getState) => {
-  const { stepId } = getState();
-  const request = axios.get(`${API_BASE_URL}/proposals/${proposalId}.json?step_id=${stepId}`);
+  const { participatoryProcess } = getState();
+  const request = axios.get(`${API_BASE_URL}/proposals/${proposalId}.json?step_id=${participatoryProcess.step.id}`);
 
   dispatch({
     type: FETCH_PROPOSAL,
@@ -53,9 +53,9 @@ export function updateProposal(proposalId, proposalParams) {
 }
 
 export const appendProposalsPage = (options) => (dispatch, getState) => {
-  const { participatoryProcessId, stepId } = getState();
-  options['participatoryProcessId'] = participatoryProcessId;
-  options['stepId'] = stepId;
+  const { participatoryProcess } = getState();
+  options['participatoryProcessId'] = participatoryProcess.id;
+  options['stepId'] = participatoryProcess.step.id;
 
   const request = buildProposalsRequest(options);
 
@@ -68,8 +68,8 @@ export const appendProposalsPage = (options) => (dispatch, getState) => {
 }
 
 export const voteProposal = (proposalId) => (dispatch, getState) => {
-  const { stepId } = getState();
-  const request = axios.post(`${API_BASE_URL}/proposals/${proposalId}/votes.json?step_id=${stepId}`);
+  const { participatoryProcess } = getState();
+  const request = axios.post(`${API_BASE_URL}/proposals/${proposalId}/votes.json?step_id=${participatoryProcess.step.id}`);
 
   dispatch({
     type: VOTE_PROPOSAL,

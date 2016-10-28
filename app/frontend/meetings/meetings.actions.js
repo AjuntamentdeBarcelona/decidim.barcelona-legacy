@@ -5,8 +5,8 @@ export const FETCH_MEETINGS       = 'FETCH_MEETINGS';
 export const APPEND_MEETINGS_PAGE = 'APPEND_MEETINGS_PAGE';
 
 export const fetchMeetings = (options) => (dispatch, getState) => {
-  const { participatoryProcessId } = getState();
-  options['participatoryProcessId'] = participatoryProcessId;
+  const { participatoryProcess } = getState();
+  options['participatoryProcessId'] = participatoryProcess.id;
 
   const request = buildMeetingsRequest(options);
 

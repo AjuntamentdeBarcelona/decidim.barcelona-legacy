@@ -103,5 +103,5 @@ CategoryPicker.propTypes = {
   categories: PropTypes.array.isRequired,
   categoryInputName: PropTypes.string.isRequired,
   subcategoryInputName: PropTypes.string.isRequired,
-  participatoryProcessId: PropTypes.string.isRequired
+  participatoryProcessId: PropTypes.object.isRequired
 };

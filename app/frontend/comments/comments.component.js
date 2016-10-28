@@ -32,14 +32,16 @@ class Comments extends Component {
   }
 
   render() {
-    const { commentable } = this.props;
-    const { closed } = commentable;
+    const { commentable, participatoryProcess } = this.props;
+    const { step } = participatoryProcess;
+    const { flags } = step;
+    const commentsDisabled = flags.proposals_readonly;
 
     return (
       <section style={{ position: 'relative', minHeight: '30em' }} className="comments">
         {
           (() => {
-            if (!closed) {
+            if (!commentsDisabled) {
               return (
                 <div className="add-coment">
                   <h5 className="section-heading">{I18n.t('components.comments.new_comment.title')}</h5>
@@ -193,7 +195,7 @@ class Comments extends Component {
 }
 
 function mapStateToProps(state, { commentable }) {
-  let commentableType = commentable.type.charAt(0).toLowerCase() + commentable.type.slice(1);
+  const commentableType = commentable.type.charAt(0).toLowerCase() + commentable.type.slice(1);
   const resource = state[commentableType]; //actionplan
   const comments = resource && resource.comments;
 
@@ -201,6 +203,8 @@ function mapStateToProps(state, { commentable }) {
     session: state.session,
     pagination: state.pagination,
     order: state.order,
+    participatoryProcess: state.participatoryProcess,
+    commentableType,
     comments
   };
 }
@@ -208,6 +212,7 @@ function mapStateToProps(state, { commentable }) {
 export default connect(mapStateToProps, actions)(Comments);
 
 Comments.propTypes = {
+  participatoryProcess: PropTypes.object.isRequired,
   order: PropTypes.string.isRequired,
   commentable: PropTypes.object.isRequired,
   session: PropTypes.object.isRequired,
