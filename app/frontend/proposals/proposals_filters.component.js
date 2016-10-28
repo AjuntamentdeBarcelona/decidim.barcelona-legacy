@@ -4,7 +4,6 @@ import { connect }                  from 'react-redux';
 import * as actions                 from '../filters/filters.actions';
 
 import SearchFilter                 from '../filters/search_filter.component';
-import ScopeFilterOptionGroup       from '../filters/scope_filter_option_group.component';
 import CategoryFilterOptionGroup    from '../filters/category_filter_option_group.component';
 import SubcategoryFilterOptionGroup from '../filters/subcategory_filter_option_group.component';
 import ReviewerFilter               from '../filters/reviewer_filter.component';
