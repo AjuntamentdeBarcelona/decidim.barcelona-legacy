@@ -42,7 +42,6 @@ class ProposalsFilters extends Component {
           <FilterOption filterName="rejected" />
         </FilterOptionGroup>
         <UserInteractionFilter />
-        <ScopeFilterOptionGroup />
         <CategoryFilterOptionGroup />
         <SubcategoryFilterOptionGroup />
         <FilterOptionGroup 
