@@ -51,26 +51,6 @@ feature 'Proposals' do
     expect(page).to have_selector('#proposals .proposal', count: 5)
   end
 
-  scenario 'Filtered Index', :js do
-    proposals = [
-      create(:proposal, participatory_process: participatory_process, title: 'Proposal with city scope 1', scope: 'city'),
-      create(:proposal, participatory_process: participatory_process, title: 'Proposal with district scope', district: 1, scope: 'district'),
-      create(:proposal, participatory_process: participatory_process, title: 'Proposal with city scope 2', scope: 'city')
-    ]
-
-    visit proposals_path(participatory_process_id: participatory_process,
-                         step_id: participatory_process.active_step)
-
-    check 'filter_scope_city'
-
-    expect(page).not_to have_selector('.loading-component')
-    expect(page).to have_selector('#proposals .proposal', count: 2)
-
-    expect(page).to have_content 'Proposal with city scope 1'
-    expect(page).to have_content 'Proposal with city scope 2'
-    expect(page).to_not have_content 'Proposal with district scope'
-  end
-
   scenario 'Show', :js do
     proposal = create(:proposal, participatory_process: participatory_process)
 
@@ -110,8 +90,6 @@ feature 'Proposals' do
 
     fill_in 'proposal_title', with: 'Help refugees'
     fill_in 'proposal_summary', with: 'In summary, what we want is...'
-    choose 'proposal_scope_district'
-    select 'Ciutat Vella', from: 'proposal_district'
     fill_in 'proposal_external_url', with: 'http://rescue.org/refugees'
     fill_in 'proposal_video_url', with: 'http://youtube.com'
     fill_in 'proposal_responsible_name', with: 'Isabel Garcia'
