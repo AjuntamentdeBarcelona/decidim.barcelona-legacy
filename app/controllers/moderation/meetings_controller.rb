@@ -78,7 +78,7 @@ class Moderation::MeetingsController < Moderation::BaseController
     @resource.participatory_process_id = @participatory_process.id if @participatory_process.present?
 
     if @resource.save
-      redirect_to moderation_meetings_url, notice: t('flash.actions.create.notice', resource_name: "#{resource_name.capitalize}")
+      redirect_to moderation_meetings_url(participatory_process_id: @participatory_process.id), notice: t('flash.actions.create.notice', resource_name: "#{resource_name.capitalize}")
     else
       set_resource_instance
       render :new
@@ -92,7 +92,7 @@ class Moderation::MeetingsController < Moderation::BaseController
   def update
     resource.assign_attributes(strong_params)
     if resource.save
-      redirect_to moderation_meetings_url, notice: t('flash.actions.update.notice', resource_name: "#{resource_name.capitalize}")
+      redirect_to moderation_meetings_url(participatory_process_id: resource.participatory_process.id), notice: t('flash.actions.update.notice', resource_name: "#{resource_name.capitalize}")
     else
       @participatory_process = resource.participatory_process
       set_resource_instance
@@ -101,8 +101,9 @@ class Moderation::MeetingsController < Moderation::BaseController
   end
 
   def destroy
+    @participatory_process = resource.participatory_process
     resource.destroy
-    redirect_to moderation_meetings_url, notice: t('flash.actions.destroy.notice', resource_name: "#{resource_name.capitalize}")
+    redirect_to moderation_meetings_url(participatory_process_id: @participatory_process.id), notice: t('flash.actions.destroy.notice', resource_name: "#{resource_name.capitalize}")
   end
 
   private

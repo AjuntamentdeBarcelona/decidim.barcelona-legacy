@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Moderate meetings' do
+feature 'Moderate meetings', :js do
   let!(:participatory_process) { create(:participatory_process) }
 
   before :each do
@@ -35,7 +35,7 @@ feature 'Moderate meetings' do
       page.find(".subcategory-#{@subcategory.id}").click
     end
 
-    scenario 'Create a meeting with valid values', :js do
+    scenario 'Create a meeting with valid values' do
       visit new_moderation_meeting_path(participatory_process_id: participatory_process)
 
       fill_in_meeting_form
@@ -49,7 +49,7 @@ feature 'Moderate meetings' do
       expect(page).to have_content @meeting_data[:end_at]
     end
 
-    scenario 'Create a meeting with some invalid values', :js do
+    scenario 'Create a meeting with some invalid values' do
       visit new_moderation_meeting_path(participatory_process_id: participatory_process)
 
       fill_in_meeting_form
@@ -64,17 +64,18 @@ feature 'Moderate meetings' do
 
     scenario 'List all meetings' do
       other_moderator = create(:moderator)
-      create(:meeting, title: "My meeting", author: @moderator)
-      create(:meeting, title: "Other meeting", author: other_moderator)
+      create(:meeting, participatory_process_id: participatory_process.id, title: "My meeting", author: @moderator)
+      create(:meeting, participatory_process_id: participatory_process.id, title: "Other meeting", author: other_moderator)
 
       visit moderation_meetings_path
+      select participatory_process.name, from: 'participatory_process_id'
 
       expect(page).to have_content "My meeting"
       expect(page).to have_content "Other meeting"
     end
 
-    scenario 'Update a meeting', :js do
-      meeting = create(:meeting, title: "My meeting", author: @moderator)
+    scenario 'Update a meeting' do
+      meeting = create(:meeting, participatory_process_id: participatory_process.id, title: "My meeting", author: @moderator)
       visit edit_moderation_meeting_path(meeting)
 
       fill_in 'meeting_title', with: "My updated meeting"
@@ -84,7 +85,7 @@ feature 'Moderate meetings' do
       expect(page).to have_content "My updated meeting"
     end
 
-    scenario 'Update a meeting with some invalid values', :js do
+    scenario 'Update a meeting with some invalid values' do
       meeting = create(:meeting, title: "My meeting", author: @moderator)
       visit edit_moderation_meeting_path(meeting)
 
@@ -98,9 +99,11 @@ feature 'Moderate meetings' do
 
 
     scenario "Upload an picture" do
-      create(:meeting, title: "My meeting", author: @moderator)
+      create(:meeting, participatory_process_id: participatory_process.id, title: "My meeting", author: @moderator)
 
       visit moderation_meetings_path
+      select participatory_process.name, from: 'participatory_process_id'
+
       click_link "Manage pictures"
 
       page.attach_file "meeting_picture[file]",
@@ -111,10 +114,12 @@ feature 'Moderate meetings' do
     end
 
     scenario "Destroy an picture" do
-      meeting = create(:meeting, title: "My meeting", author: @moderator)
+      meeting = create(:meeting, participatory_process_id: participatory_process.id, title: "My meeting", author: @moderator)
       create(:meeting_picture, meeting: meeting)
 
       visit moderation_meetings_path
+      select participatory_process.name, from: 'participatory_process_id'
+
       click_link "Manage pictures"
 
       within ".meeting-picture" do
@@ -132,10 +137,11 @@ feature 'Moderate meetings' do
     end
 
     scenario 'List all meetings' do 
-      create(:meeting, title: "My meeting")
-      create(:meeting, title: "Other meeting")
+      create(:meeting, participatory_process_id: participatory_process.id, title: "My meeting")
+      create(:meeting, participatory_process_id: participatory_process.id, title: "Other meeting")
 
       visit moderation_meetings_path
+      select participatory_process.name, from: 'participatory_process_id'
 
       expect(page).to have_content "My meeting"
       expect(page).to have_content "Other meeting"
@@ -146,11 +152,12 @@ feature 'Moderate meetings' do
     moderator = create(:moderator)
     login_as(moderator)
 
-    create(:meeting, title: "A meeting about dogs")
-    create(:meeting, title: "A meeting about cats")
+    create(:meeting, participatory_process_id: participatory_process.id, title: "A meeting about dogs")
+    create(:meeting, participatory_process_id: participatory_process.id, title: "A meeting about cats")
 
     visit moderation_meetings_path
-
+    select participatory_process.name, from: 'participatory_process_id'
+    sleep 1
     fill_in 'search', with: "dogs"
     click_button 'Search'
 
@@ -158,7 +165,7 @@ feature 'Moderate meetings' do
     expect(page).to_not have_content "A meeting about cats"
   end
 
-  scenario 'Edit meetings proposals', :js do
+  scenario 'Edit meetings proposals' do
     admin = create(:administrator)
     login_as(admin)
 
@@ -166,6 +173,7 @@ feature 'Moderate meetings' do
     create(:meeting, participatory_process: participatory_process, title: "My meeting")
 
     visit moderation_meetings_path
+    select participatory_process.name, from: 'participatory_process_id'
 
     click_link 'Edit'
 
@@ -180,15 +188,17 @@ feature 'Moderate meetings' do
     expect(page).to have_content "Meeting updated successfully."
   end
 
-  scenario 'Close a meeting', :js do 
+  scenario 'Close a meeting' do 
     moderator = create(:moderator)
     login_as(moderator)
 
     proposal_1 = create(:proposal, title: "A proposal to discuss #1")
     proposal_2 = create(:proposal, title: "A proposal to discuss #2")
-    create(:meeting, title: "A finished meeting", proposals: [proposal_1, proposal_2])
+    create(:meeting, participatory_process_id: participatory_process.id, title: "A finished meeting", proposals: [proposal_1, proposal_2])
 
     visit moderation_meetings_path
+    select participatory_process.name, from: 'participatory_process_id'
+
     click_link 'Close'
 
     fill_in_editor 'meeting_close_report', with: 'We discussed a few proposals and decided some things'
@@ -202,15 +212,17 @@ feature 'Moderate meetings' do
     expect(page).to_not have_content "A finished meeting"
   end
 
-  scenario 'Delete a meeting', :js do 
+  scenario 'Delete a meeting' do 
     moderator = create(:moderator)
     login_as(moderator)
 
     proposal_1 = create(:proposal, title: "A proposal to discuss #1")
     proposal_2 = create(:proposal, title: "A proposal to discuss #2")
-    create(:meeting, title: "A meeting", proposals: [proposal_1, proposal_2])
+    create(:meeting, participatory_process_id: participatory_process.id, title: "A meeting", proposals: [proposal_1, proposal_2])
 
     visit moderation_meetings_path
+    select participatory_process.name, from: 'participatory_process_id'
+
     click_link 'Delete'
 
     expect(page).to have_content "Meeting deleted successfully."
@@ -225,6 +237,8 @@ feature 'Moderate meetings' do
     create(:proposal, title: "A proposal to discuss #2")
 
     visit moderation_meetings_path
+    select participatory_process.name, from: 'participatory_process_id'
+
     expect{ click_link "Download XLS report" }.not_to raise_error
   end
 end
