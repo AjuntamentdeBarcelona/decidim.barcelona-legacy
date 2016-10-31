@@ -91,14 +91,7 @@
       <% if participatory_process_step %>
         <div class="row column">
           <div class="process-nav">
-            <button class="process-nav__trigger hide-for-medium"
-                    data-toggle="process-nav-content">
-              <%= icon "caret-buttom", aria_label: "Desplegar", role: "img" %>
-              <div class="process-nav__link">
-                <%= icon "info" %>
-                <span>Informació</span>
-              </div>
-            </button>
+            <%= render partial: "layouts/active_page_button" %>
             <div class="row column process-nav__content" id="process-nav-content"
                 data-toggler=".is-active">
               <ul>

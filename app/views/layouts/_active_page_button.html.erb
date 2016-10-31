@@ -1,0 +1,52 @@
+<button class="process-nav__trigger hide-for-medium" data-toggle="process-nav-content">
+  <%= icon "caret-bottom", class: "icon--small process-nav__trigger__icon", aria_label: "Desplegar", role: "img" %>
+
+  <% if request.path == url_for(controller: :steps, action: :show) %>
+    <div class="process-nav__link">
+      <%= icon "information" %>
+      <span><%= t("layouts.header.more_information") %></span>
+    </div>
+  <% end %>
+
+  <% if request.path == url_for(controller: :proposals) %>
+    <div class="process-nav__link">
+      <%= icon "proposals" %>
+      <span><%= t("layouts.header.proposals") %></span>
+    </div>
+  <% end %>
+
+  <% if request.path == action_plans_path(participatory_process_id: @participatory_process.slug) %>
+    <div class="process-nav__link">
+      <%= icon "proposals" %>
+      <span><%= t("layouts.header.action_plans") %></span>
+    </div>
+  <% end %>
+
+  <% if request.path == meetings_path(participatory_process_id: @participatory_process.slug) %>
+    <div class="process-nav__link">
+      <%= icon "meetings" %>
+      <span><%= t("layouts.header.meetings") %></span>
+    </div>
+  <% end %>
+
+  <% if request.path == debates_path(participatory_process_id: @participatory_process.slug) %>
+    <div class="process-nav__link">
+      <%= icon "debates" %>
+      <span><%= t("layouts.header.debates") %></span>
+    </div>
+  <% end %>
+
+  <% if request.path == dataviz_index_path(participatory_process_id: @participatory_process.slug) %>
+    <div class="process-nav__link">
+      <%= icon "information" %>
+      <span><%= t("dataviz.title") %></span>
+    </div>
+  <% end %>
+
+  <% if request.path == categories_path(participatory_process_id: @participatory_process.slug) %>
+    <div class="process-nav__link">
+      <%= icon "information" %>
+      <span><%= t("layouts.header.categories") %></span>
+    </div>
+  <% end %>
+</button>
