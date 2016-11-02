@@ -111,7 +111,7 @@ es:
     order_selector:
       title: Ordenar por
     proposal_action_plans:
-      title: 'Propuesta recogida en los siguientes resultados:'
+      title: 'Propuesta recogida en las siguientes actuaciones:'
     proposal_show:
       share: Compartir propuesta
     proposal_status_badge:

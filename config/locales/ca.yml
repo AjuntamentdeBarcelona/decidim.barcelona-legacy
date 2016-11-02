@@ -111,7 +111,7 @@ ca:
     order_selector:
       title: Ordenar per
     proposal_action_plans:
-      title: 'Proposta recollida als següents resultats:'
+      title: 'Proposta recollida a les següents actuacions:'
     proposal_show:
       share: Compartir proposta
     proposal_status_badge:
