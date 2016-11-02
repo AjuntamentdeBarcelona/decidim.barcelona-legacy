@@ -1,0 +1,17 @@
+<% if show_new_terms_and_conditions? %>
+  <div class="reveal" id="new_terms" data-close-on-esc="false" data-close-on-click="false">
+    <div class="reveal__header">
+      <h3 class="reveal__title"><%= t('.new_terms.title') %></h3>
+    </div>
+
+    <p><%= t(".new_terms.content", url: page_path("conditions")).html_safe %></p>
+
+    <div style="text-align: center">
+      <button class="close button success" data-url="<%= accept_new_terms_path format: :json %>">
+        <%= t(".new_terms.accept") %>
+      </button>
+      <br />
+      <%= link_to t(".new_terms.reject"), users_registrations_delete_form_path %>
+    </div>
+  </div>
+<% end %>

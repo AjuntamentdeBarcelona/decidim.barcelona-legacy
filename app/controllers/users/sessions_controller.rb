@@ -3,13 +3,9 @@ class Users::SessionsController < Devise::SessionsController
 
   skip_before_action :ensure_signup_complete, only: [:destroy]
 
-  def create
-    super do |resource|
-      if !resource.new_terms_shown
-        flash[:alert] = I18n.t("devise.sessions.new_terms", url: page_path("conditions")).html_safe
-        resource.update_attribute(:new_terms_shown, true)
-      end
-    end
+  def accept_new_terms
+    current_user && current_user.update_attribute(:hide_new_terms, true)
+    render nothing: true
   end
 
   private

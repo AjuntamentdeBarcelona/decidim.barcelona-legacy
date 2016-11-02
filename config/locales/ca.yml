@@ -221,6 +221,12 @@ ca:
       accessibility: Accessibilitat
       census_terms: Termes d'ús del padró
       conditions: Condicions generals
+    new_terms_popup:
+      new_terms:
+        accept: He llegit i accepto els nous termes i condicions i vull seguir navegant a la nova plataforma
+        content: Benvingut al nou decidim.barcelona, la pàgina on trobaras tota la informació sobre els processos participiatius de la ciutat de Barcelona. En conseqüència hem creat uns nous <a target="_blank" href="%{url}">termes i condicions</a>. Si segueixes navegant en aquesta pàgina significa que acceptes els nous <a target="_blank" href="%{url}">termes i condicions</a>. En cas contrari hauràs de donar-te de baixa.
+        reject: No accepto els nous termes i condicions, vull donar-me de baixa
+        title: Nous termes i condicions
     participatory_process:
       help: Ajuda
       process_title: El procés
@@ -623,12 +629,12 @@ ca:
       subhero-1:
         button: Registra't
         line-1: Benvingut a la plataforma de participació de Barcelona.
-        line-2: Construïm una ciutat més oberta, transparent i col·laborativa. 
+        line-2: Construïm una ciutat més oberta, transparent i col·laborativa.
         line-3: Entra, participa i decideix
       subhero-2:
         button: Registra't
         line-1: Benvingut a la plataforma de participació de Barcelona.
-        line-2: Construïm una ciutat més oberta, transparent i col·laborativa. 
+        line-2: Construïm una ciutat més oberta, transparent i col·laborativa.
         line-3: Entra, participa i decideix
     welcome:
       abilities:

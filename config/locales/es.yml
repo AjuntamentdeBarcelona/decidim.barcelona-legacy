@@ -221,6 +221,12 @@ es:
       accessibility: Accessibilidad
       census_terms: Términos de uso del padrón
       conditions: Condiciones y términos de uso
+    new_terms_popup:
+      new_terms:
+        accept: He leído y acepto los nuevos términos y condiciones y quiero seguir navegando en la nueva plataforma
+        content: Bienvenido al nuevo decidim.barcelona, la página donde encontraras toda la información sobre los procesos participativos de la ciudad de Barcelona. En consecuencia hemos creado los nuevos <a target="_blank" href="%{url}">términos y condiciones</a>. Si sigues navegando en esta página significa que aceptas los nuevos <a target="_blank" href="%{url}">términos y condiciones</a>. En caso contrario deberas darte de baja.
+        reject: No acepto los nuevos términos y condiciones, quiero darme de baja
+        title: Nuevos términos y condiciones
     participatory_process:
       help: Ayuda
       process_title: El proceso

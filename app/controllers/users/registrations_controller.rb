@@ -4,7 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   prepend_before_action :authenticate_scope!, only: [:edit, :update, :destroy, :finish_signup, :do_finish_signup]
 
   def create
-    build_resource(sign_up_params.merge(new_terms_shown: true))
+    build_resource(sign_up_params.merge(hide_new_terms: true))
 
     if verify_recaptcha(model: resource)
       super
@@ -34,6 +34,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def do_finish_signup
     current_user.registering_with_oauth = false
+    current_user.hide_new_terms = true
+
     if current_user.update(sign_up_params)
       current_user.send_oauth_confirmation_instructions
       sign_in_and_redirect current_user, event: :authentication
