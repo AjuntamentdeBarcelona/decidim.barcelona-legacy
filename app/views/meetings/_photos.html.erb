@@ -1,11 +1,14 @@
 <% if @meeting.pictures.any? %>
-  <div class="gallery row meeting-pictures">
-    <% @meeting.pictures.each do |picture| %>
-      <div class="columns small-6 medium-4">
-        <%= link_to picture.file.url do %>
-        <img class="thumbnail" src="<%= picture.file.medium.url %>" />
-        <% end %>
-      </div>
-    <% end %>
+  <div class="section">
+    <h3 class="section-heading"><%= t('meetings.photos.title') %></h3>
+    <div class="gallery row meeting-pictures">
+      <% @meeting.pictures.each do |picture| %>
+        <div class="columns small-6 medium-4">
+          <%= link_to picture.file.url do %>
+          <img class="thumbnail" src="<%= picture.file.medium.url %>" />
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 <% end %>

@@ -1,38 +1,41 @@
 <% unless @meeting.proposals.empty? %>
-  <div class="meeting-proposals card card--action card--list">
-    <% @meeting.meeting_proposals.each do |meeting_proposal| %>
-      <div class="card--list__item">
-        <div class="card--list__text">
-          <%= link_to proposal_path(id: meeting_proposal.proposal) do %>
-            <%= icon "proposals", class: "card--list__icon", removeIconClass: true %>
-          <% end %>
-          <div>
-            <%= link_to proposal_path(id: meeting_proposal.proposal), class: 'card__link' do %>
-              <h5 class="card--list__heading">
-                <%= meeting_proposal.proposal.title %>
-              </h5>
+  <div class="section">
+    <h3 class="section-heading"><%= t("meetings.show.proposals_title") %></h3>
+    <div class="meeting-proposals card card--action card--list">
+      <% @meeting.meeting_proposals.each do |meeting_proposal| %>
+        <div class="card--list__item">
+          <div class="card--list__text">
+            <%= link_to proposal_path(id: meeting_proposal.proposal) do %>
+              <%= icon "proposals", class: "card--list__icon", removeIconClass: true %>
             <% end %>
-            <div class="author">
-              <% if !meeting_proposal.proposal.author || meeting_proposal.proposal.author.hidden? || meeting_proposal.proposal.author.erased? %>
-                <span class="bullet">&nbsp;&bull;&nbsp;</span>
-                <span class="author">
-                  <%= t("debates.show.author_deleted") %>
-                </span>
-              <% else %>
-                <%= link_to user_path(meeting_proposal.proposal.author), class: 'author__avatar' do %>
-                  <%= avatar_image(meeting_proposal.proposal.author, seed: meeting_proposal.proposal.author_id, size: 32, class: 'author-photo') %>
-                <% end %>
-                <%= link_to user_path(meeting_proposal.proposal.author), class: 'author__name' do %>
-                  <%= meeting_proposal.proposal.author.name %>
-                <% end %>
+            <div>
+              <%= link_to proposal_path(id: meeting_proposal.proposal), class: 'card__link' do %>
+                <h5 class="card--list__heading">
+                  <%= meeting_proposal.proposal.title %>
+                </h5>
               <% end %>
+              <div class="author">
+                <% if !meeting_proposal.proposal.author || meeting_proposal.proposal.author.hidden? || meeting_proposal.proposal.author.erased? %>
+                  <span class="bullet">&nbsp;&bull;&nbsp;</span>
+                  <span class="author">
+                    <%= t("debates.show.author_deleted") %>
+                  </span>
+                <% else %>
+                  <%= link_to user_path(meeting_proposal.proposal.author), class: 'author__avatar' do %>
+                    <%= avatar_image(meeting_proposal.proposal.author, seed: meeting_proposal.proposal.author_id, size: 32, class: 'author-photo') %>
+                  <% end %>
+                  <%= link_to user_path(meeting_proposal.proposal.author), class: 'author__name' do %>
+                    <%= meeting_proposal.proposal.author.name %>
+                  <% end %>
+                <% end %>
+              </div>
             </div>
           </div>
+          <div class="card--list__data">
+            <span class="card--list__data__number"><%= meeting_proposal.proposal.total_votes %></span>apoyos
+          </div>
         </div>
-        <div class="card--list__data">
-          <span class="card--list__data__number"><%= meeting_proposal.proposal.total_votes %></span>apoyos
-        </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 <% end %>
