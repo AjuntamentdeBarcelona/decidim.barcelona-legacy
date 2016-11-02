@@ -50,9 +50,18 @@ class Comment extends Component {
     const { author, ancestry } = comment;
 
     const authorUrl = author ? `/users/${author.id}` : '#';
+    const official = author ? author.official : false;
+
+    const cssClasses = classNames(
+      'comment',
+      {
+        'comment--nested': ancestry,
+        'comment--highlight': official
+      }
+    );
 
     return (
-      <article id={`comment_${comment.id}`} className={`comment ${ancestry ? 'comment--nested' : ''}`}>
+      <article id={`comment_${comment.id}`} className={cssClasses}>
         <div className="comment__header">
           <div className="author-data">
             <div className="author-data__main">
