@@ -11,6 +11,11 @@
         </div>
 
         <div class="small-12 column">
+          <%= label_tag "summary_#{locale}", t("steps.form.step_summary") %>
+          <%= rich_editor_tag "#{resource_name}[summary][#{locale}]", step.summary && step.summary[locale], maxlength: 10 %>
+        </div>
+
+        <div class="small-12 column">
           <%= label_tag "description_#{locale}", t("steps.form.step_description") %>
           <%= rich_editor_tag "#{resource_name}[description][#{locale}]", step.description && step.description[locale], maxlength: 10 %>
         </div>
