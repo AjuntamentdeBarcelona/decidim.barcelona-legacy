@@ -17,6 +17,7 @@
         <% if @current_filter.present? %>
           <input type="hidden" name="filter" value="<%= @current_filter %>" />
         <% end %>
+        <input type="hidden" name="participatory_process_id" value="<%= @participatory_process.try(:id) %>" />
       </div>
     </div>
     <% end %>

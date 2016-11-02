@@ -1,14 +1,15 @@
 # coding: utf-8
 require 'rails_helper'
 
-feature 'Admin categories' do
+feature 'Admin categories', :js do
+  let!(:participatory_process) { create(:participatory_process) }
 
   background do
     admin = create(:administrator)
     login_as(admin)
   end
 
-  scenario "Can create new categories", :js do
+  scenario "Can create new categories" do
     visit admin_categories_path
 
     click_link "Create axis"
@@ -27,10 +28,11 @@ feature 'Admin categories' do
     expect(page).to have_content("1. Axis 1")
   end
 
-  scenario "Edit an existing category", :js do
-    create(:category, name: { en: "My axis" })
+  scenario "Edit an existing category" do
+    create(:category, participatory_process_id: participatory_process.id, name: { en: "My axis" })
 
     visit admin_categories_path
+    select participatory_process.name, from: 'participatory_process_id'
 
     click_link "Edit"
 
@@ -43,9 +45,10 @@ feature 'Admin categories' do
   end
 
   scenario "Delete an existing category" do
-    create(:category, name: { en: "My axis" })
+    create(:category, participatory_process_id: participatory_process.id, name: { en: "My axis" })
 
     visit admin_categories_path
+    select participatory_process.name, from: 'participatory_process_id'
 
     click_link "Delete"
 
@@ -53,12 +56,14 @@ feature 'Admin categories' do
     expect(page).to_not have_content("My axis")
   end
 
-  scenario "Create a subcategory for an existing category", :js do
-    create(:category, name: { en: "My axis" }, position: 1)
+  scenario "Create a subcategory for an existing category" do
+    create(:category, participatory_process_id: participatory_process.id, name: { en: "My axis" }, position: 1)
 
     visit admin_categories_path
+    select participatory_process.name, from: 'participatory_process_id'
 
     click_link "View strategic lines"
+    sleep 1
 
     click_link "Create strategic line"
 
@@ -76,11 +81,12 @@ feature 'Admin categories' do
     expect(page).to have_content("1.1. Action line 1")
   end
 
-  scenario "Edit an existing subcategory", :js do
-    category = create(:category, name: { en: "My axis" })
+  scenario "Edit an existing subcategory" do
+    category = create(:category, participatory_process_id: participatory_process.id, name: { en: "My axis" })
     create(:subcategory, name: { en: "My action line" }, category_id: category.id)
 
     visit admin_categories_path
+    select participatory_process.name, from: 'participatory_process_id'
 
     click_link "View strategic lines"
 
@@ -97,12 +103,14 @@ feature 'Admin categories' do
   end
 
   scenario "Delete an existing subcategory" do
-    category = create(:category, name: { en: "My axis" })
+    category = create(:category, participatory_process_id: participatory_process.id, name: { en: "My axis" })
     create(:subcategory, name: { en: "My action line" }, category_id: category.id)
 
     visit admin_categories_path
+    select participatory_process.name, from: 'participatory_process_id'
 
     click_link "View strategic lines"
+    sleep 1
     click_link "Delete"
 
     expect(page).to have_content "Subcategory deleted successfully."

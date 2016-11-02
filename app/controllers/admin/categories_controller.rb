@@ -6,21 +6,33 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def index
-    @categories = @categories.page(params[:page])
+    @participatory_process = if params[:participatory_process_id].present?
+      ParticipatoryProcess.find(params[:participatory_process_id])
+    else
+      ParticipatoryProcess.first
+    end
+    @participatory_processes = ParticipatoryProcess.all
+    @categories = @participatory_process.categories.page(params[:page])
   end
 
   def new
+    @participatory_process =if params[:participatory_process_id].present?
+      ParticipatoryProcess.find(params[:participatory_process_id])
+    else
+      ParticipatoryProcess.first
+    end
     @category = Category.new({
       name: default_data_for_all_locales,
       description: default_data_for_all_locales
     })
+    @category.participatory_process = @participatory_process
   end
 
   def create
     @category = Category.new(strong_params)
 
     if @category.save
-      redirect_to admin_categories_url, notice: t('flash.actions.create.notice', resource_name: "Category")
+      redirect_to admin_categories_url(participatory_process_id: @category.participatory_process.id), notice: t('flash.actions.create.notice', resource_name: "Category")
     else
       render :new
     end
@@ -32,7 +44,7 @@ class Admin::CategoriesController < Admin::BaseController
   def update
     @category.assign_attributes(strong_params)
     if @category.save
-      redirect_to admin_categories_url, notice: t('flash.actions.update.notice', resource_name: "Category")
+      redirect_to admin_categories_url(participatory_process_id: @category.participatory_process.id), notice: t('flash.actions.update.notice', resource_name: "Category")
     else
       render :edit
     end
@@ -40,7 +52,7 @@ class Admin::CategoriesController < Admin::BaseController
 
   def destroy
     @category.destroy
-    redirect_to admin_categories_url, notice: t('flash.actions.destroy.notice', resource_name: "Category")
+    redirect_to admin_categories_url(participatory_process_id: @category.participatory_process.id), notice: t('flash.actions.destroy.notice', resource_name: "Category")
   end
 
   private
