@@ -108,19 +108,13 @@
           <%= render "shared/tags", taggable: @meeting, limit: 5 %>
         </div>
         <% if @meeting.closed? %>
-          <div class="section">
-            <h3 class="section-heading"><%= t('meetings.photos.title') %></h3>
-            <%= render 'photos' %>
-          </div>
+          <%= render 'photos' %>
           <div class="section">
             <h3 class="section-heading"><%= t('meetings.close_report.title') %></h3>
             <%= render 'close_report' %>
           </div>
         <% end %>
-        <div class="section">
-          <h3 class="section-heading"><%= t("meetings.show.proposals_title") %></h3>
-          <%= render 'proposals' %>
-        </div>
+        <%= render 'proposals' %>
       </div>
     </div>
   </div>
