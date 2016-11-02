@@ -37,14 +37,16 @@ class ProposalAnswerMessage extends Component {
           </div>
         );
       } else {
-        notice = (
-          <div className="section">
-            <div className="callout warning">
-              <h5>{ I18n.t("components.proposal_answer_message.rejected") }</h5>
-              { htmlToReact(message) }
+        if (message) {
+          notice = (
+            <div className="section">
+              <div className="callout warning">
+                <h5>{ I18n.t("components.proposal_answer_message.rejected") }</h5>
+                { htmlToReact(message) }
+              </div>
             </div>
-          </div>
-        );
+          );
+        }
       }
 
       return (
