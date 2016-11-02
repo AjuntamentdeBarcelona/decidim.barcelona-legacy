@@ -17,25 +17,12 @@
     <% end %>
     <div class="row column view-header">
       <h2 class="heading2"><%= @meeting.title %></h2>
-      <div class="author-data">
-        <% if !@meeting.author || @meeting.author.hidden? || @meeting.author.erased? %>
-          <span class="bullet">&nbsp;&bull;&nbsp;</span>
-          <span class="author">
-            <%= t("debates.show.author_deleted") %>
-          </span>
-        <% else %>
-          <div class="author-data__main">
-            <div class="author author--inline">
-              <a href="#" class="author__avatar">
-                <%= avatar_image(@meeting.author, seed: @meeting.author_id, size: 32, class: 'author-photo') %>
-              </a>
-              <%= l @meeting.created_at.to_date %>
-              <a href="#" class="author__name">
-                <%= @meeting.author.name %>
-              </a>
-            </div>
+      <div class="author-data" style="padding: 0">
+        <div class="author-data__main">
+          <div class="author author--inline">
+            <%= l @meeting.created_at.to_date %>
           </div>
-        <% end %>
+        </div>
       </div>
     </div>
     <div class="row">
