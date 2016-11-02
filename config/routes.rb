@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     delete 'users/registrations', to: 'users/registrations#delete'
     get :finish_signup, to: 'users/registrations#finish_signup'
     patch :do_finish_signup, to: 'users/registrations#do_finish_signup'
+    post :accept_new_terms, to: 'users/sessions#accept_new_terms'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

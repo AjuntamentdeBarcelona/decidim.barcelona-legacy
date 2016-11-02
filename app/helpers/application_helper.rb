@@ -60,4 +60,11 @@ module ApplicationHelper
       react_component 'CookiesWarning', allowCookiesUrl: allow_cookies_url
     end
   end
+
+  def show_new_terms_and_conditions?
+    request.path != users_registrations_delete_form_path &&
+      request.path != page_path(id: "conditions") &&
+      current_user &&
+      !current_user.hide_new_terms
+  end
 end

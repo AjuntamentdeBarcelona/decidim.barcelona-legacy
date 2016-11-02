@@ -218,6 +218,12 @@ en:
       accessibility: Accessibility
       census_terms: Terms of use register
       conditions: Conditions and terms of use
+    new_terms_popup:
+      new_terms:
+        accept: I have read and accept new EULA and I want to proceed to the new platform
+        content: Welcome to the new decidim.barcelona, the site will now host all participatory process of Barcelona City Council. Accordingly there is a new EULA. If you keep browsing the site you accept the new EULA. Otherwise you should delete your account
+        reject: I don't whant to accept the new EULA, I want to delete my account
+        title: New EULA
     participatory_process:
       help: Help
       process_title: Process title

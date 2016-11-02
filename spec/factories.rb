@@ -26,6 +26,7 @@ FactoryGirl.define do
     password            'judgmentday'
     terms_of_service     '1'
     confirmed_at        { Time.now }
+    hide_new_terms      true
 
     trait :incomplete_verification do
       after :create do |user|

@@ -53,6 +53,7 @@
 //= require tracking
 //= require votes
 //= require dataviz
+//= require new_terms
 //= require bundle
 
 var initialize_modules = function() {
@@ -72,6 +73,7 @@ var initialize_modules = function() {
   App.Votes.initialize();
   App.ParticipatoryProcessSelector.initialize();
   App.Dataviz.initialize();
+  App.NewTerms.initialize();
 };
 
 $(function(){
