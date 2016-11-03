@@ -540,6 +540,7 @@ en:
       step_end_at: Step end at
       step_position: Step position
       step_start_at: Step start at
+      step_summary: Step summary
       step_title: Step title
     new:
       form:

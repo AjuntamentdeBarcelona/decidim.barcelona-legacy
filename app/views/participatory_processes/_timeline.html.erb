@@ -7,12 +7,16 @@
       <div class="timeline__desc <%= @participatory_process.active_step == step ? 'is-expanded' : '' %>" id="timeline-<%= index %>" data-toggler=".is-expanded">
         <a class="timeline__title" data-toggle="timeline-<%= index %>">
           <h6><%= step.title %>
-            <% if !step.description.blank? %>
-              <svg class="icon icon--caret-bottom icon--small timeline__title__icon" role="img" aria-label="Desplegar" ><%= icon "caret-bottom" %></svg>
-            <% end %>
+          <% if !step.summary.blank? || !step.description.blank? %>
+            <svg class="icon icon--caret-bottom icon--small timeline__title__icon" role="img" aria-label="Desplegar" ><%= icon "caret-bottom" %></svg>
+          <% end %>
           </h6>
         </a>
-        <% if !step.description.blank? %>
+        <% if !step.summary.blank? %>
+          <div class="timeline__content">
+            <%== step.summary %>
+          </div>
+        <% elsif !step.description.blank? %>
           <div class="timeline__content">
             <%== step.description %>
           </div>

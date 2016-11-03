@@ -1,5 +1,5 @@
 class StepDecorator < ApplicationDecorator
   delegate_all
 
-  translates :title, :description
+  translates :title, :description, :summary
 end

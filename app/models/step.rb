@@ -8,6 +8,7 @@ class Step < ActiveRecord::Base
   include ActsAsParanoidAliases
 
   serialize :title, JSON
+  serialize :summary, JSON
   serialize :description, JSON
 
   def self.step_for(participatory_process, flag)
