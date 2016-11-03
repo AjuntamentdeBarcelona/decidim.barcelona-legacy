@@ -37,7 +37,7 @@ class Proposal extends Component {
                 created_at={ proposal.created_at }
                 author={ proposal.author }/>
             </div>
-            <ProposalStatusBadge answer={proposal.answer} />
+            <ProposalStatusBadge flags={flags} answer={proposal.answer} />
             <p>
               {htmlToReact(simpleFormat(proposal.summary))}
             </p>

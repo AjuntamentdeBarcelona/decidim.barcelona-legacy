@@ -2,9 +2,9 @@ import { Component, PropTypes } from 'react';
 
 export default class ProposalStatusBadge extends Component {
   render() {
-    const { answer } = this.props;
+    const { answer, flags } = this.props;
   
-    if (answer) {
+    if (answer && flags.action_plans) {
       const { status } = answer;
 
       if (status === 'accepted') {
@@ -22,5 +22,6 @@ export default class ProposalStatusBadge extends Component {
 }
 
 ProposalStatusBadge.propTypes = {
-  answer: PropTypes.object
+  answer: PropTypes.object,
+  flags: PropTypes.object
 };

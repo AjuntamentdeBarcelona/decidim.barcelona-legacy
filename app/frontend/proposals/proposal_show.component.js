@@ -131,7 +131,7 @@ class ProposalShow extends Component {
               </div>
               <div className="columns mediumlarge-8 mediumlarge-pull-4">
                 <div className="section">
-                  <ProposalStatusBadge answer={proposal.answer} />
+                  <ProposalStatusBadge flags={flags} answer={proposal.answer} />
                   {htmlToReact(simpleFormat(summary))}
                   <br />
                   {this.renderExternalUrl(external_url)}
