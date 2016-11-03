@@ -51,14 +51,18 @@ export default class FilterMeta extends Component {
 
     if (useServerLinks) {
       links = [
-        <li key="category_id"><FilterServerLink name="category_id" value={category.id} label={` ${category.name}`} cssClass={`category-icon category-icon-${category.id}`}  namespace={namespace} /></li>,
-        <li key="subcategory_id"><FilterServerLink name="subcategory_id" value={subcategory.id} label={subcategory.name} namespace={namespace} /></li>
+        <li key="category_id"><FilterServerLink name="category_id" value={category.id} label={` ${category.name}`} cssClass={`category-icon category-icon-${category.id}`}  namespace={namespace} /></li>
       ];
+      if (subcategory) {
+        links.push(<li key="subcategory_id"><FilterServerLink name="subcategory_id" value={subcategory.id} label={subcategory.name} namespace={namespace} /></li>);
+      }
     } else {
       links = [
-        <li key="category_id"><FilterLink name="category_id" value={category.id} label={` ${category.name}`} cssClass={`category-icon category-icon-${category.id}`} /></li>,
-        <li key="subcategory_id"><FilterLink name="subcategory_id" value={subcategory.id} label={subcategory.name} /></li>
+        <li key="category_id"><FilterLink name="category_id" value={category.id} label={` ${category.name}`} cssClass={`category-icon category-icon-${category.id}`} /></li>
       ];
+      if (subcategory) {
+        links.push(<li key="subcategory_id"><FilterLink name="subcategory_id" value={subcategory.id} label={subcategory.name} /></li>);
+      }
     }
 
     return links;

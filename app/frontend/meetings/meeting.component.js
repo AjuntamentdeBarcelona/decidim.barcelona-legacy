@@ -51,24 +51,32 @@ export default class Meeting extends Component {
   renderMeetingCategory() {
     let { meeting, useServerLinks } = this.props;
     let { category, subcategory } = meeting;
+    let links = [];
 
     if(!meeting.category){ return <div />; }
 
     if (useServerLinks) {
-      return (
-        <div className="item-meta">
-          <FilterServerLink namespace="meetings" name="category_id" value={category.id} label={` ${category.name}`} cssClass={`category-icon category-icon-${category.id}`} />
-          <FilterServerLink namespace="meetings" name="subcategory_id" value={subcategory.id} label={subcategory.name} />
-        </div>
-      );
+      links = [
+        <FilterServerLink namespace="meetings" name="category_id" value={category.id} label={` ${category.name}`} cssClass={`category-icon category-icon-${category.id}`} />
+      ];
+      if (subcategory) {
+        links.push(<FilterServerLink namespace="meetings" name="subcategory_id" value={subcategory.id} label={subcategory.name} />
+);
+      }
     } else {
-      return (
-        <div className="item-meta">
-          <FilterLink name="category_id" value={category.id} label={` ${category.name}`} cssClass={`category-icon category-icon-${category.id}`} />
-          <FilterLink name="subcategory_id" value={subcategory.id} label={subcategory.name} />
-        </div>
-      );
+      links = [
+        <FilterLink name="category_id" value={category.id} label={` ${category.name}`} cssClass={`category-icon category-icon-${category.id}`} />
+      ];
+      if (subcategory) {
+        links.push(<FilterLink name="subcategory_id" value={subcategory.id} label={subcategory.name} />);
+      }
     }
+
+    return (
+      <div className="item-meta">
+        {links}
+      </div>
+    );
   }
 }
 
