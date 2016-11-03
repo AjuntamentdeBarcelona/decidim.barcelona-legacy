@@ -21,7 +21,7 @@ export default class SubcategoryPicker extends Component {
         <div className={classNames.join(' ')}
             key={subcategory.id}
             onClick={() => component.select(subcategory)}>
-          <input type="checkbox" checked={selected} />
+          <input type="checkbox" checked={selected} onChange={() => {}} />
           <label className="name">{subcategory.name} <a href={`/${participatoryProcessId}/categories#subcategory_${subcategory.id}`} target="_blank"> <i className="fa fa-info-circle"></i></a></label>
         </div>
       );

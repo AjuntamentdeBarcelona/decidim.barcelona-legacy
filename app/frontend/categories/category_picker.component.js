@@ -19,6 +19,9 @@ export default class CategoryPicker extends Component {
 
     if (this.props.categories.length === 1) {
       selectedCategoryId = this.props.categories[0].id;
+    }
+
+    if (this.props.subcategories.length === 1 && selectedCategoryId !== null) {
       selectedSubcategoryId = this.props.subcategories.find(sc => sc.categoryId === selectedCategoryId).id;
     }
 
@@ -103,5 +106,5 @@ CategoryPicker.propTypes = {
   categories: PropTypes.array.isRequired,
   categoryInputName: PropTypes.string.isRequired,
   subcategoryInputName: PropTypes.string.isRequired,
-  participatoryProcessId: PropTypes.object.isRequired
+  participatoryProcessId: PropTypes.string.isRequired
 };
