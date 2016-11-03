@@ -1,5 +1,5 @@
 module ComponentsHelper
-  def react_app(name, props = {}) 
+  def react_app(name, props = {})
     props.merge!({
       session: {
         signed_in: user_signed_in?,
@@ -15,8 +15,8 @@ module ComponentsHelper
         id: @participatory_process_id,
         step: {
           id: @participatory_process_step.id,
-          flags: Step::FLAGS.inject({}) do |acc, step|
-            acc[step] = @participatory_process.feature_enabled? step
+          flags: Step::FLAGS.inject({}) do |acc, feature|
+            acc[feature] = @participatory_process_step.feature_enabled? feature
             acc
           end
         }

@@ -37,15 +37,26 @@ class ProposalsFilters extends Component {
 
         <ReviewerFilter />
 
-        <FilterOptionGroup 
-          isExclusive={true}
-          filterGroupName="review_status"
-          filterGroupValue={this.props.filters.filter["review_status"]}
-          onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
-          <FilterOption filterName="accepted" />
-          <FilterOption filterName="rejected" />
-        </FilterOptionGroup>
+        {
+          (() => {
+            if (flags.action_plans) {
+              return (
+                <FilterOptionGroup
+                  isExclusive={true}
+                  filterGroupName="review_status"
+                  filterGroupValue={this.props.filters.filter["review_status"]}
+                  onChangeFilterGroup={(name, value) => this.props.setFilterGroup(name, value) }>
+                  <FilterOption filterName="accepted" />
+                  <FilterOption filterName="rejected" />
+                </FilterOptionGroup>
+              );
+            }
+            return null;
+          })()
+        }
+
         <UserInteractionFilter />
+
         {
           (() => {
             if (flags.enable_proposal_scope) {
@@ -56,6 +67,7 @@ class ProposalsFilters extends Component {
             return null;
           })()
         }
+
         <CategoryFilterOptionGroup />
         <SubcategoryFilterOptionGroup />
         <FilterOptionGroup 
