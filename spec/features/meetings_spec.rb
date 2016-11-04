@@ -3,10 +3,10 @@ require 'rails_helper'
 feature 'Meetings' do
   let(:participatory_process) { create(:participatory_process) }
 
-  scenario "Index page show past events by default", :js do
-    create(:meeting, participatory_process: participatory_process, title: "Meeting 1")
-    create(:meeting, participatory_process: participatory_process, title: "Meeting 2", held_at: 1.week.ago)
-    create(:meeting, participatory_process: participatory_process, title: "Meeting 3")
+  scenario "Index page show future events by default", :js do
+    create(:meeting, participatory_process: participatory_process, title: "Meeting 1", held_at: 1.week.ago)
+    create(:meeting, participatory_process: participatory_process, title: "Meeting 2", held_at: 1.week.from_now)
+    create(:meeting, participatory_process: participatory_process, title: "Meeting 3", held_at: 1.week.ago)
 
     user = create(:user)
     login_as(user)
