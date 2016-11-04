@@ -21,7 +21,7 @@ class Meetings extends Component {
 
   componentDidMount() {
     if(Object.keys(this.props.filters.filter).length === 0){
-      this.props.setFilterGroup("date", ["past"]);
+      this.props.setFilterGroup("date", []);
     } else {
       this.props.fetchMeetings({ filters: this.props.filters });
     }
