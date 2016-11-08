@@ -15,6 +15,8 @@ es:
       timeout: "Tu sesión ha expirado, por favor inicia sesión nuevamente para continuar."
       unauthenticated: "Necesitas iniciar sesión o registrarte para continuar."
       unconfirmed: "Para continuar, por favor pulsa en el enlace de confirmación que hemos enviado a tu cuenta de correo."
+      user:
+        invalid: "%{authentication_keys} o contraseña inválidos."
     mailer:
       confirmation_instructions:
         subject: Instrucciones de confirmación
