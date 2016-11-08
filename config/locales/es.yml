@@ -353,8 +353,8 @@ es:
     show:
       active_step: 'Fase actual: %{name}'
       data:
-        areas: "Áreas"
-        audience: Audiencia
+        areas: "Áreas municipales"
+        audience: "¿A quién va dirigido?"
         citizenship_scope: "Ámbito de la decisión ciudadana"
         manager_group: Grupo promotor
         participatory_structure: Estructura participativa
