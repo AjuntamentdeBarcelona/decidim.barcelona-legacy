@@ -81,6 +81,12 @@
 
   <div class="row">
     <div class="columns large-8">
+      <% if @participatory_process.decorate.steps.any? %>
+        <div class="section">
+          <h4 class="section-heading"><%= t ".steps" %></h4>
+          <%= render 'participatory_processes/timeline' %>
+        </div>
+      <% end %>
       <% if @participatory_process.documents.any? %>
         <div class="section">
           <h4 class="section-heading"><%= t ".documents" %></h4>
@@ -105,13 +111,6 @@
               </div>
             <% end %>
           </div>
-        </div>
-      <% end %>
-
-      <% if @participatory_process.decorate.steps.any? %>
-        <div class="section">
-          <h4 class="section-heading"><%= t ".steps" %></h4>
-          <%= render 'participatory_processes/timeline' %>
         </div>
       <% end %>
     </div>
