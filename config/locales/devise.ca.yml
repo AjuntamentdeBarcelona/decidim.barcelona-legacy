@@ -14,7 +14,8 @@ ca:
       timeout: La teva sessió ha expirat, torna a iniciar sessió per continuar.
       unauthenticated: Per continuar, cal que iniciïs sessió o et registris.
       unconfirmed: Has de confirmar el teu compte per continuar.
-      invalid: 
+      user:
+        invalid: "%{authentication_keys} o contrasenya no vàlids."
     mailer:
       confirmation_instructions:
         subject: Instruccions de confirmació
