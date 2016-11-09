@@ -13,7 +13,7 @@ class Moderation::Meetings::CloseController <  Moderation::BaseController
       redirect_to moderation_meetings_url, notice: t('flash.actions.update.notice', resource_name: "#{resource_name.capitalize}")
     else
       set_resource_instance
-      render :edit
+      render :new
     end
   end
 
