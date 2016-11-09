@@ -6,8 +6,14 @@ export default class CategoryPicker extends Component {
   constructor(props) {
     super(props);
 
+    let { selectedCategoryId } = props;
+
+    if (props.categories.length === 1) {
+      selectedCategoryId = this.props.categories[0].id;
+    }
+
     this.state = {
-      selectedCategoryId: props.selectedCategoryId,
+      selectedCategoryId: selectedCategoryId,
       selectedSubcategoryId: props.selectedSubcategoryId,
       subcategories: props.subcategories
     }
@@ -16,11 +22,6 @@ export default class CategoryPicker extends Component {
   render () {
     let selectedCategoryId = this.state.selectedCategoryId;
     let selectedSubcategoryId = this.state.selectedSubcategoryId;
-
-    if (this.props.categories.length === 1) {
-      selectedCategoryId = this.props.categories[0].id;
-      selectedSubcategoryId = this.props.subcategories.find(sc => sc.categoryId === selectedCategoryId).id;
-    }
 
     return (
       <div>
@@ -69,6 +70,7 @@ export default class CategoryPicker extends Component {
     }
     return null;
   }
+
   actionLinePicker() {
     const { participatoryProcessId } = this.props;
 
@@ -103,5 +105,5 @@ CategoryPicker.propTypes = {
   categories: PropTypes.array.isRequired,
   categoryInputName: PropTypes.string.isRequired,
   subcategoryInputName: PropTypes.string.isRequired,
-  participatoryProcessId: PropTypes.object.isRequired
+  participatoryProcessId: PropTypes.string.isRequired
 };
