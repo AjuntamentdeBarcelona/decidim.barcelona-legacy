@@ -27,6 +27,7 @@ class ParticipatoryProcess < ActiveRecord::Base
   has_many :attachments, class_name: 'ParticipatoryProcessAttachment'
 
   scope :featured, -> { where(featured: true) }
+  scope :unfeatured, -> { where(featured: false) }
 
   delegate :feature_enabled?, to: :active_step, allow_nil: true
 
