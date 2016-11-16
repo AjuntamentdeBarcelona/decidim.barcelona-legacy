@@ -13,14 +13,23 @@ class Api::MeetingsController < Api::ApplicationController
       meetings = meetings
                  .where(participatory_process: @participatory_process)
                  .includes(participatory_process: [:steps])
-                 
+
+      unless params[:filter].present?
+        default_date_filter = if meetings.upcoming.count.zero?
+                                "past"
+                              else
+                                "upcoming"
+                              end
+      end
+
       filter = ResourceFilter.new(params, filter_date: true)
 
       @meetings = filter.filter_collection(meetings.includes(:category, :subcategory))
       tag_cloud = filter.tag_cloud(@meetings)
 
       render json: @meetings, meta: {
-        tag_cloud: tag_cloud
+        tag_cloud: tag_cloud,
+        default_date_filter: default_date_filter
       }
     end
   end

@@ -5,6 +5,14 @@ import {
 
 export const PER_PAGE = 15;
 
+export const defaultDateFilter = (state = "", action) => {
+  switch (action.type) {
+    case FETCH_MEETINGS:
+      return action.payload.data.meta.default_date_filter;
+  }
+  return state;
+};
+
 export const meetings = (state = [], action) => {
   switch (action.type) {
     case FETCH_MEETINGS:

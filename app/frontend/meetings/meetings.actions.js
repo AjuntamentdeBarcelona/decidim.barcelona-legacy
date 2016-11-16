@@ -83,8 +83,10 @@ function replaceUrl(params) {
       queryParams.push(`filter=${params.filter}`);
     }
 
+    url = `${location.href.replace(/\?.*/, "")}`;
+
     if (queryParams.length > 0) {
-      url = `${location.href.replace(/\?.*/, "")}?${queryParams.join('&')}`;
+      url = `${url}?${queryParams.join('&')}`;
     }
 
     params.turbolinks = true;
