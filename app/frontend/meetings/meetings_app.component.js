@@ -1,12 +1,12 @@
-import { Component, PropTypes }                 from 'react';
+import { Component, PropTypes }                                    from 'react';
 import {
   createStore,
   applyMiddleware,
   combineReducers
-}                                               from 'redux';
-import { Provider }                             from 'react-redux';
-import ReduxPromise                             from 'redux-promise';
-import ReduxThunk                               from 'redux-thunk';
+}                                                                  from 'redux';
+import { Provider }                                                from 'react-redux';
+import ReduxPromise                                                from 'redux-promise';
+import ReduxThunk                                                  from 'redux-thunk';
 
 const middlewares = [ReduxPromise, ReduxThunk];
 
@@ -16,17 +16,17 @@ const middlewares = [ReduxPromise, ReduxThunk];
 //   middlewares.push(logger);
 // }
 
-import Meetings                                 from './meetings.component';
+import Meetings                                                    from './meetings.component';
 
 import {
   FETCH_MEETINGS,
   APPEND_MEETINGS_PAGE
-}                                               from './meetings.actions';
+}                                                                  from './meetings.actions';
 
-import { meetings, visibleMeetings, PER_PAGE }  from './meetings.reducers';
-import districts                                from '../districts/districts.reducers';
-import categories                               from '../categories/categories.reducers';
-import filters                                  from '../filters/filters.reducers';
+import { defaultDateFilter, meetings, visibleMeetings, PER_PAGE }  from './meetings.reducers';
+import districts                                                   from '../districts/districts.reducers';
+import categories                                                  from '../categories/categories.reducers';
+import filters                                                     from '../filters/filters.reducers';
 
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
@@ -85,6 +85,7 @@ function createReducers(sessionState, participatoryProcessState, decidimIconsUrl
     decidimIconsUrl,
     districts,
     categories,
+    defaultDateFilter,
     meetings,
     visibleMeetings,
     filters,

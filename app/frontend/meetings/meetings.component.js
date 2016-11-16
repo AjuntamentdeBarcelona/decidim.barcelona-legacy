@@ -20,19 +20,19 @@ class Meetings extends Component {
   }
 
   componentDidMount() {
-    if(Object.keys(this.props.filters.filter).length === 0){
-      this.props.setFilterGroup("date", []);
-    } else {
-      this.props.fetchMeetings({ filters: this.props.filters });
-    }
+    this.props.fetchMeetings({ filters: this.props.filters });
   }
 
-  componentWillReceiveProps({ filters }) {
-    if (this.props.filters !== filters) {
-      this.setState({ loading: true });
-      this.props.fetchMeetings({ filters });
+  componentWillReceiveProps({ defaultDateFilter, filters }) {
+    if (defaultDateFilter && !filters.filter["date"]) {
+      this.props.setFilterGroup("date", [defaultDateFilter]);
     } else {
-      this.setState({ loading: false });
+      if (this.props.filters !== filters) {
+        this.setState({ loading: true });
+        this.props.fetchMeetings({ filters });
+      } else {
+        this.setState({ loading: false });
+      }
     }
   }
 
@@ -82,8 +82,8 @@ class Meetings extends Component {
 }
 
 export default connect(
-  ({ meetings, visibleMeetings, filters, pagination }) => (
-    { meetings, visibleMeetings, filters, pagination }
+  ({ defaultDateFilter, meetings, visibleMeetings, filters, pagination }) => (
+    { defaultDateFilter, meetings, visibleMeetings, filters, pagination }
   ),
   {
     fetchMeetings,
@@ -95,6 +95,7 @@ export default connect(
 Meetings.propTypes = {
   filters: PropTypes.object.isRequired,
   pagination: PropTypes.object.isRequired,
+  defaultDateFilter: PropTypes.string,
   meetings: PropTypes.array.isRequired,
   visibleMeetings: PropTypes.array.isRequired,
   setFilterGroup: PropTypes.func.isRequired,
