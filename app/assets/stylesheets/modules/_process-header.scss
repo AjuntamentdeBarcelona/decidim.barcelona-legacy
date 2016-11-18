@@ -104,12 +104,36 @@
     padding-top: 0;
     padding-bottom: 0;
     @include breakpoint(mediumlarge){
-      padding: 0 3rem; 
+      padding: 0 3rem;
     }
   }
+
   .process-header__main{
     padding-top: 3rem;
     padding-bottom: 3rem;
+  }
+
+  //Displays active components directly in process header home
+  .process-nav{
+    border: 0;
+    background: rgba(black, .5);
+    margin-top: 3rem;
+    margin-bottom: -3rem;
+    ul{
+      @include breakpoint(mediumlarge){
+        justify-content: center;
+      }
+    }
+  }
+
+  .process-nav__link{
+    color: $white;
+    svg{
+      fill: $white;
+    }
+  }
+  .process-nav__trigger svg{
+    fill: $white;
   }
 }
 

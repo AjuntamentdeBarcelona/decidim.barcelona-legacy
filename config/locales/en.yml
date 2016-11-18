@@ -349,6 +349,7 @@ en:
         submit_button: Create participatory process
     show:
       active_step: 'Fase actual: %{name}'
+      current_step_menu_title: "In this step:"
       data:
         areas: Areas
         audience: hearing
