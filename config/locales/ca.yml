@@ -352,9 +352,10 @@ ca:
         submit_button: Crear proces
     show:
       active_step: 'Fase actual: %{name}'
+      current_step_menu_title: "En aquesta fase:"
       data:
         areas: "Àrees municipals"
-        audience: "A qui va dirigit?"
+        audience: A qui va dirigit?
         citizenship_scope: "Àmbit de la decisió ciutadana"
         manager_group: Grup promotor
         participatory_structure: Estructura participativa

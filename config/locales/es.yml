@@ -352,6 +352,7 @@ es:
         submit_button: Crear proceso
     show:
       active_step: 'Fase actual: %{name}'
+      current_step_menu_title: "En esta fase:"
       data:
         areas: "Áreas municipales"
         audience: "¿A quién va dirigido?"
