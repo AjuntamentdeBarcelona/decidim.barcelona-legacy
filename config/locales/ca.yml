@@ -439,6 +439,7 @@ ca:
       already_supported: Donant suport
       closed_support: Suports tancats
       remove_support: No donar suport
+      not_enough_votes: No et queden vots
       comments:
         one: 1 Comentari
         other: "%{count} Comentaris"

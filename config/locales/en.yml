@@ -435,6 +435,7 @@ en:
     proposal:
       already_supported: Already supported
       closed_support: Closed support
+      not_enough_votes: No votes remaining
       comments:
         one: 1 comment
         other: "%{count} comments"

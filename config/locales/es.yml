@@ -438,6 +438,7 @@ es:
     proposal:
       already_supported: Dando soporte
       closed_support: Apoyos cerrados
+      not_enough_votes: No te quedan votos
       comments:
         one: 1 Comentario
         other: "%{count} Comentarios"

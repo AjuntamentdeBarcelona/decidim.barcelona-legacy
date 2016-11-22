@@ -649,5 +649,20 @@ feature 'Proposals' do
         expect(page).to have_content("1")
       end
     end
+
+    it "should disable vote buttons if limit reached" do
+      expect(page).to have_css('article.card--proposal', count: 3)
+
+      all('article.card--proposal').take(2).each do |proposal|
+        proposal.find('.card__support button').click
+        expect(proposal).to have_content("Already supported")
+      end
+
+      within ".proposal-vote-limit .extra__suport-number" do
+        expect(page).to have_content("0")
+      end
+
+      expect(page).to have_content("No votes remaining")
+    end
   end
 end

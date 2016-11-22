@@ -10,7 +10,7 @@ module ComponentsHelper
         is_reviewer: current_user && current_user.reviewer?,
         can_create_new_proposals: @participatory_process && !@participatory_process_step.feature_enabled?(:proposals_readonly),
         can_create_action_plan: can?(:create, ActionPlan),
-        proposal_votes_count: current_user.proposal_votes(@participatory_process.proposals).keys.count
+        proposal_votes_count: current_user ? current_user.proposal_votes(@participatory_process.proposals).keys.count : 0
       },
       participatory_process: {
         id: @participatory_process_id,
