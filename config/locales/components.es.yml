@@ -119,3 +119,8 @@ es:
       search_input_placeholder: Buscar
     weight_control:
       label: Orden
+    proposal_vote_limit:
+      title: Tienes %{limit} votos para repartir
+      content: Durante la fase de deliberación todas las personas empadronadas en la ciudad pueden priorizar las propuestas, a través de un sistema de soportes. Todo el mundo dispone de %{limit} votos a repartir entre las diferentes propuestas de actuación.
+      left: Te quedan
+      votes: Votos

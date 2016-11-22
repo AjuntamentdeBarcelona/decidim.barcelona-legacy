@@ -629,4 +629,25 @@ feature 'Proposals' do
 
     expect(page).to have_selector("button", text: "Follow")
   end
+
+  context "Proposal vote is limited", :js do
+    before :each do
+      participatory_process.active_step.update_attribute(:proposal_vote_limit, 2)
+      3.times { create(:proposal, participatory_process: participatory_process) }
+      user = create(:user, verified_at: Time.now)
+      login_as user
+      visit proposals_path(participatory_process_id: participatory_process, step_id: participatory_process.active_step)
+    end
+
+    it "the vote limit should appear on proposals page" do
+      expect(page).to have_content("You have 2 votes to distribute")
+    end
+
+    it "user should see how many votes he has left" do
+      find('button.card__button', match: :first).click
+      within ".proposal-vote-limit .extra__suport-number" do
+        expect(page).to have_content("1")
+      end
+    end
+  end
 end

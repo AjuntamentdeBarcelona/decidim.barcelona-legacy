@@ -74,6 +74,7 @@ class Admin::StepsController < Admin::BaseController
         :position,
         :start_at,
         :end_at,
+        :proposal_vote_limit,
         :title => I18n.available_locales.map(&:to_s),
         :summary => I18n.available_locales.map(&:to_s),
         :description => I18n.available_locales.map(&:to_s),

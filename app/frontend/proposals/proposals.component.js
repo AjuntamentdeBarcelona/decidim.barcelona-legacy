@@ -8,6 +8,7 @@ import OrderSelector            from '../order/order_selector.component';
 import ProposalsSidebar         from './proposals_sidebar.component';
 import NewProposalButton        from './new_proposal_button.component';
 import ProposalsList            from './proposals_list.component';
+import ProposalVoteLimit        from './proposal_vote_limit.component';
 
 import * as actions             from './proposals.actions';
 import { setOrder }             from '../order/order.actions';
@@ -43,6 +44,7 @@ class Proposals extends Component {
   render() {
     return (
       <div>
+        <ProposalVoteLimit />
         <div className="row column">
           <div className="title-action">
             <h2 className="title-action__title section-heading">

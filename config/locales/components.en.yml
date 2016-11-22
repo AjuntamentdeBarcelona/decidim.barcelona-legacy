@@ -119,3 +119,8 @@ en:
       search_input_placeholder: Search
     weight_control:
       label: Order
+    proposal_vote_limit:
+      title: You have %{limit} votes to distribute
+      content: Durant la fase de deliberació totes les persones empadronades a la ciutat podran prioritzar les propostes, a través d’un sistema de suports. Tothom disposarà de %{limit} suports a repartir entre les diferents propostes d’actuació.
+      left: You have
+      votes: Votes

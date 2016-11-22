@@ -9,7 +9,8 @@ module ComponentsHelper
         is_organization: current_user && current_user.organization?,
         is_reviewer: current_user && current_user.reviewer?,
         can_create_new_proposals: @participatory_process && !@participatory_process_step.feature_enabled?(:proposals_readonly),
-        can_create_action_plan: can?(:create, ActionPlan)
+        can_create_action_plan: can?(:create, ActionPlan),
+        proposal_votes_count: current_user.proposal_votes(@participatory_process.proposals).keys.count
       },
       participatory_process: {
         id: @participatory_process_id,
@@ -18,7 +19,10 @@ module ComponentsHelper
           flags: Step::FLAGS.inject({}) do |acc, feature|
             acc[feature] = @participatory_process_step.feature_enabled? feature
             acc
-          end
+          end,
+          settings: {
+            proposal_vote_limit: @participatory_process_step.proposal_vote_limit
+          }
         }
       },
       decidim_icons_url: asset_url("decidim-icons.svg")
