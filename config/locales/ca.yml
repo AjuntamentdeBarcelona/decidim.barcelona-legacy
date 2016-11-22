@@ -438,6 +438,7 @@ ca:
     proposal:
       already_supported: Donant suport
       closed_support: Suports tancats
+      remove_support: No donar suport
       comments:
         one: 1 Comentari
         other: "%{count} Comentaris"

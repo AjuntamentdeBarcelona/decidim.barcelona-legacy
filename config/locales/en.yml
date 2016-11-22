@@ -349,7 +349,7 @@ en:
         submit_button: Create participatory process
     show:
       active_step: 'Fase actual: %{name}'
-      current_step_menu_title: "In this step:"
+      current_step_menu_title: 'In this step:'
       data:
         areas: Areas
         audience: hearing
@@ -439,6 +439,7 @@ en:
         one: 1 comment
         other: "%{count} comments"
         zero: No comments
+      remove_support: Remove support
       support: Support
       support_title: Support this proposal
       supports:

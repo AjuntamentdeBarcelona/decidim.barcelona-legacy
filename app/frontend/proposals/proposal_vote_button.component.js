@@ -33,7 +33,19 @@ class ProposalVoteButton extends Component {
       return (
         <button 
           className={`card__button button ${this.props.className || 'small'} success`}
-          onClick={() => {
+          onMouseOver={(e) => {
+            if (flags.enable_proposal_unvote) {
+              $(e.target).toggleClass('warning');
+              $(e.target).html(I18n.t("proposals.proposal.remove_support"));
+            }
+          }}
+          onMouseOut={(e) => {
+            if (flags.enable_proposal_unvote) {
+              $(e.target).toggleClass('warning');
+              $(e.target).html(I18n.t("proposals.proposal.already_supported"));
+            }
+          }}
+          onClick={(e) => {
             if (flags.enable_proposal_unvote) {
               this.props.unVoteProposal(this.props.proposalId);
             }
