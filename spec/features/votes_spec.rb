@@ -251,6 +251,20 @@ feature 'Votes' do
         end
       end
 
+      scenario 'Unvote proposal', :js do
+        create(:vote, voter: @manuela, votable: @proposal, vote_flag: true)
+        create(:vote, voter: @pablo, votable: @proposal, vote_flag: true)
+
+        visit proposal_path(@proposal, participatory_process_id: @proposal.
+                                       participatory_process, step_id: participatory_process.active_step)
+
+        within('.card__content') do
+          expect(page).to have_content "2 SUPPORTS"
+          find('button.card__button').click
+          expect(page).to have_content "1 SUPPORT"
+        end
+      end
+
       scenario 'Create from proposal show', :js do
         visit proposal_path(@proposal, participatory_process_id: @proposal.
                                        participatory_process, step_id: participatory_process.active_step)

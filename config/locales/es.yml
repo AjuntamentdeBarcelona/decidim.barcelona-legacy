@@ -352,7 +352,7 @@ es:
         submit_button: Crear proceso
     show:
       active_step: 'Fase actual: %{name}'
-      current_step_menu_title: "En esta fase:"
+      current_step_menu_title: 'En esta fase:'
       data:
         areas: "Áreas municipales"
         audience: "¿A quién va dirigido?"
@@ -442,6 +442,7 @@ es:
         one: 1 Comentario
         other: "%{count} Comentarios"
         zero: Sin comentarios
+      remove_support: No dar soporte
       support: Apoyar
       support_title: Apoyar esta propuesta
       supports:

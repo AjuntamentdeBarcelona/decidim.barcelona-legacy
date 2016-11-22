@@ -255,7 +255,11 @@ Rails.application.routes.draw do
         patch :flag
         patch :unflag
       end
-      resources :votes, only: [:create]
+      resources :votes, only: [:create] do
+        collection do
+          delete :destroy
+        end
+      end
       resource :answers, only: [:show, :create, :update], controller: :proposal_answers
       resources :meetings, only: [:index]
       resource :author, only: [], controller: 'proposals/author' do

@@ -6,6 +6,7 @@ import {
   UPDATE_PROPOSAL,
   APPEND_PROPOSALS_PAGE, 
   VOTE_PROPOSAL,
+  UNVOTE_PROPOSAL,
   FETCH_ANSWER,
   UPDATE_ANSWER,
   FETCH_RELATED_MEETINGS,
@@ -144,6 +145,17 @@ export const proposal = function (state = {}, action) {
           ...state,
           total_votes: state.total_votes + 1,
           voted: true
+        };
+      }
+      return state;
+    case UNVOTE_PROPOSAL:
+      vote = action.payload.data.vote;
+
+      if (state.id === vote.votable.id) {
+        return {
+          ...state,
+          total_votes: state.total_votes - 1,
+          voted: false
         };
       }
       return state;

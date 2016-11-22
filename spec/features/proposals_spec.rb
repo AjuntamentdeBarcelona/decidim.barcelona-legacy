@@ -616,7 +616,7 @@ feature 'Proposals' do
     expect(page).to have_selector("button", text: "Unfollow")
   end
 
-  scenario "Unollow", :js do
+  scenario "Unfollow", :js do
     user = create(:user)
     proposal = create(:proposal)
     Follow.create({ follower_id: user.id, following_id: proposal.id, following_type: 'Proposal' })

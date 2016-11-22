@@ -6,6 +6,7 @@ export const FETCH_PROPOSAL         = 'FETCH_PROPOSAL';
 export const UPDATE_PROPOSAL        = 'UPDATE_PROPOSAL';
 export const APPEND_PROPOSALS_PAGE  = 'APPEND_PROPOSALS_PAGE';
 export const VOTE_PROPOSAL          = 'VOTE_PROPOSAL';
+export const UNVOTE_PROPOSAL        = 'UNVOTE_PROPOSAL';
 export const FETCH_ANSWER           = 'FETCH_ANSWER';
 export const UPDATE_ANSWER          = 'UPDATE_ANSWER';
 export const FETCH_RELATED_MEETINGS = 'FETCH_RELATED_MEETINGS';
@@ -73,6 +74,18 @@ export const voteProposal = (proposalId) => (dispatch, getState) => {
 
   dispatch({
     type: VOTE_PROPOSAL,
+    payload: request
+  });
+
+  return request;
+}
+
+export const unVoteProposal = (proposalId) => (dispatch, getState) => {
+  const { participatoryProcess } = getState();
+  const request = axios.delete(`${API_BASE_URL}/proposals/${proposalId}/votes.json?step_id=${participatoryProcess.step.id}`);
+
+  dispatch({
+    type: UNVOTE_PROPOSAL,
     payload: request
   });
 

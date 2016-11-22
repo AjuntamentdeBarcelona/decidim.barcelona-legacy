@@ -31,7 +31,25 @@ class ProposalVoteButton extends Component {
       )
     } else if (this.props.voted) { 
       return (
-        <button className={`card__button button ${this.props.className || 'small'} success`}>
+        <button 
+          className={`card__button button ${this.props.className || 'small'} success`}
+          onMouseOver={(e) => {
+            if (flags.enable_proposal_unvote) {
+              $(e.target).toggleClass('warning');
+              $(e.target).html(I18n.t("proposals.proposal.remove_support"));
+            }
+          }}
+          onMouseOut={(e) => {
+            if (flags.enable_proposal_unvote) {
+              $(e.target).toggleClass('warning');
+              $(e.target).html(I18n.t("proposals.proposal.already_supported"));
+            }
+          }}
+          onClick={() => {
+            if (flags.enable_proposal_unvote) {
+              this.props.unVoteProposal(this.props.proposalId);
+            }
+          }}>
           {I18n.t("proposals.proposal.already_supported")}
         </button>
       )
@@ -189,5 +207,6 @@ ProposalVoteButton.propTypes = {
   votable: PropTypes.bool,
   session: PropTypes.object.isRequired,
   voteProposal: PropTypes.func.isRequired,
+  unVoteProposal: PropTypes.func.isRequired,
   proposalId: PropTypes.number.isRequired
 };
