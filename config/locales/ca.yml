@@ -352,7 +352,7 @@ ca:
         submit_button: Crear proces
     show:
       active_step: 'Fase actual: %{name}'
-      current_step_menu_title: "En aquesta fase:"
+      current_step_menu_title: 'En aquesta fase:'
       data:
         areas: "Àrees municipals"
         audience: A qui va dirigit?
@@ -438,12 +438,12 @@ ca:
     proposal:
       already_supported: Donant suport
       closed_support: Suports tancats
-      remove_support: No donar suport
-      not_enough_votes: No et queden vots
       comments:
         one: 1 Comentari
         other: "%{count} Comentaris"
         zero: Sense comentaris
+      not_enough_votes: No et queden vots
+      remove_support: No donar suport
       support: Donar suport
       support_title: Donar suport a aquesta proposta
       supports:
@@ -542,6 +542,7 @@ ca:
       form:
         submit_button: Update step
     form:
+      proposal_vote_limit_note: El valor 0 significa 'sense límit'
       step_description: Step description
       step_end_at: Step end at
       step_position: Step position
