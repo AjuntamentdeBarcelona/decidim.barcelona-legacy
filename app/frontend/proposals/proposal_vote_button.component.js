@@ -45,7 +45,7 @@ class ProposalVoteButton extends Component {
               $(e.target).html(I18n.t("proposals.proposal.already_supported"));
             }
           }}
-          onClick={(e) => {
+          onClick={() => {
             if (flags.enable_proposal_unvote) {
               this.props.unVoteProposal(this.props.proposalId);
             }
