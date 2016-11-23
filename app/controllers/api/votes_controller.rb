@@ -25,7 +25,7 @@ class Api::VotesController < Api::ApplicationController
   def user_can_vote?(step)
     vote_limit_reached = if step.proposal_vote_limit > 0
                            proposal_votes_count = current_user.proposal_votes(step.participatory_process.proposals).keys.count
-                           proposal_votes_count == step.proposal_vote_limit
+                           proposal_votes_count >= step.proposal_vote_limit
                          end
 
     !vote_limit_reached && !step.feature_enabled?(:proposals_readonly) && step.feature_enabled?(:enable_proposal_votes)

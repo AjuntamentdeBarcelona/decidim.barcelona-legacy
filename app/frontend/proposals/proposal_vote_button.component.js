@@ -22,7 +22,7 @@ class ProposalVoteButton extends Component {
     const { step } = participatoryProcess;
     const { flags, settings } = step;
     const { proposal_vote_limit } = settings;
-    const voteLimitReached = proposal_vote_limit > 0 && session.proposal_votes_count === proposal_vote_limit;
+    const voteLimitReached = proposal_vote_limit > 0 && session.proposal_votes_count >= proposal_vote_limit;
     const votesDisabled = flags.proposals_readonly || !flags.enable_proposal_votes;
 
     if (this.props.voted) { 
