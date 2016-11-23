@@ -18,18 +18,14 @@ class ProposalVoteButton extends Component {
   }
 
   renderVoteButton() {
-    const { participatoryProcess } = this.props;
+    const { participatoryProcess, session } = this.props;
     const { step } = participatoryProcess;
-    const { flags } = step;
+    const { flags, settings } = step;
+    const { proposal_vote_limit } = settings;
+    const voteLimitReached = proposal_vote_limit > 0 && session.proposal_votes_count >= proposal_vote_limit;
     const votesDisabled = flags.proposals_readonly || !flags.enable_proposal_votes;
 
-    if (votesDisabled) {
-      return (
-        <button className={`card__button button ${this.props.className || 'small'}`} disabled>
-          {I18n.t("proposals.proposal.closed_support")}
-        </button>
-      )
-    } else if (this.props.voted) { 
+    if (this.props.voted) { 
       return (
         <button 
           className={`card__button button ${this.props.className || 'small'} success`}
@@ -51,6 +47,18 @@ class ProposalVoteButton extends Component {
             }
           }}>
           {I18n.t("proposals.proposal.already_supported")}
+        </button>
+      )
+    } else if (voteLimitReached) {
+      return (
+        <button className={`card__button button ${this.props.className || 'small'}`} disabled>
+          {I18n.t("proposals.proposal.not_enough_votes")}
+        </button>
+      )
+    } else if (votesDisabled) {
+      return (
+        <button className={`card__button button ${this.props.className || 'small'}`} disabled>
+          {I18n.t("proposals.proposal.closed_support")}
         </button>
       )
     } else {

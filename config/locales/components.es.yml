@@ -107,6 +107,11 @@ es:
     proposal_level_selector:
       level_1: Total
       level_2: Parcial
+    proposal_vote_limit:
+      content: Durante la fase de deliberación todas las personas empadronadas en la ciudad pueden priorizar las propuestas, a través de un sistema de soportes. Todo el mundo dispone de %{limit} votos a repartir entre las diferentes propuestas de actuación.
+      left: Te quedan
+      title: Tienes %{limit} votos para repartir
+      votes: Votos
     proposals:
       count: Mostrando %{count} propuestas
     proposals_autocomplete_input:

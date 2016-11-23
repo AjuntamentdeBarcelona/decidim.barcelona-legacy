@@ -439,6 +439,7 @@ en:
         one: 1 comment
         other: "%{count} comments"
         zero: No comments
+      not_enough_votes: No votes remaining
       remove_support: Remove support
       support: Support
       support_title: Support this proposal
@@ -538,6 +539,7 @@ en:
       form:
         submit_button: Update step
     form:
+      proposal_vote_limit_note: A 0 value means 'no limit'
       step_description: Step description
       step_end_at: Step end at
       step_position: Step position

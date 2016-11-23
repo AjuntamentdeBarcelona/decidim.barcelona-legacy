@@ -15,6 +15,7 @@ import ProposalInfoExtended     from './proposal_info_extended.component';
 import ProposalActionPlans      from './proposal_action_plans.component';
 import ProposalAnswerMessage    from './proposal_answer_message.component';
 import ProposalVoteButton       from './proposal_vote_button.component';
+import ProposalVoteLimit        from './proposal_vote_limit.component';
 
 import RelatedMeetings          from '../meetings/related_meetings.component';
 
@@ -83,6 +84,7 @@ class ProposalShow extends Component {
       return (
         <div className={(hidden || (author && author.hidden)) ? 'faded' : ''} id={`proposal_${proposal.id}`}>
           <div>
+            <ProposalVoteLimit />
             <div className="row column view-header">
               {this.renderEditButton(editable, url)}
               <h2 className="heading2">{title}</h2>

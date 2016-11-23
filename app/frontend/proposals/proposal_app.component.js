@@ -8,6 +8,11 @@ import { Provider }             from 'react-redux';
 import ReduxPromise             from 'redux-promise';
 import ReduxThunk               from 'redux-thunk';
 
+import { 
+  VOTE_PROPOSAL,
+  UNVOTE_PROPOSAL
+} from './proposals.actions';
+
 import { proposal }             from './proposals.reducers';
 import categories               from '../categories/categories.reducers';
 import districts                from '../districts/districts.reducers';
@@ -28,7 +33,19 @@ const middlewares = [ReduxPromise, ReduxThunk];
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
 function createReducers(sessionState, participatoryProcessState, decidimIconsUrlState) {
-  let session = function (state = sessionState) {
+  let session = function (state = sessionState, action) {
+    switch (action.type) {
+      case VOTE_PROPOSAL:
+        return {
+          ...state,
+          proposal_votes_count: state.proposal_votes_count + 1
+        }
+      case UNVOTE_PROPOSAL:
+        return {
+          ...state,
+          proposal_votes_count: state.proposal_votes_count - 1
+        };
+    }
     return state;
   };
 

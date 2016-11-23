@@ -37,9 +37,15 @@
       <%= f.number_field :position, label: false %>
     </div>
 
-    <div div class="small-12 column">
+    <div class="small-12 column">
       <%= f.label :flags %>
       <%= f.collection_check_boxes :flags, Step::FLAGS, :to_s, :to_s %>
+    </div>
+
+    <div class="small-12 column">
+      <%= f.label :proposal_vote_limit %>
+      <%= f.number_field :proposal_vote_limit, label: false %>
+      <p class="note"><%= t("steps.form.proposal_vote_limit_note") %></p>
     </div>
 
     <div class="actions small-12 column">

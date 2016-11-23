@@ -20,7 +20,9 @@ import Proposals                                from './proposals.component';
 
 import {
   FETCH_PROPOSALS,
-  APPEND_PROPOSALS_PAGE
+  APPEND_PROPOSALS_PAGE,
+  VOTE_PROPOSAL,
+  UNVOTE_PROPOSAL
 }                                               from './proposals.actions';
 import { proposals }                            from './proposals.reducers';
 
@@ -64,7 +66,19 @@ function getInitialSeedState() {
 }
 
 function createReducers(sessionState, participatoryProcessState, decidimIconsUrlState) {
-  let session = function (state = sessionState) {
+  let session = function (state = sessionState, action) {
+    switch (action.type) {
+      case VOTE_PROPOSAL:
+        return {
+          ...state,
+          proposal_votes_count: state.proposal_votes_count + 1
+        };
+      case UNVOTE_PROPOSAL:
+        return {
+          ...state,
+          proposal_votes_count: state.proposal_votes_count - 1
+        };
+    }
     return state;
   };
 
