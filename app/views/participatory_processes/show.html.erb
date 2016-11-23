@@ -39,7 +39,7 @@
     <div class="row process-header--home__cta">
       <% if @participatory_process.active_step %>
         <div class="columns small-centered small-10 medium-6 mediumlarge-4 large-3">
-          <%= link_to step_path(@participatory_process, @participatory_process.active_step), class: "button expanded button--sc" do %>
+          <%= link_to feature_path(@participatory_process.active_step), class: "button expanded button--sc" do %>
             <%= t ".participate" %>
             <span class="button__info"><%= t ".active_step", name: @participatory_process.active_step.title %></span>
           <% end %>
