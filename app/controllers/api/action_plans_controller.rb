@@ -33,7 +33,7 @@ class Api::ActionPlansController < Api::ApplicationController
           prev_page: action_plans.prev_page,
           total_pages: action_plans.total_pages,
           total_count: action_plans.total_count
-        }
+        }, step_id: params[:step_id]
       }
 
       format.xls do

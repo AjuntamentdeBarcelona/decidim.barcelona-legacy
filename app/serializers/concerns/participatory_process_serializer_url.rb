@@ -3,7 +3,7 @@ module Concerns
     def url
       scope && scope.url_for(id: object, controller: "/#{controller_name}", action: :show,
                                   participatory_process_id: object.participatory_process.slug,
-                                  step_id: step)
+                                  step_id: serialization_options[:step_id] || step)
     end
 
     def step

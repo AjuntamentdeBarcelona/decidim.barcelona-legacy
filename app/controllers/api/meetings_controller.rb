@@ -7,7 +7,7 @@ class Api::MeetingsController < Api::ApplicationController
       proposal = Proposal.find(params[:proposal_id])
       @meetings = proposal.meetings.includes(:tags, :proposals, :pictures)
 
-      render json: @meetings
+      render json: @meetings, step_id: params[:step_id]
     else
       meetings = Meeting.all
       meetings = meetings
