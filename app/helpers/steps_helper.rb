@@ -7,7 +7,6 @@ module StepsHelper
 
   def active_step_for_feature(object, feature_name)
     object.participatory_process
-      .includes(:steps)
       .steps.where(active: true).order('position desc')
       .to_a.find{ |s| s.flags.include? feature_name }
   end
