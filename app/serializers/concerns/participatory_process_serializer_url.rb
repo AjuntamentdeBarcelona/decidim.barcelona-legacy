@@ -7,7 +7,9 @@ module Concerns
     end
 
     def step
-      object.participatory_process.steps.to_a.find{ |s| s.flags.include? feature_name }
+      object.participatory_process
+        .steps.where(active: true).order('position desc')
+        .to_a.find{ |s| s.flags.include? feature_name }
     end
 
     def feature_name
