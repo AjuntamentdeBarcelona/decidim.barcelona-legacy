@@ -71,7 +71,7 @@
             <div class="phase-nav__wrapper" data-carousel>
               <% @participatory_process.steps.order(:position).decorate.each_with_index do |step, index| %>
                 <% if step.enabled? %>
-                  <%= link_to step_path(participatory_process_id: @participatory_process, step_id: step), class: "phase-nav__item #{(step == participatory_process_step) ? 'is-active' : nil}" do %>
+                  <%= link_to feature_path(step), class: "phase-nav__item #{(step == participatory_process_step) ? 'is-active' : nil}" do %>
                     <%= render partial: "participatory_processes/step_navigation_item", locals: { step: step, index: (index + 1) } %>
                   <% end %>
                 <% else %>
@@ -95,7 +95,6 @@
             <div class="row column process-nav__content" id="process-nav-content"
                 data-toggler=".is-active">
               <ul>
-                <%= render partial: "participatory_processes/menu_item", locals: { path: url_for(controller: :steps, action: :show), title: t("layouts.header.more_information"), icon: "information" } %>
                 <% if participatory_process_step.feature_enabled? :proposals %>
                   <%= render partial: "participatory_processes/menu_item", locals: { path: url_for(controller: :proposals), title: t("layouts.header.proposals"), icon: "proposals" } %>
                 <% end %>
@@ -114,13 +113,11 @@
                 <% if participatory_process_step.feature_enabled? :categories %>
                   <%= render partial: "participatory_processes/menu_item", locals: { path: categories_path(participatory_process_id: @participatory_process.slug), title: t("layouts.header.categories"), icon: "information" } %>
                 <% end %>
-                <% if participatory_process_step.feature_enabled? :more_information %>
-                  <li class="about-link ">
-                    <%= link_to url_for(controller: :pages, id: 'more_information', action: :show), class: "process-nav__link" do %>
-                      <span><%= t '.help' %></span>
-                    <% end %>
-                  </li>
-                <% end %>
+                <li class="about-link ">
+                  <%= link_to url_for(controller: :steps, action: :show), class: "process-nav__link" do %>
+                    <span><%= t '.help' %></span>
+                  <% end %>
+                </li>
               </ul>
             </div>
           </div>

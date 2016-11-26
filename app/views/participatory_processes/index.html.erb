@@ -20,7 +20,7 @@
               <div class="card__content row collapse">
                 <div class="large-6 large-offset-6 columns">
                   <% if process.active_step.present? %>
-                    <%= link_to step_path(process, process.active_step), class: "button expanded button--sc" do %>
+                    <%= link_to feature_path(process.active_step), class: "button expanded button--sc" do %>
                       <%= t('.join') %>
                       <span class="button__info"><%= t('.current_step', step_title: process.active_step.decorate.title) %></span>
                     <% end %>
@@ -60,7 +60,7 @@
                 <span class="card--process__small">
                   <%= t('.current_step', step_title: process.active_step.decorate.title) %>
                 </span>
-                <%= link_to t('.join'), step_path(process, process.active_step), class: "card__button button small" %>
+                <%= link_to t('.join'), feature_path(process.active_step), class: "card__button button small" %>
               <% else %>
                 <span class="card--process__small">
                 </span>
