@@ -7,6 +7,7 @@ export const APPEND_MEETINGS_PAGE = 'APPEND_MEETINGS_PAGE';
 export const fetchMeetings = (options) => (dispatch, getState) => {
   const { participatoryProcess } = getState();
   options['participatoryProcessId'] = participatoryProcess.id;
+  options['stepId'] = participatoryProcess.step.id;
 
   const request = buildMeetingsRequest(options);
 
@@ -35,6 +36,7 @@ function buildMeetingsRequest(options = {}) {
       filter,
       tags,
       participatoryProcessId,
+      stepId,
       params;
 
   filters = options.filters || {};
@@ -43,6 +45,7 @@ function buildMeetingsRequest(options = {}) {
   filter                 = filters.filter;
   tags                   = filters.tags;
   participatoryProcessId = options.participatoryProcessId;
+  stepId                 = options.stepId;
 
   for (let name in filter) {
     if(filter[name].length > 0) {
@@ -58,7 +61,8 @@ function buildMeetingsRequest(options = {}) {
     search: filters.text,
     tag: tags,
     filter: filterString,
-    participatory_process_id: participatoryProcessId
+    participatory_process_id: participatoryProcessId,
+    step_id: stepId
   }
 
   replaceUrl(params);

@@ -3,11 +3,13 @@ module Concerns
     def url
       scope && scope.url_for(id: object, controller: "/#{controller_name}", action: :show,
                                   participatory_process_id: object.participatory_process.slug,
-                                  step_id: step)
+                                  step_id: serialization_options[:step_id] || step)
     end
 
     def step
-      object.participatory_process.steps.to_a.find{ |s| s.flags.include? feature_name }
+      object.participatory_process
+        .steps.where(active: true).order('position desc')
+        .to_a.find{ |s| s.flags.include? feature_name }
     end
 
     def feature_name
