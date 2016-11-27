@@ -3,6 +3,15 @@
 
 # decidim.barcelona
 
+---
+
+### IMPORTANT NOTE
+This repository is to be considered deprecated and all efforts are going towards developing the next version of the platform in [AjuntamentdeBarcelona/decidim](https://github.com/AjuntamentdeBarcelona/decidim).
+
+The only activity of this repository is related to bug fixing and maintainence.
+
+---
+
 Citizen Participation and Open Government Application
 
 [![Circle CI](https://circleci.com/gh/AjuntamentdeBarcelona/decidim.barcelona/tree/master.svg?style=svg)](https://circleci.com/gh/AjuntamentdeBarcelona/decidim.barcelona/tree/master)
