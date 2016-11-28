@@ -38,6 +38,7 @@ class Api::CommentsController < Api::ApplicationController
   end
 
   def create
+    raise "Unauthorized" unless user_can_comment?
     if can?(:comment, @commentable) && @comment.save
       CommentNotifier.new(comment: @comment).process
       CommentReferencesWorker.perform_async(@comment.id)
@@ -81,7 +82,7 @@ class Api::CommentsController < Api::ApplicationController
   def load_commentable
     @commentable = Comment.find_commentable(params[:commentable][:type], params[:commentable][:id])
   end
-  
+
   def build_comment
     @comment = Comment.build(@commentable, current_user, comment_params)
     check_for_special_comments
@@ -112,5 +113,10 @@ class Api::CommentsController < Api::ApplicationController
     if notifiable.try(:author_id)
       Notification.add(notifiable.author.id, notifiable) unless comment.author == notifiable.author
     end
- end
+  end
+
+  def user_can_comment?
+    step = Step.find(params[:step_id])
+    params[:commentable][:type].downcase != "proposal" || step.feature_enabled?(:enable_proposal_comments)
+  end
 end

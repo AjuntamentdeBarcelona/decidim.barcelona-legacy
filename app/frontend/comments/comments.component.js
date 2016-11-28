@@ -35,13 +35,12 @@ class Comments extends Component {
     const { commentable, participatoryProcess } = this.props;
     const { step } = participatoryProcess;
     const { flags } = step;
-    const commentsDisabled = flags.proposals_readonly;
 
     return (
       <section style={{ position: 'relative', minHeight: '30em' }} className="comments">
         {
           (() => {
-            if (!commentsDisabled) {
+            if (commentable.type !== 'Proposal' || flags.enable_proposal_comments) {
               return (
                 <div className="add-coment">
                   <h5 className="section-heading">{I18n.t('components.comments.new_comment.title')}</h5>
