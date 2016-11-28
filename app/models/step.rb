@@ -1,5 +1,17 @@
 class Step < ActiveRecord::Base
-  FLAGS = %w{proposals proposals_readonly enable_proposal_votes enable_proposal_scope enable_proposal_unvote action_plans meetings debates dataviz categories}
+  FLAGS = %w(
+    proposals
+    enable_proposal_votes
+    enable_proposal_scope
+    enable_proposal_unvote
+    enable_proposal_creation
+    enable_proposal_comments
+    action_plans
+    meetings
+    debates
+    dataviz
+    categories
+  )
 
   belongs_to :participatory_process
   validates :participatory_process, presence: true
