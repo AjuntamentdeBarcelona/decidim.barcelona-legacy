@@ -43,7 +43,7 @@ export const addNewComment = ({ id, type }, { parent, newComment }) => (dispatch
       },
       step_id: stepId
     });
-
+ 
   dispatch({
     type: ADD_NEW_COMMENT,
     payload: request

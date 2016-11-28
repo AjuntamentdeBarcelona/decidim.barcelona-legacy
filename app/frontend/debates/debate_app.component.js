@@ -6,6 +6,7 @@ import {
 }                               from 'redux';
 import { Provider }             from 'react-redux';
 import ReduxPromise             from 'redux-promise';
+import ReduxThunk               from 'redux-thunk';
 
 import { debate   }             from './debates.reducers';
 import order                    from '../order/order.reducers';
@@ -14,7 +15,7 @@ import DebateShow               from './debate_show.component';
 
 import pagination               from '../pagination/pagination.reducers';
 
-const middlewares = [ReduxPromise];
+const middlewares = [ReduxPromise, ReduxThunk];
 
 // if (process.env.NODE_ENV === 'development') {
 //   const createLogger = require('redux-logger');
