@@ -25,12 +25,14 @@ module CommentableActions
   end
 
   def new
+    raise "Unauthorized" unless user_can_create?
     @resource = resource_model.new
     set_resource_instance
     load_featured_tags
   end
 
   def create
+    raise "Unauthorized" unless user_can_create?
     @resource = resource_model.new(strong_params)
     @resource.author = current_user
     @resource.participatory_process_id = @participatory_process.id if @participatory_process.present?
@@ -152,5 +154,10 @@ module CommentableActions
 
     def index_customization
       nil
+    end
+
+    def user_can_create?
+      step = Step.find(params[:step_id])
+      resource_name != "proposal" || step.feature_enabled?(:enable_proposal_creation)
     end
 end

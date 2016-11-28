@@ -31,19 +31,25 @@ export function appendCommentsPage({ id, type }, { order, page }) {
   };
 }
 
-export function addNewComment({ id, type }, { parent, newComment }) {
+export const addNewComment = ({ id, type }, { parent, newComment }) => (dispatch, getState) => {
+  const { participatoryProcess } = getState();
+  const stepId = participatoryProcess.step.id;
+
   const request = 
     axios.post(baseCommentableUrl({ id, type }), {
       comment: {
         ...newComment,
         parent_id: parent && parent.id
-      }
+      },
+      step_id: stepId
     });
-
-  return {
+ 
+  dispatch({
     type: ADD_NEW_COMMENT,
     payload: request
-  };
+  });
+
+  return request;
 }
 
 export function flagComment(commentId) {

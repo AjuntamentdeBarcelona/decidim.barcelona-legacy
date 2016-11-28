@@ -132,8 +132,12 @@ class Comment extends Component {
   }
 
   renderReplyAction() {
-    const { commentable } = this.props;
-    if (commentable.permissions.comment) {
+    const { commentable, participatoryProcess } = this.props;
+    const { step } = participatoryProcess;
+    const { flags } = step;
+
+    if ((commentable.type !== 'Proposal' || flags.enable_proposal_comments) &&
+      commentable.permissions.comment) {
       return (
         <span>
           <a className="comment__reply muted-link" onClick={() => this.setState({showReplyForm: !this.state.showReplyForm })}>{I18n.t("comments_helper.reply_link")}</a>
@@ -255,7 +259,10 @@ class Comment extends Component {
   }
 }
 
-export default connect(null, actions)(Comment);
+export default connect(
+  ({ participatoryProcess }) => ({ participatoryProcess }),
+  actions
+)(Comment);
 
 Comment.propTypes = {
   comment: PropTypes.object.isRequired,
@@ -265,5 +272,6 @@ Comment.propTypes = {
   hideComment: PropTypes.func.isRequired,
   hideCommentAuthor: PropTypes.func.isRequired,
   upVoteComment: PropTypes.func.isRequired,
-  downVoteComment: PropTypes.func.isRequired
+  downVoteComment: PropTypes.func.isRequired,
+  participatoryProcess: PropTypes.object.isRequired
 };

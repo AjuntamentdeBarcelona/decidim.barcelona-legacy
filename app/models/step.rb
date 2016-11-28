@@ -1,5 +1,17 @@
 class Step < ActiveRecord::Base
-  FLAGS = %w{proposals proposals_readonly enable_proposal_votes enable_proposal_scope enable_proposal_unvote action_plans meetings debates dataviz categories}
+  FLAGS = %w(
+    proposals
+    enable_proposal_votes
+    enable_proposal_scope
+    enable_proposal_unvote
+    enable_proposal_creation
+    enable_proposal_comments
+    action_plans
+    meetings
+    debates
+    dataviz
+    categories
+  )
 
   belongs_to :participatory_process
   validates :participatory_process, presence: true
@@ -18,11 +30,7 @@ class Step < ActiveRecord::Base
   end
 
   def feature_enabled?(name)
-    if name == :proposals_readonly
-      flags.include?("proposals_readonly") || (flags.include?("proposals") && !current?)
-    else
-      flags.include?(name.to_s)
-    end
+    flags.include?(name.to_s)
   end
 
   def current?

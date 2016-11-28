@@ -6,8 +6,10 @@ import Icon                     from '../application/icon.component';
 class NewProposalButton extends Component {
   render() {
     const { session, participatoryProcess } = this.props;
+    const { step } = participatoryProcess;
+    const { flags } = step;
 
-    if (session.can_create_new_proposals) {
+    if (session.can_create_new_proposals && flags.enable_proposal_creation) {
       return (
         <a href={`/${participatoryProcess.id}/${participatoryProcess.step.id}/proposals/new`}
         className="new-proposal title-action__action button small hollow">{I18n.t("proposals.index.start_proposal")}
