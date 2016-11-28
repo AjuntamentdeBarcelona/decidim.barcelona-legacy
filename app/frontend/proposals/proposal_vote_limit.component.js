@@ -1,6 +1,8 @@
 import { Component, PropTypes } from 'react';
 import { connect }              from 'react-redux';
 
+import FilterLink               from '../filters/filter_link.component';
+
 class ProposalVoteLimit extends Component {
   render() {
     const { session, participatoryProcess } = this.props;
@@ -28,6 +30,9 @@ class ProposalVoteLimit extends Component {
                       limit: proposal_vote_limit
                     })
                   }
+                </p>
+                <p>
+                  <FilterLink name="interaction" value="voted" label={I18n.t("components.proposal_vote_limit.view_my_votes")} />
                 </p>
               </div>
               <div className="columns medium-4 large-3">

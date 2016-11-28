@@ -112,6 +112,7 @@ es:
       left: Te quedan
       title: Tienes %{limit} votos para repartir
       votes: Votos
+      view_my_votes: Ver mis votos
     proposals:
       count: Mostrando %{count} propuestas
     proposals_autocomplete_input:

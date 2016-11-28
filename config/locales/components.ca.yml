@@ -112,6 +112,7 @@ ca:
       left: Et queden
       title: Tens %{limit} vots per a repartir
       votes: Vots
+      view_my_votes: Veure els meus vots
     proposals:
       count: Mostrant %{count} propostes
     proposals_autocomplete_input:
