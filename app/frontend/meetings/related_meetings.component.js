@@ -2,6 +2,8 @@ import { Component, PropTypes } from 'react';
 
 import Icon                     from '../application/icon.component';
 
+import htmlToReact              from '../application/html_to_react';
+
 export default class RelatedMeetings extends Component {
   componentDidMount() {
     const { model } = this.props;
@@ -38,7 +40,7 @@ export default class RelatedMeetings extends Component {
                           {meeting.start_at} - {meeting.end_at}
                         </div>
                       </div>
-                      <p>{meeting.description}</p>
+                      <div>{ htmlToReact(meeting.description) }</div><br />
                       <div className="address card__extra">
                         <div className="address__icon">
                           <Icon name="meetings" removeIconClass={true} width="40" height="70" />
