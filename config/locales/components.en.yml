@@ -112,6 +112,7 @@ en:
       left: You have
       title: You have %{limit} votes to distribute
       votes: Votes
+      view_my_votes: View my votes
     proposals:
       count: Showing %{count} proposals
     proposals_autocomplete_input:
