@@ -36,7 +36,7 @@ const pagination = function (state = {}, action) {
   switch (action.type) {
     case FETCH_MEETINGS:
       meetings = action.payload.data.meetings;
-      totalPages = Math.round(meetings.length / PER_PAGE);
+      totalPages = Math.ceil(meetings.length / PER_PAGE);
 
       return {
         current_page: 1,
