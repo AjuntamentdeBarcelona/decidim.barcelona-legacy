@@ -113,13 +113,16 @@ export function updateAnswer(proposalId, answer, answerParams) {
   };
 }
 
-export function fetchRelatedMeetings(proposalId) {
-  const request = axios.get(`${API_BASE_URL}/proposals/${proposalId}/meetings.json`);
+export const fetchRelatedMeetings = (proposalId) => (dispatch, getState) => {
+  const { participatoryProcess } = getState();
+  const request = axios.get(`${API_BASE_URL}/proposals/${proposalId}/meetings.json?step_id=${participatoryProcess.step.id}`);
 
-  return {
+  dispatch({
     type: FETCH_RELATED_MEETINGS,
     payload: request
-  };
+  });
+
+  return request;
 }
 
 export function fetchReferences(proposalId) {
