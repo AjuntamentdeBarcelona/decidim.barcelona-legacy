@@ -3,7 +3,7 @@ import {
   APPEND_MEETINGS_PAGE
 } from './meetings.actions';
 
-export const PER_PAGE = 15;
+export const PER_PAGE = 16;
 
 export const defaultDateFilter = (state = "", action) => {
   switch (action.type) {
