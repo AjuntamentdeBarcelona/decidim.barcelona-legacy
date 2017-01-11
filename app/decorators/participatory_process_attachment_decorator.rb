@@ -17,7 +17,7 @@ class ParticipatoryProcessAttachmentDecorator < ApplicationDecorator
   end
 
   def label
-    submime = content_type.split("/").last
+    submime = content_type.to_s.split("/").last
 
     return 'pdf' if ['pdf'].include?(submime)
     return 'doc' if ['msword'].include?(submime)
