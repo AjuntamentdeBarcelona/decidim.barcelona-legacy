@@ -3,7 +3,7 @@ class ParticipatoryProcessAttachmentDecorator < ApplicationDecorator
   translates :description
 
   def type
-    submime = content_type.split("/").last
+    submime = content_type.try(:split, "/").try(:last)
 
     if ["jpeg", "gif"].include?(submime)
       return :image
