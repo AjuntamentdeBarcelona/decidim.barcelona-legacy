@@ -3,8 +3,6 @@ class ParticipatoryProcessAttachmentDecorator < ApplicationDecorator
   translates :description
 
   def type
-    submime = content_type.to_s.split("/").last
-
     if ["jpeg", "gif"].include?(submime)
       return :image
     else
@@ -17,12 +15,14 @@ class ParticipatoryProcessAttachmentDecorator < ApplicationDecorator
   end
 
   def label
-    submime = content_type.to_s.split("/").last
-
     return 'pdf' if ['pdf'].include?(submime)
     return 'doc' if ['msword'].include?(submime)
 
     return nil
+  end
+
+  def submime
+    content_type.to_s.split("/").last
   end
 
   def url
