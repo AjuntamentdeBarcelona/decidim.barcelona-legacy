@@ -1,4 +1,4 @@
-require 'fileutils'
+require "exporter"
 
 namespace :exporter do
   task :users => :environment do
@@ -52,12 +52,6 @@ namespace :exporter do
 
     puts "Exported #{data.length} users"
 
-    write_json("users", data)
-  end
-
-  def write_json(name, data)
-    path = Rails.root.join("exports")
-    FileUtils.mkdir_p(path)
-    File.write(File.join(path, "#{name}.json"), JSON.pretty_generate(data))
+    Exporter.write_json("users", data)
   end
 end

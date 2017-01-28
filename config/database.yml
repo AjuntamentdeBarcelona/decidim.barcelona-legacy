@@ -8,7 +8,7 @@ default: &default
 
 development: &development
   <<: *default
-  database: development
+  database: barcelona_development
 
 production:
   <<: *default
