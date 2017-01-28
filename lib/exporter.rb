@@ -7,4 +7,9 @@ module Exporter
     File.write(File.join(path, "#{name}.json"), JSON.pretty_generate(data))
   end
   module_function :write_json
+
+  def fake_translation(translation)
+    { ca: translation, es: translation }
+  end
+  module_function :fake_translation
 end
