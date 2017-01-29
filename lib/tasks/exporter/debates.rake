@@ -14,9 +14,9 @@ namespace :exporter do
         instructions: debate.instructions,
         start_time: debate.starts_at,
         end_time: debate.ends_at,
-        remote_image_url: debate.picture.try(:url),
         extra: {
-          slug: debate.slug
+          slug: debate.slug,
+          image: debate.picture.try(:url),
         }
       }
     end

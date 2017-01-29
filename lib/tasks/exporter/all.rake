@@ -10,5 +10,7 @@ namespace :exporter do
     Rake::Task["exporter:meetings"].invoke
     Rake::Task["exporter:meeting_attachments"].invoke
     Rake::Task["exporter:results"].invoke
+    Rake::Task["exporter:debates"].invoke
+    Rake::Task["exporter:comments"].invoke
   end
 end
