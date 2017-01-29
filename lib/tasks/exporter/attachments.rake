@@ -6,7 +6,7 @@ namespace :exporter do
       {
         id: attachment.id,
         title: Exporter.fake_translation(attachment.name),
-        description: attachment.description,
+        descriprtion: attachment.description,
         remote_file_url: attachment.file.url,
         process_id: attachment.participatory_process_id
       }

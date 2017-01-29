@@ -12,7 +12,7 @@ namespace :exporter do
         updated_at: proposal.updated_at,
         category_id: proposal.category_id,
         subcategory_id: proposal.subcategory_id,
-        scope_name: proposal.district.try(:name),
+        scope_id: proposal.district,
         process_id: proposal.participatory_process_id,
 
         extra: {

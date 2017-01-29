@@ -20,7 +20,7 @@ namespace :exporter do
         domain: process.areas,
         developer_group: process.manager_group,
         scope: process.scope,
-        decidim_scope_name: District.find(process.district).try(:name),
+        scope_id: process.district,
         steps: steps(process),
         extra: {
           audience: process.audience,
