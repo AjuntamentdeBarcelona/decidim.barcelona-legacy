@@ -9,5 +9,6 @@ namespace :exporter do
     Rake::Task["exporter:proposal_votes"].invoke
     Rake::Task["exporter:meetings"].invoke
     Rake::Task["exporter:meeting_attachments"].invoke
+    Rake::Task["exporter:results"].invoke
   end
 end
