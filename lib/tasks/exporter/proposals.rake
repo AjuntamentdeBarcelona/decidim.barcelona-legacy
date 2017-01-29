@@ -10,7 +10,8 @@ namespace :exporter do
         author_id: proposal.author_id,
         created_at: proposal.created_at,
         updated_at: proposal.updated_at,
-        category_name: proposal.category.name,
+        category_id: proposal.category_id,
+        subcategory_id: proposal.subcategory_id,
         scope_name: proposal.district.try(:name),
         process_id: proposal.participatory_process_id,
 

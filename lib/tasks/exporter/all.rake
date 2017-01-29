@@ -5,5 +5,6 @@ namespace :exporter do
     Rake::Task["exporter:processes"].invoke
     Rake::Task["exporter:categories"].invoke
     Rake::Task["exporter:proposals"].invoke
+    Rake::Task["exporter:proposal_votes"].invoke
   end
 end

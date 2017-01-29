@@ -41,7 +41,7 @@ namespace :exporter do
         description: step.description,
         start_at: step.start_at,
         end_at: step.end_at,
-        position: index + 1,
+        position: index,
         active: step.active,
         created_at: step.created_at,
         updated_at: step.updated_at,
