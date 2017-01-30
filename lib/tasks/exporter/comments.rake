@@ -2,7 +2,7 @@ require "exporter"
 
 namespace :exporter do
   task :comments => :environment do
-    data = Comment.unscoped.find_each.map do |comment|
+    data = Comment.unscoped.roots.find_each.map do |comment|
       serialize_comment(comment)
     end
 
