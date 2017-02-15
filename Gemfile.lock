@@ -460,6 +460,7 @@ GEM
     rack-robots (0.1.2)
     rack-test (0.6.3)
       rack (>= 1.0)
+    rack_password (1.3)
     rails (4.2.5)
       actionmailer (= 4.2.5)
       actionpack (= 4.2.5)
@@ -750,6 +751,7 @@ DEPENDENCIES
   rack-canonical-host
   rack-cors
   rack-robots
+  rack_password
   rails (= 4.2.5)
   rails-i18n
   rails_12factor
@@ -792,4 +794,4 @@ RUBY VERSION
    ruby 2.2.4p230
 
 BUNDLED WITH
-   1.13.6
+   1.14.3

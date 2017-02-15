@@ -29,6 +29,10 @@ Rails.application.configure do
     config.middleware.use Rack::CanonicalHost, Rails.application.secrets.server_name
   end
 
+  if ENV["PASSWORD"].present?
+    config.middleware.use RackPassword::Block, auth_codes: [ENV["PASSWORD"]]
+  end
+
   config.middleware.use Rack::Robots
   config.middleware.use Rack::Attack
 

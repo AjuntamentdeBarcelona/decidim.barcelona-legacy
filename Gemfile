@@ -146,6 +146,7 @@ group :development do
 end
 
 group :production do
+  gem 'rack_password'
   gem 'rack-attack'
   gem 'newrelic_rpm'
   gem 'puma'
