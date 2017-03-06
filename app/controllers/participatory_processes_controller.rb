@@ -4,7 +4,7 @@ class ParticipatoryProcessesController < ApplicationController
 
   def index
     participatory_processes = ParticipatoryProcess.published.order("created_at desc").all
-    @participatory_processes = participatory_processes.decorate
+    @participatory_processes = participatory_processes.unfeatured.decorate
     @featured_participatory_processes = participatory_processes.featured.decorate
 
     respond_to do |format|
