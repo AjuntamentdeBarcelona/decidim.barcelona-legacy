@@ -44,7 +44,7 @@ docker-compose up
 
 ## Configuration for development and test environments
 
-Prerequisites: install git, ImageMagick, Ruby 2.2.3, bundler gem, redis, ghostscript, NodeJS and PostgreSQL (>=9.4).
+Prerequisites: install git, ImageMagick, Ruby 2.2.3, bundler gem, redis, ghostscript, NodeJS, Yarn and PostgreSQL (>=9.4).
 
 ```
 git clone https://github.com/AjuntamentdeBarcelona/decidimbcn.git
@@ -56,8 +56,8 @@ rake db:create
 bin/rake db:setup
 bin/rake db:dev_seed
 RAILS_ENV=test bin/rake db:setup
-npm install -g webpack
-npm install
+yarn global add webpack
+yarn
 ```
 
 Run the app locally:
