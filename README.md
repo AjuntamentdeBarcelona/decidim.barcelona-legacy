@@ -1,92 +1,21 @@
-![decidim.barcelona logo]
-(https://raw.githubusercontent.com/AjuntamentdeBarcelona/decidimbcn/master/app/assets/images/decidim-logo.png)
+![decidim.barcelona logo](https://raw.githubusercontent.com/AjuntamentdeBarcelona/decidimbcn/master/app/assets/images/decidim-logo.png)
+
+![decidim.barcelona logo](https://raw.githubusercontent.com/AjuntamentdeBarcelona/decidimbcn/master/app/assets/images/badge-ajuntament-footer.png)
 
 # decidim.barcelona
+
+Citizen Participation and Open Government Application
 
 ---
 
 ### IMPORTANT NOTE
-This repository is to be considered deprecated and all efforts are going towards developing the next version of the platform in [AjuntamentdeBarcelona/decidim](https://github.com/AjuntamentdeBarcelona/decidim).
 
-The only activity of this repository is related to bug fixing and maintainence.
+This is the opensource code repository for "decidim.barcelona", based on [Consul](https://github.com/consul/consul), developed by the Madrid City government. This is a fork that was used between 1 of february of 2016 to the 8 of febreuary of 2017.
 
----
+This repository is deprecated and is here only for transparency. It was used initially for the PAM (Municipal Action Plan, a strategic planning participatory process) and for working as an alpha version for the participatory process configurator.
 
-Citizen Participation and Open Government Application
+**Warning**: this version of *decidim.barcelona* isn't meant to be reused; if you want to build your own project on top of it, take a look at [Decidim](https://github.com/decidim/decidim) or [Consul](https://github.com/consul/consul) instead.
 
-[![Circle CI](https://circleci.com/gh/AjuntamentdeBarcelona/decidim.barcelona/tree/master.svg?style=svg)](https://circleci.com/gh/AjuntamentdeBarcelona/decidim.barcelona/tree/master)
-[![codecov](https://codecov.io/gh/AjuntamentdeBarcelona/decidim.barcelona/branch/master/graph/badge.svg)](https://codecov.io/gh/AjuntamentdeBarcelona/decidim.barcelona)
-[![Code Climate](https://codeclimate.com/github/AjuntamentdeBarcelona/decidim.barcelona/badges/gpa.svg)](https://codeclimate.com/github/AjuntamentdeBarcelona/decidim.barcelona)
-[![Dependency Status](https://gemnasium.com/AjuntamentdeBarcelona/decidim.barcelona.svg)](https://gemnasium.com/AjuntamentdeBarcelona/decidim.barcelona)
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
-This is the opensource code repository for "decidim.barcelona", based on [Consul](https://github.com/consul/consul), developed by the Madrid City government. We keep collaborating with *Consul's* team in order to improve its codebase and help its community grow.
-
-**Warning**: *decidim.barcelona* isn't meant to be reused; if you want to build your own project on top of it, take a look at [Consul](https://github.com/consul/consul) instead.
-
-## Tech stack
-
-The application backend is written in the [Ruby language](https://www.ruby-lang.org/) using the [Ruby on Rails](http://rubyonrails.org/) framework.
-
-Frontend tools used include [SCSS](http://sass-lang.com/) over [Foundation](http://foundation.zurb.com/) for the styles.
-
-## Configuration for development environment using Docker
-
-Docker is the recommended development environment as it guarantees library parity, as well as a predictable an easy to set up development environment.
-
-```
-docker-compose build
-docker-compose run --rm app bundle install
-docker-compose run --rm app bundle exec rake db:create
-docker-compose run --rm app bundle exec rake db:setup SEED=true
-docker-compose up
-```
-
-## Configuration for development and test environments
-
-Prerequisites: install git, ImageMagick, Ruby 2.2.3, bundler gem, redis, ghostscript, NodeJS and PostgreSQL (>=9.4).
-
-```
-git clone https://github.com/AjuntamentdeBarcelona/decidimbcn.git
-cd decidimbcn
-bundle install
-cp config/database.yml.example config/database.yml
-cp config/secrets.yml.example config/secrets.yml
-rake db:create
-bin/rake db:setup
-bin/rake db:dev_seed
-RAILS_ENV=test bin/rake db:setup
-npm install -g webpack
-npm install
-```
-
-Run the app locally:
-```
-bin/rails s
-```
-
-You'll also need to start `webpack` to serve the needed assets:
-
-```
-webpack -w
-```
-
-Prerequisites for testing: install PhantomJS >= 2.0
-
-Run the tests with:
-
-```
-bin/rspec
-```
-
-## Licence
+## License
 
 Code published under AFFERO GPL v3 (see [LICENSE-AGPLv3.txt](LICENSE-AGPLv3.txt))
-
-## Contributions
-
-See [CONTRIBUTING.md](CONTRIBUTING.md)
-
-## Code of conduct
-
-See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
